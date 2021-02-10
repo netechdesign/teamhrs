@@ -1,0 +1,8 @@
+{
+    "/js/app.js": "/js/app.js",
+    "/css/app.css": "/css/app.css",
+    "/js/application/vendors~canvg.js": "/js/application/vendors~canvg.js",
+    "/js/application/vendors~pdfmake.js": "/js/application/vendors~pdfmake.js",
+    "/js/application/vendors~xlsx.js": "/js/application/vendors~xlsx.js",
+    "/js/application/xlsx.js": "/js/application/xlsx.js"
+}
