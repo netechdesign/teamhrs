@@ -37,7 +37,7 @@ class Application_formsController extends Controller
                 $start = $request->input('iDisplayStart');
                 $page_length = $request->input('iDisplayLength');
                 
-                $jobsrow = Application_Forms::select("*")->where(function($query) use ($request){
+                $jobsrow = Application_Forms::select("*",DB::raw('DATE_FORMAT(created_at,"%d/%m/%Y") as created_at_date'))->where(function($query) use ($request){
                     $search = $request->input('sSearch');
                   if($request->input('sheets_id')!=''){
                   //  $query->where('sheets_id','=',$request->input('sheets_id'));
@@ -356,7 +356,7 @@ class Application_formsController extends Controller
         //$results->employment_historys
        //$data= $results->employment_references;
        try { 
-        $results = Application_Forms::find($id);
+        $results = Application_Forms::select("*",DB::raw('DATE_FORMAT(created_at,"%d/%m/%Y") as created_at_date'))->find($id);
         $results['employment_historys'] = $results->employment_historys;
         $results['employment_references']= $results->employment_references;
         return response()->json(array('success' => true,'application_data'=> $results));

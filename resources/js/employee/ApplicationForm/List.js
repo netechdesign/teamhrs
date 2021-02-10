@@ -77,6 +77,7 @@ oTable = $(tableResponsive).DataTable({
         },
 
     "columns": [  
+        {"data":"created_at_date"},
         {"data": "position_applied_for"}, 
         {"data": "information_provided_name"},
          {"data": "email"},
@@ -383,6 +384,8 @@ class List extends React.Component {
                                 <Table ref="tbl" striped hover responsive className="table table-condensed" id="data-table-responsive">
                                     <thead>
                                     <tr>
+                                    
+                                        <th id="created_at_date">Created at Date</th>
                                         <th id="position_applied_for">Position applied for</th>
                                         <th id="information_provided_name">Name</th>
                                         <th id="email">Email</th>
@@ -392,7 +395,8 @@ class List extends React.Component {
                                       </tr>
                                     </thead>
                                     <tfoot>
-                                    <tr>
+                                    <tr> 
+                                    <th id="created_at_date">Created at Date</th>
                                     <th id="position_applied_for">Position applied for</th>
                                         <th id="information_provided_name">Name</th>
                                         <th id="email">Email</th>
