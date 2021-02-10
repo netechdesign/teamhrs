@@ -268,6 +268,11 @@ class List extends React.Component {
                                           </div>
                                         </div>
                                         <div style={{display:(this.state.apiload?'none':''),color:'black'}}>
+                                        
+                                        <dl style={{marginBottom: '0',paddingTop: '5px'}} className="dl-horizontal row">
+                                               <dt className="col-sm-2"  style={style.title}>Created at:</dt>
+                                               <dd className="col-sm-10">{this.state.application_Forms.created_at_date}</dd> 
+                                            </dl>
                                             <dl style={{marginBottom: '0',paddingTop: '5px',background:'#f7f7f7'}} className="dl-horizontal row">
                                                <dt className="col-sm-2" style={style.title}>Position applied for:</dt>
                                                <dd className="col-sm-10">{this.state.application_Forms.position_applied_for}</dd> 
@@ -385,7 +390,7 @@ class List extends React.Component {
                                     <thead>
                                     <tr>
                                     
-                                        <th id="created_at_date">Created at Date</th>
+                                        <th id="created_at_date">Created at</th>
                                         <th id="position_applied_for">Position applied for</th>
                                         <th id="information_provided_name">Name</th>
                                         <th id="email">Email</th>
@@ -396,7 +401,7 @@ class List extends React.Component {
                                     </thead>
                                     <tfoot>
                                     <tr> 
-                                    <th id="created_at_date">Created at Date</th>
+                                    <th id="created_at_date">Created at</th>
                                     <th id="position_applied_for">Position applied for</th>
                                         <th id="information_provided_name">Name</th>
                                         <th id="email">Email</th>

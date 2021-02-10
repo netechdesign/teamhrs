@@ -356,7 +356,7 @@ class Application_formsController extends Controller
         //$results->employment_historys
        //$data= $results->employment_references;
        try { 
-        $results = Application_Forms::select("*",DB::raw('DATE_FORMAT(created_at,"%d/%m/%Y") as created_at_date'))->find($id);
+        $results = Application_Forms::select("*",DB::raw('DATE_FORMAT(created_at,"%d/%m/%Y %H:%i") as created_at_date'))->find($id);
         $results['employment_historys'] = $results->employment_historys;
         $results['employment_references']= $results->employment_references;
         return response()->json(array('success' => true,'application_data'=> $results));
