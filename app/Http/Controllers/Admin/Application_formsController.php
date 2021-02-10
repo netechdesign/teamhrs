@@ -48,6 +48,9 @@ class Application_formsController extends Controller
                     $query->orWhere('surname', 'LIKE', "%{$search}%");
                     $query->orWhere('postcode', 'LIKE', "%{$search}%");
                     $query->orWhere('email', 'LIKE', "%{$search}%");
+                    $query->orWhere('position_applied_for', 'LIKE', "%{$search}%");
+                    $query->orWhere('telephone_number', 'LIKE', "%{$search}%");
+                    
                     
                    } 
                    
