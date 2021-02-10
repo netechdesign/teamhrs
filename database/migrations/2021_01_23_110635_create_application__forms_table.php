@@ -43,6 +43,7 @@ class CreateApplicationFormsTable extends Migration
                     $table->string('information_provided_name')->nullable();
                     $table->string('information_provided_signature')->nullable();
                     $table->date('information_provided_Date')->nullable();
+                    $table->integer('is_viewed')->default(1);
                     $table->integer('created_by')->nullable();
                     $table->integer('updated_by')->nullable();
                     $table->index(['user_id', 'created_at']);

@@ -8,13 +8,15 @@ import Aux from "../../../../../hoc/_Aux";
 import NavGroup from './NavGroup';
 import DEMO from "../../../../../store/constant";
 import * as actionTypes from "../../../../../store/actions";
-
+import axios from 'axios'
+const baseurl= window.location.origin;
 class NavContent extends Component {
     state = {
         scrollWidth: 0,
         prevDisable: true,
         nextDisable: false,
-        navigation:[]
+        navigation:[],
+        newapplication:''
     };
 
     scrollPrevHandler = () => {
@@ -41,8 +43,29 @@ class NavContent extends Component {
         }
     };
     
-    
+    componentDidMount(){
+        
+    }
     render() {
+        
+        setTimeout(() => {
+            const {auth_token} = localStorage.getItem('userData')? JSON.parse(localStorage.getItem('userData')).user : 'Null';
+             axios.get(baseurl+'/api/newapplicationcount',{headers:{'Accept':'application/json','Authorization':'Bearer '+auth_token}}
+                       ).then(res =>{
+             if(res.data.success){
+                
+                let applicatiTotal= res.data.total;
+                if(applicatiTotal>0){
+                this.setState({newapplication:{title: 'NEW '+applicatiTotal,type: 'label-danger'}});
+                }else{
+                    this.setState({newapplication:''});
+                }
+              }
+                      }).catch(err =>{
+                          console.log(err);
+                        }
+          )    
+        }, 10000);
           
         let RoleUser='';
 let employeeForm='';
@@ -93,6 +116,7 @@ if(permissions){
                             title: 'New Employee Form',
                             type: 'item',
                             url: '/services-starter/Employee-Details',
+                            
                            
                         }
                     ]
@@ -109,7 +133,9 @@ if(permissions){
                             title: 'Application',
                             type: 'item',
                             url: '/applications',
-                            icon: 'feather icon-file-text'
+                            icon: 'feather icon-file-text',
+                            badge: this.state.newapplication
+
                         }
                     
                 

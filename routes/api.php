@@ -42,6 +42,7 @@ Route::group(['middleware' => ['jwt.auth','api-header']], function () {
         Route::resource('consent_statement', 'Consent_statementsController');
         Route::resource('application_form', 'Application_formsController');
         
+        Route::get('newapplicationcount', 'Application_formsController@newapplicationcount');
         Route::get('roledropdown', 'RoleController@roledropdown');
         
         //telephone questions

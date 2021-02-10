@@ -37,7 +37,8 @@ class Application_Forms extends Model
         'information_provided_signature',
         'information_provided_Date',
         'created_by',
-        'updated_by'
+        'updated_by',
+        'is_viewed'
                           ];
 
 

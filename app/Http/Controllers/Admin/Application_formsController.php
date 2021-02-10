@@ -360,6 +360,9 @@ class Application_formsController extends Controller
        //$data= $results->employment_references;
        try { 
         $results = Application_Forms::select("*",DB::raw('DATE_FORMAT(created_at,"%d/%m/%Y %H:%i") as created_at_date'))->find($id);
+        $isviewed = $results;
+        $isviewed->is_viewed=0;
+        $isviewed->save();
         $results['employment_historys'] = $results->employment_historys;
         $results['employment_references']= $results->employment_references;
         return response()->json(array('success' => true,'application_data'=> $results));
@@ -373,7 +376,27 @@ class Application_formsController extends Controller
            }
     
     }
-
+    public function newapplicationcount()
+    {
+        //
+        
+        //$results->employment_historys
+       //$data= $results->employment_references;
+       try { 
+        $results = Application_Forms::select("*")->Where('is_viewed',1)->count();
+        
+        return response()->json(array('success' => true,'total'=> $results));
+         } catch (\Exception $e) 
+           {
+                $message = $e->getMessage();
+                
+                $text = strstr($message, ':', true);
+            
+                return response()->json(array('success' => false,'message'=> $message));
+           }
+    
+    }
+    
     /**
      * Show the form for editing the specified resource.
      *
