@@ -420,6 +420,7 @@ var List = /*#__PURE__*/function (_React$Component) {
   _createClass(List, [{
     key: "componentDidMount",
     value: function componentDidMount() {
+      /* test */
       var _this$props = this.props,
           match = _this$props.match,
           location = _this$props.location,

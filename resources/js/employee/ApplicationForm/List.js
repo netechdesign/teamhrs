@@ -187,7 +187,8 @@ class List extends React.Component {
                       }
           )
   }
-    componentDidMount() {
+    componentDidMount() {  
+      /* test */
         const { match, location, history } = this.props;
         CheckPermission('user','show',history);
         atable()
