@@ -152,6 +152,10 @@ oTable = $(tableResponsive).DataTable({
                 if(row.is_viewed==1){
                       str_buttons+='<span class="label label-danger is_viewed'+row.id+'" style="font-size: 8px;">NEW</span>';
                 }
+                if(row.is_ts_done==1){
+                  str_buttons+='<span class="label label-danger is_ts_done'+row.id+'" style="font-size: 8px;">TS PENDING</span>';
+            }
+                
                 return [
                     str_buttons,
                 ].join('');
@@ -185,7 +189,8 @@ class List extends React.Component {
                       formSubmitting: false,
                       buttonName:'Save',
                       key:'home',
-                      certification:true
+                      certification:true,
+                      certificationButton:false
                       
                     }
     }
@@ -277,7 +282,7 @@ class List extends React.Component {
   telephoneQuestionsSubmit = (e, formData, inputs) => {
     
                            e.preventDefault();
-                           e.preventDefault();
+                           
                            this.setState({formSubmitting:true,apiload:true});
                            this.setState({buttonName:<span><span className="spinner-grow spinner-grow-sm mr-1" role="status" />Loading</span>});
                            const {id,auth_token} = localStorage.getItem('userData')? JSON.parse(localStorage.getItem('userData')).user : 'Null';
@@ -296,6 +301,7 @@ class List extends React.Component {
                                                 // console.log(res.data.data);
                                                 this.setState({formSubmitting:false,apiload:false,certification:false});
                                                if(this.state.application_Forms.id){
+                                                $('.is_ts_done'+this.state.application_Forms.id).hide();
                                                      this.applicationShow(this.state.application_Forms.id);
                                                   }
                                                 
@@ -348,7 +354,63 @@ class List extends React.Component {
           
       }
 
-    }                      
+    } 
+    submitProofCertification =() =>{
+      
+      this.setState({certificationButton:true,apiload:true});
+      this.setState({buttonName:<span><span className="spinner-grow spinner-grow-sm mr-1" role="status" />Loading</span>});
+      const {id,auth_token} = localStorage.getItem('userData')? JSON.parse(localStorage.getItem('userData')).user : 'Null';
+      
+      //const data = new FormData()
+      //data.append('name', this.state.name);
+     
+      axios.post(
+          baseurl+'/api/telephone_pre_answers',this.state,
+          {headers:{'Accept':'application/json','Authorization':'Bearer '+auth_token}} 
+      ).then(res =>{
+                        if(res.data.success){
+                         telephoneQuestionsAlert();
+                        
+                         this.setState({ key :'home'});
+                           // console.log(res.data.data);
+                           this.setState({formSubmitting:false,apiload:false,certification:false});
+                          if(this.state.application_Forms.id){
+                                this.applicationShow(this.state.application_Forms.id);
+                             }
+                           
+                           this.setState({buttonName:'Save'});
+                           
+                        }else{
+                            let errorMassage = '';
+                          if(res.data.errors){
+                              errorMassage = res.data.errors.name;
+                          }else{
+                              errorMassage = res.data.email;
+                              
+                          }
+                          PNotify.error({
+                              title: "System Error",
+                              text:errorMassage,
+                          });
+                          this.setState({formSubmitting:false});
+                          this.setState({buttonName:'Save'});
+                          
+                        }
+                   }
+        )
+        .catch(err =>{
+                  PNotify.error({
+                      title: "System Error",
+                      text:err,
+                  });
+                  this.setState({formSubmitting:false});
+                  this.setState({buttonName:'Add'});
+                  this.setState({selectedFile:null});
+                        
+                    }
+        )
+   
+    }                     
     render() {
       const telephone_questions =(this.state.telephone_questions.length>0?
         this.state.telephone_questions.map((vl,inx)=>{
@@ -536,12 +598,12 @@ class List extends React.Component {
                                 
                             </Tab>
                             <Tab eventKey="certification" disabled={this.state.certification} title="Certification">
-                            <ValidationForm onSubmit={this.telephoneQuestionsSubmit} onErrorSubmit={this.handleErrorSubmit}>
+                            <ValidationForm onSubmit={this.submitProofCertification} onErrorSubmit={this.handleErrorSubmit}>
                                     
                                     <Form.Row>
                                         <Form.Group as={Col} sm={12} className="mt-3">
                                         <Form.Label >Request to submit proof of certification sent to candidate &nbsp;</Form.Label>
-                                        <Button disabled={this.state.formSubmitting}  type="submit"> Submit</Button>
+                                        <Button disabled={this.state.certificationButton}  type="submit"> Submit</Button>
                                         </Form.Group>
                                     </Form.Row>
                                 </ValidationForm>

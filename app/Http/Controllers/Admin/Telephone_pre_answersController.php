@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use JWTAuth;
 use DB;
 use App\Models\Telephone_pre_answers;
+use App\Models\Application_Forms;
 class Telephone_pre_answersController extends Controller
 {
     /**
@@ -67,7 +68,9 @@ class Telephone_pre_answersController extends Controller
             $Telephone_pre_answers = new Telephone_pre_answers($telephone_questions);
             $Telephone_pre_answers->save();
            
-            
+            $results = Application_Forms::find($application_forms_id);
+            $results->is_ts_done=0;
+            $results->save();
             $form_id = 'id';
                 
             return response()->json(array('success' => true,'message' => 'Data inserted successfully','form_id' => $form_id), 200);

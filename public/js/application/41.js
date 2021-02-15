@@ -345,6 +345,10 @@ function atable() {
         str_buttons += '<span class="label label-danger is_viewed' + row.id + '" style="font-size: 8px;">NEW</span>';
       }
 
+      if (row.is_ts_done == 1) {
+        str_buttons += '<span class="label label-danger is_ts_done' + row.id + '" style="font-size: 8px;">TS PENDING</span>';
+      }
+
       return [str_buttons].join('');
     },
     "targets": jquery__WEBPACK_IMPORTED_MODULE_5___default()('#data-table-responsive th#action').index(),
@@ -470,7 +474,6 @@ var List = /*#__PURE__*/function (_React$Component) {
 
     _defineProperty(_assertThisInitialized(_this), "telephoneQuestionsSubmit", function (e, formData, inputs) {
       e.preventDefault();
-      e.preventDefault();
 
       _this.setState({
         formSubmitting: true,
@@ -487,6 +490,115 @@ var List = /*#__PURE__*/function (_React$Component) {
       var _ref4 = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
           id = _ref4.id,
           auth_token = _ref4.auth_token; //const data = new FormData()
+      //data.append('name', this.state.name);
+
+
+      axios__WEBPACK_IMPORTED_MODULE_6___default.a.post(baseurl + '/api/telephone_pre_answers', _this.state, {
+        headers: {
+          'Accept': 'application/json',
+          'Authorization': 'Bearer ' + auth_token
+        }
+      }).then(function (res) {
+        if (res.data.success) {
+          telephoneQuestionsAlert();
+
+          _this.setState({
+            key: 'home'
+          }); // console.log(res.data.data);
+
+
+          _this.setState({
+            formSubmitting: false,
+            apiload: false,
+            certification: false
+          });
+
+          if (_this.state.application_Forms.id) {
+            jquery__WEBPACK_IMPORTED_MODULE_5___default()('.is_ts_done' + _this.state.application_Forms.id).hide();
+
+            _this.applicationShow(_this.state.application_Forms.id);
+          }
+
+          _this.setState({
+            buttonName: 'Save'
+          });
+        } else {
+          var errorMassage = '';
+
+          if (res.data.errors) {
+            errorMassage = res.data.errors.name;
+          } else {
+            errorMassage = res.data.email;
+          }
+
+          pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_10__["default"].error({
+            title: "System Error",
+            text: errorMassage
+          });
+
+          _this.setState({
+            formSubmitting: false
+          });
+
+          _this.setState({
+            buttonName: 'Save'
+          });
+        }
+      })["catch"](function (err) {
+        pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_10__["default"].error({
+          title: "System Error",
+          text: err
+        });
+
+        _this.setState({
+          formSubmitting: false
+        });
+
+        _this.setState({
+          buttonName: 'Add'
+        });
+
+        _this.setState({
+          selectedFile: null
+        });
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "telephoneQuestionsChange", function (element) {
+      var index = element.target.id;
+      _this.state.telephone_questions[index].temperory_comment = element.target.value;
+
+      _this.setState({
+        telephone_questions: _this.state.telephone_questions
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "checktelephoneAnswers", function (row) {
+      if (_this.state.application_Forms.telephone_pre_answers) {
+        var chdata = _this.state.application_Forms.telephone_pre_answers.filter(function (vl) {
+          if (vl.telephone_pre_questions_id == row.id) {
+            row.temperory_comment = vl.telephone_pre_answers;
+          }
+        });
+      }
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "submitProofCertification", function () {
+      _this.setState({
+        certificationButton: true,
+        apiload: true
+      });
+
+      _this.setState({
+        buttonName: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          className: "spinner-grow spinner-grow-sm mr-1",
+          role: "status"
+        }), "Loading")
+      });
+
+      var _ref5 = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
+          id = _ref5.id,
+          auth_token = _ref5.auth_token; //const data = new FormData()
       //data.append('name', this.state.name);
 
 
@@ -559,25 +671,6 @@ var List = /*#__PURE__*/function (_React$Component) {
       });
     });
 
-    _defineProperty(_assertThisInitialized(_this), "telephoneQuestionsChange", function (element) {
-      var index = element.target.id;
-      _this.state.telephone_questions[index].temperory_comment = element.target.value;
-
-      _this.setState({
-        telephone_questions: _this.state.telephone_questions
-      });
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "checktelephoneAnswers", function (row) {
-      if (_this.state.application_Forms.telephone_pre_answers) {
-        var chdata = _this.state.application_Forms.telephone_pre_answers.filter(function (vl) {
-          if (vl.telephone_pre_questions_id == row.id) {
-            row.temperory_comment = vl.telephone_pre_answers;
-          }
-        });
-      }
-    });
-
     _this.state = {
       isLarge: false,
       apiload: false,
@@ -588,7 +681,8 @@ var List = /*#__PURE__*/function (_React$Component) {
       formSubmitting: false,
       buttonName: 'Save',
       key: 'home',
-      certification: true
+      certification: true,
+      certificationButton: false
     };
     return _this;
   }
@@ -966,14 +1060,14 @@ var List = /*#__PURE__*/function (_React$Component) {
         disabled: this.state.certification,
         title: "Certification"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_7__["ValidationForm"], {
-        onSubmit: this.telephoneQuestionsSubmit,
+        onSubmit: this.submitProofCertification,
         onErrorSubmit: this.handleErrorSubmit
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Row, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
         as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
         sm: 12,
         className: "mt-3"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Label, null, "Request to submit proof of certification sent to candidate \xA0"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Button"], {
-        disabled: this.state.formSubmitting,
+        disabled: this.state.certificationButton,
         type: "submit"
       }, " Submit")))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"].Header, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"].Title, {
         as: "h5"
