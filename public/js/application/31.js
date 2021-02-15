@@ -370,16 +370,16 @@ var loaders = function loaders() {
 };
 
 var Oneform = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(52), __webpack_require__.e(1), __webpack_require__.e(0), __webpack_require__.e(2), __webpack_require__.e(4), __webpack_require__.e(5), __webpack_require__.e(54), __webpack_require__.e(64)]).then(__webpack_require__.bind(null, /*! ./forms/EmployeeDetails */ "./resources/js/employee/Services_starter_form/forms/EmployeeDetails.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(27), __webpack_require__.e(1), __webpack_require__.e(0), __webpack_require__.e(2), __webpack_require__.e(4), __webpack_require__.e(5), __webpack_require__.e(54), __webpack_require__.e(64)]).then(__webpack_require__.bind(null, /*! ./forms/EmployeeDetails */ "./resources/js/employee/Services_starter_form/forms/EmployeeDetails.js"));
 });
 var BankDetails = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(52), __webpack_require__.e(1), __webpack_require__.e(0), __webpack_require__.e(2), __webpack_require__.e(4), __webpack_require__.e(5), __webpack_require__.e(6)]).then(__webpack_require__.bind(null, /*! ./forms/BankDetails */ "./resources/js/employee/Services_starter_form/forms/BankDetails.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(27), __webpack_require__.e(1), __webpack_require__.e(0), __webpack_require__.e(2), __webpack_require__.e(4), __webpack_require__.e(5), __webpack_require__.e(6)]).then(__webpack_require__.bind(null, /*! ./forms/BankDetails */ "./resources/js/employee/Services_starter_form/forms/BankDetails.js"));
 });
 var UniformOrder = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(52), __webpack_require__.e(1), __webpack_require__.e(0), __webpack_require__.e(2), __webpack_require__.e(4), __webpack_require__.e(5), __webpack_require__.e(65)]).then(__webpack_require__.bind(null, /*! ./forms/UniformOrder */ "./resources/js/employee/Services_starter_form/forms/UniformOrder.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(27), __webpack_require__.e(1), __webpack_require__.e(0), __webpack_require__.e(2), __webpack_require__.e(4), __webpack_require__.e(5), __webpack_require__.e(65)]).then(__webpack_require__.bind(null, /*! ./forms/UniformOrder */ "./resources/js/employee/Services_starter_form/forms/UniformOrder.js"));
 });
 var ConsentStatement = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(52), __webpack_require__.e(1), __webpack_require__.e(0), __webpack_require__.e(2), __webpack_require__.e(4), __webpack_require__.e(5), __webpack_require__.e(12), __webpack_require__.e(63)]).then(__webpack_require__.bind(null, /*! ./forms/ConsentStatement */ "./resources/js/employee/Services_starter_form/forms/ConsentStatement.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(27), __webpack_require__.e(1), __webpack_require__.e(0), __webpack_require__.e(2), __webpack_require__.e(4), __webpack_require__.e(5), __webpack_require__.e(12), __webpack_require__.e(63)]).then(__webpack_require__.bind(null, /*! ./forms/ConsentStatement */ "./resources/js/employee/Services_starter_form/forms/ConsentStatement.js"));
 });
 var routes = [{
   path: '/services-starter/Employee-Details',

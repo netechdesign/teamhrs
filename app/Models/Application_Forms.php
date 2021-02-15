@@ -50,5 +50,7 @@ class Application_Forms extends Model
         public function employment_references(){
             return $this->hasMany(Employment_references::class,'application_forms_id');
         }
-                          
+        public function telephone_pre_answers(){
+            return $this->hasMany(Telephone_pre_answers::class,'application_forms_id');
+        }                 
 }

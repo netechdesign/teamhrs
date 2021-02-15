@@ -36608,20 +36608,20 @@ __webpack_require__.r(__webpack_exports__);
  // start job portal route
 
 var SignIn = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(52), __webpack_require__.e(1), __webpack_require__.e(7), __webpack_require__.e(9), __webpack_require__.e(56), __webpack_require__.e(66)]).then(__webpack_require__.bind(null, /*! ./Authentication/SignIn/SignIn */ "./resources/js/Authentication/SignIn/SignIn.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(27), __webpack_require__.e(1), __webpack_require__.e(7), __webpack_require__.e(9), __webpack_require__.e(56), __webpack_require__.e(66)]).then(__webpack_require__.bind(null, /*! ./Authentication/SignIn/SignIn */ "./resources/js/Authentication/SignIn/SignIn.js"));
 }); // End job portal route
 
 var Landing = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
   return Promise.all(/*! import() */[__webpack_require__.e(7), __webpack_require__.e(24)]).then(__webpack_require__.bind(null, /*! ./Demo/Landing/index */ "./resources/js/Demo/Landing/index.js"));
 });
 var Frontend = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(52), __webpack_require__.e(1), __webpack_require__.e(0), __webpack_require__.e(2), __webpack_require__.e(4), __webpack_require__.e(5), __webpack_require__.e(7), __webpack_require__.e(9), __webpack_require__.e(54), __webpack_require__.e(12), __webpack_require__.e(11), __webpack_require__.e(17), __webpack_require__.e(16), __webpack_require__.e(19)]).then(__webpack_require__.bind(null, /*! ./front-end/index */ "./resources/js/front-end/index.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(27), __webpack_require__.e(1), __webpack_require__.e(0), __webpack_require__.e(2), __webpack_require__.e(4), __webpack_require__.e(5), __webpack_require__.e(7), __webpack_require__.e(9), __webpack_require__.e(54), __webpack_require__.e(12), __webpack_require__.e(11), __webpack_require__.e(17), __webpack_require__.e(16), __webpack_require__.e(19)]).then(__webpack_require__.bind(null, /*! ./front-end/index */ "./resources/js/front-end/index.js"));
 });
 var thankstosubmit = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(52), __webpack_require__.e(1), __webpack_require__.e(0), __webpack_require__.e(2), __webpack_require__.e(4), __webpack_require__.e(5), __webpack_require__.e(7), __webpack_require__.e(9), __webpack_require__.e(54), __webpack_require__.e(12), __webpack_require__.e(11), __webpack_require__.e(16), __webpack_require__.e(67)]).then(__webpack_require__.bind(null, /*! ./front-end/thankstosubmit */ "./resources/js/front-end/thankstosubmit.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(27), __webpack_require__.e(1), __webpack_require__.e(0), __webpack_require__.e(2), __webpack_require__.e(4), __webpack_require__.e(5), __webpack_require__.e(7), __webpack_require__.e(9), __webpack_require__.e(54), __webpack_require__.e(12), __webpack_require__.e(11), __webpack_require__.e(16), __webpack_require__.e(67)]).then(__webpack_require__.bind(null, /*! ./front-end/thankstosubmit */ "./resources/js/front-end/thankstosubmit.js"));
 });
 var ChangePassword = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(52), __webpack_require__.e(1), __webpack_require__.e(2), __webpack_require__.e(7), __webpack_require__.e(9), __webpack_require__.e(56), __webpack_require__.e(20)]).then(__webpack_require__.bind(null, /*! ./Authentication/ChangePassword */ "./resources/js/Authentication/ChangePassword.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(27), __webpack_require__.e(1), __webpack_require__.e(2), __webpack_require__.e(7), __webpack_require__.e(9), __webpack_require__.e(56), __webpack_require__.e(20)]).then(__webpack_require__.bind(null, /*! ./Authentication/ChangePassword */ "./resources/js/Authentication/ChangePassword.js"));
 });
 /*
 const SignUp1 = React.lazy(() => import('./Demo/Authentication/SignUp/SignUp1'));

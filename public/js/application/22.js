@@ -3691,31 +3691,31 @@ var DashboardDefault = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a
   return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(3), __webpack_require__.e(8), __webpack_require__.e(47)]).then(__webpack_require__.bind(null, /*! ./Back-office/Pages/Dashboard */ "./resources/js/Back-office/Pages/Dashboard.js"));
 });
 var RoleList = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(52), __webpack_require__.e(53), __webpack_require__.e(10), __webpack_require__.e(15)]).then(__webpack_require__.bind(null, /*! ./Back-Office/Role */ "./resources/js/Back-Office/Role/index.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(27), __webpack_require__.e(53), __webpack_require__.e(10), __webpack_require__.e(15)]).then(__webpack_require__.bind(null, /*! ./Back-Office/Role */ "./resources/js/Back-Office/Role/index.js"));
 });
 var RoleAdd = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(52), __webpack_require__.e(1), __webpack_require__.e(2), __webpack_require__.e(4), __webpack_require__.e(55), __webpack_require__.e(58)]).then(__webpack_require__.bind(null, /*! ./Back-Office/Role/add */ "./resources/js/Back-Office/Role/add.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(27), __webpack_require__.e(1), __webpack_require__.e(2), __webpack_require__.e(4), __webpack_require__.e(55), __webpack_require__.e(58)]).then(__webpack_require__.bind(null, /*! ./Back-Office/Role/add */ "./resources/js/Back-Office/Role/add.js"));
 });
 var RoleEdit = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(52), __webpack_require__.e(1), __webpack_require__.e(2), __webpack_require__.e(4), __webpack_require__.e(55), __webpack_require__.e(59)]).then(__webpack_require__.bind(null, /*! ./Back-Office/Role/edit */ "./resources/js/Back-Office/Role/edit.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(27), __webpack_require__.e(1), __webpack_require__.e(2), __webpack_require__.e(4), __webpack_require__.e(55), __webpack_require__.e(59)]).then(__webpack_require__.bind(null, /*! ./Back-Office/Role/edit */ "./resources/js/Back-Office/Role/edit.js"));
 });
 var UserList = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(52), __webpack_require__.e(53), __webpack_require__.e(10), __webpack_require__.e(61)]).then(__webpack_require__.bind(null, /*! ./Back-Office/User */ "./resources/js/Back-Office/User/index.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(27), __webpack_require__.e(53), __webpack_require__.e(10), __webpack_require__.e(61)]).then(__webpack_require__.bind(null, /*! ./Back-Office/User */ "./resources/js/Back-Office/User/index.js"));
 });
 var UserAdd = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(52), __webpack_require__.e(1), __webpack_require__.e(2), __webpack_require__.e(4), __webpack_require__.e(55), __webpack_require__.e(13), __webpack_require__.e(14)]).then(__webpack_require__.bind(null, /*! ./Back-Office/User/add */ "./resources/js/Back-Office/User/add.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(27), __webpack_require__.e(1), __webpack_require__.e(2), __webpack_require__.e(4), __webpack_require__.e(55), __webpack_require__.e(13), __webpack_require__.e(14)]).then(__webpack_require__.bind(null, /*! ./Back-Office/User/add */ "./resources/js/Back-Office/User/add.js"));
 });
 var UserEdit = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(52), __webpack_require__.e(1), __webpack_require__.e(2), __webpack_require__.e(4), __webpack_require__.e(55), __webpack_require__.e(13), __webpack_require__.e(60)]).then(__webpack_require__.bind(null, /*! ./Back-Office/User/edit */ "./resources/js/Back-Office/User/edit.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(27), __webpack_require__.e(1), __webpack_require__.e(2), __webpack_require__.e(4), __webpack_require__.e(55), __webpack_require__.e(13), __webpack_require__.e(60)]).then(__webpack_require__.bind(null, /*! ./Back-Office/User/edit */ "./resources/js/Back-Office/User/edit.js"));
 });
 var Services_starter_one = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
   return __webpack_require__.e(/*! import() */ 31).then(__webpack_require__.bind(null, /*! ./employee/Services_starter_form/Services_starter_one */ "./resources/js/employee/Services_starter_form/Services_starter_one.js"));
 });
 var ApplicationForm = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(52), __webpack_require__.e(1), __webpack_require__.e(0), __webpack_require__.e(2), __webpack_require__.e(4), __webpack_require__.e(5), __webpack_require__.e(54), __webpack_require__.e(12), __webpack_require__.e(17), __webpack_require__.e(57)]).then(__webpack_require__.bind(null, /*! ./employee/ApplicationForm */ "./resources/js/employee/ApplicationForm/index.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(27), __webpack_require__.e(1), __webpack_require__.e(0), __webpack_require__.e(2), __webpack_require__.e(4), __webpack_require__.e(5), __webpack_require__.e(54), __webpack_require__.e(12), __webpack_require__.e(17), __webpack_require__.e(57)]).then(__webpack_require__.bind(null, /*! ./employee/ApplicationForm */ "./resources/js/employee/ApplicationForm/index.js"));
 });
 var List = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(52), __webpack_require__.e(1), __webpack_require__.e(4), __webpack_require__.e(53), __webpack_require__.e(10), __webpack_require__.e(17), __webpack_require__.e(62)]).then(__webpack_require__.bind(null, /*! ./employee/ApplicationForm/List */ "./resources/js/employee/ApplicationForm/List.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(27), __webpack_require__.e(1), __webpack_require__.e(2), __webpack_require__.e(4), __webpack_require__.e(53), __webpack_require__.e(10), __webpack_require__.e(17), __webpack_require__.e(41)]).then(__webpack_require__.bind(null, /*! ./employee/ApplicationForm/List */ "./resources/js/employee/ApplicationForm/List.js"));
 }); //For demo Examples
 
 var FormsSelect = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {

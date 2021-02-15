@@ -8,7 +8,10 @@ import axios from 'axios'
 import { ValidationForm, TextInput, BaseFormControl, SelectGroup, FileInput, Checkbox, Radio } from 'react-bootstrap4-form-validation';
 import MaskedInput from 'react-text-mask';
 import validator from 'validator';
-
+import PNotify from "pnotify/dist/es/PNotify";
+import "pnotify/dist/es/PNotifyButtons";
+import "pnotify/dist/es/PNotifyConfirm";
+import "pnotify/dist/es/PNotifyCallbacks";
 import { Table as Tbl, Thead, Tbody, Tr, Th, Td } from 'react-super-responsive-table';
 import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css';
 window.jQuery = $;
@@ -38,6 +41,21 @@ require( 'datatables.net-fixedcolumns' );
 require( 'datatables.net-fixedheader' );
 
 const {id,auth_token} = localStorage.getItem('userData')? JSON.parse(localStorage.getItem('userData')).user : 'Null';
+function telephoneQuestionsAlert(id) {
+  let message = "Telephone pre answers save successfully";
+   
+   PNotify.success({
+       title: 'Success',
+       text:message,
+       modules: {
+           Desktop: {
+               desktop: true
+           }
+       }
+   }).on('click', function(e) {
+       
+   });
+}
 
 var oTable="";
 
@@ -129,7 +147,7 @@ oTable = $(tableResponsive).DataTable({
     "columnDefs": [
         {
             "render": function (data, type, row) {
-              console.log(row);
+              
                 var str_buttons = '<button type="button" class="edit btn btn-info btn-sm" data-id="'+row.id+'" ><i style="margin:0px !important;" class="feather icon-edit"></i></button>';
                 if(row.is_viewed==1){
                       str_buttons+='<span class="label label-danger is_viewed'+row.id+'" style="font-size: 8px;">NEW</span>';
@@ -161,18 +179,42 @@ class List extends React.Component {
                      isLarge: false,
                      apiload:false,
                      application_Forms:[],
-                     telephone_questions:[]
+                     telephone_questions:[],
+                     suitability_offered_for:'',
+                     suitability_offered_comments:'',
+                      formSubmitting: false,
+                      buttonName:'Save',
+                      key:'home',
+                      certification:true
+                      
                     }
     }
    
   applicationShow= (application_id)=>{
-    this.setState({isLarge:true,apiload:true,application_Forms:[]});
+    this.setState({isLarge:true,apiload:true,application_Forms:[],key :'home',suitability_offered_for:'',suitability_offered_comments:''});
+    
     const {auth_token} = localStorage.getItem('userData')? JSON.parse(localStorage.getItem('userData')).user : 'Null';
     axios.get(baseurl+'/api/application_form/'+application_id,{headers:{'Accept':'application/json','Authorization':'Bearer '+auth_token}}
               ).then(res =>{
                 if(res.data.success){
                   this.setState({application_Forms:res.data.application_data,apiload:false});
-                  
+                  if(res.data.application_data.telephone_pre_answers){
+                    
+                    this.setState({formSubmitting:(res.data.application_data.telephone_pre_answers.length>0)?true:false,certification:(res.data.application_data.telephone_pre_answers.length>0)?false:true});
+                    res.data.application_data.telephone_pre_answers.filter((vl)=>{
+                       if(vl.telephone_pre_questions=='suitability_offered_for'){
+                         
+                         this.setState({suitability_offered_for:vl.telephone_pre_answers}) 
+                       }
+                       if(vl.telephone_pre_questions=='suitability_offered_comments'){
+                        
+                        this.setState({suitability_offered_comments:vl.telephone_pre_answers}) 
+                      }
+                       
+                       });
+                       
+                   }
+
                 }else{
                   let errorMassage = '';
                 if(res.data.errors){
@@ -208,11 +250,14 @@ class List extends React.Component {
       this.setState({
           [e.target.name]: e.target.value
       })
-      
+
   };
   tabSelect =(key) =>{
-    
+    this.setState({ key : key })
     if (key === 'telephone'){
+      
+                      
+      this.setState({telephone_questions:[]});
            const {auth_token} = localStorage.getItem('userData')? JSON.parse(localStorage.getItem('userData')).user : 'Null';
            this.setState({apiload:true}); 
            axios.get(baseurl+'/api/telephone_questions',{headers:{'Accept':'application/json','Authorization':'Bearer '+auth_token}}
@@ -228,21 +273,98 @@ class List extends React.Component {
           )
     }
   }
+
+  telephoneQuestionsSubmit = (e, formData, inputs) => {
+    
+                           e.preventDefault();
+                           e.preventDefault();
+                           this.setState({formSubmitting:true,apiload:true});
+                           this.setState({buttonName:<span><span className="spinner-grow spinner-grow-sm mr-1" role="status" />Loading</span>});
+                           const {id,auth_token} = localStorage.getItem('userData')? JSON.parse(localStorage.getItem('userData')).user : 'Null';
+                           
+                           //const data = new FormData()
+                           //data.append('name', this.state.name);
+                          
+                           axios.post(
+                               baseurl+'/api/telephone_pre_answers',this.state,
+                               {headers:{'Accept':'application/json','Authorization':'Bearer '+auth_token}} 
+                           ).then(res =>{
+                                             if(res.data.success){
+                                              telephoneQuestionsAlert();
+                                             
+                                              this.setState({ key :'home'});
+                                                // console.log(res.data.data);
+                                                this.setState({formSubmitting:false,apiload:false,certification:false});
+                                               if(this.state.application_Forms.id){
+                                                     this.applicationShow(this.state.application_Forms.id);
+                                                  }
+                                                
+                                                this.setState({buttonName:'Save'});
+                                                
+                                             }else{
+                                                 let errorMassage = '';
+                                               if(res.data.errors){
+                                                   errorMassage = res.data.errors.name;
+                                               }else{
+                                                   errorMassage = res.data.email;
+                                                   
+                                               }
+                                               PNotify.error({
+                                                   title: "System Error",
+                                                   text:errorMassage,
+                                               });
+                                               this.setState({formSubmitting:false});
+                                               this.setState({buttonName:'Save'});
+                                               
+                                             }
+                                        }
+                             )
+                             .catch(err =>{
+                                       PNotify.error({
+                                           title: "System Error",
+                                           text:err,
+                                       });
+                                       this.setState({formSubmitting:false});
+                                       this.setState({buttonName:'Add'});
+                                       this.setState({selectedFile:null});
+                                             
+                                         }
+                             )
+                        
+                          }
+
+  telephoneQuestionsChange = (element) => {
+                            let index = element.target.id;
+                            this.state.telephone_questions[index].temperory_comment = element.target.value;
+                            this.setState({telephone_questions:this.state.telephone_questions});
+                          }
+    checktelephoneAnswers =(row) =>{
+      if(this.state.application_Forms.telephone_pre_answers){
+       let chdata = this.state.application_Forms.telephone_pre_answers.filter((vl)=>{
+          if(vl.telephone_pre_questions_id==row.id){
+            row.temperory_comment=vl.telephone_pre_answers;
+          }
+          });
+          
+      }
+
+    }                      
     render() {
       const telephone_questions =(this.state.telephone_questions.length>0?
         this.state.telephone_questions.map((vl,inx)=>{
+                       this.checktelephoneAnswers(vl);
                        return (<Form.Row style={style.rowline}> 
                                               <Form.Group as={Col} md="12">
                                                         <Form.Label style={style.title} htmlFor="first_name">{vl.question}</Form.Label>
                                                         <br/><Form.Label >Comments:</Form.Label>
                                                         <TextInput
-                                                            name="unavailable_for_interview"
-                                                            id="unavailable_for_interview"
+                                                            name="temperory_comment"
+                                                            id={inx}
                                                             placeholder=""
                                                             multiline
                                                             required
-                                                            value={this.state.unavailable_for_interview}
-                                                            onChange={this.handleChange}
+                                                            value={vl.temperory_comment}
+                                                            onChange={(e) => this.telephoneQuestionsChange(e) }
                                                             rows="3"
                                                             autoComplete="off"
                                                         />
@@ -263,7 +385,7 @@ class List extends React.Component {
                                     </Modal.Header>
                                     <Modal.Body >
                                       
-                                      <Tabs defaultActiveKey="home"  onSelect={this.tabSelect}>
+                                      <Tabs defaultActiveKey="home" activeKey={this.state.key} onSelect={this.tabSelect}>
                                        <Tab eventKey="home"   title="Application">
                                         <div class="text-center" style={{display:(this.state.apiload?'block':'none')}}>
                                           <div class="spinner-border" role="status">
@@ -366,19 +488,64 @@ class List extends React.Component {
                                               <span class="sr-only">Loading...</span>
                                           </div>
                                         </div>
-                            <ValidationForm onSubmit={this.handleSubmit} onErrorSubmit={this.handleErrorSubmit}>
+                                        
+        
+                            <ValidationForm onSubmit={this.telephoneQuestionsSubmit} onErrorSubmit={this.handleErrorSubmit}>
                                     
                                     {telephone_questions}
                                     <Form.Row>
-                                        <Form.Group as={Col} sm={12} className="mt-3">
-                                            <Button type="submit">Submit</Button>
+                                    <Form.Group as={Col} style={{display:(this.state.apiload?'none':'block')}} md="12">
+                                        <Form.Label htmlFor="custom">Suitability to be offered employment:</Form.Label>
+                                            <div style={style.title} className="custom-controls-stacked radio">
+                                                <Radio.RadioGroup
+                                                    name="suitability_offered_for"
+                                                    required
+                                                    
+                                                    valueSelected={this.state.suitability_offered_for}
+                                                    inline={false}
+                                                    onChange={this.handleChange}>
+                                                    <Radio.RadioItem  id="radio1" label="The applicant is not suited to this job. I would not recommend for employment." value="1" />
+                                                    <Radio.RadioItem id="radio2" label="The applicant might do well in this job but I cannot recommend without reservations." value="2" />
+                                                    <Radio.RadioItem id="radio3" label="The applicant should do well in this job and I would recommend for an interview." value="3" />
+                                                    <Radio.RadioItem id="radio4" label="The applicant should be excellent in this job and I would recommend with confidence. Interview to be arranged." value="4" />
+                                                </Radio.RadioGroup>
+                                            </div>
+                                        </Form.Group>
+
+                                        <Form.Group style={{display:(this.state.apiload?'none':'block')}} as={Col} md="12">
+                                                        <Form.Label >Comments:</Form.Label>
+                                                      <TextInput
+                                                            name="suitability_offered_comments"
+                                                            id="suitability_offered_comments"
+                                                            placeholder=""
+                                                            multiline
+                                                            required
+                                                            value={this.state.suitability_offered_comments}
+                                                            onChange={this.handleChange}
+                                                            rows="3"
+                                                            autoComplete="off"
+                                                        />
+                                              </Form.Group>
+                                        </Form.Row>
+                                    <Form.Row>
+                                        <Form.Group style={{display:(this.state.apiload?'none':'block')}} as={Col} sm={12} className="mt-3">
+                                        <Button disabled={this.state.formSubmitting}  type="submit"> {this.state.buttonName}</Button>
                                         </Form.Group>
                                     </Form.Row>
                                 </ValidationForm>
                                 
                             </Tab>
-                            <Tab eventKey="contact" title="CONTACT">
-                                <p>progess.</p>
+                            <Tab eventKey="certification" disabled={this.state.certification} title="Certification">
+                            <ValidationForm onSubmit={this.telephoneQuestionsSubmit} onErrorSubmit={this.handleErrorSubmit}>
+                                    
+                                    <Form.Row>
+                                        <Form.Group as={Col} sm={12} className="mt-3">
+                                        <Form.Label >Request to submit proof of certification sent to candidate &nbsp;</Form.Label>
+                                        <Button disabled={this.state.formSubmitting}  type="submit"> Submit</Button>
+                                        </Form.Group>
+                                    </Form.Row>
+                                </ValidationForm>
+                       
                             </Tab>
                         </Tabs>
 

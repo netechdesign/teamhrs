@@ -365,6 +365,10 @@ class Application_formsController extends Controller
         $isviewed->save();
         $results['employment_historys'] = $results->employment_historys;
         $results['employment_references']= $results->employment_references;
+        $telephone_pre_answers= $results->telephone_pre_answers;
+        if($telephone_pre_answers){
+            $results['telephone_pre_answers']= $results->telephone_pre_answers;
+        }
         return response()->json(array('success' => true,'application_data'=> $results));
          } catch (\Exception $e) 
            {

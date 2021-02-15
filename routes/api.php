@@ -41,6 +41,8 @@ Route::group(['middleware' => ['jwt.auth','api-header']], function () {
         Route::resource('uniform_orders', 'Uniform_ordersController');
         Route::resource('consent_statement', 'Consent_statementsController');
         Route::resource('application_form', 'Application_formsController');
+        Route::resource('telephone_pre_answers', 'Telephone_pre_answersController');
+        
         
         Route::get('newapplicationcount', 'Application_formsController@newapplicationcount');
         Route::get('roledropdown', 'RoleController@roledropdown');

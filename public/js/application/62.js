@@ -318,7 +318,6 @@ function atable() {
     jquery__WEBPACK_IMPORTED_MODULE_5___default()(window).trigger('resize');
   }), _defineProperty(_$$DataTable, "columnDefs", [{
     "render": function render(data, type, row) {
-      console.log(row);
       var str_buttons = '<button type="button" class="edit btn btn-info btn-sm" data-id="' + row.id + '" ><i style="margin:0px !important;" class="feather icon-edit"></i></button>';
 
       if (row.is_viewed == 1) {
@@ -416,11 +415,26 @@ var List = /*#__PURE__*/function (_React$Component) {
       }
     });
 
+    _defineProperty(_assertThisInitialized(_this), "telephoneQuestionsSubmit", function (e, formData, inputs) {
+      e.preventDefault();
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "telephoneQuestionsChange", function (element) {
+      var index = element.target.id;
+      _this.state.telephone_questions[index].temperory_comment = element.target.value;
+
+      _this.setState({
+        telephone_questions: _this.state.telephone_questions
+      });
+    });
+
     _this.state = {
       isLarge: false,
       apiload: false,
       application_Forms: [],
-      telephone_questions: []
+      telephone_questions: [],
+      suitability_offered_for: '',
+      suitability_offered_comments: ''
     };
     return _this;
   }
@@ -457,13 +471,15 @@ var List = /*#__PURE__*/function (_React$Component) {
           style: style.title,
           htmlFor: "first_name"
         }, vl.question), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Label, null, "Comments:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_7__["TextInput"], {
-          name: "unavailable_for_interview",
-          id: "unavailable_for_interview",
+          name: "temperory_comment",
+          id: inx,
           placeholder: "",
           multiline: true,
           required: true,
-          value: _this2.state.unavailable_for_interview,
-          onChange: _this2.handleChange,
+          value: vl.temperory_comment,
+          onChange: function onChange(e) {
+            return _this2.telephoneQuestionsChange(e);
+          },
           rows: "3",
           autoComplete: "off"
         })));
@@ -727,9 +743,55 @@ var List = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         "class": "sr-only"
       }, "Loading..."))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_7__["ValidationForm"], {
-        onSubmit: this.handleSubmit,
+        onSubmit: this.telephoneQuestionsSubmit,
         onErrorSubmit: this.handleErrorSubmit
       }, telephone_questions, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Row, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
+        style: {
+          display: this.state.apiload ? 'none' : 'block'
+        },
+        md: "12"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Label, {
+        htmlFor: "custom"
+      }, "Suitability to be offered employment:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        style: style.title,
+        className: "custom-controls-stacked radio"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_7__["Radio"].RadioGroup, {
+        name: "suitability_offered_for",
+        required: true,
+        valueSelected: this.state.custom,
+        inline: false,
+        onChange: this.handleChange
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_7__["Radio"].RadioItem, {
+        id: "radio1",
+        label: "The applicant is not suited to this job. I would not recommend for employment.",
+        value: "1"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_7__["Radio"].RadioItem, {
+        id: "radio2",
+        label: "The applicant might do well in this job but I cannot recommend without reservations.",
+        value: "2"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_7__["Radio"].RadioItem, {
+        id: "radio3",
+        label: "The applicant should do well in this job and I would recommend for an interview.",
+        value: "3"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_7__["Radio"].RadioItem, {
+        id: "radio4",
+        label: "The applicant should be excellent in this job and I would recommend with confidence. Interview to be arranged.",
+        value: "4"
+      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
+        md: "12"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Label, null, "Comments:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_7__["TextInput"], {
+        name: "suitability_offered_comments",
+        id: "suitability_offered_comments",
+        placeholder: "",
+        multiline: true,
+        required: true,
+        value: this.state.suitability_offered_comments,
+        onChange: this.handleChange,
+        rows: "3",
+        autoComplete: "off"
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Row, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
         as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
         sm: 12,
         className: "mt-3"
