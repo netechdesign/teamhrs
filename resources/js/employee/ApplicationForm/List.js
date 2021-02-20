@@ -57,6 +57,21 @@ function telephoneQuestionsAlert(id) {
    });
 }
 
+function request_certificationAlert(id) {
+  let message = "Certificate request send successfully";
+   
+   PNotify.success({
+       title: 'Success',
+       text:message,
+       modules: {
+           Desktop: {
+               desktop: true
+           }
+       }
+   }).on('click', function(e) {
+       
+   });
+}
 var oTable="";
 
 function atable() {
@@ -205,7 +220,7 @@ class List extends React.Component {
                   this.setState({application_Forms:res.data.application_data,apiload:false});
                   if(res.data.application_data.telephone_pre_answers){
                     
-                    this.setState({formSubmitting:(res.data.application_data.telephone_pre_answers.length>0)?true:false,certification:(res.data.application_data.telephone_pre_answers.length>0)?false:true});
+                    this.setState({formSubmitting:(res.data.application_data.telephone_pre_answers.length>0)?true:false,certification:(res.data.application_data.telephone_pre_answers.length>0)?false:true,certificationButton:(res.data.application_data.telephone_pre_answers.length>0)?false:true});
                     res.data.application_data.telephone_pre_answers.filter((vl)=>{
                        if(vl.telephone_pre_questions=='suitability_offered_for'){
                          
@@ -355,30 +370,27 @@ class List extends React.Component {
       }
 
     } 
-    submitProofCertification =() =>{
-      
+    submitProofCertification =(e) =>{
+      e.preventDefault();
       this.setState({certificationButton:true,apiload:true});
-      this.setState({buttonName:<span><span className="spinner-grow spinner-grow-sm mr-1" role="status" />Loading</span>});
       const {id,auth_token} = localStorage.getItem('userData')? JSON.parse(localStorage.getItem('userData')).user : 'Null';
       
       //const data = new FormData()
       //data.append('name', this.state.name);
      
       axios.post(
-          baseurl+'/api/telephone_pre_answers',this.state,
+          baseurl+'/api/request_certification',this.state,
           {headers:{'Accept':'application/json','Authorization':'Bearer '+auth_token}} 
       ).then(res =>{
                         if(res.data.success){
-                         telephoneQuestionsAlert();
+                          request_certificationAlert();
                         
                          this.setState({ key :'home'});
                            // console.log(res.data.data);
-                           this.setState({formSubmitting:false,apiload:false,certification:false});
-                          if(this.state.application_Forms.id){
-                                this.applicationShow(this.state.application_Forms.id);
-                             }
-                           
-                           this.setState({buttonName:'Save'});
+                           if(this.state.application_Forms.id){
+                                 this.applicationShow(this.state.application_Forms.id);
+                              }
+                            
                            
                         }else{
                             let errorMassage = '';
@@ -598,16 +610,24 @@ class List extends React.Component {
                                 
                             </Tab>
                             <Tab eventKey="certification" disabled={this.state.certification} title="Certification">
-                            <ValidationForm onSubmit={this.submitProofCertification} onErrorSubmit={this.handleErrorSubmit}>
-                                    
-                                    <Form.Row>
-                                        <Form.Group as={Col} sm={12} className="mt-3">
-                                        <Form.Label >Request to submit proof of certification sent to candidate &nbsp;</Form.Label>
-                                        <Button disabled={this.state.certificationButton}  type="submit"> Submit</Button>
-                                        </Form.Group>
-                                    </Form.Row>
-                                </ValidationForm>
-                       
+                            <div class="text-center" style={{display:(this.state.apiload?'block':'none')}}>
+                                          <div class="spinner-border" role="status">
+                                              <span class="sr-only">Loading...</span>
+                                          </div>
+                                        </div>
+                                        
+                                        {(this.state.application_Forms.is_document_get==1?
+                                            <ValidationForm onSubmit={this.submitProofCertification} onErrorSubmit={this.handleErrorSubmit}>
+                                                    <Form.Row>
+                                                        <Form.Group as={Col} sm={12} className="mt-3">
+                                                        <Form.Label >Request to submit proof of certification to candidate &nbsp;</Form.Label>
+                                                        <Button disabled={this.state.certificationButton}  type="submit"> {(this.state.application_Forms.is_document_request==1?'Send':'Re-Send')}</Button>
+                                                        </Form.Group>
+                                                    </Form.Row>
+                                            </ValidationForm>
+                                            :<DocumentsList documents_list={this.state.application_Forms.documents}  />
+                                        )
+                                        }
                             </Tab>
                         </Tabs>
 
@@ -651,6 +671,36 @@ class List extends React.Component {
     }
 }
 
+class DocumentsList extends React.Component{
+
+  render(){
+        if(this.props.documents_list){
+          if(this.props.documents_list.length > 0){
+            const documents_List = this.props.documents_list.map((item,index) =>{
+              return(
+                <Tr key={index} style={{borderBottom:'1px solid rgba(0, 0, 0, 0.125)',borderTop:'1px solid rgba(0, 0, 0, 0.125)'}}>
+                   <Td style={{padding:'5px'}}>
+                   {item.document_name}
+                   </Td>
+                   <Td style={{padding:'5px'}}>
+                   
+                   <a target='_blank' href={baseurl+'/uploaded/'+item.document_path} ><i class="feather icon-file-text"></i> view</a>
+                   </Td>
+                   
+                   </Tr>
+           )
+            })
+
+            return(
+              <Aux><Tbl><Tbody>{documents_List}</Tbody></Tbl></Aux>
+          );
+
+          }
+        }else{
+          return(<Aux><b>documents_list</b></Aux>)
+        }
+  }
+}
 class EmploymentHistory extends React.Component{
 
   render (){

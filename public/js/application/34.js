@@ -69,10 +69,10 @@ var AnimatedModal = /*#__PURE__*/function (_React$Component) {
 
 /***/ }),
 
-/***/ "./resources/js/Back-Office/User/add.js":
-/*!**********************************************!*\
-  !*** ./resources/js/Back-Office/User/add.js ***!
-  \**********************************************/
+/***/ "./resources/js/Back-Office/User/edit.js":
+/*!***********************************************!*\
+  !*** ./resources/js/Back-Office/User/edit.js ***!
+  \***********************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -154,7 +154,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 function successDesktopPNotify() {
   pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_11__["default"].success({
     title: 'Success',
-    text: "User added successfully",
+    text: "User updated successfully",
     modules: {
       Desktop: {
         desktop: true
@@ -165,10 +165,26 @@ function successDesktopPNotify() {
 
 var Trrow = function Trrow(property) {
   var pageName = property.rows.map(function (value, index) {
-    if (!value.Ischeck) {
-      value.Ischeck = false;
-    }
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+      key: index
+    }, " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["Checkbox"], {
+      name: value.name,
+      label: value.page_name,
+      id: property.index + '_' + value.name,
+      value: value.Ischeck,
+      onChange: property.onchildChange
+    }));
+  });
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["Checkbox"], {
+    name: property.parent,
+    label: property.parent.toUpperCase(),
+    onChange: property.onparentChange,
+    id: property.index
+  })), pageName);
+};
 
+var Dropdown = function Dropdown(property) {
+  var pageName = property.rows.map(function (value, index) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
       key: index
     }, " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["Checkbox"], {
@@ -189,15 +205,15 @@ var Trrow = function Trrow(property) {
 
 var baseurl = window.location.origin;
 
-var add = /*#__PURE__*/function (_React$Component) {
-  _inherits(add, _React$Component);
+var edit = /*#__PURE__*/function (_React$Component) {
+  _inherits(edit, _React$Component);
 
-  var _super = _createSuper(add);
+  var _super = _createSuper(edit);
 
-  function add() {
+  function edit() {
     var _this;
 
-    _classCallCheck(this, add);
+    _classCallCheck(this, edit);
 
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
@@ -206,12 +222,15 @@ var add = /*#__PURE__*/function (_React$Component) {
     _this = _super.call.apply(_super, [this].concat(args));
 
     _defineProperty(_assertThisInitialized(_this), "state", {
+      name: "",
+      id: _this.props.match.params.id,
       firstName: "",
       lastName: "",
       email: "",
       password: "",
       confirmPassword: "",
       role_id: '',
+      role_name: '',
       role_list: [],
       chkCustom: false,
       permission: [],
@@ -219,6 +238,36 @@ var add = /*#__PURE__*/function (_React$Component) {
       visible: true,
       formSubmitting: false,
       buttonName: 'Save'
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "RoleList", function (e) {
+      var id = _this.state.id;
+      document.getElementById("requestLoder").innerHTML = '<img style="width:2%"  src="' + baseurl + '/images/ajax_loader_gray_512.gif"></img>';
+
+      var _ref = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
+          auth_token = _ref.auth_token;
+
+      axios__WEBPACK_IMPORTED_MODULE_10___default.a.get(baseurl + '/api/roledropdown', {
+        headers: {
+          'Accept': 'application/json',
+          'Authorization': 'Bearer ' + auth_token
+        }
+      }).then(function (res) {
+        if (res.data.success) {
+          _this.setState({
+            role_list: res.data.data
+          });
+
+          document.getElementById("requestLoder").innerHTML = '';
+          /*
+          this.state.permission.map((val,index)=>{
+                console.log(val[Object.keys(val)[0]]);
+          })
+          */
+        } else {}
+      })["catch"](function (err) {
+        console.log(err);
+      });
     });
 
     _defineProperty(_assertThisInitialized(_this), "chageParent", function (e, value) {
@@ -296,13 +345,13 @@ var add = /*#__PURE__*/function (_React$Component) {
         }), "Loading")
       });
 
-      var _ref = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
-          id = _ref.id,
-          auth_token = _ref.auth_token; //const data = new FormData()
-      //data.append('name', this.state.name);
+      var _ref2 = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
+          id = _ref2.id,
+          auth_token = _ref2.auth_token;
 
-
-      axios__WEBPACK_IMPORTED_MODULE_10___default.a.post(baseurl + '/api/user', {
+      var data = new FormData();
+      axios__WEBPACK_IMPORTED_MODULE_10___default.a.post(baseurl + '/api/user/' + _this.state.id, {
+        _method: 'PUT',
         name: _this.state.firstName,
         lastName: _this.state.lastName,
         email: _this.state.email,
@@ -317,58 +366,17 @@ var add = /*#__PURE__*/function (_React$Component) {
       }).then(function (res) {
         if (res.data.success) {
           // console.log(res.data.data);
-          _this.setState({
-            formSubmitting: false
-          });
-
-          _this.setState({
-            buttonName: 'Save'
-          });
-
-          _this.setState({
-            firstName: ''
-          });
-
-          _this.setState({
-            lastName: ''
-          });
-
-          _this.setState({
-            email: ''
-          });
-
-          _this.setState({
-            password: ''
-          });
-
-          _this.setState({
-            confirmPassword: ''
-          });
-
-          _this.setState({
-            role_id: ''
-          });
-
-          _this.setState({
-            permission: []
-          });
-
-          $('input[type="checkbox"]').prop('checked', false);
           successDesktopPNotify();
-
-          _this.RoleList();
+          var history = _this.props.history;
+          history.push('/user');
         } else {
-          var errorMassage = '';
-
           if (res.data.errors) {
-            errorMassage = res.data.errors.name;
-          } else {
-            errorMassage = res.data.email;
+            res.data.message = res.data.errors.name;
           }
 
           pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_11__["default"].error({
             title: "System Error",
-            text: errorMassage
+            text: res.data.errors.name
           });
 
           _this.setState({
@@ -376,7 +384,7 @@ var add = /*#__PURE__*/function (_React$Component) {
           });
 
           _this.setState({
-            buttonName: 'Save'
+            buttonName: 'Edit'
           });
         }
       })["catch"](function (err) {
@@ -402,7 +410,7 @@ var add = /*#__PURE__*/function (_React$Component) {
     _defineProperty(_assertThisInitialized(_this), "handleErrorSubmit", function (e, formData, errorInputs) {//console.log(errorInputs);
     });
 
-    _defineProperty(_assertThisInitialized(_this), "PemissionGet", function (e) {
+    _defineProperty(_assertThisInitialized(_this), "defaultPemission", function (e) {
       document.getElementById("requestLoder").innerHTML = '<img style="width:2%"  src="' + baseurl + '/images/ajax_loader_gray_512.gif"></img>';
       Object(_HttpFunctions__WEBPACK_IMPORTED_MODULE_9__["Pemissionlist"])().then(function (res) {
         if (res.data.success) {
@@ -423,22 +431,38 @@ var add = /*#__PURE__*/function (_React$Component) {
       });
     });
 
-    _defineProperty(_assertThisInitialized(_this), "RoleList", function (e) {
+    _defineProperty(_assertThisInitialized(_this), "PemissionGet", function (e) {
       var id = _this.state.id;
       document.getElementById("requestLoder").innerHTML = '<img style="width:2%"  src="' + baseurl + '/images/ajax_loader_gray_512.gif"></img>';
 
-      var _ref2 = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
-          auth_token = _ref2.auth_token;
+      var _ref3 = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
+          auth_token = _ref3.auth_token;
 
-      axios__WEBPACK_IMPORTED_MODULE_10___default.a.get(baseurl + '/api/roledropdown', {
+      var data = new FormData();
+      data.append('name', _this.state.name);
+      data.append('permission', _this.state.permission);
+      axios__WEBPACK_IMPORTED_MODULE_10___default.a.get(baseurl + '/api/user/' + id + '/edit', {
         headers: {
-          'Accept': 'application/json',
           'Authorization': 'Bearer ' + auth_token
         }
       }).then(function (res) {
         if (res.data.success) {
+          var parmissions = res.data.data.parmissions;
+
+          if (parmissions) {
+            _this.setState({
+              permission: parmissions
+            });
+          } else {
+            _this.defaultPemission();
+          }
+
           _this.setState({
-            role_list: res.data.data
+            role_name: res.data.data.role_name,
+            firstName: res.data.data.name,
+            lastName: res.data.data.lastName,
+            email: res.data.data.email,
+            role_id: res.data.data.roles
           });
 
           document.getElementById("requestLoder").innerHTML = '';
@@ -469,21 +493,18 @@ var add = /*#__PURE__*/function (_React$Component) {
       }
     });
 
-    _defineProperty(_assertThisInitialized(_this), "matchPassword", function (value) {
-      return value && value === _this.state.password;
-    });
-
     return _this;
   }
 
-  _createClass(add, [{
+  _createClass(edit, [{
     key: "componentDidMount",
     value: function componentDidMount() {
       var _this$props = this.props,
           match = _this$props.match,
           location = _this$props.location,
           history = _this$props.history;
-      Object(_HttpFunctions__WEBPACK_IMPORTED_MODULE_9__["CheckPermission"])('user', 'add', history);
+      Object(_HttpFunctions__WEBPACK_IMPORTED_MODULE_9__["CheckPermission"])('user', 'edit', history);
+      this.PemissionGet();
       this.RoleList();
     }
   }, {
@@ -498,7 +519,7 @@ var add = /*#__PURE__*/function (_React$Component) {
           history = _this$props2.history;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_hoc_Aux__WEBPACK_IMPORTED_MODULE_7__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"].Header, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"].Title, {
         as: "h5"
-      }, "Add User"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Button"], {
+      }, "Edit User"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Button"], {
         className: "btn-sm",
         style: {
           'float': 'right'
@@ -507,7 +528,7 @@ var add = /*#__PURE__*/function (_React$Component) {
           history.goBack();
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        "class": "feather icon-chevron-left"
+        className: "feather icon-chevron-left"
       }), "Back")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["ValidationForm"], {
         onSubmit: this.handleSubmit,
         onErrorSubmit: this.handleErrorSubmit
@@ -564,7 +585,6 @@ var add = /*#__PURE__*/function (_React$Component) {
         id: "password",
         type: "password",
         placeholder: "Password",
-        required: true,
         pattern: "(?=.*[A-Z]).{6,}",
         errorMessage: {
           required: "Password is required",
@@ -583,7 +603,6 @@ var add = /*#__PURE__*/function (_React$Component) {
         id: "confirmPassword",
         type: "password",
         placeholder: "Confirm Password",
-        required: true,
         validator: this.matchPassword,
         errorMessage: {
           required: "Confirm password is required",
@@ -602,6 +621,11 @@ var add = /*#__PURE__*/function (_React$Component) {
         className: "basic-single",
         classNamePrefix: "select",
         name: "role_id",
+        defaultValue: {
+          label: this.state.role_name,
+          value: this.state.role_id
+        },
+        value: this.state.role_id,
         options: this.state.role_list,
         placeholder: "Select Role"
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
@@ -642,10 +666,10 @@ var add = /*#__PURE__*/function (_React$Component) {
     }
   }]);
 
-  return add;
+  return edit;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (add);
+/* harmony default export */ __webpack_exports__["default"] = (edit);
 
 /***/ }),
 

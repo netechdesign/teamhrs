@@ -45,6 +45,8 @@ class CreateApplicationFormsTable extends Migration
                     $table->date('information_provided_Date')->nullable();
                     $table->integer('is_viewed')->default(1);
                     $table->integer('is_ts_done')->default(1);
+                    $table->integer('is_document_request')->default(1)->comment('1= not request');
+                    $table->integer('is_document_get')->default(1)->comment('1= not get');
                     
                     $table->integer('created_by')->nullable();
                     $table->integer('updated_by')->nullable();

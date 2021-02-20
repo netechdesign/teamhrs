@@ -39,7 +39,9 @@ class Application_Forms extends Model
         'created_by',
         'updated_by',
         'is_viewed',
-        'is_ts_done'
+        'is_ts_done',
+        'is_document_request',
+        'is_document_get'
                           ];
 
 
@@ -53,5 +55,10 @@ class Application_Forms extends Model
         }
         public function telephone_pre_answers(){
             return $this->hasMany(Telephone_pre_answers::class,'application_forms_id');
-        }                 
+        }
+        
+        public function documents(){
+            return $this->hasMany(Documents::class,'application_forms_id');
+        }
+                        
 }

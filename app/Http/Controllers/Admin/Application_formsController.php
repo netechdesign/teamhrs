@@ -9,9 +9,11 @@ use DB;
 use App\Models\Application_Forms;
 use App\Models\Employment_references;
 use App\Models\Employment_historys;
+use App\Models\Documents;
 use Illuminate\Support\Facades\Storage;
 use App\User;
 use Mail;
+use App\Mail\UserSendMail;
 class Application_formsController extends Controller
 {
     /**
@@ -204,7 +206,107 @@ class Application_formsController extends Controller
                 return response()->json(array('success' => false,'message'=> $message));
            }
     }
-    
+
+    public function submitdocument(Request $request){
+        try {
+            if($request->id){
+                $id = base64_decode($request->id);
+                $whereCase = explode('_',$id);
+                $data = Application_Forms::where('id',$whereCase[0])->where('email',$whereCase[1])->first();
+                
+                if($data){
+                    if($data->is_document_get==1){
+                    $userpath = $data->id.'_'.$data->fore_name;
+                    if(isset($request->cma_1) && $request->cma_1!="null")
+                    {
+                                
+                                $cma_1 = $request->cma_1->store('documents/'.$userpath, 'public');
+                                $vl = array();
+                                $vl['application_forms_id'] = $data->id; 
+                                $vl['document_name'] = 'CMA 1';
+                                $vl['document_path'] = $cma_1;
+                                $Documents = new Documents($vl);
+                                $Documents->save();
+                       
+                    }
+                    if(isset($request->met_1) && $request->met_1!="null")
+                    {
+                                
+                                $met_1 = $request->met_1->store('documents/'.$userpath, 'public');
+                                $vl = array();
+                                $vl['application_forms_id'] = $data->id; 
+                                $vl['document_name'] = 'MET 1';
+                                $vl['document_path'] = $met_1;
+                                $Documents = new Documents($vl);
+                                $Documents->save();
+                       
+                    }
+                    if(isset($request->single_off_multi) && $request->single_off_multi!="null")
+                    {
+                                
+                                $single_off_multi = $request->single_off_multi->store('documents/'.$userpath, 'public');
+                                $vl = array();
+                                $vl['application_forms_id'] = $data->id; 
+                                $vl['document_name'] = 'Single off Multi';
+                                $vl['document_path'] = $single_off_multi;
+                                $Documents = new Documents($vl);
+                                $Documents->save();
+                       
+                    }
+                    if(isset($request->driving_licence_code) && $request->driving_licence_code!="null")
+                    {
+                                
+                                $driving_licence_code = $request->driving_licence_code->store('documents/'.$userpath, 'public');
+                                $vl = array();
+                                $vl['application_forms_id'] = $data->id; 
+                                $vl['document_name'] = 'Driving Licence Check Code';
+                                $vl['document_path'] = $driving_licence_code;
+                                $Documents = new Documents($vl);
+                                $Documents->save();
+                       
+                    }
+                    if(isset($request->othersfile)){
+                        if($request->hasfile('othersfile'))
+                        {
+                           foreach($request->file('othersfile') as $i => $file)
+                           {
+                               
+                               
+                               $cma_1 = $file->store('documents/'.$userpath, 'public');
+                                 $vl = array();
+                                $vl['application_forms_id'] = $data->id; 
+                                $vl['document_name'] = $request->document_name[$i];
+                                $vl['document_path'] = $cma_1;
+                                $Documents = new Documents($vl);
+                                $Documents->save();
+                           }
+                        }
+               
+                    }
+                    $results = Application_Forms::find($data->id);
+                    $results->is_document_get=0;
+                    $results->save();
+                    return response()->json(array('success' => true,'message' => 'document send successfully','form_user' => $data), 200);
+                }else{
+                    return response()->json(array('success' => false,'message' => 'Document already sent.'));
+                }
+                }
+            }
+        }catch (\Exception $e) 
+        {
+            
+             $message = $e->getMessage();
+            if($e->getPrevious()){
+              if($e->getPrevious()->errorInfo[2]){
+                 $message = $e->getPrevious()->errorInfo[2];
+              }
+            } 
+             $text = strstr($message, ':', true);
+         
+             return response()->json(array('success' => false,'message'=> $message));
+        }
+        
+    }
     public function applicant(Request $request)
     {
         //
@@ -369,6 +471,10 @@ class Application_formsController extends Controller
         if($telephone_pre_answers){
             $results['telephone_pre_answers']= $results->telephone_pre_answers;
         }
+        $documents = $results->documents;
+        if($documents){
+            $results['documents']= $documents;
+        }
         return response()->json(array('success' => true,'application_data'=> $results));
          } catch (\Exception $e) 
            {
@@ -433,5 +539,21 @@ class Application_formsController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function request_certification(Request $request){
+       
+       $application_Forms = $request->application_Forms['id'].'_'.$request->application_Forms['email'];
+       $data['name'] = ucfirst($request->application_Forms['fore_name']);
+       $data['code']= base64_encode($application_Forms);
+       $to_mail= $request->application_Forms['email'];
+        
+        Mail::send(['html'=>'documentsendmail'], ['data'=>$data], function($message) use ($to_mail)
+                    {
+                        $message->to($to_mail)->subject('Please submit your certificates');
+                        
+
+                     });
+                     return response()->json(array('success' => true));
     }
 }
