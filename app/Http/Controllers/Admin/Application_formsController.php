@@ -241,6 +241,19 @@ class Application_formsController extends Controller
                                 $Documents->save();
                        
                     }
+                    if(isset($request->single_phase) && $request->single_phase!="null")
+                    {
+                                
+                                $single_phase = $request->single_phase->store('documents/'.$userpath, 'public');
+                                $vl = array();
+                                $vl['application_forms_id'] = $data->id; 
+                                $vl['document_name'] = 'Single Phase';
+                                $vl['document_path'] = $single_off_multi;
+                                $Documents = new Documents($vl);
+                                $Documents->save();
+                       
+                    }
+                    
                     if(isset($request->single_off_multi) && $request->single_off_multi!="null")
                     {
                                 
@@ -547,7 +560,10 @@ class Application_formsController extends Controller
        $data['name'] = ucfirst($request->application_Forms['fore_name']);
        $data['code']= base64_encode($application_Forms);
        $to_mail= $request->application_Forms['email'];
-        
+
+       $results = Application_Forms::find($request->application_Forms['id']);
+        $results->is_document_request=0;
+        $results->save();
         Mail::send(['html'=>'documentsendmail'], ['data'=>$data], function($message) use ($to_mail)
                     {
                         $message->to($to_mail)->subject('Please submit your certificates');

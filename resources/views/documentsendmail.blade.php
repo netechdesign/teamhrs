@@ -195,8 +195,7 @@
                                         <a href=""
                                             style="display: block; border-style: none !important; border: 0 !important;"><img
                                                 width="100" border="0" style="display: block; width: 100px;"
-                                                src="https://image.freepik.com/free-vector/letter-hr-logo-vector_22451-64.jpg"
-                                                alt="" /></a>
+                                                src="{{ url('/images/team_hr_logo.png') }}" alt="" /></a>
                                     </td>
                                 </tr>
 
@@ -264,7 +263,8 @@
                                                     style="color: #ffffff; font-size: 14px; font-family: 'Work Sans', Calibri, sans-serif; line-height: 22px; letter-spacing: 2px;">
                                                     <div style="line-height: 22px;">
                                                         <a href="{{ url('/certification/'.$data['code']) }}"
-                                                            style="color: #ffffff; text-decoration: none;">Click here</a>
+                                                            style="color: #ffffff; text-decoration: none;">Click
+                                                            here</a>
                                                     </div>
                                                 </td>
                                             </tr>
@@ -333,8 +333,7 @@
                                                     <a href=""
                                                         style="display: block; border-style: none !important; border: 0 !important;"><img
                                                             width="80" border="0" style="display: block; width: 80px;"
-                                                            src="https://image.freepik.com/free-vector/letter-hr-logo-vector_22451-64.jpg"
-                                                            alt="" /></a>
+                                                            src="{{ url('/images/team_hr_logo.png') }}" alt="" /></a>
                                                 </td>
                                             </tr>
 

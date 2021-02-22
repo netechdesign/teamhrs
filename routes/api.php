@@ -98,6 +98,7 @@ Route::group(['middleware' => 'api-header'], function () {
     // The registration and login requests doesn't come with tokens 
     // as users at that point have not been authenticated yet
     // Therefore the jwtMiddleware will be exclusive of them
+    Route::post('submitapplication', 'Admin\Application_formsController@applicant');
     Route::post('submitdocument', 'Admin\Application_formsController@submitdocument');
     Route::post('user/login', 'Admin\UserController@login');
     //Route::post('user/register', 'Auth\UserController@register');

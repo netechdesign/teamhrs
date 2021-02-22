@@ -245,9 +245,10 @@ other_documentDelete =(element) =>{
     render() {
         
         const other_documents = this.state.other_documents.map((item, index) => {
-            return (<Tr key={index}>
-                        <Td  width='40%' style={{padding:'5px'}}>
-                            <TextInput
+            return (
+                <Form.Row style={style.rowline} >
+                    <Form.Group as={Col} md="6">
+                        <TextInput
                             name="document_name[]"
                             
                             id={index}
@@ -256,9 +257,9 @@ other_documentDelete =(element) =>{
                             required
                             autoComplete="off"
                             />
-                        </Td>
-                        <Td width='40%' style={{padding:'5px'}}>
-                            <div className="custom-file">
+                    </Form.Group>
+                    <Form.Group as={Col} md="4">
+                        <div className="custom-file">
                             <FileInput
                             name="othersfile[]"
                             required
@@ -271,13 +272,13 @@ other_documentDelete =(element) =>{
                             }
                             onChange={this.onUploadCv}
                             />
-                            </div>
-                        </Td>
-                        <Td width='20%' style={{padding:'5px'}}>
-                            <Button variant='outline-danger'  id={index} onClick={(e) => this.other_documentDelete(e)} size='sm'>X</Button>
-                            
-                        </Td>
-                    </Tr>
+                    </div>
+                    </Form.Group>
+                    <Form.Group as={Col} md="2">
+                      <Button variant='outline-danger' style={{'marginTop':'15px'}}  id={index} onClick={(e) => this.other_documentDelete(e)} size='sm'>X</Button>
+                    </Form.Group>
+                </Form.Row>
+                
                     )
                                         
         })
@@ -437,15 +438,8 @@ other_documentDelete =(element) =>{
                                                     <b>Other Documents</b>
                                                     <Button variant='secondary' style={{marginLeft:'10px'}}  onClick={this.addOtherdocuments}  size='sm'>+Add</Button>
                                                     </Form.Group>
-                                                    <Form.Group as={Col} md="12">
-                                                        <Table>
-                                                            <Tbody>
-                                                               {other_documents}
-                                                            </Tbody>
-                                                        </Table>
-                                                            
-                                                    </Form.Group>
-                                                    </Form.Row>
+                                        </Form.Row>
+                                        {other_documents}
                                             
                                 
                                         <Form.Row>   
