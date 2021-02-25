@@ -46,6 +46,8 @@ Route::group(['middleware' => ['jwt.auth','api-header']], function () {
         
         Route::get('newapplicationcount', 'Application_formsController@newapplicationcount');
         Route::post('request_certification', 'Application_formsController@request_certification');
+        Route::post('request_other_certification', 'Application_formsController@request_other_certification');
+        
         Route::get('roledropdown', 'RoleController@roledropdown');
         
         //telephone questions

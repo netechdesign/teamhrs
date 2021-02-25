@@ -327,7 +327,7 @@ other_documentDelete =(element) =>{
                                         
                                         <Form.Row style={style.rowline} >
                                             <Form.Group as={Col} md="4" xs={12} xs={12} sm={12}>
-                                                <Form.Label htmlFor="upload_avatar">CMA 1</Form.Label>
+                                                <Form.Label htmlFor="upload_avatar">Cma 1</Form.Label>
                                                 <div className="custom-file">
                                                     <FileInput
                                                     name="cma_1"
@@ -348,7 +348,7 @@ other_documentDelete =(element) =>{
                                         </Form.Row>
                                         <Form.Row style={style.rowline} >
                                             <Form.Group as={Col} md="4" xs={12} xs={12} sm={12}>
-                                                <Form.Label htmlFor="upload_avatar">MET 1</Form.Label>
+                                                <Form.Label htmlFor="upload_avatar">Met 1</Form.Label>
                                                 <div className="custom-file">
                                                     <FileInput
                                                     name="met_1"
@@ -431,9 +431,20 @@ other_documentDelete =(element) =>{
                                                     onChange={this.onUploadCv}
                                                     />
                                                 </div>
+                                                </Form.Group>
+                                            <Form.Group as={Col} md="4" xs={12} xs={12} sm={12}>
+                                            <Form.Label htmlFor="upload_avatar">&nbsp;</Form.Label>
+                                            <TextInput
+                                                          name="driving_licence_code_text"
+                                                         placeholder="Driving Licence Check Code"
+                                                        required
+                                                        autoComplete="off"
+                                                   />
+                                            
                                             </Form.Group>
                                         </Form.Row>
                                         <Form.Row style={style.rowline} >
+                                        
                                                     <Form.Group as={Col} md="12">
                                                     <b>Other Documents</b>
                                                     <Button variant='secondary' style={{marginLeft:'10px'}}  onClick={this.addOtherdocuments}  size='sm'>+Add</Button>

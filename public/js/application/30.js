@@ -345,7 +345,7 @@ function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) ===
 
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
@@ -370,16 +370,16 @@ var loaders = function loaders() {
 };
 
 var Oneform = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(53), __webpack_require__.e(1), __webpack_require__.e(3), __webpack_require__.e(2), __webpack_require__.e(4), __webpack_require__.e(5), __webpack_require__.e(10), __webpack_require__.e(43)]).then(__webpack_require__.bind(null, /*! ./forms/EmployeeDetails */ "./resources/js/employee/Services_starter_form/forms/EmployeeDetails.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(40), __webpack_require__.e(1), __webpack_require__.e(3), __webpack_require__.e(2), __webpack_require__.e(4), __webpack_require__.e(5), __webpack_require__.e(10), __webpack_require__.e(43)]).then(__webpack_require__.bind(null, /*! ./forms/EmployeeDetails */ "./resources/js/employee/Services_starter_form/forms/EmployeeDetails.js"));
 });
 var BankDetails = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(53), __webpack_require__.e(1), __webpack_require__.e(3), __webpack_require__.e(2), __webpack_require__.e(4), __webpack_require__.e(5), __webpack_require__.e(41)]).then(__webpack_require__.bind(null, /*! ./forms/BankDetails */ "./resources/js/employee/Services_starter_form/forms/BankDetails.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(40), __webpack_require__.e(1), __webpack_require__.e(3), __webpack_require__.e(2), __webpack_require__.e(4), __webpack_require__.e(5), __webpack_require__.e(41)]).then(__webpack_require__.bind(null, /*! ./forms/BankDetails */ "./resources/js/employee/Services_starter_form/forms/BankDetails.js"));
 });
 var UniformOrder = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(53), __webpack_require__.e(1), __webpack_require__.e(3), __webpack_require__.e(2), __webpack_require__.e(4), __webpack_require__.e(5), __webpack_require__.e(44)]).then(__webpack_require__.bind(null, /*! ./forms/UniformOrder */ "./resources/js/employee/Services_starter_form/forms/UniformOrder.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(40), __webpack_require__.e(1), __webpack_require__.e(3), __webpack_require__.e(2), __webpack_require__.e(4), __webpack_require__.e(5), __webpack_require__.e(44)]).then(__webpack_require__.bind(null, /*! ./forms/UniformOrder */ "./resources/js/employee/Services_starter_form/forms/UniformOrder.js"));
 });
 var ConsentStatement = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(53), __webpack_require__.e(1), __webpack_require__.e(3), __webpack_require__.e(2), __webpack_require__.e(4), __webpack_require__.e(5), __webpack_require__.e(9), __webpack_require__.e(42)]).then(__webpack_require__.bind(null, /*! ./forms/ConsentStatement */ "./resources/js/employee/Services_starter_form/forms/ConsentStatement.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(40), __webpack_require__.e(1), __webpack_require__.e(3), __webpack_require__.e(2), __webpack_require__.e(4), __webpack_require__.e(5), __webpack_require__.e(9), __webpack_require__.e(42)]).then(__webpack_require__.bind(null, /*! ./forms/ConsentStatement */ "./resources/js/employee/Services_starter_form/forms/ConsentStatement.js"));
 });
 var routes = [{
   path: '/services-starter/Employee-Details',

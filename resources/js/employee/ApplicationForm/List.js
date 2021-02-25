@@ -6,6 +6,8 @@ import {CheckPermission} from '../../HttpFunctions';
 import $ from 'jquery';
 import axios from 'axios'
 import { ValidationForm, TextInput, BaseFormControl, SelectGroup, FileInput, Checkbox, Radio } from 'react-bootstrap4-form-validation';
+import withReactContent from 'sweetalert2-react-content';
+import Swal from 'sweetalert2';
 import MaskedInput from 'react-text-mask';
 import validator from 'validator';
 import PNotify from "pnotify/dist/es/PNotify";
@@ -205,13 +207,62 @@ class List extends React.Component {
                       buttonName:'Save',
                       key:'home',
                       certification:true,
-                      certificationButton:false
+                      certificationButton:false,
+                      other_documents:[],
+                      cma_1:false,
+                      met_1:false,
+                      single_phase:false,
+                      single_off_multi:false,
+                      driving_licence_code:false,
+                      is_other_documents:false
                       
                     }
     }
-   
+       handleCheckboxChange = (e, value) => {
+          this.setState({[e.target.name]: value})
+        if(e.target.name=='is_other_documents')
+        {
+           if(value){
+            let other_documents = {document_name:''}
+            this.setState({other_documents: [other_documents]});
+           }else{
+            
+            this.setState({other_documents: []});
+           }
+        }
+          
+
+    };
+    addOtherdocuments = () =>{
+      let other_documents = {document_name:''}
+      this.setState(previousState => ({other_documents: [...previousState.other_documents, other_documents]}));
+   }
+
+other_documentDelete =(element) =>{
+        let index = element.target.id;
+        if (index !== -1) { let other_documents = this.state.other_documents;
+          other_documents.splice(index, 1);
+          this.setState({other_documents: other_documents});
+                            
+
+        }
+     }
+     document_nameChange =(element)=>{
+          let index = element.target.id;
+          if(element.target.name=='document_name'){
+            this.state.other_documents[index].document_name = element.target.value;
+          }
+          this.setState({other_documents:this.state.other_documents});
+        }
+
   applicationShow= (application_id)=>{
-    this.setState({isLarge:true,apiload:true,application_Forms:[],key :'home',suitability_offered_for:'',suitability_offered_comments:''});
+    this.setState({isLarge:true,apiload:true,application_Forms:[],key :'home',suitability_offered_for:'',suitability_offered_comments:'',other_documents:[],
+    cma_1:false,
+    met_1:false,
+    single_phase:false,
+    single_off_multi:false,
+    driving_licence_code:false,
+    is_other_documents:false});
     
     const {auth_token} = localStorage.getItem('userData')? JSON.parse(localStorage.getItem('userData')).user : 'Null';
     axios.get(baseurl+'/api/application_form/'+application_id,{headers:{'Accept':'application/json','Authorization':'Bearer '+auth_token}}
@@ -253,6 +304,7 @@ class List extends React.Component {
           )
   }
     componentDidMount() {  
+      
       /* test */
         const { match, location, history } = this.props;
         CheckPermission('user','show',history);
@@ -422,7 +474,66 @@ class List extends React.Component {
                     }
         )
    
-    }                     
+      }  
+      
+
+      submitOtherProofCertification =(e) =>{
+        e.preventDefault();
+        this.setState({certificationButton:true,apiload:true});
+        const {id,auth_token} = localStorage.getItem('userData')? JSON.parse(localStorage.getItem('userData')).user : 'Null';
+        
+        //const data = new FormData()
+        //data.append('name', this.state.name);
+       
+        axios.post(
+            baseurl+'/api/request_other_certification',this.state,
+            {headers:{'Accept':'application/json','Authorization':'Bearer '+auth_token}} 
+        ).then(res =>{
+                          if(res.data.success){
+                            request_certificationAlert();
+                          
+                           this.setState({ key :'home'});
+                             // console.log(res.data.data);
+                             if(this.state.application_Forms.id){
+                                   this.applicationShow(this.state.application_Forms.id);
+                                }
+                              
+                             
+                          }else{
+                              let errorMassage = '';
+                            if(res.data.errors){
+                                errorMassage = res.data.errors.name;
+                            }else{
+                                errorMassage = res.data.email;
+                                
+                            }
+                            PNotify.error({
+                                title: "System Error",
+                                text:errorMassage,
+                            });
+                            this.setState({formSubmitting:false});
+                            this.setState({buttonName:'Save'});
+                            
+                          }
+                     }
+          )
+          .catch(err =>{
+                    PNotify.error({
+                        title: "System Error",
+                        text:err,
+                    });
+                    this.setState({formSubmitting:false});
+                    this.setState({buttonName:'Add'});
+                    this.setState({selectedFile:null});
+                          
+                      }
+          )
+     
+        }  
+  documentResend = () => {
+    
+    this.setState({ key :'resendrequest'});
+  }
     render() {
       const telephone_questions =(this.state.telephone_questions.length>0?
         this.state.telephone_questions.map((vl,inx)=>{
@@ -446,6 +557,29 @@ class List extends React.Component {
                                     </Form.Row>)
         })
         :"");
+        const other_documents = (this.state.other_documents.length>0?this.state.other_documents.map((item, index) => {
+          return (
+              <Form.Row key={index}  >
+                  <Form.Group as={Col} md="6">
+                      <TextInput
+                          name="document_name"
+                          value={item.document_name}
+                          id={index}
+                          onChange={(e) => this.document_nameChange(e) }
+                          placeholder="Document Name"
+                          required
+                          autoComplete="off"
+                          />
+                  </Form.Group>
+                  
+                  <Form.Group as={Col} md="2">
+                    <Button variant='outline-danger' style={{display:index==0?'none':''}}  id={index} onClick={(e) => this.other_documentDelete(e)} size='sm'>X</Button>
+                     { (index==0?<Button variant='secondary' onClick={this.addOtherdocuments}  size='sm'>+Add</Button>:'') }
+                  </Form.Group>
+              </Form.Row>
+              
+                  );
+                }):''); 
         return (
             <Aux>
                 <Row>
@@ -616,7 +750,9 @@ class List extends React.Component {
                                           </div>
                                         </div>
                                         
-                                        {(this.state.application_Forms.is_document_get==1?
+                                        {
+                                        (this.state.application_Forms.documents?
+                                        (this.state.application_Forms.documents.length==0?
                                             <ValidationForm onSubmit={this.submitProofCertification} onErrorSubmit={this.handleErrorSubmit}>
                                                     <Form.Row>
                                                         <Form.Group as={Col} sm={12} className="mt-3">
@@ -625,10 +761,45 @@ class List extends React.Component {
                                                         </Form.Group>
                                                     </Form.Row>
                                             </ValidationForm>
-                                            :<DocumentsList documents_list={this.state.application_Forms.documents}  />
-                                        )
+                                            :<DocumentsList resendClick={this.documentResend} documents_list={this.state.application_Forms.documents}  />
+                                        ):'')
                                         }
-                            </Tab>
+                      </Tab>
+                       <Tab eventKey="resendrequest" tabClassName='d-none' disabled={this.state.certification} title="resendrequest">
+                       <div class="text-center" style={{display:(this.state.apiload?'block':'none')}}>
+                                          <div class="spinner-border" role="status">
+                                              <span class="sr-only">Loading...</span>
+                                          </div>
+                                        </div>
+                                        
+                               <ValidationForm onSubmit={this.submitOtherProofCertification} onErrorSubmit={this.handleErrorSubmit}>
+                                    <Form.Row>
+                                        <Form.Group as={Row} style={{width:'100%',marginBottom:'0rem'}} as={Col} sm={12} className="mt-3">
+                                              <Form.Label column sm={2}>Certificates:</Form.Label>
+                                                    <Col sm={10}>
+                                
+                                                        <div className="checkbox">
+                                  <Checkbox name="cma_1" label="CMA 1" id="cma_1" value={this.state.cma_1} onChange={this.handleCheckboxChange} />
+                                  <Checkbox name="met_1" label="MET 1" id="met_1" value={this.state.met_1} onChange={this.handleCheckboxChange} />
+                                  <Checkbox name="single_phase" label="Single Phase" id="single_phase" value={this.state.single_phase} onChange={this.handleCheckboxChange} />
+                                  <Checkbox name="single_off_multi" label="single off multi" id="single_off_multi" value={this.state.single_off_multi}  onChange={this.handleCheckboxChange} />
+                                  <Checkbox name="driving_licence_code" label="Driving licence code" id="driving_licence_code" value={this.state.driving_licence_code} onChange={this.handleCheckboxChange} />
+                                  <Checkbox name="is_other_documents" label="Other" id="Other_documents" value={this.state.is_other_documents} onChange={this.handleCheckboxChange} />
+                                </div>
+                                
+
+                                                     </Col>
+                                          </Form.Group>
+                                     </Form.Row>
+                                         {other_documents}
+                                     
+                                     <Form.Row>   
+                                        <Form.Group as={Col} sm={12} className="mt-3">
+                                        <Button disabled={this.state.certificationButton} type="submit">Send</Button>
+                                        </Form.Group>
+                                     </Form.Row>
+                              </ValidationForm>
+                      </Tab>
                         </Tabs>
 
                                     </Modal.Body>
@@ -671,8 +842,29 @@ class List extends React.Component {
     }
 }
 
-class DocumentsList extends React.Component{
 
+class DocumentsList extends React.Component{
+dateFormate = (e) => {
+       var today = new Date(e);
+       var dd = today.getDate(); 
+       var mm = today.getMonth() + 1; 
+       var hrs = today.getHours();
+       var mint = today.getMinutes();
+       var yyyy = today.getFullYear(); 
+       if (dd < 10) { 
+           dd = '0' + dd; 
+       } 
+       if (mm < 10) { 
+           mm = '0' + mm; 
+  }
+  
+       return dd + '/' + mm + '/' + yyyy +' '+hrs+':'+mint; 
+
+      
+  };
+  componentDidMount() {
+    
+  }
   render(){
         if(this.props.documents_list){
           if(this.props.documents_list.length > 0){
@@ -682,8 +874,11 @@ class DocumentsList extends React.Component{
                    <Td style={{padding:'5px'}}>
                    {item.document_name}
                    </Td>
-                   <Td style={{padding:'5px'}}>
-                   
+                  <Td style={{ padding: '5px' }}>
+                     { this.dateFormate(item.created_at) }
+                  </Td> 
+                  <Td style={{ padding: '5px' }}>
+                  
                    <a target='_blank' href={baseurl+'/uploaded/'+item.document_path} ><i class="feather icon-file-text"></i> view</a>
                    </Td>
                    
@@ -692,7 +887,10 @@ class DocumentsList extends React.Component{
             })
 
             return(
-              <Aux><Tbl><Tbody>{documents_List}</Tbody></Tbl></Aux>
+              <Aux>
+             <Button onClick={this.props.resendClick}  type="button">Re-Send</Button>
+                <Tbl><Tbody>{documents_List}</Tbody></Tbl>
+              </Aux>
           );
 
           }

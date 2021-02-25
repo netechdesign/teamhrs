@@ -210,10 +210,13 @@ class Application_formsController extends Controller
     public function submitdocument(Request $request){
         try {
             if($request->id){
+                if(isset($request->resenddocument)){
+                    $data = Application_Forms::where('id',$request->id)->where('email',$request->email)->first();
+                }else{
                 $id = base64_decode($request->id);
                 $whereCase = explode('_',$id);
                 $data = Application_Forms::where('id',$whereCase[0])->where('email',$whereCase[1])->first();
-                
+                }
                 if($data){
                     if($data->is_document_get==1){
                     $userpath = $data->id.'_'.$data->fore_name;
@@ -248,7 +251,7 @@ class Application_formsController extends Controller
                                 $vl = array();
                                 $vl['application_forms_id'] = $data->id; 
                                 $vl['document_name'] = 'Single Phase';
-                                $vl['document_path'] = $single_off_multi;
+                                $vl['document_path'] = $single_phase;
                                 $Documents = new Documents($vl);
                                 $Documents->save();
                        
@@ -297,6 +300,10 @@ class Application_formsController extends Controller
                
                     }
                     $results = Application_Forms::find($data->id);
+                    if(isset($request->driving_licence_code_text)){
+                        
+                        $results->driving_licence_code_text = $request->driving_licence_code_text;
+                    }
                     $results->is_document_get=0;
                     $results->save();
                     return response()->json(array('success' => true,'message' => 'document send successfully','form_user' => $data), 200);
@@ -572,4 +579,73 @@ class Application_formsController extends Controller
                      });
                      return response()->json(array('success' => true));
     }
+    public function request_other_certification(Request $request){
+       
+        
+        $data['name'] = ucfirst($request->application_Forms['fore_name']);
+        
+        
+        $data['cma_1']= $request->cma_1;
+        $data['met_1']= $request->met_1;
+        $data['single_phase']= $request->single_phase;
+        $data['single_off_multi']= $request->single_off_multi;
+        $data['driving_licence_code']= $request->driving_licence_code;
+        $data['is_other_documents']= $request->is_other_documents;
+        
+        $data['other_documents']=$request->other_documents;
+        $data['request_again']=$request->other_documents;
+
+        $form_array=array();
+        $form_array['id'] = $request->application_Forms['id'];
+        $form_array['email'] = $request->application_Forms['email'];
+        $form = array();
+        if($request->cma_1){
+             $a['key']='cma_1';
+            array_push($form,$a);
+
+        }
+        if($request->met_1){
+            $a['key']='met_1';
+            array_push($form,$a);
+        }
+        if($request->single_phase){
+            $a['key']='single_phase';
+            array_push($form,$a);
+        }
+        if($request->single_off_multi){
+            $a['key']='single_off_multi';
+            array_push($form,$a);
+        }
+        if($request->driving_licence_code){
+            $a['key']='driving_licence_code';
+            array_push($form,$a);
+        }
+        if(!empty($form)){
+            $form_array['form']= $form;
+        }
+        
+        if($request->other_documents){
+            $form_array['other_documents']=$request->other_documents;
+        }
+        
+            $application_Forms= json_encode($form_array);
+        
+        $data['code']= base64_encode($application_Forms);
+       
+        $to_mail = $request->application_Forms['email'];
+ 
+        $results = Application_Forms::find($request->application_Forms['id']);
+         $results->is_document_get=1;
+         $results->save();
+         
+         //return view('documentsendmail', ['data'=>$data]);
+         
+         Mail::send(['html'=>'documentsendmail'], ['data'=>$data], function($message) use ($to_mail)
+                     {
+                         $message->to($to_mail)->subject('Please submit your certificates');
+                         
+ 
+                      });
+                      return response()->json(array('success' => true));
+     }
 }

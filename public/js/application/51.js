@@ -1,9 +1,9 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[51],{
 
-/***/ "./resources/js/front-end/thankstosubmit.js":
-/*!**************************************************!*\
-  !*** ./resources/js/front-end/thankstosubmit.js ***!
-  \**************************************************/
+/***/ "./resources/js/front-end/submitCertification.js":
+/*!*******************************************************!*\
+  !*** ./resources/js/front-end/submitCertification.js ***!
+  \*******************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -48,7 +48,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var sweetalert2_react_content__WEBPACK_IMPORTED_MODULE_22___default = /*#__PURE__*/__webpack_require__.n(sweetalert2_react_content__WEBPACK_IMPORTED_MODULE_22__);
 /* harmony import */ var react_signature_canvas__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! react-signature-canvas */ "./node_modules/react-signature-canvas/build/index.js");
 /* harmony import */ var react_signature_canvas__WEBPACK_IMPORTED_MODULE_23___default = /*#__PURE__*/__webpack_require__.n(react_signature_canvas__WEBPACK_IMPORTED_MODULE_23__);
+/* harmony import */ var react_super_responsive_table__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! react-super-responsive-table */ "./node_modules/react-super-responsive-table/dist/index.js");
+/* harmony import */ var react_super_responsive_table__WEBPACK_IMPORTED_MODULE_24___default = /*#__PURE__*/__webpack_require__.n(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_24__);
+/* harmony import */ var react_super_responsive_table_dist_SuperResponsiveTableStyle_css__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! react-super-responsive-table/dist/SuperResponsiveTableStyle.css */ "./node_modules/react-super-responsive-table/dist/SuperResponsiveTableStyle.css");
+/* harmony import */ var react_super_responsive_table_dist_SuperResponsiveTableStyle_css__WEBPACK_IMPORTED_MODULE_25___default = /*#__PURE__*/__webpack_require__.n(react_super_responsive_table_dist_SuperResponsiveTableStyle_css__WEBPACK_IMPORTED_MODULE_25__);
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -66,9 +82,11 @@ function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) ===
 
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
 
@@ -99,29 +117,310 @@ global.jQuery = jquery__WEBPACK_IMPORTED_MODULE_2___default.a;
 
 var baseurl = window.location.origin;
 
-var Thankstosubmit = /*#__PURE__*/function (_React$Component) {
-  _inherits(Thankstosubmit, _React$Component);
 
-  var _super = _createSuper(Thankstosubmit);
+var ajaxabort;
 
-  function Thankstosubmit() {
-    _classCallCheck(this, Thankstosubmit);
+function successDesktopPNotify(id) {
+  var message = "Appication Form Send successfully";
 
-    return _super.apply(this, arguments);
+  if (id != '') {
+    message = "Application Form updated successfully";
   }
 
-  _createClass(Thankstosubmit, [{
+  pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_17__["default"].success({
+    title: 'Success',
+    text: message,
+    modules: {
+      Desktop: {
+        desktop: true
+      }
+    }
+  }).on('click', function (e) {});
+}
+
+var today = new Date();
+var dd = String(today.getDate()).padStart(2, '0');
+var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+
+var yyyy = today.getFullYear();
+var todaydate = dd + '/' + mm + '/' + yyyy;
+
+var submitCertification = /*#__PURE__*/function (_React$Component) {
+  _inherits(submitCertification, _React$Component);
+
+  var _super = _createSuper(submitCertification);
+
+  function submitCertification(props) {
+    var _this;
+
+    _classCallCheck(this, submitCertification);
+
+    _this = _super.call(this, props);
+
+    _defineProperty(_assertThisInitialized(_this), "handleCheckboxChange", function (e, value) {
+      _this.setState(_defineProperty({}, e.target.name, value));
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "handleChange", function (e) {
+      _this.setState(_defineProperty({}, e.target.name, e.target.value));
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "handleSubmit", function (e, formData, inputs) {
+      e.preventDefault();
+
+      _this.setState({
+        formSubmitting: true
+      });
+
+      _this.setState({
+        buttonName: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          className: "spinner-grow spinner-grow-sm mr-1",
+          role: "status"
+        }), "Loading")
+      });
+
+      var _ref = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
+          id = _ref.id,
+          auth_token = _ref.auth_token;
+
+      var data = new FormData(jquery__WEBPACK_IMPORTED_MODULE_2___default()('#documentUpload')[0]);
+      data.append('id', _this.props.match.params.id); // let formdata = this.state;
+      // data.append('user_cv', this.state.user_cv);
+
+      var urlid = '';
+
+      if (_this.state.id != '') {
+        urlid = '/' + _this.state.id;
+      }
+
+      axios__WEBPACK_IMPORTED_MODULE_16___default.a.post(baseurl + '/api/submitdocument', data, {
+        headers: {
+          'Accept': 'application/json',
+          'content-type': 'multipart/form-data'
+        }
+      }).then(function (res) {
+        if (res.data.success) {
+          // console.log(res.data.data);
+          _this.setState({
+            formSubmitting: false
+          });
+
+          _this.setState({
+            buttonName: 'Submit'
+          });
+
+          successDesktopPNotify(_this.state.id);
+          var userData = JSON.parse(localStorage.getItem('userData'));
+          userData.application_forms_id = 1;
+          localStorage.setItem('userData', JSON.stringify(userData));
+
+          _this.props.history.push({
+            pathname: '/document-uploaded',
+            state: {
+              user_name: res.data.form_user.fore_name
+            }
+          });
+
+          _this.setState(_this.baseState); // this.props.history.push('/application');
+
+        } else {
+          var errorMassage = '';
+
+          if (res.data.message) {
+            errorMassage = res.data.message;
+          }
+
+          if (res.data.errors) {
+            errorMassage = res.data.errors.name;
+          } //tes
+
+
+          if (res.data.email) {
+            errorMassage = res.data.email;
+          }
+
+          pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_17__["default"].error({
+            title: "System Error",
+            text: errorMassage
+          });
+
+          _this.setState({
+            formSubmitting: false
+          });
+
+          _this.setState({
+            buttonName: 'Submit'
+          });
+        }
+      })["catch"](function (err) {
+        pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_17__["default"].error({
+          title: "System Error",
+          text: err
+        });
+
+        _this.setState({
+          formSubmitting: false
+        });
+
+        _this.setState({
+          buttonName: 'Submit'
+        });
+
+        _this.setState({
+          selectedFile: null
+        });
+      }); //  this.props.history.push('/role');
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "handleErrorSubmit", function (e, formData, errorInputs) {//console.log(errorInputs);
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "handleClickOutside", function (e) {
+      jquery__WEBPACK_IMPORTED_MODULE_2___default()('#addressList').html('').hide(); //$('#location').val('');
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "onUploadCv", function (event) {
+      var file = event.target.files[0];
+
+      if (_this.validateSize(event)) {
+        // if return true allow to setState
+        _this.setState({
+          user_cv: file
+        });
+      }
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "validateSize", function (event) {
+      var file = event.target.files[0];
+      var size = 30000000;
+      var err = '';
+      console.log(file.size);
+
+      if (file.size > size) {
+        err = file.type + 'is too large, please pick a smaller file\n';
+        alert(err); //  toast.error(err);
+      }
+
+      return true;
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "addOtherdocuments", function () {
+      var other_documents = {
+        document_name: ''
+      };
+
+      _this.setState(function (previousState) {
+        return {
+          other_documents: [].concat(_toConsumableArray(previousState.other_documents), [other_documents])
+        };
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "other_documentDelete", function (element) {
+      var index = element.target.id;
+
+      if (index !== -1) {
+        var MySwal = sweetalert2_react_content__WEBPACK_IMPORTED_MODULE_22___default()(sweetalert2__WEBPACK_IMPORTED_MODULE_21___default.a);
+        MySwal.fire({
+          title: 'Are you sure?',
+          type: 'warning',
+          showCloseButton: true,
+          showCancelButton: true
+        }).then(function (willDelete) {
+          if (willDelete.value) {
+            var other_documents = _this.state.other_documents;
+            other_documents.splice(index, 1);
+
+            _this.setState({
+              other_documents: other_documents
+            });
+          } else {}
+        });
+      }
+    });
+
+    _this.state = {
+      cma_1: null,
+      met_1: null,
+      single_phase: null,
+      single_off_multi: null,
+      driving_licence_code: null,
+      other_documents: [],
+      chkBasic: false,
+      chkCustom: false,
+      checkMeSwitch: false,
+      showModal: false,
+      visible: true,
+      formSubmitting: false,
+      buttonName: 'Submit'
+    }; // preserve the initial state in a new object
+
+    _this.baseState = _this.state;
+    return _this;
+  }
+
+  _createClass(submitCertification, [{
     key: "componentDidMount",
-    value: function componentDidMount() {}
+    value: function componentDidMount() {
+      console.log(this.props.match.params.id);
+    } //cv upload function
+
   }, {
     key: "render",
     value: function render() {
-      var capitalize = function capitalize(s) {
-        if (typeof s !== 'string') return '';
-        return s.charAt(0).toUpperCase() + s.slice(1);
-      };
+      var _this2 = this,
+          _React$createElement,
+          _React$createElement2,
+          _React$createElement3,
+          _React$createElement4,
+          _React$createElement5,
+          _React$createElement6;
 
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_hoc_Aux__WEBPACK_IMPORTED_MODULE_5__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_App_layout_AdminLayout_Breadcrumb__WEBPACK_IMPORTED_MODULE_7__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      var other_documents = this.state.other_documents.map(function (item, index) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Row, {
+          style: style.rowline
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
+          as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
+          md: "6"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_9__["TextInput"], {
+          name: "document_name[]",
+          id: index,
+          placeholder: "Document Name",
+          required: true,
+          autoComplete: "off"
+        })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
+          as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
+          md: "4"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "custom-file"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_9__["FileInput"], {
+          name: "othersfile[]",
+          required: true // maxFileSize="10000 kb"
+          ,
+          errorMessage: {
+            required: "Please upload a file",
+            fileType: "Only pdf and word file is allowed" // maxFileSize: "Max file size is 10000 kb"
+
+          },
+          onChange: _this2.onUploadCv
+        }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
+          as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
+          md: "2"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
+          variant: "outline-danger",
+          style: {
+            'marginTop': '15px'
+          },
+          id: index,
+          onClick: function onClick(e) {
+            return _this2.other_documentDelete(e);
+          },
+          size: "sm"
+        }, "X")));
+      });
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_hoc_Aux__WEBPACK_IMPORTED_MODULE_5__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_full_screen__WEBPACK_IMPORTED_MODULE_12___default.a, {
+        enabled: this.props.isFullScreen
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_App_layout_AdminLayout_Breadcrumb__WEBPACK_IMPORTED_MODULE_7__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "wrapper"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
         className: "navbar navbar-expand-lg navbar-light navbar-default navbar-fixed-top past-main",
@@ -158,34 +457,179 @@ var Thankstosubmit = /*#__PURE__*/function (_React$Component) {
         className: "nav-link",
         href: _store_constant__WEBPACK_IMPORTED_MODULE_6__["default"].BLANK_LINK
       }, "Login")))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "main",
-        id: "main"
+        className: "pcoded-wrapper"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "hero-section app-hero"
+        className: "pcoded-content"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "container"
+        className: "pcoded-inner-content"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "hero-content app-hero-content text-center"
+        className: "main-body"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "row justify-content-md-center"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-md-10"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
-        className: "wow fadeInUp",
-        "data-wow-delay": "0s"
-      }, "Thank you ", capitalize(this.props.location.state.user_name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        className: "wow fadeInUp",
-        "data-wow-delay": "0.2s"
-      }, "We are still in the process of reviewing applications and anticipate beginning the interview process.", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", {
-        className: "hidden-xs"
-      }), " If you are selected to move forward with the interview process, you will hear from our HR department."))))))))));
+        className: "page-wrapper"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Header, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Title, {
+        as: "h5"
+      }, "Documents")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_9__["ValidationForm"], {
+        autoComplete: "off",
+        id: "documentUpload",
+        onSubmit: this.handleSubmit,
+        onErrorSubmit: this.handleErrorSubmit
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Row, {
+        style: style.rowline
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, (_React$createElement = {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
+        md: "4",
+        xs: 12
+      }, _defineProperty(_React$createElement, "xs", 12), _defineProperty(_React$createElement, "sm", 12), _React$createElement), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
+        htmlFor: "upload_avatar"
+      }, "Cma 1"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "custom-file"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_9__["FileInput"], {
+        name: "cma_1",
+        id: "cma_1",
+        required: true,
+        fileType: ["pdf", "docx"] // maxFileSize="10000 kb"
+        ,
+        errorMessage: {
+          required: "Please upload a file",
+          fileType: "Only pdf and word file is allowed" // maxFileSize: "Max file size is 10000 kb"
+
+        },
+        onChange: this.onUploadCv
+      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Row, {
+        style: style.rowline
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, (_React$createElement2 = {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
+        md: "4",
+        xs: 12
+      }, _defineProperty(_React$createElement2, "xs", 12), _defineProperty(_React$createElement2, "sm", 12), _React$createElement2), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
+        htmlFor: "upload_avatar"
+      }, "Met 1"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "custom-file"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_9__["FileInput"], {
+        name: "met_1",
+        id: "met_1",
+        required: true,
+        fileType: ["pdf", "docx"] // maxFileSize="10000 kb"
+        ,
+        errorMessage: {
+          required: "Please upload a file",
+          fileType: "Only pdf and word file is allowed" // maxFileSize: "Max file size is 10000 kb"
+
+        },
+        onChange: this.onUploadCv
+      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Row, {
+        style: style.rowline
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, (_React$createElement3 = {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
+        md: "4",
+        xs: 12
+      }, _defineProperty(_React$createElement3, "xs", 12), _defineProperty(_React$createElement3, "sm", 12), _React$createElement3), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
+        htmlFor: "upload_avatar"
+      }, "Single Phase"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "custom-file"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_9__["FileInput"], {
+        name: "single_phase",
+        id: "single_phase",
+        required: true,
+        fileType: ["pdf", "docx"] // maxFileSize="10000 kb"
+        ,
+        errorMessage: {
+          required: "Please upload a file",
+          fileType: "Only pdf and word file is allowed" // maxFileSize: "Max file size is 10000 kb"
+
+        },
+        onChange: this.onUploadCv
+      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Row, {
+        style: style.rowline
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, (_React$createElement4 = {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
+        md: "4",
+        xs: 12
+      }, _defineProperty(_React$createElement4, "xs", 12), _defineProperty(_React$createElement4, "sm", 12), _React$createElement4), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
+        htmlFor: "upload_avatar"
+      }, "Single off Multi"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "custom-file"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_9__["FileInput"], {
+        name: "single_off_multi",
+        id: "single_off_multi",
+        required: true,
+        fileType: ["pdf", "docx"] // maxFileSize="10000 kb"
+        ,
+        errorMessage: {
+          required: "Please upload a file",
+          fileType: "Only pdf and word file is allowed" // maxFileSize: "Max file size is 10000 kb"
+
+        },
+        onChange: this.onUploadCv
+      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Row, {
+        style: style.rowline
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, (_React$createElement5 = {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
+        md: "4",
+        xs: 12
+      }, _defineProperty(_React$createElement5, "xs", 12), _defineProperty(_React$createElement5, "sm", 12), _React$createElement5), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
+        htmlFor: "upload_avatar"
+      }, "Driving Licence Check Code"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "custom-file"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_9__["FileInput"], {
+        name: "driving_licence_code",
+        id: "driving_licence_code",
+        required: true,
+        fileType: ["pdf", "docx"] // maxFileSize="10000 kb"
+        ,
+        errorMessage: {
+          required: "Please upload a file",
+          fileType: "Only pdf and word file is allowed" // maxFileSize: "Max file size is 10000 kb"
+
+        },
+        onChange: this.onUploadCv
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, (_React$createElement6 = {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
+        md: "4",
+        xs: 12
+      }, _defineProperty(_React$createElement6, "xs", 12), _defineProperty(_React$createElement6, "sm", 12), _React$createElement6), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
+        htmlFor: "upload_avatar"
+      }, "\xA0"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_9__["TextInput"], {
+        name: "driving_licence_code_text",
+        placeholder: "Driving Licence Check Code",
+        required: true,
+        autoComplete: "off"
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Row, {
+        style: style.rowline
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
+        md: "12"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Other Documents"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
+        variant: "secondary",
+        style: {
+          marginLeft: '10px'
+        },
+        onClick: this.addOtherdocuments,
+        size: "sm"
+      }, "+Add"))), other_documents, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Row, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
+        sm: 12,
+        style: {
+          textAlign: 'center'
+        },
+        className: "mt-3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
+        disabled: this.state.formSubmitting,
+        type: "submit"
+      }, " ", this.state.buttonName)))))))))))))))));
     }
   }]);
 
-  return Thankstosubmit;
+  return submitCertification;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (Thankstosubmit);
+var style = {
+  rowline: {
+    borderBottom: 'solid 1px #f8f9fa',
+    marginBottom: '15px'
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = (submitCertification);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../node_modules/webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js")))
 
 /***/ })

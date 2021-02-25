@@ -10,6 +10,7 @@ const Frontend = React.lazy(() => import('./front-end/index'));
 const Certification = React.lazy(() =>import('./front-end/submitCertification'))
 const thankstosubmit = React.lazy(() => import('./front-end/thankstosubmit'));
 const documentUpload = React.lazy(() => import('./front-end/documentUpload'));
+const ReCertification = React.lazy(() =>import('./front-end/reSubmitCertification'))
 
 const ChangePassword = React.lazy(() => import('./Authentication/ChangePassword'));
 /*
@@ -76,7 +77,9 @@ const route =
     { path: '/apply', exact: true, name: 'Home page', component: Frontend },
     { path: '/auth/signin', exact: false, name: 'Signin 1', component: SignIn },
     { path: '/change-password', exact: true, name: 'Change Password', component: ChangePassword },
-    {path:'/certification/:id',exact: true, name: 'Change Password', component: Certification }
+    {path:'/certification/:id',exact: true, name: 'Change Password', component: Certification },
+    {path:'/re-certification/:id',exact: true, name: 'Change Password', component: ReCertification },
+    
 ];
 
 export default route;

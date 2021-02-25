@@ -94,115 +94,115 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "vectorMagnitude", function() { return vectorMagnitude; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "vectorsAngle", function() { return vectorsAngle; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "vectorsRatio", function() { return vectorsRatio; });
-/* harmony import */ var core_js_modules_es_array_map__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/es.array.map */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.array.map.js");
+/* harmony import */ var core_js_modules_es_array_map__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/es.array.map */ "./node_modules/core-js/modules/es.array.map.js");
 /* harmony import */ var core_js_modules_es_array_map__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_map__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var core_js_modules_es_regexp_exec__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core-js/modules/es.regexp.exec */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.regexp.exec.js");
+/* harmony import */ var core_js_modules_es_regexp_exec__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core-js/modules/es.regexp.exec */ "./node_modules/core-js/modules/es.regexp.exec.js");
 /* harmony import */ var core_js_modules_es_regexp_exec__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_regexp_exec__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var core_js_modules_es_string_match__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! core-js/modules/es.string.match */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.string.match.js");
+/* harmony import */ var core_js_modules_es_string_match__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! core-js/modules/es.string.match */ "./node_modules/core-js/modules/es.string.match.js");
 /* harmony import */ var core_js_modules_es_string_match__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_string_match__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var core_js_modules_es_string_replace__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! core-js/modules/es.string.replace */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.string.replace.js");
+/* harmony import */ var core_js_modules_es_string_replace__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! core-js/modules/es.string.replace */ "./node_modules/core-js/modules/es.string.replace.js");
 /* harmony import */ var core_js_modules_es_string_replace__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_string_replace__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var core_js_modules_es_string_starts_with__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! core-js/modules/es.string.starts-with */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.string.starts-with.js");
+/* harmony import */ var core_js_modules_es_string_starts_with__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! core-js/modules/es.string.starts-with */ "./node_modules/core-js/modules/es.string.starts-with.js");
 /* harmony import */ var core_js_modules_es_string_starts_with__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_string_starts_with__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var core_js_modules_es_array_join__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! core-js/modules/es.array.join */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.array.join.js");
+/* harmony import */ var core_js_modules_es_array_join__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! core-js/modules/es.array.join */ "./node_modules/core-js/modules/es.array.join.js");
 /* harmony import */ var core_js_modules_es_array_join__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_join__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @babel/runtime/helpers/slicedToArray */ "./node_modules/@babel/runtime/helpers/slicedToArray.js");
+/* harmony import */ var _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @babel/runtime/helpers/slicedToArray */ "./node_modules/@babel/runtime/helpers/slicedToArray/index.js");
 /* harmony import */ var _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var core_js_modules_es_symbol__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! core-js/modules/es.symbol */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.symbol.js");
+/* harmony import */ var core_js_modules_es_symbol__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! core-js/modules/es.symbol */ "./node_modules/core-js/modules/es.symbol.js");
 /* harmony import */ var core_js_modules_es_symbol__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_symbol__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var core_js_modules_es_array_filter__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! core-js/modules/es.array.filter */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.array.filter.js");
+/* harmony import */ var core_js_modules_es_array_filter__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! core-js/modules/es.array.filter */ "./node_modules/core-js/modules/es.array.filter.js");
 /* harmony import */ var core_js_modules_es_array_filter__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_filter__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var core_js_modules_es_array_for_each__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! core-js/modules/es.array.for-each */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.array.for-each.js");
+/* harmony import */ var core_js_modules_es_array_for_each__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! core-js/modules/es.array.for-each */ "./node_modules/core-js/modules/es.array.for-each.js");
 /* harmony import */ var core_js_modules_es_array_for_each__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_for_each__WEBPACK_IMPORTED_MODULE_9__);
-/* harmony import */ var core_js_modules_es_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! core-js/modules/es.object.get-own-property-descriptor */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.object.get-own-property-descriptor.js");
+/* harmony import */ var core_js_modules_es_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! core-js/modules/es.object.get-own-property-descriptor */ "./node_modules/core-js/modules/es.object.get-own-property-descriptor.js");
 /* harmony import */ var core_js_modules_es_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_10__);
-/* harmony import */ var core_js_modules_es_object_get_own_property_descriptors__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! core-js/modules/es.object.get-own-property-descriptors */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.object.get-own-property-descriptors.js");
+/* harmony import */ var core_js_modules_es_object_get_own_property_descriptors__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! core-js/modules/es.object.get-own-property-descriptors */ "./node_modules/core-js/modules/es.object.get-own-property-descriptors.js");
 /* harmony import */ var core_js_modules_es_object_get_own_property_descriptors__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_object_get_own_property_descriptors__WEBPACK_IMPORTED_MODULE_11__);
-/* harmony import */ var core_js_modules_es_object_keys__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! core-js/modules/es.object.keys */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.object.keys.js");
+/* harmony import */ var core_js_modules_es_object_keys__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! core-js/modules/es.object.keys */ "./node_modules/core-js/modules/es.object.keys.js");
 /* harmony import */ var core_js_modules_es_object_keys__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_object_keys__WEBPACK_IMPORTED_MODULE_12__);
-/* harmony import */ var core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! core-js/modules/web.dom-collections.for-each */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/web.dom-collections.for-each.js");
+/* harmony import */ var core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! core-js/modules/web.dom-collections.for-each */ "./node_modules/core-js/modules/web.dom-collections.for-each.js");
 /* harmony import */ var core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_13__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_14___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_14__);
-/* harmony import */ var _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ "./node_modules/@babel/runtime/helpers/asyncToGenerator.js");
+/* harmony import */ var _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ "./node_modules/@babel/runtime/helpers/asyncToGenerator/index.js");
 /* harmony import */ var _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_15__);
-/* harmony import */ var _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @babel/runtime/helpers/defineProperty */ "./node_modules/@babel/runtime/helpers/defineProperty.js");
+/* harmony import */ var _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @babel/runtime/helpers/defineProperty */ "./node_modules/@babel/runtime/helpers/defineProperty/index.js");
 /* harmony import */ var _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_16___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_16__);
-/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "./node_modules/@babel/runtime/helpers/classCallCheck.js");
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "./node_modules/@babel/runtime/helpers/classCallCheck/index.js");
 /* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__);
-/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @babel/runtime/helpers/createClass */ "./node_modules/@babel/runtime/helpers/createClass.js");
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @babel/runtime/helpers/createClass */ "./node_modules/@babel/runtime/helpers/createClass/index.js");
 /* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_18___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_18__);
-/* harmony import */ var core_js_modules_es_array_concat__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! core-js/modules/es.array.concat */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.array.concat.js");
+/* harmony import */ var core_js_modules_es_array_concat__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! core-js/modules/es.array.concat */ "./node_modules/core-js/modules/es.array.concat.js");
 /* harmony import */ var core_js_modules_es_array_concat__WEBPACK_IMPORTED_MODULE_19___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_concat__WEBPACK_IMPORTED_MODULE_19__);
-/* harmony import */ var core_js_modules_es_array_every__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! core-js/modules/es.array.every */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.array.every.js");
+/* harmony import */ var core_js_modules_es_array_every__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! core-js/modules/es.array.every */ "./node_modules/core-js/modules/es.array.every.js");
 /* harmony import */ var core_js_modules_es_array_every__WEBPACK_IMPORTED_MODULE_20___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_every__WEBPACK_IMPORTED_MODULE_20__);
-/* harmony import */ var core_js_modules_es_array_reduce__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! core-js/modules/es.array.reduce */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.array.reduce.js");
+/* harmony import */ var core_js_modules_es_array_reduce__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! core-js/modules/es.array.reduce */ "./node_modules/core-js/modules/es.array.reduce.js");
 /* harmony import */ var core_js_modules_es_array_reduce__WEBPACK_IMPORTED_MODULE_21___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_reduce__WEBPACK_IMPORTED_MODULE_21__);
-/* harmony import */ var core_js_modules_es_object_to_string__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! core-js/modules/es.object.to-string */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.object.to-string.js");
+/* harmony import */ var core_js_modules_es_object_to_string__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! core-js/modules/es.object.to-string */ "./node_modules/core-js/modules/es.object.to-string.js");
 /* harmony import */ var core_js_modules_es_object_to_string__WEBPACK_IMPORTED_MODULE_22___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_object_to_string__WEBPACK_IMPORTED_MODULE_22__);
-/* harmony import */ var core_js_modules_es_promise__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! core-js/modules/es.promise */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.promise.js");
+/* harmony import */ var core_js_modules_es_promise__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! core-js/modules/es.promise */ "./node_modules/core-js/modules/es.promise.js");
 /* harmony import */ var core_js_modules_es_promise__WEBPACK_IMPORTED_MODULE_23___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_promise__WEBPACK_IMPORTED_MODULE_23__);
-/* harmony import */ var core_js_modules_es_string_split__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! core-js/modules/es.string.split */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.string.split.js");
+/* harmony import */ var core_js_modules_es_string_split__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! core-js/modules/es.string.split */ "./node_modules/core-js/modules/es.string.split.js");
 /* harmony import */ var core_js_modules_es_string_split__WEBPACK_IMPORTED_MODULE_24___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_string_split__WEBPACK_IMPORTED_MODULE_24__);
 /* harmony import */ var raf__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! raf */ "./node_modules/raf/index.js");
 /* harmony import */ var raf__WEBPACK_IMPORTED_MODULE_25___default = /*#__PURE__*/__webpack_require__.n(raf__WEBPACK_IMPORTED_MODULE_25__);
-/* harmony import */ var core_js_modules_es_function_name__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! core-js/modules/es.function.name */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.function.name.js");
+/* harmony import */ var core_js_modules_es_function_name__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! core-js/modules/es.function.name */ "./node_modules/core-js/modules/es.function.name.js");
 /* harmony import */ var core_js_modules_es_function_name__WEBPACK_IMPORTED_MODULE_26___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_function_name__WEBPACK_IMPORTED_MODULE_26__);
 /* harmony import */ var rgbcolor__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! rgbcolor */ "./node_modules/rgbcolor/index.js");
 /* harmony import */ var rgbcolor__WEBPACK_IMPORTED_MODULE_27___default = /*#__PURE__*/__webpack_require__.n(rgbcolor__WEBPACK_IMPORTED_MODULE_27__);
-/* harmony import */ var core_js_modules_es_reflect_construct__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! core-js/modules/es.reflect.construct */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.reflect.construct.js");
+/* harmony import */ var core_js_modules_es_reflect_construct__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! core-js/modules/es.reflect.construct */ "./node_modules/core-js/modules/es.reflect.construct.js");
 /* harmony import */ var core_js_modules_es_reflect_construct__WEBPACK_IMPORTED_MODULE_28___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_reflect_construct__WEBPACK_IMPORTED_MODULE_28__);
-/* harmony import */ var core_js_modules_es_regexp_to_string__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! core-js/modules/es.regexp.to-string */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.regexp.to-string.js");
+/* harmony import */ var core_js_modules_es_regexp_to_string__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! core-js/modules/es.regexp.to-string */ "./node_modules/core-js/modules/es.regexp.to-string.js");
 /* harmony import */ var core_js_modules_es_regexp_to_string__WEBPACK_IMPORTED_MODULE_29___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_regexp_to_string__WEBPACK_IMPORTED_MODULE_29__);
-/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ "./node_modules/@babel/runtime/helpers/possibleConstructorReturn.js");
+/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ "./node_modules/@babel/runtime/helpers/possibleConstructorReturn/index.js");
 /* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_30___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_30__);
-/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ "./node_modules/@babel/runtime/helpers/getPrototypeOf.js");
+/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ "./node_modules/@babel/runtime/helpers/getPrototypeOf/index.js");
 /* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__);
-/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! @babel/runtime/helpers/inherits */ "./node_modules/@babel/runtime/helpers/inherits.js");
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! @babel/runtime/helpers/inherits */ "./node_modules/@babel/runtime/helpers/inherits/index.js");
 /* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_32___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_32__);
-/* harmony import */ var core_js_modules_es_array_from__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! core-js/modules/es.array.from */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.array.from.js");
+/* harmony import */ var core_js_modules_es_array_from__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! core-js/modules/es.array.from */ "./node_modules/core-js/modules/es.array.from.js");
 /* harmony import */ var core_js_modules_es_array_from__WEBPACK_IMPORTED_MODULE_33___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_from__WEBPACK_IMPORTED_MODULE_33__);
-/* harmony import */ var core_js_modules_es_array_includes__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! core-js/modules/es.array.includes */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.array.includes.js");
+/* harmony import */ var core_js_modules_es_array_includes__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! core-js/modules/es.array.includes */ "./node_modules/core-js/modules/es.array.includes.js");
 /* harmony import */ var core_js_modules_es_array_includes__WEBPACK_IMPORTED_MODULE_34___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_includes__WEBPACK_IMPORTED_MODULE_34__);
-/* harmony import */ var core_js_modules_es_array_some__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! core-js/modules/es.array.some */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.array.some.js");
+/* harmony import */ var core_js_modules_es_array_some__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! core-js/modules/es.array.some */ "./node_modules/core-js/modules/es.array.some.js");
 /* harmony import */ var core_js_modules_es_array_some__WEBPACK_IMPORTED_MODULE_35___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_some__WEBPACK_IMPORTED_MODULE_35__);
-/* harmony import */ var core_js_modules_es_string_includes__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! core-js/modules/es.string.includes */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.string.includes.js");
+/* harmony import */ var core_js_modules_es_string_includes__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! core-js/modules/es.string.includes */ "./node_modules/core-js/modules/es.string.includes.js");
 /* harmony import */ var core_js_modules_es_string_includes__WEBPACK_IMPORTED_MODULE_36___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_string_includes__WEBPACK_IMPORTED_MODULE_36__);
-/* harmony import */ var core_js_modules_es_string_iterator__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! core-js/modules/es.string.iterator */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.string.iterator.js");
+/* harmony import */ var core_js_modules_es_string_iterator__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! core-js/modules/es.string.iterator */ "./node_modules/core-js/modules/es.string.iterator.js");
 /* harmony import */ var core_js_modules_es_string_iterator__WEBPACK_IMPORTED_MODULE_37___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_string_iterator__WEBPACK_IMPORTED_MODULE_37__);
-/* harmony import */ var core_js_modules_es_string_trim__WEBPACK_IMPORTED_MODULE_38__ = __webpack_require__(/*! core-js/modules/es.string.trim */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.string.trim.js");
+/* harmony import */ var core_js_modules_es_string_trim__WEBPACK_IMPORTED_MODULE_38__ = __webpack_require__(/*! core-js/modules/es.string.trim */ "./node_modules/core-js/modules/es.string.trim.js");
 /* harmony import */ var core_js_modules_es_string_trim__WEBPACK_IMPORTED_MODULE_38___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_string_trim__WEBPACK_IMPORTED_MODULE_38__);
-/* harmony import */ var _babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_39__ = __webpack_require__(/*! @babel/runtime/helpers/toConsumableArray */ "./node_modules/@babel/runtime/helpers/toConsumableArray.js");
+/* harmony import */ var _babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_39__ = __webpack_require__(/*! @babel/runtime/helpers/toConsumableArray */ "./node_modules/@babel/runtime/helpers/toConsumableArray/index.js");
 /* harmony import */ var _babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_39___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_39__);
-/* harmony import */ var core_js_modules_es_array_index_of__WEBPACK_IMPORTED_MODULE_40__ = __webpack_require__(/*! core-js/modules/es.array.index-of */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.array.index-of.js");
+/* harmony import */ var core_js_modules_es_array_index_of__WEBPACK_IMPORTED_MODULE_40__ = __webpack_require__(/*! core-js/modules/es.array.index-of */ "./node_modules/core-js/modules/es.array.index-of.js");
 /* harmony import */ var core_js_modules_es_array_index_of__WEBPACK_IMPORTED_MODULE_40___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_index_of__WEBPACK_IMPORTED_MODULE_40__);
-/* harmony import */ var core_js_modules_es_array_reverse__WEBPACK_IMPORTED_MODULE_41__ = __webpack_require__(/*! core-js/modules/es.array.reverse */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.array.reverse.js");
+/* harmony import */ var core_js_modules_es_array_reverse__WEBPACK_IMPORTED_MODULE_41__ = __webpack_require__(/*! core-js/modules/es.array.reverse */ "./node_modules/core-js/modules/es.array.reverse.js");
 /* harmony import */ var core_js_modules_es_array_reverse__WEBPACK_IMPORTED_MODULE_41___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_reverse__WEBPACK_IMPORTED_MODULE_41__);
-/* harmony import */ var _babel_runtime_helpers_get__WEBPACK_IMPORTED_MODULE_42__ = __webpack_require__(/*! @babel/runtime/helpers/get */ "./node_modules/@babel/runtime/helpers/get.js");
+/* harmony import */ var _babel_runtime_helpers_get__WEBPACK_IMPORTED_MODULE_42__ = __webpack_require__(/*! @babel/runtime/helpers/get */ "./node_modules/@babel/runtime/helpers/get/index.js");
 /* harmony import */ var _babel_runtime_helpers_get__WEBPACK_IMPORTED_MODULE_42___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_get__WEBPACK_IMPORTED_MODULE_42__);
-/* harmony import */ var core_js_modules_es_number_constructor__WEBPACK_IMPORTED_MODULE_43__ = __webpack_require__(/*! core-js/modules/es.number.constructor */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.number.constructor.js");
+/* harmony import */ var core_js_modules_es_number_constructor__WEBPACK_IMPORTED_MODULE_43__ = __webpack_require__(/*! core-js/modules/es.number.constructor */ "./node_modules/core-js/modules/es.number.constructor.js");
 /* harmony import */ var core_js_modules_es_number_constructor__WEBPACK_IMPORTED_MODULE_43___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_number_constructor__WEBPACK_IMPORTED_MODULE_43__);
-/* harmony import */ var core_js_modules_es_array_fill__WEBPACK_IMPORTED_MODULE_44__ = __webpack_require__(/*! core-js/modules/es.array.fill */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.array.fill.js");
+/* harmony import */ var core_js_modules_es_array_fill__WEBPACK_IMPORTED_MODULE_44__ = __webpack_require__(/*! core-js/modules/es.array.fill */ "./node_modules/core-js/modules/es.array.fill.js");
 /* harmony import */ var core_js_modules_es_array_fill__WEBPACK_IMPORTED_MODULE_44___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_fill__WEBPACK_IMPORTED_MODULE_44__);
-/* harmony import */ var core_js_modules_es_reflect_delete_property__WEBPACK_IMPORTED_MODULE_45__ = __webpack_require__(/*! core-js/modules/es.reflect.delete-property */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.reflect.delete-property.js");
+/* harmony import */ var core_js_modules_es_reflect_delete_property__WEBPACK_IMPORTED_MODULE_45__ = __webpack_require__(/*! core-js/modules/es.reflect.delete-property */ "./node_modules/core-js/modules/es.reflect.delete-property.js");
 /* harmony import */ var core_js_modules_es_reflect_delete_property__WEBPACK_IMPORTED_MODULE_45___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_reflect_delete_property__WEBPACK_IMPORTED_MODULE_45__);
-/* harmony import */ var _babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_46__ = __webpack_require__(/*! @babel/runtime/helpers/assertThisInitialized */ "./node_modules/@babel/runtime/helpers/assertThisInitialized.js");
+/* harmony import */ var _babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_46__ = __webpack_require__(/*! @babel/runtime/helpers/assertThisInitialized */ "./node_modules/@babel/runtime/helpers/assertThisInitialized/index.js");
 /* harmony import */ var _babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_46___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_46__);
-/* harmony import */ var core_js_modules_es_array_iterator__WEBPACK_IMPORTED_MODULE_47__ = __webpack_require__(/*! core-js/modules/es.array.iterator */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.array.iterator.js");
+/* harmony import */ var core_js_modules_es_array_iterator__WEBPACK_IMPORTED_MODULE_47__ = __webpack_require__(/*! core-js/modules/es.array.iterator */ "./node_modules/core-js/modules/es.array.iterator.js");
 /* harmony import */ var core_js_modules_es_array_iterator__WEBPACK_IMPORTED_MODULE_47___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_iterator__WEBPACK_IMPORTED_MODULE_47__);
-/* harmony import */ var core_js_modules_web_dom_collections_iterator__WEBPACK_IMPORTED_MODULE_48__ = __webpack_require__(/*! core-js/modules/web.dom-collections.iterator */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/web.dom-collections.iterator.js");
+/* harmony import */ var core_js_modules_web_dom_collections_iterator__WEBPACK_IMPORTED_MODULE_48__ = __webpack_require__(/*! core-js/modules/web.dom-collections.iterator */ "./node_modules/core-js/modules/web.dom-collections.iterator.js");
 /* harmony import */ var core_js_modules_web_dom_collections_iterator__WEBPACK_IMPORTED_MODULE_48___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_iterator__WEBPACK_IMPORTED_MODULE_48__);
-/* harmony import */ var core_js_modules_es_symbol_description__WEBPACK_IMPORTED_MODULE_49__ = __webpack_require__(/*! core-js/modules/es.symbol.description */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.symbol.description.js");
+/* harmony import */ var core_js_modules_es_symbol_description__WEBPACK_IMPORTED_MODULE_49__ = __webpack_require__(/*! core-js/modules/es.symbol.description */ "./node_modules/core-js/modules/es.symbol.description.js");
 /* harmony import */ var core_js_modules_es_symbol_description__WEBPACK_IMPORTED_MODULE_49___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_symbol_description__WEBPACK_IMPORTED_MODULE_49__);
-/* harmony import */ var core_js_modules_es_symbol_iterator__WEBPACK_IMPORTED_MODULE_50__ = __webpack_require__(/*! core-js/modules/es.symbol.iterator */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.symbol.iterator.js");
+/* harmony import */ var core_js_modules_es_symbol_iterator__WEBPACK_IMPORTED_MODULE_50__ = __webpack_require__(/*! core-js/modules/es.symbol.iterator */ "./node_modules/core-js/modules/es.symbol.iterator.js");
 /* harmony import */ var core_js_modules_es_symbol_iterator__WEBPACK_IMPORTED_MODULE_50___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_symbol_iterator__WEBPACK_IMPORTED_MODULE_50__);
-/* harmony import */ var core_js_modules_es_array_slice__WEBPACK_IMPORTED_MODULE_51__ = __webpack_require__(/*! core-js/modules/es.array.slice */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.array.slice.js");
+/* harmony import */ var core_js_modules_es_array_slice__WEBPACK_IMPORTED_MODULE_51__ = __webpack_require__(/*! core-js/modules/es.array.slice */ "./node_modules/core-js/modules/es.array.slice.js");
 /* harmony import */ var core_js_modules_es_array_slice__WEBPACK_IMPORTED_MODULE_51___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_slice__WEBPACK_IMPORTED_MODULE_51__);
-/* harmony import */ var core_js_modules_es_map__WEBPACK_IMPORTED_MODULE_52__ = __webpack_require__(/*! core-js/modules/es.map */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.map.js");
+/* harmony import */ var core_js_modules_es_map__WEBPACK_IMPORTED_MODULE_52__ = __webpack_require__(/*! core-js/modules/es.map */ "./node_modules/core-js/modules/es.map.js");
 /* harmony import */ var core_js_modules_es_map__WEBPACK_IMPORTED_MODULE_52___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_map__WEBPACK_IMPORTED_MODULE_52__);
-/* harmony import */ var core_js_modules_es_reflect_apply__WEBPACK_IMPORTED_MODULE_53__ = __webpack_require__(/*! core-js/modules/es.reflect.apply */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.reflect.apply.js");
+/* harmony import */ var core_js_modules_es_reflect_apply__WEBPACK_IMPORTED_MODULE_53__ = __webpack_require__(/*! core-js/modules/es.reflect.apply */ "./node_modules/core-js/modules/es.reflect.apply.js");
 /* harmony import */ var core_js_modules_es_reflect_apply__WEBPACK_IMPORTED_MODULE_53___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_reflect_apply__WEBPACK_IMPORTED_MODULE_53__);
-/* harmony import */ var core_js_modules_es_reflect_get_prototype_of__WEBPACK_IMPORTED_MODULE_54__ = __webpack_require__(/*! core-js/modules/es.reflect.get-prototype-of */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.reflect.get-prototype-of.js");
+/* harmony import */ var core_js_modules_es_reflect_get_prototype_of__WEBPACK_IMPORTED_MODULE_54__ = __webpack_require__(/*! core-js/modules/es.reflect.get-prototype-of */ "./node_modules/core-js/modules/es.reflect.get-prototype-of.js");
 /* harmony import */ var core_js_modules_es_reflect_get_prototype_of__WEBPACK_IMPORTED_MODULE_54___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_reflect_get_prototype_of__WEBPACK_IMPORTED_MODULE_54__);
 /* harmony import */ var stackblur_canvas__WEBPACK_IMPORTED_MODULE_55__ = __webpack_require__(/*! stackblur-canvas */ "./node_modules/stackblur-canvas/dist/stackblur-es.js");
 
@@ -8606,10 +8606,542 @@ var index = /*#__PURE__*/Object.freeze({
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/a-function.js":
-/*!***************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/a-function.js ***!
-  \***************************************************************************************/
+/***/ "./node_modules/@babel/runtime/helpers/arrayLikeToArray/index.js":
+/*!***********************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/arrayLikeToArray/index.js ***!
+  \***********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _arrayLikeToArray(arr, len) {
+  if (len == null || len > arr.length) len = arr.length;
+
+  for (var i = 0, arr2 = new Array(len); i < len; i++) {
+    arr2[i] = arr[i];
+  }
+
+  return arr2;
+}
+
+module.exports = _arrayLikeToArray;
+module.exports["default"] = module.exports, module.exports.__esModule = true;
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/arrayWithHoles/index.js":
+/*!*********************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/arrayWithHoles/index.js ***!
+  \*********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _arrayWithHoles(arr) {
+  if (Array.isArray(arr)) return arr;
+}
+
+module.exports = _arrayWithHoles;
+module.exports["default"] = module.exports, module.exports.__esModule = true;
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/arrayWithoutHoles/index.js":
+/*!************************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/arrayWithoutHoles/index.js ***!
+  \************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var arrayLikeToArray = __webpack_require__(/*! @babel/runtime/helpers/arrayLikeToArray */ "./node_modules/@babel/runtime/helpers/arrayLikeToArray/index.js");
+
+function _arrayWithoutHoles(arr) {
+  if (Array.isArray(arr)) return arrayLikeToArray(arr);
+}
+
+module.exports = _arrayWithoutHoles;
+module.exports["default"] = module.exports, module.exports.__esModule = true;
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/assertThisInitialized/index.js":
+/*!****************************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/assertThisInitialized/index.js ***!
+  \****************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _assertThisInitialized(self) {
+  if (self === void 0) {
+    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+  }
+
+  return self;
+}
+
+module.exports = _assertThisInitialized;
+module.exports["default"] = module.exports, module.exports.__esModule = true;
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/asyncToGenerator/index.js":
+/*!***********************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/asyncToGenerator/index.js ***!
+  \***********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
+  try {
+    var info = gen[key](arg);
+    var value = info.value;
+  } catch (error) {
+    reject(error);
+    return;
+  }
+
+  if (info.done) {
+    resolve(value);
+  } else {
+    Promise.resolve(value).then(_next, _throw);
+  }
+}
+
+function _asyncToGenerator(fn) {
+  return function () {
+    var self = this,
+        args = arguments;
+    return new Promise(function (resolve, reject) {
+      var gen = fn.apply(self, args);
+
+      function _next(value) {
+        asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);
+      }
+
+      function _throw(err) {
+        asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);
+      }
+
+      _next(undefined);
+    });
+  };
+}
+
+module.exports = _asyncToGenerator;
+module.exports["default"] = module.exports, module.exports.__esModule = true;
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/classCallCheck/index.js":
+/*!*********************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/classCallCheck/index.js ***!
+  \*********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _classCallCheck(instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+}
+
+module.exports = _classCallCheck;
+module.exports["default"] = module.exports, module.exports.__esModule = true;
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/createClass/index.js":
+/*!******************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/createClass/index.js ***!
+  \******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _defineProperties(target, props) {
+  for (var i = 0; i < props.length; i++) {
+    var descriptor = props[i];
+    descriptor.enumerable = descriptor.enumerable || false;
+    descriptor.configurable = true;
+    if ("value" in descriptor) descriptor.writable = true;
+    Object.defineProperty(target, descriptor.key, descriptor);
+  }
+}
+
+function _createClass(Constructor, protoProps, staticProps) {
+  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
+  if (staticProps) _defineProperties(Constructor, staticProps);
+  return Constructor;
+}
+
+module.exports = _createClass;
+module.exports["default"] = module.exports, module.exports.__esModule = true;
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/defineProperty/index.js":
+/*!*********************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/defineProperty/index.js ***!
+  \*********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
+module.exports = _defineProperty;
+module.exports["default"] = module.exports, module.exports.__esModule = true;
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/get/index.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/get/index.js ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var superPropBase = __webpack_require__(/*! @babel/runtime/helpers/superPropBase */ "./node_modules/@babel/runtime/helpers/superPropBase/index.js");
+
+function _get(target, property, receiver) {
+  if (typeof Reflect !== "undefined" && Reflect.get) {
+    module.exports = _get = Reflect.get;
+    module.exports["default"] = module.exports, module.exports.__esModule = true;
+  } else {
+    module.exports = _get = function _get(target, property, receiver) {
+      var base = superPropBase(target, property);
+      if (!base) return;
+      var desc = Object.getOwnPropertyDescriptor(base, property);
+
+      if (desc.get) {
+        return desc.get.call(receiver);
+      }
+
+      return desc.value;
+    };
+
+    module.exports["default"] = module.exports, module.exports.__esModule = true;
+  }
+
+  return _get(target, property, receiver || target);
+}
+
+module.exports = _get;
+module.exports["default"] = module.exports, module.exports.__esModule = true;
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/getPrototypeOf/index.js":
+/*!*********************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/getPrototypeOf/index.js ***!
+  \*********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _getPrototypeOf(o) {
+  module.exports = _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) {
+    return o.__proto__ || Object.getPrototypeOf(o);
+  };
+  module.exports["default"] = module.exports, module.exports.__esModule = true;
+  return _getPrototypeOf(o);
+}
+
+module.exports = _getPrototypeOf;
+module.exports["default"] = module.exports, module.exports.__esModule = true;
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/inherits/index.js":
+/*!***************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/inherits/index.js ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var setPrototypeOf = __webpack_require__(/*! @babel/runtime/helpers/setPrototypeOf */ "./node_modules/@babel/runtime/helpers/setPrototypeOf/index.js");
+
+function _inherits(subClass, superClass) {
+  if (typeof superClass !== "function" && superClass !== null) {
+    throw new TypeError("Super expression must either be null or a function");
+  }
+
+  subClass.prototype = Object.create(superClass && superClass.prototype, {
+    constructor: {
+      value: subClass,
+      writable: true,
+      configurable: true
+    }
+  });
+  if (superClass) setPrototypeOf(subClass, superClass);
+}
+
+module.exports = _inherits;
+module.exports["default"] = module.exports, module.exports.__esModule = true;
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/iterableToArray/index.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/iterableToArray/index.js ***!
+  \**********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _iterableToArray(iter) {
+  if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter);
+}
+
+module.exports = _iterableToArray;
+module.exports["default"] = module.exports, module.exports.__esModule = true;
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/iterableToArrayLimit/index.js":
+/*!***************************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/iterableToArrayLimit/index.js ***!
+  \***************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _iterableToArrayLimit(arr, i) {
+  if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return;
+  var _arr = [];
+  var _n = true;
+  var _d = false;
+  var _e = undefined;
+
+  try {
+    for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {
+      _arr.push(_s.value);
+
+      if (i && _arr.length === i) break;
+    }
+  } catch (err) {
+    _d = true;
+    _e = err;
+  } finally {
+    try {
+      if (!_n && _i["return"] != null) _i["return"]();
+    } finally {
+      if (_d) throw _e;
+    }
+  }
+
+  return _arr;
+}
+
+module.exports = _iterableToArrayLimit;
+module.exports["default"] = module.exports, module.exports.__esModule = true;
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/nonIterableRest/index.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/nonIterableRest/index.js ***!
+  \**********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _nonIterableRest() {
+  throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+}
+
+module.exports = _nonIterableRest;
+module.exports["default"] = module.exports, module.exports.__esModule = true;
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/nonIterableSpread/index.js":
+/*!************************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/nonIterableSpread/index.js ***!
+  \************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _nonIterableSpread() {
+  throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+}
+
+module.exports = _nonIterableSpread;
+module.exports["default"] = module.exports, module.exports.__esModule = true;
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/possibleConstructorReturn/index.js":
+/*!********************************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/possibleConstructorReturn/index.js ***!
+  \********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var _typeof = __webpack_require__(/*! @babel/runtime/helpers/typeof */ "./node_modules/@babel/runtime/helpers/typeof/index.js")["default"];
+
+var assertThisInitialized = __webpack_require__(/*! @babel/runtime/helpers/assertThisInitialized */ "./node_modules/@babel/runtime/helpers/assertThisInitialized/index.js");
+
+function _possibleConstructorReturn(self, call) {
+  if (call && (_typeof(call) === "object" || typeof call === "function")) {
+    return call;
+  }
+
+  return assertThisInitialized(self);
+}
+
+module.exports = _possibleConstructorReturn;
+module.exports["default"] = module.exports, module.exports.__esModule = true;
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/slicedToArray/index.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/slicedToArray/index.js ***!
+  \********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var arrayWithHoles = __webpack_require__(/*! @babel/runtime/helpers/arrayWithHoles */ "./node_modules/@babel/runtime/helpers/arrayWithHoles/index.js");
+
+var iterableToArrayLimit = __webpack_require__(/*! @babel/runtime/helpers/iterableToArrayLimit */ "./node_modules/@babel/runtime/helpers/iterableToArrayLimit/index.js");
+
+var unsupportedIterableToArray = __webpack_require__(/*! @babel/runtime/helpers/unsupportedIterableToArray */ "./node_modules/@babel/runtime/helpers/unsupportedIterableToArray/index.js");
+
+var nonIterableRest = __webpack_require__(/*! @babel/runtime/helpers/nonIterableRest */ "./node_modules/@babel/runtime/helpers/nonIterableRest/index.js");
+
+function _slicedToArray(arr, i) {
+  return arrayWithHoles(arr) || iterableToArrayLimit(arr, i) || unsupportedIterableToArray(arr, i) || nonIterableRest();
+}
+
+module.exports = _slicedToArray;
+module.exports["default"] = module.exports, module.exports.__esModule = true;
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/superPropBase/index.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/superPropBase/index.js ***!
+  \********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var getPrototypeOf = __webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ "./node_modules/@babel/runtime/helpers/getPrototypeOf/index.js");
+
+function _superPropBase(object, property) {
+  while (!Object.prototype.hasOwnProperty.call(object, property)) {
+    object = getPrototypeOf(object);
+    if (object === null) break;
+  }
+
+  return object;
+}
+
+module.exports = _superPropBase;
+module.exports["default"] = module.exports, module.exports.__esModule = true;
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/toConsumableArray/index.js":
+/*!************************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/toConsumableArray/index.js ***!
+  \************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var arrayWithoutHoles = __webpack_require__(/*! @babel/runtime/helpers/arrayWithoutHoles */ "./node_modules/@babel/runtime/helpers/arrayWithoutHoles/index.js");
+
+var iterableToArray = __webpack_require__(/*! @babel/runtime/helpers/iterableToArray */ "./node_modules/@babel/runtime/helpers/iterableToArray/index.js");
+
+var unsupportedIterableToArray = __webpack_require__(/*! @babel/runtime/helpers/unsupportedIterableToArray */ "./node_modules/@babel/runtime/helpers/unsupportedIterableToArray/index.js");
+
+var nonIterableSpread = __webpack_require__(/*! @babel/runtime/helpers/nonIterableSpread */ "./node_modules/@babel/runtime/helpers/nonIterableSpread/index.js");
+
+function _toConsumableArray(arr) {
+  return arrayWithoutHoles(arr) || iterableToArray(arr) || unsupportedIterableToArray(arr) || nonIterableSpread();
+}
+
+module.exports = _toConsumableArray;
+module.exports["default"] = module.exports, module.exports.__esModule = true;
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/typeof/index.js":
+/*!*************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/typeof/index.js ***!
+  \*************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _typeof(obj) {
+  "@babel/helpers - typeof";
+
+  if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
+    module.exports = _typeof = function _typeof(obj) {
+      return typeof obj;
+    };
+
+    module.exports["default"] = module.exports, module.exports.__esModule = true;
+  } else {
+    module.exports = _typeof = function _typeof(obj) {
+      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+    };
+
+    module.exports["default"] = module.exports, module.exports.__esModule = true;
+  }
+
+  return _typeof(obj);
+}
+
+module.exports = _typeof;
+module.exports["default"] = module.exports, module.exports.__esModule = true;
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/unsupportedIterableToArray/index.js":
+/*!*********************************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/unsupportedIterableToArray/index.js ***!
+  \*********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var arrayLikeToArray = __webpack_require__(/*! @babel/runtime/helpers/arrayLikeToArray */ "./node_modules/@babel/runtime/helpers/arrayLikeToArray/index.js");
+
+function _unsupportedIterableToArray(o, minLen) {
+  if (!o) return;
+  if (typeof o === "string") return arrayLikeToArray(o, minLen);
+  var n = Object.prototype.toString.call(o).slice(8, -1);
+  if (n === "Object" && o.constructor) n = o.constructor.name;
+  if (n === "Map" || n === "Set") return Array.from(o);
+  if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return arrayLikeToArray(o, minLen);
+}
+
+module.exports = _unsupportedIterableToArray;
+module.exports["default"] = module.exports, module.exports.__esModule = true;
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/regenerator/index.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/@babel/runtime/regenerator/index.js ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(/*! regenerator-runtime */ "./node_modules/regenerator-runtime/runtime.js");
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/internals/a-function.js":
+/*!******************************************************!*\
+  !*** ./node_modules/core-js/internals/a-function.js ***!
+  \******************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -8622,14 +9154,14 @@ module.exports = function (it) {
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/a-possible-prototype.js":
-/*!*************************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/a-possible-prototype.js ***!
-  \*************************************************************************************************/
+/***/ "./node_modules/core-js/internals/a-possible-prototype.js":
+/*!****************************************************************!*\
+  !*** ./node_modules/core-js/internals/a-possible-prototype.js ***!
+  \****************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/is-object.js");
+var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/core-js/internals/is-object.js");
 
 module.exports = function (it) {
   if (!isObject(it) && it !== null) {
@@ -8640,22 +9172,22 @@ module.exports = function (it) {
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/add-to-unscopables.js":
-/*!***********************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/add-to-unscopables.js ***!
-  \***********************************************************************************************/
+/***/ "./node_modules/core-js/internals/add-to-unscopables.js":
+/*!**************************************************************!*\
+  !*** ./node_modules/core-js/internals/add-to-unscopables.js ***!
+  \**************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/well-known-symbol.js");
-var create = __webpack_require__(/*! ../internals/object-create */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/object-create.js");
-var definePropertyModule = __webpack_require__(/*! ../internals/object-define-property */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/object-define-property.js");
+var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/core-js/internals/well-known-symbol.js");
+var create = __webpack_require__(/*! ../internals/object-create */ "./node_modules/core-js/internals/object-create.js");
+var definePropertyModule = __webpack_require__(/*! ../internals/object-define-property */ "./node_modules/core-js/internals/object-define-property.js");
 
 var UNSCOPABLES = wellKnownSymbol('unscopables');
 var ArrayPrototype = Array.prototype;
 
 // Array.prototype[@@unscopables]
-// https://tc39.github.io/ecma262/#sec-array.prototype-@@unscopables
+// https://tc39.es/ecma262/#sec-array.prototype-@@unscopables
 if (ArrayPrototype[UNSCOPABLES] == undefined) {
   definePropertyModule.f(ArrayPrototype, UNSCOPABLES, {
     configurable: true,
@@ -8671,19 +9203,19 @@ module.exports = function (key) {
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/advance-string-index.js":
-/*!*************************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/advance-string-index.js ***!
-  \*************************************************************************************************/
+/***/ "./node_modules/core-js/internals/advance-string-index.js":
+/*!****************************************************************!*\
+  !*** ./node_modules/core-js/internals/advance-string-index.js ***!
+  \****************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var charAt = __webpack_require__(/*! ../internals/string-multibyte */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/string-multibyte.js").charAt;
+var charAt = __webpack_require__(/*! ../internals/string-multibyte */ "./node_modules/core-js/internals/string-multibyte.js").charAt;
 
 // `AdvanceStringIndex` abstract operation
-// https://tc39.github.io/ecma262/#sec-advancestringindex
+// https://tc39.es/ecma262/#sec-advancestringindex
 module.exports = function (S, index, unicode) {
   return index + (unicode ? charAt(S, index).length : 1);
 };
@@ -8691,10 +9223,10 @@ module.exports = function (S, index, unicode) {
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/an-instance.js":
-/*!****************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/an-instance.js ***!
-  \****************************************************************************************/
+/***/ "./node_modules/core-js/internals/an-instance.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/core-js/internals/an-instance.js ***!
+  \*******************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -8707,14 +9239,14 @@ module.exports = function (it, Constructor, name) {
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/an-object.js":
-/*!**************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/an-object.js ***!
-  \**************************************************************************************/
+/***/ "./node_modules/core-js/internals/an-object.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/core-js/internals/an-object.js ***!
+  \*****************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/is-object.js");
+var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/core-js/internals/is-object.js");
 
 module.exports = function (it) {
   if (!isObject(it)) {
@@ -8725,21 +9257,21 @@ module.exports = function (it) {
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/array-fill.js":
-/*!***************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/array-fill.js ***!
-  \***************************************************************************************/
+/***/ "./node_modules/core-js/internals/array-fill.js":
+/*!******************************************************!*\
+  !*** ./node_modules/core-js/internals/array-fill.js ***!
+  \******************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var toObject = __webpack_require__(/*! ../internals/to-object */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/to-object.js");
-var toAbsoluteIndex = __webpack_require__(/*! ../internals/to-absolute-index */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/to-absolute-index.js");
-var toLength = __webpack_require__(/*! ../internals/to-length */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/to-length.js");
+var toObject = __webpack_require__(/*! ../internals/to-object */ "./node_modules/core-js/internals/to-object.js");
+var toAbsoluteIndex = __webpack_require__(/*! ../internals/to-absolute-index */ "./node_modules/core-js/internals/to-absolute-index.js");
+var toLength = __webpack_require__(/*! ../internals/to-length */ "./node_modules/core-js/internals/to-length.js");
 
 // `Array.prototype.fill` method implementation
-// https://tc39.github.io/ecma262/#sec-array.prototype.fill
+// https://tc39.es/ecma262/#sec-array.prototype.fill
 module.exports = function fill(value /* , start = 0, end = @length */) {
   var O = toObject(this);
   var length = toLength(O.length);
@@ -8754,50 +9286,48 @@ module.exports = function fill(value /* , start = 0, end = @length */) {
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/array-for-each.js":
-/*!*******************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/array-for-each.js ***!
-  \*******************************************************************************************/
+/***/ "./node_modules/core-js/internals/array-for-each.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/core-js/internals/array-for-each.js ***!
+  \**********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var $forEach = __webpack_require__(/*! ../internals/array-iteration */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/array-iteration.js").forEach;
-var arrayMethodIsStrict = __webpack_require__(/*! ../internals/array-method-is-strict */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/array-method-is-strict.js");
-var arrayMethodUsesToLength = __webpack_require__(/*! ../internals/array-method-uses-to-length */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/array-method-uses-to-length.js");
+var $forEach = __webpack_require__(/*! ../internals/array-iteration */ "./node_modules/core-js/internals/array-iteration.js").forEach;
+var arrayMethodIsStrict = __webpack_require__(/*! ../internals/array-method-is-strict */ "./node_modules/core-js/internals/array-method-is-strict.js");
 
 var STRICT_METHOD = arrayMethodIsStrict('forEach');
-var USES_TO_LENGTH = arrayMethodUsesToLength('forEach');
 
 // `Array.prototype.forEach` method implementation
-// https://tc39.github.io/ecma262/#sec-array.prototype.foreach
-module.exports = (!STRICT_METHOD || !USES_TO_LENGTH) ? function forEach(callbackfn /* , thisArg */) {
+// https://tc39.es/ecma262/#sec-array.prototype.foreach
+module.exports = !STRICT_METHOD ? function forEach(callbackfn /* , thisArg */) {
   return $forEach(this, callbackfn, arguments.length > 1 ? arguments[1] : undefined);
 } : [].forEach;
 
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/array-from.js":
-/*!***************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/array-from.js ***!
-  \***************************************************************************************/
+/***/ "./node_modules/core-js/internals/array-from.js":
+/*!******************************************************!*\
+  !*** ./node_modules/core-js/internals/array-from.js ***!
+  \******************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var bind = __webpack_require__(/*! ../internals/function-bind-context */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/function-bind-context.js");
-var toObject = __webpack_require__(/*! ../internals/to-object */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/to-object.js");
-var callWithSafeIterationClosing = __webpack_require__(/*! ../internals/call-with-safe-iteration-closing */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/call-with-safe-iteration-closing.js");
-var isArrayIteratorMethod = __webpack_require__(/*! ../internals/is-array-iterator-method */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/is-array-iterator-method.js");
-var toLength = __webpack_require__(/*! ../internals/to-length */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/to-length.js");
-var createProperty = __webpack_require__(/*! ../internals/create-property */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/create-property.js");
-var getIteratorMethod = __webpack_require__(/*! ../internals/get-iterator-method */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/get-iterator-method.js");
+var bind = __webpack_require__(/*! ../internals/function-bind-context */ "./node_modules/core-js/internals/function-bind-context.js");
+var toObject = __webpack_require__(/*! ../internals/to-object */ "./node_modules/core-js/internals/to-object.js");
+var callWithSafeIterationClosing = __webpack_require__(/*! ../internals/call-with-safe-iteration-closing */ "./node_modules/core-js/internals/call-with-safe-iteration-closing.js");
+var isArrayIteratorMethod = __webpack_require__(/*! ../internals/is-array-iterator-method */ "./node_modules/core-js/internals/is-array-iterator-method.js");
+var toLength = __webpack_require__(/*! ../internals/to-length */ "./node_modules/core-js/internals/to-length.js");
+var createProperty = __webpack_require__(/*! ../internals/create-property */ "./node_modules/core-js/internals/create-property.js");
+var getIteratorMethod = __webpack_require__(/*! ../internals/get-iterator-method */ "./node_modules/core-js/internals/get-iterator-method.js");
 
 // `Array.from` method implementation
-// https://tc39.github.io/ecma262/#sec-array.from
+// https://tc39.es/ecma262/#sec-array.from
 module.exports = function from(arrayLike /* , mapfn = undefined, thisArg = undefined */) {
   var O = toObject(arrayLike);
   var C = typeof this == 'function' ? this : Array;
@@ -8832,16 +9362,16 @@ module.exports = function from(arrayLike /* , mapfn = undefined, thisArg = undef
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/array-includes.js":
-/*!*******************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/array-includes.js ***!
-  \*******************************************************************************************/
+/***/ "./node_modules/core-js/internals/array-includes.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/core-js/internals/array-includes.js ***!
+  \**********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var toIndexedObject = __webpack_require__(/*! ../internals/to-indexed-object */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/to-indexed-object.js");
-var toLength = __webpack_require__(/*! ../internals/to-length */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/to-length.js");
-var toAbsoluteIndex = __webpack_require__(/*! ../internals/to-absolute-index */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/to-absolute-index.js");
+var toIndexedObject = __webpack_require__(/*! ../internals/to-indexed-object */ "./node_modules/core-js/internals/to-indexed-object.js");
+var toLength = __webpack_require__(/*! ../internals/to-length */ "./node_modules/core-js/internals/to-length.js");
+var toAbsoluteIndex = __webpack_require__(/*! ../internals/to-absolute-index */ "./node_modules/core-js/internals/to-absolute-index.js");
 
 // `Array.prototype.{ indexOf, includes }` methods implementation
 var createMethod = function (IS_INCLUDES) {
@@ -8851,10 +9381,10 @@ var createMethod = function (IS_INCLUDES) {
     var index = toAbsoluteIndex(fromIndex, length);
     var value;
     // Array#includes uses SameValueZero equality algorithm
-    // eslint-disable-next-line no-self-compare
+    // eslint-disable-next-line no-self-compare -- NaN check
     if (IS_INCLUDES && el != el) while (length > index) {
       value = O[index++];
-      // eslint-disable-next-line no-self-compare
+      // eslint-disable-next-line no-self-compare -- NaN check
       if (value != value) return true;
     // Array#indexOf ignores holes, Array#includes - not
     } else for (;length > index; index++) {
@@ -8865,38 +9395,39 @@ var createMethod = function (IS_INCLUDES) {
 
 module.exports = {
   // `Array.prototype.includes` method
-  // https://tc39.github.io/ecma262/#sec-array.prototype.includes
+  // https://tc39.es/ecma262/#sec-array.prototype.includes
   includes: createMethod(true),
   // `Array.prototype.indexOf` method
-  // https://tc39.github.io/ecma262/#sec-array.prototype.indexof
+  // https://tc39.es/ecma262/#sec-array.prototype.indexof
   indexOf: createMethod(false)
 };
 
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/array-iteration.js":
-/*!********************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/array-iteration.js ***!
-  \********************************************************************************************/
+/***/ "./node_modules/core-js/internals/array-iteration.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/core-js/internals/array-iteration.js ***!
+  \***********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var bind = __webpack_require__(/*! ../internals/function-bind-context */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/function-bind-context.js");
-var IndexedObject = __webpack_require__(/*! ../internals/indexed-object */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/indexed-object.js");
-var toObject = __webpack_require__(/*! ../internals/to-object */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/to-object.js");
-var toLength = __webpack_require__(/*! ../internals/to-length */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/to-length.js");
-var arraySpeciesCreate = __webpack_require__(/*! ../internals/array-species-create */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/array-species-create.js");
+var bind = __webpack_require__(/*! ../internals/function-bind-context */ "./node_modules/core-js/internals/function-bind-context.js");
+var IndexedObject = __webpack_require__(/*! ../internals/indexed-object */ "./node_modules/core-js/internals/indexed-object.js");
+var toObject = __webpack_require__(/*! ../internals/to-object */ "./node_modules/core-js/internals/to-object.js");
+var toLength = __webpack_require__(/*! ../internals/to-length */ "./node_modules/core-js/internals/to-length.js");
+var arraySpeciesCreate = __webpack_require__(/*! ../internals/array-species-create */ "./node_modules/core-js/internals/array-species-create.js");
 
 var push = [].push;
 
-// `Array.prototype.{ forEach, map, filter, some, every, find, findIndex }` methods implementation
+// `Array.prototype.{ forEach, map, filter, some, every, find, findIndex, filterOut }` methods implementation
 var createMethod = function (TYPE) {
   var IS_MAP = TYPE == 1;
   var IS_FILTER = TYPE == 2;
   var IS_SOME = TYPE == 3;
   var IS_EVERY = TYPE == 4;
   var IS_FIND_INDEX = TYPE == 6;
+  var IS_FILTER_OUT = TYPE == 7;
   var NO_HOLES = TYPE == 5 || IS_FIND_INDEX;
   return function ($this, callbackfn, that, specificCreate) {
     var O = toObject($this);
@@ -8905,7 +9436,7 @@ var createMethod = function (TYPE) {
     var length = toLength(self.length);
     var index = 0;
     var create = specificCreate || arraySpeciesCreate;
-    var target = IS_MAP ? create($this, length) : IS_FILTER ? create($this, 0) : undefined;
+    var target = IS_MAP ? create($this, length) : IS_FILTER || IS_FILTER_OUT ? create($this, 0) : undefined;
     var value, result;
     for (;length > index; index++) if (NO_HOLES || index in self) {
       value = self[index];
@@ -8917,7 +9448,10 @@ var createMethod = function (TYPE) {
           case 5: return value;             // find
           case 6: return index;             // findIndex
           case 2: push.call(target, value); // filter
-        } else if (IS_EVERY) return false;  // every
+        } else switch (TYPE) {
+          case 4: return false;             // every
+          case 7: push.call(target, value); // filterOut
+        }
       }
     }
     return IS_FIND_INDEX ? -1 : IS_SOME || IS_EVERY ? IS_EVERY : target;
@@ -8926,41 +9460,44 @@ var createMethod = function (TYPE) {
 
 module.exports = {
   // `Array.prototype.forEach` method
-  // https://tc39.github.io/ecma262/#sec-array.prototype.foreach
+  // https://tc39.es/ecma262/#sec-array.prototype.foreach
   forEach: createMethod(0),
   // `Array.prototype.map` method
-  // https://tc39.github.io/ecma262/#sec-array.prototype.map
+  // https://tc39.es/ecma262/#sec-array.prototype.map
   map: createMethod(1),
   // `Array.prototype.filter` method
-  // https://tc39.github.io/ecma262/#sec-array.prototype.filter
+  // https://tc39.es/ecma262/#sec-array.prototype.filter
   filter: createMethod(2),
   // `Array.prototype.some` method
-  // https://tc39.github.io/ecma262/#sec-array.prototype.some
+  // https://tc39.es/ecma262/#sec-array.prototype.some
   some: createMethod(3),
   // `Array.prototype.every` method
-  // https://tc39.github.io/ecma262/#sec-array.prototype.every
+  // https://tc39.es/ecma262/#sec-array.prototype.every
   every: createMethod(4),
   // `Array.prototype.find` method
-  // https://tc39.github.io/ecma262/#sec-array.prototype.find
+  // https://tc39.es/ecma262/#sec-array.prototype.find
   find: createMethod(5),
   // `Array.prototype.findIndex` method
-  // https://tc39.github.io/ecma262/#sec-array.prototype.findIndex
-  findIndex: createMethod(6)
+  // https://tc39.es/ecma262/#sec-array.prototype.findIndex
+  findIndex: createMethod(6),
+  // `Array.prototype.filterOut` method
+  // https://github.com/tc39/proposal-array-filtering
+  filterOut: createMethod(7)
 };
 
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/array-method-has-species-support.js":
-/*!*************************************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/array-method-has-species-support.js ***!
-  \*************************************************************************************************************/
+/***/ "./node_modules/core-js/internals/array-method-has-species-support.js":
+/*!****************************************************************************!*\
+  !*** ./node_modules/core-js/internals/array-method-has-species-support.js ***!
+  \****************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/fails.js");
-var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/well-known-symbol.js");
-var V8_VERSION = __webpack_require__(/*! ../internals/engine-v8-version */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/engine-v8-version.js");
+var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/core-js/internals/fails.js");
+var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/core-js/internals/well-known-symbol.js");
+var V8_VERSION = __webpack_require__(/*! ../internals/engine-v8-version */ "./node_modules/core-js/internals/engine-v8-version.js");
 
 var SPECIES = wellKnownSymbol('species');
 
@@ -8981,21 +9518,21 @@ module.exports = function (METHOD_NAME) {
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/array-method-is-strict.js":
-/*!***************************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/array-method-is-strict.js ***!
-  \***************************************************************************************************/
+/***/ "./node_modules/core-js/internals/array-method-is-strict.js":
+/*!******************************************************************!*\
+  !*** ./node_modules/core-js/internals/array-method-is-strict.js ***!
+  \******************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/fails.js");
+var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/core-js/internals/fails.js");
 
 module.exports = function (METHOD_NAME, argument) {
   var method = [][METHOD_NAME];
   return !!method && fails(function () {
-    // eslint-disable-next-line no-useless-call,no-throw-literal
+    // eslint-disable-next-line no-useless-call,no-throw-literal -- required for testing
     method.call(null, argument || function () { throw 1; }, 1);
   });
 };
@@ -9003,55 +9540,17 @@ module.exports = function (METHOD_NAME, argument) {
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/array-method-uses-to-length.js":
-/*!********************************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/array-method-uses-to-length.js ***!
-  \********************************************************************************************************/
+/***/ "./node_modules/core-js/internals/array-reduce.js":
+/*!********************************************************!*\
+  !*** ./node_modules/core-js/internals/array-reduce.js ***!
+  \********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var DESCRIPTORS = __webpack_require__(/*! ../internals/descriptors */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/descriptors.js");
-var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/fails.js");
-var has = __webpack_require__(/*! ../internals/has */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/has.js");
-
-var defineProperty = Object.defineProperty;
-var cache = {};
-
-var thrower = function (it) { throw it; };
-
-module.exports = function (METHOD_NAME, options) {
-  if (has(cache, METHOD_NAME)) return cache[METHOD_NAME];
-  if (!options) options = {};
-  var method = [][METHOD_NAME];
-  var ACCESSORS = has(options, 'ACCESSORS') ? options.ACCESSORS : false;
-  var argument0 = has(options, 0) ? options[0] : thrower;
-  var argument1 = has(options, 1) ? options[1] : undefined;
-
-  return cache[METHOD_NAME] = !!method && !fails(function () {
-    if (ACCESSORS && !DESCRIPTORS) return true;
-    var O = { length: -1 };
-
-    if (ACCESSORS) defineProperty(O, 1, { enumerable: true, get: thrower });
-    else O[1] = 1;
-
-    method.call(O, argument0, argument1);
-  });
-};
-
-
-/***/ }),
-
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/array-reduce.js":
-/*!*****************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/array-reduce.js ***!
-  \*****************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var aFunction = __webpack_require__(/*! ../internals/a-function */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/a-function.js");
-var toObject = __webpack_require__(/*! ../internals/to-object */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/to-object.js");
-var IndexedObject = __webpack_require__(/*! ../internals/indexed-object */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/indexed-object.js");
-var toLength = __webpack_require__(/*! ../internals/to-length */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/to-length.js");
+var aFunction = __webpack_require__(/*! ../internals/a-function */ "./node_modules/core-js/internals/a-function.js");
+var toObject = __webpack_require__(/*! ../internals/to-object */ "./node_modules/core-js/internals/to-object.js");
+var IndexedObject = __webpack_require__(/*! ../internals/indexed-object */ "./node_modules/core-js/internals/indexed-object.js");
+var toLength = __webpack_require__(/*! ../internals/to-length */ "./node_modules/core-js/internals/to-length.js");
 
 // `Array.prototype.{ reduce, reduceRight }` methods implementation
 var createMethod = function (IS_RIGHT) {
@@ -9082,31 +9581,31 @@ var createMethod = function (IS_RIGHT) {
 
 module.exports = {
   // `Array.prototype.reduce` method
-  // https://tc39.github.io/ecma262/#sec-array.prototype.reduce
+  // https://tc39.es/ecma262/#sec-array.prototype.reduce
   left: createMethod(false),
   // `Array.prototype.reduceRight` method
-  // https://tc39.github.io/ecma262/#sec-array.prototype.reduceright
+  // https://tc39.es/ecma262/#sec-array.prototype.reduceright
   right: createMethod(true)
 };
 
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/array-species-create.js":
-/*!*************************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/array-species-create.js ***!
-  \*************************************************************************************************/
+/***/ "./node_modules/core-js/internals/array-species-create.js":
+/*!****************************************************************!*\
+  !*** ./node_modules/core-js/internals/array-species-create.js ***!
+  \****************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/is-object.js");
-var isArray = __webpack_require__(/*! ../internals/is-array */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/is-array.js");
-var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/well-known-symbol.js");
+var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/core-js/internals/is-object.js");
+var isArray = __webpack_require__(/*! ../internals/is-array */ "./node_modules/core-js/internals/is-array.js");
+var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/core-js/internals/well-known-symbol.js");
 
 var SPECIES = wellKnownSymbol('species');
 
 // `ArraySpeciesCreate` abstract operation
-// https://tc39.github.io/ecma262/#sec-arrayspeciescreate
+// https://tc39.es/ecma262/#sec-arrayspeciescreate
 module.exports = function (originalArray, length) {
   var C;
   if (isArray(originalArray)) {
@@ -9123,14 +9622,15 @@ module.exports = function (originalArray, length) {
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/call-with-safe-iteration-closing.js":
-/*!*************************************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/call-with-safe-iteration-closing.js ***!
-  \*************************************************************************************************************/
+/***/ "./node_modules/core-js/internals/call-with-safe-iteration-closing.js":
+/*!****************************************************************************!*\
+  !*** ./node_modules/core-js/internals/call-with-safe-iteration-closing.js ***!
+  \****************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/an-object.js");
+var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/core-js/internals/an-object.js");
+var iteratorClose = __webpack_require__(/*! ../internals/iterator-close */ "./node_modules/core-js/internals/iterator-close.js");
 
 // call something on iterator step with safe closing on error
 module.exports = function (iterator, fn, value, ENTRIES) {
@@ -9138,8 +9638,7 @@ module.exports = function (iterator, fn, value, ENTRIES) {
     return ENTRIES ? fn(anObject(value)[0], value[1]) : fn(value);
   // 7.4.6 IteratorClose(iterator, completion)
   } catch (error) {
-    var returnMethod = iterator['return'];
-    if (returnMethod !== undefined) anObject(returnMethod.call(iterator));
+    iteratorClose(iterator);
     throw error;
   }
 };
@@ -9147,14 +9646,14 @@ module.exports = function (iterator, fn, value, ENTRIES) {
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/check-correctness-of-iteration.js":
-/*!***********************************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/check-correctness-of-iteration.js ***!
-  \***********************************************************************************************************/
+/***/ "./node_modules/core-js/internals/check-correctness-of-iteration.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/core-js/internals/check-correctness-of-iteration.js ***!
+  \**************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/well-known-symbol.js");
+var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/core-js/internals/well-known-symbol.js");
 
 var ITERATOR = wellKnownSymbol('iterator');
 var SAFE_CLOSING = false;
@@ -9172,7 +9671,7 @@ try {
   iteratorWithReturn[ITERATOR] = function () {
     return this;
   };
-  // eslint-disable-next-line no-throw-literal
+  // eslint-disable-next-line no-throw-literal -- required for testing
   Array.from(iteratorWithReturn, function () { throw 2; });
 } catch (error) { /* empty */ }
 
@@ -9196,10 +9695,10 @@ module.exports = function (exec, SKIP_CLOSING) {
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/classof-raw.js":
-/*!****************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/classof-raw.js ***!
-  \****************************************************************************************/
+/***/ "./node_modules/core-js/internals/classof-raw.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/core-js/internals/classof-raw.js ***!
+  \*******************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -9212,16 +9711,16 @@ module.exports = function (it) {
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/classof.js":
-/*!************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/classof.js ***!
-  \************************************************************************************/
+/***/ "./node_modules/core-js/internals/classof.js":
+/*!***************************************************!*\
+  !*** ./node_modules/core-js/internals/classof.js ***!
+  \***************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var TO_STRING_TAG_SUPPORT = __webpack_require__(/*! ../internals/to-string-tag-support */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/to-string-tag-support.js");
-var classofRaw = __webpack_require__(/*! ../internals/classof-raw */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/classof-raw.js");
-var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/well-known-symbol.js");
+var TO_STRING_TAG_SUPPORT = __webpack_require__(/*! ../internals/to-string-tag-support */ "./node_modules/core-js/internals/to-string-tag-support.js");
+var classofRaw = __webpack_require__(/*! ../internals/classof-raw */ "./node_modules/core-js/internals/classof-raw.js");
+var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/core-js/internals/well-known-symbol.js");
 
 var TO_STRING_TAG = wellKnownSymbol('toStringTag');
 // ES3 wrong here
@@ -9249,26 +9748,26 @@ module.exports = TO_STRING_TAG_SUPPORT ? classofRaw : function (it) {
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/collection-strong.js":
-/*!**********************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/collection-strong.js ***!
-  \**********************************************************************************************/
+/***/ "./node_modules/core-js/internals/collection-strong.js":
+/*!*************************************************************!*\
+  !*** ./node_modules/core-js/internals/collection-strong.js ***!
+  \*************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var defineProperty = __webpack_require__(/*! ../internals/object-define-property */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/object-define-property.js").f;
-var create = __webpack_require__(/*! ../internals/object-create */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/object-create.js");
-var redefineAll = __webpack_require__(/*! ../internals/redefine-all */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/redefine-all.js");
-var bind = __webpack_require__(/*! ../internals/function-bind-context */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/function-bind-context.js");
-var anInstance = __webpack_require__(/*! ../internals/an-instance */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/an-instance.js");
-var iterate = __webpack_require__(/*! ../internals/iterate */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/iterate.js");
-var defineIterator = __webpack_require__(/*! ../internals/define-iterator */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/define-iterator.js");
-var setSpecies = __webpack_require__(/*! ../internals/set-species */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/set-species.js");
-var DESCRIPTORS = __webpack_require__(/*! ../internals/descriptors */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/descriptors.js");
-var fastKey = __webpack_require__(/*! ../internals/internal-metadata */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/internal-metadata.js").fastKey;
-var InternalStateModule = __webpack_require__(/*! ../internals/internal-state */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/internal-state.js");
+var defineProperty = __webpack_require__(/*! ../internals/object-define-property */ "./node_modules/core-js/internals/object-define-property.js").f;
+var create = __webpack_require__(/*! ../internals/object-create */ "./node_modules/core-js/internals/object-create.js");
+var redefineAll = __webpack_require__(/*! ../internals/redefine-all */ "./node_modules/core-js/internals/redefine-all.js");
+var bind = __webpack_require__(/*! ../internals/function-bind-context */ "./node_modules/core-js/internals/function-bind-context.js");
+var anInstance = __webpack_require__(/*! ../internals/an-instance */ "./node_modules/core-js/internals/an-instance.js");
+var iterate = __webpack_require__(/*! ../internals/iterate */ "./node_modules/core-js/internals/iterate.js");
+var defineIterator = __webpack_require__(/*! ../internals/define-iterator */ "./node_modules/core-js/internals/define-iterator.js");
+var setSpecies = __webpack_require__(/*! ../internals/set-species */ "./node_modules/core-js/internals/set-species.js");
+var DESCRIPTORS = __webpack_require__(/*! ../internals/descriptors */ "./node_modules/core-js/internals/descriptors.js");
+var fastKey = __webpack_require__(/*! ../internals/internal-metadata */ "./node_modules/core-js/internals/internal-metadata.js").fastKey;
+var InternalStateModule = __webpack_require__(/*! ../internals/internal-state */ "./node_modules/core-js/internals/internal-state.js");
 
 var setInternalState = InternalStateModule.set;
 var internalStateGetterFor = InternalStateModule.getterFor;
@@ -9285,7 +9784,7 @@ module.exports = {
         size: 0
       });
       if (!DESCRIPTORS) that.size = 0;
-      if (iterable != undefined) iterate(iterable, that[ADDER], that, IS_MAP);
+      if (iterable != undefined) iterate(iterable, that[ADDER], { that: that, AS_ENTRIES: IS_MAP });
     });
 
     var getInternalState = internalStateGetterFor(CONSTRUCTOR_NAME);
@@ -9447,27 +9946,27 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/collection.js":
-/*!***************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/collection.js ***!
-  \***************************************************************************************/
+/***/ "./node_modules/core-js/internals/collection.js":
+/*!******************************************************!*\
+  !*** ./node_modules/core-js/internals/collection.js ***!
+  \******************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/export.js");
-var global = __webpack_require__(/*! ../internals/global */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/global.js");
-var isForced = __webpack_require__(/*! ../internals/is-forced */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/is-forced.js");
-var redefine = __webpack_require__(/*! ../internals/redefine */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/redefine.js");
-var InternalMetadataModule = __webpack_require__(/*! ../internals/internal-metadata */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/internal-metadata.js");
-var iterate = __webpack_require__(/*! ../internals/iterate */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/iterate.js");
-var anInstance = __webpack_require__(/*! ../internals/an-instance */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/an-instance.js");
-var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/is-object.js");
-var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/fails.js");
-var checkCorrectnessOfIteration = __webpack_require__(/*! ../internals/check-correctness-of-iteration */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/check-correctness-of-iteration.js");
-var setToStringTag = __webpack_require__(/*! ../internals/set-to-string-tag */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/set-to-string-tag.js");
-var inheritIfRequired = __webpack_require__(/*! ../internals/inherit-if-required */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/inherit-if-required.js");
+var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
+var global = __webpack_require__(/*! ../internals/global */ "./node_modules/core-js/internals/global.js");
+var isForced = __webpack_require__(/*! ../internals/is-forced */ "./node_modules/core-js/internals/is-forced.js");
+var redefine = __webpack_require__(/*! ../internals/redefine */ "./node_modules/core-js/internals/redefine.js");
+var InternalMetadataModule = __webpack_require__(/*! ../internals/internal-metadata */ "./node_modules/core-js/internals/internal-metadata.js");
+var iterate = __webpack_require__(/*! ../internals/iterate */ "./node_modules/core-js/internals/iterate.js");
+var anInstance = __webpack_require__(/*! ../internals/an-instance */ "./node_modules/core-js/internals/an-instance.js");
+var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/core-js/internals/is-object.js");
+var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/core-js/internals/fails.js");
+var checkCorrectnessOfIteration = __webpack_require__(/*! ../internals/check-correctness-of-iteration */ "./node_modules/core-js/internals/check-correctness-of-iteration.js");
+var setToStringTag = __webpack_require__(/*! ../internals/set-to-string-tag */ "./node_modules/core-js/internals/set-to-string-tag.js");
+var inheritIfRequired = __webpack_require__(/*! ../internals/inherit-if-required */ "./node_modules/core-js/internals/inherit-if-required.js");
 
 module.exports = function (CONSTRUCTOR_NAME, wrapper, common) {
   var IS_MAP = CONSTRUCTOR_NAME.indexOf('Map') !== -1;
@@ -9497,10 +9996,14 @@ module.exports = function (CONSTRUCTOR_NAME, wrapper, common) {
     );
   };
 
-  // eslint-disable-next-line max-len
-  if (isForced(CONSTRUCTOR_NAME, typeof NativeConstructor != 'function' || !(IS_WEAK || NativePrototype.forEach && !fails(function () {
-    new NativeConstructor().entries().next();
-  })))) {
+  var REPLACE = isForced(
+    CONSTRUCTOR_NAME,
+    typeof NativeConstructor != 'function' || !(IS_WEAK || NativePrototype.forEach && !fails(function () {
+      new NativeConstructor().entries().next();
+    }))
+  );
+
+  if (REPLACE) {
     // create collection constructor
     Constructor = common.getConstructor(wrapper, CONSTRUCTOR_NAME, IS_MAP, ADDER);
     InternalMetadataModule.REQUIRED = true;
@@ -9511,7 +10014,7 @@ module.exports = function (CONSTRUCTOR_NAME, wrapper, common) {
     // V8 ~ Chromium 40- weak-collections throws on primitives, but should return false
     var THROWS_ON_PRIMITIVES = fails(function () { instance.has(1); });
     // most early implementations doesn't supports iterables, most modern - not close it correctly
-    // eslint-disable-next-line no-new
+    // eslint-disable-next-line no-new -- required for testing
     var ACCEPT_ITERABLES = checkCorrectnessOfIteration(function (iterable) { new NativeConstructor(iterable); });
     // for early implementations -0 and +0 not the same
     var BUGGY_ZERO = !IS_WEAK && fails(function () {
@@ -9526,7 +10029,7 @@ module.exports = function (CONSTRUCTOR_NAME, wrapper, common) {
       Constructor = wrapper(function (dummy, iterable) {
         anInstance(dummy, Constructor, CONSTRUCTOR_NAME);
         var that = inheritIfRequired(new NativeConstructor(), dummy, Constructor);
-        if (iterable != undefined) iterate(iterable, that[ADDER], that, IS_MAP);
+        if (iterable != undefined) iterate(iterable, that[ADDER], { that: that, AS_ENTRIES: IS_MAP });
         return that;
       });
       Constructor.prototype = NativePrototype;
@@ -9558,17 +10061,17 @@ module.exports = function (CONSTRUCTOR_NAME, wrapper, common) {
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/copy-constructor-properties.js":
-/*!********************************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/copy-constructor-properties.js ***!
-  \********************************************************************************************************/
+/***/ "./node_modules/core-js/internals/copy-constructor-properties.js":
+/*!***********************************************************************!*\
+  !*** ./node_modules/core-js/internals/copy-constructor-properties.js ***!
+  \***********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var has = __webpack_require__(/*! ../internals/has */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/has.js");
-var ownKeys = __webpack_require__(/*! ../internals/own-keys */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/own-keys.js");
-var getOwnPropertyDescriptorModule = __webpack_require__(/*! ../internals/object-get-own-property-descriptor */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/object-get-own-property-descriptor.js");
-var definePropertyModule = __webpack_require__(/*! ../internals/object-define-property */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/object-define-property.js");
+var has = __webpack_require__(/*! ../internals/has */ "./node_modules/core-js/internals/has.js");
+var ownKeys = __webpack_require__(/*! ../internals/own-keys */ "./node_modules/core-js/internals/own-keys.js");
+var getOwnPropertyDescriptorModule = __webpack_require__(/*! ../internals/object-get-own-property-descriptor */ "./node_modules/core-js/internals/object-get-own-property-descriptor.js");
+var definePropertyModule = __webpack_require__(/*! ../internals/object-define-property */ "./node_modules/core-js/internals/object-define-property.js");
 
 module.exports = function (target, source) {
   var keys = ownKeys(source);
@@ -9583,14 +10086,14 @@ module.exports = function (target, source) {
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/correct-is-regexp-logic.js":
-/*!****************************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/correct-is-regexp-logic.js ***!
-  \****************************************************************************************************/
+/***/ "./node_modules/core-js/internals/correct-is-regexp-logic.js":
+/*!*******************************************************************!*\
+  !*** ./node_modules/core-js/internals/correct-is-regexp-logic.js ***!
+  \*******************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/well-known-symbol.js");
+var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/core-js/internals/well-known-symbol.js");
 
 var MATCH = wellKnownSymbol('match');
 
@@ -9598,25 +10101,25 @@ module.exports = function (METHOD_NAME) {
   var regexp = /./;
   try {
     '/./'[METHOD_NAME](regexp);
-  } catch (e) {
+  } catch (error1) {
     try {
       regexp[MATCH] = false;
       return '/./'[METHOD_NAME](regexp);
-    } catch (f) { /* empty */ }
+    } catch (error2) { /* empty */ }
   } return false;
 };
 
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/correct-prototype-getter.js":
-/*!*****************************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/correct-prototype-getter.js ***!
-  \*****************************************************************************************************/
+/***/ "./node_modules/core-js/internals/correct-prototype-getter.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/core-js/internals/correct-prototype-getter.js ***!
+  \********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/fails.js");
+var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/core-js/internals/fails.js");
 
 module.exports = !fails(function () {
   function F() { /* empty */ }
@@ -9627,20 +10130,20 @@ module.exports = !fails(function () {
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/create-iterator-constructor.js":
-/*!********************************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/create-iterator-constructor.js ***!
-  \********************************************************************************************************/
+/***/ "./node_modules/core-js/internals/create-iterator-constructor.js":
+/*!***********************************************************************!*\
+  !*** ./node_modules/core-js/internals/create-iterator-constructor.js ***!
+  \***********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var IteratorPrototype = __webpack_require__(/*! ../internals/iterators-core */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/iterators-core.js").IteratorPrototype;
-var create = __webpack_require__(/*! ../internals/object-create */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/object-create.js");
-var createPropertyDescriptor = __webpack_require__(/*! ../internals/create-property-descriptor */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/create-property-descriptor.js");
-var setToStringTag = __webpack_require__(/*! ../internals/set-to-string-tag */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/set-to-string-tag.js");
-var Iterators = __webpack_require__(/*! ../internals/iterators */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/iterators.js");
+var IteratorPrototype = __webpack_require__(/*! ../internals/iterators-core */ "./node_modules/core-js/internals/iterators-core.js").IteratorPrototype;
+var create = __webpack_require__(/*! ../internals/object-create */ "./node_modules/core-js/internals/object-create.js");
+var createPropertyDescriptor = __webpack_require__(/*! ../internals/create-property-descriptor */ "./node_modules/core-js/internals/create-property-descriptor.js");
+var setToStringTag = __webpack_require__(/*! ../internals/set-to-string-tag */ "./node_modules/core-js/internals/set-to-string-tag.js");
+var Iterators = __webpack_require__(/*! ../internals/iterators */ "./node_modules/core-js/internals/iterators.js");
 
 var returnThis = function () { return this; };
 
@@ -9655,16 +10158,16 @@ module.exports = function (IteratorConstructor, NAME, next) {
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/create-non-enumerable-property.js":
-/*!***********************************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/create-non-enumerable-property.js ***!
-  \***********************************************************************************************************/
+/***/ "./node_modules/core-js/internals/create-non-enumerable-property.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/core-js/internals/create-non-enumerable-property.js ***!
+  \**************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var DESCRIPTORS = __webpack_require__(/*! ../internals/descriptors */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/descriptors.js");
-var definePropertyModule = __webpack_require__(/*! ../internals/object-define-property */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/object-define-property.js");
-var createPropertyDescriptor = __webpack_require__(/*! ../internals/create-property-descriptor */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/create-property-descriptor.js");
+var DESCRIPTORS = __webpack_require__(/*! ../internals/descriptors */ "./node_modules/core-js/internals/descriptors.js");
+var definePropertyModule = __webpack_require__(/*! ../internals/object-define-property */ "./node_modules/core-js/internals/object-define-property.js");
+var createPropertyDescriptor = __webpack_require__(/*! ../internals/create-property-descriptor */ "./node_modules/core-js/internals/create-property-descriptor.js");
 
 module.exports = DESCRIPTORS ? function (object, key, value) {
   return definePropertyModule.f(object, key, createPropertyDescriptor(1, value));
@@ -9676,10 +10179,10 @@ module.exports = DESCRIPTORS ? function (object, key, value) {
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/create-property-descriptor.js":
-/*!*******************************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/create-property-descriptor.js ***!
-  \*******************************************************************************************************/
+/***/ "./node_modules/core-js/internals/create-property-descriptor.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/core-js/internals/create-property-descriptor.js ***!
+  \**********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -9695,18 +10198,18 @@ module.exports = function (bitmap, value) {
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/create-property.js":
-/*!********************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/create-property.js ***!
-  \********************************************************************************************/
+/***/ "./node_modules/core-js/internals/create-property.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/core-js/internals/create-property.js ***!
+  \***********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var toPrimitive = __webpack_require__(/*! ../internals/to-primitive */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/to-primitive.js");
-var definePropertyModule = __webpack_require__(/*! ../internals/object-define-property */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/object-define-property.js");
-var createPropertyDescriptor = __webpack_require__(/*! ../internals/create-property-descriptor */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/create-property-descriptor.js");
+var toPrimitive = __webpack_require__(/*! ../internals/to-primitive */ "./node_modules/core-js/internals/to-primitive.js");
+var definePropertyModule = __webpack_require__(/*! ../internals/object-define-property */ "./node_modules/core-js/internals/object-define-property.js");
+var createPropertyDescriptor = __webpack_require__(/*! ../internals/create-property-descriptor */ "./node_modules/core-js/internals/create-property-descriptor.js");
 
 module.exports = function (object, key, value) {
   var propertyKey = toPrimitive(key);
@@ -9717,26 +10220,26 @@ module.exports = function (object, key, value) {
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/define-iterator.js":
-/*!********************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/define-iterator.js ***!
-  \********************************************************************************************/
+/***/ "./node_modules/core-js/internals/define-iterator.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/core-js/internals/define-iterator.js ***!
+  \***********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/export.js");
-var createIteratorConstructor = __webpack_require__(/*! ../internals/create-iterator-constructor */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/create-iterator-constructor.js");
-var getPrototypeOf = __webpack_require__(/*! ../internals/object-get-prototype-of */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/object-get-prototype-of.js");
-var setPrototypeOf = __webpack_require__(/*! ../internals/object-set-prototype-of */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/object-set-prototype-of.js");
-var setToStringTag = __webpack_require__(/*! ../internals/set-to-string-tag */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/set-to-string-tag.js");
-var createNonEnumerableProperty = __webpack_require__(/*! ../internals/create-non-enumerable-property */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/create-non-enumerable-property.js");
-var redefine = __webpack_require__(/*! ../internals/redefine */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/redefine.js");
-var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/well-known-symbol.js");
-var IS_PURE = __webpack_require__(/*! ../internals/is-pure */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/is-pure.js");
-var Iterators = __webpack_require__(/*! ../internals/iterators */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/iterators.js");
-var IteratorsCore = __webpack_require__(/*! ../internals/iterators-core */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/iterators-core.js");
+var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
+var createIteratorConstructor = __webpack_require__(/*! ../internals/create-iterator-constructor */ "./node_modules/core-js/internals/create-iterator-constructor.js");
+var getPrototypeOf = __webpack_require__(/*! ../internals/object-get-prototype-of */ "./node_modules/core-js/internals/object-get-prototype-of.js");
+var setPrototypeOf = __webpack_require__(/*! ../internals/object-set-prototype-of */ "./node_modules/core-js/internals/object-set-prototype-of.js");
+var setToStringTag = __webpack_require__(/*! ../internals/set-to-string-tag */ "./node_modules/core-js/internals/set-to-string-tag.js");
+var createNonEnumerableProperty = __webpack_require__(/*! ../internals/create-non-enumerable-property */ "./node_modules/core-js/internals/create-non-enumerable-property.js");
+var redefine = __webpack_require__(/*! ../internals/redefine */ "./node_modules/core-js/internals/redefine.js");
+var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/core-js/internals/well-known-symbol.js");
+var IS_PURE = __webpack_require__(/*! ../internals/is-pure */ "./node_modules/core-js/internals/is-pure.js");
+var Iterators = __webpack_require__(/*! ../internals/iterators */ "./node_modules/core-js/internals/iterators.js");
+var IteratorsCore = __webpack_require__(/*! ../internals/iterators-core */ "./node_modules/core-js/internals/iterators-core.js");
 
 var IteratorPrototype = IteratorsCore.IteratorPrototype;
 var BUGGY_SAFARI_ITERATORS = IteratorsCore.BUGGY_SAFARI_ITERATORS;
@@ -9819,17 +10322,17 @@ module.exports = function (Iterable, NAME, IteratorConstructor, next, DEFAULT, I
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/define-well-known-symbol.js":
-/*!*****************************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/define-well-known-symbol.js ***!
-  \*****************************************************************************************************/
+/***/ "./node_modules/core-js/internals/define-well-known-symbol.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/core-js/internals/define-well-known-symbol.js ***!
+  \********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var path = __webpack_require__(/*! ../internals/path */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/path.js");
-var has = __webpack_require__(/*! ../internals/has */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/has.js");
-var wrappedWellKnownSymbolModule = __webpack_require__(/*! ../internals/well-known-symbol-wrapped */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/well-known-symbol-wrapped.js");
-var defineProperty = __webpack_require__(/*! ../internals/object-define-property */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/object-define-property.js").f;
+var path = __webpack_require__(/*! ../internals/path */ "./node_modules/core-js/internals/path.js");
+var has = __webpack_require__(/*! ../internals/has */ "./node_modules/core-js/internals/has.js");
+var wrappedWellKnownSymbolModule = __webpack_require__(/*! ../internals/well-known-symbol-wrapped */ "./node_modules/core-js/internals/well-known-symbol-wrapped.js");
+var defineProperty = __webpack_require__(/*! ../internals/object-define-property */ "./node_modules/core-js/internals/object-define-property.js").f;
 
 module.exports = function (NAME) {
   var Symbol = path.Symbol || (path.Symbol = {});
@@ -9841,16 +10344,16 @@ module.exports = function (NAME) {
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/descriptors.js":
-/*!****************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/descriptors.js ***!
-  \****************************************************************************************/
+/***/ "./node_modules/core-js/internals/descriptors.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/core-js/internals/descriptors.js ***!
+  \*******************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/fails.js");
+var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/core-js/internals/fails.js");
 
-// Thank's IE8 for his funny defineProperty
+// Detect IE8's incomplete defineProperty implementation
 module.exports = !fails(function () {
   return Object.defineProperty({}, 1, { get: function () { return 7; } })[1] != 7;
 });
@@ -9858,15 +10361,15 @@ module.exports = !fails(function () {
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/document-create-element.js":
-/*!****************************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/document-create-element.js ***!
-  \****************************************************************************************************/
+/***/ "./node_modules/core-js/internals/document-create-element.js":
+/*!*******************************************************************!*\
+  !*** ./node_modules/core-js/internals/document-create-element.js ***!
+  \*******************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var global = __webpack_require__(/*! ../internals/global */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/global.js");
-var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/is-object.js");
+var global = __webpack_require__(/*! ../internals/global */ "./node_modules/core-js/internals/global.js");
+var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/core-js/internals/is-object.js");
 
 var document = global.document;
 // typeof document.createElement is 'object' in old IE
@@ -9879,10 +10382,10 @@ module.exports = function (it) {
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/dom-iterables.js":
-/*!******************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/dom-iterables.js ***!
-  \******************************************************************************************/
+/***/ "./node_modules/core-js/internals/dom-iterables.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/core-js/internals/dom-iterables.js ***!
+  \*********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -9925,43 +10428,72 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/engine-is-ios.js":
-/*!******************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/engine-is-ios.js ***!
-  \******************************************************************************************/
+/***/ "./node_modules/core-js/internals/engine-is-ios.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/core-js/internals/engine-is-ios.js ***!
+  \*********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var userAgent = __webpack_require__(/*! ../internals/engine-user-agent */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/engine-user-agent.js");
+var userAgent = __webpack_require__(/*! ../internals/engine-user-agent */ "./node_modules/core-js/internals/engine-user-agent.js");
 
 module.exports = /(iphone|ipod|ipad).*applewebkit/i.test(userAgent);
 
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/engine-user-agent.js":
-/*!**********************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/engine-user-agent.js ***!
-  \**********************************************************************************************/
+/***/ "./node_modules/core-js/internals/engine-is-node.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/core-js/internals/engine-is-node.js ***!
+  \**********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var getBuiltIn = __webpack_require__(/*! ../internals/get-built-in */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/get-built-in.js");
+var classof = __webpack_require__(/*! ../internals/classof-raw */ "./node_modules/core-js/internals/classof-raw.js");
+var global = __webpack_require__(/*! ../internals/global */ "./node_modules/core-js/internals/global.js");
+
+module.exports = classof(global.process) == 'process';
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/internals/engine-is-webos-webkit.js":
+/*!******************************************************************!*\
+  !*** ./node_modules/core-js/internals/engine-is-webos-webkit.js ***!
+  \******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var userAgent = __webpack_require__(/*! ../internals/engine-user-agent */ "./node_modules/core-js/internals/engine-user-agent.js");
+
+module.exports = /web0s(?!.*chrome)/i.test(userAgent);
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/internals/engine-user-agent.js":
+/*!*************************************************************!*\
+  !*** ./node_modules/core-js/internals/engine-user-agent.js ***!
+  \*************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var getBuiltIn = __webpack_require__(/*! ../internals/get-built-in */ "./node_modules/core-js/internals/get-built-in.js");
 
 module.exports = getBuiltIn('navigator', 'userAgent') || '';
 
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/engine-v8-version.js":
-/*!**********************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/engine-v8-version.js ***!
-  \**********************************************************************************************/
+/***/ "./node_modules/core-js/internals/engine-v8-version.js":
+/*!*************************************************************!*\
+  !*** ./node_modules/core-js/internals/engine-v8-version.js ***!
+  \*************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var global = __webpack_require__(/*! ../internals/global */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/global.js");
-var userAgent = __webpack_require__(/*! ../internals/engine-user-agent */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/engine-user-agent.js");
+var global = __webpack_require__(/*! ../internals/global */ "./node_modules/core-js/internals/global.js");
+var userAgent = __webpack_require__(/*! ../internals/engine-user-agent */ "./node_modules/core-js/internals/engine-user-agent.js");
 
 var process = global.process;
 var versions = process && process.versions;
@@ -9984,10 +10516,10 @@ module.exports = version && +version;
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/enum-bug-keys.js":
-/*!******************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/enum-bug-keys.js ***!
-  \******************************************************************************************/
+/***/ "./node_modules/core-js/internals/enum-bug-keys.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/core-js/internals/enum-bug-keys.js ***!
+  \*********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -10005,20 +10537,20 @@ module.exports = [
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/export.js":
-/*!***********************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/export.js ***!
-  \***********************************************************************************/
+/***/ "./node_modules/core-js/internals/export.js":
+/*!**************************************************!*\
+  !*** ./node_modules/core-js/internals/export.js ***!
+  \**************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var global = __webpack_require__(/*! ../internals/global */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/global.js");
-var getOwnPropertyDescriptor = __webpack_require__(/*! ../internals/object-get-own-property-descriptor */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/object-get-own-property-descriptor.js").f;
-var createNonEnumerableProperty = __webpack_require__(/*! ../internals/create-non-enumerable-property */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/create-non-enumerable-property.js");
-var redefine = __webpack_require__(/*! ../internals/redefine */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/redefine.js");
-var setGlobal = __webpack_require__(/*! ../internals/set-global */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/set-global.js");
-var copyConstructorProperties = __webpack_require__(/*! ../internals/copy-constructor-properties */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/copy-constructor-properties.js");
-var isForced = __webpack_require__(/*! ../internals/is-forced */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/is-forced.js");
+var global = __webpack_require__(/*! ../internals/global */ "./node_modules/core-js/internals/global.js");
+var getOwnPropertyDescriptor = __webpack_require__(/*! ../internals/object-get-own-property-descriptor */ "./node_modules/core-js/internals/object-get-own-property-descriptor.js").f;
+var createNonEnumerableProperty = __webpack_require__(/*! ../internals/create-non-enumerable-property */ "./node_modules/core-js/internals/create-non-enumerable-property.js");
+var redefine = __webpack_require__(/*! ../internals/redefine */ "./node_modules/core-js/internals/redefine.js");
+var setGlobal = __webpack_require__(/*! ../internals/set-global */ "./node_modules/core-js/internals/set-global.js");
+var copyConstructorProperties = __webpack_require__(/*! ../internals/copy-constructor-properties */ "./node_modules/core-js/internals/copy-constructor-properties.js");
+var isForced = __webpack_require__(/*! ../internals/is-forced */ "./node_modules/core-js/internals/is-forced.js");
 
 /*
   options.target      - name of the target object
@@ -10070,10 +10602,10 @@ module.exports = function (options, source) {
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/fails.js":
-/*!**********************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/fails.js ***!
-  \**********************************************************************************/
+/***/ "./node_modules/core-js/internals/fails.js":
+/*!*************************************************!*\
+  !*** ./node_modules/core-js/internals/fails.js ***!
+  \*************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -10088,22 +10620,22 @@ module.exports = function (exec) {
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/fix-regexp-well-known-symbol-logic.js":
-/*!***************************************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/fix-regexp-well-known-symbol-logic.js ***!
-  \***************************************************************************************************************/
+/***/ "./node_modules/core-js/internals/fix-regexp-well-known-symbol-logic.js":
+/*!******************************************************************************!*\
+  !*** ./node_modules/core-js/internals/fix-regexp-well-known-symbol-logic.js ***!
+  \******************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 // TODO: Remove from `core-js@4` since it's moved to entry points
-__webpack_require__(/*! ../modules/es.regexp.exec */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.regexp.exec.js");
-var redefine = __webpack_require__(/*! ../internals/redefine */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/redefine.js");
-var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/fails.js");
-var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/well-known-symbol.js");
-var regexpExec = __webpack_require__(/*! ../internals/regexp-exec */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/regexp-exec.js");
-var createNonEnumerableProperty = __webpack_require__(/*! ../internals/create-non-enumerable-property */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/create-non-enumerable-property.js");
+__webpack_require__(/*! ../modules/es.regexp.exec */ "./node_modules/core-js/modules/es.regexp.exec.js");
+var redefine = __webpack_require__(/*! ../internals/redefine */ "./node_modules/core-js/internals/redefine.js");
+var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/core-js/internals/fails.js");
+var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/core-js/internals/well-known-symbol.js");
+var regexpExec = __webpack_require__(/*! ../internals/regexp-exec */ "./node_modules/core-js/internals/regexp-exec.js");
+var createNonEnumerableProperty = __webpack_require__(/*! ../internals/create-non-enumerable-property */ "./node_modules/core-js/internals/create-non-enumerable-property.js");
 
 var SPECIES = wellKnownSymbol('species');
 
@@ -10138,6 +10670,7 @@ var REGEXP_REPLACE_SUBSTITUTES_UNDEFINED_CAPTURE = (function () {
 // Chrome 51 has a buggy "split" implementation when RegExp#exec !== nativeExec
 // Weex JS has frozen built-in prototypes, so use try / catch wrapper
 var SPLIT_WORKS_WITH_OVERWRITTEN_EXEC = !fails(function () {
+  // eslint-disable-next-line regexp/no-empty-group -- required for testing
   var re = /(?:)/;
   var originalExec = re.exec;
   re.exec = function () { return originalExec.apply(this, arguments); };
@@ -10225,14 +10758,14 @@ module.exports = function (KEY, length, exec, sham) {
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/freezing.js":
-/*!*************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/freezing.js ***!
-  \*************************************************************************************/
+/***/ "./node_modules/core-js/internals/freezing.js":
+/*!****************************************************!*\
+  !*** ./node_modules/core-js/internals/freezing.js ***!
+  \****************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/fails.js");
+var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/core-js/internals/fails.js");
 
 module.exports = !fails(function () {
   return Object.isExtensible(Object.preventExtensions({}));
@@ -10241,14 +10774,14 @@ module.exports = !fails(function () {
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/function-bind-context.js":
-/*!**************************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/function-bind-context.js ***!
-  \**************************************************************************************************/
+/***/ "./node_modules/core-js/internals/function-bind-context.js":
+/*!*****************************************************************!*\
+  !*** ./node_modules/core-js/internals/function-bind-context.js ***!
+  \*****************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var aFunction = __webpack_require__(/*! ../internals/a-function */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/a-function.js");
+var aFunction = __webpack_require__(/*! ../internals/a-function */ "./node_modules/core-js/internals/a-function.js");
 
 // optional / simple context binding
 module.exports = function (fn, that, length) {
@@ -10276,17 +10809,17 @@ module.exports = function (fn, that, length) {
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/function-bind.js":
-/*!******************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/function-bind.js ***!
-  \******************************************************************************************/
+/***/ "./node_modules/core-js/internals/function-bind.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/core-js/internals/function-bind.js ***!
+  \*********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var aFunction = __webpack_require__(/*! ../internals/a-function */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/a-function.js");
-var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/is-object.js");
+var aFunction = __webpack_require__(/*! ../internals/a-function */ "./node_modules/core-js/internals/a-function.js");
+var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/core-js/internals/is-object.js");
 
 var slice = [].slice;
 var factories = {};
@@ -10294,13 +10827,13 @@ var factories = {};
 var construct = function (C, argsLength, args) {
   if (!(argsLength in factories)) {
     for (var list = [], i = 0; i < argsLength; i++) list[i] = 'a[' + i + ']';
-    // eslint-disable-next-line no-new-func
+    // eslint-disable-next-line no-new-func -- we have no proper alternatives, IE8- only
     factories[argsLength] = Function('C,a', 'return new C(' + list.join(',') + ')');
   } return factories[argsLength](C, args);
 };
 
 // `Function.prototype.bind` method implementation
-// https://tc39.github.io/ecma262/#sec-function.prototype.bind
+// https://tc39.es/ecma262/#sec-function.prototype.bind
 module.exports = Function.bind || function bind(that /* , ...args */) {
   var fn = aFunction(this);
   var partArgs = slice.call(arguments, 1);
@@ -10315,15 +10848,15 @@ module.exports = Function.bind || function bind(that /* , ...args */) {
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/get-built-in.js":
-/*!*****************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/get-built-in.js ***!
-  \*****************************************************************************************/
+/***/ "./node_modules/core-js/internals/get-built-in.js":
+/*!********************************************************!*\
+  !*** ./node_modules/core-js/internals/get-built-in.js ***!
+  \********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var path = __webpack_require__(/*! ../internals/path */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/path.js");
-var global = __webpack_require__(/*! ../internals/global */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/global.js");
+var path = __webpack_require__(/*! ../internals/path */ "./node_modules/core-js/internals/path.js");
+var global = __webpack_require__(/*! ../internals/global */ "./node_modules/core-js/internals/global.js");
 
 var aFunction = function (variable) {
   return typeof variable == 'function' ? variable : undefined;
@@ -10337,16 +10870,16 @@ module.exports = function (namespace, method) {
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/get-iterator-method.js":
-/*!************************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/get-iterator-method.js ***!
-  \************************************************************************************************/
+/***/ "./node_modules/core-js/internals/get-iterator-method.js":
+/*!***************************************************************!*\
+  !*** ./node_modules/core-js/internals/get-iterator-method.js ***!
+  \***************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var classof = __webpack_require__(/*! ../internals/classof */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/classof.js");
-var Iterators = __webpack_require__(/*! ../internals/iterators */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/iterators.js");
-var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/well-known-symbol.js");
+var classof = __webpack_require__(/*! ../internals/classof */ "./node_modules/core-js/internals/classof.js");
+var Iterators = __webpack_require__(/*! ../internals/iterators */ "./node_modules/core-js/internals/iterators.js");
+var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/core-js/internals/well-known-symbol.js");
 
 var ITERATOR = wellKnownSymbol('iterator');
 
@@ -10359,10 +10892,61 @@ module.exports = function (it) {
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/global.js":
-/*!***********************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/global.js ***!
-  \***********************************************************************************/
+/***/ "./node_modules/core-js/internals/get-substitution.js":
+/*!************************************************************!*\
+  !*** ./node_modules/core-js/internals/get-substitution.js ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var toObject = __webpack_require__(/*! ../internals/to-object */ "./node_modules/core-js/internals/to-object.js");
+
+var floor = Math.floor;
+var replace = ''.replace;
+var SUBSTITUTION_SYMBOLS = /\$([$&'`]|\d\d?|<[^>]*>)/g;
+var SUBSTITUTION_SYMBOLS_NO_NAMED = /\$([$&'`]|\d\d?)/g;
+
+// https://tc39.es/ecma262/#sec-getsubstitution
+module.exports = function (matched, str, position, captures, namedCaptures, replacement) {
+  var tailPos = position + matched.length;
+  var m = captures.length;
+  var symbols = SUBSTITUTION_SYMBOLS_NO_NAMED;
+  if (namedCaptures !== undefined) {
+    namedCaptures = toObject(namedCaptures);
+    symbols = SUBSTITUTION_SYMBOLS;
+  }
+  return replace.call(replacement, symbols, function (match, ch) {
+    var capture;
+    switch (ch.charAt(0)) {
+      case '$': return '$';
+      case '&': return matched;
+      case '`': return str.slice(0, position);
+      case "'": return str.slice(tailPos);
+      case '<':
+        capture = namedCaptures[ch.slice(1, -1)];
+        break;
+      default: // \d\d?
+        var n = +ch;
+        if (n === 0) return match;
+        if (n > m) {
+          var f = floor(n / 10);
+          if (f === 0) return match;
+          if (f <= m) return captures[f - 1] === undefined ? ch.charAt(1) : captures[f - 1] + ch.charAt(1);
+          return match;
+        }
+        capture = captures[n - 1];
+    }
+    return capture === undefined ? '' : capture;
+  });
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/internals/global.js":
+/*!**************************************************!*\
+  !*** ./node_modules/core-js/internals/global.js ***!
+  \**************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -10372,22 +10956,22 @@ module.exports = function (it) {
 
 // https://github.com/zloirock/core-js/issues/86#issuecomment-115759028
 module.exports =
-  // eslint-disable-next-line no-undef
+  /* global globalThis -- safe */
   check(typeof globalThis == 'object' && globalThis) ||
   check(typeof window == 'object' && window) ||
   check(typeof self == 'object' && self) ||
   check(typeof global == 'object' && global) ||
-  // eslint-disable-next-line no-new-func
-  Function('return this')();
+  // eslint-disable-next-line no-new-func -- fallback
+  (function () { return this; })() || Function('return this')();
 
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../../webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js")))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js")))
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/has.js":
-/*!********************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/has.js ***!
-  \********************************************************************************/
+/***/ "./node_modules/core-js/internals/has.js":
+/*!***********************************************!*\
+  !*** ./node_modules/core-js/internals/has.js ***!
+  \***********************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -10400,10 +10984,10 @@ module.exports = function (it, key) {
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/hidden-keys.js":
-/*!****************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/hidden-keys.js ***!
-  \****************************************************************************************/
+/***/ "./node_modules/core-js/internals/hidden-keys.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/core-js/internals/hidden-keys.js ***!
+  \*******************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -10412,14 +10996,14 @@ module.exports = {};
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/host-report-errors.js":
-/*!***********************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/host-report-errors.js ***!
-  \***********************************************************************************************/
+/***/ "./node_modules/core-js/internals/host-report-errors.js":
+/*!**************************************************************!*\
+  !*** ./node_modules/core-js/internals/host-report-errors.js ***!
+  \**************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var global = __webpack_require__(/*! ../internals/global */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/global.js");
+var global = __webpack_require__(/*! ../internals/global */ "./node_modules/core-js/internals/global.js");
 
 module.exports = function (a, b) {
   var console = global.console;
@@ -10431,30 +11015,30 @@ module.exports = function (a, b) {
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/html.js":
-/*!*********************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/html.js ***!
-  \*********************************************************************************/
+/***/ "./node_modules/core-js/internals/html.js":
+/*!************************************************!*\
+  !*** ./node_modules/core-js/internals/html.js ***!
+  \************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var getBuiltIn = __webpack_require__(/*! ../internals/get-built-in */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/get-built-in.js");
+var getBuiltIn = __webpack_require__(/*! ../internals/get-built-in */ "./node_modules/core-js/internals/get-built-in.js");
 
 module.exports = getBuiltIn('document', 'documentElement');
 
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/ie8-dom-define.js":
-/*!*******************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/ie8-dom-define.js ***!
-  \*******************************************************************************************/
+/***/ "./node_modules/core-js/internals/ie8-dom-define.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/core-js/internals/ie8-dom-define.js ***!
+  \**********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var DESCRIPTORS = __webpack_require__(/*! ../internals/descriptors */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/descriptors.js");
-var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/fails.js");
-var createElement = __webpack_require__(/*! ../internals/document-create-element */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/document-create-element.js");
+var DESCRIPTORS = __webpack_require__(/*! ../internals/descriptors */ "./node_modules/core-js/internals/descriptors.js");
+var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/core-js/internals/fails.js");
+var createElement = __webpack_require__(/*! ../internals/document-create-element */ "./node_modules/core-js/internals/document-create-element.js");
 
 // Thank's IE8 for his funny defineProperty
 module.exports = !DESCRIPTORS && !fails(function () {
@@ -10466,22 +11050,22 @@ module.exports = !DESCRIPTORS && !fails(function () {
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/indexed-object.js":
-/*!*******************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/indexed-object.js ***!
-  \*******************************************************************************************/
+/***/ "./node_modules/core-js/internals/indexed-object.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/core-js/internals/indexed-object.js ***!
+  \**********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/fails.js");
-var classof = __webpack_require__(/*! ../internals/classof-raw */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/classof-raw.js");
+var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/core-js/internals/fails.js");
+var classof = __webpack_require__(/*! ../internals/classof-raw */ "./node_modules/core-js/internals/classof-raw.js");
 
 var split = ''.split;
 
 // fallback for non-array-like ES3 and non-enumerable old V8 strings
 module.exports = fails(function () {
   // throws an error in rhino, see https://github.com/mozilla/rhino/issues/346
-  // eslint-disable-next-line no-prototype-builtins
+  // eslint-disable-next-line no-prototype-builtins -- safe
   return !Object('z').propertyIsEnumerable(0);
 }) ? function (it) {
   return classof(it) == 'String' ? split.call(it, '') : Object(it);
@@ -10490,15 +11074,15 @@ module.exports = fails(function () {
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/inherit-if-required.js":
-/*!************************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/inherit-if-required.js ***!
-  \************************************************************************************************/
+/***/ "./node_modules/core-js/internals/inherit-if-required.js":
+/*!***************************************************************!*\
+  !*** ./node_modules/core-js/internals/inherit-if-required.js ***!
+  \***************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/is-object.js");
-var setPrototypeOf = __webpack_require__(/*! ../internals/object-set-prototype-of */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/object-set-prototype-of.js");
+var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/core-js/internals/is-object.js");
+var setPrototypeOf = __webpack_require__(/*! ../internals/object-set-prototype-of */ "./node_modules/core-js/internals/object-set-prototype-of.js");
 
 // makes subclassing work correct for wrapped built-ins
 module.exports = function ($this, dummy, Wrapper) {
@@ -10518,14 +11102,14 @@ module.exports = function ($this, dummy, Wrapper) {
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/inspect-source.js":
-/*!*******************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/inspect-source.js ***!
-  \*******************************************************************************************/
+/***/ "./node_modules/core-js/internals/inspect-source.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/core-js/internals/inspect-source.js ***!
+  \**********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var store = __webpack_require__(/*! ../internals/shared-store */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/shared-store.js");
+var store = __webpack_require__(/*! ../internals/shared-store */ "./node_modules/core-js/internals/shared-store.js");
 
 var functionToString = Function.toString;
 
@@ -10541,19 +11125,19 @@ module.exports = store.inspectSource;
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/internal-metadata.js":
-/*!**********************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/internal-metadata.js ***!
-  \**********************************************************************************************/
+/***/ "./node_modules/core-js/internals/internal-metadata.js":
+/*!*************************************************************!*\
+  !*** ./node_modules/core-js/internals/internal-metadata.js ***!
+  \*************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var hiddenKeys = __webpack_require__(/*! ../internals/hidden-keys */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/hidden-keys.js");
-var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/is-object.js");
-var has = __webpack_require__(/*! ../internals/has */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/has.js");
-var defineProperty = __webpack_require__(/*! ../internals/object-define-property */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/object-define-property.js").f;
-var uid = __webpack_require__(/*! ../internals/uid */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/uid.js");
-var FREEZING = __webpack_require__(/*! ../internals/freezing */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/freezing.js");
+var hiddenKeys = __webpack_require__(/*! ../internals/hidden-keys */ "./node_modules/core-js/internals/hidden-keys.js");
+var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/core-js/internals/is-object.js");
+var has = __webpack_require__(/*! ../internals/has */ "./node_modules/core-js/internals/has.js");
+var defineProperty = __webpack_require__(/*! ../internals/object-define-property */ "./node_modules/core-js/internals/object-define-property.js").f;
+var uid = __webpack_require__(/*! ../internals/uid */ "./node_modules/core-js/internals/uid.js");
+var FREEZING = __webpack_require__(/*! ../internals/freezing */ "./node_modules/core-js/internals/freezing.js");
 
 var METADATA = uid('meta');
 var id = 0;
@@ -10613,20 +11197,21 @@ hiddenKeys[METADATA] = true;
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/internal-state.js":
-/*!*******************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/internal-state.js ***!
-  \*******************************************************************************************/
+/***/ "./node_modules/core-js/internals/internal-state.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/core-js/internals/internal-state.js ***!
+  \**********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var NATIVE_WEAK_MAP = __webpack_require__(/*! ../internals/native-weak-map */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/native-weak-map.js");
-var global = __webpack_require__(/*! ../internals/global */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/global.js");
-var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/is-object.js");
-var createNonEnumerableProperty = __webpack_require__(/*! ../internals/create-non-enumerable-property */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/create-non-enumerable-property.js");
-var objectHas = __webpack_require__(/*! ../internals/has */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/has.js");
-var sharedKey = __webpack_require__(/*! ../internals/shared-key */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/shared-key.js");
-var hiddenKeys = __webpack_require__(/*! ../internals/hidden-keys */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/hidden-keys.js");
+var NATIVE_WEAK_MAP = __webpack_require__(/*! ../internals/native-weak-map */ "./node_modules/core-js/internals/native-weak-map.js");
+var global = __webpack_require__(/*! ../internals/global */ "./node_modules/core-js/internals/global.js");
+var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/core-js/internals/is-object.js");
+var createNonEnumerableProperty = __webpack_require__(/*! ../internals/create-non-enumerable-property */ "./node_modules/core-js/internals/create-non-enumerable-property.js");
+var objectHas = __webpack_require__(/*! ../internals/has */ "./node_modules/core-js/internals/has.js");
+var shared = __webpack_require__(/*! ../internals/shared-store */ "./node_modules/core-js/internals/shared-store.js");
+var sharedKey = __webpack_require__(/*! ../internals/shared-key */ "./node_modules/core-js/internals/shared-key.js");
+var hiddenKeys = __webpack_require__(/*! ../internals/hidden-keys */ "./node_modules/core-js/internals/hidden-keys.js");
 
 var WeakMap = global.WeakMap;
 var set, get, has;
@@ -10645,11 +11230,12 @@ var getterFor = function (TYPE) {
 };
 
 if (NATIVE_WEAK_MAP) {
-  var store = new WeakMap();
+  var store = shared.state || (shared.state = new WeakMap());
   var wmget = store.get;
   var wmhas = store.has;
   var wmset = store.set;
   set = function (it, metadata) {
+    metadata.facade = it;
     wmset.call(store, it, metadata);
     return metadata;
   };
@@ -10663,6 +11249,7 @@ if (NATIVE_WEAK_MAP) {
   var STATE = sharedKey('state');
   hiddenKeys[STATE] = true;
   set = function (it, metadata) {
+    metadata.facade = it;
     createNonEnumerableProperty(it, STATE, metadata);
     return metadata;
   };
@@ -10685,15 +11272,15 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/is-array-iterator-method.js":
-/*!*****************************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/is-array-iterator-method.js ***!
-  \*****************************************************************************************************/
+/***/ "./node_modules/core-js/internals/is-array-iterator-method.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/core-js/internals/is-array-iterator-method.js ***!
+  \********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/well-known-symbol.js");
-var Iterators = __webpack_require__(/*! ../internals/iterators */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/iterators.js");
+var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/core-js/internals/well-known-symbol.js");
+var Iterators = __webpack_require__(/*! ../internals/iterators */ "./node_modules/core-js/internals/iterators.js");
 
 var ITERATOR = wellKnownSymbol('iterator');
 var ArrayPrototype = Array.prototype;
@@ -10706,17 +11293,17 @@ module.exports = function (it) {
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/is-array.js":
-/*!*************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/is-array.js ***!
-  \*************************************************************************************/
+/***/ "./node_modules/core-js/internals/is-array.js":
+/*!****************************************************!*\
+  !*** ./node_modules/core-js/internals/is-array.js ***!
+  \****************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var classof = __webpack_require__(/*! ../internals/classof-raw */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/classof-raw.js");
+var classof = __webpack_require__(/*! ../internals/classof-raw */ "./node_modules/core-js/internals/classof-raw.js");
 
 // `IsArray` abstract operation
-// https://tc39.github.io/ecma262/#sec-isarray
+// https://tc39.es/ecma262/#sec-isarray
 module.exports = Array.isArray || function isArray(arg) {
   return classof(arg) == 'Array';
 };
@@ -10724,14 +11311,14 @@ module.exports = Array.isArray || function isArray(arg) {
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/is-forced.js":
-/*!**************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/is-forced.js ***!
-  \**************************************************************************************/
+/***/ "./node_modules/core-js/internals/is-forced.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/core-js/internals/is-forced.js ***!
+  \*****************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/fails.js");
+var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/core-js/internals/fails.js");
 
 var replacement = /#|\.prototype\./;
 
@@ -10756,10 +11343,10 @@ module.exports = isForced;
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/is-object.js":
-/*!**************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/is-object.js ***!
-  \**************************************************************************************/
+/***/ "./node_modules/core-js/internals/is-object.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/core-js/internals/is-object.js ***!
+  \*****************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -10770,10 +11357,10 @@ module.exports = function (it) {
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/is-pure.js":
-/*!************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/is-pure.js ***!
-  \************************************************************************************/
+/***/ "./node_modules/core-js/internals/is-pure.js":
+/*!***************************************************!*\
+  !*** ./node_modules/core-js/internals/is-pure.js ***!
+  \***************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -10782,21 +11369,21 @@ module.exports = false;
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/is-regexp.js":
-/*!**************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/is-regexp.js ***!
-  \**************************************************************************************/
+/***/ "./node_modules/core-js/internals/is-regexp.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/core-js/internals/is-regexp.js ***!
+  \*****************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/is-object.js");
-var classof = __webpack_require__(/*! ../internals/classof-raw */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/classof-raw.js");
-var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/well-known-symbol.js");
+var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/core-js/internals/is-object.js");
+var classof = __webpack_require__(/*! ../internals/classof-raw */ "./node_modules/core-js/internals/classof-raw.js");
+var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/core-js/internals/well-known-symbol.js");
 
 var MATCH = wellKnownSymbol('match');
 
 // `IsRegExp` abstract operation
-// https://tc39.github.io/ecma262/#sec-isregexp
+// https://tc39.es/ecma262/#sec-isregexp
 module.exports = function (it) {
   var isRegExp;
   return isObject(it) && ((isRegExp = it[MATCH]) !== undefined ? !!isRegExp : classof(it) == 'RegExp');
@@ -10805,28 +11392,44 @@ module.exports = function (it) {
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/iterate.js":
-/*!************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/iterate.js ***!
-  \************************************************************************************/
+/***/ "./node_modules/core-js/internals/iterate.js":
+/*!***************************************************!*\
+  !*** ./node_modules/core-js/internals/iterate.js ***!
+  \***************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/an-object.js");
-var isArrayIteratorMethod = __webpack_require__(/*! ../internals/is-array-iterator-method */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/is-array-iterator-method.js");
-var toLength = __webpack_require__(/*! ../internals/to-length */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/to-length.js");
-var bind = __webpack_require__(/*! ../internals/function-bind-context */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/function-bind-context.js");
-var getIteratorMethod = __webpack_require__(/*! ../internals/get-iterator-method */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/get-iterator-method.js");
-var callWithSafeIterationClosing = __webpack_require__(/*! ../internals/call-with-safe-iteration-closing */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/call-with-safe-iteration-closing.js");
+var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/core-js/internals/an-object.js");
+var isArrayIteratorMethod = __webpack_require__(/*! ../internals/is-array-iterator-method */ "./node_modules/core-js/internals/is-array-iterator-method.js");
+var toLength = __webpack_require__(/*! ../internals/to-length */ "./node_modules/core-js/internals/to-length.js");
+var bind = __webpack_require__(/*! ../internals/function-bind-context */ "./node_modules/core-js/internals/function-bind-context.js");
+var getIteratorMethod = __webpack_require__(/*! ../internals/get-iterator-method */ "./node_modules/core-js/internals/get-iterator-method.js");
+var iteratorClose = __webpack_require__(/*! ../internals/iterator-close */ "./node_modules/core-js/internals/iterator-close.js");
 
 var Result = function (stopped, result) {
   this.stopped = stopped;
   this.result = result;
 };
 
-var iterate = module.exports = function (iterable, fn, that, AS_ENTRIES, IS_ITERATOR) {
-  var boundFunction = bind(fn, that, AS_ENTRIES ? 2 : 1);
+module.exports = function (iterable, unboundFunction, options) {
+  var that = options && options.that;
+  var AS_ENTRIES = !!(options && options.AS_ENTRIES);
+  var IS_ITERATOR = !!(options && options.IS_ITERATOR);
+  var INTERRUPTED = !!(options && options.INTERRUPTED);
+  var fn = bind(unboundFunction, that, 1 + AS_ENTRIES + INTERRUPTED);
   var iterator, iterFn, index, length, result, next, step;
+
+  var stop = function (condition) {
+    if (iterator) iteratorClose(iterator);
+    return new Result(true, condition);
+  };
+
+  var callFn = function (value) {
+    if (AS_ENTRIES) {
+      anObject(value);
+      return INTERRUPTED ? fn(value[0], value[1], stop) : fn(value[0], value[1]);
+    } return INTERRUPTED ? fn(value, stop) : fn(value);
+  };
 
   if (IS_ITERATOR) {
     iterator = iterable;
@@ -10836,9 +11439,7 @@ var iterate = module.exports = function (iterable, fn, that, AS_ENTRIES, IS_ITER
     // optimisation for array iterators
     if (isArrayIteratorMethod(iterFn)) {
       for (index = 0, length = toLength(iterable.length); length > index; index++) {
-        result = AS_ENTRIES
-          ? boundFunction(anObject(step = iterable[index])[0], step[1])
-          : boundFunction(iterable[index]);
+        result = callFn(iterable[index]);
         if (result && result instanceof Result) return result;
       } return new Result(false);
     }
@@ -10847,32 +11448,53 @@ var iterate = module.exports = function (iterable, fn, that, AS_ENTRIES, IS_ITER
 
   next = iterator.next;
   while (!(step = next.call(iterator)).done) {
-    result = callWithSafeIterationClosing(iterator, boundFunction, step.value, AS_ENTRIES);
+    try {
+      result = callFn(step.value);
+    } catch (error) {
+      iteratorClose(iterator);
+      throw error;
+    }
     if (typeof result == 'object' && result && result instanceof Result) return result;
   } return new Result(false);
-};
-
-iterate.stop = function (result) {
-  return new Result(true, result);
 };
 
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/iterators-core.js":
-/*!*******************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/iterators-core.js ***!
-  \*******************************************************************************************/
+/***/ "./node_modules/core-js/internals/iterator-close.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/core-js/internals/iterator-close.js ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/core-js/internals/an-object.js");
+
+module.exports = function (iterator) {
+  var returnMethod = iterator['return'];
+  if (returnMethod !== undefined) {
+    return anObject(returnMethod.call(iterator)).value;
+  }
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/internals/iterators-core.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/core-js/internals/iterators-core.js ***!
+  \**********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var getPrototypeOf = __webpack_require__(/*! ../internals/object-get-prototype-of */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/object-get-prototype-of.js");
-var createNonEnumerableProperty = __webpack_require__(/*! ../internals/create-non-enumerable-property */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/create-non-enumerable-property.js");
-var has = __webpack_require__(/*! ../internals/has */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/has.js");
-var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/well-known-symbol.js");
-var IS_PURE = __webpack_require__(/*! ../internals/is-pure */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/is-pure.js");
+var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/core-js/internals/fails.js");
+var getPrototypeOf = __webpack_require__(/*! ../internals/object-get-prototype-of */ "./node_modules/core-js/internals/object-get-prototype-of.js");
+var createNonEnumerableProperty = __webpack_require__(/*! ../internals/create-non-enumerable-property */ "./node_modules/core-js/internals/create-non-enumerable-property.js");
+var has = __webpack_require__(/*! ../internals/has */ "./node_modules/core-js/internals/has.js");
+var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/core-js/internals/well-known-symbol.js");
+var IS_PURE = __webpack_require__(/*! ../internals/is-pure */ "./node_modules/core-js/internals/is-pure.js");
 
 var ITERATOR = wellKnownSymbol('iterator');
 var BUGGY_SAFARI_ITERATORS = false;
@@ -10880,7 +11502,7 @@ var BUGGY_SAFARI_ITERATORS = false;
 var returnThis = function () { return this; };
 
 // `%IteratorPrototype%` object
-// https://tc39.github.io/ecma262/#sec-%iteratorprototype%-object
+// https://tc39.es/ecma262/#sec-%iteratorprototype%-object
 var IteratorPrototype, PrototypeOfArrayIteratorPrototype, arrayIterator;
 
 if ([].keys) {
@@ -10893,10 +11515,16 @@ if ([].keys) {
   }
 }
 
-if (IteratorPrototype == undefined) IteratorPrototype = {};
+var NEW_ITERATOR_PROTOTYPE = IteratorPrototype == undefined || fails(function () {
+  var test = {};
+  // FF44- legacy iterators case
+  return IteratorPrototype[ITERATOR].call(test) !== test;
+});
+
+if (NEW_ITERATOR_PROTOTYPE) IteratorPrototype = {};
 
 // 25.1.2.1.1 %IteratorPrototype%[@@iterator]()
-if (!IS_PURE && !has(IteratorPrototype, ITERATOR)) {
+if ((!IS_PURE || NEW_ITERATOR_PROTOTYPE) && !has(IteratorPrototype, ITERATOR)) {
   createNonEnumerableProperty(IteratorPrototype, ITERATOR, returnThis);
 }
 
@@ -10908,10 +11536,10 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/iterators.js":
-/*!**************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/iterators.js ***!
-  \**************************************************************************************/
+/***/ "./node_modules/core-js/internals/iterators.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/core-js/internals/iterators.js ***!
+  \*****************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -10920,23 +11548,24 @@ module.exports = {};
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/microtask.js":
-/*!**************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/microtask.js ***!
-  \**************************************************************************************/
+/***/ "./node_modules/core-js/internals/microtask.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/core-js/internals/microtask.js ***!
+  \*****************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var global = __webpack_require__(/*! ../internals/global */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/global.js");
-var getOwnPropertyDescriptor = __webpack_require__(/*! ../internals/object-get-own-property-descriptor */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/object-get-own-property-descriptor.js").f;
-var classof = __webpack_require__(/*! ../internals/classof-raw */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/classof-raw.js");
-var macrotask = __webpack_require__(/*! ../internals/task */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/task.js").set;
-var IS_IOS = __webpack_require__(/*! ../internals/engine-is-ios */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/engine-is-ios.js");
+var global = __webpack_require__(/*! ../internals/global */ "./node_modules/core-js/internals/global.js");
+var getOwnPropertyDescriptor = __webpack_require__(/*! ../internals/object-get-own-property-descriptor */ "./node_modules/core-js/internals/object-get-own-property-descriptor.js").f;
+var macrotask = __webpack_require__(/*! ../internals/task */ "./node_modules/core-js/internals/task.js").set;
+var IS_IOS = __webpack_require__(/*! ../internals/engine-is-ios */ "./node_modules/core-js/internals/engine-is-ios.js");
+var IS_WEBOS_WEBKIT = __webpack_require__(/*! ../internals/engine-is-webos-webkit */ "./node_modules/core-js/internals/engine-is-webos-webkit.js");
+var IS_NODE = __webpack_require__(/*! ../internals/engine-is-node */ "./node_modules/core-js/internals/engine-is-node.js");
 
 var MutationObserver = global.MutationObserver || global.WebKitMutationObserver;
+var document = global.document;
 var process = global.process;
 var Promise = global.Promise;
-var IS_NODE = classof(process) == 'process';
 // Node.js 11 shows ExperimentalWarning on getting `queueMicrotask`
 var queueMicrotaskDescriptor = getOwnPropertyDescriptor(global, 'queueMicrotask');
 var queueMicrotask = queueMicrotaskDescriptor && queueMicrotaskDescriptor.value;
@@ -10962,13 +11591,9 @@ if (!queueMicrotask) {
     if (parent) parent.enter();
   };
 
-  // Node.js
-  if (IS_NODE) {
-    notify = function () {
-      process.nextTick(flush);
-    };
   // browsers with MutationObserver, except iOS - https://github.com/zloirock/core-js/issues/339
-  } else if (MutationObserver && !IS_IOS) {
+  // also except WebOS Webkit https://github.com/zloirock/core-js/issues/898
+  if (!IS_IOS && !IS_NODE && !IS_WEBOS_WEBKIT && MutationObserver && document) {
     toggle = true;
     node = document.createTextNode('');
     new MutationObserver(flush).observe(node, { characterData: true });
@@ -10982,6 +11607,11 @@ if (!queueMicrotask) {
     then = promise.then;
     notify = function () {
       then.call(promise, flush);
+    };
+  // Node.js without promises
+  } else if (IS_NODE) {
+    notify = function () {
+      process.nextTick(flush);
     };
   // for other environments - macrotask based on:
   // - setImmediate
@@ -11009,47 +11639,47 @@ module.exports = queueMicrotask || function (fn) {
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/native-promise-constructor.js":
-/*!*******************************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/native-promise-constructor.js ***!
-  \*******************************************************************************************************/
+/***/ "./node_modules/core-js/internals/native-promise-constructor.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/core-js/internals/native-promise-constructor.js ***!
+  \**********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var global = __webpack_require__(/*! ../internals/global */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/global.js");
+var global = __webpack_require__(/*! ../internals/global */ "./node_modules/core-js/internals/global.js");
 
 module.exports = global.Promise;
 
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/native-symbol.js":
-/*!******************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/native-symbol.js ***!
-  \******************************************************************************************/
+/***/ "./node_modules/core-js/internals/native-symbol.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/core-js/internals/native-symbol.js ***!
+  \*********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/fails.js");
+var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/core-js/internals/fails.js");
 
 module.exports = !!Object.getOwnPropertySymbols && !fails(function () {
   // Chrome 38 Symbol has incorrect toString conversion
-  // eslint-disable-next-line no-undef
+  /* global Symbol -- required for testing */
   return !String(Symbol());
 });
 
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/native-weak-map.js":
-/*!********************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/native-weak-map.js ***!
-  \********************************************************************************************/
+/***/ "./node_modules/core-js/internals/native-weak-map.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/core-js/internals/native-weak-map.js ***!
+  \***********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var global = __webpack_require__(/*! ../internals/global */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/global.js");
-var inspectSource = __webpack_require__(/*! ../internals/inspect-source */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/inspect-source.js");
+var global = __webpack_require__(/*! ../internals/global */ "./node_modules/core-js/internals/global.js");
+var inspectSource = __webpack_require__(/*! ../internals/inspect-source */ "./node_modules/core-js/internals/inspect-source.js");
 
 var WeakMap = global.WeakMap;
 
@@ -11058,16 +11688,16 @@ module.exports = typeof WeakMap === 'function' && /native code/.test(inspectSour
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/new-promise-capability.js":
-/*!***************************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/new-promise-capability.js ***!
-  \***************************************************************************************************/
+/***/ "./node_modules/core-js/internals/new-promise-capability.js":
+/*!******************************************************************!*\
+  !*** ./node_modules/core-js/internals/new-promise-capability.js ***!
+  \******************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var aFunction = __webpack_require__(/*! ../internals/a-function */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/a-function.js");
+var aFunction = __webpack_require__(/*! ../internals/a-function */ "./node_modules/core-js/internals/a-function.js");
 
 var PromiseCapability = function (C) {
   var resolve, reject;
@@ -11088,14 +11718,14 @@ module.exports.f = function (C) {
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/not-a-regexp.js":
-/*!*****************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/not-a-regexp.js ***!
-  \*****************************************************************************************/
+/***/ "./node_modules/core-js/internals/not-a-regexp.js":
+/*!********************************************************!*\
+  !*** ./node_modules/core-js/internals/not-a-regexp.js ***!
+  \********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isRegExp = __webpack_require__(/*! ../internals/is-regexp */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/is-regexp.js");
+var isRegExp = __webpack_require__(/*! ../internals/is-regexp */ "./node_modules/core-js/internals/is-regexp.js");
 
 module.exports = function (it) {
   if (isRegExp(it)) {
@@ -11106,20 +11736,20 @@ module.exports = function (it) {
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/object-create.js":
-/*!******************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/object-create.js ***!
-  \******************************************************************************************/
+/***/ "./node_modules/core-js/internals/object-create.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/core-js/internals/object-create.js ***!
+  \*********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/an-object.js");
-var defineProperties = __webpack_require__(/*! ../internals/object-define-properties */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/object-define-properties.js");
-var enumBugKeys = __webpack_require__(/*! ../internals/enum-bug-keys */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/enum-bug-keys.js");
-var hiddenKeys = __webpack_require__(/*! ../internals/hidden-keys */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/hidden-keys.js");
-var html = __webpack_require__(/*! ../internals/html */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/html.js");
-var documentCreateElement = __webpack_require__(/*! ../internals/document-create-element */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/document-create-element.js");
-var sharedKey = __webpack_require__(/*! ../internals/shared-key */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/shared-key.js");
+var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/core-js/internals/an-object.js");
+var defineProperties = __webpack_require__(/*! ../internals/object-define-properties */ "./node_modules/core-js/internals/object-define-properties.js");
+var enumBugKeys = __webpack_require__(/*! ../internals/enum-bug-keys */ "./node_modules/core-js/internals/enum-bug-keys.js");
+var hiddenKeys = __webpack_require__(/*! ../internals/hidden-keys */ "./node_modules/core-js/internals/hidden-keys.js");
+var html = __webpack_require__(/*! ../internals/html */ "./node_modules/core-js/internals/html.js");
+var documentCreateElement = __webpack_require__(/*! ../internals/document-create-element */ "./node_modules/core-js/internals/document-create-element.js");
+var sharedKey = __webpack_require__(/*! ../internals/shared-key */ "./node_modules/core-js/internals/shared-key.js");
 
 var GT = '>';
 var LT = '<';
@@ -11167,7 +11797,7 @@ var NullProtoObjectViaIFrame = function () {
 var activeXDocument;
 var NullProtoObject = function () {
   try {
-    /* global ActiveXObject */
+    /* global ActiveXObject -- old IE */
     activeXDocument = document.domain && new ActiveXObject('htmlfile');
   } catch (error) { /* ignore */ }
   NullProtoObject = activeXDocument ? NullProtoObjectViaActiveX(activeXDocument) : NullProtoObjectViaIFrame();
@@ -11179,7 +11809,7 @@ var NullProtoObject = function () {
 hiddenKeys[IE_PROTO] = true;
 
 // `Object.create` method
-// https://tc39.github.io/ecma262/#sec-object.create
+// https://tc39.es/ecma262/#sec-object.create
 module.exports = Object.create || function create(O, Properties) {
   var result;
   if (O !== null) {
@@ -11195,20 +11825,20 @@ module.exports = Object.create || function create(O, Properties) {
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/object-define-properties.js":
-/*!*****************************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/object-define-properties.js ***!
-  \*****************************************************************************************************/
+/***/ "./node_modules/core-js/internals/object-define-properties.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/core-js/internals/object-define-properties.js ***!
+  \********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var DESCRIPTORS = __webpack_require__(/*! ../internals/descriptors */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/descriptors.js");
-var definePropertyModule = __webpack_require__(/*! ../internals/object-define-property */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/object-define-property.js");
-var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/an-object.js");
-var objectKeys = __webpack_require__(/*! ../internals/object-keys */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/object-keys.js");
+var DESCRIPTORS = __webpack_require__(/*! ../internals/descriptors */ "./node_modules/core-js/internals/descriptors.js");
+var definePropertyModule = __webpack_require__(/*! ../internals/object-define-property */ "./node_modules/core-js/internals/object-define-property.js");
+var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/core-js/internals/an-object.js");
+var objectKeys = __webpack_require__(/*! ../internals/object-keys */ "./node_modules/core-js/internals/object-keys.js");
 
 // `Object.defineProperties` method
-// https://tc39.github.io/ecma262/#sec-object.defineproperties
+// https://tc39.es/ecma262/#sec-object.defineproperties
 module.exports = DESCRIPTORS ? Object.defineProperties : function defineProperties(O, Properties) {
   anObject(O);
   var keys = objectKeys(Properties);
@@ -11222,22 +11852,22 @@ module.exports = DESCRIPTORS ? Object.defineProperties : function defineProperti
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/object-define-property.js":
-/*!***************************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/object-define-property.js ***!
-  \***************************************************************************************************/
+/***/ "./node_modules/core-js/internals/object-define-property.js":
+/*!******************************************************************!*\
+  !*** ./node_modules/core-js/internals/object-define-property.js ***!
+  \******************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var DESCRIPTORS = __webpack_require__(/*! ../internals/descriptors */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/descriptors.js");
-var IE8_DOM_DEFINE = __webpack_require__(/*! ../internals/ie8-dom-define */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/ie8-dom-define.js");
-var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/an-object.js");
-var toPrimitive = __webpack_require__(/*! ../internals/to-primitive */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/to-primitive.js");
+var DESCRIPTORS = __webpack_require__(/*! ../internals/descriptors */ "./node_modules/core-js/internals/descriptors.js");
+var IE8_DOM_DEFINE = __webpack_require__(/*! ../internals/ie8-dom-define */ "./node_modules/core-js/internals/ie8-dom-define.js");
+var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/core-js/internals/an-object.js");
+var toPrimitive = __webpack_require__(/*! ../internals/to-primitive */ "./node_modules/core-js/internals/to-primitive.js");
 
 var nativeDefineProperty = Object.defineProperty;
 
 // `Object.defineProperty` method
-// https://tc39.github.io/ecma262/#sec-object.defineproperty
+// https://tc39.es/ecma262/#sec-object.defineproperty
 exports.f = DESCRIPTORS ? nativeDefineProperty : function defineProperty(O, P, Attributes) {
   anObject(O);
   P = toPrimitive(P, true);
@@ -11253,25 +11883,25 @@ exports.f = DESCRIPTORS ? nativeDefineProperty : function defineProperty(O, P, A
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/object-get-own-property-descriptor.js":
-/*!***************************************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/object-get-own-property-descriptor.js ***!
-  \***************************************************************************************************************/
+/***/ "./node_modules/core-js/internals/object-get-own-property-descriptor.js":
+/*!******************************************************************************!*\
+  !*** ./node_modules/core-js/internals/object-get-own-property-descriptor.js ***!
+  \******************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var DESCRIPTORS = __webpack_require__(/*! ../internals/descriptors */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/descriptors.js");
-var propertyIsEnumerableModule = __webpack_require__(/*! ../internals/object-property-is-enumerable */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/object-property-is-enumerable.js");
-var createPropertyDescriptor = __webpack_require__(/*! ../internals/create-property-descriptor */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/create-property-descriptor.js");
-var toIndexedObject = __webpack_require__(/*! ../internals/to-indexed-object */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/to-indexed-object.js");
-var toPrimitive = __webpack_require__(/*! ../internals/to-primitive */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/to-primitive.js");
-var has = __webpack_require__(/*! ../internals/has */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/has.js");
-var IE8_DOM_DEFINE = __webpack_require__(/*! ../internals/ie8-dom-define */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/ie8-dom-define.js");
+var DESCRIPTORS = __webpack_require__(/*! ../internals/descriptors */ "./node_modules/core-js/internals/descriptors.js");
+var propertyIsEnumerableModule = __webpack_require__(/*! ../internals/object-property-is-enumerable */ "./node_modules/core-js/internals/object-property-is-enumerable.js");
+var createPropertyDescriptor = __webpack_require__(/*! ../internals/create-property-descriptor */ "./node_modules/core-js/internals/create-property-descriptor.js");
+var toIndexedObject = __webpack_require__(/*! ../internals/to-indexed-object */ "./node_modules/core-js/internals/to-indexed-object.js");
+var toPrimitive = __webpack_require__(/*! ../internals/to-primitive */ "./node_modules/core-js/internals/to-primitive.js");
+var has = __webpack_require__(/*! ../internals/has */ "./node_modules/core-js/internals/has.js");
+var IE8_DOM_DEFINE = __webpack_require__(/*! ../internals/ie8-dom-define */ "./node_modules/core-js/internals/ie8-dom-define.js");
 
 var nativeGetOwnPropertyDescriptor = Object.getOwnPropertyDescriptor;
 
 // `Object.getOwnPropertyDescriptor` method
-// https://tc39.github.io/ecma262/#sec-object.getownpropertydescriptor
+// https://tc39.es/ecma262/#sec-object.getownpropertydescriptor
 exports.f = DESCRIPTORS ? nativeGetOwnPropertyDescriptor : function getOwnPropertyDescriptor(O, P) {
   O = toIndexedObject(O);
   P = toPrimitive(P, true);
@@ -11284,15 +11914,15 @@ exports.f = DESCRIPTORS ? nativeGetOwnPropertyDescriptor : function getOwnProper
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/object-get-own-property-names-external.js":
-/*!*******************************************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/object-get-own-property-names-external.js ***!
-  \*******************************************************************************************************************/
+/***/ "./node_modules/core-js/internals/object-get-own-property-names-external.js":
+/*!**********************************************************************************!*\
+  !*** ./node_modules/core-js/internals/object-get-own-property-names-external.js ***!
+  \**********************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var toIndexedObject = __webpack_require__(/*! ../internals/to-indexed-object */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/to-indexed-object.js");
-var nativeGetOwnPropertyNames = __webpack_require__(/*! ../internals/object-get-own-property-names */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/object-get-own-property-names.js").f;
+var toIndexedObject = __webpack_require__(/*! ../internals/to-indexed-object */ "./node_modules/core-js/internals/to-indexed-object.js");
+var nativeGetOwnPropertyNames = __webpack_require__(/*! ../internals/object-get-own-property-names */ "./node_modules/core-js/internals/object-get-own-property-names.js").f;
 
 var toString = {}.toString;
 
@@ -11317,20 +11947,20 @@ module.exports.f = function getOwnPropertyNames(it) {
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/object-get-own-property-names.js":
-/*!**********************************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/object-get-own-property-names.js ***!
-  \**********************************************************************************************************/
+/***/ "./node_modules/core-js/internals/object-get-own-property-names.js":
+/*!*************************************************************************!*\
+  !*** ./node_modules/core-js/internals/object-get-own-property-names.js ***!
+  \*************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var internalObjectKeys = __webpack_require__(/*! ../internals/object-keys-internal */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/object-keys-internal.js");
-var enumBugKeys = __webpack_require__(/*! ../internals/enum-bug-keys */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/enum-bug-keys.js");
+var internalObjectKeys = __webpack_require__(/*! ../internals/object-keys-internal */ "./node_modules/core-js/internals/object-keys-internal.js");
+var enumBugKeys = __webpack_require__(/*! ../internals/enum-bug-keys */ "./node_modules/core-js/internals/enum-bug-keys.js");
 
 var hiddenKeys = enumBugKeys.concat('length', 'prototype');
 
 // `Object.getOwnPropertyNames` method
-// https://tc39.github.io/ecma262/#sec-object.getownpropertynames
+// https://tc39.es/ecma262/#sec-object.getownpropertynames
 exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
   return internalObjectKeys(O, hiddenKeys);
 };
@@ -11338,10 +11968,10 @@ exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/object-get-own-property-symbols.js":
-/*!************************************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/object-get-own-property-symbols.js ***!
-  \************************************************************************************************************/
+/***/ "./node_modules/core-js/internals/object-get-own-property-symbols.js":
+/*!***************************************************************************!*\
+  !*** ./node_modules/core-js/internals/object-get-own-property-symbols.js ***!
+  \***************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -11350,23 +11980,23 @@ exports.f = Object.getOwnPropertySymbols;
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/object-get-prototype-of.js":
-/*!****************************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/object-get-prototype-of.js ***!
-  \****************************************************************************************************/
+/***/ "./node_modules/core-js/internals/object-get-prototype-of.js":
+/*!*******************************************************************!*\
+  !*** ./node_modules/core-js/internals/object-get-prototype-of.js ***!
+  \*******************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var has = __webpack_require__(/*! ../internals/has */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/has.js");
-var toObject = __webpack_require__(/*! ../internals/to-object */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/to-object.js");
-var sharedKey = __webpack_require__(/*! ../internals/shared-key */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/shared-key.js");
-var CORRECT_PROTOTYPE_GETTER = __webpack_require__(/*! ../internals/correct-prototype-getter */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/correct-prototype-getter.js");
+var has = __webpack_require__(/*! ../internals/has */ "./node_modules/core-js/internals/has.js");
+var toObject = __webpack_require__(/*! ../internals/to-object */ "./node_modules/core-js/internals/to-object.js");
+var sharedKey = __webpack_require__(/*! ../internals/shared-key */ "./node_modules/core-js/internals/shared-key.js");
+var CORRECT_PROTOTYPE_GETTER = __webpack_require__(/*! ../internals/correct-prototype-getter */ "./node_modules/core-js/internals/correct-prototype-getter.js");
 
 var IE_PROTO = sharedKey('IE_PROTO');
 var ObjectPrototype = Object.prototype;
 
 // `Object.getPrototypeOf` method
-// https://tc39.github.io/ecma262/#sec-object.getprototypeof
+// https://tc39.es/ecma262/#sec-object.getprototypeof
 module.exports = CORRECT_PROTOTYPE_GETTER ? Object.getPrototypeOf : function (O) {
   O = toObject(O);
   if (has(O, IE_PROTO)) return O[IE_PROTO];
@@ -11378,17 +12008,17 @@ module.exports = CORRECT_PROTOTYPE_GETTER ? Object.getPrototypeOf : function (O)
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/object-keys-internal.js":
-/*!*************************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/object-keys-internal.js ***!
-  \*************************************************************************************************/
+/***/ "./node_modules/core-js/internals/object-keys-internal.js":
+/*!****************************************************************!*\
+  !*** ./node_modules/core-js/internals/object-keys-internal.js ***!
+  \****************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var has = __webpack_require__(/*! ../internals/has */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/has.js");
-var toIndexedObject = __webpack_require__(/*! ../internals/to-indexed-object */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/to-indexed-object.js");
-var indexOf = __webpack_require__(/*! ../internals/array-includes */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/array-includes.js").indexOf;
-var hiddenKeys = __webpack_require__(/*! ../internals/hidden-keys */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/hidden-keys.js");
+var has = __webpack_require__(/*! ../internals/has */ "./node_modules/core-js/internals/has.js");
+var toIndexedObject = __webpack_require__(/*! ../internals/to-indexed-object */ "./node_modules/core-js/internals/to-indexed-object.js");
+var indexOf = __webpack_require__(/*! ../internals/array-includes */ "./node_modules/core-js/internals/array-includes.js").indexOf;
+var hiddenKeys = __webpack_require__(/*! ../internals/hidden-keys */ "./node_modules/core-js/internals/hidden-keys.js");
 
 module.exports = function (object, names) {
   var O = toIndexedObject(object);
@@ -11406,18 +12036,18 @@ module.exports = function (object, names) {
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/object-keys.js":
-/*!****************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/object-keys.js ***!
-  \****************************************************************************************/
+/***/ "./node_modules/core-js/internals/object-keys.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/core-js/internals/object-keys.js ***!
+  \*******************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var internalObjectKeys = __webpack_require__(/*! ../internals/object-keys-internal */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/object-keys-internal.js");
-var enumBugKeys = __webpack_require__(/*! ../internals/enum-bug-keys */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/enum-bug-keys.js");
+var internalObjectKeys = __webpack_require__(/*! ../internals/object-keys-internal */ "./node_modules/core-js/internals/object-keys-internal.js");
+var enumBugKeys = __webpack_require__(/*! ../internals/enum-bug-keys */ "./node_modules/core-js/internals/enum-bug-keys.js");
 
 // `Object.keys` method
-// https://tc39.github.io/ecma262/#sec-object.keys
+// https://tc39.es/ecma262/#sec-object.keys
 module.exports = Object.keys || function keys(O) {
   return internalObjectKeys(O, enumBugKeys);
 };
@@ -11425,10 +12055,10 @@ module.exports = Object.keys || function keys(O) {
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/object-property-is-enumerable.js":
-/*!**********************************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/object-property-is-enumerable.js ***!
-  \**********************************************************************************************************/
+/***/ "./node_modules/core-js/internals/object-property-is-enumerable.js":
+/*!*************************************************************************!*\
+  !*** ./node_modules/core-js/internals/object-property-is-enumerable.js ***!
+  \*************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -11441,7 +12071,7 @@ var getOwnPropertyDescriptor = Object.getOwnPropertyDescriptor;
 var NASHORN_BUG = getOwnPropertyDescriptor && !nativePropertyIsEnumerable.call({ 1: 2 }, 1);
 
 // `Object.prototype.propertyIsEnumerable` method implementation
-// https://tc39.github.io/ecma262/#sec-object.prototype.propertyisenumerable
+// https://tc39.es/ecma262/#sec-object.prototype.propertyisenumerable
 exports.f = NASHORN_BUG ? function propertyIsEnumerable(V) {
   var descriptor = getOwnPropertyDescriptor(this, V);
   return !!descriptor && descriptor.enumerable;
@@ -11450,20 +12080,20 @@ exports.f = NASHORN_BUG ? function propertyIsEnumerable(V) {
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/object-set-prototype-of.js":
-/*!****************************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/object-set-prototype-of.js ***!
-  \****************************************************************************************************/
+/***/ "./node_modules/core-js/internals/object-set-prototype-of.js":
+/*!*******************************************************************!*\
+  !*** ./node_modules/core-js/internals/object-set-prototype-of.js ***!
+  \*******************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/an-object.js");
-var aPossiblePrototype = __webpack_require__(/*! ../internals/a-possible-prototype */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/a-possible-prototype.js");
+/* eslint-disable no-proto -- safe */
+var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/core-js/internals/an-object.js");
+var aPossiblePrototype = __webpack_require__(/*! ../internals/a-possible-prototype */ "./node_modules/core-js/internals/a-possible-prototype.js");
 
 // `Object.setPrototypeOf` method
-// https://tc39.github.io/ecma262/#sec-object.setprototypeof
+// https://tc39.es/ecma262/#sec-object.setprototypeof
 // Works with __proto__ only. Old v8 can't work with null proto objects.
-/* eslint-disable no-proto */
 module.exports = Object.setPrototypeOf || ('__proto__' in {} ? function () {
   var CORRECT_SETTER = false;
   var test = {};
@@ -11485,20 +12115,20 @@ module.exports = Object.setPrototypeOf || ('__proto__' in {} ? function () {
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/object-to-string.js":
-/*!*********************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/object-to-string.js ***!
-  \*********************************************************************************************/
+/***/ "./node_modules/core-js/internals/object-to-string.js":
+/*!************************************************************!*\
+  !*** ./node_modules/core-js/internals/object-to-string.js ***!
+  \************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var TO_STRING_TAG_SUPPORT = __webpack_require__(/*! ../internals/to-string-tag-support */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/to-string-tag-support.js");
-var classof = __webpack_require__(/*! ../internals/classof */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/classof.js");
+var TO_STRING_TAG_SUPPORT = __webpack_require__(/*! ../internals/to-string-tag-support */ "./node_modules/core-js/internals/to-string-tag-support.js");
+var classof = __webpack_require__(/*! ../internals/classof */ "./node_modules/core-js/internals/classof.js");
 
 // `Object.prototype.toString` method implementation
-// https://tc39.github.io/ecma262/#sec-object.prototype.tostring
+// https://tc39.es/ecma262/#sec-object.prototype.tostring
 module.exports = TO_STRING_TAG_SUPPORT ? {}.toString : function toString() {
   return '[object ' + classof(this) + ']';
 };
@@ -11506,17 +12136,17 @@ module.exports = TO_STRING_TAG_SUPPORT ? {}.toString : function toString() {
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/own-keys.js":
-/*!*************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/own-keys.js ***!
-  \*************************************************************************************/
+/***/ "./node_modules/core-js/internals/own-keys.js":
+/*!****************************************************!*\
+  !*** ./node_modules/core-js/internals/own-keys.js ***!
+  \****************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var getBuiltIn = __webpack_require__(/*! ../internals/get-built-in */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/get-built-in.js");
-var getOwnPropertyNamesModule = __webpack_require__(/*! ../internals/object-get-own-property-names */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/object-get-own-property-names.js");
-var getOwnPropertySymbolsModule = __webpack_require__(/*! ../internals/object-get-own-property-symbols */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/object-get-own-property-symbols.js");
-var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/an-object.js");
+var getBuiltIn = __webpack_require__(/*! ../internals/get-built-in */ "./node_modules/core-js/internals/get-built-in.js");
+var getOwnPropertyNamesModule = __webpack_require__(/*! ../internals/object-get-own-property-names */ "./node_modules/core-js/internals/object-get-own-property-names.js");
+var getOwnPropertySymbolsModule = __webpack_require__(/*! ../internals/object-get-own-property-symbols */ "./node_modules/core-js/internals/object-get-own-property-symbols.js");
+var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/core-js/internals/an-object.js");
 
 // all object keys, includes non-enumerable and symbols
 module.exports = getBuiltIn('Reflect', 'ownKeys') || function ownKeys(it) {
@@ -11528,24 +12158,24 @@ module.exports = getBuiltIn('Reflect', 'ownKeys') || function ownKeys(it) {
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/path.js":
-/*!*********************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/path.js ***!
-  \*********************************************************************************/
+/***/ "./node_modules/core-js/internals/path.js":
+/*!************************************************!*\
+  !*** ./node_modules/core-js/internals/path.js ***!
+  \************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var global = __webpack_require__(/*! ../internals/global */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/global.js");
+var global = __webpack_require__(/*! ../internals/global */ "./node_modules/core-js/internals/global.js");
 
 module.exports = global;
 
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/perform.js":
-/*!************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/perform.js ***!
-  \************************************************************************************/
+/***/ "./node_modules/core-js/internals/perform.js":
+/*!***************************************************!*\
+  !*** ./node_modules/core-js/internals/perform.js ***!
+  \***************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -11560,16 +12190,16 @@ module.exports = function (exec) {
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/promise-resolve.js":
-/*!********************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/promise-resolve.js ***!
-  \********************************************************************************************/
+/***/ "./node_modules/core-js/internals/promise-resolve.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/core-js/internals/promise-resolve.js ***!
+  \***********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/an-object.js");
-var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/is-object.js");
-var newPromiseCapability = __webpack_require__(/*! ../internals/new-promise-capability */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/new-promise-capability.js");
+var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/core-js/internals/an-object.js");
+var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/core-js/internals/is-object.js");
+var newPromiseCapability = __webpack_require__(/*! ../internals/new-promise-capability */ "./node_modules/core-js/internals/new-promise-capability.js");
 
 module.exports = function (C, x) {
   anObject(C);
@@ -11583,14 +12213,14 @@ module.exports = function (C, x) {
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/redefine-all.js":
-/*!*****************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/redefine-all.js ***!
-  \*****************************************************************************************/
+/***/ "./node_modules/core-js/internals/redefine-all.js":
+/*!********************************************************!*\
+  !*** ./node_modules/core-js/internals/redefine-all.js ***!
+  \********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var redefine = __webpack_require__(/*! ../internals/redefine */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/redefine.js");
+var redefine = __webpack_require__(/*! ../internals/redefine */ "./node_modules/core-js/internals/redefine.js");
 
 module.exports = function (target, src, options) {
   for (var key in src) redefine(target, key, src[key], options);
@@ -11600,19 +12230,19 @@ module.exports = function (target, src, options) {
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/redefine.js":
-/*!*************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/redefine.js ***!
-  \*************************************************************************************/
+/***/ "./node_modules/core-js/internals/redefine.js":
+/*!****************************************************!*\
+  !*** ./node_modules/core-js/internals/redefine.js ***!
+  \****************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var global = __webpack_require__(/*! ../internals/global */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/global.js");
-var createNonEnumerableProperty = __webpack_require__(/*! ../internals/create-non-enumerable-property */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/create-non-enumerable-property.js");
-var has = __webpack_require__(/*! ../internals/has */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/has.js");
-var setGlobal = __webpack_require__(/*! ../internals/set-global */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/set-global.js");
-var inspectSource = __webpack_require__(/*! ../internals/inspect-source */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/inspect-source.js");
-var InternalStateModule = __webpack_require__(/*! ../internals/internal-state */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/internal-state.js");
+var global = __webpack_require__(/*! ../internals/global */ "./node_modules/core-js/internals/global.js");
+var createNonEnumerableProperty = __webpack_require__(/*! ../internals/create-non-enumerable-property */ "./node_modules/core-js/internals/create-non-enumerable-property.js");
+var has = __webpack_require__(/*! ../internals/has */ "./node_modules/core-js/internals/has.js");
+var setGlobal = __webpack_require__(/*! ../internals/set-global */ "./node_modules/core-js/internals/set-global.js");
+var inspectSource = __webpack_require__(/*! ../internals/inspect-source */ "./node_modules/core-js/internals/inspect-source.js");
+var InternalStateModule = __webpack_require__(/*! ../internals/internal-state */ "./node_modules/core-js/internals/internal-state.js");
 
 var getInternalState = InternalStateModule.get;
 var enforceInternalState = InternalStateModule.enforce;
@@ -11622,9 +12252,15 @@ var TEMPLATE = String(String).split('String');
   var unsafe = options ? !!options.unsafe : false;
   var simple = options ? !!options.enumerable : false;
   var noTargetGet = options ? !!options.noTargetGet : false;
+  var state;
   if (typeof value == 'function') {
-    if (typeof key == 'string' && !has(value, 'name')) createNonEnumerableProperty(value, 'name', key);
-    enforceInternalState(value).source = TEMPLATE.join(typeof key == 'string' ? key : '');
+    if (typeof key == 'string' && !has(value, 'name')) {
+      createNonEnumerableProperty(value, 'name', key);
+    }
+    state = enforceInternalState(value);
+    if (!state.source) {
+      state.source = TEMPLATE.join(typeof key == 'string' ? key : '');
+    }
   }
   if (O === global) {
     if (simple) O[key] = value;
@@ -11645,18 +12281,18 @@ var TEMPLATE = String(String).split('String');
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/regexp-exec-abstract.js":
-/*!*************************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/regexp-exec-abstract.js ***!
-  \*************************************************************************************************/
+/***/ "./node_modules/core-js/internals/regexp-exec-abstract.js":
+/*!****************************************************************!*\
+  !*** ./node_modules/core-js/internals/regexp-exec-abstract.js ***!
+  \****************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var classof = __webpack_require__(/*! ./classof-raw */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/classof-raw.js");
-var regexpExec = __webpack_require__(/*! ./regexp-exec */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/regexp-exec.js");
+var classof = __webpack_require__(/*! ./classof-raw */ "./node_modules/core-js/internals/classof-raw.js");
+var regexpExec = __webpack_require__(/*! ./regexp-exec */ "./node_modules/core-js/internals/regexp-exec.js");
 
 // `RegExpExec` abstract operation
-// https://tc39.github.io/ecma262/#sec-regexpexec
+// https://tc39.es/ecma262/#sec-regexpexec
 module.exports = function (R, S) {
   var exec = R.exec;
   if (typeof exec === 'function') {
@@ -11678,17 +12314,17 @@ module.exports = function (R, S) {
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/regexp-exec.js":
-/*!****************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/regexp-exec.js ***!
-  \****************************************************************************************/
+/***/ "./node_modules/core-js/internals/regexp-exec.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/core-js/internals/regexp-exec.js ***!
+  \*******************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var regexpFlags = __webpack_require__(/*! ./regexp-flags */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/regexp-flags.js");
-var stickyHelpers = __webpack_require__(/*! ./regexp-sticky-helpers */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/regexp-sticky-helpers.js");
+var regexpFlags = __webpack_require__(/*! ./regexp-flags */ "./node_modules/core-js/internals/regexp-flags.js");
+var stickyHelpers = __webpack_require__(/*! ./regexp-sticky-helpers */ "./node_modules/core-js/internals/regexp-sticky-helpers.js");
 
 var nativeExec = RegExp.prototype.exec;
 // This always refers to the native implementation, because the
@@ -11709,6 +12345,7 @@ var UPDATES_LAST_INDEX_WRONG = (function () {
 var UNSUPPORTED_Y = stickyHelpers.UNSUPPORTED_Y || stickyHelpers.BROKEN_CARET;
 
 // nonparticipating capturing group, copied from es5-shim's String#split patch.
+// eslint-disable-next-line regexp/no-assertion-capturing-group, regexp/no-empty-group -- required for testing
 var NPCG_INCLUDED = /()??/.exec('')[1] !== undefined;
 
 var PATCH = UPDATES_LAST_INDEX_WRONG || NPCG_INCLUDED || UNSUPPORTED_Y;
@@ -11777,19 +12414,19 @@ module.exports = patchedExec;
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/regexp-flags.js":
-/*!*****************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/regexp-flags.js ***!
-  \*****************************************************************************************/
+/***/ "./node_modules/core-js/internals/regexp-flags.js":
+/*!********************************************************!*\
+  !*** ./node_modules/core-js/internals/regexp-flags.js ***!
+  \********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/an-object.js");
+var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/core-js/internals/an-object.js");
 
 // `RegExp.prototype.flags` getter implementation
-// https://tc39.github.io/ecma262/#sec-get-regexp.prototype.flags
+// https://tc39.es/ecma262/#sec-get-regexp.prototype.flags
 module.exports = function () {
   var that = anObject(this);
   var result = '';
@@ -11805,17 +12442,17 @@ module.exports = function () {
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/regexp-sticky-helpers.js":
-/*!**************************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/regexp-sticky-helpers.js ***!
-  \**************************************************************************************************/
+/***/ "./node_modules/core-js/internals/regexp-sticky-helpers.js":
+/*!*****************************************************************!*\
+  !*** ./node_modules/core-js/internals/regexp-sticky-helpers.js ***!
+  \*****************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var fails = __webpack_require__(/*! ./fails */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/fails.js");
+var fails = __webpack_require__(/*! ./fails */ "./node_modules/core-js/internals/fails.js");
 
 // babel-minify transpiles RegExp('a', 'y') -> /a/y and it causes SyntaxError,
 // so we use an intermediate function.
@@ -11840,15 +12477,15 @@ exports.BROKEN_CARET = fails(function () {
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/require-object-coercible.js":
-/*!*****************************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/require-object-coercible.js ***!
-  \*****************************************************************************************************/
+/***/ "./node_modules/core-js/internals/require-object-coercible.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/core-js/internals/require-object-coercible.js ***!
+  \********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
 // `RequireObjectCoercible` abstract operation
-// https://tc39.github.io/ecma262/#sec-requireobjectcoercible
+// https://tc39.es/ecma262/#sec-requireobjectcoercible
 module.exports = function (it) {
   if (it == undefined) throw TypeError("Can't call method on " + it);
   return it;
@@ -11857,15 +12494,15 @@ module.exports = function (it) {
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/set-global.js":
-/*!***************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/set-global.js ***!
-  \***************************************************************************************/
+/***/ "./node_modules/core-js/internals/set-global.js":
+/*!******************************************************!*\
+  !*** ./node_modules/core-js/internals/set-global.js ***!
+  \******************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var global = __webpack_require__(/*! ../internals/global */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/global.js");
-var createNonEnumerableProperty = __webpack_require__(/*! ../internals/create-non-enumerable-property */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/create-non-enumerable-property.js");
+var global = __webpack_require__(/*! ../internals/global */ "./node_modules/core-js/internals/global.js");
+var createNonEnumerableProperty = __webpack_require__(/*! ../internals/create-non-enumerable-property */ "./node_modules/core-js/internals/create-non-enumerable-property.js");
 
 module.exports = function (key, value) {
   try {
@@ -11878,19 +12515,19 @@ module.exports = function (key, value) {
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/set-species.js":
-/*!****************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/set-species.js ***!
-  \****************************************************************************************/
+/***/ "./node_modules/core-js/internals/set-species.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/core-js/internals/set-species.js ***!
+  \*******************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var getBuiltIn = __webpack_require__(/*! ../internals/get-built-in */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/get-built-in.js");
-var definePropertyModule = __webpack_require__(/*! ../internals/object-define-property */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/object-define-property.js");
-var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/well-known-symbol.js");
-var DESCRIPTORS = __webpack_require__(/*! ../internals/descriptors */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/descriptors.js");
+var getBuiltIn = __webpack_require__(/*! ../internals/get-built-in */ "./node_modules/core-js/internals/get-built-in.js");
+var definePropertyModule = __webpack_require__(/*! ../internals/object-define-property */ "./node_modules/core-js/internals/object-define-property.js");
+var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/core-js/internals/well-known-symbol.js");
+var DESCRIPTORS = __webpack_require__(/*! ../internals/descriptors */ "./node_modules/core-js/internals/descriptors.js");
 
 var SPECIES = wellKnownSymbol('species');
 
@@ -11909,16 +12546,16 @@ module.exports = function (CONSTRUCTOR_NAME) {
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/set-to-string-tag.js":
-/*!**********************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/set-to-string-tag.js ***!
-  \**********************************************************************************************/
+/***/ "./node_modules/core-js/internals/set-to-string-tag.js":
+/*!*************************************************************!*\
+  !*** ./node_modules/core-js/internals/set-to-string-tag.js ***!
+  \*************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var defineProperty = __webpack_require__(/*! ../internals/object-define-property */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/object-define-property.js").f;
-var has = __webpack_require__(/*! ../internals/has */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/has.js");
-var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/well-known-symbol.js");
+var defineProperty = __webpack_require__(/*! ../internals/object-define-property */ "./node_modules/core-js/internals/object-define-property.js").f;
+var has = __webpack_require__(/*! ../internals/has */ "./node_modules/core-js/internals/has.js");
+var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/core-js/internals/well-known-symbol.js");
 
 var TO_STRING_TAG = wellKnownSymbol('toStringTag');
 
@@ -11931,15 +12568,15 @@ module.exports = function (it, TAG, STATIC) {
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/shared-key.js":
-/*!***************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/shared-key.js ***!
-  \***************************************************************************************/
+/***/ "./node_modules/core-js/internals/shared-key.js":
+/*!******************************************************!*\
+  !*** ./node_modules/core-js/internals/shared-key.js ***!
+  \******************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var shared = __webpack_require__(/*! ../internals/shared */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/shared.js");
-var uid = __webpack_require__(/*! ../internals/uid */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/uid.js");
+var shared = __webpack_require__(/*! ../internals/shared */ "./node_modules/core-js/internals/shared.js");
+var uid = __webpack_require__(/*! ../internals/uid */ "./node_modules/core-js/internals/uid.js");
 
 var keys = shared('keys');
 
@@ -11950,15 +12587,15 @@ module.exports = function (key) {
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/shared-store.js":
-/*!*****************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/shared-store.js ***!
-  \*****************************************************************************************/
+/***/ "./node_modules/core-js/internals/shared-store.js":
+/*!********************************************************!*\
+  !*** ./node_modules/core-js/internals/shared-store.js ***!
+  \********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var global = __webpack_require__(/*! ../internals/global */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/global.js");
-var setGlobal = __webpack_require__(/*! ../internals/set-global */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/set-global.js");
+var global = __webpack_require__(/*! ../internals/global */ "./node_modules/core-js/internals/global.js");
+var setGlobal = __webpack_require__(/*! ../internals/set-global */ "./node_modules/core-js/internals/set-global.js");
 
 var SHARED = '__core-js_shared__';
 var store = global[SHARED] || setGlobal(SHARED, {});
@@ -11968,42 +12605,42 @@ module.exports = store;
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/shared.js":
-/*!***********************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/shared.js ***!
-  \***********************************************************************************/
+/***/ "./node_modules/core-js/internals/shared.js":
+/*!**************************************************!*\
+  !*** ./node_modules/core-js/internals/shared.js ***!
+  \**************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var IS_PURE = __webpack_require__(/*! ../internals/is-pure */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/is-pure.js");
-var store = __webpack_require__(/*! ../internals/shared-store */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/shared-store.js");
+var IS_PURE = __webpack_require__(/*! ../internals/is-pure */ "./node_modules/core-js/internals/is-pure.js");
+var store = __webpack_require__(/*! ../internals/shared-store */ "./node_modules/core-js/internals/shared-store.js");
 
 (module.exports = function (key, value) {
   return store[key] || (store[key] = value !== undefined ? value : {});
 })('versions', []).push({
-  version: '3.6.5',
+  version: '3.9.0',
   mode: IS_PURE ? 'pure' : 'global',
-  copyright: '© 2020 Denis Pushkarev (zloirock.ru)'
+  copyright: '© 2021 Denis Pushkarev (zloirock.ru)'
 });
 
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/species-constructor.js":
-/*!************************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/species-constructor.js ***!
-  \************************************************************************************************/
+/***/ "./node_modules/core-js/internals/species-constructor.js":
+/*!***************************************************************!*\
+  !*** ./node_modules/core-js/internals/species-constructor.js ***!
+  \***************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/an-object.js");
-var aFunction = __webpack_require__(/*! ../internals/a-function */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/a-function.js");
-var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/well-known-symbol.js");
+var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/core-js/internals/an-object.js");
+var aFunction = __webpack_require__(/*! ../internals/a-function */ "./node_modules/core-js/internals/a-function.js");
+var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/core-js/internals/well-known-symbol.js");
 
 var SPECIES = wellKnownSymbol('species');
 
 // `SpeciesConstructor` abstract operation
-// https://tc39.github.io/ecma262/#sec-speciesconstructor
+// https://tc39.es/ecma262/#sec-speciesconstructor
 module.exports = function (O, defaultConstructor) {
   var C = anObject(O).constructor;
   var S;
@@ -12013,15 +12650,15 @@ module.exports = function (O, defaultConstructor) {
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/string-multibyte.js":
-/*!*********************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/string-multibyte.js ***!
-  \*********************************************************************************************/
+/***/ "./node_modules/core-js/internals/string-multibyte.js":
+/*!************************************************************!*\
+  !*** ./node_modules/core-js/internals/string-multibyte.js ***!
+  \************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var toInteger = __webpack_require__(/*! ../internals/to-integer */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/to-integer.js");
-var requireObjectCoercible = __webpack_require__(/*! ../internals/require-object-coercible */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/require-object-coercible.js");
+var toInteger = __webpack_require__(/*! ../internals/to-integer */ "./node_modules/core-js/internals/to-integer.js");
+var requireObjectCoercible = __webpack_require__(/*! ../internals/require-object-coercible */ "./node_modules/core-js/internals/require-object-coercible.js");
 
 // `String.prototype.{ codePointAt, at }` methods implementation
 var createMethod = function (CONVERT_TO_STRING) {
@@ -12041,7 +12678,7 @@ var createMethod = function (CONVERT_TO_STRING) {
 
 module.exports = {
   // `String.prototype.codePointAt` method
-  // https://tc39.github.io/ecma262/#sec-string.prototype.codepointat
+  // https://tc39.es/ecma262/#sec-string.prototype.codepointat
   codeAt: createMethod(false),
   // `String.prototype.at` method
   // https://github.com/mathiasbynens/String.prototype.at
@@ -12051,15 +12688,15 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/string-trim-forced.js":
-/*!***********************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/string-trim-forced.js ***!
-  \***********************************************************************************************/
+/***/ "./node_modules/core-js/internals/string-trim-forced.js":
+/*!**************************************************************!*\
+  !*** ./node_modules/core-js/internals/string-trim-forced.js ***!
+  \**************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/fails.js");
-var whitespaces = __webpack_require__(/*! ../internals/whitespaces */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/whitespaces.js");
+var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/core-js/internals/fails.js");
+var whitespaces = __webpack_require__(/*! ../internals/whitespaces */ "./node_modules/core-js/internals/whitespaces.js");
 
 var non = '\u200B\u0085\u180E';
 
@@ -12074,15 +12711,15 @@ module.exports = function (METHOD_NAME) {
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/string-trim.js":
-/*!****************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/string-trim.js ***!
-  \****************************************************************************************/
+/***/ "./node_modules/core-js/internals/string-trim.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/core-js/internals/string-trim.js ***!
+  \*******************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var requireObjectCoercible = __webpack_require__(/*! ../internals/require-object-coercible */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/require-object-coercible.js");
-var whitespaces = __webpack_require__(/*! ../internals/whitespaces */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/whitespaces.js");
+var requireObjectCoercible = __webpack_require__(/*! ../internals/require-object-coercible */ "./node_modules/core-js/internals/require-object-coercible.js");
+var whitespaces = __webpack_require__(/*! ../internals/whitespaces */ "./node_modules/core-js/internals/whitespaces.js");
 
 var whitespace = '[' + whitespaces + ']';
 var ltrim = RegExp('^' + whitespace + whitespace + '*');
@@ -12100,33 +12737,33 @@ var createMethod = function (TYPE) {
 
 module.exports = {
   // `String.prototype.{ trimLeft, trimStart }` methods
-  // https://tc39.github.io/ecma262/#sec-string.prototype.trimstart
+  // https://tc39.es/ecma262/#sec-string.prototype.trimstart
   start: createMethod(1),
   // `String.prototype.{ trimRight, trimEnd }` methods
-  // https://tc39.github.io/ecma262/#sec-string.prototype.trimend
+  // https://tc39.es/ecma262/#sec-string.prototype.trimend
   end: createMethod(2),
   // `String.prototype.trim` method
-  // https://tc39.github.io/ecma262/#sec-string.prototype.trim
+  // https://tc39.es/ecma262/#sec-string.prototype.trim
   trim: createMethod(3)
 };
 
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/task.js":
-/*!*********************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/task.js ***!
-  \*********************************************************************************/
+/***/ "./node_modules/core-js/internals/task.js":
+/*!************************************************!*\
+  !*** ./node_modules/core-js/internals/task.js ***!
+  \************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var global = __webpack_require__(/*! ../internals/global */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/global.js");
-var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/fails.js");
-var classof = __webpack_require__(/*! ../internals/classof-raw */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/classof-raw.js");
-var bind = __webpack_require__(/*! ../internals/function-bind-context */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/function-bind-context.js");
-var html = __webpack_require__(/*! ../internals/html */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/html.js");
-var createElement = __webpack_require__(/*! ../internals/document-create-element */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/document-create-element.js");
-var IS_IOS = __webpack_require__(/*! ../internals/engine-is-ios */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/engine-is-ios.js");
+var global = __webpack_require__(/*! ../internals/global */ "./node_modules/core-js/internals/global.js");
+var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/core-js/internals/fails.js");
+var bind = __webpack_require__(/*! ../internals/function-bind-context */ "./node_modules/core-js/internals/function-bind-context.js");
+var html = __webpack_require__(/*! ../internals/html */ "./node_modules/core-js/internals/html.js");
+var createElement = __webpack_require__(/*! ../internals/document-create-element */ "./node_modules/core-js/internals/document-create-element.js");
+var IS_IOS = __webpack_require__(/*! ../internals/engine-is-ios */ "./node_modules/core-js/internals/engine-is-ios.js");
+var IS_NODE = __webpack_require__(/*! ../internals/engine-is-node */ "./node_modules/core-js/internals/engine-is-node.js");
 
 var location = global.location;
 var set = global.setImmediate;
@@ -12140,7 +12777,7 @@ var ONREADYSTATECHANGE = 'onreadystatechange';
 var defer, channel, port;
 
 var run = function (id) {
-  // eslint-disable-next-line no-prototype-builtins
+  // eslint-disable-next-line no-prototype-builtins -- safe
   if (queue.hasOwnProperty(id)) {
     var fn = queue[id];
     delete queue[id];
@@ -12170,7 +12807,7 @@ if (!set || !clear) {
     var i = 1;
     while (arguments.length > i) args.push(arguments[i++]);
     queue[++counter] = function () {
-      // eslint-disable-next-line no-new-func
+      // eslint-disable-next-line no-new-func -- spec requirement
       (typeof fn == 'function' ? fn : Function(fn)).apply(undefined, args);
     };
     defer(counter);
@@ -12180,7 +12817,7 @@ if (!set || !clear) {
     delete queue[id];
   };
   // Node.js 0.8-
-  if (classof(process) == 'process') {
+  if (IS_NODE) {
     defer = function (id) {
       process.nextTick(runner(id));
     };
@@ -12202,8 +12839,8 @@ if (!set || !clear) {
     global.addEventListener &&
     typeof postMessage == 'function' &&
     !global.importScripts &&
-    !fails(post) &&
-    location.protocol !== 'file:'
+    location && location.protocol !== 'file:' &&
+    !fails(post)
   ) {
     defer = post;
     global.addEventListener('message', listener, false);
@@ -12231,14 +12868,14 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/to-absolute-index.js":
-/*!**********************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/to-absolute-index.js ***!
-  \**********************************************************************************************/
+/***/ "./node_modules/core-js/internals/to-absolute-index.js":
+/*!*************************************************************!*\
+  !*** ./node_modules/core-js/internals/to-absolute-index.js ***!
+  \*************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var toInteger = __webpack_require__(/*! ../internals/to-integer */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/to-integer.js");
+var toInteger = __webpack_require__(/*! ../internals/to-integer */ "./node_modules/core-js/internals/to-integer.js");
 
 var max = Math.max;
 var min = Math.min;
@@ -12254,16 +12891,16 @@ module.exports = function (index, length) {
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/to-indexed-object.js":
-/*!**********************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/to-indexed-object.js ***!
-  \**********************************************************************************************/
+/***/ "./node_modules/core-js/internals/to-indexed-object.js":
+/*!*************************************************************!*\
+  !*** ./node_modules/core-js/internals/to-indexed-object.js ***!
+  \*************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 // toObject with fallback for non-array-like ES3 strings
-var IndexedObject = __webpack_require__(/*! ../internals/indexed-object */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/indexed-object.js");
-var requireObjectCoercible = __webpack_require__(/*! ../internals/require-object-coercible */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/require-object-coercible.js");
+var IndexedObject = __webpack_require__(/*! ../internals/indexed-object */ "./node_modules/core-js/internals/indexed-object.js");
+var requireObjectCoercible = __webpack_require__(/*! ../internals/require-object-coercible */ "./node_modules/core-js/internals/require-object-coercible.js");
 
 module.exports = function (it) {
   return IndexedObject(requireObjectCoercible(it));
@@ -12272,10 +12909,10 @@ module.exports = function (it) {
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/to-integer.js":
-/*!***************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/to-integer.js ***!
-  \***************************************************************************************/
+/***/ "./node_modules/core-js/internals/to-integer.js":
+/*!******************************************************!*\
+  !*** ./node_modules/core-js/internals/to-integer.js ***!
+  \******************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -12283,7 +12920,7 @@ var ceil = Math.ceil;
 var floor = Math.floor;
 
 // `ToInteger` abstract operation
-// https://tc39.github.io/ecma262/#sec-tointeger
+// https://tc39.es/ecma262/#sec-tointeger
 module.exports = function (argument) {
   return isNaN(argument = +argument) ? 0 : (argument > 0 ? floor : ceil)(argument);
 };
@@ -12291,19 +12928,19 @@ module.exports = function (argument) {
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/to-length.js":
-/*!**************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/to-length.js ***!
-  \**************************************************************************************/
+/***/ "./node_modules/core-js/internals/to-length.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/core-js/internals/to-length.js ***!
+  \*****************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var toInteger = __webpack_require__(/*! ../internals/to-integer */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/to-integer.js");
+var toInteger = __webpack_require__(/*! ../internals/to-integer */ "./node_modules/core-js/internals/to-integer.js");
 
 var min = Math.min;
 
 // `ToLength` abstract operation
-// https://tc39.github.io/ecma262/#sec-tolength
+// https://tc39.es/ecma262/#sec-tolength
 module.exports = function (argument) {
   return argument > 0 ? min(toInteger(argument), 0x1FFFFFFFFFFFFF) : 0; // 2 ** 53 - 1 == 9007199254740991
 };
@@ -12311,17 +12948,17 @@ module.exports = function (argument) {
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/to-object.js":
-/*!**************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/to-object.js ***!
-  \**************************************************************************************/
+/***/ "./node_modules/core-js/internals/to-object.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/core-js/internals/to-object.js ***!
+  \*****************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var requireObjectCoercible = __webpack_require__(/*! ../internals/require-object-coercible */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/require-object-coercible.js");
+var requireObjectCoercible = __webpack_require__(/*! ../internals/require-object-coercible */ "./node_modules/core-js/internals/require-object-coercible.js");
 
 // `ToObject` abstract operation
-// https://tc39.github.io/ecma262/#sec-toobject
+// https://tc39.es/ecma262/#sec-toobject
 module.exports = function (argument) {
   return Object(requireObjectCoercible(argument));
 };
@@ -12329,17 +12966,17 @@ module.exports = function (argument) {
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/to-primitive.js":
-/*!*****************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/to-primitive.js ***!
-  \*****************************************************************************************/
+/***/ "./node_modules/core-js/internals/to-primitive.js":
+/*!********************************************************!*\
+  !*** ./node_modules/core-js/internals/to-primitive.js ***!
+  \********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/is-object.js");
+var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/core-js/internals/is-object.js");
 
 // `ToPrimitive` abstract operation
-// https://tc39.github.io/ecma262/#sec-toprimitive
+// https://tc39.es/ecma262/#sec-toprimitive
 // instead of the ES6 spec version, we didn't implement @@toPrimitive case
 // and the second argument - flag - preferred type is a string
 module.exports = function (input, PREFERRED_STRING) {
@@ -12354,14 +12991,14 @@ module.exports = function (input, PREFERRED_STRING) {
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/to-string-tag-support.js":
-/*!**************************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/to-string-tag-support.js ***!
-  \**************************************************************************************************/
+/***/ "./node_modules/core-js/internals/to-string-tag-support.js":
+/*!*****************************************************************!*\
+  !*** ./node_modules/core-js/internals/to-string-tag-support.js ***!
+  \*****************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/well-known-symbol.js");
+var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/core-js/internals/well-known-symbol.js");
 
 var TO_STRING_TAG = wellKnownSymbol('toStringTag');
 var test = {};
@@ -12373,10 +13010,10 @@ module.exports = String(test) === '[object z]';
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/uid.js":
-/*!********************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/uid.js ***!
-  \********************************************************************************/
+/***/ "./node_modules/core-js/internals/uid.js":
+/*!***********************************************!*\
+  !*** ./node_modules/core-js/internals/uid.js ***!
+  \***********************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -12390,51 +13027,50 @@ module.exports = function (key) {
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/use-symbol-as-uid.js":
-/*!**********************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/use-symbol-as-uid.js ***!
-  \**********************************************************************************************/
+/***/ "./node_modules/core-js/internals/use-symbol-as-uid.js":
+/*!*************************************************************!*\
+  !*** ./node_modules/core-js/internals/use-symbol-as-uid.js ***!
+  \*************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var NATIVE_SYMBOL = __webpack_require__(/*! ../internals/native-symbol */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/native-symbol.js");
+var NATIVE_SYMBOL = __webpack_require__(/*! ../internals/native-symbol */ "./node_modules/core-js/internals/native-symbol.js");
 
 module.exports = NATIVE_SYMBOL
-  // eslint-disable-next-line no-undef
+  /* global Symbol -- safe */
   && !Symbol.sham
-  // eslint-disable-next-line no-undef
   && typeof Symbol.iterator == 'symbol';
 
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/well-known-symbol-wrapped.js":
-/*!******************************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/well-known-symbol-wrapped.js ***!
-  \******************************************************************************************************/
+/***/ "./node_modules/core-js/internals/well-known-symbol-wrapped.js":
+/*!*********************************************************************!*\
+  !*** ./node_modules/core-js/internals/well-known-symbol-wrapped.js ***!
+  \*********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/well-known-symbol.js");
+var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/core-js/internals/well-known-symbol.js");
 
 exports.f = wellKnownSymbol;
 
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/well-known-symbol.js":
-/*!**********************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/well-known-symbol.js ***!
-  \**********************************************************************************************/
+/***/ "./node_modules/core-js/internals/well-known-symbol.js":
+/*!*************************************************************!*\
+  !*** ./node_modules/core-js/internals/well-known-symbol.js ***!
+  \*************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var global = __webpack_require__(/*! ../internals/global */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/global.js");
-var shared = __webpack_require__(/*! ../internals/shared */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/shared.js");
-var has = __webpack_require__(/*! ../internals/has */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/has.js");
-var uid = __webpack_require__(/*! ../internals/uid */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/uid.js");
-var NATIVE_SYMBOL = __webpack_require__(/*! ../internals/native-symbol */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/native-symbol.js");
-var USE_SYMBOL_AS_UID = __webpack_require__(/*! ../internals/use-symbol-as-uid */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/use-symbol-as-uid.js");
+var global = __webpack_require__(/*! ../internals/global */ "./node_modules/core-js/internals/global.js");
+var shared = __webpack_require__(/*! ../internals/shared */ "./node_modules/core-js/internals/shared.js");
+var has = __webpack_require__(/*! ../internals/has */ "./node_modules/core-js/internals/has.js");
+var uid = __webpack_require__(/*! ../internals/uid */ "./node_modules/core-js/internals/uid.js");
+var NATIVE_SYMBOL = __webpack_require__(/*! ../internals/native-symbol */ "./node_modules/core-js/internals/native-symbol.js");
+var USE_SYMBOL_AS_UID = __webpack_require__(/*! ../internals/use-symbol-as-uid */ "./node_modules/core-js/internals/use-symbol-as-uid.js");
 
 var WellKnownSymbolsStore = shared('wks');
 var Symbol = global.Symbol;
@@ -12450,40 +13086,40 @@ module.exports = function (name) {
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/whitespaces.js":
-/*!****************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/whitespaces.js ***!
-  \****************************************************************************************/
+/***/ "./node_modules/core-js/internals/whitespaces.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/core-js/internals/whitespaces.js ***!
+  \*******************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
 // a string of all valid unicode whitespaces
-// eslint-disable-next-line max-len
-module.exports = '\u0009\u000A\u000B\u000C\u000D\u0020\u00A0\u1680\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200A\u202F\u205F\u3000\u2028\u2029\uFEFF';
+module.exports = '\u0009\u000A\u000B\u000C\u000D\u0020\u00A0\u1680\u2000\u2001\u2002' +
+  '\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200A\u202F\u205F\u3000\u2028\u2029\uFEFF';
 
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.array.concat.js":
-/*!******************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.array.concat.js ***!
-  \******************************************************************************************/
+/***/ "./node_modules/core-js/modules/es.array.concat.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/core-js/modules/es.array.concat.js ***!
+  \*********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/export.js");
-var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/fails.js");
-var isArray = __webpack_require__(/*! ../internals/is-array */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/is-array.js");
-var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/is-object.js");
-var toObject = __webpack_require__(/*! ../internals/to-object */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/to-object.js");
-var toLength = __webpack_require__(/*! ../internals/to-length */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/to-length.js");
-var createProperty = __webpack_require__(/*! ../internals/create-property */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/create-property.js");
-var arraySpeciesCreate = __webpack_require__(/*! ../internals/array-species-create */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/array-species-create.js");
-var arrayMethodHasSpeciesSupport = __webpack_require__(/*! ../internals/array-method-has-species-support */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/array-method-has-species-support.js");
-var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/well-known-symbol.js");
-var V8_VERSION = __webpack_require__(/*! ../internals/engine-v8-version */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/engine-v8-version.js");
+var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
+var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/core-js/internals/fails.js");
+var isArray = __webpack_require__(/*! ../internals/is-array */ "./node_modules/core-js/internals/is-array.js");
+var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/core-js/internals/is-object.js");
+var toObject = __webpack_require__(/*! ../internals/to-object */ "./node_modules/core-js/internals/to-object.js");
+var toLength = __webpack_require__(/*! ../internals/to-length */ "./node_modules/core-js/internals/to-length.js");
+var createProperty = __webpack_require__(/*! ../internals/create-property */ "./node_modules/core-js/internals/create-property.js");
+var arraySpeciesCreate = __webpack_require__(/*! ../internals/array-species-create */ "./node_modules/core-js/internals/array-species-create.js");
+var arrayMethodHasSpeciesSupport = __webpack_require__(/*! ../internals/array-method-has-species-support */ "./node_modules/core-js/internals/array-method-has-species-support.js");
+var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/core-js/internals/well-known-symbol.js");
+var V8_VERSION = __webpack_require__(/*! ../internals/engine-v8-version */ "./node_modules/core-js/internals/engine-v8-version.js");
 
 var IS_CONCAT_SPREADABLE = wellKnownSymbol('isConcatSpreadable');
 var MAX_SAFE_INTEGER = 0x1FFFFFFFFFFFFF;
@@ -12509,10 +13145,11 @@ var isConcatSpreadable = function (O) {
 var FORCED = !IS_CONCAT_SPREADABLE_SUPPORT || !SPECIES_SUPPORT;
 
 // `Array.prototype.concat` method
-// https://tc39.github.io/ecma262/#sec-array.prototype.concat
+// https://tc39.es/ecma262/#sec-array.prototype.concat
 // with adding support of @@isConcatSpreadable and @@species
 $({ target: 'Array', proto: true, forced: FORCED }, {
-  concat: function concat(arg) { // eslint-disable-line no-unused-vars
+  // eslint-disable-next-line no-unused-vars -- required for `.length`
+  concat: function concat(arg) {
     var O = toObject(this);
     var A = arraySpeciesCreate(O, 0);
     var n = 0;
@@ -12536,26 +13173,24 @@ $({ target: 'Array', proto: true, forced: FORCED }, {
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.array.every.js":
-/*!*****************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.array.every.js ***!
-  \*****************************************************************************************/
+/***/ "./node_modules/core-js/modules/es.array.every.js":
+/*!********************************************************!*\
+  !*** ./node_modules/core-js/modules/es.array.every.js ***!
+  \********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/export.js");
-var $every = __webpack_require__(/*! ../internals/array-iteration */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/array-iteration.js").every;
-var arrayMethodIsStrict = __webpack_require__(/*! ../internals/array-method-is-strict */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/array-method-is-strict.js");
-var arrayMethodUsesToLength = __webpack_require__(/*! ../internals/array-method-uses-to-length */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/array-method-uses-to-length.js");
+var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
+var $every = __webpack_require__(/*! ../internals/array-iteration */ "./node_modules/core-js/internals/array-iteration.js").every;
+var arrayMethodIsStrict = __webpack_require__(/*! ../internals/array-method-is-strict */ "./node_modules/core-js/internals/array-method-is-strict.js");
 
 var STRICT_METHOD = arrayMethodIsStrict('every');
-var USES_TO_LENGTH = arrayMethodUsesToLength('every');
 
 // `Array.prototype.every` method
-// https://tc39.github.io/ecma262/#sec-array.prototype.every
-$({ target: 'Array', proto: true, forced: !STRICT_METHOD || !USES_TO_LENGTH }, {
+// https://tc39.es/ecma262/#sec-array.prototype.every
+$({ target: 'Array', proto: true, forced: !STRICT_METHOD }, {
   every: function every(callbackfn /* , thisArg */) {
     return $every(this, callbackfn, arguments.length > 1 ? arguments[1] : undefined);
   }
@@ -12564,51 +13199,48 @@ $({ target: 'Array', proto: true, forced: !STRICT_METHOD || !USES_TO_LENGTH }, {
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.array.fill.js":
-/*!****************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.array.fill.js ***!
-  \****************************************************************************************/
+/***/ "./node_modules/core-js/modules/es.array.fill.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/core-js/modules/es.array.fill.js ***!
+  \*******************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/export.js");
-var fill = __webpack_require__(/*! ../internals/array-fill */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/array-fill.js");
-var addToUnscopables = __webpack_require__(/*! ../internals/add-to-unscopables */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/add-to-unscopables.js");
+var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
+var fill = __webpack_require__(/*! ../internals/array-fill */ "./node_modules/core-js/internals/array-fill.js");
+var addToUnscopables = __webpack_require__(/*! ../internals/add-to-unscopables */ "./node_modules/core-js/internals/add-to-unscopables.js");
 
 // `Array.prototype.fill` method
-// https://tc39.github.io/ecma262/#sec-array.prototype.fill
+// https://tc39.es/ecma262/#sec-array.prototype.fill
 $({ target: 'Array', proto: true }, {
   fill: fill
 });
 
-// https://tc39.github.io/ecma262/#sec-array.prototype-@@unscopables
+// https://tc39.es/ecma262/#sec-array.prototype-@@unscopables
 addToUnscopables('fill');
 
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.array.filter.js":
-/*!******************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.array.filter.js ***!
-  \******************************************************************************************/
+/***/ "./node_modules/core-js/modules/es.array.filter.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/core-js/modules/es.array.filter.js ***!
+  \*********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/export.js");
-var $filter = __webpack_require__(/*! ../internals/array-iteration */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/array-iteration.js").filter;
-var arrayMethodHasSpeciesSupport = __webpack_require__(/*! ../internals/array-method-has-species-support */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/array-method-has-species-support.js");
-var arrayMethodUsesToLength = __webpack_require__(/*! ../internals/array-method-uses-to-length */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/array-method-uses-to-length.js");
+var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
+var $filter = __webpack_require__(/*! ../internals/array-iteration */ "./node_modules/core-js/internals/array-iteration.js").filter;
+var arrayMethodHasSpeciesSupport = __webpack_require__(/*! ../internals/array-method-has-species-support */ "./node_modules/core-js/internals/array-method-has-species-support.js");
 
 var HAS_SPECIES_SUPPORT = arrayMethodHasSpeciesSupport('filter');
-// Edge 14- issue
-var USES_TO_LENGTH = arrayMethodUsesToLength('filter');
 
 // `Array.prototype.filter` method
-// https://tc39.github.io/ecma262/#sec-array.prototype.filter
+// https://tc39.es/ecma262/#sec-array.prototype.filter
 // with adding support of @@species
-$({ target: 'Array', proto: true, forced: !HAS_SPECIES_SUPPORT || !USES_TO_LENGTH }, {
+$({ target: 'Array', proto: true, forced: !HAS_SPECIES_SUPPORT }, {
   filter: function filter(callbackfn /* , thisArg */) {
     return $filter(this, callbackfn, arguments.length > 1 ? arguments[1] : undefined);
   }
@@ -12617,20 +13249,20 @@ $({ target: 'Array', proto: true, forced: !HAS_SPECIES_SUPPORT || !USES_TO_LENGT
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.array.for-each.js":
-/*!********************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.array.for-each.js ***!
-  \********************************************************************************************/
+/***/ "./node_modules/core-js/modules/es.array.for-each.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/core-js/modules/es.array.for-each.js ***!
+  \***********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/export.js");
-var forEach = __webpack_require__(/*! ../internals/array-for-each */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/array-for-each.js");
+var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
+var forEach = __webpack_require__(/*! ../internals/array-for-each */ "./node_modules/core-js/internals/array-for-each.js");
 
 // `Array.prototype.forEach` method
-// https://tc39.github.io/ecma262/#sec-array.prototype.foreach
+// https://tc39.es/ecma262/#sec-array.prototype.foreach
 $({ target: 'Array', proto: true, forced: [].forEach != forEach }, {
   forEach: forEach
 });
@@ -12638,23 +13270,23 @@ $({ target: 'Array', proto: true, forced: [].forEach != forEach }, {
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.array.from.js":
-/*!****************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.array.from.js ***!
-  \****************************************************************************************/
+/***/ "./node_modules/core-js/modules/es.array.from.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/core-js/modules/es.array.from.js ***!
+  \*******************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/export.js");
-var from = __webpack_require__(/*! ../internals/array-from */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/array-from.js");
-var checkCorrectnessOfIteration = __webpack_require__(/*! ../internals/check-correctness-of-iteration */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/check-correctness-of-iteration.js");
+var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
+var from = __webpack_require__(/*! ../internals/array-from */ "./node_modules/core-js/internals/array-from.js");
+var checkCorrectnessOfIteration = __webpack_require__(/*! ../internals/check-correctness-of-iteration */ "./node_modules/core-js/internals/check-correctness-of-iteration.js");
 
 var INCORRECT_ITERATION = !checkCorrectnessOfIteration(function (iterable) {
   Array.from(iterable);
 });
 
 // `Array.from` method
-// https://tc39.github.io/ecma262/#sec-array.from
+// https://tc39.es/ecma262/#sec-array.from
 $({ target: 'Array', stat: true, forced: INCORRECT_ITERATION }, {
   from: from
 });
@@ -12662,59 +13294,54 @@ $({ target: 'Array', stat: true, forced: INCORRECT_ITERATION }, {
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.array.includes.js":
-/*!********************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.array.includes.js ***!
-  \********************************************************************************************/
+/***/ "./node_modules/core-js/modules/es.array.includes.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/core-js/modules/es.array.includes.js ***!
+  \***********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/export.js");
-var $includes = __webpack_require__(/*! ../internals/array-includes */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/array-includes.js").includes;
-var addToUnscopables = __webpack_require__(/*! ../internals/add-to-unscopables */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/add-to-unscopables.js");
-var arrayMethodUsesToLength = __webpack_require__(/*! ../internals/array-method-uses-to-length */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/array-method-uses-to-length.js");
-
-var USES_TO_LENGTH = arrayMethodUsesToLength('indexOf', { ACCESSORS: true, 1: 0 });
+var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
+var $includes = __webpack_require__(/*! ../internals/array-includes */ "./node_modules/core-js/internals/array-includes.js").includes;
+var addToUnscopables = __webpack_require__(/*! ../internals/add-to-unscopables */ "./node_modules/core-js/internals/add-to-unscopables.js");
 
 // `Array.prototype.includes` method
-// https://tc39.github.io/ecma262/#sec-array.prototype.includes
-$({ target: 'Array', proto: true, forced: !USES_TO_LENGTH }, {
+// https://tc39.es/ecma262/#sec-array.prototype.includes
+$({ target: 'Array', proto: true }, {
   includes: function includes(el /* , fromIndex = 0 */) {
     return $includes(this, el, arguments.length > 1 ? arguments[1] : undefined);
   }
 });
 
-// https://tc39.github.io/ecma262/#sec-array.prototype-@@unscopables
+// https://tc39.es/ecma262/#sec-array.prototype-@@unscopables
 addToUnscopables('includes');
 
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.array.index-of.js":
-/*!********************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.array.index-of.js ***!
-  \********************************************************************************************/
+/***/ "./node_modules/core-js/modules/es.array.index-of.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/core-js/modules/es.array.index-of.js ***!
+  \***********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/export.js");
-var $indexOf = __webpack_require__(/*! ../internals/array-includes */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/array-includes.js").indexOf;
-var arrayMethodIsStrict = __webpack_require__(/*! ../internals/array-method-is-strict */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/array-method-is-strict.js");
-var arrayMethodUsesToLength = __webpack_require__(/*! ../internals/array-method-uses-to-length */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/array-method-uses-to-length.js");
+var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
+var $indexOf = __webpack_require__(/*! ../internals/array-includes */ "./node_modules/core-js/internals/array-includes.js").indexOf;
+var arrayMethodIsStrict = __webpack_require__(/*! ../internals/array-method-is-strict */ "./node_modules/core-js/internals/array-method-is-strict.js");
 
 var nativeIndexOf = [].indexOf;
 
 var NEGATIVE_ZERO = !!nativeIndexOf && 1 / [1].indexOf(1, -0) < 0;
 var STRICT_METHOD = arrayMethodIsStrict('indexOf');
-var USES_TO_LENGTH = arrayMethodUsesToLength('indexOf', { ACCESSORS: true, 1: 0 });
 
 // `Array.prototype.indexOf` method
-// https://tc39.github.io/ecma262/#sec-array.prototype.indexof
-$({ target: 'Array', proto: true, forced: NEGATIVE_ZERO || !STRICT_METHOD || !USES_TO_LENGTH }, {
+// https://tc39.es/ecma262/#sec-array.prototype.indexof
+$({ target: 'Array', proto: true, forced: NEGATIVE_ZERO || !STRICT_METHOD }, {
   indexOf: function indexOf(searchElement /* , fromIndex = 0 */) {
     return NEGATIVE_ZERO
       // convert -0 to +0
@@ -12726,35 +13353,35 @@ $({ target: 'Array', proto: true, forced: NEGATIVE_ZERO || !STRICT_METHOD || !US
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.array.iterator.js":
-/*!********************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.array.iterator.js ***!
-  \********************************************************************************************/
+/***/ "./node_modules/core-js/modules/es.array.iterator.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/core-js/modules/es.array.iterator.js ***!
+  \***********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var toIndexedObject = __webpack_require__(/*! ../internals/to-indexed-object */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/to-indexed-object.js");
-var addToUnscopables = __webpack_require__(/*! ../internals/add-to-unscopables */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/add-to-unscopables.js");
-var Iterators = __webpack_require__(/*! ../internals/iterators */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/iterators.js");
-var InternalStateModule = __webpack_require__(/*! ../internals/internal-state */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/internal-state.js");
-var defineIterator = __webpack_require__(/*! ../internals/define-iterator */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/define-iterator.js");
+var toIndexedObject = __webpack_require__(/*! ../internals/to-indexed-object */ "./node_modules/core-js/internals/to-indexed-object.js");
+var addToUnscopables = __webpack_require__(/*! ../internals/add-to-unscopables */ "./node_modules/core-js/internals/add-to-unscopables.js");
+var Iterators = __webpack_require__(/*! ../internals/iterators */ "./node_modules/core-js/internals/iterators.js");
+var InternalStateModule = __webpack_require__(/*! ../internals/internal-state */ "./node_modules/core-js/internals/internal-state.js");
+var defineIterator = __webpack_require__(/*! ../internals/define-iterator */ "./node_modules/core-js/internals/define-iterator.js");
 
 var ARRAY_ITERATOR = 'Array Iterator';
 var setInternalState = InternalStateModule.set;
 var getInternalState = InternalStateModule.getterFor(ARRAY_ITERATOR);
 
 // `Array.prototype.entries` method
-// https://tc39.github.io/ecma262/#sec-array.prototype.entries
+// https://tc39.es/ecma262/#sec-array.prototype.entries
 // `Array.prototype.keys` method
-// https://tc39.github.io/ecma262/#sec-array.prototype.keys
+// https://tc39.es/ecma262/#sec-array.prototype.keys
 // `Array.prototype.values` method
-// https://tc39.github.io/ecma262/#sec-array.prototype.values
+// https://tc39.es/ecma262/#sec-array.prototype.values
 // `Array.prototype[@@iterator]` method
-// https://tc39.github.io/ecma262/#sec-array.prototype-@@iterator
+// https://tc39.es/ecma262/#sec-array.prototype-@@iterator
 // `CreateArrayIterator` internal method
-// https://tc39.github.io/ecma262/#sec-createarrayiterator
+// https://tc39.es/ecma262/#sec-createarrayiterator
 module.exports = defineIterator(Array, 'Array', function (iterated, kind) {
   setInternalState(this, {
     type: ARRAY_ITERATOR,
@@ -12763,7 +13390,7 @@ module.exports = defineIterator(Array, 'Array', function (iterated, kind) {
     kind: kind                         // kind
   });
 // `%ArrayIteratorPrototype%.next` method
-// https://tc39.github.io/ecma262/#sec-%arrayiteratorprototype%.next
+// https://tc39.es/ecma262/#sec-%arrayiteratorprototype%.next
 }, function () {
   var state = getInternalState(this);
   var target = state.target;
@@ -12779,11 +13406,11 @@ module.exports = defineIterator(Array, 'Array', function (iterated, kind) {
 }, 'values');
 
 // argumentsList[@@iterator] is %ArrayProto_values%
-// https://tc39.github.io/ecma262/#sec-createunmappedargumentsobject
-// https://tc39.github.io/ecma262/#sec-createmappedargumentsobject
+// https://tc39.es/ecma262/#sec-createunmappedargumentsobject
+// https://tc39.es/ecma262/#sec-createmappedargumentsobject
 Iterators.Arguments = Iterators.Array;
 
-// https://tc39.github.io/ecma262/#sec-array.prototype-@@unscopables
+// https://tc39.es/ecma262/#sec-array.prototype-@@unscopables
 addToUnscopables('keys');
 addToUnscopables('values');
 addToUnscopables('entries');
@@ -12791,19 +13418,19 @@ addToUnscopables('entries');
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.array.join.js":
-/*!****************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.array.join.js ***!
-  \****************************************************************************************/
+/***/ "./node_modules/core-js/modules/es.array.join.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/core-js/modules/es.array.join.js ***!
+  \*******************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/export.js");
-var IndexedObject = __webpack_require__(/*! ../internals/indexed-object */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/indexed-object.js");
-var toIndexedObject = __webpack_require__(/*! ../internals/to-indexed-object */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/to-indexed-object.js");
-var arrayMethodIsStrict = __webpack_require__(/*! ../internals/array-method-is-strict */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/array-method-is-strict.js");
+var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
+var IndexedObject = __webpack_require__(/*! ../internals/indexed-object */ "./node_modules/core-js/internals/indexed-object.js");
+var toIndexedObject = __webpack_require__(/*! ../internals/to-indexed-object */ "./node_modules/core-js/internals/to-indexed-object.js");
+var arrayMethodIsStrict = __webpack_require__(/*! ../internals/array-method-is-strict */ "./node_modules/core-js/internals/array-method-is-strict.js");
 
 var nativeJoin = [].join;
 
@@ -12811,7 +13438,7 @@ var ES3_STRINGS = IndexedObject != Object;
 var STRICT_METHOD = arrayMethodIsStrict('join', ',');
 
 // `Array.prototype.join` method
-// https://tc39.github.io/ecma262/#sec-array.prototype.join
+// https://tc39.es/ecma262/#sec-array.prototype.join
 $({ target: 'Array', proto: true, forced: ES3_STRINGS || !STRICT_METHOD }, {
   join: function join(separator) {
     return nativeJoin.call(toIndexedObject(this), separator === undefined ? ',' : separator);
@@ -12821,28 +13448,25 @@ $({ target: 'Array', proto: true, forced: ES3_STRINGS || !STRICT_METHOD }, {
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.array.map.js":
-/*!***************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.array.map.js ***!
-  \***************************************************************************************/
+/***/ "./node_modules/core-js/modules/es.array.map.js":
+/*!******************************************************!*\
+  !*** ./node_modules/core-js/modules/es.array.map.js ***!
+  \******************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/export.js");
-var $map = __webpack_require__(/*! ../internals/array-iteration */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/array-iteration.js").map;
-var arrayMethodHasSpeciesSupport = __webpack_require__(/*! ../internals/array-method-has-species-support */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/array-method-has-species-support.js");
-var arrayMethodUsesToLength = __webpack_require__(/*! ../internals/array-method-uses-to-length */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/array-method-uses-to-length.js");
+var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
+var $map = __webpack_require__(/*! ../internals/array-iteration */ "./node_modules/core-js/internals/array-iteration.js").map;
+var arrayMethodHasSpeciesSupport = __webpack_require__(/*! ../internals/array-method-has-species-support */ "./node_modules/core-js/internals/array-method-has-species-support.js");
 
 var HAS_SPECIES_SUPPORT = arrayMethodHasSpeciesSupport('map');
-// FF49- issue
-var USES_TO_LENGTH = arrayMethodUsesToLength('map');
 
 // `Array.prototype.map` method
-// https://tc39.github.io/ecma262/#sec-array.prototype.map
+// https://tc39.es/ecma262/#sec-array.prototype.map
 // with adding support of @@species
-$({ target: 'Array', proto: true, forced: !HAS_SPECIES_SUPPORT || !USES_TO_LENGTH }, {
+$({ target: 'Array', proto: true, forced: !HAS_SPECIES_SUPPORT }, {
   map: function map(callbackfn /* , thisArg */) {
     return $map(this, callbackfn, arguments.length > 1 ? arguments[1] : undefined);
   }
@@ -12851,26 +13475,29 @@ $({ target: 'Array', proto: true, forced: !HAS_SPECIES_SUPPORT || !USES_TO_LENGT
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.array.reduce.js":
-/*!******************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.array.reduce.js ***!
-  \******************************************************************************************/
+/***/ "./node_modules/core-js/modules/es.array.reduce.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/core-js/modules/es.array.reduce.js ***!
+  \*********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/export.js");
-var $reduce = __webpack_require__(/*! ../internals/array-reduce */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/array-reduce.js").left;
-var arrayMethodIsStrict = __webpack_require__(/*! ../internals/array-method-is-strict */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/array-method-is-strict.js");
-var arrayMethodUsesToLength = __webpack_require__(/*! ../internals/array-method-uses-to-length */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/array-method-uses-to-length.js");
+var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
+var $reduce = __webpack_require__(/*! ../internals/array-reduce */ "./node_modules/core-js/internals/array-reduce.js").left;
+var arrayMethodIsStrict = __webpack_require__(/*! ../internals/array-method-is-strict */ "./node_modules/core-js/internals/array-method-is-strict.js");
+var CHROME_VERSION = __webpack_require__(/*! ../internals/engine-v8-version */ "./node_modules/core-js/internals/engine-v8-version.js");
+var IS_NODE = __webpack_require__(/*! ../internals/engine-is-node */ "./node_modules/core-js/internals/engine-is-node.js");
 
 var STRICT_METHOD = arrayMethodIsStrict('reduce');
-var USES_TO_LENGTH = arrayMethodUsesToLength('reduce', { 1: 0 });
+// Chrome 80-82 has a critical bug
+// https://bugs.chromium.org/p/chromium/issues/detail?id=1049982
+var CHROME_BUG = !IS_NODE && CHROME_VERSION > 79 && CHROME_VERSION < 83;
 
 // `Array.prototype.reduce` method
-// https://tc39.github.io/ecma262/#sec-array.prototype.reduce
-$({ target: 'Array', proto: true, forced: !STRICT_METHOD || !USES_TO_LENGTH }, {
+// https://tc39.es/ecma262/#sec-array.prototype.reduce
+$({ target: 'Array', proto: true, forced: !STRICT_METHOD || CHROME_BUG }, {
   reduce: function reduce(callbackfn /* , initialValue */) {
     return $reduce(this, callbackfn, arguments.length, arguments.length > 1 ? arguments[1] : undefined);
   }
@@ -12879,28 +13506,28 @@ $({ target: 'Array', proto: true, forced: !STRICT_METHOD || !USES_TO_LENGTH }, {
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.array.reverse.js":
-/*!*******************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.array.reverse.js ***!
-  \*******************************************************************************************/
+/***/ "./node_modules/core-js/modules/es.array.reverse.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/core-js/modules/es.array.reverse.js ***!
+  \**********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/export.js");
-var isArray = __webpack_require__(/*! ../internals/is-array */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/is-array.js");
+var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
+var isArray = __webpack_require__(/*! ../internals/is-array */ "./node_modules/core-js/internals/is-array.js");
 
 var nativeReverse = [].reverse;
 var test = [1, 2];
 
 // `Array.prototype.reverse` method
-// https://tc39.github.io/ecma262/#sec-array.prototype.reverse
+// https://tc39.es/ecma262/#sec-array.prototype.reverse
 // fix for Safari 12.0 bug
 // https://bugs.webkit.org/show_bug.cgi?id=188794
 $({ target: 'Array', proto: true, forced: String(test) === String(test.reverse()) }, {
   reverse: function reverse() {
-    // eslint-disable-next-line no-self-assign
+    // eslint-disable-next-line no-self-assign -- dirty hack
     if (isArray(this)) this.length = this.length;
     return nativeReverse.call(this);
   }
@@ -12909,37 +13536,35 @@ $({ target: 'Array', proto: true, forced: String(test) === String(test.reverse()
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.array.slice.js":
-/*!*****************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.array.slice.js ***!
-  \*****************************************************************************************/
+/***/ "./node_modules/core-js/modules/es.array.slice.js":
+/*!********************************************************!*\
+  !*** ./node_modules/core-js/modules/es.array.slice.js ***!
+  \********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/export.js");
-var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/is-object.js");
-var isArray = __webpack_require__(/*! ../internals/is-array */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/is-array.js");
-var toAbsoluteIndex = __webpack_require__(/*! ../internals/to-absolute-index */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/to-absolute-index.js");
-var toLength = __webpack_require__(/*! ../internals/to-length */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/to-length.js");
-var toIndexedObject = __webpack_require__(/*! ../internals/to-indexed-object */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/to-indexed-object.js");
-var createProperty = __webpack_require__(/*! ../internals/create-property */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/create-property.js");
-var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/well-known-symbol.js");
-var arrayMethodHasSpeciesSupport = __webpack_require__(/*! ../internals/array-method-has-species-support */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/array-method-has-species-support.js");
-var arrayMethodUsesToLength = __webpack_require__(/*! ../internals/array-method-uses-to-length */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/array-method-uses-to-length.js");
+var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
+var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/core-js/internals/is-object.js");
+var isArray = __webpack_require__(/*! ../internals/is-array */ "./node_modules/core-js/internals/is-array.js");
+var toAbsoluteIndex = __webpack_require__(/*! ../internals/to-absolute-index */ "./node_modules/core-js/internals/to-absolute-index.js");
+var toLength = __webpack_require__(/*! ../internals/to-length */ "./node_modules/core-js/internals/to-length.js");
+var toIndexedObject = __webpack_require__(/*! ../internals/to-indexed-object */ "./node_modules/core-js/internals/to-indexed-object.js");
+var createProperty = __webpack_require__(/*! ../internals/create-property */ "./node_modules/core-js/internals/create-property.js");
+var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/core-js/internals/well-known-symbol.js");
+var arrayMethodHasSpeciesSupport = __webpack_require__(/*! ../internals/array-method-has-species-support */ "./node_modules/core-js/internals/array-method-has-species-support.js");
 
 var HAS_SPECIES_SUPPORT = arrayMethodHasSpeciesSupport('slice');
-var USES_TO_LENGTH = arrayMethodUsesToLength('slice', { ACCESSORS: true, 0: 0, 1: 2 });
 
 var SPECIES = wellKnownSymbol('species');
 var nativeSlice = [].slice;
 var max = Math.max;
 
 // `Array.prototype.slice` method
-// https://tc39.github.io/ecma262/#sec-array.prototype.slice
+// https://tc39.es/ecma262/#sec-array.prototype.slice
 // fallback for not array-like ES3 strings and DOM objects
-$({ target: 'Array', proto: true, forced: !HAS_SPECIES_SUPPORT || !USES_TO_LENGTH }, {
+$({ target: 'Array', proto: true, forced: !HAS_SPECIES_SUPPORT }, {
   slice: function slice(start, end) {
     var O = toIndexedObject(this);
     var length = toLength(O.length);
@@ -12970,26 +13595,24 @@ $({ target: 'Array', proto: true, forced: !HAS_SPECIES_SUPPORT || !USES_TO_LENGT
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.array.some.js":
-/*!****************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.array.some.js ***!
-  \****************************************************************************************/
+/***/ "./node_modules/core-js/modules/es.array.some.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/core-js/modules/es.array.some.js ***!
+  \*******************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/export.js");
-var $some = __webpack_require__(/*! ../internals/array-iteration */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/array-iteration.js").some;
-var arrayMethodIsStrict = __webpack_require__(/*! ../internals/array-method-is-strict */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/array-method-is-strict.js");
-var arrayMethodUsesToLength = __webpack_require__(/*! ../internals/array-method-uses-to-length */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/array-method-uses-to-length.js");
+var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
+var $some = __webpack_require__(/*! ../internals/array-iteration */ "./node_modules/core-js/internals/array-iteration.js").some;
+var arrayMethodIsStrict = __webpack_require__(/*! ../internals/array-method-is-strict */ "./node_modules/core-js/internals/array-method-is-strict.js");
 
 var STRICT_METHOD = arrayMethodIsStrict('some');
-var USES_TO_LENGTH = arrayMethodUsesToLength('some');
 
 // `Array.prototype.some` method
-// https://tc39.github.io/ecma262/#sec-array.prototype.some
-$({ target: 'Array', proto: true, forced: !STRICT_METHOD || !USES_TO_LENGTH }, {
+// https://tc39.es/ecma262/#sec-array.prototype.some
+$({ target: 'Array', proto: true, forced: !STRICT_METHOD }, {
   some: function some(callbackfn /* , thisArg */) {
     return $some(this, callbackfn, arguments.length > 1 ? arguments[1] : undefined);
   }
@@ -12998,15 +13621,15 @@ $({ target: 'Array', proto: true, forced: !STRICT_METHOD || !USES_TO_LENGTH }, {
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.function.name.js":
-/*!*******************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.function.name.js ***!
-  \*******************************************************************************************/
+/***/ "./node_modules/core-js/modules/es.function.name.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/core-js/modules/es.function.name.js ***!
+  \**********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var DESCRIPTORS = __webpack_require__(/*! ../internals/descriptors */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/descriptors.js");
-var defineProperty = __webpack_require__(/*! ../internals/object-define-property */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/object-define-property.js").f;
+var DESCRIPTORS = __webpack_require__(/*! ../internals/descriptors */ "./node_modules/core-js/internals/descriptors.js");
+var defineProperty = __webpack_require__(/*! ../internals/object-define-property */ "./node_modules/core-js/internals/object-define-property.js").f;
 
 var FunctionPrototype = Function.prototype;
 var FunctionPrototypeToString = FunctionPrototype.toString;
@@ -13014,7 +13637,7 @@ var nameRE = /^\s*function ([^ (]*)/;
 var NAME = 'name';
 
 // Function instances `.name` property
-// https://tc39.github.io/ecma262/#sec-function-instances-name
+// https://tc39.es/ecma262/#sec-function-instances-name
 if (DESCRIPTORS && !(NAME in FunctionPrototype)) {
   defineProperty(FunctionPrototype, NAME, {
     configurable: true,
@@ -13031,20 +13654,20 @@ if (DESCRIPTORS && !(NAME in FunctionPrototype)) {
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.map.js":
-/*!*********************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.map.js ***!
-  \*********************************************************************************/
+/***/ "./node_modules/core-js/modules/es.map.js":
+/*!************************************************!*\
+  !*** ./node_modules/core-js/modules/es.map.js ***!
+  \************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var collection = __webpack_require__(/*! ../internals/collection */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/collection.js");
-var collectionStrong = __webpack_require__(/*! ../internals/collection-strong */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/collection-strong.js");
+var collection = __webpack_require__(/*! ../internals/collection */ "./node_modules/core-js/internals/collection.js");
+var collectionStrong = __webpack_require__(/*! ../internals/collection-strong */ "./node_modules/core-js/internals/collection-strong.js");
 
 // `Map` constructor
-// https://tc39.github.io/ecma262/#sec-map-objects
+// https://tc39.es/ecma262/#sec-map-objects
 module.exports = collection('Map', function (init) {
   return function Map() { return init(this, arguments.length ? arguments[0] : undefined); };
 }, collectionStrong);
@@ -13052,29 +13675,29 @@ module.exports = collection('Map', function (init) {
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.number.constructor.js":
-/*!************************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.number.constructor.js ***!
-  \************************************************************************************************/
+/***/ "./node_modules/core-js/modules/es.number.constructor.js":
+/*!***************************************************************!*\
+  !*** ./node_modules/core-js/modules/es.number.constructor.js ***!
+  \***************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var DESCRIPTORS = __webpack_require__(/*! ../internals/descriptors */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/descriptors.js");
-var global = __webpack_require__(/*! ../internals/global */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/global.js");
-var isForced = __webpack_require__(/*! ../internals/is-forced */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/is-forced.js");
-var redefine = __webpack_require__(/*! ../internals/redefine */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/redefine.js");
-var has = __webpack_require__(/*! ../internals/has */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/has.js");
-var classof = __webpack_require__(/*! ../internals/classof-raw */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/classof-raw.js");
-var inheritIfRequired = __webpack_require__(/*! ../internals/inherit-if-required */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/inherit-if-required.js");
-var toPrimitive = __webpack_require__(/*! ../internals/to-primitive */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/to-primitive.js");
-var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/fails.js");
-var create = __webpack_require__(/*! ../internals/object-create */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/object-create.js");
-var getOwnPropertyNames = __webpack_require__(/*! ../internals/object-get-own-property-names */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/object-get-own-property-names.js").f;
-var getOwnPropertyDescriptor = __webpack_require__(/*! ../internals/object-get-own-property-descriptor */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/object-get-own-property-descriptor.js").f;
-var defineProperty = __webpack_require__(/*! ../internals/object-define-property */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/object-define-property.js").f;
-var trim = __webpack_require__(/*! ../internals/string-trim */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/string-trim.js").trim;
+var DESCRIPTORS = __webpack_require__(/*! ../internals/descriptors */ "./node_modules/core-js/internals/descriptors.js");
+var global = __webpack_require__(/*! ../internals/global */ "./node_modules/core-js/internals/global.js");
+var isForced = __webpack_require__(/*! ../internals/is-forced */ "./node_modules/core-js/internals/is-forced.js");
+var redefine = __webpack_require__(/*! ../internals/redefine */ "./node_modules/core-js/internals/redefine.js");
+var has = __webpack_require__(/*! ../internals/has */ "./node_modules/core-js/internals/has.js");
+var classof = __webpack_require__(/*! ../internals/classof-raw */ "./node_modules/core-js/internals/classof-raw.js");
+var inheritIfRequired = __webpack_require__(/*! ../internals/inherit-if-required */ "./node_modules/core-js/internals/inherit-if-required.js");
+var toPrimitive = __webpack_require__(/*! ../internals/to-primitive */ "./node_modules/core-js/internals/to-primitive.js");
+var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/core-js/internals/fails.js");
+var create = __webpack_require__(/*! ../internals/object-create */ "./node_modules/core-js/internals/object-create.js");
+var getOwnPropertyNames = __webpack_require__(/*! ../internals/object-get-own-property-names */ "./node_modules/core-js/internals/object-get-own-property-names.js").f;
+var getOwnPropertyDescriptor = __webpack_require__(/*! ../internals/object-get-own-property-descriptor */ "./node_modules/core-js/internals/object-get-own-property-descriptor.js").f;
+var defineProperty = __webpack_require__(/*! ../internals/object-define-property */ "./node_modules/core-js/internals/object-define-property.js").f;
+var trim = __webpack_require__(/*! ../internals/string-trim */ "./node_modules/core-js/internals/string-trim.js").trim;
 
 var NUMBER = 'Number';
 var NativeNumber = global[NUMBER];
@@ -13084,7 +13707,7 @@ var NumberPrototype = NativeNumber.prototype;
 var BROKEN_CLASSOF = classof(create(NumberPrototype)) == NUMBER;
 
 // `ToNumber` abstract operation
-// https://tc39.github.io/ecma262/#sec-tonumber
+// https://tc39.es/ecma262/#sec-tonumber
 var toNumber = function (argument) {
   var it = toPrimitive(argument, false);
   var first, third, radix, maxCode, digits, length, index, code;
@@ -13113,7 +13736,7 @@ var toNumber = function (argument) {
 };
 
 // `Number` constructor
-// https://tc39.github.io/ecma262/#sec-number-constructor
+// https://tc39.es/ecma262/#sec-number-constructor
 if (isForced(NUMBER, !NativeNumber(' 0o1') || !NativeNumber('0b1') || NativeNumber('+0x1'))) {
   var NumberWrapper = function Number(value) {
     var it = arguments.length < 1 ? 0 : value;
@@ -13128,7 +13751,9 @@ if (isForced(NUMBER, !NativeNumber(' 0o1') || !NativeNumber('0b1') || NativeNumb
     'MAX_VALUE,MIN_VALUE,NaN,NEGATIVE_INFINITY,POSITIVE_INFINITY,' +
     // ES2015 (in case, if modules with ES2015 Number statics required before):
     'EPSILON,isFinite,isInteger,isNaN,isSafeInteger,MAX_SAFE_INTEGER,' +
-    'MIN_SAFE_INTEGER,parseFloat,parseInt,isInteger'
+    'MIN_SAFE_INTEGER,parseFloat,parseInt,isInteger,' +
+    // ESNext
+    'fromString,range'
   ).split(','), j = 0, key; keys.length > j; j++) {
     if (has(NativeNumber, key = keys[j]) && !has(NumberWrapper, key)) {
       defineProperty(NumberWrapper, key, getOwnPropertyDescriptor(NativeNumber, key));
@@ -13142,24 +13767,24 @@ if (isForced(NUMBER, !NativeNumber(' 0o1') || !NativeNumber('0b1') || NativeNumb
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.object.get-own-property-descriptor.js":
-/*!****************************************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.object.get-own-property-descriptor.js ***!
-  \****************************************************************************************************************/
+/***/ "./node_modules/core-js/modules/es.object.get-own-property-descriptor.js":
+/*!*******************************************************************************!*\
+  !*** ./node_modules/core-js/modules/es.object.get-own-property-descriptor.js ***!
+  \*******************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/export.js");
-var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/fails.js");
-var toIndexedObject = __webpack_require__(/*! ../internals/to-indexed-object */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/to-indexed-object.js");
-var nativeGetOwnPropertyDescriptor = __webpack_require__(/*! ../internals/object-get-own-property-descriptor */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/object-get-own-property-descriptor.js").f;
-var DESCRIPTORS = __webpack_require__(/*! ../internals/descriptors */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/descriptors.js");
+var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
+var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/core-js/internals/fails.js");
+var toIndexedObject = __webpack_require__(/*! ../internals/to-indexed-object */ "./node_modules/core-js/internals/to-indexed-object.js");
+var nativeGetOwnPropertyDescriptor = __webpack_require__(/*! ../internals/object-get-own-property-descriptor */ "./node_modules/core-js/internals/object-get-own-property-descriptor.js").f;
+var DESCRIPTORS = __webpack_require__(/*! ../internals/descriptors */ "./node_modules/core-js/internals/descriptors.js");
 
 var FAILS_ON_PRIMITIVES = fails(function () { nativeGetOwnPropertyDescriptor(1); });
 var FORCED = !DESCRIPTORS || FAILS_ON_PRIMITIVES;
 
 // `Object.getOwnPropertyDescriptor` method
-// https://tc39.github.io/ecma262/#sec-object.getownpropertydescriptor
+// https://tc39.es/ecma262/#sec-object.getownpropertydescriptor
 $({ target: 'Object', stat: true, forced: FORCED, sham: !DESCRIPTORS }, {
   getOwnPropertyDescriptor: function getOwnPropertyDescriptor(it, key) {
     return nativeGetOwnPropertyDescriptor(toIndexedObject(it), key);
@@ -13169,22 +13794,22 @@ $({ target: 'Object', stat: true, forced: FORCED, sham: !DESCRIPTORS }, {
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.object.get-own-property-descriptors.js":
-/*!*****************************************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.object.get-own-property-descriptors.js ***!
-  \*****************************************************************************************************************/
+/***/ "./node_modules/core-js/modules/es.object.get-own-property-descriptors.js":
+/*!********************************************************************************!*\
+  !*** ./node_modules/core-js/modules/es.object.get-own-property-descriptors.js ***!
+  \********************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/export.js");
-var DESCRIPTORS = __webpack_require__(/*! ../internals/descriptors */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/descriptors.js");
-var ownKeys = __webpack_require__(/*! ../internals/own-keys */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/own-keys.js");
-var toIndexedObject = __webpack_require__(/*! ../internals/to-indexed-object */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/to-indexed-object.js");
-var getOwnPropertyDescriptorModule = __webpack_require__(/*! ../internals/object-get-own-property-descriptor */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/object-get-own-property-descriptor.js");
-var createProperty = __webpack_require__(/*! ../internals/create-property */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/create-property.js");
+var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
+var DESCRIPTORS = __webpack_require__(/*! ../internals/descriptors */ "./node_modules/core-js/internals/descriptors.js");
+var ownKeys = __webpack_require__(/*! ../internals/own-keys */ "./node_modules/core-js/internals/own-keys.js");
+var toIndexedObject = __webpack_require__(/*! ../internals/to-indexed-object */ "./node_modules/core-js/internals/to-indexed-object.js");
+var getOwnPropertyDescriptorModule = __webpack_require__(/*! ../internals/object-get-own-property-descriptor */ "./node_modules/core-js/internals/object-get-own-property-descriptor.js");
+var createProperty = __webpack_require__(/*! ../internals/create-property */ "./node_modules/core-js/internals/create-property.js");
 
 // `Object.getOwnPropertyDescriptors` method
-// https://tc39.github.io/ecma262/#sec-object.getownpropertydescriptors
+// https://tc39.es/ecma262/#sec-object.getownpropertydescriptors
 $({ target: 'Object', stat: true, sham: !DESCRIPTORS }, {
   getOwnPropertyDescriptors: function getOwnPropertyDescriptors(object) {
     var O = toIndexedObject(object);
@@ -13204,22 +13829,22 @@ $({ target: 'Object', stat: true, sham: !DESCRIPTORS }, {
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.object.keys.js":
-/*!*****************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.object.keys.js ***!
-  \*****************************************************************************************/
+/***/ "./node_modules/core-js/modules/es.object.keys.js":
+/*!********************************************************!*\
+  !*** ./node_modules/core-js/modules/es.object.keys.js ***!
+  \********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/export.js");
-var toObject = __webpack_require__(/*! ../internals/to-object */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/to-object.js");
-var nativeKeys = __webpack_require__(/*! ../internals/object-keys */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/object-keys.js");
-var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/fails.js");
+var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
+var toObject = __webpack_require__(/*! ../internals/to-object */ "./node_modules/core-js/internals/to-object.js");
+var nativeKeys = __webpack_require__(/*! ../internals/object-keys */ "./node_modules/core-js/internals/object-keys.js");
+var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/core-js/internals/fails.js");
 
 var FAILS_ON_PRIMITIVES = fails(function () { nativeKeys(1); });
 
 // `Object.keys` method
-// https://tc39.github.io/ecma262/#sec-object.keys
+// https://tc39.es/ecma262/#sec-object.keys
 $({ target: 'Object', stat: true, forced: FAILS_ON_PRIMITIVES }, {
   keys: function keys(it) {
     return nativeKeys(toObject(it));
@@ -13229,19 +13854,19 @@ $({ target: 'Object', stat: true, forced: FAILS_ON_PRIMITIVES }, {
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.object.to-string.js":
-/*!**********************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.object.to-string.js ***!
-  \**********************************************************************************************/
+/***/ "./node_modules/core-js/modules/es.object.to-string.js":
+/*!*************************************************************!*\
+  !*** ./node_modules/core-js/modules/es.object.to-string.js ***!
+  \*************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var TO_STRING_TAG_SUPPORT = __webpack_require__(/*! ../internals/to-string-tag-support */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/to-string-tag-support.js");
-var redefine = __webpack_require__(/*! ../internals/redefine */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/redefine.js");
-var toString = __webpack_require__(/*! ../internals/object-to-string */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/object-to-string.js");
+var TO_STRING_TAG_SUPPORT = __webpack_require__(/*! ../internals/to-string-tag-support */ "./node_modules/core-js/internals/to-string-tag-support.js");
+var redefine = __webpack_require__(/*! ../internals/redefine */ "./node_modules/core-js/internals/redefine.js");
+var toString = __webpack_require__(/*! ../internals/object-to-string */ "./node_modules/core-js/internals/object-to-string.js");
 
 // `Object.prototype.toString` method
-// https://tc39.github.io/ecma262/#sec-object.prototype.tostring
+// https://tc39.es/ecma262/#sec-object.prototype.tostring
 if (!TO_STRING_TAG_SUPPORT) {
   redefine(Object.prototype, 'toString', toString, { unsafe: true });
 }
@@ -13249,42 +13874,42 @@ if (!TO_STRING_TAG_SUPPORT) {
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.promise.js":
-/*!*************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.promise.js ***!
-  \*************************************************************************************/
+/***/ "./node_modules/core-js/modules/es.promise.js":
+/*!****************************************************!*\
+  !*** ./node_modules/core-js/modules/es.promise.js ***!
+  \****************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/export.js");
-var IS_PURE = __webpack_require__(/*! ../internals/is-pure */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/is-pure.js");
-var global = __webpack_require__(/*! ../internals/global */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/global.js");
-var getBuiltIn = __webpack_require__(/*! ../internals/get-built-in */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/get-built-in.js");
-var NativePromise = __webpack_require__(/*! ../internals/native-promise-constructor */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/native-promise-constructor.js");
-var redefine = __webpack_require__(/*! ../internals/redefine */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/redefine.js");
-var redefineAll = __webpack_require__(/*! ../internals/redefine-all */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/redefine-all.js");
-var setToStringTag = __webpack_require__(/*! ../internals/set-to-string-tag */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/set-to-string-tag.js");
-var setSpecies = __webpack_require__(/*! ../internals/set-species */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/set-species.js");
-var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/is-object.js");
-var aFunction = __webpack_require__(/*! ../internals/a-function */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/a-function.js");
-var anInstance = __webpack_require__(/*! ../internals/an-instance */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/an-instance.js");
-var classof = __webpack_require__(/*! ../internals/classof-raw */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/classof-raw.js");
-var inspectSource = __webpack_require__(/*! ../internals/inspect-source */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/inspect-source.js");
-var iterate = __webpack_require__(/*! ../internals/iterate */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/iterate.js");
-var checkCorrectnessOfIteration = __webpack_require__(/*! ../internals/check-correctness-of-iteration */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/check-correctness-of-iteration.js");
-var speciesConstructor = __webpack_require__(/*! ../internals/species-constructor */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/species-constructor.js");
-var task = __webpack_require__(/*! ../internals/task */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/task.js").set;
-var microtask = __webpack_require__(/*! ../internals/microtask */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/microtask.js");
-var promiseResolve = __webpack_require__(/*! ../internals/promise-resolve */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/promise-resolve.js");
-var hostReportErrors = __webpack_require__(/*! ../internals/host-report-errors */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/host-report-errors.js");
-var newPromiseCapabilityModule = __webpack_require__(/*! ../internals/new-promise-capability */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/new-promise-capability.js");
-var perform = __webpack_require__(/*! ../internals/perform */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/perform.js");
-var InternalStateModule = __webpack_require__(/*! ../internals/internal-state */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/internal-state.js");
-var isForced = __webpack_require__(/*! ../internals/is-forced */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/is-forced.js");
-var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/well-known-symbol.js");
-var V8_VERSION = __webpack_require__(/*! ../internals/engine-v8-version */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/engine-v8-version.js");
+var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
+var IS_PURE = __webpack_require__(/*! ../internals/is-pure */ "./node_modules/core-js/internals/is-pure.js");
+var global = __webpack_require__(/*! ../internals/global */ "./node_modules/core-js/internals/global.js");
+var getBuiltIn = __webpack_require__(/*! ../internals/get-built-in */ "./node_modules/core-js/internals/get-built-in.js");
+var NativePromise = __webpack_require__(/*! ../internals/native-promise-constructor */ "./node_modules/core-js/internals/native-promise-constructor.js");
+var redefine = __webpack_require__(/*! ../internals/redefine */ "./node_modules/core-js/internals/redefine.js");
+var redefineAll = __webpack_require__(/*! ../internals/redefine-all */ "./node_modules/core-js/internals/redefine-all.js");
+var setToStringTag = __webpack_require__(/*! ../internals/set-to-string-tag */ "./node_modules/core-js/internals/set-to-string-tag.js");
+var setSpecies = __webpack_require__(/*! ../internals/set-species */ "./node_modules/core-js/internals/set-species.js");
+var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/core-js/internals/is-object.js");
+var aFunction = __webpack_require__(/*! ../internals/a-function */ "./node_modules/core-js/internals/a-function.js");
+var anInstance = __webpack_require__(/*! ../internals/an-instance */ "./node_modules/core-js/internals/an-instance.js");
+var inspectSource = __webpack_require__(/*! ../internals/inspect-source */ "./node_modules/core-js/internals/inspect-source.js");
+var iterate = __webpack_require__(/*! ../internals/iterate */ "./node_modules/core-js/internals/iterate.js");
+var checkCorrectnessOfIteration = __webpack_require__(/*! ../internals/check-correctness-of-iteration */ "./node_modules/core-js/internals/check-correctness-of-iteration.js");
+var speciesConstructor = __webpack_require__(/*! ../internals/species-constructor */ "./node_modules/core-js/internals/species-constructor.js");
+var task = __webpack_require__(/*! ../internals/task */ "./node_modules/core-js/internals/task.js").set;
+var microtask = __webpack_require__(/*! ../internals/microtask */ "./node_modules/core-js/internals/microtask.js");
+var promiseResolve = __webpack_require__(/*! ../internals/promise-resolve */ "./node_modules/core-js/internals/promise-resolve.js");
+var hostReportErrors = __webpack_require__(/*! ../internals/host-report-errors */ "./node_modules/core-js/internals/host-report-errors.js");
+var newPromiseCapabilityModule = __webpack_require__(/*! ../internals/new-promise-capability */ "./node_modules/core-js/internals/new-promise-capability.js");
+var perform = __webpack_require__(/*! ../internals/perform */ "./node_modules/core-js/internals/perform.js");
+var InternalStateModule = __webpack_require__(/*! ../internals/internal-state */ "./node_modules/core-js/internals/internal-state.js");
+var isForced = __webpack_require__(/*! ../internals/is-forced */ "./node_modules/core-js/internals/is-forced.js");
+var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/core-js/internals/well-known-symbol.js");
+var IS_NODE = __webpack_require__(/*! ../internals/engine-is-node */ "./node_modules/core-js/internals/engine-is-node.js");
+var V8_VERSION = __webpack_require__(/*! ../internals/engine-v8-version */ "./node_modules/core-js/internals/engine-v8-version.js");
 
 var SPECIES = wellKnownSymbol('species');
 var PROMISE = 'Promise';
@@ -13298,8 +13923,8 @@ var process = global.process;
 var $fetch = getBuiltIn('fetch');
 var newPromiseCapability = newPromiseCapabilityModule.f;
 var newGenericPromiseCapability = newPromiseCapability;
-var IS_NODE = classof(process) == 'process';
 var DISPATCH_EVENT = !!(document && document.createEvent && global.dispatchEvent);
+var NATIVE_REJECTION_EVENT = typeof PromiseRejectionEvent == 'function';
 var UNHANDLED_REJECTION = 'unhandledrejection';
 var REJECTION_HANDLED = 'rejectionhandled';
 var PENDING = 0;
@@ -13317,7 +13942,7 @@ var FORCED = isForced(PROMISE, function () {
     // We can't detect it synchronously, so just check versions
     if (V8_VERSION === 66) return true;
     // Unhandled rejections tracking support, NodeJS Promise without it fails @@species test
-    if (!IS_NODE && typeof PromiseRejectionEvent != 'function') return true;
+    if (!IS_NODE && !NATIVE_REJECTION_EVENT) return true;
   }
   // We need Promise#finally in the pure version for preventing prototype pollution
   if (IS_PURE && !PromiseConstructor.prototype['finally']) return true;
@@ -13345,7 +13970,7 @@ var isThenable = function (it) {
   return isObject(it) && typeof (then = it.then) == 'function' ? then : false;
 };
 
-var notify = function (promise, state, isReject) {
+var notify = function (state, isReject) {
   if (state.notified) return;
   state.notified = true;
   var chain = state.reactions;
@@ -13364,7 +13989,7 @@ var notify = function (promise, state, isReject) {
       try {
         if (handler) {
           if (!ok) {
-            if (state.rejection === UNHANDLED) onHandleUnhandled(promise, state);
+            if (state.rejection === UNHANDLED) onHandleUnhandled(state);
             state.rejection = HANDLED;
           }
           if (handler === true) result = value;
@@ -13389,7 +14014,7 @@ var notify = function (promise, state, isReject) {
     }
     state.reactions = [];
     state.notified = false;
-    if (isReject && !state.rejection) onUnhandled(promise, state);
+    if (isReject && !state.rejection) onUnhandled(state);
   });
 };
 
@@ -13402,12 +14027,13 @@ var dispatchEvent = function (name, promise, reason) {
     event.initEvent(name, false, true);
     global.dispatchEvent(event);
   } else event = { promise: promise, reason: reason };
-  if (handler = global['on' + name]) handler(event);
+  if (!NATIVE_REJECTION_EVENT && (handler = global['on' + name])) handler(event);
   else if (name === UNHANDLED_REJECTION) hostReportErrors('Unhandled promise rejection', reason);
 };
 
-var onUnhandled = function (promise, state) {
+var onUnhandled = function (state) {
   task.call(global, function () {
+    var promise = state.facade;
     var value = state.value;
     var IS_UNHANDLED = isUnhandled(state);
     var result;
@@ -13428,55 +14054,56 @@ var isUnhandled = function (state) {
   return state.rejection !== HANDLED && !state.parent;
 };
 
-var onHandleUnhandled = function (promise, state) {
+var onHandleUnhandled = function (state) {
   task.call(global, function () {
+    var promise = state.facade;
     if (IS_NODE) {
       process.emit('rejectionHandled', promise);
     } else dispatchEvent(REJECTION_HANDLED, promise, state.value);
   });
 };
 
-var bind = function (fn, promise, state, unwrap) {
+var bind = function (fn, state, unwrap) {
   return function (value) {
-    fn(promise, state, value, unwrap);
+    fn(state, value, unwrap);
   };
 };
 
-var internalReject = function (promise, state, value, unwrap) {
+var internalReject = function (state, value, unwrap) {
   if (state.done) return;
   state.done = true;
   if (unwrap) state = unwrap;
   state.value = value;
   state.state = REJECTED;
-  notify(promise, state, true);
+  notify(state, true);
 };
 
-var internalResolve = function (promise, state, value, unwrap) {
+var internalResolve = function (state, value, unwrap) {
   if (state.done) return;
   state.done = true;
   if (unwrap) state = unwrap;
   try {
-    if (promise === value) throw TypeError("Promise can't be resolved itself");
+    if (state.facade === value) throw TypeError("Promise can't be resolved itself");
     var then = isThenable(value);
     if (then) {
       microtask(function () {
         var wrapper = { done: false };
         try {
           then.call(value,
-            bind(internalResolve, promise, wrapper, state),
-            bind(internalReject, promise, wrapper, state)
+            bind(internalResolve, wrapper, state),
+            bind(internalReject, wrapper, state)
           );
         } catch (error) {
-          internalReject(promise, wrapper, error, state);
+          internalReject(wrapper, error, state);
         }
       });
     } else {
       state.value = value;
       state.state = FULFILLED;
-      notify(promise, state, false);
+      notify(state, false);
     }
   } catch (error) {
-    internalReject(promise, { done: false }, error, state);
+    internalReject({ done: false }, error, state);
   }
 };
 
@@ -13489,12 +14116,12 @@ if (FORCED) {
     Internal.call(this);
     var state = getInternalState(this);
     try {
-      executor(bind(internalResolve, this, state), bind(internalReject, this, state));
+      executor(bind(internalResolve, state), bind(internalReject, state));
     } catch (error) {
-      internalReject(this, state, error);
+      internalReject(state, error);
     }
   };
-  // eslint-disable-next-line no-unused-vars
+  // eslint-disable-next-line no-unused-vars -- required for `.length`
   Internal = function Promise(executor) {
     setInternalState(this, {
       type: PROMISE,
@@ -13509,7 +14136,7 @@ if (FORCED) {
   };
   Internal.prototype = redefineAll(PromiseConstructor.prototype, {
     // `Promise.prototype.then` method
-    // https://tc39.github.io/ecma262/#sec-promise.prototype.then
+    // https://tc39.es/ecma262/#sec-promise.prototype.then
     then: function then(onFulfilled, onRejected) {
       var state = getInternalPromiseState(this);
       var reaction = newPromiseCapability(speciesConstructor(this, PromiseConstructor));
@@ -13518,11 +14145,11 @@ if (FORCED) {
       reaction.domain = IS_NODE ? process.domain : undefined;
       state.parent = true;
       state.reactions.push(reaction);
-      if (state.state != PENDING) notify(this, state, false);
+      if (state.state != PENDING) notify(state, false);
       return reaction.promise;
     },
     // `Promise.prototype.catch` method
-    // https://tc39.github.io/ecma262/#sec-promise.prototype.catch
+    // https://tc39.es/ecma262/#sec-promise.prototype.catch
     'catch': function (onRejected) {
       return this.then(undefined, onRejected);
     }
@@ -13531,8 +14158,8 @@ if (FORCED) {
     var promise = new Internal();
     var state = getInternalState(promise);
     this.promise = promise;
-    this.resolve = bind(internalResolve, promise, state);
-    this.reject = bind(internalReject, promise, state);
+    this.resolve = bind(internalResolve, state);
+    this.reject = bind(internalReject, state);
   };
   newPromiseCapabilityModule.f = newPromiseCapability = function (C) {
     return C === PromiseConstructor || C === PromiseWrapper
@@ -13554,7 +14181,7 @@ if (FORCED) {
 
     // wrap fetch result
     if (typeof $fetch == 'function') $({ global: true, enumerable: true, forced: true }, {
-      // eslint-disable-next-line no-unused-vars
+      // eslint-disable-next-line no-unused-vars -- required for `.length`
       fetch: function fetch(input /* , init */) {
         return promiseResolve(PromiseConstructor, $fetch.apply(global, arguments));
       }
@@ -13574,7 +14201,7 @@ PromiseWrapper = getBuiltIn(PROMISE);
 // statics
 $({ target: PROMISE, stat: true, forced: FORCED }, {
   // `Promise.reject` method
-  // https://tc39.github.io/ecma262/#sec-promise.reject
+  // https://tc39.es/ecma262/#sec-promise.reject
   reject: function reject(r) {
     var capability = newPromiseCapability(this);
     capability.reject.call(undefined, r);
@@ -13584,7 +14211,7 @@ $({ target: PROMISE, stat: true, forced: FORCED }, {
 
 $({ target: PROMISE, stat: true, forced: IS_PURE || FORCED }, {
   // `Promise.resolve` method
-  // https://tc39.github.io/ecma262/#sec-promise.resolve
+  // https://tc39.es/ecma262/#sec-promise.resolve
   resolve: function resolve(x) {
     return promiseResolve(IS_PURE && this === PromiseWrapper ? PromiseConstructor : this, x);
   }
@@ -13592,7 +14219,7 @@ $({ target: PROMISE, stat: true, forced: IS_PURE || FORCED }, {
 
 $({ target: PROMISE, stat: true, forced: INCORRECT_ITERATION }, {
   // `Promise.all` method
-  // https://tc39.github.io/ecma262/#sec-promise.all
+  // https://tc39.es/ecma262/#sec-promise.all
   all: function all(iterable) {
     var C = this;
     var capability = newPromiseCapability(C);
@@ -13621,7 +14248,7 @@ $({ target: PROMISE, stat: true, forced: INCORRECT_ITERATION }, {
     return capability.promise;
   },
   // `Promise.race` method
-  // https://tc39.github.io/ecma262/#sec-promise.race
+  // https://tc39.es/ecma262/#sec-promise.race
   race: function race(iterable) {
     var C = this;
     var capability = newPromiseCapability(C);
@@ -13640,18 +14267,18 @@ $({ target: PROMISE, stat: true, forced: INCORRECT_ITERATION }, {
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.reflect.apply.js":
-/*!*******************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.reflect.apply.js ***!
-  \*******************************************************************************************/
+/***/ "./node_modules/core-js/modules/es.reflect.apply.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/core-js/modules/es.reflect.apply.js ***!
+  \**********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/export.js");
-var getBuiltIn = __webpack_require__(/*! ../internals/get-built-in */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/get-built-in.js");
-var aFunction = __webpack_require__(/*! ../internals/a-function */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/a-function.js");
-var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/an-object.js");
-var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/fails.js");
+var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
+var getBuiltIn = __webpack_require__(/*! ../internals/get-built-in */ "./node_modules/core-js/internals/get-built-in.js");
+var aFunction = __webpack_require__(/*! ../internals/a-function */ "./node_modules/core-js/internals/a-function.js");
+var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/core-js/internals/an-object.js");
+var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/core-js/internals/fails.js");
 
 var nativeApply = getBuiltIn('Reflect', 'apply');
 var functionApply = Function.apply;
@@ -13662,7 +14289,7 @@ var OPTIONAL_ARGUMENTS_LIST = !fails(function () {
 });
 
 // `Reflect.apply` method
-// https://tc39.github.io/ecma262/#sec-reflect.apply
+// https://tc39.es/ecma262/#sec-reflect.apply
 $({ target: 'Reflect', stat: true, forced: OPTIONAL_ARGUMENTS_LIST }, {
   apply: function apply(target, thisArgument, argumentsList) {
     aFunction(target);
@@ -13676,26 +14303,26 @@ $({ target: 'Reflect', stat: true, forced: OPTIONAL_ARGUMENTS_LIST }, {
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.reflect.construct.js":
-/*!***********************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.reflect.construct.js ***!
-  \***********************************************************************************************/
+/***/ "./node_modules/core-js/modules/es.reflect.construct.js":
+/*!**************************************************************!*\
+  !*** ./node_modules/core-js/modules/es.reflect.construct.js ***!
+  \**************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/export.js");
-var getBuiltIn = __webpack_require__(/*! ../internals/get-built-in */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/get-built-in.js");
-var aFunction = __webpack_require__(/*! ../internals/a-function */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/a-function.js");
-var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/an-object.js");
-var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/is-object.js");
-var create = __webpack_require__(/*! ../internals/object-create */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/object-create.js");
-var bind = __webpack_require__(/*! ../internals/function-bind */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/function-bind.js");
-var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/fails.js");
+var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
+var getBuiltIn = __webpack_require__(/*! ../internals/get-built-in */ "./node_modules/core-js/internals/get-built-in.js");
+var aFunction = __webpack_require__(/*! ../internals/a-function */ "./node_modules/core-js/internals/a-function.js");
+var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/core-js/internals/an-object.js");
+var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/core-js/internals/is-object.js");
+var create = __webpack_require__(/*! ../internals/object-create */ "./node_modules/core-js/internals/object-create.js");
+var bind = __webpack_require__(/*! ../internals/function-bind */ "./node_modules/core-js/internals/function-bind.js");
+var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/core-js/internals/fails.js");
 
 var nativeConstruct = getBuiltIn('Reflect', 'construct');
 
 // `Reflect.construct` method
-// https://tc39.github.io/ecma262/#sec-reflect.construct
+// https://tc39.es/ecma262/#sec-reflect.construct
 // MS Edge supports only 2 arguments and argumentsList argument is optional
 // FF Nightly sets third argument as `new.target`, but does not create `this` from it
 var NEW_TARGET_BUG = fails(function () {
@@ -13738,19 +14365,19 @@ $({ target: 'Reflect', stat: true, forced: FORCED, sham: FORCED }, {
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.reflect.delete-property.js":
-/*!*****************************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.reflect.delete-property.js ***!
-  \*****************************************************************************************************/
+/***/ "./node_modules/core-js/modules/es.reflect.delete-property.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/core-js/modules/es.reflect.delete-property.js ***!
+  \********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/export.js");
-var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/an-object.js");
-var getOwnPropertyDescriptor = __webpack_require__(/*! ../internals/object-get-own-property-descriptor */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/object-get-own-property-descriptor.js").f;
+var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
+var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/core-js/internals/an-object.js");
+var getOwnPropertyDescriptor = __webpack_require__(/*! ../internals/object-get-own-property-descriptor */ "./node_modules/core-js/internals/object-get-own-property-descriptor.js").f;
 
 // `Reflect.deleteProperty` method
-// https://tc39.github.io/ecma262/#sec-reflect.deleteproperty
+// https://tc39.es/ecma262/#sec-reflect.deleteproperty
 $({ target: 'Reflect', stat: true }, {
   deleteProperty: function deleteProperty(target, propertyKey) {
     var descriptor = getOwnPropertyDescriptor(anObject(target), propertyKey);
@@ -13761,20 +14388,20 @@ $({ target: 'Reflect', stat: true }, {
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.reflect.get-prototype-of.js":
-/*!******************************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.reflect.get-prototype-of.js ***!
-  \******************************************************************************************************/
+/***/ "./node_modules/core-js/modules/es.reflect.get-prototype-of.js":
+/*!*********************************************************************!*\
+  !*** ./node_modules/core-js/modules/es.reflect.get-prototype-of.js ***!
+  \*********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/export.js");
-var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/an-object.js");
-var objectGetPrototypeOf = __webpack_require__(/*! ../internals/object-get-prototype-of */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/object-get-prototype-of.js");
-var CORRECT_PROTOTYPE_GETTER = __webpack_require__(/*! ../internals/correct-prototype-getter */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/correct-prototype-getter.js");
+var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
+var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/core-js/internals/an-object.js");
+var objectGetPrototypeOf = __webpack_require__(/*! ../internals/object-get-prototype-of */ "./node_modules/core-js/internals/object-get-prototype-of.js");
+var CORRECT_PROTOTYPE_GETTER = __webpack_require__(/*! ../internals/correct-prototype-getter */ "./node_modules/core-js/internals/correct-prototype-getter.js");
 
 // `Reflect.getPrototypeOf` method
-// https://tc39.github.io/ecma262/#sec-reflect.getprototypeof
+// https://tc39.es/ecma262/#sec-reflect.getprototypeof
 $({ target: 'Reflect', stat: true, sham: !CORRECT_PROTOTYPE_GETTER }, {
   getPrototypeOf: function getPrototypeOf(target) {
     return objectGetPrototypeOf(anObject(target));
@@ -13784,18 +14411,20 @@ $({ target: 'Reflect', stat: true, sham: !CORRECT_PROTOTYPE_GETTER }, {
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.regexp.exec.js":
-/*!*****************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.regexp.exec.js ***!
-  \*****************************************************************************************/
+/***/ "./node_modules/core-js/modules/es.regexp.exec.js":
+/*!********************************************************!*\
+  !*** ./node_modules/core-js/modules/es.regexp.exec.js ***!
+  \********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/export.js");
-var exec = __webpack_require__(/*! ../internals/regexp-exec */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/regexp-exec.js");
+var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
+var exec = __webpack_require__(/*! ../internals/regexp-exec */ "./node_modules/core-js/internals/regexp-exec.js");
 
+// `RegExp.prototype.exec` method
+// https://tc39.es/ecma262/#sec-regexp.prototype.exec
 $({ target: 'RegExp', proto: true, forced: /./.exec !== exec }, {
   exec: exec
 });
@@ -13803,19 +14432,19 @@ $({ target: 'RegExp', proto: true, forced: /./.exec !== exec }, {
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.regexp.to-string.js":
-/*!**********************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.regexp.to-string.js ***!
-  \**********************************************************************************************/
+/***/ "./node_modules/core-js/modules/es.regexp.to-string.js":
+/*!*************************************************************!*\
+  !*** ./node_modules/core-js/modules/es.regexp.to-string.js ***!
+  \*************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var redefine = __webpack_require__(/*! ../internals/redefine */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/redefine.js");
-var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/an-object.js");
-var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/fails.js");
-var flags = __webpack_require__(/*! ../internals/regexp-flags */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/regexp-flags.js");
+var redefine = __webpack_require__(/*! ../internals/redefine */ "./node_modules/core-js/internals/redefine.js");
+var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/core-js/internals/an-object.js");
+var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/core-js/internals/fails.js");
+var flags = __webpack_require__(/*! ../internals/regexp-flags */ "./node_modules/core-js/internals/regexp-flags.js");
 
 var TO_STRING = 'toString';
 var RegExpPrototype = RegExp.prototype;
@@ -13826,7 +14455,7 @@ var NOT_GENERIC = fails(function () { return nativeToString.call({ source: 'a', 
 var INCORRECT_NAME = nativeToString.name != TO_STRING;
 
 // `RegExp.prototype.toString` method
-// https://tc39.github.io/ecma262/#sec-regexp.prototype.tostring
+// https://tc39.es/ecma262/#sec-regexp.prototype.tostring
 if (NOT_GENERIC || INCORRECT_NAME) {
   redefine(RegExp.prototype, TO_STRING, function toString() {
     var R = anObject(this);
@@ -13840,22 +14469,22 @@ if (NOT_GENERIC || INCORRECT_NAME) {
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.string.includes.js":
-/*!*********************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.string.includes.js ***!
-  \*********************************************************************************************/
+/***/ "./node_modules/core-js/modules/es.string.includes.js":
+/*!************************************************************!*\
+  !*** ./node_modules/core-js/modules/es.string.includes.js ***!
+  \************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/export.js");
-var notARegExp = __webpack_require__(/*! ../internals/not-a-regexp */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/not-a-regexp.js");
-var requireObjectCoercible = __webpack_require__(/*! ../internals/require-object-coercible */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/require-object-coercible.js");
-var correctIsRegExpLogic = __webpack_require__(/*! ../internals/correct-is-regexp-logic */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/correct-is-regexp-logic.js");
+var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
+var notARegExp = __webpack_require__(/*! ../internals/not-a-regexp */ "./node_modules/core-js/internals/not-a-regexp.js");
+var requireObjectCoercible = __webpack_require__(/*! ../internals/require-object-coercible */ "./node_modules/core-js/internals/require-object-coercible.js");
+var correctIsRegExpLogic = __webpack_require__(/*! ../internals/correct-is-regexp-logic */ "./node_modules/core-js/internals/correct-is-regexp-logic.js");
 
 // `String.prototype.includes` method
-// https://tc39.github.io/ecma262/#sec-string.prototype.includes
+// https://tc39.es/ecma262/#sec-string.prototype.includes
 $({ target: 'String', proto: true, forced: !correctIsRegExpLogic('includes') }, {
   includes: function includes(searchString /* , position = 0 */) {
     return !!~String(requireObjectCoercible(this))
@@ -13866,25 +14495,25 @@ $({ target: 'String', proto: true, forced: !correctIsRegExpLogic('includes') }, 
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.string.iterator.js":
-/*!*********************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.string.iterator.js ***!
-  \*********************************************************************************************/
+/***/ "./node_modules/core-js/modules/es.string.iterator.js":
+/*!************************************************************!*\
+  !*** ./node_modules/core-js/modules/es.string.iterator.js ***!
+  \************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var charAt = __webpack_require__(/*! ../internals/string-multibyte */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/string-multibyte.js").charAt;
-var InternalStateModule = __webpack_require__(/*! ../internals/internal-state */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/internal-state.js");
-var defineIterator = __webpack_require__(/*! ../internals/define-iterator */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/define-iterator.js");
+var charAt = __webpack_require__(/*! ../internals/string-multibyte */ "./node_modules/core-js/internals/string-multibyte.js").charAt;
+var InternalStateModule = __webpack_require__(/*! ../internals/internal-state */ "./node_modules/core-js/internals/internal-state.js");
+var defineIterator = __webpack_require__(/*! ../internals/define-iterator */ "./node_modules/core-js/internals/define-iterator.js");
 
 var STRING_ITERATOR = 'String Iterator';
 var setInternalState = InternalStateModule.set;
 var getInternalState = InternalStateModule.getterFor(STRING_ITERATOR);
 
 // `String.prototype[@@iterator]` method
-// https://tc39.github.io/ecma262/#sec-string.prototype-@@iterator
+// https://tc39.es/ecma262/#sec-string.prototype-@@iterator
 defineIterator(String, 'String', function (iterated) {
   setInternalState(this, {
     type: STRING_ITERATOR,
@@ -13892,7 +14521,7 @@ defineIterator(String, 'String', function (iterated) {
     index: 0
   });
 // `%StringIteratorPrototype%.next` method
-// https://tc39.github.io/ecma262/#sec-%stringiteratorprototype%.next
+// https://tc39.es/ecma262/#sec-%stringiteratorprototype%.next
 }, function next() {
   var state = getInternalState(this);
   var string = state.string;
@@ -13907,34 +14536,34 @@ defineIterator(String, 'String', function (iterated) {
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.string.match.js":
-/*!******************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.string.match.js ***!
-  \******************************************************************************************/
+/***/ "./node_modules/core-js/modules/es.string.match.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/core-js/modules/es.string.match.js ***!
+  \*********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var fixRegExpWellKnownSymbolLogic = __webpack_require__(/*! ../internals/fix-regexp-well-known-symbol-logic */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/fix-regexp-well-known-symbol-logic.js");
-var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/an-object.js");
-var toLength = __webpack_require__(/*! ../internals/to-length */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/to-length.js");
-var requireObjectCoercible = __webpack_require__(/*! ../internals/require-object-coercible */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/require-object-coercible.js");
-var advanceStringIndex = __webpack_require__(/*! ../internals/advance-string-index */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/advance-string-index.js");
-var regExpExec = __webpack_require__(/*! ../internals/regexp-exec-abstract */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/regexp-exec-abstract.js");
+var fixRegExpWellKnownSymbolLogic = __webpack_require__(/*! ../internals/fix-regexp-well-known-symbol-logic */ "./node_modules/core-js/internals/fix-regexp-well-known-symbol-logic.js");
+var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/core-js/internals/an-object.js");
+var toLength = __webpack_require__(/*! ../internals/to-length */ "./node_modules/core-js/internals/to-length.js");
+var requireObjectCoercible = __webpack_require__(/*! ../internals/require-object-coercible */ "./node_modules/core-js/internals/require-object-coercible.js");
+var advanceStringIndex = __webpack_require__(/*! ../internals/advance-string-index */ "./node_modules/core-js/internals/advance-string-index.js");
+var regExpExec = __webpack_require__(/*! ../internals/regexp-exec-abstract */ "./node_modules/core-js/internals/regexp-exec-abstract.js");
 
 // @@match logic
 fixRegExpWellKnownSymbolLogic('match', 1, function (MATCH, nativeMatch, maybeCallNative) {
   return [
     // `String.prototype.match` method
-    // https://tc39.github.io/ecma262/#sec-string.prototype.match
+    // https://tc39.es/ecma262/#sec-string.prototype.match
     function match(regexp) {
       var O = requireObjectCoercible(this);
       var matcher = regexp == undefined ? undefined : regexp[MATCH];
       return matcher !== undefined ? matcher.call(regexp, O) : new RegExp(regexp)[MATCH](String(O));
     },
     // `RegExp.prototype[@@match]` method
-    // https://tc39.github.io/ecma262/#sec-regexp.prototype-@@match
+    // https://tc39.es/ecma262/#sec-regexp.prototype-@@match
     function (regexp) {
       var res = maybeCallNative(nativeMatch, regexp, this);
       if (res.done) return res.value;
@@ -13963,29 +14592,26 @@ fixRegExpWellKnownSymbolLogic('match', 1, function (MATCH, nativeMatch, maybeCal
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.string.replace.js":
-/*!********************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.string.replace.js ***!
-  \********************************************************************************************/
+/***/ "./node_modules/core-js/modules/es.string.replace.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/core-js/modules/es.string.replace.js ***!
+  \***********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var fixRegExpWellKnownSymbolLogic = __webpack_require__(/*! ../internals/fix-regexp-well-known-symbol-logic */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/fix-regexp-well-known-symbol-logic.js");
-var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/an-object.js");
-var toObject = __webpack_require__(/*! ../internals/to-object */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/to-object.js");
-var toLength = __webpack_require__(/*! ../internals/to-length */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/to-length.js");
-var toInteger = __webpack_require__(/*! ../internals/to-integer */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/to-integer.js");
-var requireObjectCoercible = __webpack_require__(/*! ../internals/require-object-coercible */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/require-object-coercible.js");
-var advanceStringIndex = __webpack_require__(/*! ../internals/advance-string-index */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/advance-string-index.js");
-var regExpExec = __webpack_require__(/*! ../internals/regexp-exec-abstract */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/regexp-exec-abstract.js");
+var fixRegExpWellKnownSymbolLogic = __webpack_require__(/*! ../internals/fix-regexp-well-known-symbol-logic */ "./node_modules/core-js/internals/fix-regexp-well-known-symbol-logic.js");
+var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/core-js/internals/an-object.js");
+var toLength = __webpack_require__(/*! ../internals/to-length */ "./node_modules/core-js/internals/to-length.js");
+var toInteger = __webpack_require__(/*! ../internals/to-integer */ "./node_modules/core-js/internals/to-integer.js");
+var requireObjectCoercible = __webpack_require__(/*! ../internals/require-object-coercible */ "./node_modules/core-js/internals/require-object-coercible.js");
+var advanceStringIndex = __webpack_require__(/*! ../internals/advance-string-index */ "./node_modules/core-js/internals/advance-string-index.js");
+var getSubstitution = __webpack_require__(/*! ../internals/get-substitution */ "./node_modules/core-js/internals/get-substitution.js");
+var regExpExec = __webpack_require__(/*! ../internals/regexp-exec-abstract */ "./node_modules/core-js/internals/regexp-exec-abstract.js");
 
 var max = Math.max;
 var min = Math.min;
-var floor = Math.floor;
-var SUBSTITUTION_SYMBOLS = /\$([$&'`]|\d\d?|<[^>]*>)/g;
-var SUBSTITUTION_SYMBOLS_NO_NAMED = /\$([$&'`]|\d\d?)/g;
 
 var maybeToString = function (it) {
   return it === undefined ? it : String(it);
@@ -13999,7 +14625,7 @@ fixRegExpWellKnownSymbolLogic('replace', 2, function (REPLACE, nativeReplace, ma
 
   return [
     // `String.prototype.replace` method
-    // https://tc39.github.io/ecma262/#sec-string.prototype.replace
+    // https://tc39.es/ecma262/#sec-string.prototype.replace
     function replace(searchValue, replaceValue) {
       var O = requireObjectCoercible(this);
       var replacer = searchValue == undefined ? undefined : searchValue[REPLACE];
@@ -14008,7 +14634,7 @@ fixRegExpWellKnownSymbolLogic('replace', 2, function (REPLACE, nativeReplace, ma
         : nativeReplace.call(String(O), searchValue, replaceValue);
     },
     // `RegExp.prototype[@@replace]` method
-    // https://tc39.github.io/ecma262/#sec-regexp.prototype-@@replace
+    // https://tc39.es/ecma262/#sec-regexp.prototype-@@replace
     function (regexp, replaceValue) {
       if (
         (!REGEXP_REPLACE_SUBSTITUTES_UNDEFINED_CAPTURE && REPLACE_KEEPS_$0) ||
@@ -14071,64 +14697,30 @@ fixRegExpWellKnownSymbolLogic('replace', 2, function (REPLACE, nativeReplace, ma
       return accumulatedResult + S.slice(nextSourcePosition);
     }
   ];
-
-  // https://tc39.github.io/ecma262/#sec-getsubstitution
-  function getSubstitution(matched, str, position, captures, namedCaptures, replacement) {
-    var tailPos = position + matched.length;
-    var m = captures.length;
-    var symbols = SUBSTITUTION_SYMBOLS_NO_NAMED;
-    if (namedCaptures !== undefined) {
-      namedCaptures = toObject(namedCaptures);
-      symbols = SUBSTITUTION_SYMBOLS;
-    }
-    return nativeReplace.call(replacement, symbols, function (match, ch) {
-      var capture;
-      switch (ch.charAt(0)) {
-        case '$': return '$';
-        case '&': return matched;
-        case '`': return str.slice(0, position);
-        case "'": return str.slice(tailPos);
-        case '<':
-          capture = namedCaptures[ch.slice(1, -1)];
-          break;
-        default: // \d\d?
-          var n = +ch;
-          if (n === 0) return match;
-          if (n > m) {
-            var f = floor(n / 10);
-            if (f === 0) return match;
-            if (f <= m) return captures[f - 1] === undefined ? ch.charAt(1) : captures[f - 1] + ch.charAt(1);
-            return match;
-          }
-          capture = captures[n - 1];
-      }
-      return capture === undefined ? '' : capture;
-    });
-  }
 });
 
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.string.split.js":
-/*!******************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.string.split.js ***!
-  \******************************************************************************************/
+/***/ "./node_modules/core-js/modules/es.string.split.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/core-js/modules/es.string.split.js ***!
+  \*********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var fixRegExpWellKnownSymbolLogic = __webpack_require__(/*! ../internals/fix-regexp-well-known-symbol-logic */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/fix-regexp-well-known-symbol-logic.js");
-var isRegExp = __webpack_require__(/*! ../internals/is-regexp */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/is-regexp.js");
-var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/an-object.js");
-var requireObjectCoercible = __webpack_require__(/*! ../internals/require-object-coercible */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/require-object-coercible.js");
-var speciesConstructor = __webpack_require__(/*! ../internals/species-constructor */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/species-constructor.js");
-var advanceStringIndex = __webpack_require__(/*! ../internals/advance-string-index */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/advance-string-index.js");
-var toLength = __webpack_require__(/*! ../internals/to-length */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/to-length.js");
-var callRegExpExec = __webpack_require__(/*! ../internals/regexp-exec-abstract */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/regexp-exec-abstract.js");
-var regexpExec = __webpack_require__(/*! ../internals/regexp-exec */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/regexp-exec.js");
-var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/fails.js");
+var fixRegExpWellKnownSymbolLogic = __webpack_require__(/*! ../internals/fix-regexp-well-known-symbol-logic */ "./node_modules/core-js/internals/fix-regexp-well-known-symbol-logic.js");
+var isRegExp = __webpack_require__(/*! ../internals/is-regexp */ "./node_modules/core-js/internals/is-regexp.js");
+var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/core-js/internals/an-object.js");
+var requireObjectCoercible = __webpack_require__(/*! ../internals/require-object-coercible */ "./node_modules/core-js/internals/require-object-coercible.js");
+var speciesConstructor = __webpack_require__(/*! ../internals/species-constructor */ "./node_modules/core-js/internals/species-constructor.js");
+var advanceStringIndex = __webpack_require__(/*! ../internals/advance-string-index */ "./node_modules/core-js/internals/advance-string-index.js");
+var toLength = __webpack_require__(/*! ../internals/to-length */ "./node_modules/core-js/internals/to-length.js");
+var callRegExpExec = __webpack_require__(/*! ../internals/regexp-exec-abstract */ "./node_modules/core-js/internals/regexp-exec-abstract.js");
+var regexpExec = __webpack_require__(/*! ../internals/regexp-exec */ "./node_modules/core-js/internals/regexp-exec.js");
+var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/core-js/internals/fails.js");
 
 var arrayPush = [].push;
 var min = Math.min;
@@ -14142,9 +14734,11 @@ fixRegExpWellKnownSymbolLogic('split', 2, function (SPLIT, nativeSplit, maybeCal
   var internalSplit;
   if (
     'abbc'.split(/(b)*/)[1] == 'c' ||
+    // eslint-disable-next-line regexp/no-empty-group -- required for testing
     'test'.split(/(?:)/, -1).length != 4 ||
     'ab'.split(/(?:ab)*/).length != 2 ||
     '.'.split(/(.?)(.?)/).length != 4 ||
+    // eslint-disable-next-line regexp/no-assertion-capturing-group, regexp/no-empty-group -- required for testing
     '.'.split(/()()/).length > 1 ||
     ''.split(/.?/).length
   ) {
@@ -14192,7 +14786,7 @@ fixRegExpWellKnownSymbolLogic('split', 2, function (SPLIT, nativeSplit, maybeCal
 
   return [
     // `String.prototype.split` method
-    // https://tc39.github.io/ecma262/#sec-string.prototype.split
+    // https://tc39.es/ecma262/#sec-string.prototype.split
     function split(separator, limit) {
       var O = requireObjectCoercible(this);
       var splitter = separator == undefined ? undefined : separator[SPLIT];
@@ -14201,7 +14795,7 @@ fixRegExpWellKnownSymbolLogic('split', 2, function (SPLIT, nativeSplit, maybeCal
         : internalSplit.call(String(O), separator, limit);
     },
     // `RegExp.prototype[@@split]` method
-    // https://tc39.github.io/ecma262/#sec-regexp.prototype-@@split
+    // https://tc39.es/ecma262/#sec-regexp.prototype-@@split
     //
     // NOTE: This cannot be properly polyfilled in engines that don't support
     // the 'y' flag.
@@ -14256,22 +14850,22 @@ fixRegExpWellKnownSymbolLogic('split', 2, function (SPLIT, nativeSplit, maybeCal
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.string.starts-with.js":
-/*!************************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.string.starts-with.js ***!
-  \************************************************************************************************/
+/***/ "./node_modules/core-js/modules/es.string.starts-with.js":
+/*!***************************************************************!*\
+  !*** ./node_modules/core-js/modules/es.string.starts-with.js ***!
+  \***************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/export.js");
-var getOwnPropertyDescriptor = __webpack_require__(/*! ../internals/object-get-own-property-descriptor */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/object-get-own-property-descriptor.js").f;
-var toLength = __webpack_require__(/*! ../internals/to-length */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/to-length.js");
-var notARegExp = __webpack_require__(/*! ../internals/not-a-regexp */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/not-a-regexp.js");
-var requireObjectCoercible = __webpack_require__(/*! ../internals/require-object-coercible */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/require-object-coercible.js");
-var correctIsRegExpLogic = __webpack_require__(/*! ../internals/correct-is-regexp-logic */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/correct-is-regexp-logic.js");
-var IS_PURE = __webpack_require__(/*! ../internals/is-pure */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/is-pure.js");
+var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
+var getOwnPropertyDescriptor = __webpack_require__(/*! ../internals/object-get-own-property-descriptor */ "./node_modules/core-js/internals/object-get-own-property-descriptor.js").f;
+var toLength = __webpack_require__(/*! ../internals/to-length */ "./node_modules/core-js/internals/to-length.js");
+var notARegExp = __webpack_require__(/*! ../internals/not-a-regexp */ "./node_modules/core-js/internals/not-a-regexp.js");
+var requireObjectCoercible = __webpack_require__(/*! ../internals/require-object-coercible */ "./node_modules/core-js/internals/require-object-coercible.js");
+var correctIsRegExpLogic = __webpack_require__(/*! ../internals/correct-is-regexp-logic */ "./node_modules/core-js/internals/correct-is-regexp-logic.js");
+var IS_PURE = __webpack_require__(/*! ../internals/is-pure */ "./node_modules/core-js/internals/is-pure.js");
 
 var nativeStartsWith = ''.startsWith;
 var min = Math.min;
@@ -14284,7 +14878,7 @@ var MDN_POLYFILL_BUG = !IS_PURE && !CORRECT_IS_REGEXP_LOGIC && !!function () {
 }();
 
 // `String.prototype.startsWith` method
-// https://tc39.github.io/ecma262/#sec-string.prototype.startswith
+// https://tc39.es/ecma262/#sec-string.prototype.startswith
 $({ target: 'String', proto: true, forced: !MDN_POLYFILL_BUG && !CORRECT_IS_REGEXP_LOGIC }, {
   startsWith: function startsWith(searchString /* , position = 0 */) {
     var that = String(requireObjectCoercible(this));
@@ -14300,21 +14894,21 @@ $({ target: 'String', proto: true, forced: !MDN_POLYFILL_BUG && !CORRECT_IS_REGE
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.string.trim.js":
-/*!*****************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.string.trim.js ***!
-  \*****************************************************************************************/
+/***/ "./node_modules/core-js/modules/es.string.trim.js":
+/*!********************************************************!*\
+  !*** ./node_modules/core-js/modules/es.string.trim.js ***!
+  \********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/export.js");
-var $trim = __webpack_require__(/*! ../internals/string-trim */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/string-trim.js").trim;
-var forcedStringTrimMethod = __webpack_require__(/*! ../internals/string-trim-forced */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/string-trim-forced.js");
+var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
+var $trim = __webpack_require__(/*! ../internals/string-trim */ "./node_modules/core-js/internals/string-trim.js").trim;
+var forcedStringTrimMethod = __webpack_require__(/*! ../internals/string-trim-forced */ "./node_modules/core-js/internals/string-trim-forced.js");
 
 // `String.prototype.trim` method
-// https://tc39.github.io/ecma262/#sec-string.prototype.trim
+// https://tc39.es/ecma262/#sec-string.prototype.trim
 $({ target: 'String', proto: true, forced: forcedStringTrimMethod('trim') }, {
   trim: function trim() {
     return $trim(this);
@@ -14324,24 +14918,24 @@ $({ target: 'String', proto: true, forced: forcedStringTrimMethod('trim') }, {
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.symbol.description.js":
-/*!************************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.symbol.description.js ***!
-  \************************************************************************************************/
+/***/ "./node_modules/core-js/modules/es.symbol.description.js":
+/*!***************************************************************!*\
+  !*** ./node_modules/core-js/modules/es.symbol.description.js ***!
+  \***************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 // `Symbol.prototype.description` getter
-// https://tc39.github.io/ecma262/#sec-symbol.prototype.description
+// https://tc39.es/ecma262/#sec-symbol.prototype.description
 
-var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/export.js");
-var DESCRIPTORS = __webpack_require__(/*! ../internals/descriptors */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/descriptors.js");
-var global = __webpack_require__(/*! ../internals/global */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/global.js");
-var has = __webpack_require__(/*! ../internals/has */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/has.js");
-var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/is-object.js");
-var defineProperty = __webpack_require__(/*! ../internals/object-define-property */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/object-define-property.js").f;
-var copyConstructorProperties = __webpack_require__(/*! ../internals/copy-constructor-properties */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/copy-constructor-properties.js");
+var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
+var DESCRIPTORS = __webpack_require__(/*! ../internals/descriptors */ "./node_modules/core-js/internals/descriptors.js");
+var global = __webpack_require__(/*! ../internals/global */ "./node_modules/core-js/internals/global.js");
+var has = __webpack_require__(/*! ../internals/has */ "./node_modules/core-js/internals/has.js");
+var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/core-js/internals/is-object.js");
+var defineProperty = __webpack_require__(/*! ../internals/object-define-property */ "./node_modules/core-js/internals/object-define-property.js").f;
+var copyConstructorProperties = __webpack_require__(/*! ../internals/copy-constructor-properties */ "./node_modules/core-js/internals/copy-constructor-properties.js");
 
 var NativeSymbol = global.Symbol;
 
@@ -14386,67 +14980,67 @@ if (DESCRIPTORS && typeof NativeSymbol == 'function' && (!('description' in Nati
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.symbol.iterator.js":
-/*!*********************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.symbol.iterator.js ***!
-  \*********************************************************************************************/
+/***/ "./node_modules/core-js/modules/es.symbol.iterator.js":
+/*!************************************************************!*\
+  !*** ./node_modules/core-js/modules/es.symbol.iterator.js ***!
+  \************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var defineWellKnownSymbol = __webpack_require__(/*! ../internals/define-well-known-symbol */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/define-well-known-symbol.js");
+var defineWellKnownSymbol = __webpack_require__(/*! ../internals/define-well-known-symbol */ "./node_modules/core-js/internals/define-well-known-symbol.js");
 
 // `Symbol.iterator` well-known symbol
-// https://tc39.github.io/ecma262/#sec-symbol.iterator
+// https://tc39.es/ecma262/#sec-symbol.iterator
 defineWellKnownSymbol('iterator');
 
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.symbol.js":
-/*!************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.symbol.js ***!
-  \************************************************************************************/
+/***/ "./node_modules/core-js/modules/es.symbol.js":
+/*!***************************************************!*\
+  !*** ./node_modules/core-js/modules/es.symbol.js ***!
+  \***************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/export.js");
-var global = __webpack_require__(/*! ../internals/global */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/global.js");
-var getBuiltIn = __webpack_require__(/*! ../internals/get-built-in */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/get-built-in.js");
-var IS_PURE = __webpack_require__(/*! ../internals/is-pure */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/is-pure.js");
-var DESCRIPTORS = __webpack_require__(/*! ../internals/descriptors */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/descriptors.js");
-var NATIVE_SYMBOL = __webpack_require__(/*! ../internals/native-symbol */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/native-symbol.js");
-var USE_SYMBOL_AS_UID = __webpack_require__(/*! ../internals/use-symbol-as-uid */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/use-symbol-as-uid.js");
-var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/fails.js");
-var has = __webpack_require__(/*! ../internals/has */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/has.js");
-var isArray = __webpack_require__(/*! ../internals/is-array */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/is-array.js");
-var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/is-object.js");
-var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/an-object.js");
-var toObject = __webpack_require__(/*! ../internals/to-object */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/to-object.js");
-var toIndexedObject = __webpack_require__(/*! ../internals/to-indexed-object */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/to-indexed-object.js");
-var toPrimitive = __webpack_require__(/*! ../internals/to-primitive */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/to-primitive.js");
-var createPropertyDescriptor = __webpack_require__(/*! ../internals/create-property-descriptor */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/create-property-descriptor.js");
-var nativeObjectCreate = __webpack_require__(/*! ../internals/object-create */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/object-create.js");
-var objectKeys = __webpack_require__(/*! ../internals/object-keys */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/object-keys.js");
-var getOwnPropertyNamesModule = __webpack_require__(/*! ../internals/object-get-own-property-names */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/object-get-own-property-names.js");
-var getOwnPropertyNamesExternal = __webpack_require__(/*! ../internals/object-get-own-property-names-external */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/object-get-own-property-names-external.js");
-var getOwnPropertySymbolsModule = __webpack_require__(/*! ../internals/object-get-own-property-symbols */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/object-get-own-property-symbols.js");
-var getOwnPropertyDescriptorModule = __webpack_require__(/*! ../internals/object-get-own-property-descriptor */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/object-get-own-property-descriptor.js");
-var definePropertyModule = __webpack_require__(/*! ../internals/object-define-property */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/object-define-property.js");
-var propertyIsEnumerableModule = __webpack_require__(/*! ../internals/object-property-is-enumerable */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/object-property-is-enumerable.js");
-var createNonEnumerableProperty = __webpack_require__(/*! ../internals/create-non-enumerable-property */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/create-non-enumerable-property.js");
-var redefine = __webpack_require__(/*! ../internals/redefine */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/redefine.js");
-var shared = __webpack_require__(/*! ../internals/shared */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/shared.js");
-var sharedKey = __webpack_require__(/*! ../internals/shared-key */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/shared-key.js");
-var hiddenKeys = __webpack_require__(/*! ../internals/hidden-keys */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/hidden-keys.js");
-var uid = __webpack_require__(/*! ../internals/uid */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/uid.js");
-var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/well-known-symbol.js");
-var wrappedWellKnownSymbolModule = __webpack_require__(/*! ../internals/well-known-symbol-wrapped */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/well-known-symbol-wrapped.js");
-var defineWellKnownSymbol = __webpack_require__(/*! ../internals/define-well-known-symbol */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/define-well-known-symbol.js");
-var setToStringTag = __webpack_require__(/*! ../internals/set-to-string-tag */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/set-to-string-tag.js");
-var InternalStateModule = __webpack_require__(/*! ../internals/internal-state */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/internal-state.js");
-var $forEach = __webpack_require__(/*! ../internals/array-iteration */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/array-iteration.js").forEach;
+var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
+var global = __webpack_require__(/*! ../internals/global */ "./node_modules/core-js/internals/global.js");
+var getBuiltIn = __webpack_require__(/*! ../internals/get-built-in */ "./node_modules/core-js/internals/get-built-in.js");
+var IS_PURE = __webpack_require__(/*! ../internals/is-pure */ "./node_modules/core-js/internals/is-pure.js");
+var DESCRIPTORS = __webpack_require__(/*! ../internals/descriptors */ "./node_modules/core-js/internals/descriptors.js");
+var NATIVE_SYMBOL = __webpack_require__(/*! ../internals/native-symbol */ "./node_modules/core-js/internals/native-symbol.js");
+var USE_SYMBOL_AS_UID = __webpack_require__(/*! ../internals/use-symbol-as-uid */ "./node_modules/core-js/internals/use-symbol-as-uid.js");
+var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/core-js/internals/fails.js");
+var has = __webpack_require__(/*! ../internals/has */ "./node_modules/core-js/internals/has.js");
+var isArray = __webpack_require__(/*! ../internals/is-array */ "./node_modules/core-js/internals/is-array.js");
+var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/core-js/internals/is-object.js");
+var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/core-js/internals/an-object.js");
+var toObject = __webpack_require__(/*! ../internals/to-object */ "./node_modules/core-js/internals/to-object.js");
+var toIndexedObject = __webpack_require__(/*! ../internals/to-indexed-object */ "./node_modules/core-js/internals/to-indexed-object.js");
+var toPrimitive = __webpack_require__(/*! ../internals/to-primitive */ "./node_modules/core-js/internals/to-primitive.js");
+var createPropertyDescriptor = __webpack_require__(/*! ../internals/create-property-descriptor */ "./node_modules/core-js/internals/create-property-descriptor.js");
+var nativeObjectCreate = __webpack_require__(/*! ../internals/object-create */ "./node_modules/core-js/internals/object-create.js");
+var objectKeys = __webpack_require__(/*! ../internals/object-keys */ "./node_modules/core-js/internals/object-keys.js");
+var getOwnPropertyNamesModule = __webpack_require__(/*! ../internals/object-get-own-property-names */ "./node_modules/core-js/internals/object-get-own-property-names.js");
+var getOwnPropertyNamesExternal = __webpack_require__(/*! ../internals/object-get-own-property-names-external */ "./node_modules/core-js/internals/object-get-own-property-names-external.js");
+var getOwnPropertySymbolsModule = __webpack_require__(/*! ../internals/object-get-own-property-symbols */ "./node_modules/core-js/internals/object-get-own-property-symbols.js");
+var getOwnPropertyDescriptorModule = __webpack_require__(/*! ../internals/object-get-own-property-descriptor */ "./node_modules/core-js/internals/object-get-own-property-descriptor.js");
+var definePropertyModule = __webpack_require__(/*! ../internals/object-define-property */ "./node_modules/core-js/internals/object-define-property.js");
+var propertyIsEnumerableModule = __webpack_require__(/*! ../internals/object-property-is-enumerable */ "./node_modules/core-js/internals/object-property-is-enumerable.js");
+var createNonEnumerableProperty = __webpack_require__(/*! ../internals/create-non-enumerable-property */ "./node_modules/core-js/internals/create-non-enumerable-property.js");
+var redefine = __webpack_require__(/*! ../internals/redefine */ "./node_modules/core-js/internals/redefine.js");
+var shared = __webpack_require__(/*! ../internals/shared */ "./node_modules/core-js/internals/shared.js");
+var sharedKey = __webpack_require__(/*! ../internals/shared-key */ "./node_modules/core-js/internals/shared-key.js");
+var hiddenKeys = __webpack_require__(/*! ../internals/hidden-keys */ "./node_modules/core-js/internals/hidden-keys.js");
+var uid = __webpack_require__(/*! ../internals/uid */ "./node_modules/core-js/internals/uid.js");
+var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/core-js/internals/well-known-symbol.js");
+var wrappedWellKnownSymbolModule = __webpack_require__(/*! ../internals/well-known-symbol-wrapped */ "./node_modules/core-js/internals/well-known-symbol-wrapped.js");
+var defineWellKnownSymbol = __webpack_require__(/*! ../internals/define-well-known-symbol */ "./node_modules/core-js/internals/define-well-known-symbol.js");
+var setToStringTag = __webpack_require__(/*! ../internals/set-to-string-tag */ "./node_modules/core-js/internals/set-to-string-tag.js");
+var InternalStateModule = __webpack_require__(/*! ../internals/internal-state */ "./node_modules/core-js/internals/internal-state.js");
+var $forEach = __webpack_require__(/*! ../internals/array-iteration */ "./node_modules/core-js/internals/array-iteration.js").forEach;
 
 var HIDDEN = sharedKey('hidden');
 var SYMBOL = 'Symbol';
@@ -14571,7 +15165,7 @@ var $getOwnPropertySymbols = function getOwnPropertySymbols(O) {
 };
 
 // `Symbol` constructor
-// https://tc39.github.io/ecma262/#sec-symbol-constructor
+// https://tc39.es/ecma262/#sec-symbol-constructor
 if (!NATIVE_SYMBOL) {
   $Symbol = function Symbol() {
     if (this instanceof $Symbol) throw TypeError('Symbol is not a constructor');
@@ -14628,7 +15222,7 @@ $forEach(objectKeys(WellKnownSymbolsStore), function (name) {
 
 $({ target: SYMBOL, stat: true, forced: !NATIVE_SYMBOL }, {
   // `Symbol.for` method
-  // https://tc39.github.io/ecma262/#sec-symbol.for
+  // https://tc39.es/ecma262/#sec-symbol.for
   'for': function (key) {
     var string = String(key);
     if (has(StringToSymbolRegistry, string)) return StringToSymbolRegistry[string];
@@ -14638,7 +15232,7 @@ $({ target: SYMBOL, stat: true, forced: !NATIVE_SYMBOL }, {
     return symbol;
   },
   // `Symbol.keyFor` method
-  // https://tc39.github.io/ecma262/#sec-symbol.keyfor
+  // https://tc39.es/ecma262/#sec-symbol.keyfor
   keyFor: function keyFor(sym) {
     if (!isSymbol(sym)) throw TypeError(sym + ' is not a symbol');
     if (has(SymbolToStringRegistry, sym)) return SymbolToStringRegistry[sym];
@@ -14649,25 +15243,25 @@ $({ target: SYMBOL, stat: true, forced: !NATIVE_SYMBOL }, {
 
 $({ target: 'Object', stat: true, forced: !NATIVE_SYMBOL, sham: !DESCRIPTORS }, {
   // `Object.create` method
-  // https://tc39.github.io/ecma262/#sec-object.create
+  // https://tc39.es/ecma262/#sec-object.create
   create: $create,
   // `Object.defineProperty` method
-  // https://tc39.github.io/ecma262/#sec-object.defineproperty
+  // https://tc39.es/ecma262/#sec-object.defineproperty
   defineProperty: $defineProperty,
   // `Object.defineProperties` method
-  // https://tc39.github.io/ecma262/#sec-object.defineproperties
+  // https://tc39.es/ecma262/#sec-object.defineproperties
   defineProperties: $defineProperties,
   // `Object.getOwnPropertyDescriptor` method
-  // https://tc39.github.io/ecma262/#sec-object.getownpropertydescriptors
+  // https://tc39.es/ecma262/#sec-object.getownpropertydescriptors
   getOwnPropertyDescriptor: $getOwnPropertyDescriptor
 });
 
 $({ target: 'Object', stat: true, forced: !NATIVE_SYMBOL }, {
   // `Object.getOwnPropertyNames` method
-  // https://tc39.github.io/ecma262/#sec-object.getownpropertynames
+  // https://tc39.es/ecma262/#sec-object.getownpropertynames
   getOwnPropertyNames: $getOwnPropertyNames,
   // `Object.getOwnPropertySymbols` method
-  // https://tc39.github.io/ecma262/#sec-object.getownpropertysymbols
+  // https://tc39.es/ecma262/#sec-object.getownpropertysymbols
   getOwnPropertySymbols: $getOwnPropertySymbols
 });
 
@@ -14680,7 +15274,7 @@ $({ target: 'Object', stat: true, forced: fails(function () { getOwnPropertySymb
 });
 
 // `JSON.stringify` method behavior with symbols
-// https://tc39.github.io/ecma262/#sec-json.stringify
+// https://tc39.es/ecma262/#sec-json.stringify
 if ($stringify) {
   var FORCED_JSON_STRINGIFY = !NATIVE_SYMBOL || fails(function () {
     var symbol = $Symbol();
@@ -14693,7 +15287,7 @@ if ($stringify) {
   });
 
   $({ target: 'JSON', stat: true, forced: FORCED_JSON_STRINGIFY }, {
-    // eslint-disable-next-line no-unused-vars
+    // eslint-disable-next-line no-unused-vars -- required for `.length`
     stringify: function stringify(it, replacer, space) {
       var args = [it];
       var index = 1;
@@ -14712,12 +15306,12 @@ if ($stringify) {
 }
 
 // `Symbol.prototype[@@toPrimitive]` method
-// https://tc39.github.io/ecma262/#sec-symbol.prototype-@@toprimitive
+// https://tc39.es/ecma262/#sec-symbol.prototype-@@toprimitive
 if (!$Symbol[PROTOTYPE][TO_PRIMITIVE]) {
   createNonEnumerableProperty($Symbol[PROTOTYPE], TO_PRIMITIVE, $Symbol[PROTOTYPE].valueOf);
 }
 // `Symbol.prototype[@@toStringTag]` property
-// https://tc39.github.io/ecma262/#sec-symbol.prototype-@@tostringtag
+// https://tc39.es/ecma262/#sec-symbol.prototype-@@tostringtag
 setToStringTag($Symbol, SYMBOL);
 
 hiddenKeys[HIDDEN] = true;
@@ -14725,17 +15319,17 @@ hiddenKeys[HIDDEN] = true;
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/web.dom-collections.for-each.js":
-/*!*******************************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/web.dom-collections.for-each.js ***!
-  \*******************************************************************************************************/
+/***/ "./node_modules/core-js/modules/web.dom-collections.for-each.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/core-js/modules/web.dom-collections.for-each.js ***!
+  \**********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var global = __webpack_require__(/*! ../internals/global */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/global.js");
-var DOMIterables = __webpack_require__(/*! ../internals/dom-iterables */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/dom-iterables.js");
-var forEach = __webpack_require__(/*! ../internals/array-for-each */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/array-for-each.js");
-var createNonEnumerableProperty = __webpack_require__(/*! ../internals/create-non-enumerable-property */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/create-non-enumerable-property.js");
+var global = __webpack_require__(/*! ../internals/global */ "./node_modules/core-js/internals/global.js");
+var DOMIterables = __webpack_require__(/*! ../internals/dom-iterables */ "./node_modules/core-js/internals/dom-iterables.js");
+var forEach = __webpack_require__(/*! ../internals/array-for-each */ "./node_modules/core-js/internals/array-for-each.js");
+var createNonEnumerableProperty = __webpack_require__(/*! ../internals/create-non-enumerable-property */ "./node_modules/core-js/internals/create-non-enumerable-property.js");
 
 for (var COLLECTION_NAME in DOMIterables) {
   var Collection = global[COLLECTION_NAME];
@@ -14751,18 +15345,18 @@ for (var COLLECTION_NAME in DOMIterables) {
 
 /***/ }),
 
-/***/ "./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/web.dom-collections.iterator.js":
-/*!*******************************************************************************************************!*\
-  !*** ./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/web.dom-collections.iterator.js ***!
-  \*******************************************************************************************************/
+/***/ "./node_modules/core-js/modules/web.dom-collections.iterator.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/core-js/modules/web.dom-collections.iterator.js ***!
+  \**********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var global = __webpack_require__(/*! ../internals/global */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/global.js");
-var DOMIterables = __webpack_require__(/*! ../internals/dom-iterables */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/dom-iterables.js");
-var ArrayIteratorMethods = __webpack_require__(/*! ../modules/es.array.iterator */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/modules/es.array.iterator.js");
-var createNonEnumerableProperty = __webpack_require__(/*! ../internals/create-non-enumerable-property */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/create-non-enumerable-property.js");
-var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/@amcharts/amcharts4/node_modules/core-js/internals/well-known-symbol.js");
+var global = __webpack_require__(/*! ../internals/global */ "./node_modules/core-js/internals/global.js");
+var DOMIterables = __webpack_require__(/*! ../internals/dom-iterables */ "./node_modules/core-js/internals/dom-iterables.js");
+var ArrayIteratorMethods = __webpack_require__(/*! ../modules/es.array.iterator */ "./node_modules/core-js/modules/es.array.iterator.js");
+var createNonEnumerableProperty = __webpack_require__(/*! ../internals/create-non-enumerable-property */ "./node_modules/core-js/internals/create-non-enumerable-property.js");
+var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/core-js/internals/well-known-symbol.js");
 
 var ITERATOR = wellKnownSymbol('iterator');
 var TO_STRING_TAG = wellKnownSymbol('toStringTag');
@@ -14791,529 +15385,6 @@ for (var COLLECTION_NAME in DOMIterables) {
     }
   }
 }
-
-
-/***/ }),
-
-/***/ "./node_modules/@babel/runtime/helpers/arrayLikeToArray.js":
-/*!*****************************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/arrayLikeToArray.js ***!
-  \*****************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-function _arrayLikeToArray(arr, len) {
-  if (len == null || len > arr.length) len = arr.length;
-
-  for (var i = 0, arr2 = new Array(len); i < len; i++) {
-    arr2[i] = arr[i];
-  }
-
-  return arr2;
-}
-
-module.exports = _arrayLikeToArray;
-
-/***/ }),
-
-/***/ "./node_modules/@babel/runtime/helpers/arrayWithHoles.js":
-/*!***************************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/arrayWithHoles.js ***!
-  \***************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-function _arrayWithHoles(arr) {
-  if (Array.isArray(arr)) return arr;
-}
-
-module.exports = _arrayWithHoles;
-
-/***/ }),
-
-/***/ "./node_modules/@babel/runtime/helpers/arrayWithoutHoles.js":
-/*!******************************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/arrayWithoutHoles.js ***!
-  \******************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var arrayLikeToArray = __webpack_require__(/*! ./arrayLikeToArray */ "./node_modules/@babel/runtime/helpers/arrayLikeToArray.js");
-
-function _arrayWithoutHoles(arr) {
-  if (Array.isArray(arr)) return arrayLikeToArray(arr);
-}
-
-module.exports = _arrayWithoutHoles;
-
-/***/ }),
-
-/***/ "./node_modules/@babel/runtime/helpers/assertThisInitialized.js":
-/*!**********************************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/assertThisInitialized.js ***!
-  \**********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-function _assertThisInitialized(self) {
-  if (self === void 0) {
-    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-  }
-
-  return self;
-}
-
-module.exports = _assertThisInitialized;
-
-/***/ }),
-
-/***/ "./node_modules/@babel/runtime/helpers/asyncToGenerator.js":
-/*!*****************************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/asyncToGenerator.js ***!
-  \*****************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
-  try {
-    var info = gen[key](arg);
-    var value = info.value;
-  } catch (error) {
-    reject(error);
-    return;
-  }
-
-  if (info.done) {
-    resolve(value);
-  } else {
-    Promise.resolve(value).then(_next, _throw);
-  }
-}
-
-function _asyncToGenerator(fn) {
-  return function () {
-    var self = this,
-        args = arguments;
-    return new Promise(function (resolve, reject) {
-      var gen = fn.apply(self, args);
-
-      function _next(value) {
-        asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);
-      }
-
-      function _throw(err) {
-        asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);
-      }
-
-      _next(undefined);
-    });
-  };
-}
-
-module.exports = _asyncToGenerator;
-
-/***/ }),
-
-/***/ "./node_modules/@babel/runtime/helpers/classCallCheck.js":
-/*!***************************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/classCallCheck.js ***!
-  \***************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-function _classCallCheck(instance, Constructor) {
-  if (!(instance instanceof Constructor)) {
-    throw new TypeError("Cannot call a class as a function");
-  }
-}
-
-module.exports = _classCallCheck;
-
-/***/ }),
-
-/***/ "./node_modules/@babel/runtime/helpers/createClass.js":
-/*!************************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/createClass.js ***!
-  \************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-function _defineProperties(target, props) {
-  for (var i = 0; i < props.length; i++) {
-    var descriptor = props[i];
-    descriptor.enumerable = descriptor.enumerable || false;
-    descriptor.configurable = true;
-    if ("value" in descriptor) descriptor.writable = true;
-    Object.defineProperty(target, descriptor.key, descriptor);
-  }
-}
-
-function _createClass(Constructor, protoProps, staticProps) {
-  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
-  if (staticProps) _defineProperties(Constructor, staticProps);
-  return Constructor;
-}
-
-module.exports = _createClass;
-
-/***/ }),
-
-/***/ "./node_modules/@babel/runtime/helpers/defineProperty.js":
-/*!***************************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/defineProperty.js ***!
-  \***************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-function _defineProperty(obj, key, value) {
-  if (key in obj) {
-    Object.defineProperty(obj, key, {
-      value: value,
-      enumerable: true,
-      configurable: true,
-      writable: true
-    });
-  } else {
-    obj[key] = value;
-  }
-
-  return obj;
-}
-
-module.exports = _defineProperty;
-
-/***/ }),
-
-/***/ "./node_modules/@babel/runtime/helpers/get.js":
-/*!****************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/get.js ***!
-  \****************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var superPropBase = __webpack_require__(/*! ./superPropBase */ "./node_modules/@babel/runtime/helpers/superPropBase.js");
-
-function _get(target, property, receiver) {
-  if (typeof Reflect !== "undefined" && Reflect.get) {
-    module.exports = _get = Reflect.get;
-  } else {
-    module.exports = _get = function _get(target, property, receiver) {
-      var base = superPropBase(target, property);
-      if (!base) return;
-      var desc = Object.getOwnPropertyDescriptor(base, property);
-
-      if (desc.get) {
-        return desc.get.call(receiver);
-      }
-
-      return desc.value;
-    };
-  }
-
-  return _get(target, property, receiver || target);
-}
-
-module.exports = _get;
-
-/***/ }),
-
-/***/ "./node_modules/@babel/runtime/helpers/getPrototypeOf.js":
-/*!***************************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/getPrototypeOf.js ***!
-  \***************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-function _getPrototypeOf(o) {
-  module.exports = _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) {
-    return o.__proto__ || Object.getPrototypeOf(o);
-  };
-  return _getPrototypeOf(o);
-}
-
-module.exports = _getPrototypeOf;
-
-/***/ }),
-
-/***/ "./node_modules/@babel/runtime/helpers/inherits.js":
-/*!*********************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/inherits.js ***!
-  \*********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var setPrototypeOf = __webpack_require__(/*! ./setPrototypeOf */ "./node_modules/@babel/runtime/helpers/setPrototypeOf.js");
-
-function _inherits(subClass, superClass) {
-  if (typeof superClass !== "function" && superClass !== null) {
-    throw new TypeError("Super expression must either be null or a function");
-  }
-
-  subClass.prototype = Object.create(superClass && superClass.prototype, {
-    constructor: {
-      value: subClass,
-      writable: true,
-      configurable: true
-    }
-  });
-  if (superClass) setPrototypeOf(subClass, superClass);
-}
-
-module.exports = _inherits;
-
-/***/ }),
-
-/***/ "./node_modules/@babel/runtime/helpers/iterableToArray.js":
-/*!****************************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/iterableToArray.js ***!
-  \****************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-function _iterableToArray(iter) {
-  if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter);
-}
-
-module.exports = _iterableToArray;
-
-/***/ }),
-
-/***/ "./node_modules/@babel/runtime/helpers/iterableToArrayLimit.js":
-/*!*********************************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/iterableToArrayLimit.js ***!
-  \*********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-function _iterableToArrayLimit(arr, i) {
-  if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return;
-  var _arr = [];
-  var _n = true;
-  var _d = false;
-  var _e = undefined;
-
-  try {
-    for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {
-      _arr.push(_s.value);
-
-      if (i && _arr.length === i) break;
-    }
-  } catch (err) {
-    _d = true;
-    _e = err;
-  } finally {
-    try {
-      if (!_n && _i["return"] != null) _i["return"]();
-    } finally {
-      if (_d) throw _e;
-    }
-  }
-
-  return _arr;
-}
-
-module.exports = _iterableToArrayLimit;
-
-/***/ }),
-
-/***/ "./node_modules/@babel/runtime/helpers/nonIterableRest.js":
-/*!****************************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/nonIterableRest.js ***!
-  \****************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-function _nonIterableRest() {
-  throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
-}
-
-module.exports = _nonIterableRest;
-
-/***/ }),
-
-/***/ "./node_modules/@babel/runtime/helpers/nonIterableSpread.js":
-/*!******************************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/nonIterableSpread.js ***!
-  \******************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-function _nonIterableSpread() {
-  throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
-}
-
-module.exports = _nonIterableSpread;
-
-/***/ }),
-
-/***/ "./node_modules/@babel/runtime/helpers/possibleConstructorReturn.js":
-/*!**************************************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/possibleConstructorReturn.js ***!
-  \**************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var _typeof = __webpack_require__(/*! ../helpers/typeof */ "./node_modules/@babel/runtime/helpers/typeof.js");
-
-var assertThisInitialized = __webpack_require__(/*! ./assertThisInitialized */ "./node_modules/@babel/runtime/helpers/assertThisInitialized.js");
-
-function _possibleConstructorReturn(self, call) {
-  if (call && (_typeof(call) === "object" || typeof call === "function")) {
-    return call;
-  }
-
-  return assertThisInitialized(self);
-}
-
-module.exports = _possibleConstructorReturn;
-
-/***/ }),
-
-/***/ "./node_modules/@babel/runtime/helpers/setPrototypeOf.js":
-/*!***************************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/setPrototypeOf.js ***!
-  \***************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-function _setPrototypeOf(o, p) {
-  module.exports = _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) {
-    o.__proto__ = p;
-    return o;
-  };
-
-  return _setPrototypeOf(o, p);
-}
-
-module.exports = _setPrototypeOf;
-
-/***/ }),
-
-/***/ "./node_modules/@babel/runtime/helpers/slicedToArray.js":
-/*!**************************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/slicedToArray.js ***!
-  \**************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var arrayWithHoles = __webpack_require__(/*! ./arrayWithHoles */ "./node_modules/@babel/runtime/helpers/arrayWithHoles.js");
-
-var iterableToArrayLimit = __webpack_require__(/*! ./iterableToArrayLimit */ "./node_modules/@babel/runtime/helpers/iterableToArrayLimit.js");
-
-var unsupportedIterableToArray = __webpack_require__(/*! ./unsupportedIterableToArray */ "./node_modules/@babel/runtime/helpers/unsupportedIterableToArray.js");
-
-var nonIterableRest = __webpack_require__(/*! ./nonIterableRest */ "./node_modules/@babel/runtime/helpers/nonIterableRest.js");
-
-function _slicedToArray(arr, i) {
-  return arrayWithHoles(arr) || iterableToArrayLimit(arr, i) || unsupportedIterableToArray(arr, i) || nonIterableRest();
-}
-
-module.exports = _slicedToArray;
-
-/***/ }),
-
-/***/ "./node_modules/@babel/runtime/helpers/superPropBase.js":
-/*!**************************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/superPropBase.js ***!
-  \**************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var getPrototypeOf = __webpack_require__(/*! ./getPrototypeOf */ "./node_modules/@babel/runtime/helpers/getPrototypeOf.js");
-
-function _superPropBase(object, property) {
-  while (!Object.prototype.hasOwnProperty.call(object, property)) {
-    object = getPrototypeOf(object);
-    if (object === null) break;
-  }
-
-  return object;
-}
-
-module.exports = _superPropBase;
-
-/***/ }),
-
-/***/ "./node_modules/@babel/runtime/helpers/toConsumableArray.js":
-/*!******************************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/toConsumableArray.js ***!
-  \******************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var arrayWithoutHoles = __webpack_require__(/*! ./arrayWithoutHoles */ "./node_modules/@babel/runtime/helpers/arrayWithoutHoles.js");
-
-var iterableToArray = __webpack_require__(/*! ./iterableToArray */ "./node_modules/@babel/runtime/helpers/iterableToArray.js");
-
-var unsupportedIterableToArray = __webpack_require__(/*! ./unsupportedIterableToArray */ "./node_modules/@babel/runtime/helpers/unsupportedIterableToArray.js");
-
-var nonIterableSpread = __webpack_require__(/*! ./nonIterableSpread */ "./node_modules/@babel/runtime/helpers/nonIterableSpread.js");
-
-function _toConsumableArray(arr) {
-  return arrayWithoutHoles(arr) || iterableToArray(arr) || unsupportedIterableToArray(arr) || nonIterableSpread();
-}
-
-module.exports = _toConsumableArray;
-
-/***/ }),
-
-/***/ "./node_modules/@babel/runtime/helpers/typeof.js":
-/*!*******************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/typeof.js ***!
-  \*******************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-function _typeof(obj) {
-  "@babel/helpers - typeof";
-
-  if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
-    module.exports = _typeof = function _typeof(obj) {
-      return typeof obj;
-    };
-  } else {
-    module.exports = _typeof = function _typeof(obj) {
-      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
-    };
-  }
-
-  return _typeof(obj);
-}
-
-module.exports = _typeof;
-
-/***/ }),
-
-/***/ "./node_modules/@babel/runtime/helpers/unsupportedIterableToArray.js":
-/*!***************************************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/unsupportedIterableToArray.js ***!
-  \***************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var arrayLikeToArray = __webpack_require__(/*! ./arrayLikeToArray */ "./node_modules/@babel/runtime/helpers/arrayLikeToArray.js");
-
-function _unsupportedIterableToArray(o, minLen) {
-  if (!o) return;
-  if (typeof o === "string") return arrayLikeToArray(o, minLen);
-  var n = Object.prototype.toString.call(o).slice(8, -1);
-  if (n === "Object" && o.constructor) n = o.constructor.name;
-  if (n === "Map" || n === "Set") return Array.from(o);
-  if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return arrayLikeToArray(o, minLen);
-}
-
-module.exports = _unsupportedIterableToArray;
-
-/***/ }),
-
-/***/ "./node_modules/@babel/runtime/regenerator/index.js":
-/*!**********************************************************!*\
-  !*** ./node_modules/@babel/runtime/regenerator/index.js ***!
-  \**********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(/*! regenerator-runtime */ "./node_modules/regenerator-runtime/runtime.js");
 
 
 /***/ }),
@@ -15478,6 +15549,24 @@ var runtime = (function (exports) {
   var asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator";
   var toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag";
 
+  function define(obj, key, value) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+    return obj[key];
+  }
+  try {
+    // IE 8 has a broken Object.defineProperty that only works on DOM objects.
+    define({}, "");
+  } catch (err) {
+    define = function(obj, key, value) {
+      return obj[key] = value;
+    };
+  }
+
   function wrap(innerFn, outerFn, self, tryLocsList) {
     // If outerFn provided and outerFn.prototype is a Generator, then outerFn.prototype instanceof Generator.
     var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator;
@@ -15548,16 +15637,19 @@ var runtime = (function (exports) {
     Generator.prototype = Object.create(IteratorPrototype);
   GeneratorFunction.prototype = Gp.constructor = GeneratorFunctionPrototype;
   GeneratorFunctionPrototype.constructor = GeneratorFunction;
-  GeneratorFunctionPrototype[toStringTagSymbol] =
-    GeneratorFunction.displayName = "GeneratorFunction";
+  GeneratorFunction.displayName = define(
+    GeneratorFunctionPrototype,
+    toStringTagSymbol,
+    "GeneratorFunction"
+  );
 
   // Helper for defining the .next, .throw, and .return methods of the
   // Iterator interface in terms of a single ._invoke method.
   function defineIteratorMethods(prototype) {
     ["next", "throw", "return"].forEach(function(method) {
-      prototype[method] = function(arg) {
+      define(prototype, method, function(arg) {
         return this._invoke(method, arg);
-      };
+      });
     });
   }
 
@@ -15576,9 +15668,7 @@ var runtime = (function (exports) {
       Object.setPrototypeOf(genFun, GeneratorFunctionPrototype);
     } else {
       genFun.__proto__ = GeneratorFunctionPrototype;
-      if (!(toStringTagSymbol in genFun)) {
-        genFun[toStringTagSymbol] = "GeneratorFunction";
-      }
+      define(genFun, toStringTagSymbol, "GeneratorFunction");
     }
     genFun.prototype = Object.create(Gp);
     return genFun;
@@ -15848,7 +15938,7 @@ var runtime = (function (exports) {
   // unified ._invoke helper method.
   defineIteratorMethods(Gp);
 
-  Gp[toStringTagSymbol] = "Generator";
+  define(Gp, toStringTagSymbol, "Generator");
 
   // A Generator should always return itself as the iterator object when the
   // @@iterator function is called on it. Some browsers' implementations of the
@@ -16543,7 +16633,10 @@ function _classCallCheck(instance, Constructor) {
   }
 }
 
-/* eslint-disable no-bitwise, unicorn/prefer-query-selector */
+/* eslint-disable no-bitwise -- used for calculations */
+
+/* eslint-disable unicorn/prefer-query-selector -- aiming at
+  backward-compatibility */
 
 /**
 * StackBlur - a fast almost Gaussian Blur For Canvas
@@ -16584,21 +16677,19 @@ function _classCallCheck(instance, Constructor) {
 * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 * OTHER DEALINGS IN THE SOFTWARE.
 */
-
-/* eslint-disable max-len */
 var mulTable = [512, 512, 456, 512, 328, 456, 335, 512, 405, 328, 271, 456, 388, 335, 292, 512, 454, 405, 364, 328, 298, 271, 496, 456, 420, 388, 360, 335, 312, 292, 273, 512, 482, 454, 428, 405, 383, 364, 345, 328, 312, 298, 284, 271, 259, 496, 475, 456, 437, 420, 404, 388, 374, 360, 347, 335, 323, 312, 302, 292, 282, 273, 265, 512, 497, 482, 468, 454, 441, 428, 417, 405, 394, 383, 373, 364, 354, 345, 337, 328, 320, 312, 305, 298, 291, 284, 278, 271, 265, 259, 507, 496, 485, 475, 465, 456, 446, 437, 428, 420, 412, 404, 396, 388, 381, 374, 367, 360, 354, 347, 341, 335, 329, 323, 318, 312, 307, 302, 297, 292, 287, 282, 278, 273, 269, 265, 261, 512, 505, 497, 489, 482, 475, 468, 461, 454, 447, 441, 435, 428, 422, 417, 411, 405, 399, 394, 389, 383, 378, 373, 368, 364, 359, 354, 350, 345, 341, 337, 332, 328, 324, 320, 316, 312, 309, 305, 301, 298, 294, 291, 287, 284, 281, 278, 274, 271, 268, 265, 262, 259, 257, 507, 501, 496, 491, 485, 480, 475, 470, 465, 460, 456, 451, 446, 442, 437, 433, 428, 424, 420, 416, 412, 408, 404, 400, 396, 392, 388, 385, 381, 377, 374, 370, 367, 363, 360, 357, 354, 350, 347, 344, 341, 338, 335, 332, 329, 326, 323, 320, 318, 315, 312, 310, 307, 304, 302, 299, 297, 294, 292, 289, 287, 285, 282, 280, 278, 275, 273, 271, 269, 267, 265, 263, 261, 259];
 var shgTable = [9, 11, 12, 13, 13, 14, 14, 15, 15, 15, 15, 16, 16, 16, 16, 17, 17, 17, 17, 17, 17, 17, 18, 18, 18, 18, 18, 18, 18, 18, 18, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24];
-/* eslint-enable max-len */
-
 /**
  * @param {string|HTMLImageElement} img
  * @param {string|HTMLCanvasElement} canvas
  * @param {Float} radius
  * @param {boolean} blurAlphaChannel
+ * @param {boolean} useOffset
+ * @param {boolean} skipStyles
  * @returns {undefined}
  */
 
-function processImage(img, canvas, radius, blurAlphaChannel) {
+function processImage(img, canvas, radius, blurAlphaChannel, useOffset, skipStyles) {
   if (typeof img === 'string') {
     img = document.getElementById(img);
   }
@@ -16607,8 +16698,9 @@ function processImage(img, canvas, radius, blurAlphaChannel) {
     return;
   }
 
-  var w = img.naturalWidth;
-  var h = img.naturalHeight;
+  var dimensionType = useOffset ? 'offset' : 'natural';
+  var w = img[dimensionType + 'Width'];
+  var h = img[dimensionType + 'Height'];
 
   if (typeof canvas === 'string') {
     canvas = document.getElementById(canvas);
@@ -16618,13 +16710,16 @@ function processImage(img, canvas, radius, blurAlphaChannel) {
     return;
   }
 
-  canvas.style.width = w + 'px';
-  canvas.style.height = h + 'px';
+  if (!skipStyles) {
+    canvas.style.width = w + 'px';
+    canvas.style.height = h + 'px';
+  }
+
   canvas.width = w;
   canvas.height = h;
   var context = canvas.getContext('2d');
   context.clearRect(0, 0, w, h);
-  context.drawImage(img, 0, 0);
+  context.drawImage(img, 0, 0, img.naturalWidth, img.naturalHeight, 0, 0, w, h);
 
   if (isNaN(radius) || radius < 1) {
     return;
@@ -16698,7 +16793,6 @@ function processCanvasRGBA(canvas, topX, topY, width, height, radius) {
 
 function processImageDataRGBA(imageData, topX, topY, width, height, radius) {
   var pixels = imageData.data;
-  var x, y, i, p, yp, yi, yw, rSum, gSum, bSum, aSum, rOutSum, gOutSum, bOutSum, aOutSum, rInSum, gInSum, bInSum, aInSum, pr, pg, pb, pa, rbs;
   var div = 2 * radius + 1; // const w4 = width << 2;
 
   var widthMinus1 = width - 1;
@@ -16709,7 +16803,7 @@ function processImageDataRGBA(imageData, topX, topY, width, height, radius) {
   var stack = stackStart;
   var stackEnd;
 
-  for (i = 1; i < div; i++) {
+  for (var i = 1; i < div; i++) {
     stack = stack.next = new BlurStack();
 
     if (i === radiusPlus1) {
@@ -16718,25 +16812,21 @@ function processImageDataRGBA(imageData, topX, topY, width, height, radius) {
   }
 
   stack.next = stackStart;
-  var stackIn = null;
-  var stackOut = null;
-  yw = yi = 0;
+  var stackIn = null,
+      stackOut = null,
+      yw = 0,
+      yi = 0;
   var mulSum = mulTable[radius];
   var shgSum = shgTable[radius];
 
-  for (y = 0; y < height; y++) {
-    rInSum = gInSum = bInSum = aInSum = rSum = gSum = bSum = aSum = 0;
-    rOutSum = radiusPlus1 * (pr = pixels[yi]);
-    gOutSum = radiusPlus1 * (pg = pixels[yi + 1]);
-    bOutSum = radiusPlus1 * (pb = pixels[yi + 2]);
-    aOutSum = radiusPlus1 * (pa = pixels[yi + 3]);
-    rSum += sumFactor * pr;
-    gSum += sumFactor * pg;
-    bSum += sumFactor * pb;
-    aSum += sumFactor * pa;
+  for (var y = 0; y < height; y++) {
     stack = stackStart;
+    var pr = pixels[yi],
+        pg = pixels[yi + 1],
+        pb = pixels[yi + 2],
+        pa = pixels[yi + 3];
 
-    for (i = 0; i < radiusPlus1; i++) {
+    for (var _i = 0; _i < radiusPlus1; _i++) {
       stack.r = pr;
       stack.g = pg;
       stack.b = pb;
@@ -16744,30 +16834,50 @@ function processImageDataRGBA(imageData, topX, topY, width, height, radius) {
       stack = stack.next;
     }
 
-    for (i = 1; i < radiusPlus1; i++) {
-      p = yi + ((widthMinus1 < i ? widthMinus1 : i) << 2);
-      rSum += (stack.r = pr = pixels[p]) * (rbs = radiusPlus1 - i);
-      gSum += (stack.g = pg = pixels[p + 1]) * rbs;
-      bSum += (stack.b = pb = pixels[p + 2]) * rbs;
-      aSum += (stack.a = pa = pixels[p + 3]) * rbs;
-      rInSum += pr;
-      gInSum += pg;
-      bInSum += pb;
-      aInSum += pa;
+    var rInSum = 0,
+        gInSum = 0,
+        bInSum = 0,
+        aInSum = 0,
+        rOutSum = radiusPlus1 * pr,
+        gOutSum = radiusPlus1 * pg,
+        bOutSum = radiusPlus1 * pb,
+        aOutSum = radiusPlus1 * pa,
+        rSum = sumFactor * pr,
+        gSum = sumFactor * pg,
+        bSum = sumFactor * pb,
+        aSum = sumFactor * pa;
+
+    for (var _i2 = 1; _i2 < radiusPlus1; _i2++) {
+      var p = yi + ((widthMinus1 < _i2 ? widthMinus1 : _i2) << 2);
+      var r = pixels[p],
+          g = pixels[p + 1],
+          b = pixels[p + 2],
+          a = pixels[p + 3];
+      var rbs = radiusPlus1 - _i2;
+      rSum += (stack.r = r) * rbs;
+      gSum += (stack.g = g) * rbs;
+      bSum += (stack.b = b) * rbs;
+      aSum += (stack.a = a) * rbs;
+      rInSum += r;
+      gInSum += g;
+      bInSum += b;
+      aInSum += a;
       stack = stack.next;
     }
 
     stackIn = stackStart;
     stackOut = stackEnd;
 
-    for (x = 0; x < width; x++) {
-      pixels[yi + 3] = pa = aSum * mulSum >> shgSum;
+    for (var x = 0; x < width; x++) {
+      var paInitial = aSum * mulSum >> shgSum;
+      pixels[yi + 3] = paInitial;
 
-      if (pa !== 0) {
-        pa = 255 / pa;
-        pixels[yi] = (rSum * mulSum >> shgSum) * pa;
-        pixels[yi + 1] = (gSum * mulSum >> shgSum) * pa;
-        pixels[yi + 2] = (bSum * mulSum >> shgSum) * pa;
+      if (paInitial !== 0) {
+        var _a2 = 255 / paInitial;
+
+        pixels[yi] = (rSum * mulSum >> shgSum) * _a2;
+        pixels[yi + 1] = (gSum * mulSum >> shgSum) * _a2;
+        pixels[yi + 2] = (bSum * mulSum >> shgSum) * _a2;
       } else {
         pixels[yi] = pixels[yi + 1] = pixels[yi + 2] = 0;
       }
@@ -16780,24 +16890,32 @@ function processImageDataRGBA(imageData, topX, topY, width, height, radius) {
       gOutSum -= stackIn.g;
       bOutSum -= stackIn.b;
       aOutSum -= stackIn.a;
-      p = yw + ((p = x + radius + 1) < widthMinus1 ? p : widthMinus1) << 2;
-      rInSum += stackIn.r = pixels[p];
-      gInSum += stackIn.g = pixels[p + 1];
-      bInSum += stackIn.b = pixels[p + 2];
-      aInSum += stackIn.a = pixels[p + 3];
+
+      var _p = x + radius + 1;
+
+      _p = yw + (_p < widthMinus1 ? _p : widthMinus1) << 2;
+      rInSum += stackIn.r = pixels[_p];
+      gInSum += stackIn.g = pixels[_p + 1];
+      bInSum += stackIn.b = pixels[_p + 2];
+      aInSum += stackIn.a = pixels[_p + 3];
       rSum += rInSum;
       gSum += gInSum;
       bSum += bInSum;
       aSum += aInSum;
       stackIn = stackIn.next;
-      rOutSum += pr = stackOut.r;
-      gOutSum += pg = stackOut.g;
-      bOutSum += pb = stackOut.b;
-      aOutSum += pa = stackOut.a;
-      rInSum -= pr;
-      gInSum -= pg;
-      bInSum -= pb;
-      aInSum -= pa;
+      var _stackOut = stackOut,
+          _r = _stackOut.r,
+          _g = _stackOut.g,
+          _b = _stackOut.b,
+          _a = _stackOut.a;
+      rOutSum += _r;
+      gOutSum += _g;
+      bOutSum += _b;
+      aOutSum += _a;
+      rInSum -= _r;
+      gInSum -= _g;
+      bInSum -= _b;
+      aInSum -= _a;
       stackOut = stackOut.next;
       yi += 4;
     }
@@ -16805,85 +16923,98 @@ function processImageDataRGBA(imageData, topX, topY, width, height, radius) {
     yw += width;
   }
 
-  for (x = 0; x < width; x++) {
-    gInSum = bInSum = aInSum = rInSum = gSum = bSum = aSum = rSum = 0;
-    yi = x << 2;
-    rOutSum = radiusPlus1 * (pr = pixels[yi]);
-    gOutSum = radiusPlus1 * (pg = pixels[yi + 1]);
-    bOutSum = radiusPlus1 * (pb = pixels[yi + 2]);
-    aOutSum = radiusPlus1 * (pa = pixels[yi + 3]);
-    rSum += sumFactor * pr;
-    gSum += sumFactor * pg;
-    bSum += sumFactor * pb;
-    aSum += sumFactor * pa;
+  for (var _x = 0; _x < width; _x++) {
+    yi = _x << 2;
+
+    var _pr = pixels[yi],
+        _pg = pixels[yi + 1],
+        _pb = pixels[yi + 2],
+        _pa = pixels[yi + 3],
+        _rOutSum = radiusPlus1 * _pr,
+        _gOutSum = radiusPlus1 * _pg,
+        _bOutSum = radiusPlus1 * _pb,
+        _aOutSum = radiusPlus1 * _pa,
+        _rSum = sumFactor * _pr,
+        _gSum = sumFactor * _pg,
+        _bSum = sumFactor * _pb,
+        _aSum = sumFactor * _pa;
+
     stack = stackStart;
 
-    for (i = 0; i < radiusPlus1; i++) {
-      stack.r = pr;
-      stack.g = pg;
-      stack.b = pb;
-      stack.a = pa;
+    for (var _i3 = 0; _i3 < radiusPlus1; _i3++) {
+      stack.r = _pr;
+      stack.g = _pg;
+      stack.b = _pb;
+      stack.a = _pa;
       stack = stack.next;
     }
 
-    yp = width;
+    var yp = width;
+    var _gInSum = 0,
+        _bInSum = 0,
+        _aInSum = 0,
+        _rInSum = 0;
 
-    for (i = 1; i <= radius; i++) {
-      yi = yp + x << 2;
-      rSum += (stack.r = pr = pixels[yi]) * (rbs = radiusPlus1 - i);
-      gSum += (stack.g = pg = pixels[yi + 1]) * rbs;
-      bSum += (stack.b = pb = pixels[yi + 2]) * rbs;
-      aSum += (stack.a = pa = pixels[yi + 3]) * rbs;
-      rInSum += pr;
-      gInSum += pg;
-      bInSum += pb;
-      aInSum += pa;
+    for (var _i4 = 1; _i4 <= radius; _i4++) {
+      yi = yp + _x << 2;
+
+      var _rbs = radiusPlus1 - _i4;
+
+      _rSum += (stack.r = _pr = pixels[yi]) * _rbs;
+      _gSum += (stack.g = _pg = pixels[yi + 1]) * _rbs;
+      _bSum += (stack.b = _pb = pixels[yi + 2]) * _rbs;
+      _aSum += (stack.a = _pa = pixels[yi + 3]) * _rbs;
+      _rInSum += _pr;
+      _gInSum += _pg;
+      _bInSum += _pb;
+      _aInSum += _pa;
       stack = stack.next;
 
-      if (i < heightMinus1) {
+      if (_i4 < heightMinus1) {
         yp += width;
       }
     }
 
-    yi = x;
+    yi = _x;
     stackIn = stackStart;
     stackOut = stackEnd;
 
-    for (y = 0; y < height; y++) {
-      p = yi << 2;
-      pixels[p + 3] = pa = aSum * mulSum >> shgSum;
+    for (var _y = 0; _y < height; _y++) {
+      var _p2 = yi << 2;
 
-      if (pa > 0) {
-        pa = 255 / pa;
-        pixels[p] = (rSum * mulSum >> shgSum) * pa;
-        pixels[p + 1] = (gSum * mulSum >> shgSum) * pa;
-        pixels[p + 2] = (bSum * mulSum >> shgSum) * pa;
+      pixels[_p2 + 3] = _pa = _aSum * mulSum >> shgSum;
+
+      if (_pa > 0) {
+        _pa = 255 / _pa;
+        pixels[_p2] = (_rSum * mulSum >> shgSum) * _pa;
+        pixels[_p2 + 1] = (_gSum * mulSum >> shgSum) * _pa;
+        pixels[_p2 + 2] = (_bSum * mulSum >> shgSum) * _pa;
       } else {
-        pixels[p] = pixels[p + 1] = pixels[p + 2] = 0;
+        pixels[_p2] = pixels[_p2 + 1] = pixels[_p2 + 2] = 0;
       }
 
-      rSum -= rOutSum;
-      gSum -= gOutSum;
-      bSum -= bOutSum;
-      aSum -= aOutSum;
-      rOutSum -= stackIn.r;
-      gOutSum -= stackIn.g;
-      bOutSum -= stackIn.b;
-      aOutSum -= stackIn.a;
-      p = x + ((p = y + radiusPlus1) < heightMinus1 ? p : heightMinus1) * width << 2;
-      rSum += rInSum += stackIn.r = pixels[p];
-      gSum += gInSum += stackIn.g = pixels[p + 1];
-      bSum += bInSum += stackIn.b = pixels[p + 2];
-      aSum += aInSum += stackIn.a = pixels[p + 3];
+      _rSum -= _rOutSum;
+      _gSum -= _gOutSum;
+      _bSum -= _bOutSum;
+      _aSum -= _aOutSum;
+      _rOutSum -= stackIn.r;
+      _gOutSum -= stackIn.g;
+      _bOutSum -= stackIn.b;
+      _aOutSum -= stackIn.a;
+      _p2 = _x + ((_p2 = _y + radiusPlus1) < heightMinus1 ? _p2 : heightMinus1) * width << 2;
+      _rSum += _rInSum += stackIn.r = pixels[_p2];
+      _gSum += _gInSum += stackIn.g = pixels[_p2 + 1];
+      _bSum += _bInSum += stackIn.b = pixels[_p2 + 2];
+      _aSum += _aInSum += stackIn.a = pixels[_p2 + 3];
       stackIn = stackIn.next;
-      rOutSum += pr = stackOut.r;
-      gOutSum += pg = stackOut.g;
-      bOutSum += pb = stackOut.b;
-      aOutSum += pa = stackOut.a;
-      rInSum -= pr;
-      gInSum -= pg;
-      bInSum -= pb;
-      aInSum -= pa;
+      _rOutSum += _pr = stackOut.r;
+      _gOutSum += _pg = stackOut.g;
+      _bOutSum += _pb = stackOut.b;
+      _aOutSum += _pa = stackOut.a;
+      _rInSum -= _pr;
+      _gInSum -= _pg;
+      _bInSum -= _pb;
+      _aInSum -= _pa;
       stackOut = stackOut.next;
       yi += width;
     }
@@ -16925,7 +17056,6 @@ function processCanvasRGB(canvas, topX, topY, width, height, radius) {
 
 function processImageDataRGB(imageData, topX, topY, width, height, radius) {
   var pixels = imageData.data;
-  var x, y, i, p, yp, yi, yw, rSum, gSum, bSum, rOutSum, gOutSum, bOutSum, rInSum, gInSum, bInSum, pr, pg, pb, rbs;
   var div = 2 * radius + 1; // const w4 = width << 2;
 
   var widthMinus1 = width - 1;
@@ -16936,7 +17066,7 @@ function processImageDataRGB(imageData, topX, topY, width, height, radius) {
   var stack = stackStart;
   var stackEnd;
 
-  for (i = 1; i < div; i++) {
+  for (var i = 1; i < div; i++) {
     stack = stack.next = new BlurStack();
 
     if (i === radiusPlus1) {
@@ -16947,30 +17077,38 @@ function processImageDataRGB(imageData, topX, topY, width, height, radius) {
   stack.next = stackStart;
   var stackIn = null;
   var stackOut = null;
-  yw = yi = 0;
   var mulSum = mulTable[radius];
   var shgSum = shgTable[radius];
+  var p, rbs;
+  var yw = 0,
+      yi = 0;
 
-  for (y = 0; y < height; y++) {
-    rInSum = gInSum = bInSum = rSum = gSum = bSum = 0;
-    rOutSum = radiusPlus1 * (pr = pixels[yi]);
-    gOutSum = radiusPlus1 * (pg = pixels[yi + 1]);
-    bOutSum = radiusPlus1 * (pb = pixels[yi + 2]);
-    rSum += sumFactor * pr;
-    gSum += sumFactor * pg;
-    bSum += sumFactor * pb;
+  for (var y = 0; y < height; y++) {
+    var pr = pixels[yi],
+        pg = pixels[yi + 1],
+        pb = pixels[yi + 2],
+        rOutSum = radiusPlus1 * pr,
+        gOutSum = radiusPlus1 * pg,
+        bOutSum = radiusPlus1 * pb,
+        rSum = sumFactor * pr,
+        gSum = sumFactor * pg,
+        bSum = sumFactor * pb;
     stack = stackStart;
 
-    for (i = 0; i < radiusPlus1; i++) {
+    for (var _i5 = 0; _i5 < radiusPlus1; _i5++) {
       stack.r = pr;
       stack.g = pg;
       stack.b = pb;
       stack = stack.next;
     }
 
-    for (i = 1; i < radiusPlus1; i++) {
-      p = yi + ((widthMinus1 < i ? widthMinus1 : i) << 2);
-      rSum += (stack.r = pr = pixels[p]) * (rbs = radiusPlus1 - i);
+    var rInSum = 0,
+        gInSum = 0,
+        bInSum = 0;
+
+    for (var _i6 = 1; _i6 < radiusPlus1; _i6++) {
+      p = yi + ((widthMinus1 < _i6 ? widthMinus1 : _i6) << 2);
+      rSum += (stack.r = pr = pixels[p]) * (rbs = radiusPlus1 - _i6);
       gSum += (stack.g = pg = pixels[p + 1]) * rbs;
       bSum += (stack.b = pb = pixels[p + 2]) * rbs;
       rInSum += pr;
@@ -16982,7 +17120,7 @@ function processImageDataRGB(imageData, topX, topY, width, height, radius) {
     stackIn = stackStart;
     stackOut = stackEnd;
 
-    for (x = 0; x < width; x++) {
+    for (var x = 0; x < width; x++) {
       pixels[yi] = rSum * mulSum >> shgSum;
       pixels[yi + 1] = gSum * mulSum >> shgSum;
       pixels[yi + 2] = bSum * mulSum >> shgSum;
@@ -17013,67 +17151,73 @@ function processImageDataRGB(imageData, topX, topY, width, height, radius) {
     yw += width;
   }
 
-  for (x = 0; x < width; x++) {
-    gInSum = bInSum = rInSum = gSum = bSum = rSum = 0;
-    yi = x << 2;
-    rOutSum = radiusPlus1 * (pr = pixels[yi]);
-    gOutSum = radiusPlus1 * (pg = pixels[yi + 1]);
-    bOutSum = radiusPlus1 * (pb = pixels[yi + 2]);
-    rSum += sumFactor * pr;
-    gSum += sumFactor * pg;
-    bSum += sumFactor * pb;
+  for (var _x2 = 0; _x2 < width; _x2++) {
+    yi = _x2 << 2;
+
+    var _pr2 = pixels[yi],
+        _pg2 = pixels[yi + 1],
+        _pb2 = pixels[yi + 2],
+        _rOutSum2 = radiusPlus1 * _pr2,
+        _gOutSum2 = radiusPlus1 * _pg2,
+        _bOutSum2 = radiusPlus1 * _pb2,
+        _rSum2 = sumFactor * _pr2,
+        _gSum2 = sumFactor * _pg2,
+        _bSum2 = sumFactor * _pb2;
+
     stack = stackStart;
 
-    for (i = 0; i < radiusPlus1; i++) {
-      stack.r = pr;
-      stack.g = pg;
-      stack.b = pb;
+    for (var _i7 = 0; _i7 < radiusPlus1; _i7++) {
+      stack.r = _pr2;
+      stack.g = _pg2;
+      stack.b = _pb2;
       stack = stack.next;
     }
 
-    yp = width;
+    var _rInSum2 = 0,
+        _gInSum2 = 0,
+        _bInSum2 = 0;
 
-    for (i = 1; i <= radius; i++) {
-      yi = yp + x << 2;
-      rSum += (stack.r = pr = pixels[yi]) * (rbs = radiusPlus1 - i);
-      gSum += (stack.g = pg = pixels[yi + 1]) * rbs;
-      bSum += (stack.b = pb = pixels[yi + 2]) * rbs;
-      rInSum += pr;
-      gInSum += pg;
-      bInSum += pb;
+    for (var _i8 = 1, yp = width; _i8 <= radius; _i8++) {
+      yi = yp + _x2 << 2;
+      _rSum2 += (stack.r = _pr2 = pixels[yi]) * (rbs = radiusPlus1 - _i8);
+      _gSum2 += (stack.g = _pg2 = pixels[yi + 1]) * rbs;
+      _bSum2 += (stack.b = _pb2 = pixels[yi + 2]) * rbs;
+      _rInSum2 += _pr2;
+      _gInSum2 += _pg2;
+      _bInSum2 += _pb2;
       stack = stack.next;
 
-      if (i < heightMinus1) {
+      if (_i8 < heightMinus1) {
         yp += width;
       }
     }
 
-    yi = x;
+    yi = _x2;
     stackIn = stackStart;
     stackOut = stackEnd;
 
-    for (y = 0; y < height; y++) {
+    for (var _y2 = 0; _y2 < height; _y2++) {
       p = yi << 2;
-      pixels[p] = rSum * mulSum >> shgSum;
-      pixels[p + 1] = gSum * mulSum >> shgSum;
-      pixels[p + 2] = bSum * mulSum >> shgSum;
-      rSum -= rOutSum;
-      gSum -= gOutSum;
-      bSum -= bOutSum;
-      rOutSum -= stackIn.r;
-      gOutSum -= stackIn.g;
-      bOutSum -= stackIn.b;
-      p = x + ((p = y + radiusPlus1) < heightMinus1 ? p : heightMinus1) * width << 2;
-      rSum += rInSum += stackIn.r = pixels[p];
-      gSum += gInSum += stackIn.g = pixels[p + 1];
-      bSum += bInSum += stackIn.b = pixels[p + 2];
+      pixels[p] = _rSum2 * mulSum >> shgSum;
+      pixels[p + 1] = _gSum2 * mulSum >> shgSum;
+      pixels[p + 2] = _bSum2 * mulSum >> shgSum;
+      _rSum2 -= _rOutSum2;
+      _gSum2 -= _gOutSum2;
+      _bSum2 -= _bOutSum2;
+      _rOutSum2 -= stackIn.r;
+      _gOutSum2 -= stackIn.g;
+      _bOutSum2 -= stackIn.b;
+      p = _x2 + ((p = _y2 + radiusPlus1) < heightMinus1 ? p : heightMinus1) * width << 2;
+      _rSum2 += _rInSum2 += stackIn.r = pixels[p];
+      _gSum2 += _gInSum2 += stackIn.g = pixels[p + 1];
+      _bSum2 += _bInSum2 += stackIn.b = pixels[p + 2];
       stackIn = stackIn.next;
-      rOutSum += pr = stackOut.r;
-      gOutSum += pg = stackOut.g;
-      bOutSum += pb = stackOut.b;
-      rInSum -= pr;
-      gInSum -= pg;
-      bInSum -= pb;
+      _rOutSum2 += _pr2 = stackOut.r;
+      _gOutSum2 += _pg2 = stackOut.g;
+      _bOutSum2 += _pb2 = stackOut.b;
+      _rInSum2 -= _pr2;
+      _gInSum2 -= _pg2;
+      _bInSum2 -= _pb2;
       stackOut = stackOut.next;
       yi += width;
     }

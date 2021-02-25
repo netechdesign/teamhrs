@@ -41,7 +41,8 @@ class Application_Forms extends Model
         'is_viewed',
         'is_ts_done',
         'is_document_request',
-        'is_document_get'
+        'is_document_get',
+        'driving_licence_code_text'
                           ];
 
 
@@ -58,7 +59,7 @@ class Application_Forms extends Model
         }
         
         public function documents(){
-            return $this->hasMany(Documents::class,'application_forms_id');
+            return $this->hasMany(Documents::class,'application_forms_id')->orderBy('documents.created_at', 'desc');
         }
                         
 }
