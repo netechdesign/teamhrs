@@ -39,6 +39,7 @@ class Application_formsController extends Controller
                 $start = $request->input('iDisplayStart');
                 $page_length = $request->input('iDisplayLength');
                 
+                $request['page'] = ($start/$page_length)+1;
                 $jobsrow = Application_Forms::select("*",DB::raw('DATE_FORMAT(created_at,"%d/%m/%Y") as created_at_date'))->where(function($query) use ($request){
                     $search = $request->input('sSearch');
                   if($request->input('sheets_id')!=''){
@@ -57,31 +58,16 @@ class Application_formsController extends Controller
                    } 
                    
                 });
-                $totalRecords = $jobsrow;
-                $jobs = $jobsrow->orderBy('id', 'DESC')->offset($start)->limit($page_length)->get();
-                $totalRecords = $totalRecords->count();
+                $jobs =$jobsrow->orderBy('id', 'DESC')->paginate($page_length)->toArray();
 
-                /*$totalRecords = Application_Forms::select("*")->where(function($query) use ($request){
-                    $search = $request->input('sSearch');
-                  if($request->input('sheets_id')!=''){
-                  //  $query->where('sheets_id','=',$request->input('sheets_id'));
-                   }
-                   if($search!=''){
-                    $query->Where('fore_name', 'LIKE', "%{$search}%");
-                    $query->orWhere('surname', 'LIKE', "%{$search}%");
-                    $query->orWhere('postcode', 'LIKE', "%{$search}%");
-                    $query->orWhere('email', 'LIKE', "%{$search}%");
-                     
-                   } 
-                   
-                })->count();
-                */
+                
                 $response = array(
-                "aaData" => $jobs,
-                "iTotalDisplayRecords" => $totalRecords,
-                "iTotalRecords" => $totalRecords,
+                "aaData" => $jobs['data'],
+                "iTotalDisplayRecords" => $jobs['total'],
+                "iTotalRecords" => $jobs['total'],
                 "sColumns" => $request->input('sColumns'),
                 "sEcho" => $request->input('sEcho'),
+                "cuttentPage"=>$request['page']
             );
                
                 return response()->json($response, 201);
@@ -434,7 +420,7 @@ class Application_formsController extends Controller
                     Mail::send(['html'=>'applicationsendmail'], ['data'=>$request], function($message) use ($user_cv_file)
                     {
                         //$message->to('admin@teamhrs.co.uk')->subject('New application submitted');
-                        $message->to(['sandeep@itsupportpeople.co.uk','prakash@itsupportpeople.co.uk','hr@bespokemeteringsolutions.co.uk'])->subject('New application submitted');
+                        $message->to(['sandeep@itsupportpeople.co.uk','prakash@itsupportpeople.co.uk','hr@bespokemeteringsolutions.co.uk','recruitment@bespokemeteringsolutions.co.uk'])->subject('New application submitted');
                         //$message->to('hr@bespokemeteringsolutions.co.uk')->subject('New application submitted');
                         if(isset($user_cv_file) && $user_cv_file!='')
                         {

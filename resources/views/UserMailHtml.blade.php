@@ -195,7 +195,7 @@
                                         <a href=""
                                             style="display: block; border-style: none !important; border: 0 !important;"><img
                                                 width="100" border="0" style="display: block; width: 100px;"
-                                                src="https://image.freepik.com/free-vector/letter-hr-logo-vector_22451-64.jpg"
+                                                src="{{ url('/images/team_hr_logo.png') }}"
                                                 alt="" /></a>
                                     </td>
                                 </tr>
@@ -358,7 +358,7 @@
                                                     <a href=""
                                                         style="display: block; border-style: none !important; border: 0 !important;"><img
                                                             width="80" border="0" style="display: block; width: 80px;"
-                                                            src="https://image.freepik.com/free-vector/letter-hr-logo-vector_22451-64.jpg"
+                                                            src="{{ url('/images/team_hr_logo.png') }}"
                                                             alt="" /></a>
                                                 </td>
                                             </tr>

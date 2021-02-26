@@ -129,8 +129,8 @@ oTable = $(tableResponsive).DataTable({
     },
     "order": [[0, "desc"]],
     "lengthMenu": [
-        [10, 25, 50, 100],
-        [10, 25, 50, 100]
+        [5,10, 25, 50, 100],
+        [5,10, 25, 50, 100]
     ],
     "oLanguage": {
         "sLengthMenu": "_MENU_",
@@ -307,7 +307,7 @@ other_documentDelete =(element) =>{
       
       /* test */
         const { match, location, history } = this.props;
-        CheckPermission('user','show',history);
+        CheckPermission('application_form','show',history);
         atable()
         const self= this;
         $('#data-table-responsive tbody').on('click', '.edit', function () {
@@ -856,8 +856,10 @@ dateFormate = (e) => {
        } 
        if (mm < 10) { 
            mm = '0' + mm; 
-  }
-  
+       }
+       if (mint < 10) { 
+         mint = '0' + mint; 
+       }
        return dd + '/' + mm + '/' + yyyy +' '+hrs+':'+mint; 
 
       
