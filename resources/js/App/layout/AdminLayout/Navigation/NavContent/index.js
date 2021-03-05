@@ -69,6 +69,7 @@ class NavContent extends Component {
           
         let RoleUser='';
 let employeeForm='';
+let checklist="";
 let permissions = this.props.permissions;
 if(permissions){
     
@@ -143,6 +144,26 @@ if(permissions){
             }
             
         }
+
+        if(pg.name=='application_form.show'){
+            if(pg.Ischeck){
+                
+                checklist ={
+                    id: 'check-list',
+                    title: 'Check list',
+                    type: 'item',
+                    url: '/check-list',
+                    icon: 'feather icon-file-text'
+                   
+        
+                }
+                    
+                
+                
+            }
+            
+        }
+        
     })
     
 })
@@ -164,7 +185,7 @@ if(permissions){
                         url: '/dashboard',
                         icon: 'feather icon-home'
                     },
-                    RoleUser,employeeForm
+                    RoleUser,employeeForm,checklist
                     ]
             }]
             

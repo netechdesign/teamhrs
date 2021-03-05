@@ -634,4 +634,13 @@ class Application_formsController extends Controller
                       });
                       return response()->json(array('success' => true));
      }
+
+     public function offer_letter(){
+        $mpdf= new \Mpdf\Mpdf(['mode' => 'utf-8','format' => 'A4','margin_left' => 15,'margin_right' => 15,'margin_top' => 35,'margin_bottom' => 20,'margin_header' => 15,'margin_footer' => 2]); //use this customization
+        $data['test']='';
+        $html = view('pdf.offer_letter', $data);
+        $mpdf->SetTitle('offer-letter');
+        $mpdf->WriteHTML($html);
+        $mpdf->Output('offer-letter.pdf','I');
+     }
 }

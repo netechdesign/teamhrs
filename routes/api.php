@@ -42,13 +42,13 @@ Route::group(['middleware' => ['jwt.auth','api-header']], function () {
         Route::resource('consent_statement', 'Consent_statementsController');
         Route::resource('application_form', 'Application_formsController');
         Route::resource('telephone_pre_answers', 'Telephone_pre_answersController');
-        
+        Route::resource('check_list', 'Check_listController');
         
         Route::get('newapplicationcount', 'Application_formsController@newapplicationcount');
         Route::post('request_certification', 'Application_formsController@request_certification');
         Route::post('request_other_certification', 'Application_formsController@request_other_certification');
-        
-        Route::get('roledropdown', 'RoleController@roledropdown');
+        Route::get('roledropdown', 'RoleController@roledropdown');  
+        Route::get('job_positions/list', 'Job_positionsController@list');
         
         //telephone questions
         
@@ -57,7 +57,11 @@ Route::group(['middleware' => ['jwt.auth','api-header']], function () {
             $response = ['success'=>true, 'data'=>$arraylist];
             return response()->json($response, 201);
         });
-
+         Route::get('checklist',function(){
+            $list = App\Models\Tool_categories::select('id','name',DB::raw('created_by as is_received'),DB::raw('created_by as serial_number'))->where('is_delete',0)->get();
+            $response = ['success'=>true, 'data'=>$list];
+                            return response()->json($response, 201);
+         });
         //parmission list          
         
         Route::post('parmission/list', function(){

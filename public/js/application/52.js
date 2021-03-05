@@ -1,9 +1,9 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[52],{
 
-/***/ "./resources/js/front-end/submitCertification.js":
-/*!*******************************************************!*\
-  !*** ./resources/js/front-end/submitCertification.js ***!
-  \*******************************************************/
+/***/ "./resources/js/front-end/reSubmitCertification.js":
+/*!*********************************************************!*\
+  !*** ./resources/js/front-end/reSubmitCertification.js ***!
+  \*********************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -145,15 +145,15 @@ var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
 var yyyy = today.getFullYear();
 var todaydate = dd + '/' + mm + '/' + yyyy;
 
-var submitCertification = /*#__PURE__*/function (_React$Component) {
-  _inherits(submitCertification, _React$Component);
+var reSubmitCertification = /*#__PURE__*/function (_React$Component) {
+  _inherits(reSubmitCertification, _React$Component);
 
-  var _super = _createSuper(submitCertification);
+  var _super = _createSuper(reSubmitCertification);
 
-  function submitCertification(props) {
+  function reSubmitCertification(props) {
     var _this;
 
-    _classCallCheck(this, submitCertification);
+    _classCallCheck(this, reSubmitCertification);
 
     _this = _super.call(this, props);
 
@@ -184,7 +184,10 @@ var submitCertification = /*#__PURE__*/function (_React$Component) {
           auth_token = _ref.auth_token;
 
       var data = new FormData(jquery__WEBPACK_IMPORTED_MODULE_2___default()('#documentUpload')[0]);
-      data.append('id', _this.props.match.params.id); // let formdata = this.state;
+      var dt = JSON.parse(atob(_this.props.match.params.id));
+      data.append('id', dt['id']);
+      data.append('email', dt['email']);
+      data.append('resenddocument', 1); // let formdata = this.state;
       // data.append('user_cv', this.state.user_cv);
 
       var urlid = '';
@@ -352,39 +355,59 @@ var submitCertification = /*#__PURE__*/function (_React$Component) {
       showModal: false,
       visible: true,
       formSubmitting: false,
-      buttonName: 'Submit'
+      buttonName: 'Submit',
+      forms: []
     }; // preserve the initial state in a new object
 
     _this.baseState = _this.state;
     return _this;
   }
 
-  _createClass(submitCertification, [{
+  _createClass(reSubmitCertification, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      console.log(this.props.match.params.id);
+      if (this.props.match.params.id) {
+        var data = JSON.parse(atob(this.props.match.params.id));
+
+        if (data['other_documents']) {
+          this.setState({
+            other_documents: data['other_documents']
+          });
+        }
+
+        if (data['form']) {
+          this.setState({
+            forms: data['form']
+          }); //this.setState(previousState => ({forms: [...previousState.forms, data['form']]}));
+        }
+      }
     } //cv upload function
 
   }, {
     key: "render",
     value: function render() {
-      var _this2 = this,
-          _React$createElement,
-          _React$createElement2,
-          _React$createElement3,
-          _React$createElement4,
-          _React$createElement5,
-          _React$createElement6;
+      var _this2 = this;
+
+      var labelget = function labelget(vl) {
+        var name = vl.charAt(0).toUpperCase() + vl.slice(1);
+        var res = name.replace(/_/gi, function (x) {
+          return ' ';
+        });
+        return res;
+      };
 
       var other_documents = this.state.other_documents.map(function (item, index) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Row, {
+          key: index,
           style: style.rowline
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
           as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
           md: "6"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_9__["TextInput"], {
           name: "document_name[]",
+          readOnly: true,
           id: index,
+          value: item.document_name,
           placeholder: "Document Name",
           required: true,
           autoComplete: "off"
@@ -406,18 +429,48 @@ var submitCertification = /*#__PURE__*/function (_React$Component) {
         }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
           as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
           md: "2"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
-          variant: "outline-danger",
-          style: {
-            'marginTop': '15px'
-          },
-          id: index,
-          onClick: function onClick(e) {
-            return _this2.other_documentDelete(e);
-          },
-          size: "sm"
-        }, "X")));
+        }));
       });
+      var formlist = this.state.forms.length > 0 ? this.state.forms.map(function (item, index) {
+        var _React$createElement, _React$createElement2;
+
+        var driving_licence_code_text = item.key == 'driving_licence_code' ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, (_React$createElement = {
+          as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
+          md: "4",
+          xs: 12
+        }, _defineProperty(_React$createElement, "xs", 12), _defineProperty(_React$createElement, "sm", 12), _React$createElement), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
+          htmlFor: "upload_avatar"
+        }, "\xA0"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_9__["TextInput"], {
+          name: "driving_licence_code_text",
+          placeholder: "Driving Licence Check Code",
+          required: true,
+          autoComplete: "off"
+        })) : '';
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Row, {
+          key: index,
+          style: style.rowline
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, (_React$createElement2 = {
+          as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
+          md: "4",
+          xs: 12
+        }, _defineProperty(_React$createElement2, "xs", 12), _defineProperty(_React$createElement2, "sm", 12), _React$createElement2), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
+          htmlFor: "upload_avatar"
+        }, labelget(item.key)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "custom-file"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_9__["FileInput"], {
+          name: item.key,
+          id: index,
+          required: true,
+          fileType: ["pdf", "docx"] // maxFileSize="10000 kb"
+          ,
+          errorMessage: {
+            required: "Please upload a file",
+            fileType: "Only pdf and word file is allowed" // maxFileSize: "Max file size is 10000 kb"
+
+          },
+          onChange: _this2.onUploadCv
+        }))), driving_licence_code_text);
+      }) : '';
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_hoc_Aux__WEBPACK_IMPORTED_MODULE_5__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_full_screen__WEBPACK_IMPORTED_MODULE_12___default.a, {
         enabled: this.props.isFullScreen
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_App_layout_AdminLayout_Breadcrumb__WEBPACK_IMPORTED_MODULE_7__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -473,140 +526,12 @@ var submitCertification = /*#__PURE__*/function (_React$Component) {
         id: "documentUpload",
         onSubmit: this.handleSubmit,
         onErrorSubmit: this.handleErrorSubmit
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Row, {
-        style: style.rowline
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, (_React$createElement = {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "4",
-        xs: 12
-      }, _defineProperty(_React$createElement, "xs", 12), _defineProperty(_React$createElement, "sm", 12), _React$createElement), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
-        htmlFor: "upload_avatar"
-      }, "Cma 1"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "custom-file"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_9__["FileInput"], {
-        name: "cma_1",
-        id: "cma_1",
-        required: true,
-        fileType: ["pdf", "docx"] // maxFileSize="10000 kb"
-        ,
-        errorMessage: {
-          required: "Please upload a file",
-          fileType: "Only pdf and word file is allowed" // maxFileSize: "Max file size is 10000 kb"
-
-        },
-        onChange: this.onUploadCv
-      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Row, {
-        style: style.rowline
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, (_React$createElement2 = {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "4",
-        xs: 12
-      }, _defineProperty(_React$createElement2, "xs", 12), _defineProperty(_React$createElement2, "sm", 12), _React$createElement2), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
-        htmlFor: "upload_avatar"
-      }, "Met 1"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "custom-file"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_9__["FileInput"], {
-        name: "met_1",
-        id: "met_1",
-        required: true,
-        fileType: ["pdf", "docx"] // maxFileSize="10000 kb"
-        ,
-        errorMessage: {
-          required: "Please upload a file",
-          fileType: "Only pdf and word file is allowed" // maxFileSize: "Max file size is 10000 kb"
-
-        },
-        onChange: this.onUploadCv
-      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Row, {
-        style: style.rowline
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, (_React$createElement3 = {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "4",
-        xs: 12
-      }, _defineProperty(_React$createElement3, "xs", 12), _defineProperty(_React$createElement3, "sm", 12), _React$createElement3), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
-        htmlFor: "upload_avatar"
-      }, "Single Phase"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "custom-file"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_9__["FileInput"], {
-        name: "single_phase",
-        id: "single_phase",
-        required: true,
-        fileType: ["pdf", "docx"] // maxFileSize="10000 kb"
-        ,
-        errorMessage: {
-          required: "Please upload a file",
-          fileType: "Only pdf and word file is allowed" // maxFileSize: "Max file size is 10000 kb"
-
-        },
-        onChange: this.onUploadCv
-      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Row, {
-        style: style.rowline
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, (_React$createElement4 = {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "4",
-        xs: 12
-      }, _defineProperty(_React$createElement4, "xs", 12), _defineProperty(_React$createElement4, "sm", 12), _React$createElement4), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
-        htmlFor: "upload_avatar"
-      }, "Single off Multi"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "custom-file"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_9__["FileInput"], {
-        name: "single_off_multi",
-        id: "single_off_multi",
-        required: true,
-        fileType: ["pdf", "docx"] // maxFileSize="10000 kb"
-        ,
-        errorMessage: {
-          required: "Please upload a file",
-          fileType: "Only pdf and word file is allowed" // maxFileSize: "Max file size is 10000 kb"
-
-        },
-        onChange: this.onUploadCv
-      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Row, {
-        style: style.rowline
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, (_React$createElement5 = {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "4",
-        xs: 12
-      }, _defineProperty(_React$createElement5, "xs", 12), _defineProperty(_React$createElement5, "sm", 12), _React$createElement5), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
-        htmlFor: "upload_avatar"
-      }, "Driving Licence Check Code"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "custom-file"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_9__["FileInput"], {
-        name: "driving_licence_code",
-        id: "driving_licence_code",
-        required: true,
-        fileType: ["pdf", "docx"] // maxFileSize="10000 kb"
-        ,
-        errorMessage: {
-          required: "Please upload a file",
-          fileType: "Only pdf and word file is allowed" // maxFileSize: "Max file size is 10000 kb"
-
-        },
-        onChange: this.onUploadCv
-      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, (_React$createElement6 = {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "4",
-        xs: 12
-      }, _defineProperty(_React$createElement6, "xs", 12), _defineProperty(_React$createElement6, "sm", 12), _React$createElement6), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
-        htmlFor: "upload_avatar"
-      }, "\xA0"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_9__["TextInput"], {
-        name: "driving_licence_code_text",
-        placeholder: "Driving Licence Check Code",
-        required: true,
-        autoComplete: "off"
-      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Row, {
+      }, formlist, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Row, {
         style: style.rowline
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
         as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
         md: "12"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Other Documents"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
-        variant: "secondary",
-        style: {
-          marginLeft: '10px'
-        },
-        onClick: this.addOtherdocuments,
-        size: "sm"
-      }, "+Add"))), other_documents, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Row, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Other Documents"))), other_documents, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Row, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
         as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
         sm: 12,
         style: {
@@ -620,7 +545,7 @@ var submitCertification = /*#__PURE__*/function (_React$Component) {
     }
   }]);
 
-  return submitCertification;
+  return reSubmitCertification;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 var style = {
@@ -629,7 +554,7 @@ var style = {
     marginBottom: '15px'
   }
 };
-/* harmony default export */ __webpack_exports__["default"] = (submitCertification);
+/* harmony default export */ __webpack_exports__["default"] = (reSubmitCertification);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../node_modules/webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js")))
 
 /***/ })

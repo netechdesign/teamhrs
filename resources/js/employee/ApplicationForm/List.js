@@ -3,9 +3,11 @@ import {Link} from "react-router-dom";
 import {Row, Col, Card, Table,Button,Modal,Tabs, Tab,Form} from 'react-bootstrap';
 import Aux from "../../hoc/_Aux";
 import {CheckPermission} from '../../HttpFunctions'; 
+import Datetime from 'react-datetime';
 import $ from 'jquery';
 import axios from 'axios'
-import { ValidationForm, TextInput, BaseFormControl, SelectGroup, FileInput, Checkbox, Radio } from 'react-bootstrap4-form-validation';
+import SignatureCanvas from 'react-signature-canvas';
+import { ValidationForm, TextInput, BaseFormControl, SelectGroup,Select, FileInput, Checkbox, Radio } from 'react-bootstrap4-form-validation';
 import withReactContent from 'sweetalert2-react-content';
 import Swal from 'sweetalert2';
 import MaskedInput from 'react-text-mask';
@@ -214,10 +216,27 @@ class List extends React.Component {
                       single_phase:false,
                       single_off_multi:false,
                       driving_licence_code:false,
-                      is_other_documents:false
-                      
+                      is_other_documents:false,
+                      confirm_employee_signature:null,
+                      confirm_employee_signature_show:null,
+                      dbscheck:''
                     }
     }
+    confirmChange = (e) => {
+
+      this.setState({confirm_Date:e});
+   };
+//confirm
+confirm_employee = {}
+confirm_employee_trim = () => {
+    this.setState({confirm_employee_signature: this.confirm_employee.getTrimmedCanvas()
+      .toDataURL('image/png') })
+      this.setState({confirm_employee_signature_show: this.state.confirm_employee_signature })
+  }
+  confirm_employee_clear = () => {
+    this.confirm_employee.clear()
+  }
+
        handleCheckboxChange = (e, value) => {
           this.setState({[e.target.name]: value})
         if(e.target.name=='is_other_documents')
@@ -303,12 +322,15 @@ other_documentDelete =(element) =>{
                       }
           )
   }
+
+  
     componentDidMount() {  
       
       /* test */
         const { match, location, history } = this.props;
         CheckPermission('application_form','show',history);
         atable()
+        
         const self= this;
         $('#data-table-responsive tbody').on('click', '.edit', function () {
             var id =  $(this).attr('data-id');
@@ -324,6 +346,7 @@ other_documentDelete =(element) =>{
       })
 
   };
+  
   tabSelect =(key) =>{
     this.setState({ key : key })
     if (key === 'telephone'){
@@ -534,6 +557,14 @@ other_documentDelete =(element) =>{
     
     this.setState({ key :'resendrequest'});
   }
+   
+  offerletterPreview = () =>{
+    var left  = ($(window).width() / 2) - (900 / 2),
+    top   = ($(window).height() / 2) - (500 / 2);
+    var strWindowFeatures = "location=yes,height=970,width=720,scrollbars=yes,status=yes, top=" + top + ", left=" + left;
+    var URL = baseurl+"/offer-letter";
+    var win = window.open(URL, "_blank", strWindowFeatures);
+  }
     render() {
       const telephone_questions =(this.state.telephone_questions.length>0?
         this.state.telephone_questions.map((vl,inx)=>{
@@ -580,6 +611,10 @@ other_documentDelete =(element) =>{
               
                   );
                 }):''); 
+                
+        
+            
+            
         return (
             <Aux>
                 <Row>
@@ -765,7 +800,163 @@ other_documentDelete =(element) =>{
                                         ):'')
                                         }
                       </Tab>
-                       <Tab eventKey="resendrequest" tabClassName='d-none' disabled={this.state.certification} title="resendrequest">
+                            <Tab eventKey="offerletter"  disabled={(this.state.application_Forms.documents?(this.state.application_Forms.documents.length>0?false:true):true)} title="Offer Letter">
+                                      <div class="text-center" style={{display:(this.state.apiload?'block':'none')}}>
+                                          <div class="spinner-border" role="status">
+                                              <span class="sr-only">Loading...</span>
+                                          </div>
+                                        </div>
+                                        
+                               <ValidationForm onSubmit={this.submitOtherProofCertification} onErrorSubmit={this.handleErrorSubmit}>
+                                     <Form.Group as={Row} controlId="formHorizontalEmail">
+                                                <Form.Label column sm={3}>
+                                                  Date of Commencement:
+                                                </Form.Label>
+                                                <Col sm={4}>
+                                                    
+                                                    <Datetime closeOnSelect={true} onChange={this.confirmChange} value={this.state.confirm_Date}  dateFormat="D/M/Y" timeFormat={false}  maxDate={new Date()} inputProps={{required:'required',name:"confirm_Date",placeholder: 'Select Date',autoComplete:'off'}} />
+                                                </Col>
+                                     </Form.Group>
+                                     
+                                     <Form.Group as={Row} controlId="formHorizontalEmail">
+                                                <Form.Label column sm={3}>
+                                                   Job Title:
+                                                </Form.Label>
+                                                <Col sm={4}>
+                                                <SelectGroup
+                                                name="job_title"
+                                                id="job_title"
+                                                value={this.state.job_title}
+                                                required="required"
+                                                errorMessage="Please select Job Title"
+                                                onChange={this.handleChange}>
+                                                <option value="">Please select Job Title</option>
+                                                <JobPositionList />
+                                                
+                                              </SelectGroup>
+                                              
+                                                </Col>
+                                     </Form.Group>
+                                     
+                                     <Form.Group as={Row} controlId="formHorizontalEmail">
+                                                <Form.Label column sm={3}>
+                                                Place of Employment:
+                                                </Form.Label>
+                                                <Col sm={4}>
+                                                <SelectGroup
+                                                name="job_title"
+                                                id="job_title"
+                                                value={this.state.job_title}
+                                                required="required"
+                                                errorMessage="Please select Place of Employment"
+                                                onChange={this.handleChange}>
+                                                <option value="">Please select Place of Employment</option>
+                                                <option value="Your place of employment shall not be fixed. Your region will be allocated in line with the Employer’s assessment of business conditions.">Your place of employment shall not be fixed. Your region will be allocated in line with the Employer’s assessment of business conditions.</option>
+                                                <option value="Your line manager will allocate your region of management responsibility with your agreed assessment of business conditions. The Employer reserves the right, subject to prior discussion with you, to alter the size or nature of this region or to reassign the region, in line with the Company’s assessment of business conditions.">
+Your line manager will allocate your region of management responsibility with your agreed assessment of business conditions. 
+The Employer reserves the right, subject to prior discussion with you, to alter the size or nature of this region or to reassign the region, in line with the Company’s assessment of business conditions.
+</option>
+
+<option value="Bespoke Metering Solutions, Unit 6, Glover Network Centre, Spire Road, Washington, NE37 3HB">Bespoke Metering Solutions, Unit 6, Glover Network Centre, Spire Road, Washington, NE37 3HB</option>
+<option value="Bespoke Metering Solutions, Gateway House, Gateway West, Newburn Riverside, Newcastle upon Tyne NE15 8NX">Bespoke Metering Solutions, Gateway House, Gateway West, Newburn Riverside, Newcastle upon Tyne NE15 8NX</option>
+<option value="Bespoke Metering Solutions, Unit 7, Grovewood Business Centre, Strathclyde Business Park, Bellhill, ML4 3NQ">Bespoke Metering Solutions, Unit 7, Grovewood Business Centre, Strathclyde Business Park, Bellhill, ML4 3NQ</option>
+
+
+                                                
+                                              </SelectGroup>
+                                              
+                                                </Col>
+                                     </Form.Group>
+                                     
+                                     <Form.Group as={Row} controlId="formHorizontalEmail">
+                                                <Form.Label column sm={3}>
+                                                    DBS Check:
+                                                </Form.Label>
+                                                <Col sm={4}>
+                                                <SelectGroup
+                                                name="dbscheck"
+                                                id="dbscheck"
+                                                value={this.state.job_title}
+                                                required="required"
+                                                errorMessage="Please select DBS Check"
+                                                onChange={this.handleChange}>
+                                                <option value="">Please select DBS Check</option>
+                                                <option value="Yes">Yes</option>
+                                                <option value="No">No</option>
+                                                </SelectGroup>
+                                                </Col>
+                                     </Form.Group>
+                                     
+                                     <Form.Group as={Row} controlId="formHorizontalEmail">
+                                                <Form.Label column sm={3}>
+                                                 Remuneration and Benefits:
+                                                </Form.Label>
+                                                <Col sm={4}>
+                                                    <Form.Control type="text" required placeholder="Remuneration and Benefits" />
+                                                </Col>
+                                     </Form.Group>
+                                     <Basic dbscheck={this.state.dbscheck} />
+                                     
+                                     <Form.Group as={Row} controlId="formHorizontalEmail">
+                                                <Form.Label column sm={3}>
+                                                   Bonus:
+                                                </Form.Label>
+                                                <Col sm={4}>
+                                                <SelectGroup
+                                                name="bonus"
+                                                id="bonus"
+                                                value={this.state.bonus}
+                                                required="required"
+                                                errorMessage="Please select bonus"
+                                                onChange={this.handleChange}>
+                                                <option value="">Please select Bonus</option>
+                                                <option value="Yes">Yes</option>
+                                                <option value="No">No</option>
+                                                </SelectGroup>
+                                                </Col>
+                                     </Form.Group>
+                                     
+                                     <Form.Group as={Row} controlId="formHorizontalEmail">
+                                                <Form.Label column sm={3}>
+                                                Hours of Work:
+                                                </Form.Label>
+                                                <Col sm={4}>
+                                                <SelectGroup
+                                                name="hours_of_work"
+                                                id="hours_of_work"
+                                                value={this.state.hours_of_work}
+                                                required="required"
+                                                errorMessage="Please select hours_of_work"
+                                                onChange={this.handleChange}>
+                                                <option value="">Please select Hours of Work</option>
+                                                <option value="45 hours per week, between Monday to Sunday to be worked between the hours of 8am and 10pm. You may be required as part of your role to attend out of hours and emergency callouts as requested by the Employer">45 hours per week, between Monday to Sunday to be worked between the hours of 8am and 10pm. You may be required as part of your role to attend out of hours and emergency callouts as requested by the Employer</option>
+                                                <option value="Your normal working hours will be 40 hours per week between 08.00 and 18.00 Monday to Friday. You are, however, expected to work without additional pay for additional hours according to the requirements of the Company">Your normal working hours will be 40 hours per week between 08.00 and 18.00 Monday to Friday. You are, however, expected to work without additional pay for additional hours according to the requirements of the Company</option>
+                                                <option value="Manually">Manually</option>
+
+                                                
+                                                </SelectGroup>
+                                                </Col>
+                                     </Form.Group>
+                                     {/*
+                                     <Form.Group as={Col} md="4">
+                                                          <SignatureCanvas penColor='black' dotSize={() => (this.minWidth + this.maxWidth) / 5}  
+                                                                        canvasProps={{width: 300, height: 100, className: 'sigCanvas'}} ref={(ref) => { this.confirm_employee = ref }} onEnd={this.confirm_employee_trim}  />
+                                                                        <button type="button" style={{position:'absolute',bottom:'6px'}} onClick={this.confirm_employee_clear}>
+                                                                            Clear
+                                                                            </button>
+                                     </Form.Group>
+                                     */}
+                                     <Form.Row>   
+                                        <Form.Group as={Col} sm={12} className="mt-3">
+                                        <Button disabled={this.state.certificationButton} type="submit">Send</Button>
+                                        <Button onClick={() =>{this.offerletterPreview()}}  type="button">Preview</Button>
+                                        
+                                        </Form.Group>
+                                     </Form.Row>
+                              </ValidationForm>
+                      </Tab>
+                        
+                            <Tab eventKey="resendrequest" tabClassName='d-none' disabled={this.state.certification} title="resendrequest">
                        <div class="text-center" style={{display:(this.state.apiload?'block':'none')}}>
                                           <div class="spinner-border" role="status">
                                               <span class="sr-only">Loading...</span>
@@ -842,6 +1033,24 @@ other_documentDelete =(element) =>{
     }
 }
 
+class Basic extends React.Component{
+  render(){
+       
+      const basicdata= (this.props.dbscheck=='Yes'?<Form.Group as={Row} controlId="formHorizontalEmail">
+                                                <Form.Label column sm={3}>
+                                                   Basic:
+                                                </Form.Label>
+                                                <Col sm={4}>
+                                                    <Form.Control type="text" required placeholder="Basic" />
+                                                </Col>
+                                     </Form.Group>:'');
+           return(
+                  <>
+                  {basicdata}
+                  </>
+                 )
+  }
+}
 
 class DocumentsList extends React.Component{
 dateFormate = (e) => {
@@ -899,6 +1108,43 @@ dateFormate = (e) => {
         }else{
           return(<Aux><b>documents_list</b></Aux>)
         }
+  }
+}
+class JobPositionList extends React.Component{
+  state={
+    positionlist:[]
+  }
+  componentDidMount(){
+    
+      
+      
+      const {auth_token} = localStorage.getItem('userData')? JSON.parse(localStorage.getItem('userData')).user : 'Null';
+      
+        axios.get(
+          baseurl+'/api/job_positions/list',{headers:{'Accept':'application/json','Authorization':'Bearer '+auth_token}} 
+      ).then(res =>{
+                      if(res.data.success){
+                        
+                           if(res.data.list){
+                               this.setState({positionlist:res.data.list}) 
+                          }
+                             
+                      }else{
+                         
+                      }
+                 }
+      )
+      .catch(err =>{
+                      console.log(err);
+                  }
+      )
+     
+  }
+  render(){
+    const list = this.state.positionlist.map((item,index) =>{
+      return(<option value={item.id}>{item.name}</option>);
+    })
+    return(<Aux>{list}</Aux>)
   }
 }
 class EmploymentHistory extends React.Component{
