@@ -37,7 +37,7 @@ class Check_listController extends Controller
                 $page_length = $request->input('iDisplayLength');
                 
                 $request['page'] = ($start/$page_length)+1;
-                $jobsrow = Check_lists::select("*",DB::raw('DATE_FORMAT(created_at,"%d/%m/%Y") as created_at_date'))->where(function($query) use ($request){
+                $jobsrow = Check_lists::select("*",DB::raw('DATE_FORMAT(issued_date,"%d/%m/%Y") as issued_date'))->where(function($query) use ($request){
                     $search = $request->input('sSearch');
                   if($request->input('sheets_id')!=''){
                   //  $query->where('sheets_id','=',$request->input('sheets_id'));

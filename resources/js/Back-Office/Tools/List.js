@@ -189,7 +189,7 @@ oTable = $(tableResponsive).DataTable({
 });
    
 }
-const baseurl= window.location.origin;
+const baseurl= window.location.origin;  
 class List extends React.Component {
 
    
@@ -206,6 +206,7 @@ class List extends React.Component {
     }
 
   applicationShow= (application_id)=>{
+    
     this.setState({isLarge:true,apiload:true,check_list_items:[],issued_engineer_name:'',issued_date:'',signature:''});
     
     const {auth_token} = localStorage.getItem('userData')? JSON.parse(localStorage.getItem('userData')).user : 'Null';
