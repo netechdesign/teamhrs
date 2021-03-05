@@ -262,7 +262,7 @@ class List extends React.Component {
       const tools_list =  (this.state.check_list_items.length >0? this.state.check_list_items.map((item, index) => {
             
         return(
-            <Tr key={index}>
+            <Tr style={{backgroundColor:(index%2==1?'#ffff':'#f1f4f7')}} key={index}>
             <Td style={{padding:'5px'}}>
             {item.tool_categories_name}
             </Td>
@@ -280,7 +280,7 @@ class List extends React.Component {
             <Aux>
                 <Row>
                     <Col>
-                    <Modal size="xl" show={this.state.isLarge} onHide={() => this.setState({ isLarge: false })}>
+                    <Modal size="xl" style={{color:'black'}} show={this.state.isLarge} onHide={() => this.setState({ isLarge: false })}>
                       
                                     <Modal.Header closeButton>
                                     <Modal.Title as="h5">{this.state.issued_engineer_name}</Modal.Title>

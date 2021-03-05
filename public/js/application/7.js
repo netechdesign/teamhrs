@@ -653,6 +653,9 @@ var List = /*#__PURE__*/function (_React$Component) {
 
       var tools_list = this.state.check_list_items.length > 0 ? this.state.check_list_items.map(function (item, index) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_18__["Tr"], {
+          style: {
+            backgroundColor: index % 2 == 1 ? '#ffff' : '#f1f4f7'
+          },
           key: index
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_18__["Td"], {
           style: {
@@ -670,6 +673,9 @@ var List = /*#__PURE__*/function (_React$Component) {
       }) : '';
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_hoc_Aux__WEBPACK_IMPORTED_MODULE_3__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Modal"], {
         size: "xl",
+        style: {
+          color: 'black'
+        },
         show: this.state.isLarge,
         onHide: function onHide() {
           return _this2.setState({
