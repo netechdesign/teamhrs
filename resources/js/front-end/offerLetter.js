@@ -423,28 +423,17 @@ class OfferLetter extends React.Component {
                         Operations Director
                         </p>
                         <p>
-                        I understand that this is a fixed term contract and accept the employment terms set out in this Offer Letter and the enclosed Terms and Conditions of Employment.<br />
-                        <table>
-                        <tbody>
-                        <tr>
-                        <td valign="bottom">Signed:</td><td width="70%"  >
+                        I understand that this is a fixed term contract and accept the employment terms set out in this Offer Letter and the enclosed Terms and Conditions of Employment.
+                        </p>
+                        <p><b>Signed:</b>
                         <SignatureCanvas penColor='black' dotSize={() => (this.minWidth + this.maxWidth) / 5}  
                                                                         canvasProps={{width: 300, height: 100, className: 'sigCanvas'}} ref={(ref) => { this.confirm_employee = ref }} onEnd={this.confirm_employee_trim}  />
                                                                         <button type="button"  onClick={this.confirm_employee_clear}>
                                                                             Clear
                                                                             </button>
-                        </td>
-                        </tr>
-                        <tr>
-                        <td style={{paddingTop:'15px'}}>Dated:</td><td width="70%" >
-                        <Datetime closeOnSelect={true} onChange={this.confirm_employee_dateChange} value={this.state.confirm_employee_date}  dateFormat="D/M/Y" timeFormat={false}  maxDate={new Date()} inputProps={{required:'required',name:"confirm_Date",placeholder: 'Select Date',autoComplete:'off'}} />
-
-                        </td>
-                        </tr>
-                        </tbody>
-                        </table>
-
                         </p>
+                        <p><b>Dated:</b><Datetime closeOnSelect={true} onChange={this.confirm_employee_dateChange} value={this.state.confirm_employee_date}  dateFormat="D/M/Y" timeFormat={false}  maxDate={new Date()} inputProps={{required:'required',name:"confirm_Date",placeholder: 'Select Date',autoComplete:'off'}} /></p>
+                        
             </div>
             
             
@@ -665,34 +654,18 @@ class OfferLetter extends React.Component {
                 {basic}
                 <p><b>Bonus: </b> {this.state.bonus}</p>
                 <p><b>Hours of Work: </b> {this.hours_of_work(this.state.hours_of_work)}</p>
-                <table border='1'>
-                    <tbody>
-                <tr>
-                    <td width="33.33%" valign="top" style={{verticalAlign:'top'}} >Signed by Gareth McKenna for and on behalf of Bespoke Metering Solutions Limited</td>
-                    <td width="33.33%" valign="top" style={{verticalAlign:'top'}} >
-                    <img style={{width:'30%'}} src={window.location.origin+'/images/offerletter_sign.png'} /><br/>
-                    </td>
-                    <td width="33.33%" valign="top" style={{verticalAlign:'top'}}>Date <br/>
-                    {this.state.confirm_Date}
-                    </td>
-                </tr>
-                <tr>
-                    <td valign="top" style={{verticalAlign:'top'}}>Signed by the Employee</td>
-                    <td valign="top" style={{verticalAlign:'top'}}>
-                        <div>
+                <p><b>Signed by Gareth McKenna for and on behalf of Bespoke Metering Solutions Limited: </b>  <img style={{width:'30%'}} src={window.location.origin+'/images/offerletter_sign.png'} /></p>
+                <p><b>Date: </b>{this.state.confirm_Date}</p>
+                <p><b>Signed by the Employee: </b>
+                <div>
                     <SignatureCanvas penColor='black' dotSize={() => (this.minWidth + this.maxWidth) / 5}  
                                                                         canvasProps={{width: 300, height: 100, className: 'sigCanvas'}} ref={(ref) => { this.information_provided = ref }} onEnd={this.information_provided_trim}  />
                                                                         <button type="button"  onClick={this.information_provided_clear}>
                                                                             Clear
                                                                             </button>
                     </div>
-                    </td>
-                    <td valign="top" style={{verticalAlign:'top'}}>Date<br/>
-                    <Datetime closeOnSelect={true} onChange={this.information_providedChange} value={this.state.information_provided_date}  dateFormat="D/M/Y" timeFormat={false}  maxDate={new Date()} inputProps={{required:'required',name:"confirm_Date",placeholder: 'Select Date',autoComplete:'off'}} />
-                    </td>
-                </tr>
-                </tbody>
-                </table>
+                </p>
+                <p><b>Date: </b> <Datetime closeOnSelect={true} onChange={this.information_providedChange} value={this.state.information_provided_date}  dateFormat="D/M/Y" timeFormat={false}  maxDate={new Date()} inputProps={{required:'required',name:"confirm_Date",placeholder: 'Select Date',autoComplete:'off'}} /></p>
                 </div>
                                 
                                         <Form.Row>   
