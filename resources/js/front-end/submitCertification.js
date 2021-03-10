@@ -93,7 +93,7 @@ class submitCertification extends React.Component {
             [e.target.name]: e.target.value
         })
         
-         
+       /*test */  
         
     };
 
@@ -337,7 +337,7 @@ other_documentDelete =(element) =>{
                                                     // maxFileSize="10000 kb"
                                                     errorMessage={
                                                     { required: "Please upload a file",
-                                                    fileType:"Only pdf and word file is allowed",
+                                                    fileType:"Only  pdf and word file is allowed",
                                                     // maxFileSize: "Max file size is 10000 kb"
                                                     }
                                                     }
@@ -440,7 +440,7 @@ other_documentDelete =(element) =>{
                                                         required
                                                         autoComplete="off"
                                                    />
-                                            
+                                               
                                             </Form.Group>
                                         </Form.Row>
                                         <Form.Row style={style.rowline} >
