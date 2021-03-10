@@ -235,7 +235,7 @@ class List extends React.Component {
                       bonus:"",
                       hours_of_work:"",
                       address_details:'',
-                      offerletters_id:0
+                      offerletterslist:[]
                     }
     }
     confirmChange = (e) => {
@@ -303,7 +303,7 @@ other_documentDelete =(element) =>{
     single_off_multi:false,
     driving_licence_code:false,
     is_other_documents:false,
-    offerletters_id:0,
+    offerletterslist:[],
     job_title:"",
     place_of_employment:"",
     dbscheck:"",
@@ -412,7 +412,7 @@ other_documentDelete =(element) =>{
         axios.get(baseurl+'/api/getofferletter/'+this.state.application_Forms.id,{headers:{'Accept':'application/json','Authorization':'Bearer '+auth_token}}
         ).then(res =>{
           if(res.data.success){
-           this.setState({offerletters_id:res.data.offerletters_id,apiload:false}) 
+           this.setState({offerletterslist:res.data.offerletterslist,apiload:false}) 
            }
          
         }).catch(err =>{
@@ -730,7 +730,7 @@ other_documentDelete =(element) =>{
  
     }  
     
-  offerletterPreview = () =>{
+  offerletterPreview = (offerletters_id = 0) =>{
     var left  = ($(window).width() / 2) - (900 / 2),
     top   = ($(window).height() / 2) - (500 / 2);
     var strWindowFeatures = "location=yes,height=970,width=720,scrollbars=yes,status=yes, top=" + top + ", left=" + left;
@@ -750,7 +750,7 @@ other_documentDelete =(element) =>{
     data.title = this.state.application_Forms.title;
     data.fore_name = this.state.application_Forms.fore_name;
     data.surname = this.state.application_Forms.surname;
-    data.offerletters_id = this.state.offerletters_id;
+    data.offerletters_id = offerletters_id;
     
     
      
@@ -1000,8 +1000,8 @@ other_documentDelete =(element) =>{
                                               <span class="sr-only">Loading...</span>
                                           </div>
                                         </div>
-                                        
-                                {(this.state.offerletters_id==0?<ValidationForm onSubmit={this.sendOfferLetter} onErrorSubmit={this.handleErrorSubmit}>
+                                  {(this.state.offerletterslist.length>0?<Offerletterslist  list={this.state.offerletterslist} />:'')}        
+                                <ValidationForm onSubmit={this.sendOfferLetter} onErrorSubmit={this.handleErrorSubmit}>
                                      <Form.Group as={Row} controlId="formHorizontalEmail">
                                                 <Form.Label column sm={3}>
                                                   Date of Commencement:
@@ -1145,9 +1145,8 @@ other_documentDelete =(element) =>{
                                         
                                         </Form.Group>
                                      </Form.Row>
-                              </ValidationForm>:
-                              <Button onClick={() =>{this.offerletterPreview()}}  type="button">View</Button>)
-                              }
+                              </ValidationForm>
+                             {/* <Button onClick={() =>{this.offerletterPreview()}}  type="button">View</Button> */} 
                       </Tab>
                         
                             <Tab eventKey="resendrequest" tabClassName='d-none' disabled={this.state.certification} title="resendrequest">
@@ -1452,6 +1451,50 @@ class EmploymentReferences extends React.Component{
     
   }
 
+}
+class Offerletterslist extends React.Component{
+  render(){
+   const offer_letters_list = this.props.list.map((item,index) =>{
+                return(
+                      <Tr key={index} style={{borderBottom:'1px solid rgba(0, 0, 0, 0.125)',borderTop:'1px solid rgba(0, 0, 0, 0.125)'}}>
+                            <Td style={{padding:'5px'}}>
+                                  {item.job_name}
+                            </Td>
+                            <Td style={{padding:'5px'}}>
+                                  {item.confirm_Date}
+                            </Td>
+                            <Td style={{padding:'5px'}}>
+                                {item.created_by_name}
+                            </Td>
+                            <Td style={{padding:'5px'}}>
+                                {item.created_at_date}
+                            </Td>
+                            <Td style={{padding:'5px'}}>
+                              {(item.offerletters_id?<Button onClick={this.props.offerletterPreview(item.offerletters_id)}  type="button">View</Button>:'')}
+                            
+                            </Td>
+                            
+                        </Tr>
+                      )
+    });
+    return(
+      <Aux>
+      <Tbl>
+        <Thead>
+          <Tr style={{lineHeight:2.5}}>
+          <Th width='20%'>Job Title</Th>
+          <Th width='30%'>Date of Commencement</Th>
+          <Th width='20%'>Created by</Th>
+          <Th width='20%'>Created at</Th>
+          <Th width='10%'></Th>
+          </Tr>
+        </Thead>
+        <Tbody>{offer_letters_list}</Tbody>
+      </Tbl>
+      
+      </Aux>
+    )
+  }
 }
 const style= {
   title:{
