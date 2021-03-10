@@ -91,6 +91,7 @@ class OfferLetter extends React.Component {
         line_4:'',
         town_or_city:'',
         postcode:'',
+        offerletterlist_id:''
     };
      // preserve the initial state in a new object
      this.baseState = this.state 
@@ -204,7 +205,8 @@ class OfferLetter extends React.Component {
            
            
 
-        
+            
+        this.setState({offerletterlist_id:data['offerletterlist_id']});
         this.setState({basic:data['basic']});
         this.setState({bonus:data['bonus']});
         this.setState({confirm_Date:data['confirm_Date']});
@@ -222,6 +224,8 @@ class OfferLetter extends React.Component {
         this.setState({line_4:data['address_details']['line_4']}); 
         this.setState({postcode:data['address_details']['postcode']}); 
         this.setState({town_or_city:data['address_details']['town_or_city']}); 
+        
+        
         axios.get(baseurl+'/api/getjobtitle/'+data['job_title']).then(res =>{
                           if(res.data.success){
                             this.setState({job_title_text:res.data.data.name});

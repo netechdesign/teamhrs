@@ -16,6 +16,8 @@ use Mail;
 use App\Mail\UserSendMail;
 use App\Models\Job_positions;
 use App\Models\Offerletters;
+use App\Models\Offerletterlists;
+
 class Application_formsController extends Controller
 {
     /**
@@ -638,19 +640,29 @@ class Application_formsController extends Controller
      }
 
      public function sendOfferLetter(Request $request){
+        try {
+            
+             $user = JWTAuth::toUser($request->input('token'));
+             $request->request->add(['created_by'=> $user->id]);
+          //$request->request->add(['user_id'=> $user->id]);
         $data = base64_decode($request->data);
         $data = json_decode($data, true);
-        
+        $data['created_by_name'] = $user->name;
+        $data['application_forms_id'] = $data['application_Forms_id'];
+        //
+        $Offerletterlists = new Offerletterlists($data);
+        $Offerletterlists->save();
+        $data['offerletterlist_id'] = $Offerletterlists->id;
         $to_mail = $data['email'];
         $mpdf= new \Mpdf\Mpdf(['mode' => 'utf-8','format' => 'A4','margin_left' => 15,'margin_right' => 15,'margin_top' => 35,'margin_bottom' => 20,'margin_header' => 15,'margin_footer' => 2]); //use this customization
         
         $data['name']= ucfirst($data['fore_name']);
+        $application_Forms= json_encode($data);
+        $data['code']= base64_encode($application_Forms);
         $job_positions = Job_positions::where('id',$data['job_title'])->first();        
         if($job_positions){
          $data['job_title'] =$job_positions->name;
         }
-        
-        $data['code']=$request->data;
         
        
         $html = view('pdf.offer_letter', $data);
@@ -666,6 +678,14 @@ class Application_formsController extends Controller
 
                       });
                       return response()->json(array('success' => true));
+                    }catch (\Exception $e) 
+                    {
+                         $message = $e->getMessage();
+                         
+                         $text = strstr($message, ':', true);
+                     
+                         return response()->json(array('success' => false,'message'=> $message));
+                    }
     }
      public function offer_letter(Request $request){
        $data = base64_decode($request->data);
@@ -756,10 +776,15 @@ class Application_formsController extends Controller
 
         
         try { 
+            $offerletterlists = DB::table('offerletterlists')
+            ->Join('job_positions', 'job_positions.id', '=', 'offerletterlists.job_title')
+            ->leftJoin('offerletters', 'offerletters.offerletterlist_id', '=', 'offerletterlists.id')
+            ->where('offerletterlists.application_forms_id', '=', $id)
+            ->select('offerletterlists.*',DB::raw('job_positions.name as job_name'),DB::raw('offerletters.id as offerletters_id'),DB::raw('DATE_FORMAT(offerletterlists.created_at,"%d/%m/%Y %H:%i") as created_at_date'))
+            ->get();
             
-            $offerletters = Offerletters::where('application_forms_id',$id)->first();
-            if($offerletters){
-            return response()->json(array('success' => true,'offerletters_id'=> $offerletters->id));
+            if($offerletterlists){
+            return response()->json(array('success' => true,'offerletterslist'=> $offerletterlists));
             }
             return response()->json(array('success' => false,'message'=> 'not get'));
              } catch (\Exception $e) 

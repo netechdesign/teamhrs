@@ -10,6 +10,7 @@ class Offerletters extends Model
     protected $table= 'offerletters';
     
     protected $fillable = ['application_forms_id',
+    'offerletterlist_id',
     'title', 
     'fore_name', 
     'surname', 

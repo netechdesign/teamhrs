@@ -15,7 +15,8 @@ class CreateOfferlettersTable extends Migration
     {
         Schema::create('offerletters', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('application_forms_id')->index()->unique();
+            $table->unsignedBigInteger('application_forms_id')->index();
+            $table->unsignedBigInteger('offerletterlist_id')->index();
             $table->string('title')->nullable(); 
             $table->string('fore_name')->nullable(); 
             $table->string('surname')->nullable(); 
@@ -40,6 +41,7 @@ class CreateOfferlettersTable extends Migration
             $table->integer('created_by')->nullable();
             $table->integer('updated_by')->nullable();
             $table->foreign('application_forms_id')->references('id')->on('application_forms')->onUpdate('RESTRICT')->onDelete('CASCADE');
+            $table->foreign('offerletterlist_id')->references('id')->on('offerletterlists')->onUpdate('RESTRICT')->onDelete('CASCADE');
           
             $table->timestamps();
         });
