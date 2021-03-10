@@ -119,6 +119,7 @@ oTable = $(tableResponsive).DataTable({
         {"data": "information_provided_name"},
          {"data": "email"},
          {"data": "telephone_number"},
+         {"data":"postcode"},
          {"data": "id"}
     ],
     responsive: {
@@ -1202,6 +1203,8 @@ other_documentDelete =(element) =>{
                                         <th id="information_provided_name">Name</th>
                                         <th id="email">Email</th>
                                         <th id="telephone_number">Telephone Number</th>
+                                        <th id="postcode">Postcode</th>
+                                        
                                         <th id="action">Action</th>
                                         
                                       </tr>
@@ -1213,6 +1216,7 @@ other_documentDelete =(element) =>{
                                         <th id="information_provided_name">Name</th>
                                         <th id="email">Email</th>
                                         <th id="telephone_number">Telephone Number</th>
+                                        <th id="postcode">Postcode</th>
                                         <th id="action">Action</th>
                                     </tr>
                                     </tfoot>
