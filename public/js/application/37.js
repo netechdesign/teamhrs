@@ -700,6 +700,12 @@ function atable() {
 }
 
 var baseurl = window.location.origin;
+var today = new Date();
+var dd = String(today.getDate()).padStart(2, '0');
+var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+
+var yyyy = today.getFullYear();
+var todaydate = dd + '/' + mm + '/' + yyyy;
 
 var List = /*#__PURE__*/function (_React$Component) {
   _inherits(List, _React$Component);
@@ -714,8 +720,15 @@ var List = /*#__PURE__*/function (_React$Component) {
     _this = _super.call(this, props);
 
     _defineProperty(_assertThisInitialized(_this), "confirmChange", function (e) {
+      var today = new Date(e);
+      var dd = String(today.getDate()).padStart(2, '0');
+      var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+
+      var yyyy = today.getFullYear();
+      var todaydate = dd + '/' + mm + '/' + yyyy;
+
       _this.setState({
-        confirm_Date: e
+        confirm_Date: todaydate
       });
     });
 
@@ -806,7 +819,16 @@ var List = /*#__PURE__*/function (_React$Component) {
         single_phase: false,
         single_off_multi: false,
         driving_licence_code: false,
-        is_other_documents: false
+        is_other_documents: false,
+        offerletters_id: 0,
+        job_title: "",
+        place_of_employment: "",
+        dbscheck: "",
+        remuneration_and_benefits: "",
+        basic: "",
+        bonus: "",
+        hours_of_work: "",
+        address_details: ''
       });
 
       var _ref2 = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
@@ -895,6 +917,36 @@ var List = /*#__PURE__*/function (_React$Component) {
         })["catch"](function (err) {
           console.log(err);
         });
+      }
+
+      if (key === 'offerletter') {
+        if (_this.state.application_Forms.getaddress_id) {
+          _this.getAddress(_this.state.application_Forms.getaddress_id);
+        } else {
+          var address = _this.state.application_Forms.address;
+
+          _this.setState({
+            address_details: address
+          });
+        }
+
+        if (_this.state.application_Forms.id) {
+          axios__WEBPACK_IMPORTED_MODULE_7___default.a.get(baseurl + '/api/getofferletter/' + _this.state.application_Forms.id, {
+            headers: {
+              'Accept': 'application/json',
+              'Authorization': 'Bearer ' + auth_token
+            }
+          }).then(function (res) {
+            if (res.data.success) {
+              _this.setState({
+                offerletters_id: res.data.offerletters_id,
+                apiload: false
+              });
+            }
+          })["catch"](function (err) {
+            console.log(err);
+          });
+        }
       }
     });
 
@@ -1161,11 +1213,151 @@ var List = /*#__PURE__*/function (_React$Component) {
       });
     });
 
+    _defineProperty(_assertThisInitialized(_this), "getAddress", function (id) {
+      var self = _assertThisInitialized(_this);
+
+      jquery__WEBPACK_IMPORTED_MODULE_6___default.a.ajax({
+        dataType: 'json',
+        method: 'get',
+        url: "https://api.getAddress.io/get/" + id + "?api-key=XrOjpdAkTEiMj4o5WV_uSQ26499",
+        success: function success(data) {
+          self.setState({
+            address_details: data
+          }); // data.building_number+' '+data.building_name;
+
+          var street_line = '';
+
+          if (data.line_1 != '') {//street_line = data.line_1;
+          }
+
+          if (data.line_2 != '') {//street_line +=' ,'+data.line_2;
+          }
+
+          if (data.line_3 != '') {//street_line +=' ,'+data.line_3;
+          }
+
+          if (data.line_4 != '') {//street_line +=' ,'+data.line_4;
+          } //data.town_or_city
+          //data.county
+          //data.postcode
+
+        }
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "sendOfferLetter", function (e) {
+      e.preventDefault();
+
+      _this.setState({
+        certificationButton: true,
+        apiload: true
+      });
+
+      var _ref7 = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
+          id = _ref7.id,
+          auth_token = _ref7.auth_token; //const data = new FormData()
+      //data.append('name', this.state.name);
+
+
+      var person = {};
+      var data = Object.create(person);
+      data.job_title = _this.state.job_title;
+      data.confirm_Date = _this.state.confirm_Date;
+      data.job_title = _this.state.job_title;
+      data.place_of_employment = _this.state.place_of_employment;
+      data.dbscheck = _this.state.dbscheck;
+      data.remuneration_and_benefits = _this.state.remuneration_and_benefits;
+      data.basic = _this.state.basic;
+      data.bonus = _this.state.bonus;
+      data.hours_of_work = _this.state.hours_of_work;
+      data.address_details = _this.state.address_details;
+      data.title = _this.state.application_Forms.title;
+      data.application_Forms_id = _this.state.application_Forms.id;
+      data.fore_name = _this.state.application_Forms.fore_name;
+      data.surname = _this.state.application_Forms.surname;
+      data.email = _this.state.application_Forms.email;
+      var results = btoa(JSON.stringify(data));
+      axios__WEBPACK_IMPORTED_MODULE_7___default.a.get(baseurl + "/api/sendOfferLetter?data=" + results, {
+        headers: {
+          'Accept': 'application/json',
+          'Authorization': 'Bearer ' + auth_token
+        }
+      }).then(function (res) {
+        if (res.data.success) {
+          request_certificationAlert();
+
+          _this.setState({
+            key: 'home'
+          }); // console.log(res.data.data);
+
+
+          if (_this.state.application_Forms.id) {
+            _this.applicationShow(_this.state.application_Forms.id);
+          }
+        } else {
+          var errorMassage = '';
+
+          if (res.data.errors) {
+            errorMassage = res.data.errors.name;
+          } else {
+            errorMassage = res.data.email;
+          }
+
+          pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_14__["default"].error({
+            title: "System Error",
+            text: errorMassage
+          });
+
+          _this.setState({
+            formSubmitting: false
+          });
+
+          _this.setState({
+            buttonName: 'Save'
+          });
+        }
+      })["catch"](function (err) {
+        pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_14__["default"].error({
+          title: "System Error",
+          text: err
+        });
+
+        _this.setState({
+          formSubmitting: false
+        });
+
+        _this.setState({
+          buttonName: 'Add'
+        });
+
+        _this.setState({
+          selectedFile: null
+        });
+      });
+    });
+
     _defineProperty(_assertThisInitialized(_this), "offerletterPreview", function () {
       var left = jquery__WEBPACK_IMPORTED_MODULE_6___default()(window).width() / 2 - 900 / 2,
           top = jquery__WEBPACK_IMPORTED_MODULE_6___default()(window).height() / 2 - 500 / 2;
       var strWindowFeatures = "location=yes,height=970,width=720,scrollbars=yes,status=yes, top=" + top + ", left=" + left;
-      var URL = baseurl + "/offer-letter";
+      var person = {};
+      var data = Object.create(person);
+      data.job_title = _this.state.job_title;
+      data.confirm_Date = _this.state.confirm_Date;
+      data.job_title = _this.state.job_title;
+      data.place_of_employment = _this.state.place_of_employment;
+      data.dbscheck = _this.state.dbscheck;
+      data.remuneration_and_benefits = _this.state.remuneration_and_benefits;
+      data.basic = _this.state.basic;
+      data.bonus = _this.state.bonus;
+      data.hours_of_work = _this.state.hours_of_work;
+      data.address_details = _this.state.address_details;
+      data.title = _this.state.application_Forms.title;
+      data.fore_name = _this.state.application_Forms.fore_name;
+      data.surname = _this.state.application_Forms.surname;
+      data.offerletters_id = _this.state.offerletters_id;
+      var results = btoa(JSON.stringify(data));
+      var URL = baseurl + "/offer-letter/?data=" + results;
       var win = window.open(URL, "_blank", strWindowFeatures);
     });
 
@@ -1190,7 +1382,16 @@ var List = /*#__PURE__*/function (_React$Component) {
       is_other_documents: false,
       confirm_employee_signature: null,
       confirm_employee_signature_show: null,
-      dbscheck: ''
+      confirm_Date: todaydate,
+      job_title: "",
+      place_of_employment: "",
+      dbscheck: "",
+      remuneration_and_benefits: "",
+      basic: "",
+      bonus: "",
+      hours_of_work: "",
+      address_details: '',
+      offerletters_id: 0
     };
     return _this;
   }
@@ -1640,8 +1841,8 @@ var List = /*#__PURE__*/function (_React$Component) {
         role: "status"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         "class": "sr-only"
-      }, "Loading..."))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_9__["ValidationForm"], {
-        onSubmit: this.submitOtherProofCertification,
+      }, "Loading..."))), this.state.offerletters_id == 0 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_9__["ValidationForm"], {
+        onSubmit: this.sendOfferLetter,
         onErrorSubmit: this.handleErrorSubmit
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
         as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Row"],
@@ -1690,24 +1891,24 @@ var List = /*#__PURE__*/function (_React$Component) {
       }, "Place of Employment:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], {
         sm: 4
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_9__["SelectGroup"], {
-        name: "job_title",
-        id: "job_title",
-        value: this.state.job_title,
+        name: "place_of_employment",
+        id: "place_of_employment",
+        value: this.state.place_of_employment,
         required: "required",
         errorMessage: "Please select Place of Employment",
         onChange: this.handleChange
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
         value: ""
       }, "Please select Place of Employment"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Your place of employment shall not be fixed. Your region will be allocated in line with the Employer\u2019s assessment of business conditions."
+        value: "1"
       }, "Your place of employment shall not be fixed. Your region will be allocated in line with the Employer\u2019s assessment of business conditions."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Your line manager will allocate your region of management responsibility with your agreed assessment of business conditions. The Employer reserves the right, subject to prior discussion with you, to alter the size or nature of this region or to reassign the region, in line with the Company\u2019s assessment of business conditions."
-      }, "Your line manager will allocate your region of management responsibility with your agreed assessment of business conditions. The Employer reserves the right, subject to prior discussion with you, to alter the size or nature of this region or to reassign the region, in line with the Company\u2019s assessment of business conditions."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Bespoke Metering Solutions, Unit 6, Glover Network Centre, Spire Road, Washington, NE37 3HB"
+        value: "2"
+      }, "Your line manager will allocate your region of management responsibility with your agreed assessment of business conditionsThe Employer reserves the right, subject to prior discussion with you, to alter the size or nature of this region or to reassign the region, in line with the Company\u2019s assessment of business conditions."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "3"
       }, "Bespoke Metering Solutions, Unit 6, Glover Network Centre, Spire Road, Washington, NE37 3HB"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Bespoke Metering Solutions, Gateway House, Gateway West, Newburn Riverside, Newcastle upon Tyne NE15 8NX"
+        value: "4"
       }, "Bespoke Metering Solutions, Gateway House, Gateway West, Newburn Riverside, Newcastle upon Tyne NE15 8NX"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Bespoke Metering Solutions, Unit 7, Grovewood Business Centre, Strathclyde Business Park, Bellhill, ML4 3NQ"
+        value: "5"
       }, "Bespoke Metering Solutions, Unit 7, Grovewood Business Centre, Strathclyde Business Park, Bellhill, ML4 3NQ")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
         as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Row"],
         controlId: "formHorizontalEmail"
@@ -1719,7 +1920,7 @@ var List = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_9__["SelectGroup"], {
         name: "dbscheck",
         id: "dbscheck",
-        value: this.state.job_title,
+        value: this.state.dbscheck,
         required: "required",
         errorMessage: "Please select DBS Check",
         onChange: this.handleChange
@@ -1735,13 +1936,10 @@ var List = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Label, {
         column: true,
         sm: 3
-      }, "Remuneration and Benefits:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], {
-        sm: 4
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Control, {
-        type: "text",
-        required: true,
-        placeholder: "Remuneration and Benefits"
-      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Basic, {
+      }, "Remuneration and Benefits:")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Basic, {
+        basicChange: function basicChange(e) {
+          _this2.handleChange(e);
+        },
         dbscheck: this.state.dbscheck
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
         as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Row"],
@@ -1782,11 +1980,11 @@ var List = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
         value: ""
       }, "Please select Hours of Work"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "45 hours per week, between Monday to Sunday to be worked between the hours of 8am and 10pm. You may be required as part of your role to attend out of hours and emergency callouts as requested by the Employer"
+        value: "1"
       }, "45 hours per week, between Monday to Sunday to be worked between the hours of 8am and 10pm. You may be required as part of your role to attend out of hours and emergency callouts as requested by the Employer"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Your normal working hours will be 40 hours per week between 08.00 and 18.00 Monday to Friday. You are, however, expected to work without additional pay for additional hours according to the requirements of the Company"
+        value: "2"
       }, "Your normal working hours will be 40 hours per week between 08.00 and 18.00 Monday to Friday. You are, however, expected to work without additional pay for additional hours according to the requirements of the Company"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Manually"
+        value: "3"
       }, "Manually")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Row, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
         as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
         sm: 12,
@@ -1799,7 +1997,12 @@ var List = /*#__PURE__*/function (_React$Component) {
           _this2.offerletterPreview();
         },
         type: "button"
-      }, "Preview"))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Tab"], {
+      }, "Preview")))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Button"], {
+        onClick: function onClick() {
+          _this2.offerletterPreview();
+        },
+        type: "button"
+      }, "View")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Tab"], {
         eventKey: "resendrequest",
         tabClassName: "d-none",
         disabled: this.state.certification,
@@ -1937,6 +2140,8 @@ var Basic = /*#__PURE__*/function (_React$Component2) {
         sm: 4
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Control, {
         type: "text",
+        name: "basic",
+        onChange: this.props.basicChange,
         required: true,
         placeholder: "Basic"
       }))) : '';
@@ -2067,8 +2272,8 @@ var JobPositionList = /*#__PURE__*/function (_React$Component4) {
     value: function componentDidMount() {
       var _this6 = this;
 
-      var _ref7 = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
-          auth_token = _ref7.auth_token;
+      var _ref8 = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
+          auth_token = _ref8.auth_token;
 
       axios__WEBPACK_IMPORTED_MODULE_7___default.a.get(baseurl + '/api/job_positions/list', {
         headers: {

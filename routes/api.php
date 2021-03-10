@@ -49,6 +49,8 @@ Route::group(['middleware' => ['jwt.auth','api-header']], function () {
         Route::post('request_other_certification', 'Application_formsController@request_other_certification');
         Route::get('roledropdown', 'RoleController@roledropdown');  
         Route::get('job_positions/list', 'Job_positionsController@list');
+        Route::get('sendOfferLetter', 'Application_formsController@sendOfferLetter');
+        Route::get('getofferletter/{id}', 'Application_formsController@getofferletter');
         
         //telephone questions
         
@@ -105,7 +107,14 @@ Route::group(['middleware' => 'api-header'], function () {
     // as users at that point have not been authenticated yet
     // Therefore the jwtMiddleware will be exclusive of them
     Route::post('submitapplication', 'Admin\Application_formsController@applicant');
+    Route::post('submitofferletter', 'Admin\Application_formsController@submitofferletter');
+    
     Route::post('submitdocument', 'Admin\Application_formsController@submitdocument');
     Route::post('user/login', 'Admin\UserController@login');
     //Route::post('user/register', 'Auth\UserController@register');
+    Route::get('getjobtitle/{id}',function($id){
+        $arraylist = App\Models\Job_positions::find($id);
+        $response = ['success'=>true, 'data'=>$arraylist];
+        return response()->json($response, 201);
+    });
 });

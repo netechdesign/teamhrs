@@ -193,6 +193,12 @@ oTable = $(tableResponsive).DataTable({
    
 }
 const baseurl= window.location.origin;
+let today = new Date();
+let dd = String(today.getDate()).padStart(2, '0');
+let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+let yyyy = today.getFullYear();
+
+const todaydate = dd + '/' + mm + '/' + yyyy;
 class List extends React.Component {
 
    
@@ -219,12 +225,26 @@ class List extends React.Component {
                       is_other_documents:false,
                       confirm_employee_signature:null,
                       confirm_employee_signature_show:null,
-                      dbscheck:''
+                      confirm_Date:todaydate,
+                      job_title:"",
+                      place_of_employment:"",
+                      dbscheck:"",
+                      remuneration_and_benefits:"",
+                      basic:"",
+                      bonus:"",
+                      hours_of_work:"",
+                      address_details:'',
+                      offerletters_id:0
                     }
     }
     confirmChange = (e) => {
-
-      this.setState({confirm_Date:e});
+      let today = new Date(e);
+      let dd = String(today.getDate()).padStart(2, '0');
+      let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+      let yyyy = today.getFullYear();
+      
+      const todaydate = dd + '/' + mm + '/' + yyyy;
+      this.setState({confirm_Date:todaydate});
    };
 //confirm
 confirm_employee = {}
@@ -281,7 +301,17 @@ other_documentDelete =(element) =>{
     single_phase:false,
     single_off_multi:false,
     driving_licence_code:false,
-    is_other_documents:false});
+    is_other_documents:false,
+    offerletters_id:0,
+    job_title:"",
+    place_of_employment:"",
+    dbscheck:"",
+    remuneration_and_benefits:"",
+    basic:"",
+    bonus:"",
+    hours_of_work:"",
+    address_details:''
+  });
     
     const {auth_token} = localStorage.getItem('userData')? JSON.parse(localStorage.getItem('userData')).user : 'Null';
     axios.get(baseurl+'/api/application_form/'+application_id,{headers:{'Accept':'application/json','Authorization':'Bearer '+auth_token}}
@@ -341,6 +371,7 @@ other_documentDelete =(element) =>{
         })
     }
     handleChange = (e) => {
+      
       this.setState({
           [e.target.name]: e.target.value
       })
@@ -366,6 +397,30 @@ other_documentDelete =(element) =>{
                           
                       }
           )
+          
+    }
+    if(key === 'offerletter'){
+        if(this.state.application_Forms.getaddress_id){
+            this.getAddress(this.state.application_Forms.getaddress_id);
+           
+          }else{
+           let address = this.state.application_Forms.address;
+           this.setState({address_details:address});
+        }
+        if(this.state.application_Forms.id){
+        axios.get(baseurl+'/api/getofferletter/'+this.state.application_Forms.id,{headers:{'Accept':'application/json','Authorization':'Bearer '+auth_token}}
+        ).then(res =>{
+          if(res.data.success){
+           this.setState({offerletters_id:res.data.offerletters_id,apiload:false}) 
+           }
+         
+        }).catch(err =>{
+                 console.log(err);
+                       
+                   }
+       )
+                  }
+        
     }
   }
 
@@ -558,11 +613,149 @@ other_documentDelete =(element) =>{
     this.setState({ key :'resendrequest'});
   }
    
+      // get address details
+      getAddress =(id) => {
+    
+        let self= this;
+      $.ajax({
+          dataType: 'json',
+          method: 'get',
+          url:"https://api.getAddress.io/get/"+id+"?api-key=XrOjpdAkTEiMj4o5WV_uSQ26499",
+          success:function(data){
+            self.setState({address_details:data});
+            
+            // data.building_number+' '+data.building_name;
+            
+            let street_line='';
+            if(data.line_1!=''){
+              //street_line = data.line_1;
+            }
+            if(data.line_2!=''){
+              //street_line +=' ,'+data.line_2;
+            }
+            
+            if(data.line_3!=''){
+              //street_line +=' ,'+data.line_3;
+            }
+            
+            if(data.line_4!=''){
+              //street_line +=' ,'+data.line_4;
+            }
+            //data.town_or_city
+            //data.county
+            //data.postcode
+            
+            
+            
+            
+          
+          }
+      }); 
+   }
+  
+   
+   sendOfferLetter =(e) =>{
+    e.preventDefault();
+    this.setState({certificationButton:true,apiload:true});
+    const {id,auth_token} = localStorage.getItem('userData')? JSON.parse(localStorage.getItem('userData')).user : 'Null';
+    
+    //const data = new FormData()
+    //data.append('name', this.state.name);
+    const person = {};
+    const data = Object.create(person);
+    data.job_title = this.state.job_title;
+    data.confirm_Date = this.state.confirm_Date;
+    data.job_title = this.state.job_title;
+    data.place_of_employment = this.state.place_of_employment;
+    data.dbscheck = this.state.dbscheck;
+    data.remuneration_and_benefits = this.state.remuneration_and_benefits;
+    data.basic = this.state.basic;
+    data.bonus = this.state.bonus;
+    data.hours_of_work = this.state.hours_of_work;
+    data.address_details = this.state.address_details;
+    data.title = this.state.application_Forms.title;
+    data.application_Forms_id = this.state.application_Forms.id;
+    data.fore_name = this.state.application_Forms.fore_name;
+    data.surname = this.state.application_Forms.surname;
+    data.email = this.state.application_Forms.email;
+    
+    
+     
+    let results= btoa(JSON.stringify(data)); 
+    
+    axios.get(
+        baseurl+"/api/sendOfferLetter?data="+results,
+        {headers:{'Accept':'application/json','Authorization':'Bearer '+auth_token}} 
+    ).then(res =>{
+                      if(res.data.success){
+                        request_certificationAlert();
+                      
+                       this.setState({ key :'home'});
+                         // console.log(res.data.data);
+                         if(this.state.application_Forms.id){
+                               this.applicationShow(this.state.application_Forms.id);
+                            }
+                          
+                         
+                      }else{
+                          let errorMassage = '';
+                        if(res.data.errors){
+                            errorMassage = res.data.errors.name;
+                        }else{
+                            errorMassage = res.data.email;
+                            
+                        }
+                        PNotify.error({
+                            title: "System Error",
+                            text:errorMassage,
+                        });
+                        this.setState({formSubmitting:false});
+                        this.setState({buttonName:'Save'});
+                        
+                      }
+                 }
+      )
+      .catch(err =>{
+                PNotify.error({
+                    title: "System Error",
+                    text:err,
+                });
+                this.setState({formSubmitting:false});
+                this.setState({buttonName:'Add'});
+                this.setState({selectedFile:null});
+                      
+                  }
+      )
+ 
+    }  
+    
   offerletterPreview = () =>{
     var left  = ($(window).width() / 2) - (900 / 2),
     top   = ($(window).height() / 2) - (500 / 2);
     var strWindowFeatures = "location=yes,height=970,width=720,scrollbars=yes,status=yes, top=" + top + ", left=" + left;
-    var URL = baseurl+"/offer-letter";
+    
+    const person = {};
+    const data = Object.create(person);
+    data.job_title = this.state.job_title;
+    data.confirm_Date = this.state.confirm_Date;
+    data.job_title = this.state.job_title;
+    data.place_of_employment = this.state.place_of_employment;
+    data.dbscheck = this.state.dbscheck;
+    data.remuneration_and_benefits = this.state.remuneration_and_benefits;
+    data.basic = this.state.basic;
+    data.bonus = this.state.bonus;
+    data.hours_of_work = this.state.hours_of_work;
+    data.address_details = this.state.address_details;
+    data.title = this.state.application_Forms.title;
+    data.fore_name = this.state.application_Forms.fore_name;
+    data.surname = this.state.application_Forms.surname;
+    data.offerletters_id = this.state.offerletters_id;
+    
+    
+     
+    let results= btoa(JSON.stringify(data)); 
+    
+    var URL = baseurl+"/offer-letter/?data="+results;
     var win = window.open(URL, "_blank", strWindowFeatures);
   }
     render() {
@@ -807,7 +1000,7 @@ other_documentDelete =(element) =>{
                                           </div>
                                         </div>
                                         
-                               <ValidationForm onSubmit={this.submitOtherProofCertification} onErrorSubmit={this.handleErrorSubmit}>
+                                {(this.state.offerletters_id==0?<ValidationForm onSubmit={this.sendOfferLetter} onErrorSubmit={this.handleErrorSubmit}>
                                      <Form.Group as={Row} controlId="formHorizontalEmail">
                                                 <Form.Label column sm={3}>
                                                   Date of Commencement:
@@ -815,6 +1008,7 @@ other_documentDelete =(element) =>{
                                                 <Col sm={4}>
                                                     
                                                     <Datetime closeOnSelect={true} onChange={this.confirmChange} value={this.state.confirm_Date}  dateFormat="D/M/Y" timeFormat={false}  maxDate={new Date()} inputProps={{required:'required',name:"confirm_Date",placeholder: 'Select Date',autoComplete:'off'}} />
+                                                    
                                                 </Col>
                                      </Form.Group>
                                      
@@ -844,22 +1038,18 @@ other_documentDelete =(element) =>{
                                                 </Form.Label>
                                                 <Col sm={4}>
                                                 <SelectGroup
-                                                name="job_title"
-                                                id="job_title"
-                                                value={this.state.job_title}
+                                                name="place_of_employment"
+                                                id="place_of_employment"
+                                                value={this.state.place_of_employment}
                                                 required="required"
                                                 errorMessage="Please select Place of Employment"
                                                 onChange={this.handleChange}>
                                                 <option value="">Please select Place of Employment</option>
-                                                <option value="Your place of employment shall not be fixed. Your region will be allocated in line with the Employer’s assessment of business conditions.">Your place of employment shall not be fixed. Your region will be allocated in line with the Employer’s assessment of business conditions.</option>
-                                                <option value="Your line manager will allocate your region of management responsibility with your agreed assessment of business conditions. The Employer reserves the right, subject to prior discussion with you, to alter the size or nature of this region or to reassign the region, in line with the Company’s assessment of business conditions.">
-Your line manager will allocate your region of management responsibility with your agreed assessment of business conditions. 
-The Employer reserves the right, subject to prior discussion with you, to alter the size or nature of this region or to reassign the region, in line with the Company’s assessment of business conditions.
-</option>
-
-<option value="Bespoke Metering Solutions, Unit 6, Glover Network Centre, Spire Road, Washington, NE37 3HB">Bespoke Metering Solutions, Unit 6, Glover Network Centre, Spire Road, Washington, NE37 3HB</option>
-<option value="Bespoke Metering Solutions, Gateway House, Gateway West, Newburn Riverside, Newcastle upon Tyne NE15 8NX">Bespoke Metering Solutions, Gateway House, Gateway West, Newburn Riverside, Newcastle upon Tyne NE15 8NX</option>
-<option value="Bespoke Metering Solutions, Unit 7, Grovewood Business Centre, Strathclyde Business Park, Bellhill, ML4 3NQ">Bespoke Metering Solutions, Unit 7, Grovewood Business Centre, Strathclyde Business Park, Bellhill, ML4 3NQ</option>
+                                                <option value="1">Your place of employment shall not be fixed. Your region will be allocated in line with the Employer’s assessment of business conditions.</option>
+                                                <option value="2">Your line manager will allocate your region of management responsibility with your agreed assessment of business conditionsThe Employer reserves the right, subject to prior discussion with you, to alter the size or nature of this region or to reassign the region, in line with the Company’s assessment of business conditions.</option>
+                                                <option value="3">Bespoke Metering Solutions, Unit 6, Glover Network Centre, Spire Road, Washington, NE37 3HB</option>
+                                                <option value="4">Bespoke Metering Solutions, Gateway House, Gateway West, Newburn Riverside, Newcastle upon Tyne NE15 8NX</option>
+                                                <option value="5">Bespoke Metering Solutions, Unit 7, Grovewood Business Centre, Strathclyde Business Park, Bellhill, ML4 3NQ</option>
 
 
                                                 
@@ -876,7 +1066,7 @@ The Employer reserves the right, subject to prior discussion with you, to alter 
                                                 <SelectGroup
                                                 name="dbscheck"
                                                 id="dbscheck"
-                                                value={this.state.job_title}
+                                                value={this.state.dbscheck}
                                                 required="required"
                                                 errorMessage="Please select DBS Check"
                                                 onChange={this.handleChange}>
@@ -891,11 +1081,12 @@ The Employer reserves the right, subject to prior discussion with you, to alter 
                                                 <Form.Label column sm={3}>
                                                  Remuneration and Benefits:
                                                 </Form.Label>
-                                                <Col sm={4}>
-                                                    <Form.Control type="text" required placeholder="Remuneration and Benefits" />
+                                              {/*  <Col sm={4}>
+                                                    <Form.Control type="text" name="remuneration_and_benefits" onChange={this.handleChange} required placeholder="Remuneration and Benefits" />
                                                 </Col>
+                                              */}
                                      </Form.Group>
-                                     <Basic dbscheck={this.state.dbscheck} />
+                                     <Basic basicChange={(e) =>{this.handleChange(e)}} dbscheck={this.state.dbscheck} />
                                      
                                      <Form.Group as={Row} controlId="formHorizontalEmail">
                                                 <Form.Label column sm={3}>
@@ -929,9 +1120,9 @@ The Employer reserves the right, subject to prior discussion with you, to alter 
                                                 errorMessage="Please select hours_of_work"
                                                 onChange={this.handleChange}>
                                                 <option value="">Please select Hours of Work</option>
-                                                <option value="45 hours per week, between Monday to Sunday to be worked between the hours of 8am and 10pm. You may be required as part of your role to attend out of hours and emergency callouts as requested by the Employer">45 hours per week, between Monday to Sunday to be worked between the hours of 8am and 10pm. You may be required as part of your role to attend out of hours and emergency callouts as requested by the Employer</option>
-                                                <option value="Your normal working hours will be 40 hours per week between 08.00 and 18.00 Monday to Friday. You are, however, expected to work without additional pay for additional hours according to the requirements of the Company">Your normal working hours will be 40 hours per week between 08.00 and 18.00 Monday to Friday. You are, however, expected to work without additional pay for additional hours according to the requirements of the Company</option>
-                                                <option value="Manually">Manually</option>
+                                                <option value="1">45 hours per week, between Monday to Sunday to be worked between the hours of 8am and 10pm. You may be required as part of your role to attend out of hours and emergency callouts as requested by the Employer</option>
+                                                <option value="2">Your normal working hours will be 40 hours per week between 08.00 and 18.00 Monday to Friday. You are, however, expected to work without additional pay for additional hours according to the requirements of the Company</option>
+                                                <option value="3">Manually</option>
 
                                                 
                                                 </SelectGroup>
@@ -953,7 +1144,9 @@ The Employer reserves the right, subject to prior discussion with you, to alter 
                                         
                                         </Form.Group>
                                      </Form.Row>
-                              </ValidationForm>
+                              </ValidationForm>:
+                              <Button onClick={() =>{this.offerletterPreview()}}  type="button">View</Button>)
+                              }
                       </Tab>
                         
                             <Tab eventKey="resendrequest" tabClassName='d-none' disabled={this.state.certification} title="resendrequest">
@@ -1041,7 +1234,7 @@ class Basic extends React.Component{
                                                    Basic:
                                                 </Form.Label>
                                                 <Col sm={4}>
-                                                    <Form.Control type="text" required placeholder="Basic" />
+                                                    <Form.Control type="text" name="basic"  onChange={this.props.basicChange} required placeholder="Basic" />
                                                 </Col>
                                      </Form.Group>:'');
            return(

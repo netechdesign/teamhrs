@@ -11,6 +11,7 @@ const Certification = React.lazy(() =>import('./front-end/submitCertification'))
 const thankstosubmit = React.lazy(() => import('./front-end/thankstosubmit'));
 const documentUpload = React.lazy(() => import('./front-end/documentUpload'));
 const ReCertification = React.lazy(() =>import('./front-end/reSubmitCertification'))
+const OfferLetter = React.lazy(() =>import('./front-end/OfferLetter'))
 
 const ChangePassword = React.lazy(() => import('./Authentication/ChangePassword'));
 /*
@@ -79,6 +80,7 @@ const route =
     { path: '/change-password', exact: true, name: 'Change Password', component: ChangePassword },
     {path:'/certification/:id',exact: true, name: 'Change Password', component: Certification },
     {path:'/re-certification/:id',exact: true, name: 'Change Password', component: ReCertification },
+    {path:'/offer-letter/:id',exact: true, name: 'Offer Letter', component: OfferLetter },
     
 ];
 

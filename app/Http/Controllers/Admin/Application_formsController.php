@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Storage;
 use App\User;
 use Mail;
 use App\Mail\UserSendMail;
+use App\Models\Job_positions;
+use App\Models\Offerletters;
 class Application_formsController extends Controller
 {
     /**
@@ -635,12 +637,139 @@ class Application_formsController extends Controller
                       return response()->json(array('success' => true));
      }
 
-     public function offer_letter(){
+     public function sendOfferLetter(Request $request){
+        $data = base64_decode($request->data);
+        $data = json_decode($data, true);
+        
+        $to_mail = $data['email'];
         $mpdf= new \Mpdf\Mpdf(['mode' => 'utf-8','format' => 'A4','margin_left' => 15,'margin_right' => 15,'margin_top' => 35,'margin_bottom' => 20,'margin_header' => 15,'margin_footer' => 2]); //use this customization
+        
+        $data['name']= ucfirst($data['fore_name']);
+        $job_positions = Job_positions::where('id',$data['job_title'])->first();        
+        if($job_positions){
+         $data['job_title'] =$job_positions->name;
+        }
+        
+        $data['code']=$request->data;
+        
+       
+        $html = view('pdf.offer_letter', $data);
+        $mpdf->SetTitle('offer-letter');
+        $mpdf->WriteHTML($html);
+       // $mpdf->Output('offer-letter.pdf','I');
+        Mail::send(['html'=>'offerlettersendmail'], ['data'=>$data], function($message) use ($to_mail,$mpdf)
+                     {
+                         $message->to($to_mail)->subject('Offer Letter');
+                          //Attach PDF doc
+                          $message->attachData($mpdf->Output('offer-letter.pdf','S'),'offer-letter-'.date('dmY').'.pdf');
+                          //$this->email->attach($content, 'attachment', $filename, 'application/pdf');
+
+                      });
+                      return response()->json(array('success' => true));
+    }
+     public function offer_letter(Request $request){
+       $data = base64_decode($request->data);
+       $data = json_decode($data, true);
+      
+       if($data['offerletters_id']!=0){
+        $offerletters = Offerletters::find($data['offerletters_id']);
+        if($offerletters){
+            $data["title"]= $offerletters->title;
+            $data["fore_name"]= $offerletters->fore_name;
+            $data["surname"]= $offerletters->surname;
+            $data["basic"]= $offerletters->basic;
+            $data["bonus"]= $offerletters->bonus;
+            $data["confirm_Date"]= $offerletters->confirm_Date;
+            $data["confirm_employee_date"]= $offerletters->confirm_employee_date;
+            $data["confirm_employee_signature"]= 'uploaded/'.$offerletters->confirm_employee_signature;
+            
+            $data["dbscheck"]= $offerletters->dbscheck;  
+            $data["hours_of_work"]= $offerletters->hours_of_work;
+            $data["information_provided_date"]= $offerletters->information_provided_date;
+            $data["information_provided_signature"]= 'uploaded/'.$offerletters->information_provided_signature;
+            $data["job_title"]= $offerletters->job_title;
+            $data["place_of_employment"]= $offerletters->place_of_employment;
+            $data["line_1"]= $offerletters->line_1;
+            $data["line_2"]= $offerletters->line_3;
+            $data["line_3"]= $offerletters->line_3;
+            $data["line_4"]=  $offerletters->line_4;
+            $data["postcode"]= $offerletters->postcode;
+            $data["town_or_city"]=$offerletters->town_or_city;
+        }
+       }
+       
+       $job_positions = Job_positions::where('id',$data['job_title'])->first();        
+       if($job_positions){
+        $data['job_title'] =$job_positions->name;
+        
+       }
+       
+       $mpdf= new \Mpdf\Mpdf(['mode' => 'utf-8','format' => 'A4','margin_left' => 15,'margin_right' => 15,'margin_top' => 35,'margin_bottom' => 20,'margin_header' => 15,'margin_footer' => 2]); //use this customization
+        
         $data['test']='';
+
         $html = view('pdf.offer_letter', $data);
         $mpdf->SetTitle('offer-letter');
         $mpdf->WriteHTML($html);
         $mpdf->Output('offer-letter.pdf','I');
+     }
+
+     public function submitofferletter(Request $request){
+         /** candidate submit offer letter with signed */
+         try{
+         
+         if(isset($request->information_provided_signature) && $request->information_provided_signature!="null")
+         {
+                 $information_provided_signature = $request->information_provided_signature;
+                 $encoded_image = explode(",", $information_provided_signature)[1];
+                 $decoded_image = base64_decode($encoded_image);                  
+                 $information_provided_signature = 'signatures/'.$request->fore_name.'_information_provided_'.time().'.png';
+                 Storage::disk('public')->put($information_provided_signature, $decoded_image);
+                 $request['information_provided_signature'] = $information_provided_signature;
+         }
+
+         if(isset($request->confirm_employee_signature) && $request->confirm_employee_signature!="null")
+         {
+                 $confirm_employee_signature = $request->confirm_employee_signature;
+                 $encoded_image = explode(",", $confirm_employee_signature)[1];
+                 $decoded_image = base64_decode($encoded_image);                  
+                 $confirm_employee_signature = 'signatures/'.$request->fore_name.'_confirm_employee_'.time().'.png';
+                 Storage::disk('public')->put($confirm_employee_signature, $decoded_image);
+                 $request['confirm_employee_signature'] = $confirm_employee_signature;
+         }
+         $data= $request->except('token','next');
+         $Offerletters = new Offerletters($data);
+            $Offerletters->save();
+            $form_id = $Offerletters->id;
+            return response()->json(array('success' => true,'form_id'=> $form_id));
+        } catch (\Exception $e) 
+        {
+             $message = $e->getMessage();
+             
+             $text = strstr($message, ':', true);
+         
+             return response()->json(array('success' => false,'message'=> $message));
+        }
+     }
+
+     public function getofferletter($id){
+
+        
+        try { 
+            
+            $offerletters = Offerletters::where('application_forms_id',$id)->first();
+            if($offerletters){
+            return response()->json(array('success' => true,'offerletters_id'=> $offerletters->id));
+            }
+            return response()->json(array('success' => false,'message'=> 'not get'));
+             } catch (\Exception $e) 
+               {
+                    $message = $e->getMessage();
+                    
+                    $text = strstr($message, ':', true);
+                
+                    return response()->json(array('success' => false,'message'=> $message));
+               }
+        
      }
 }

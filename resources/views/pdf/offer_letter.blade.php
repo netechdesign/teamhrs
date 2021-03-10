@@ -39,18 +39,24 @@ li:before {
             <div>
                                     <p><b>Private & Confidential</b></p>
                                     <p>
-                                    «Title»«First_Name» «Surname» <br/>
-                                    «Adfdress_line_1» <br/>
-                                    «Address_line_2» <br/>
-                                    «City» <br/>
-                                    «Postcode» <br/>
-                                    DATE 2021 
+                                    {{$title}} {{ucfirst($fore_name)}} {{ucfirst($surname)}} <br/>
+                                    @if($address_details['line_1'])
+                                    {{$address_details['line_1']}} <br/>
+                                    {{$address_details['line_2']}}<br/>
+                                    @if($address_details['line_3']!='') {{$address_details['line_3']}} <br/> @endif
+                                    @if($address_details['line_4']!='') {{$address_details['line_4']}} <br/> @endif
+                                    {{$address_details['town_or_city']}}  <br/>
+                                    {{$address_details['postcode']}}<br/>
+                                    @else
+                                    {{$address_details}}
+                                    @endif
+                                    DATE {{date('Y')}} 
                                     
                                     </p>
-                        <p>Dear «First_Name»,</p>
+                        <p>Dear {{ucfirst($fore_name)}},</p>
                         <p style="text-align:center"><b>Employment with Bespoke Metering Solutions Limited. </b></p>
                         <p>
-                        As discussed, we are delighted to offer you employment as «Job_Title». This offer is conditional upon Bespoke Metering Solutions Limited receiving satisfactory results from necessary pre-employment checks, which may include a basic DBS check depending on the nature of your role.
+                        As discussed, we are delighted to offer you employment as {{$job_title}}. This offer is conditional upon Bespoke Metering Solutions Limited receiving satisfactory results from necessary pre-employment checks, which may include a basic DBS check depending on the nature of your role.
                         </p>
                         <p>Employment with the Bespoke Metering Solutions Limited will commence on the date shown in the Schedule. The first six months of your contract will be treated as a probationary period during which time Bespoke Metering Solutions Limited or yourself may terminate your employment by the notice period stated in your contract. 
                         </p>
@@ -78,10 +84,20 @@ li:before {
                         I understand that this is a fixed term contract and accept the employment terms set out in this Offer Letter and the enclosed Terms and Conditions of Employment.<br>
                         <table>
                         <tr>
-                        <td valign="bottom">Signed:</td><td width="70%" style="border-bottom: dotted 0.1px;"><img style="width:30%;" src="images/offerletter_sign.png" /></td>
+                        <td valign="bottom">Signed:</td><td width="70%" style="border-bottom: dotted 0.1px;">
+                        @if(isset($confirm_employee_signature))
+                        
+                             <img style="width:10%;" src="{{$confirm_employee_signature}}" /> 
+                        @endif
+                        </td>
                         </tr>
                         <tr >
-                        <td style="padding-top:15px;">Dated:</td><td width="70%" style="border-bottom: dotted 0.1px;">26/02/2021</td>
+                        <td style="padding-top:15px;">Dated:</td><td width="70%" style="border-bottom: dotted 0.1px;">
+                        
+                        @if(isset($confirm_employee_date))
+                           {{$confirm_employee_date}}
+                             
+                        @endif</td>
                         </tr>
                         </table>
 
@@ -92,9 +108,9 @@ li:before {
                 <div style="padding-top:30%;">
                     <p style="font-size:22px;text-align:center;">Bespoke Metering Solutions Limited</p>
                     <p style="font-size:22px;text-align:center;">And</p>
-                    <p style="font-size:22px;text-align:center;">«First_Name» «Surname»</p>
+                    <p style="font-size:22px;text-align:center;">{{ucfirst($fore_name)}} {{ucfirst($surname)}} <br/></p>
                     <p style="font-size:22px;text-align:center;">Contract of Employment</p>
-                    <p style="font-size:22px;text-align:center;">Dated «Start_Date»</p>
+                    <p style="font-size:22px;text-align:center;">Dated {{$confirm_Date }}</p>
 
                 </div>
             <pagebreak>        
@@ -294,28 +310,76 @@ li:before {
                 <p style="text-align:center"><b style="font-size:24px;">Schedule</b></p>
                 <p><b>Parties: </b></p>
                 <p><b>The Employer: </b>Bespoke Metering Solutions Limited incorporated and registered in England and Wales with company number 10670768 whose registered office is at Unit 6, Glover Network Centre, Spire Road, Washington, NE37 3HB (“Employer”/”us”/”our”/”we”)</p>
-                <p><b>The Employee: </b> «First_Name» «Surname», «Adfdress_line_1», «Address_line_2», «City», «Postcode». (“Employee”/” you”/” your”)</b></p>
-                <p><b>Date of Commencement: </b> «Start_Date».</p>
-                <p><b>Job Title: </b>«Job_Title».</p>
-                <p><b>Place of Employment: </b>«Place_of_Work»</p>
-                <p><b>DBS Check: </b>«DBS_Check»</p>
+                <p><b>The Employee: </b> {{ucfirst($fore_name)}} {{ucfirst($surname)}},
+                                     @if($address_details['line_1'])
+                                    {{$address_details['line_1']}} ,
+                                    {{$address_details['line_2']}} ,
+                                    @if($address_details['line_3']!='') {{$address_details['line_3']}} , @endif
+                                    @if($address_details['line_4']!='') {{$address_details['line_4']}} , @endif
+                                    {{$address_details['town_or_city']}}  ,
+                                    {{$address_details['postcode']}}
+                                    @else
+                                    {{$address_details}}
+                                    @endif
+                 (“Employee”/” you”/” your”)</b></p>
+                <p><b>Date of Commencement: </b> {{$confirm_Date }}.</p>
+                <p><b>Job Title: </b>{{$job_title}}.</p>
+                <p><b>Place of Employment: </b>
+                @if($place_of_employment==1)
+                Your place of employment shall not be fixed. Your region will be allocated in line with the Employer’s assessment of business conditions.
+                @elseif($place_of_employment==2)
+                Your line manager will allocate your region of management responsibility with your agreed assessment of business conditionsThe Employer reserves the right, subject to prior discussion with you, to alter the size or nature of this region or to reassign the region, in line with the Company’s assessment of business conditions.
+                @elseif($place_of_employment==3)
+                Bespoke Metering Solutions, Unit 6, Glover Network Centre, Spire Road, Washington, NE37 3HB
+                @elseif($place_of_employment==4)
+                Bespoke Metering Solutions, Gateway House, Gateway West, Newburn Riverside, Newcastle upon Tyne NE15 8NX
+                @elseif($place_of_employment==5)
+                Bespoke Metering Solutions, Unit 7, Grovewood Business Centre, Strathclyde Business Park, Bellhill, ML4 3NQ
+                @endif
+                      
+                </p>
+                <p><b>DBS Check: </b>{{$dbscheck}}</p>
                 <p><b>Remuneration and Benefits: </b></p>
-                <p><b>Basic: </b>«Salary»</p>
-                <p><b>Bonus: </b>«Bonus»</p>
-                <p><b>Hours of Work: </b>«Hours_of_Work»</p>
-                <table border="1">
+                @if($dbscheck=='Yes')
+                <p><b>Basic: </b>{{$basic}}</p>
+                @endif
+                <p><b>Bonus: </b>{{$bonus}}</p>
+                <p><b>Hours of Work: </b>{{$hours_of_work}}
+                @if($hours_of_work==1)
+                    45 hours per week, between Monday to Sunday to be worked between the hours of 8am and 10pm. You may be required as part of your role to attend out of hours and emergency callouts as requested by the Employer
+                @elseif($hours_of_work==2)
+                    Your normal working hours will be 40 hours per week between 08.00 and 18.00 Monday to Friday. You are, however, expected to work without additional pay for additional hours according to the requirements of the Company
+                 @elseif($hours_of_work==3)
+                    Manually
+                @endif
+                </p>
+                <table border='1'>
                 <tr>
-                    <td width="33.33%">Signed by Gareth McKenna for and on behalf of Bespoke Metering Solutions Limited</td>
-                    <td width="33.33%">Signature
+                    <td width="33.33%" valign="top">Signed by Gareth McKenna for and on behalf of Bespoke Metering Solutions Limited</td>
+                    <td width="33.33%" valign="top">Signature
                     <img style="width:30%;" src="images/offerletter_sign.png" /><br>
                     </td>
-                    <td width="33.33%">Date</td>
+                    <td width="33.33%" valign="top">Date <br/>
+                    @if(!isset($created))
+                    {{date('d/m/y')}}
+                    @else
+                    
+                    @endif
+                    </td>
                 </tr>
                 <tr>
-                    <td>Signed by the Employee</td>
-                    <td>Signature
+                    <td valign="top">Signed by the Employee</td>
+                    <td valign="top">Signature<br/>
+                    @if(isset($information_provided_signature))
+                        
+                        <img style="width:10%;margin-top:10px;" src="{{$information_provided_signature}}" /> 
+                   @endif
                     </td>
-                    <td>Date</td>
+                    <td valign="top">Date<br/>
+                    @if(isset($information_provided_date))
+                        {{$information_provided_date}}
+                   @endif
+                    </td>
                 </tr>
                 </table>
                 </div>
