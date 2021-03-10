@@ -409,6 +409,7 @@ other_documentDelete =(element) =>{
            this.setState({address_details:address});
         }
         if(this.state.application_Forms.id){
+          {/*
         axios.get(baseurl+'/api/getofferletter/'+this.state.application_Forms.id,{headers:{'Accept':'application/json','Authorization':'Bearer '+auth_token}}
         ).then(res =>{
           if(res.data.success){
@@ -420,6 +421,7 @@ other_documentDelete =(element) =>{
                        
                    }
        )
+                  */}
                   }
         
     }

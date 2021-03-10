@@ -337,7 +337,7 @@ other_documentDelete =(element) =>{
                                                     // maxFileSize="10000 kb"
                                                     errorMessage={
                                                     { required: "Please upload a file",
-                                                    fileType:"Only  pdf and word file is allowed",
+                                                    fileType:"Only jpeg, pdf and word file is allowed",
                                                     // maxFileSize: "Max file size is 10000 kb"
                                                     }
                                                     }
@@ -358,7 +358,7 @@ other_documentDelete =(element) =>{
                                                     // maxFileSize="10000 kb"
                                                     errorMessage={
                                                     { required: "Please upload a file",
-                                                    fileType:"Only pdf and word file is allowed",
+                                                    fileType:"Only jpeg, pdf and word file is allowed",
                                                     // maxFileSize: "Max file size is 10000 kb"
                                                     }
                                                     }
@@ -380,7 +380,7 @@ other_documentDelete =(element) =>{
                                                     // maxFileSize="10000 kb"
                                                     errorMessage={
                                                     { required: "Please upload a file",
-                                                    fileType:"Only pdf and word file is allowed",
+                                                    fileType:"Only jpeg, pdf and word file is allowed",
                                                     // maxFileSize: "Max file size is 10000 kb"
                                                     }
                                                     }
@@ -402,7 +402,7 @@ other_documentDelete =(element) =>{
                                                     // maxFileSize="10000 kb"
                                                     errorMessage={
                                                     { required: "Please upload a file",
-                                                    fileType:"Only pdf and word file is allowed",
+                                                    fileType:"Only jpeg, pdf and word file is allowed",
                                                     // maxFileSize: "Max file size is 10000 kb"
                                                     }
                                                     }
@@ -424,7 +424,7 @@ other_documentDelete =(element) =>{
                                                     // maxFileSize="10000 kb"
                                                     errorMessage={
                                                     { required: "Please upload a file",
-                                                    fileType:"Only pdf and word file is allowed",
+                                                    fileType:"Only jpeg, pdf and word file is allowed",
                                                     // maxFileSize: "Max file size is 10000 kb"
                                                     }
                                                     }
