@@ -333,7 +333,7 @@ other_documentDelete =(element) =>{
                                                     name="cma_1"
                                                     id="cma_1"
                                                     required
-                                                    fileType={["pdf","docx"]}
+                                                    fileType={["pdf","docx","jpeg","jpg"]}
                                                     // maxFileSize="10000 kb"
                                                     errorMessage={
                                                     { required: "Please upload a file",
@@ -354,7 +354,7 @@ other_documentDelete =(element) =>{
                                                     name="met_1"
                                                     id="met_1"
                                                     required
-                                                    fileType={["pdf","docx"]}
+                                                    fileType={["pdf","docx","jpeg","jpg"]}
                                                     // maxFileSize="10000 kb"
                                                     errorMessage={
                                                     { required: "Please upload a file",
@@ -376,7 +376,7 @@ other_documentDelete =(element) =>{
                                                     name="single_phase"
                                                     id="single_phase"
                                                     required
-                                                    fileType={["pdf","docx"]}
+                                                    fileType={["pdf","docx","jpeg","jpg"]}
                                                     // maxFileSize="10000 kb"
                                                     errorMessage={
                                                     { required: "Please upload a file",
@@ -398,7 +398,7 @@ other_documentDelete =(element) =>{
                                                     name="single_off_multi"
                                                     id="single_off_multi"
                                                     required
-                                                    fileType={["pdf","docx"]}
+                                                    fileType={["pdf","docx","jpeg","jpg"]}
                                                     // maxFileSize="10000 kb"
                                                     errorMessage={
                                                     { required: "Please upload a file",
@@ -420,7 +420,7 @@ other_documentDelete =(element) =>{
                                                     name="driving_licence_code"
                                                     id="driving_licence_code"
                                                     required
-                                                    fileType={["pdf","docx"]}
+                                                    fileType={["pdf","docx","jpeg","jpg"]}
                                                     // maxFileSize="10000 kb"
                                                     errorMessage={
                                                     { required: "Please upload a file",

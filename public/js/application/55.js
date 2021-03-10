@@ -487,7 +487,7 @@ var submitCertification = /*#__PURE__*/function (_React$Component) {
         name: "cma_1",
         id: "cma_1",
         required: true,
-        fileType: ["pdf", "docx"] // maxFileSize="10000 kb"
+        fileType: ["pdf", "docx", "jpeg", "jpg"] // maxFileSize="10000 kb"
         ,
         errorMessage: {
           required: "Please upload a file",
@@ -509,7 +509,7 @@ var submitCertification = /*#__PURE__*/function (_React$Component) {
         name: "met_1",
         id: "met_1",
         required: true,
-        fileType: ["pdf", "docx"] // maxFileSize="10000 kb"
+        fileType: ["pdf", "docx", "jpeg", "jpg"] // maxFileSize="10000 kb"
         ,
         errorMessage: {
           required: "Please upload a file",
@@ -531,7 +531,7 @@ var submitCertification = /*#__PURE__*/function (_React$Component) {
         name: "single_phase",
         id: "single_phase",
         required: true,
-        fileType: ["pdf", "docx"] // maxFileSize="10000 kb"
+        fileType: ["pdf", "docx", "jpeg", "jpg"] // maxFileSize="10000 kb"
         ,
         errorMessage: {
           required: "Please upload a file",
@@ -553,7 +553,7 @@ var submitCertification = /*#__PURE__*/function (_React$Component) {
         name: "single_off_multi",
         id: "single_off_multi",
         required: true,
-        fileType: ["pdf", "docx"] // maxFileSize="10000 kb"
+        fileType: ["pdf", "docx", "jpeg", "jpg"] // maxFileSize="10000 kb"
         ,
         errorMessage: {
           required: "Please upload a file",
@@ -575,7 +575,7 @@ var submitCertification = /*#__PURE__*/function (_React$Component) {
         name: "driving_licence_code",
         id: "driving_licence_code",
         required: true,
-        fileType: ["pdf", "docx"] // maxFileSize="10000 kb"
+        fileType: ["pdf", "docx", "jpeg", "jpg"] // maxFileSize="10000 kb"
         ,
         errorMessage: {
           required: "Please upload a file",

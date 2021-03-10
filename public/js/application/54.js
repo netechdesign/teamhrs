@@ -461,7 +461,7 @@ var reSubmitCertification = /*#__PURE__*/function (_React$Component) {
           name: item.key,
           id: index,
           required: true,
-          fileType: ["pdf", "docx"] // maxFileSize="10000 kb"
+          fileType: ["pdf", "docx", "jpeg", "jpg"] // maxFileSize="10000 kb"
           ,
           errorMessage: {
             required: "Please upload a file",

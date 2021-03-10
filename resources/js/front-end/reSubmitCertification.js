@@ -328,7 +328,7 @@ other_documentDelete =(element) =>{
                                     name={item.key}
                                     id={index}
                                     required
-                                    fileType={["pdf","docx"]}
+                                    fileType={["pdf","docx","jpeg","jpg"]}
                                     // maxFileSize="10000 kb"
                                     errorMessage={
                                     { required: "Please upload a file",

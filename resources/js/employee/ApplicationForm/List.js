@@ -730,7 +730,7 @@ other_documentDelete =(element) =>{
  
     }  
     
-  offerletterPreview = (offerletters_id = 0) =>{
+  offerletterPreview = () =>{
     var left  = ($(window).width() / 2) - (900 / 2),
     top   = ($(window).height() / 2) - (500 / 2);
     var strWindowFeatures = "location=yes,height=970,width=720,scrollbars=yes,status=yes, top=" + top + ", left=" + left;

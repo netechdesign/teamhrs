@@ -1339,7 +1339,6 @@ var List = /*#__PURE__*/function (_React$Component) {
     });
 
     _defineProperty(_assertThisInitialized(_this), "offerletterPreview", function () {
-      var offerletters_id = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
       var left = jquery__WEBPACK_IMPORTED_MODULE_6___default()(window).width() / 2 - 900 / 2,
           top = jquery__WEBPACK_IMPORTED_MODULE_6___default()(window).height() / 2 - 500 / 2;
       var strWindowFeatures = "location=yes,height=970,width=720,scrollbars=yes,status=yes, top=" + top + ", left=" + left;
