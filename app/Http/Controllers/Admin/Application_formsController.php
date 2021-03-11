@@ -693,6 +693,7 @@ class Application_formsController extends Controller
       
        if($data['offerletters_id']!=0){
         $offerletters = Offerletters::find($data['offerletters_id']);
+        
         if($offerletters){
             $data["title"]= $offerletters->title;
             $data["fore_name"]= $offerletters->fore_name;
@@ -719,6 +720,7 @@ class Application_formsController extends Controller
        }
        
        $job_positions = Job_positions::where('id',$data['job_title'])->first();        
+       
        if($job_positions){
         $data['job_title'] =$job_positions->name;
         
@@ -727,7 +729,7 @@ class Application_formsController extends Controller
        $mpdf= new \Mpdf\Mpdf(['mode' => 'utf-8','format' => 'A4','margin_left' => 15,'margin_right' => 15,'margin_top' => 35,'margin_bottom' => 20,'margin_header' => 15,'margin_footer' => 2]); //use this customization
         
         $data['test']='';
-
+        
         $html = view('pdf.offer_letter', $data);
         $mpdf->SetTitle('offer-letter');
         $mpdf->WriteHTML($html);
@@ -780,7 +782,7 @@ class Application_formsController extends Controller
             ->Join('job_positions', 'job_positions.id', '=', 'offerletterlists.job_title')
             ->leftJoin('offerletters', 'offerletters.offerletterlist_id', '=', 'offerletterlists.id')
             ->where('offerletterlists.application_forms_id', '=', $id)
-            ->select('offerletterlists.*',DB::raw('job_positions.name as job_name'),DB::raw('offerletters.id as offerletters_id'),DB::raw('DATE_FORMAT(offerletterlists.created_at,"%d/%m/%Y %H:%i") as created_at_date'))
+            ->select('offerletterlists.*',DB::raw('job_positions.name as job_name'),DB::raw('offerletters.id as offerletters_id'),DB::raw('DATE_FORMAT(offerletterlists.created_at,"%d/%m/%Y %H:%i") as created_at_date'))->orderBy('offerletterlists.created_at','desc')
             ->get();
             
             if($offerletterlists){

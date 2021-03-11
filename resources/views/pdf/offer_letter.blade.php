@@ -40,13 +40,20 @@ li:before {
                                     <p><b>Private & Confidential</b></p>
                                     <p>
                                     {{$title}} {{ucfirst($fore_name)}} {{ucfirst($surname)}} <br/>
-                                    @if($address_details['line_1'])
-                                    {{$address_details['line_1']}} <br/>
-                                    {{$address_details['line_2']}}<br/>
-                                    @if($address_details['line_3']!='') {{$address_details['line_3']}} <br/> @endif
-                                    @if($address_details['line_4']!='') {{$address_details['line_4']}} <br/> @endif
-                                    {{$address_details['town_or_city']}}  <br/>
-                                    {{$address_details['postcode']}}<br/>
+                                    @if(isset($address_details['line_1']))
+                                        {{$address_details['line_1']}} <br/>
+                                        {{$address_details['line_2']}}<br/>
+                                        @if($address_details['line_3']!='') {{$address_details['line_3']}} <br/> @endif
+                                        @if($address_details['line_4']!='') {{$address_details['line_4']}} <br/> @endif
+                                        {{$address_details['town_or_city']}}  <br/>
+                                        {{$address_details['postcode']}}<br/>
+                                    @elseif(isset($line_1))
+                                        {{$line_1}} <br/>
+                                        {{$line_2}} <br/>
+                                        @if($line_3!='') {{$line_3}} <br/> @endif
+                                        @if($line_4!='') {{$line_4}} <br/> @endif
+                                        {{$town_or_city}} <br/>
+                                        {{$postcode}} <br/>
                                     @else
                                     {{$address_details}}
                                     @endif
@@ -311,13 +318,20 @@ li:before {
                 <p><b>Parties: </b></p>
                 <p><b>The Employer: </b>Bespoke Metering Solutions Limited incorporated and registered in England and Wales with company number 10670768 whose registered office is at Unit 6, Glover Network Centre, Spire Road, Washington, NE37 3HB (“Employer”/”us”/”our”/”we”)</p>
                 <p><b>The Employee: </b> {{ucfirst($fore_name)}} {{ucfirst($surname)}},
-                                     @if($address_details['line_1'])
-                                    {{$address_details['line_1']}} ,
-                                    {{$address_details['line_2']}} ,
-                                    @if($address_details['line_3']!='') {{$address_details['line_3']}} , @endif
-                                    @if($address_details['line_4']!='') {{$address_details['line_4']}} , @endif
-                                    {{$address_details['town_or_city']}}  ,
-                                    {{$address_details['postcode']}}
+                                     @if(isset($address_details['line_1']))
+                                        {{$address_details['line_1']}} ,
+                                        {{$address_details['line_2']}} ,
+                                        @if($address_details['line_3']!='') {{$address_details['line_3']}} , @endif
+                                        @if($address_details['line_4']!='') {{$address_details['line_4']}} , @endif
+                                        {{$address_details['town_or_city']}}  ,
+                                        {{$address_details['postcode']}}
+                                    @elseif(isset($line_1))
+                                    {{$line_1}} ,
+                                        {{$line_2}} ,
+                                        @if($line_3!='') {{$line_3}} , @endif
+                                        @if($line_4!='') {{$line_4}} , @endif
+                                        {{$town_or_city}}  ,
+                                        {{$postcode}}
                                     @else
                                     {{$address_details}}
                                     @endif

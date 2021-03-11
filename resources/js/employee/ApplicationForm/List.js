@@ -409,7 +409,7 @@ other_documentDelete =(element) =>{
            this.setState({address_details:address});
         }
         if(this.state.application_Forms.id){
-          {/*
+          {
         axios.get(baseurl+'/api/getofferletter/'+this.state.application_Forms.id,{headers:{'Accept':'application/json','Authorization':'Bearer '+auth_token}}
         ).then(res =>{
           if(res.data.success){
@@ -421,7 +421,7 @@ other_documentDelete =(element) =>{
                        
                    }
        )
-                  */}
+                  }
                   }
         
     }
@@ -968,7 +968,7 @@ other_documentDelete =(element) =>{
                                         </Form.Row>
                                     <Form.Row>
                                         <Form.Group style={{display:(this.state.apiload?'none':'block')}} as={Col} sm={12} className="mt-3">
-                                        <Button disabled={this.state.formSubmitting}  type="submit"> {this.state.buttonName}</Button>
+                                        {(this.state.application_Forms.length>0?<Button disabled={this.state.formSubmitting}  type="submit"> {this.state.buttonName}</Button>:'')}
                                         </Form.Group>
                                     </Form.Row>
                                 </ValidationForm>
@@ -997,12 +997,13 @@ other_documentDelete =(element) =>{
                                         }
                       </Tab>
                             <Tab eventKey="offerletter"  disabled={(this.state.application_Forms.documents?(this.state.application_Forms.documents.length>0?false:true):true)} title="Offer Letter">
-                                      <div class="text-center" style={{display:(this.state.apiload?'block':'none')}}>
+                                     
+                                  {(this.state.offerletterslist.length>0?<Offerletterslist  list={this.state.offerletterslist} />:'')}        
+                                  <div class="text-center" style={{display:(this.state.apiload?'block':'none')}}>
                                           <div class="spinner-border" role="status">
                                               <span class="sr-only">Loading...</span>
                                           </div>
                                         </div>
-                                  {(this.state.offerletterslist.length>0?<Offerletterslist  list={this.state.offerletterslist} />:'')}        
                                 <ValidationForm onSubmit={this.sendOfferLetter} onErrorSubmit={this.handleErrorSubmit}>
                                      <Form.Group as={Row} controlId="formHorizontalEmail">
                                                 <Form.Label column sm={3}>
@@ -1455,6 +1456,23 @@ class EmploymentReferences extends React.Component{
 
 }
 class Offerletterslist extends React.Component{
+  offerletterPreview = (offerletters_id) =>{
+
+    var left  = ($(window).width() / 2) - (900 / 2),
+    top   = ($(window).height() / 2) - (500 / 2);
+    var strWindowFeatures = "location=yes,height=970,width=720,scrollbars=yes,status=yes, top=" + top + ", left=" + left;
+    
+    const person = {};
+    const data = Object.create(person);
+    data.offerletters_id = offerletters_id;
+    
+    
+     
+    let results= btoa(JSON.stringify(data)); 
+    
+    var URL = baseurl+"/offer-letter/?data="+results;
+    var win = window.open(URL, "_blank", strWindowFeatures);
+  }
   render(){
    const offer_letters_list = this.props.list.map((item,index) =>{
                 return(
@@ -1472,7 +1490,7 @@ class Offerletterslist extends React.Component{
                                 {item.created_at_date}
                             </Td>
                             <Td style={{padding:'5px'}}>
-                              {(item.offerletters_id?<Button onClick={this.props.offerletterPreview(item.offerletters_id)}  type="button">View</Button>:'')}
+                              {(item.offerletters_id?<Button className="btn-sm" onClick={()=>{this.offerletterPreview(item.offerletters_id)}}  type="button">View</Button>:'')}
                             
                             </Td>
                             
@@ -1481,7 +1499,7 @@ class Offerletterslist extends React.Component{
     });
     return(
       <Aux>
-      <Tbl>
+      <Tbl style={{marginBottom:'10px'}}>
         <Thead>
           <Tr style={{lineHeight:2.5}}>
           <Th width='20%'>Job Title</Th>
