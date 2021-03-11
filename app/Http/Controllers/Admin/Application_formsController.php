@@ -730,6 +730,7 @@ class Application_formsController extends Controller
             $data["line_4"]=  $offerletters->line_4;
             $data["postcode"]= $offerletters->postcode;
             $data["town_or_city"]=$offerletters->town_or_city;
+            $data["created_at"] = date('d/m/Y',strtotime($offerletters->created_at));
             
         }
        }

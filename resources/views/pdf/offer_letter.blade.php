@@ -42,14 +42,15 @@ li:before {
                                     {{$title}} {{ucfirst($fore_name)}} {{ucfirst($surname)}} <br/>
                                     @if(isset($address_details['line_1']))
                                         {{$address_details['line_1']}} <br/>
-                                        {{$address_details['line_2']}}<br/>
+                                        @if($address_details['line_2']!='') {{$address_details['line_2']}}  <br/> @endif
                                         @if($address_details['line_3']!='') {{$address_details['line_3']}} <br/> @endif
                                         @if($address_details['line_4']!='') {{$address_details['line_4']}} <br/> @endif
                                         {{$address_details['town_or_city']}}  <br/>
                                         {{$address_details['postcode']}}<br/>
                                     @elseif(isset($line_1))
                                         {{$line_1}} <br/>
-                                        {{$line_2}} <br/>
+                                        
+                                        @if($line_2!='') {{$line_2}} <br/> @endif
                                         @if($line_3!='') {{$line_3}} <br/> @endif
                                         @if($line_4!='') {{$line_4}} <br/> @endif
                                         {{$town_or_city}} <br/>
@@ -57,7 +58,7 @@ li:before {
                                     @else
                                     {{$address_details}}
                                     @endif
-                                    DATE {{date('Y')}} 
+                                    DATE @if(isset($created_at)){{$created_at}} @else {{date('d/m/Y')}} @endif
                                     
                                     </p>
                         <p>Dear {{ucfirst($fore_name)}},</p>
@@ -320,14 +321,14 @@ li:before {
                 <p><b>The Employee: </b> {{ucfirst($fore_name)}} {{ucfirst($surname)}},
                                      @if(isset($address_details['line_1']))
                                         {{$address_details['line_1']}} ,
-                                        {{$address_details['line_2']}} ,
+                                        @if($address_details['line_2']!='') {{$address_details['line_2']}} , @endif
                                         @if($address_details['line_3']!='') {{$address_details['line_3']}} , @endif
                                         @if($address_details['line_4']!='') {{$address_details['line_4']}} , @endif
                                         {{$address_details['town_or_city']}}  ,
                                         {{$address_details['postcode']}}
                                     @elseif(isset($line_1))
                                     {{$line_1}} ,
-                                        {{$line_2}} ,
+                                        @if($line_2!='') {{$line_2}} , @endif
                                         @if($line_3!='') {{$line_3}} , @endif
                                         @if($line_4!='') {{$line_4}} , @endif
                                         {{$town_or_city}}  ,
