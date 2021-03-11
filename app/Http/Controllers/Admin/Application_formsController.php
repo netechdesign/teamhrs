@@ -16,7 +16,7 @@ use Mail;
 use App\Mail\UserSendMail;
 use App\Models\Job_positions;
 use App\Models\Offerletters;
-use App\Models\Offerletterlists;
+
 
 class Application_formsController extends Controller
 {
@@ -650,7 +650,18 @@ class Application_formsController extends Controller
         $data['created_by_name'] = $user->name;
         $data['application_forms_id'] = $data['application_Forms_id'];
         //
-        $Offerletterlists = new Offerletterlists($data);
+        $Offerletters= $data;
+        if($data['address_details']){
+            $Offerletters['line_1']=$data['address_details']['line_1'];
+            $Offerletters['line_2']=$data['address_details']['line_2'];
+            $Offerletters['line_3']=$data['address_details']['line_3'];
+            $Offerletters['line_4']	=$data['address_details']['line_4'];
+            $Offerletters['postcode']=$data['address_details']['postcode'];
+            $Offerletters['town_or_city']=$data['address_details']['town_or_city'];
+        }
+        
+        
+        $Offerletterlists = new Offerletters($Offerletters);
         $Offerletterlists->save();
         $data['offerletterlist_id'] = $Offerletterlists->id;
         $to_mail = $data['email'];
@@ -702,12 +713,15 @@ class Application_formsController extends Controller
             $data["bonus"]= $offerletters->bonus;
             $data["confirm_Date"]= $offerletters->confirm_Date;
             $data["confirm_employee_date"]= $offerletters->confirm_employee_date;
+            if($offerletters->confirm_employee_signature){
             $data["confirm_employee_signature"]= 'uploaded/'.$offerletters->confirm_employee_signature;
-            
+            }
             $data["dbscheck"]= $offerletters->dbscheck;  
             $data["hours_of_work"]= $offerletters->hours_of_work;
             $data["information_provided_date"]= $offerletters->information_provided_date;
+            if($offerletters->information_provided_signature){
             $data["information_provided_signature"]= 'uploaded/'.$offerletters->information_provided_signature;
+            }
             $data["job_title"]= $offerletters->job_title;
             $data["place_of_employment"]= $offerletters->place_of_employment;
             $data["line_1"]= $offerletters->line_1;
@@ -716,6 +730,7 @@ class Application_formsController extends Controller
             $data["line_4"]=  $offerletters->line_4;
             $data["postcode"]= $offerletters->postcode;
             $data["town_or_city"]=$offerletters->town_or_city;
+            
         }
        }
        
@@ -759,11 +774,13 @@ class Application_formsController extends Controller
                  Storage::disk('public')->put($confirm_employee_signature, $decoded_image);
                  $request['confirm_employee_signature'] = $confirm_employee_signature;
          }
-         $data= $request->except('token','next');
-         $Offerletters = new Offerletters($data);
-            $Offerletters->save();
-            $form_id = $Offerletters->id;
+         $offerletter_id =$request->offerletterlist_id; //dd($data['offerletterlist_id']); /** is offerletterlist_id =offerletter_id */
+         $data = $request->except('token','next','_method','showModal','visible','formSubmitting','buttonName','job_title_text','remuneration_and_benefits','offerletterlist_id','id');
+         $Offerletters = Offerletters::where('id',$offerletter_id)->update($data);
+         if($Offerletters){
+         $form_id =$offerletter_id;
             return response()->json(array('success' => true,'form_id'=> $form_id));
+         }
         } catch (\Exception $e) 
         {
              $message = $e->getMessage();
@@ -778,11 +795,10 @@ class Application_formsController extends Controller
 
         
         try { 
-            $offerletterlists = DB::table('offerletterlists')
-            ->Join('job_positions', 'job_positions.id', '=', 'offerletterlists.job_title')
-            ->leftJoin('offerletters', 'offerletters.offerletterlist_id', '=', 'offerletterlists.id')
-            ->where('offerletterlists.application_forms_id', '=', $id)
-            ->select('offerletterlists.*',DB::raw('job_positions.name as job_name'),DB::raw('offerletters.id as offerletters_id'),DB::raw('DATE_FORMAT(offerletterlists.created_at,"%d/%m/%Y %H:%i") as created_at_date'))->orderBy('offerletterlists.created_at','desc')
+            $offerletterlists = DB::table('offerletters')
+            ->Join('job_positions', 'job_positions.id', '=', 'offerletters.job_title')
+            ->where('offerletters.application_forms_id', '=', $id)
+            ->select('offerletters.*',DB::raw('job_positions.name as job_name'),DB::raw('offerletters.id as offerletters_id'),DB::raw('DATE_FORMAT(offerletters.created_at,"%d/%m/%Y %H:%i") as created_at_date'))->orderBy('offerletters.created_at','desc')
             ->get();
             
             if($offerletterlists){

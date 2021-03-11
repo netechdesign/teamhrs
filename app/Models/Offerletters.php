@@ -32,6 +32,7 @@ class Offerletters extends Model
      'postcode', 
      'town_or_city', 
      'is_delete',
+     'created_by_name',
      'created_by',
      'updated_by'];
 }

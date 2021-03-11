@@ -37,6 +37,7 @@ class CreateOfferlettersTable extends Migration
             $table->string('line_4')->nullable(); 
             $table->string('postcode')->nullable(); 
             $table->string('town_or_city')->nullable(); 
+            $table->string('created_by_name')->nullable();
             $table->integer('is_delete')->default(0);
             $table->integer('created_by')->nullable();
             $table->integer('updated_by')->nullable();
