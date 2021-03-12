@@ -333,6 +333,12 @@ var OfferLetter = /*#__PURE__*/function (_React$Component) {
       }
     });
 
+    _defineProperty(_assertThisInitialized(_this), "getaddist", function (vl) {
+      if (vl != "") {
+        return vl;
+      }
+    });
+
     _this.state = {
       _method: '',
       application_forms_id: '',
@@ -363,7 +369,8 @@ var OfferLetter = /*#__PURE__*/function (_React$Component) {
       line_4: '',
       town_or_city: '',
       postcode: '',
-      offerletterlist_id: ''
+      offerletterlist_id: '',
+      created_at: ''
     }; // preserve the initial state in a new object
 
     _this.baseState = _this.state;
@@ -379,7 +386,8 @@ var OfferLetter = /*#__PURE__*/function (_React$Component) {
         var data = JSON.parse(atob(this.props.match.params.id));
         this.setState({
           offerletterlist_id: data['offerletterlist_id']
-        });
+        }); //offerletters_id = offerletterlist_id
+
         this.setState({
           basic: data['basic']
         });
@@ -414,23 +422,82 @@ var OfferLetter = /*#__PURE__*/function (_React$Component) {
         this.setState({
           title: data['title']
         });
+
+        if (data['address_details']) {
+          this.setState({
+            line_1: data['address_details']['line_1']
+          });
+          this.setState({
+            line_2: data['address_details']['line_2']
+          });
+          this.setState({
+            line_3: data['address_details']['line_3']
+          });
+          this.setState({
+            line_4: data['address_details']['line_4']
+          });
+          this.setState({
+            postcode: data['address_details']['postcode']
+          });
+          this.setState({
+            town_or_city: data['address_details']['town_or_city']
+          });
+        }
+
+        if (data['line_1']) {
+          this.setState({
+            line_1: data['line_1']
+          });
+          this.setState({
+            line_2: data['line_2']
+          });
+          this.setState({
+            line_3: data['line_3']
+          });
+          this.setState({
+            line_4: data['line_4']
+          });
+          this.setState({
+            postcode: data['postcode']
+          });
+          this.setState({
+            town_or_city: data['town_or_city']
+          });
+        }
+
         this.setState({
-          line_1: data['address_details']['line_1']
+          created_at: data['created_at']
         });
-        this.setState({
-          line_2: data['address_details']['line_2']
-        });
-        this.setState({
-          line_3: data['address_details']['line_3']
-        });
-        this.setState({
-          line_4: data['address_details']['line_4']
-        });
-        this.setState({
-          postcode: data['address_details']['postcode']
-        });
-        this.setState({
-          town_or_city: data['address_details']['town_or_city']
+        axios__WEBPACK_IMPORTED_MODULE_16___default.a.get(baseurl + '/api/applicant_send_offer_letter/' + data['offerletterlist_id']).then(function (res) {
+          if (res.data.success) {
+            if (res.data.data == 0) {
+              _this2.setState({
+                formSubmitting: true
+              });
+
+              pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_17__["default"].error({
+                title: "Sorry",
+                text: 'Already sent this Offer letter'
+              });
+            } // this.setState({job_title_text:res.data.data.name});
+
+          } else {
+            var errorMassage = '';
+
+            if (res.data.message) {
+              errorMassage = res.data.message;
+            }
+
+            pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_17__["default"].error({
+              title: "System Error",
+              text: errorMassage
+            });
+          }
+        })["catch"](function (err) {
+          pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_17__["default"].error({
+            title: "System Error",
+            text: err
+          });
         });
         axios__WEBPACK_IMPORTED_MODULE_16___default.a.get(baseurl + '/api/getjobtitle/' + data['job_title']).then(function (res) {
           if (res.data.success) {
@@ -438,10 +505,6 @@ var OfferLetter = /*#__PURE__*/function (_React$Component) {
               job_title_text: res.data.data.name
             }); // console.log(res.data.data);
 
-
-            _this2.setState({
-              formSubmitting: false
-            });
           } else {
             var errorMassage = '';
 
@@ -537,7 +600,7 @@ var OfferLetter = /*#__PURE__*/function (_React$Component) {
         style: style.rowline
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         style: style.rowline
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Private & Confidential")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.state.title, " ", this.state.fore_name, " ", this.state.surname, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), this.state.line_1, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), this.state.line_2 != '' ? this.state.line_2 : '', /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), this.state.line_3 != '' ? this.state.line_3 : '', /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), this.state.line_4 != '' ? this.state.line_4 + '<br/>' : '', this.state.town_or_city, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), this.state.postcode, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "DATE ", yyyy), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Dear ", this.state.fore_name, ",")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Private & Confidential")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.state.title, " ", this.state.fore_name, " ", this.state.surname, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), this.state.line_1, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), this.getaddist(this.state.line_2), this.getaddist(this.state.line_3), this.getaddist(this.state.line_4), this.state.town_or_city, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), this.state.postcode, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "DATE ", this.state.created_at), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Dear ", this.state.fore_name, ",")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         style: {
           textAlign: 'center'
         }
@@ -695,7 +758,7 @@ var OfferLetter = /*#__PURE__*/function (_React$Component) {
         }
       }, "Schedule")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Parties: ")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "The Employer: "), "Bespoke Metering Solutions Limited incorporated and registered in England and Wales with company number 10670768 whose registered office is at Unit 6, Glover Network Centre, Spire Road, Washington, NE37 3HB (\u201CEmployer\u201D/\u201Dus\u201D/\u201Dour\u201D/\u201Dwe\u201D)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "The Employee: "), this.state.fore_name, ", ", this.state.surname, ",", this.state.line_1, ",", this.state.line_2 != '' ? this.state.line_2 : '', ",", this.state.town_or_city, ",", this.state.postcode, "  (\u201CEmployee\u201D/\u201D you\u201D/\u201D your\u201D)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Date of Commencement: "), this.state.confirm_Date, "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Job Title: "), " ", this.state.job_title_text, "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Place of Employment: "), this.place_of_employment(this.state.place_of_employment)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "DBS Check: "), " ", this.state.dbscheck), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Remuneration and Benefits: ")), basic, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Bonus: "), " ", this.state.bonus), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Hours of Work: "), " ", this.hours_of_work(this.state.hours_of_work)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Signed by Gareth McKenna for and on behalf of Bespoke Metering Solutions Limited: "), "  ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         style: {
-          width: '30%'
+          width: '10%'
         },
         src: window.location.origin + '/images/offerletter_sign.png'
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Date: "), this.state.confirm_Date), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Signed by the Employee: "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_signature_canvas__WEBPACK_IMPORTED_MODULE_23___default.a, {

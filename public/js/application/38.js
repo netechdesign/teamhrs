@@ -721,6 +721,10 @@ var List = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this, props);
 
+    _defineProperty(_assertThisInitialized(_this), "handleErrorSubmit", function (e, formData, errorInputs) {
+      console.log(e, formData, errorInputs);
+    });
+
     _defineProperty(_assertThisInitialized(_this), "confirmChange", function (e) {
       var today = new Date(e);
       var dd = String(today.getDate()).padStart(2, '0');
@@ -885,6 +889,15 @@ var List = /*#__PURE__*/function (_React$Component) {
 
     _defineProperty(_assertThisInitialized(_this), "handleChange", function (e) {
       _this.setState(_defineProperty({}, e.target.name, e.target.value));
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "emailChange", function (e) {
+      var application_Forms = _this.state.application_Forms;
+      application_Forms['email'] = e.target.value;
+
+      _this.setState({
+        application_Forms: application_Forms
+      });
     });
 
     _defineProperty(_assertThisInitialized(_this), "tabSelect", function (key) {
@@ -1290,6 +1303,8 @@ var List = /*#__PURE__*/function (_React$Component) {
         if (res.data.success) {
           request_certificationAlert();
 
+          _this.resetForm();
+
           _this.setState({
             key: 'home'
           }); // console.log(res.data.data);
@@ -1366,6 +1381,95 @@ var List = /*#__PURE__*/function (_React$Component) {
       var win = window.open(URL, "_blank", strWindowFeatures);
     });
 
+    _defineProperty(_assertThisInitialized(_this), "resenOfferlettersTab", function (id) {
+      jquery__WEBPACK_IMPORTED_MODULE_6___default()('#offerletters_id').val(id);
+
+      _this.setState({
+        key: 'resenOfferletters'
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "resetForm", function () {
+      var formRef = _this.formRef.current;
+      formRef.resetValidationState(_this.state.clearInputOnReset);
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "resendOfferLetter", function (e) {
+      e.preventDefault();
+      var data = new FormData();
+
+      _this.setState({
+        certificationButton: true,
+        apiload: true
+      });
+
+      data.append('offerletters_id', jquery__WEBPACK_IMPORTED_MODULE_6___default()('#offerletters_id').val());
+      data.append('email', _this.state.application_Forms.email);
+      axios__WEBPACK_IMPORTED_MODULE_7___default.a.post(baseurl + "/api/resendOfferLetter", data, {
+        headers: {
+          'Accept': 'application/json',
+          'Authorization': 'Bearer ' + auth_token
+        }
+      }).then(function (res) {
+        if (res.data.success) {
+          request_certificationAlert();
+
+          _this.setState({
+            key: 'home'
+          }); // console.log(res.data.data);
+
+
+          _this.setState({
+            certificationButton: false,
+            apiload: false
+          });
+
+          if (_this.state.application_Forms.id) {
+            _this.applicationShow(_this.state.application_Forms.id);
+          }
+        } else {
+          var errorMassage = '';
+
+          if (res.data.errors) {
+            errorMassage = res.data.errors.name;
+          } else {
+            errorMassage = res.data.email;
+          }
+
+          pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_14__["default"].error({
+            title: "System Error",
+            text: errorMassage
+          });
+
+          _this.setState({
+            formSubmitting: false
+          });
+
+          _this.setState({
+            buttonName: 'Save'
+          });
+        }
+      })["catch"](function (err) {
+        pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_14__["default"].error({
+          title: "System Error",
+          text: err
+        });
+
+        _this.setState({
+          formSubmitting: false
+        });
+
+        _this.setState({
+          buttonName: 'Add'
+        });
+
+        _this.setState({
+          selectedFile: null
+        });
+      });
+    });
+
+    _this.formRef = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createRef();
     _this.state = {
       isLarge: false,
       apiload: false,
@@ -1396,7 +1500,10 @@ var List = /*#__PURE__*/function (_React$Component) {
       bonus: "",
       hours_of_work: "",
       address_details: '',
-      offerletterslist: []
+      offerletterslist: [],
+      immediate: true,
+      setFocusOnError: true,
+      clearInputOnReset: false
     };
     return _this;
   }
@@ -1422,7 +1529,8 @@ var List = /*#__PURE__*/function (_React$Component) {
     key: "render",
     value: function render() {
       var _this2 = this,
-          _React$createElement;
+          _React$createElement,
+          _React$createElement2;
 
       var telephone_questions = this.state.telephone_questions.length > 0 ? this.state.telephone_questions.map(function (vl, inx) {
         _this2.checktelephoneAnswers(vl);
@@ -1837,8 +1945,11 @@ var List = /*#__PURE__*/function (_React$Component) {
         disabled: this.state.application_Forms.documents ? this.state.application_Forms.documents.length > 0 ? false : true : true,
         title: "Offer Letter"
       }, this.state.offerletterslist.length > 0 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Offerletterslist, {
+        resendClick: this.resenOfferlettersTab,
         list: this.state.offerletterslist
-      }) : '', /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }) : '', /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"].Header, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"].Title, {
+        as: "h5"
+      }, "Add Offer Letter")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         "class": "text-center",
         style: {
           display: this.state.apiload ? 'block' : 'none'
@@ -1850,7 +1961,13 @@ var List = /*#__PURE__*/function (_React$Component) {
         "class": "sr-only"
       }, "Loading..."))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_9__["ValidationForm"], {
         onSubmit: this.sendOfferLetter,
-        onErrorSubmit: this.handleErrorSubmit
+        onErrorSubmit: this.handleErrorSubmit,
+        ref: this.formRef,
+        immediate: this.state.immediate,
+        setFocusOnError: this.state.setFocusOnError,
+        defaultErrorMessage: {
+          required: "Please enter something."
+        }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
         as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Row"],
         controlId: "formHorizontalEmail"
@@ -2004,7 +2121,7 @@ var List = /*#__PURE__*/function (_React$Component) {
           _this2.offerletterPreview();
         },
         type: "button"
-      }, "Preview"))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Tab"], {
+      }, "Preview"))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Tab"], {
         eventKey: "resendrequest",
         tabClassName: "d-none",
         disabled: this.state.certification,
@@ -2078,7 +2195,57 @@ var List = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Button"], {
         disabled: this.state.certificationButton,
         type: "submit"
-      }, "Send")))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"].Header, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"].Title, {
+      }, "Send"))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Tab"], {
+        eventKey: "resenOfferletters",
+        tabClassName: "d-none",
+        disabled: this.state.certification,
+        title: "resenOfferletters"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        "class": "text-center",
+        style: {
+          display: this.state.apiload ? 'block' : 'none'
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        "class": "spinner-border",
+        role: "status"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        "class": "sr-only"
+      }, "Loading..."))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_9__["ValidationForm"], {
+        onSubmit: this.resendOfferLetter,
+        onErrorSubmit: this.handleErrorSubmit
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Row, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        name: "offerletters_id",
+        style: {
+          display: 'none'
+        },
+        id: "offerletters_id"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, (_React$createElement2 = {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Row"],
+        style: {
+          width: '100%',
+          marginBottom: '0rem'
+        }
+      }, _defineProperty(_React$createElement2, "as", react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"]), _defineProperty(_React$createElement2, "sm", 12), _defineProperty(_React$createElement2, "className", "mt-3"), _React$createElement2), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Label, {
+        column: true,
+        sm: 2
+      }, "Email:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], {
+        sm: 4
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_9__["TextInput"], {
+        name: "email",
+        id: "email",
+        placeholder: "Email",
+        required: true,
+        value: this.state.application_Forms.email,
+        onChange: this.emailChange,
+        autoComplete: "off"
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
+        sm: 12,
+        className: "mt-3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Button"], {
+        disabled: this.state.certificationButton,
+        type: "submit"
+      }, "Resend")))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"].Header, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"].Title, {
         as: "h5"
       }, "Applications")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Table"], {
         ref: "tbl",
@@ -2511,12 +2678,18 @@ var Offerletterslist = /*#__PURE__*/function (_React$Component7) {
             padding: '5px'
           }
         }, item.offerletters_id ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Button"], {
-          className: "btn-sm",
+          className: "btn-sm btn-info",
           onClick: function onClick() {
             _this8.offerletterPreview(item.offerletters_id);
           },
           type: "button"
-        }, "View") : ''));
+        }, "View") : '', item.confirm_employee_date == null ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Button"], {
+          className: "btn-sm btn-light",
+          onClick: function onClick() {
+            return _this8.props.resendClick(item.offerletters_id);
+          },
+          type: "button"
+        }, "Resend") : ''));
       });
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_hoc_Aux__WEBPACK_IMPORTED_MODULE_3__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_18__["Table"], {
         style: {

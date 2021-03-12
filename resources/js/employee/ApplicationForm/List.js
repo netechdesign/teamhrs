@@ -205,6 +205,8 @@ class List extends React.Component {
    
     constructor(props) {
         super(props);
+        this.formRef = React.createRef();
+
         this.state={
                      isLarge: false,
                      apiload:false,
@@ -235,9 +237,16 @@ class List extends React.Component {
                       bonus:"",
                       hours_of_work:"",
                       address_details:'',
-                      offerletterslist:[]
+                      offerletterslist:[],
+                      immediate:true,
+                      setFocusOnError:true,
+                      clearInputOnReset:false
                     }
     }
+    handleErrorSubmit = (e,formData, errorInputs) => {
+      console.log(e,formData, errorInputs)
+  }
+
     confirmChange = (e) => {
       let today = new Date(e);
       let dd = String(today.getDate()).padStart(2, '0');
@@ -378,7 +387,11 @@ other_documentDelete =(element) =>{
       })
 
   };
-  
+  emailChange = (e) =>{
+    let application_Forms = this.state.application_Forms;
+    application_Forms['email'] = e.target.value;
+    this.setState({application_Forms:application_Forms});
+  }
   tabSelect =(key) =>{
     this.setState({ key : key })
     if (key === 'telephone'){
@@ -692,7 +705,7 @@ other_documentDelete =(element) =>{
     ).then(res =>{
                       if(res.data.success){
                         request_certificationAlert();
-                      
+                        this.resetForm();
                        this.setState({ key :'home'});
                          // console.log(res.data.data);
                          if(this.state.application_Forms.id){
@@ -761,6 +774,66 @@ other_documentDelete =(element) =>{
     var URL = baseurl+"/offer-letter/?data="+results;
     var win = window.open(URL, "_blank", strWindowFeatures);
   }
+
+  resenOfferlettersTab = (id) =>{
+    $('#offerletters_id').val(id);
+    this.setState({ key :'resenOfferletters'});
+  }
+
+  resetForm = () => {
+    let formRef = this.formRef.current;
+    formRef.resetValidationState(this.state.clearInputOnReset);
+}
+
+resendOfferLetter = (e) =>{
+  e.preventDefault();
+         const data = new FormData();
+         this.setState({certificationButton:true,apiload:true});
+         data.append('offerletters_id', $('#offerletters_id').val());
+         data.append('email', this.state.application_Forms.email);
+         axios.post(baseurl+"/api/resendOfferLetter",data,{headers:{'Accept':'application/json','Authorization':'Bearer '+auth_token}}).then(res =>{
+                  if(res.data.success){
+                    request_certificationAlert();
+                    this.setState({ key :'home'});
+                     // console.log(res.data.data);
+                     this.setState({certificationButton:false,apiload:false});
+                     if(this.state.application_Forms.id){
+                           this.applicationShow(this.state.application_Forms.id);
+                        }
+                      
+                     
+                  }else{
+                      let errorMassage = '';
+                    if(res.data.errors){
+                        errorMassage = res.data.errors.name;
+                    }else{
+                        errorMassage = res.data.email;
+                        
+                    }
+                    PNotify.error({
+                        title: "System Error",
+                        text:errorMassage,
+                    });
+                    this.setState({formSubmitting:false});
+                    this.setState({buttonName:'Save'});
+                    
+                  }
+             }
+  )
+  .catch(err =>{
+            PNotify.error({
+                title: "System Error",
+                text:err,
+            });
+            this.setState({formSubmitting:false});
+            this.setState({buttonName:'Add'});
+            this.setState({selectedFile:null});
+                  
+              }
+  )
+
+}
+
     render() {
       const telephone_questions =(this.state.telephone_questions.length>0?
         this.state.telephone_questions.map((vl,inx)=>{
@@ -998,13 +1071,20 @@ other_documentDelete =(element) =>{
                       </Tab>
                             <Tab eventKey="offerletter"  disabled={(this.state.application_Forms.documents?(this.state.application_Forms.documents.length>0?false:true):true)} title="Offer Letter">
                                      
-                                  {(this.state.offerletterslist.length>0?<Offerletterslist  list={this.state.offerletterslist} />:'')}        
-                                  <div class="text-center" style={{display:(this.state.apiload?'block':'none')}}>
+                                  {(this.state.offerletterslist.length>0?<Offerletterslist resendClick={this.resenOfferlettersTab} list={this.state.offerletterslist} />:'')}        
+                                  
+                              <Card>
+                                    <Card.Header><Card.Title as="h5">Add Offer Letter</Card.Title></Card.Header>
+                                    <Card.Body>
+                                        <div class="text-center" style={{display:(this.state.apiload?'block':'none')}}>
                                           <div class="spinner-border" role="status">
                                               <span class="sr-only">Loading...</span>
                                           </div>
                                         </div>
-                                <ValidationForm onSubmit={this.sendOfferLetter} onErrorSubmit={this.handleErrorSubmit}>
+                                        <ValidationForm onSubmit={this.sendOfferLetter} onErrorSubmit={this.handleErrorSubmit} ref={this.formRef}
+                        immediate={this.state.immediate}
+                        setFocusOnError={this.state.setFocusOnError}
+                        defaultErrorMessage={{ required: "Please enter something."}}>
                                      <Form.Group as={Row} controlId="formHorizontalEmail">
                                                 <Form.Label column sm={3}>
                                                   Date of Commencement:
@@ -1146,9 +1226,13 @@ other_documentDelete =(element) =>{
                                         <Button disabled={this.state.certificationButton} type="submit">Send</Button>
                                         <Button onClick={() =>{this.offerletterPreview()}}  type="button">Preview</Button>
                                         
+                    
                                         </Form.Group>
                                      </Form.Row>
                               </ValidationForm>
+                                    </Card.Body>
+                              </Card>
+                            
                              {/* <Button onClick={() =>{this.offerletterPreview()}}  type="button">View</Button> */} 
                       </Tab>
                         
@@ -1187,6 +1271,37 @@ other_documentDelete =(element) =>{
                                      </Form.Row>
                               </ValidationForm>
                       </Tab>
+                      <Tab eventKey="resenOfferletters" tabClassName='d-none' disabled={this.state.certification} title="resenOfferletters">
+                       <div class="text-center" style={{display:(this.state.apiload?'block':'none')}}>
+                                          <div class="spinner-border" role="status">
+                                              <span class="sr-only">Loading...</span>
+                                          </div>
+                                        </div>
+                                        
+                               <ValidationForm onSubmit={this.resendOfferLetter} onErrorSubmit={this.handleErrorSubmit}>
+                                    <Form.Row>
+                                      <input name="offerletters_id" style={{display:'none'}} id="offerletters_id" />
+                                        <Form.Group as={Row} style={{width:'100%',marginBottom:'0rem'}} as={Col} sm={12} className="mt-3">
+                                              <Form.Label column sm={2}>Email:</Form.Label>
+                                                    <Col sm={4}>
+                                                    <TextInput
+                                                                    name="email"
+                                                                    id="email"
+                                                                    placeholder="Email"
+                                                                    required value={this.state.application_Forms.email}
+                                                                    onChange={this.emailChange}
+                                                                    autoComplete="off"
+                                                                />
+                                                     </Col>
+                                          </Form.Group>
+                                       
+                                        <Form.Group as={Col} sm={12} className="mt-3">
+                                        <Button disabled={this.state.certificationButton} type="submit">Resend</Button>
+                                        </Form.Group>
+                                     </Form.Row>
+                              </ValidationForm>
+                      </Tab>
+                      
                         </Tabs>
 
                                     </Modal.Body>
@@ -1490,7 +1605,9 @@ class Offerletterslist extends React.Component{
                                 {item.created_at_date}
                             </Td>
                             <Td style={{padding:'5px'}}>
-                              {(item.offerletters_id?<Button className="btn-sm" onClick={()=>{this.offerletterPreview(item.offerletters_id)}}  type="button">View</Button>:'')}
+                              {(item.offerletters_id?<Button className="btn-sm btn-info" onClick={()=>{this.offerletterPreview(item.offerletters_id)}}  type="button">View</Button>:'')}
+                              
+                              {(item.confirm_employee_date==null?<Button className="btn-sm btn-light" onClick={()=>this.props.resendClick(item.offerletters_id)}  type="button">Resend</Button>:'')}
                             
                             </Td>
                             

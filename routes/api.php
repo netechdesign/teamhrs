@@ -51,6 +51,8 @@ Route::group(['middleware' => ['jwt.auth','api-header']], function () {
         Route::get('job_positions/list', 'Job_positionsController@list');
         Route::get('sendOfferLetter', 'Application_formsController@sendOfferLetter');
         Route::get('getofferletter/{id}', 'Application_formsController@getofferletter');
+        Route::post('resendOfferLetter', 'Application_formsController@resendOfferLetter');
+        
         
         //telephone questions
         
@@ -116,5 +118,10 @@ Route::group(['middleware' => 'api-header'], function () {
         $arraylist = App\Models\Job_positions::find($id);
         $response = ['success'=>true, 'data'=>$arraylist];
         return response()->json($response, 201);
+    });
+    Route::get('applicant_send_offer_letter/{id}', function ($id) {
+           $count = App\Models\Offerletters::where('id',$id)->whereNull('confirm_employee_date')->count();
+          $response = ['success'=>true, 'data'=>$count];
+           return response()->json($response, 201);
     });
 });

@@ -664,6 +664,7 @@ class Application_formsController extends Controller
         $Offerletterlists = new Offerletters($Offerletters);
         $Offerletterlists->save();
         $data['offerletterlist_id'] = $Offerletterlists->id;
+        $data["created_at"]= date('d/m/Y');
         $to_mail = $data['email'];
         $mpdf= new \Mpdf\Mpdf(['mode' => 'utf-8','format' => 'A4','margin_left' => 15,'margin_right' => 15,'margin_top' => 35,'margin_bottom' => 20,'margin_header' => 15,'margin_footer' => 2]); //use this customization
         
@@ -680,6 +681,70 @@ class Application_formsController extends Controller
         $mpdf->SetTitle('offer-letter');
         $mpdf->WriteHTML($html);
        // $mpdf->Output('offer-letter.pdf','I');
+        Mail::send(['html'=>'offerlettersendmail'], ['data'=>$data], function($message) use ($to_mail,$mpdf)
+                     {
+                         $message->to($to_mail)->subject('Offer Letter');
+                          //Attach PDF doc
+                          $message->attachData($mpdf->Output('offer-letter.pdf','S'),'offer-letter-'.date('dmY').'.pdf');
+                          //$this->email->attach($content, 'attachment', $filename, 'application/pdf');
+
+                      });
+                      return response()->json(array('success' => true));
+                    }catch (\Exception $e) 
+                    {
+                         $message = $e->getMessage();
+                         
+                         $text = strstr($message, ':', true);
+                     
+                         return response()->json(array('success' => false,'message'=> $message));
+                    }
+    }
+    public function resendOfferLetter(Request $request){
+        try {
+            
+             $user = JWTAuth::toUser($request->input('token'));
+             $request->request->add(['created_by'=> $user->id]);
+          //$request->request->add(['user_id'=> $user->id]);
+          $data= array();
+          $offerletters = Offerletters::select("*",DB::raw('DATE_FORMAT(created_at,"%d/%m/%Y") as created_at_date'))->find($request->offerletters_id);
+          if($offerletters){
+            $data["application_forms_id"]= $offerletters->application_forms_id;
+            $data["title"]= $offerletters->title;
+            $data["fore_name"]= $offerletters->fore_name;
+            $data["surname"]= $offerletters->surname;
+            $data["basic"]= $offerletters->basic;
+            $data["bonus"]= $offerletters->bonus;
+            $data["confirm_Date"]= $offerletters->confirm_Date;
+    
+            $data["dbscheck"]= $offerletters->dbscheck;
+            $data["hours_of_work"]= $offerletters->hours_of_work;
+            $data["job_title"]= $offerletters->job_title;
+            $data["place_of_employment"]= $offerletters->place_of_employment;
+            $data["line_1"]= $offerletters->line_1;
+            $data["line_2"]= $offerletters->line_2;
+            $data["line_3"]= $offerletters->line_3;
+            $data["line_4"]= $offerletters->line_4;
+            $data["postcode"]= $offerletters->postcode;
+            $data["town_or_city"]= $offerletters->town_or_city;
+            $data["created_at"]= $offerletters->created_at_date;
+            $data["offerletterlist_id"] = $request->offerletters_id;
+            $data["name"]= ucfirst($offerletters->fore_name);
+        }
+        
+        $to_mail = $request->email;
+        $mpdf= new \Mpdf\Mpdf(['mode' => 'utf-8','format' => 'A4','margin_left' => 15,'margin_right' => 15,'margin_top' => 35,'margin_bottom' => 20,'margin_header' => 15,'margin_footer' => 2]); //use this customization
+        
+        $application_Forms= json_encode($data);
+        $data['code']=  base64_encode($application_Forms);
+        
+        $job_positions = Job_positions::where('id',$offerletters->job_title)->first();        
+        
+        if($job_positions){
+            $data['job_title'] = $job_positions->name;
+        }
+        $html = view('pdf.offer_letter', $data);
+        $mpdf->SetTitle('offer-letter');
+        $mpdf->WriteHTML($html);
         Mail::send(['html'=>'offerlettersendmail'], ['data'=>$data], function($message) use ($to_mail,$mpdf)
                      {
                          $message->to($to_mail)->subject('Offer Letter');
@@ -776,7 +841,7 @@ class Application_formsController extends Controller
                  $request['confirm_employee_signature'] = $confirm_employee_signature;
          }
          $offerletter_id =$request->offerletterlist_id; //dd($data['offerletterlist_id']); /** is offerletterlist_id =offerletter_id */
-         $data = $request->except('token','next','_method','showModal','visible','formSubmitting','buttonName','job_title_text','remuneration_and_benefits','offerletterlist_id','id');
+         $data = $request->except('token','next','_method','showModal','visible','formSubmitting','buttonName','job_title_text','remuneration_and_benefits','offerletterlist_id','id','created_at');
          $Offerletters = Offerletters::where('id',$offerletter_id)->update($data);
          if($Offerletters){
          $form_id =$offerletter_id;

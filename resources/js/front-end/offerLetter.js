@@ -91,7 +91,8 @@ class OfferLetter extends React.Component {
         line_4:'',
         town_or_city:'',
         postcode:'',
-        offerletterlist_id:''
+        offerletterlist_id:'',
+        created_at:'',
     };
      // preserve the initial state in a new object
      this.baseState = this.state 
@@ -206,7 +207,7 @@ class OfferLetter extends React.Component {
            
 
             
-        this.setState({offerletterlist_id:data['offerletterlist_id']});
+        this.setState({offerletterlist_id:data['offerletterlist_id']});   //offerletters_id = offerletterlist_id
         this.setState({basic:data['basic']});
         this.setState({bonus:data['bonus']});
         this.setState({confirm_Date:data['confirm_Date']});
@@ -218,19 +219,69 @@ class OfferLetter extends React.Component {
         this.setState({place_of_employment:data['place_of_employment']});
         this.setState({surname:data['surname']});
         this.setState({title:data['title']});  
-        this.setState({line_1:data['address_details']['line_1']}); 
-        this.setState({line_2:data['address_details']['line_2']}); 
-        this.setState({line_3:data['address_details']['line_3']}); 
-        this.setState({line_4:data['address_details']['line_4']}); 
-        this.setState({postcode:data['address_details']['postcode']}); 
-        this.setState({town_or_city:data['address_details']['town_or_city']}); 
         
+        if(data['address_details']){
+                this.setState({line_1:data['address_details']['line_1']}) 
+                this.setState({line_2:data['address_details']['line_2']}); 
+                this.setState({line_3:data['address_details']['line_3']}); 
+                this.setState({line_4:data['address_details']['line_4']}); 
+                this.setState({postcode:data['address_details']['postcode']}); 
+                this.setState({town_or_city:data['address_details']['town_or_city']}); 
+        }
+        if(data['line_1']){
+            this.setState({line_1:data['line_1']}) 
+            this.setState({line_2:data['line_2']}); 
+            this.setState({line_3:data['line_3']}); 
+            this.setState({line_4:data['line_4']}); 
+            this.setState({postcode:data['postcode']}); 
+            this.setState({town_or_city:data['town_or_city']}); 
+    }
+       
+        this.setState({created_at:data['created_at']});  
+        
+        
+        axios.get(baseurl+'/api/applicant_send_offer_letter/'+data['offerletterlist_id']).then(res =>{
+            if(res.data.success){
+                
+                if(res.data.data==0){
+                       this.setState({formSubmitting:true});
+                       PNotify.error({
+                        title: "Sorry",
+                        text:'Already sent this Offer letter',
+                    });
+                }
+             // this.setState({job_title_text:res.data.data.name});
+               
+               
+            }else{
+                let errorMassage = '';
+              if(res.data.message){
+                  errorMassage = res.data.message;
+              }  
+               
+              PNotify.error({
+                  title: "System Error",
+                  text:errorMassage,
+              });
+              
+              
+            }
+       }
+)
+.catch(err =>{
+      PNotify.error({
+          title: "System Error",
+          text:err,
+      });
+            
+        }
+)
         
         axios.get(baseurl+'/api/getjobtitle/'+data['job_title']).then(res =>{
                           if(res.data.success){
                             this.setState({job_title_text:res.data.data.name});
                              // console.log(res.data.data);
-                             this.setState({formSubmitting:false});
+                             
                              
                           }else{
                               let errorMassage = '';
@@ -335,7 +386,11 @@ class OfferLetter extends React.Component {
      }
     
      }
-     
+     getaddist= (vl)=>{
+         if(vl!=""){
+             return vl;
+         }
+     }
     render() {
       const basic =  (this.state.dbscheck=='Yes'?<p><b>Basic: </b>{this.state.basic}</p>:'');
                 
@@ -390,13 +445,14 @@ class OfferLetter extends React.Component {
                                 <p>
                                 {this.state.title} {this.state.fore_name} {this.state.surname}<br/>
                                 {this.state.line_1}<br/>
-                                {(this.state.line_2!=''?this.state.line_2:'')}<br/>
-                                {(this.state.line_3!=''?this.state.line_3:'')}<br/>
-                                {(this.state.line_4!=''?this.state.line_4+'<br/>':'')}
+                                {this.getaddist(this.state.line_2)}
+                                {this.getaddist(this.state.line_3)}
+                                {this.getaddist(this.state.line_4)}
                                 {this.state.town_or_city}<br/>
                                 {this.state.postcode}<br/>
+                                
                                 </p>
-                                <p>DATE {yyyy}</p>
+                                <p>DATE {this.state.created_at}</p>
                                 <p>Dear {this.state.fore_name},</p>
                         </div>
                                 
@@ -658,7 +714,7 @@ class OfferLetter extends React.Component {
                 {basic}
                 <p><b>Bonus: </b> {this.state.bonus}</p>
                 <p><b>Hours of Work: </b> {this.hours_of_work(this.state.hours_of_work)}</p>
-                <p><b>Signed by Gareth McKenna for and on behalf of Bespoke Metering Solutions Limited: </b>  <img style={{width:'30%'}} src={window.location.origin+'/images/offerletter_sign.png'} /></p>
+                <p><b>Signed by Gareth McKenna for and on behalf of Bespoke Metering Solutions Limited: </b>  <img style={{width:'10%'}} src={window.location.origin+'/images/offerletter_sign.png'} /></p>
                 <p><b>Date: </b>{this.state.confirm_Date}</p>
                 <p><b>Signed by the Employee: </b>
                 <div>
