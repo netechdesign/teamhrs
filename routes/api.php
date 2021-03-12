@@ -120,7 +120,7 @@ Route::group(['middleware' => 'api-header'], function () {
         return response()->json($response, 201);
     });
     Route::get('applicant_send_offer_letter/{id}', function ($id) {
-           $count = App\Models\Offerletters::where('id',$id)->whereNull('confirm_employee_date')->count();
+           $count = App\Models\Offerletters::where('id',$id)->whereNull('confirm_employee_date','!=','')->count();
           $response = ['success'=>true, 'data'=>$count];
            return response()->json($response, 201);
     });
