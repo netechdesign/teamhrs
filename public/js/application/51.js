@@ -470,7 +470,7 @@ var OfferLetter = /*#__PURE__*/function (_React$Component) {
         });
         axios__WEBPACK_IMPORTED_MODULE_16___default.a.get(baseurl + '/api/applicant_send_offer_letter/' + data['offerletterlist_id']).then(function (res) {
           if (res.data.success) {
-            if (res.data.data == 0) {
+            if (res.data.data == 1) {
               _this2.setState({
                 formSubmitting: true
               });

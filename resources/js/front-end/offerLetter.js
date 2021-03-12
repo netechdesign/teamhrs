@@ -243,7 +243,7 @@ class OfferLetter extends React.Component {
         axios.get(baseurl+'/api/applicant_send_offer_letter/'+data['offerletterlist_id']).then(res =>{
             if(res.data.success){
                 
-                if(res.data.data==0){
+                if(res.data.data==1){
                        this.setState({formSubmitting:true});
                        PNotify.error({
                         title: "Sorry",
