@@ -841,7 +841,7 @@ class Application_formsController extends Controller
                  $request['confirm_employee_signature'] = $confirm_employee_signature;
          }
          $offerletter_id =$request->offerletterlist_id; //dd($data['offerletterlist_id']); /** is offerletterlist_id =offerletter_id */
-         $data = $request->except('token','next','_method','showModal','visible','formSubmitting','buttonName','job_title_text','remuneration_and_benefits','offerletterlist_id','id','created_at');
+         $data = $request->except('token','next','_method','showModal','visible','formSubmitting','buttonName','job_title_text','remuneration_and_benefits','offerletterlist_id','id','created_at','showofferletter','alreadyalert');
          $Offerletters = Offerletters::where('id',$offerletter_id)->update($data);
          if($Offerletters){
          $form_id =$offerletter_id;

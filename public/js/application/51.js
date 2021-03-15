@@ -370,7 +370,9 @@ var OfferLetter = /*#__PURE__*/function (_React$Component) {
       town_or_city: '',
       postcode: '',
       offerletterlist_id: '',
-      created_at: ''
+      created_at: '',
+      showofferletter: 'none',
+      alreadyalert: 'none'
     }; // preserve the initial state in a new object
 
     _this.baseState = _this.state;
@@ -472,12 +474,18 @@ var OfferLetter = /*#__PURE__*/function (_React$Component) {
           if (res.data.success) {
             if (res.data.data == 1) {
               _this2.setState({
-                formSubmitting: true
+                formSubmitting: true,
+                showofferletter: 'none',
+                alreadyalert: ''
               });
 
               pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_17__["default"].error({
                 title: "Sorry",
-                text: 'Already sent this Offer letter'
+                text: 'Your offer letter has been already sent.'
+              });
+            } else {
+              _this2.setState({
+                showofferletter: ''
               });
             } // this.setState({job_title_text:res.data.data.name});
 
@@ -591,7 +599,19 @@ var OfferLetter = /*#__PURE__*/function (_React$Component) {
         className: "page-wrapper"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Header, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Title, {
         as: "h5"
-      }, "Offer Letter")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_9__["ValidationForm"], {
+      }, "Offer Letter")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        style: {
+          display: this.state.alreadyalert
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        style: {
+          color: 'red',
+          fontSize: '20px'
+        }
+      }, "Your offer letter has been already sent.")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_9__["ValidationForm"], {
+        style: {
+          display: this.state.showofferletter
+        },
         autoComplete: "off",
         id: "formid",
         onSubmit: this.handleSubmit,

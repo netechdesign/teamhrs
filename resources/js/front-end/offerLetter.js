@@ -93,6 +93,8 @@ class OfferLetter extends React.Component {
         postcode:'',
         offerletterlist_id:'',
         created_at:'',
+        showofferletter:'none',
+        alreadyalert:'none'
     };
      // preserve the initial state in a new object
      this.baseState = this.state 
@@ -244,11 +246,15 @@ class OfferLetter extends React.Component {
             if(res.data.success){
                 
                 if(res.data.data==1){
-                       this.setState({formSubmitting:true});
+                       this.setState({formSubmitting:true,showofferletter:'none',alreadyalert:''});
+
+                       
                        PNotify.error({
                         title: "Sorry",
-                        text:'Already sent this Offer letter',
+                        text:'Your offer letter has been already sent.',
                     });
+                }else{
+                    this.setState({showofferletter:''});
                 }
              // this.setState({job_title_text:res.data.data.name});
                
@@ -434,8 +440,11 @@ class OfferLetter extends React.Component {
                                 <Card.Title as="h5">Offer Letter</Card.Title>
                             </Card.Header>
                             <Card.Body>
+                                <div style={{display:this.state.alreadyalert}}>
+                                    <p style={{color:'red',fontSize:'20px'}}>Your offer letter has been already sent.</p>
+                                </div>
                             
-                                <ValidationForm autoComplete="off" id='formid' onSubmit={this.handleSubmit} onErrorSubmit={this.handleErrorSubmit}>
+                                <ValidationForm style={{display:this.state.showofferletter}} autoComplete="off" id='formid' onSubmit={this.handleSubmit} onErrorSubmit={this.handleErrorSubmit}>
                                         
                                                     
             <div style={style.rowline}>
