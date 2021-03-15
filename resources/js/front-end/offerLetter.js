@@ -399,7 +399,7 @@ class OfferLetter extends React.Component {
      }
     render() {
       const basic =  (this.state.dbscheck=='Yes'?<p><b>Basic: </b>{this.state.basic}</p>:'');
-                
+      const bonus =  (this.state.bonus=='Yes'?<p><b>Bonus: </b>You will be paid bonus in accordance with the rules and rates set out in the Bonus Policy relevant to you as amended from time to time</p>:'');        
                 
         return (
             <Aux>
@@ -721,7 +721,8 @@ class OfferLetter extends React.Component {
                 <p><b>DBS Check: </b> {this.state.dbscheck}</p>
                 <p><b>Remuneration and Benefits: </b></p>
                 {basic}
-                <p><b>Bonus: </b> {this.state.bonus}</p>
+                {bonus}
+                
                 <p><b>Hours of Work: </b> {this.hours_of_work(this.state.hours_of_work)}</p>
                 <p><b>Signed by Gareth McKenna for and on behalf of Bespoke Metering Solutions Limited: </b>  <img style={{width:'10%'}} src={window.location.origin+'/images/offerletter_sign.png'} /></p>
                 <p><b>Date: </b>{this.state.confirm_Date}</p>
