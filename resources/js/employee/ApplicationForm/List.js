@@ -833,7 +833,55 @@ resendOfferLetter = (e) =>{
   )
 
 }
+OfferlettersApproved = (id) =>{
+  
+  
+         const data = new FormData();
+         this.setState({certificationButton:true,apiload:true});
+         data.append('offerletters_id', id);
+         data.append('application_forms_id', this.state.application_Forms.id);
+         axios.post(baseurl+"/api/approvedOfferLetter",data,{headers:{'Accept':'application/json','Authorization':'Bearer '+auth_token}}).then(res =>{
+                  if(res.data.success){
+                    request_certificationAlert();
+                    this.setState({ key :'home'});
+                     // console.log(res.data.data);
+                     this.setState({certificationButton:false,apiload:false});
+                     if(this.state.application_Forms.id){
+                           this.applicationShow(this.state.application_Forms.id);
+                        }
+                      
+                     
+                  }else{
+                      let errorMassage = '';
+                    if(res.data.errors){
+                        errorMassage = res.data.errors.name;
+                    }else{
+                        errorMassage = res.data.email;
+                        
+                    }
+                    PNotify.error({
+                        title: "System Error",
+                        text:errorMassage,
+                    });
+                    this.setState({formSubmitting:false});
+                    this.setState({buttonName:'Save'});
+                    
+                  }
+             }
+  )
+  .catch(err =>{
+            PNotify.error({
+                title: "System Error",
+                text:err,
+            });
+            this.setState({formSubmitting:false});
+            this.setState({buttonName:'Add'});
+            this.setState({selectedFile:null});
+                  
+              }
+  )
 
+}
     render() {
       const telephone_questions =(this.state.telephone_questions.length>0?
         this.state.telephone_questions.map((vl,inx)=>{
@@ -1071,7 +1119,7 @@ resendOfferLetter = (e) =>{
                       </Tab>
                             <Tab eventKey="offerletter"  disabled={(this.state.application_Forms.documents?(this.state.application_Forms.documents.length>0?false:true):true)} title="Offer Letter">
                                      
-                                  {(this.state.offerletterslist.length>0?<Offerletterslist resendClick={this.resenOfferlettersTab} list={this.state.offerletterslist} />:'')}        
+                                  {(this.state.offerletterslist.length>0?<Offerletterslist approvedClick={this.OfferlettersApproved} resendClick={this.resenOfferlettersTab} list={this.state.offerletterslist} />:'')}        
                                   
                               <Card>
                                     <Card.Header><Card.Title as="h5">Add Offer Letter</Card.Title></Card.Header>
@@ -1603,11 +1651,12 @@ class Offerletterslist extends React.Component{
                             </Td>
                             <Td style={{padding:'5px'}}>
                                 {item.created_at_date}
+                                
                             </Td>
                             <Td style={{padding:'5px'}}>
                               {(item.offerletters_id?<Button className="btn-sm btn-info" onClick={()=>{this.offerletterPreview(item.offerletters_id)}}  type="button">View</Button>:'')}
                               
-                              {(item.confirm_employee_date==null?<Button className="btn-sm btn-light" onClick={()=>this.props.resendClick(item.offerletters_id)}  type="button">Resend</Button>:'')}
+                              {(item.confirm_employee_date==null?<Button className="btn-sm btn-light" onClick={()=>this.props.resendClick(item.offerletters_id)}  type="button">Resend</Button>:(item.is_approved==0?<Button className="btn-sm btn-secondary" onClick={()=>this.props.approvedClick(item.offerletters_id)}  type="button">Approve</Button>:<span class="label label-success" style={{fontSize: '8px'}}>Approved</span>))}
                             
                             </Td>
                             

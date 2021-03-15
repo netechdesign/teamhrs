@@ -1469,6 +1469,80 @@ var List = /*#__PURE__*/function (_React$Component) {
       });
     });
 
+    _defineProperty(_assertThisInitialized(_this), "OfferlettersApproved", function (id) {
+      var data = new FormData();
+
+      _this.setState({
+        certificationButton: true,
+        apiload: true
+      });
+
+      data.append('offerletters_id', id);
+      data.append('application_forms_id', _this.state.application_Forms.id);
+      axios__WEBPACK_IMPORTED_MODULE_7___default.a.post(baseurl + "/api/approvedOfferLetter", data, {
+        headers: {
+          'Accept': 'application/json',
+          'Authorization': 'Bearer ' + auth_token
+        }
+      }).then(function (res) {
+        if (res.data.success) {
+          request_certificationAlert();
+
+          _this.setState({
+            key: 'home'
+          }); // console.log(res.data.data);
+
+
+          _this.setState({
+            certificationButton: false,
+            apiload: false
+          });
+
+          if (_this.state.application_Forms.id) {
+            _this.applicationShow(_this.state.application_Forms.id);
+          }
+        } else {
+          var errorMassage = '';
+
+          if (res.data.errors) {
+            errorMassage = res.data.errors.name;
+          } else {
+            errorMassage = res.data.email;
+          }
+
+          pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_14__["default"].error({
+            title: "System Error",
+            text: errorMassage
+          });
+
+          _this.setState({
+            formSubmitting: false
+          });
+
+          _this.setState({
+            buttonName: 'Save'
+          });
+        }
+      })["catch"](function (err) {
+        pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_14__["default"].error({
+          title: "System Error",
+          text: err
+        });
+
+        _this.setState({
+          formSubmitting: false
+        });
+
+        _this.setState({
+          buttonName: 'Add'
+        });
+
+        _this.setState({
+          selectedFile: null
+        });
+      });
+    });
+
     _this.formRef = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createRef();
     _this.state = {
       isLarge: false,
@@ -1945,6 +2019,7 @@ var List = /*#__PURE__*/function (_React$Component) {
         disabled: this.state.application_Forms.documents ? this.state.application_Forms.documents.length > 0 ? false : true : true,
         title: "Offer Letter"
       }, this.state.offerletterslist.length > 0 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Offerletterslist, {
+        approvedClick: this.OfferlettersApproved,
         resendClick: this.resenOfferlettersTab,
         list: this.state.offerletterslist
       }) : '', /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"].Header, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"].Title, {
@@ -2689,7 +2764,18 @@ var Offerletterslist = /*#__PURE__*/function (_React$Component7) {
             return _this8.props.resendClick(item.offerletters_id);
           },
           type: "button"
-        }, "Resend") : ''));
+        }, "Resend") : item.is_approved == 0 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Button"], {
+          className: "btn-sm btn-secondary",
+          onClick: function onClick() {
+            return _this8.props.approvedClick(item.offerletters_id);
+          },
+          type: "button"
+        }, "Approve") : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          "class": "label label-success",
+          style: {
+            fontSize: '8px'
+          }
+        }, "Approved")));
       });
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_hoc_Aux__WEBPACK_IMPORTED_MODULE_3__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_18__["Table"], {
         style: {

@@ -43,6 +43,7 @@ class CreateApplicationFormsTable extends Migration
                     $table->string('information_provided_name')->nullable();
                     $table->string('information_provided_signature')->nullable();
                     $table->date('information_provided_Date')->nullable();
+                    $table->integer('offer_letter_approved_id')->nullable();
                     $table->integer('is_viewed')->default(1);
                     $table->integer('is_ts_done')->default(1);
                     $table->integer('is_document_request')->default(1)->comment('1= not request');

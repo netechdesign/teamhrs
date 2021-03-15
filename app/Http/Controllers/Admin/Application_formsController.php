@@ -881,4 +881,20 @@ class Application_formsController extends Controller
                }
         
      }
+
+     public function approvedOfferLetter(Request $request)
+                    {
+
+                        try{
+                            dd($request);
+                        }
+                        catch (\Exception $e) 
+                        {
+                            $message = $e->getMessage();
+                            
+                            $text = strstr($message, ':', true);
+                        
+                            return response()->json(array('success' => false,'message'=> $message));
+                        }
+     }
 }
