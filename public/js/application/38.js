@@ -1984,7 +1984,7 @@ var List = /*#__PURE__*/function (_React$Component) {
         as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
         sm: 12,
         className: "mt-3"
-      }, this.state.application_Forms.length > 0 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Button"], {
+      }, this.state.application_Forms.is_ts_done > 0 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Button"], {
         disabled: this.state.formSubmitting,
         type: "submit"
       }, " ", this.state.buttonName) : '')))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Tab"], {

@@ -358,8 +358,12 @@ li:before {
                 @if($dbscheck=='Yes')
                 <p><b>Basic: </b>{{$basic}}</p>
                 @endif
-                <p><b>Bonus: </b>{{$bonus}}</p>
-                <p><b>Hours of Work: </b>{{$hours_of_work}}
+                @if($bonus=='Yes')
+                <p><b>Bonus: </b>
+                    You will be paid bonus in accordance with the rules and rates set out in the Bonus Policy relevant to you as amended from time to time
+                </p>
+                @endif
+                <p><b>Hours of Work: </b>
                 @if($hours_of_work==1)
                     45 hours per week, between Monday to Sunday to be worked between the hours of 8am and 10pm. You may be required as part of your role to attend out of hours and emergency callouts as requested by the Employer
                 @elseif($hours_of_work==2)

@@ -1085,11 +1085,14 @@ OfferlettersApproved = (id) =>{
                                                             rows="3"
                                                             autoComplete="off"
                                                         />
+                                                        
                                               </Form.Group>
                                         </Form.Row>
                                     <Form.Row>
+                                      
                                         <Form.Group style={{display:(this.state.apiload?'none':'block')}} as={Col} sm={12} className="mt-3">
-                                        {(this.state.application_Forms.length>0?<Button disabled={this.state.formSubmitting}  type="submit"> {this.state.buttonName}</Button>:'')}
+                                          
+                                        {(this.state.application_Forms.is_ts_done>0?<Button disabled={this.state.formSubmitting}  type="submit"> {this.state.buttonName}</Button>:'')}
                                         </Form.Group>
                                     </Form.Row>
                                 </ValidationForm>
