@@ -598,6 +598,32 @@ function request_certificationAlert(id) {
   }).on('click', function (e) {});
 }
 
+function offerletterapproveAlert(id) {
+  var message = "offer letter has been approved successfully";
+  pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_14__["default"].success({
+    title: 'Success',
+    text: message,
+    modules: {
+      Desktop: {
+        desktop: true
+      }
+    }
+  }).on('click', function (e) {});
+}
+
+function sendOfferLetterAlert(id) {
+  var message = "offer letter has been sent successfully";
+  pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_14__["default"].success({
+    title: 'Success',
+    text: message,
+    modules: {
+      Desktop: {
+        desktop: true
+      }
+    }
+  }).on('click', function (e) {});
+}
+
 var oTable = "";
 
 function atable() {
@@ -1301,7 +1327,7 @@ var List = /*#__PURE__*/function (_React$Component) {
         }
       }).then(function (res) {
         if (res.data.success) {
-          request_certificationAlert();
+          sendOfferLetterAlert();
 
           _this.resetForm();
 
@@ -1487,7 +1513,7 @@ var List = /*#__PURE__*/function (_React$Component) {
         }
       }).then(function (res) {
         if (res.data.success) {
-          request_certificationAlert();
+          offerletterapproveAlert();
 
           _this.setState({
             key: 'home'
@@ -1522,6 +1548,11 @@ var List = /*#__PURE__*/function (_React$Component) {
 
           _this.setState({
             buttonName: 'Save'
+          });
+
+          _this.setState({
+            certificationButton: false,
+            apiload: false
           });
         }
       })["catch"](function (err) {

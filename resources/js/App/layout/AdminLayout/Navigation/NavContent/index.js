@@ -70,6 +70,7 @@ class NavContent extends Component {
         let RoleUser='';
 let employeeForm='';
 let checklist="";
+let employeeDetails='';
 let permissions = this.props.permissions;
 if(permissions){
     
@@ -105,23 +106,14 @@ if(permissions){
         
         if(pg.name=='employee_details.create'){
             if(pg.Ischeck){
-                
-                employeeForm +={
-                    id: 'EmployeeForms',
-                    title: 'Forms',
-                    type: 'collapse',
-                    icon: 'feather icon-menu',
-                    children: [
-                        {
-                            id: 'employee_details',
+                employeeDetails ={
+                    id: 'employee_details',
                             title: 'New Employee Form',
                             type: 'item',
                             url: '/services-starter/Employee-Details',
-                            
-                           
+                  
+
                         }
-                    ]
-                };
                 
             }
             
@@ -185,7 +177,7 @@ if(permissions){
                         url: '/dashboard',
                         icon: 'feather icon-home'
                     },
-                    RoleUser,employeeForm,checklist
+                    RoleUser,employeeForm,checklist,employeeDetails 
                     ]
             }]
             

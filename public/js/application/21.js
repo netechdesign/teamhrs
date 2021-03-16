@@ -2523,6 +2523,7 @@ var NavContent = /*#__PURE__*/function (_Component) {
       var RoleUser = '';
       var employeeForm = '';
       var checklist = "";
+      var employeeDetails = '';
       var permissions = this.props.permissions;
 
       if (permissions) {
@@ -2553,17 +2554,11 @@ var NavContent = /*#__PURE__*/function (_Component) {
 
             if (pg.name == 'employee_details.create') {
               if (pg.Ischeck) {
-                employeeForm += {
-                  id: 'EmployeeForms',
-                  title: 'Forms',
-                  type: 'collapse',
-                  icon: 'feather icon-menu',
-                  children: [{
-                    id: 'employee_details',
-                    title: 'New Employee Form',
-                    type: 'item',
-                    url: '/services-starter/Employee-Details'
-                  }]
+                employeeDetails = {
+                  id: 'employee_details',
+                  title: 'New Employee Form',
+                  type: 'item',
+                  url: '/services-starter/Employee-Details'
                 };
               }
             }
@@ -2608,7 +2603,7 @@ var NavContent = /*#__PURE__*/function (_Component) {
           classes: 'nav-item',
           url: '/dashboard',
           icon: 'feather icon-home'
-        }, RoleUser, employeeForm, checklist]
+        }, RoleUser, employeeForm, checklist, employeeDetails]
       }];
       var navItems = navigation.map(function (item) {
         switch (item.type) {
@@ -3318,6 +3313,12 @@ var AdminLayout = /*#__PURE__*/function (_Component) {
         if (roles != 1) {
           this.setState({
             defaultPath: '/application-form'
+          });
+        }
+      } else {
+        if (roles != 1) {
+          this.setState({
+            defaultPath: '/services-starter'
           });
         }
       }

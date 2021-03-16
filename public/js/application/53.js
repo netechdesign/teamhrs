@@ -1159,7 +1159,7 @@ var Home = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_9__["FileInput"], {
         name: "user_cv",
         id: "user_cv",
-        fileType: ["pdf", "docx"] // maxFileSize="10000 kb"
+        fileType: ["pdf", "docx", "xlsx", "jpeg", "jpg"] // maxFileSize="10000 kb"
         ,
         errorMessage: {
           required: "Please upload a file",

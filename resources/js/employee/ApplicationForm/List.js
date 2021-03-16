@@ -76,6 +76,38 @@ function request_certificationAlert(id) {
        
    });
 }
+function offerletterapproveAlert(id) {
+  let message = "offer letter has been approved successfully";
+   
+   PNotify.success({
+       title: 'Success',
+       text:message,
+       modules: {
+           Desktop: {
+               desktop: true
+           }
+       }
+   }).on('click', function(e) {
+       
+   });
+}
+
+
+function sendOfferLetterAlert(id) {
+  let message = "offer letter has been sent successfully";
+   
+   PNotify.success({
+       title: 'Success',
+       text:message,
+       modules: {
+           Desktop: {
+               desktop: true
+           }
+       }
+   }).on('click', function(e) {
+       
+   });
+}
 var oTable="";
 
 function atable() {
@@ -704,7 +736,7 @@ other_documentDelete =(element) =>{
         {headers:{'Accept':'application/json','Authorization':'Bearer '+auth_token}} 
     ).then(res =>{
                       if(res.data.success){
-                        request_certificationAlert();
+                        sendOfferLetterAlert();
                         this.resetForm();
                        this.setState({ key :'home'});
                          // console.log(res.data.data);
@@ -843,7 +875,7 @@ OfferlettersApproved = (id) =>{
          data.append('email', this.state.application_Forms.email);
          axios.post(baseurl+"/api/approvedOfferLetter",data,{headers:{'Accept':'application/json','Authorization':'Bearer '+auth_token}}).then(res =>{
                   if(res.data.success){
-                    request_certificationAlert();
+                    offerletterapproveAlert();
                     this.setState({ key :'home'});
                      // console.log(res.data.data);
                      this.setState({certificationButton:false,apiload:false});
@@ -866,7 +898,7 @@ OfferlettersApproved = (id) =>{
                     });
                     this.setState({formSubmitting:false});
                     this.setState({buttonName:'Save'});
-                    
+                    this.setState({certificationButton:false,apiload:false});
                   }
              }
   )

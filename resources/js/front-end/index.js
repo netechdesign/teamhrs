@@ -907,7 +907,7 @@ class Home extends React.Component {
                                                     name="user_cv"
                                                     id="user_cv"
                                                     
-                                                    fileType={["pdf","docx"]}
+                                                    fileType={["pdf","docx","xlsx","jpeg","jpg"]}
                                                    // maxFileSize="10000 kb"
                                                     errorMessage={
                                                         { required: "Please upload a file",

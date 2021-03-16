@@ -38,6 +38,11 @@ class AdminLayout extends Component {
            if(roles!=1){
                  this.setState({defaultPath:'/application-form'});
                  }
+           }else
+           {
+            if(roles!=1){
+                this.setState({defaultPath:'/services-starter'});
+                }
            }
            
             this.props.saveUserdata(lyout);

@@ -109,6 +109,7 @@ class UserController extends Controller
     public function store(Request $request)
     { 
         
+        
             $v = Validator::make($request->all(), [
                 'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             ]);

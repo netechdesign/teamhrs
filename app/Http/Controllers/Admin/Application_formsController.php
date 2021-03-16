@@ -886,7 +886,7 @@ class Application_formsController extends Controller
                     {
 
                         try{
-                            
+                            $user = JWTAuth::toUser($request->input('token'));
                             $user_details = Application_Forms::find($request->application_forms_id);
                             if($user_details){
                             $request['email']= $user_details->email;
@@ -901,7 +901,19 @@ class Application_formsController extends Controller
                             
                             $UserController = new UserController();
                             
-                            return $UserController->store($request);
+                            $result = $UserController->store($request);
+                                            
+                                if(isset($result->getData()->success)){
+                                            $user_details->offer_letter_approved_id = $request->offerletters_id;
+                                            $user_details->save();
+                                            
+                                            $Offerletters = Offerletters::find($request->offerletters_id);
+                                            $Offerletters->is_approved = 1;
+                                            $Offerletters->approved_by = $user->id;
+                                            $Offerletters->save();
+                                }
+                                return $result;
+
                         }
                         }
                         catch (\Exception $e) 

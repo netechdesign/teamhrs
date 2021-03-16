@@ -33,6 +33,8 @@ class Offerletters extends Model
      'town_or_city', 
      'is_delete',
      'created_by_name',
+     'is_approved',
+     'approved_by',
      'created_by',
      'updated_by'];
 }
