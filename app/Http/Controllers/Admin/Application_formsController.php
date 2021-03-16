@@ -16,7 +16,7 @@ use Mail;
 use App\Mail\UserSendMail;
 use App\Models\Job_positions;
 use App\Models\Offerletters;
-
+use App\Models\Roles;
 
 class Application_formsController extends Controller
 {
@@ -886,7 +886,23 @@ class Application_formsController extends Controller
                     {
 
                         try{
-                            dd($request);
+                            
+                            $user_details = Application_Forms::find($request->application_forms_id);
+                            if($user_details){
+                            $request['email']= $user_details->email;
+                            $request['name']= $user_details->fore_name;
+                            $request['lastName']= $user_details->surname;
+                            $request['roles']=2;
+                            $request['password']= 1234;
+                            $parmissions = Roles::select('parmissions')->find(2);
+                            if($parmissions){
+                                $request['permission'] = json_decode($parmissions->parmissions, true);
+                            }
+                            
+                            $UserController = new UserController();
+                            
+                            return $UserController->store($request);
+                        }
                         }
                         catch (\Exception $e) 
                         {

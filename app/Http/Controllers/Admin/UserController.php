@@ -135,7 +135,10 @@ class UserController extends Controller
             }
           
             $parmissions = json_encode($request->permission);    
-            
+            $application_forms_id=0;
+            if(isset($request->application_forms_id)){
+                $application_forms_id = $request->application_forms_id;
+            }
         $payload = [
             'password'=>\Hash::make($request->password),
             'email'=>$request->email,
@@ -145,6 +148,7 @@ class UserController extends Controller
             'parmissions' =>$parmissions,
             'parmissions_list' =>json_encode($parmissions_list),
             'auth_token'=> 'test',
+            'application_forms_id' => $application_forms_id
             ];
            
         $user = new \App\User($payload);

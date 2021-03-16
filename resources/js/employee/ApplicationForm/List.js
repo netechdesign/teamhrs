@@ -840,6 +840,7 @@ OfferlettersApproved = (id) =>{
          this.setState({certificationButton:true,apiload:true});
          data.append('offerletters_id', id);
          data.append('application_forms_id', this.state.application_Forms.id);
+         data.append('email', this.state.application_Forms.email);
          axios.post(baseurl+"/api/approvedOfferLetter",data,{headers:{'Accept':'application/json','Authorization':'Bearer '+auth_token}}).then(res =>{
                   if(res.data.success){
                     request_certificationAlert();

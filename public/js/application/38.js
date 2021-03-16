@@ -1479,6 +1479,7 @@ var List = /*#__PURE__*/function (_React$Component) {
 
       data.append('offerletters_id', id);
       data.append('application_forms_id', _this.state.application_Forms.id);
+      data.append('email', _this.state.application_Forms.email);
       axios__WEBPACK_IMPORTED_MODULE_7___default.a.post(baseurl + "/api/approvedOfferLetter", data, {
         headers: {
           'Accept': 'application/json',
