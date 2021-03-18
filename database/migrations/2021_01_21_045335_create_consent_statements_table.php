@@ -23,6 +23,8 @@ class CreateConsentStatementsTable extends Migration
                     $table->longText('screening_employee_signature')->nullable();
                     $table->date('screening_Date')->nullable();
                     $table->string('i_confirm')->nullable();
+                    $table->string('is_produce_my_certificate')->nullable();
+                    $table->string('is_drug_and_alcohol')->nullable();
                     $table->string('confirm_employee_name')->nullable();
                     $table->longText('confirm_employee_signature')->nullable();
                     $table->date('confirm_Date')->nullable();

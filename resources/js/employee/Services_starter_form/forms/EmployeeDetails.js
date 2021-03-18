@@ -267,7 +267,7 @@ address:'',
         let index = element.target.id;
         
         if(element.target.name=='house_no'){
-           this.state.address_history[index].house_no = element.target.value;
+          // this.state.address_history[index].house_no = element.target.value;
         }
         if(element.target.name=='street'){
             this.state.address_history[index].street = element.target.value;
@@ -421,11 +421,11 @@ address:'',
             street_line +=' ,'+data.line_4;
           }
           if(data.building_number!=''){
-            self.state.address_history[index].house_no = data.building_number;
+           // self.state.address_history[index].house_no = data.building_number;
           }else{
            
           }
-          self.state.address_history[index].house_no = data.building_number;
+         // self.state.address_history[index].house_no = data.building_number;
           self.state.address_history[index].street = street_line;
           self.state.address_history[index].city = data.town_or_city;
           self.state.address_history[index].county = data.county;
@@ -458,7 +458,7 @@ address:'',
             })
           }
           let houseno =  data.building_number;//+' '+data.building_name;
-          self.setState({house_no:houseno});
+         // self.setState({house_no:houseno});
           let street_line='';
           if(data.line_1!=''){
             street_line = data.line_1;
@@ -480,7 +480,7 @@ address:'',
           self.setState({county:data.county});
           self.setState({postcode:data.postcode});
             
-          self.setState({address:fullAddress+' '+data.postcode});
+         // self.setState({address:fullAddress+' '+data.postcode});
           
           // data.latitude data.longitude
           $( "#location" ).val('');
@@ -574,7 +574,7 @@ address:'',
                             />
                         <ul className="list-group" id={"addressList"+index} style={{display: 'none',position: 'absolute',zIndex: '100',height:'600%',overflowY:'overlay'}}></ul>
                         </Form.Group>
-               
+                    {/*
                     <Form.Group as={Col} md="2">
                         <Form.Label htmlFor="house_no">House no</Form.Label>
                         <TextInput
@@ -589,7 +589,7 @@ address:'',
                             autoComplete="off"
                         />
                     </Form.Group>
-
+                    */}
                     <Form.Group as={Col} md="4">
                         <Form.Label htmlFor="mobile_number">Street</Form.Label>
                         <TextInput
@@ -756,13 +756,22 @@ address:'',
                                                     </Form.Group>
                                                     
                                                     <Form.Group as={Col} md="2">
-                                                <Form.Label htmlFor="region">start date</Form.Label>
-                                              
+                                                <Form.Label htmlFor="region">Start Date</Form.Label>
+                                                {/*                                             
                                                 <Datetime closeOnSelect={true} onChange={this.startdateChange} value={this.state.start_date}  dateFormat="D/M/Y" timeFormat={false}  maxDate={new Date()} inputProps={{required:'required',name:"start_date",placeholder: 'Select Date',autoComplete:'off'}} />
-                                            
+                                                */}
+                                                <TextInput
+                                                            name="start_date"
+                                                            id="start_date"
+                                                            type="text"
+                                                            placeholder="start date"
+                                                            required
+                                                            value={this.state.start_date}
+                                                            autoComplete="off"
+                                                        />
                                             </Form.Group>
 
-                                                    <Form.Group as={Col} md="2">
+                                                {/*    <Form.Group as={Col} md="2">
                                                               <Form.Label htmlFor="region">region</Form.Label>
                                                         
                                                         <TextInput
@@ -777,6 +786,7 @@ address:'',
                                                         />
                                                         
                                                     </Form.Group>
+                                                */}
                                                     
                                         </Form.Row>
                                         <Form.Row>   
@@ -851,9 +861,10 @@ address:'',
                                                     
                                                 </Form.Group>
                                                     </Form.Row>
-                                         <Form.Row>   
-                                                    <Form.Group as={Col} md="2">
-                                                    
+                                         
+                                        <Form.Row>  
+                                        <Form.Group as={Col} md="2">
+                                        <Form.Label htmlFor="house_no">&nbsp;</Form.Label>
                                                     <TextInput
                                                             name="location"
                                                             id="location"
@@ -863,10 +874,8 @@ address:'',
                                                             autoComplete="off"
                                                         />
                                                      <ul className="list-group" id="addressList" style={{display: 'none',position: 'absolute',zIndex: '100',height:'600%',overflowY:'overlay'}}></ul>
-                                                    </Form.Group>
-                                                    </Form.Row>
-                                        <Form.Row>   
-                                <Form.Group as={Col} md="2">
+                                                    </Form.Group> 
+                                           {/* <Form.Group as={Col} md="2">
                                                         <Form.Label htmlFor="house_no">House no</Form.Label>
                                                         <TextInput
                                                             name="house_no"
@@ -879,7 +888,7 @@ address:'',
                                                             autoComplete="off"
                                                         />
                                                     </Form.Group>
-
+                                            */}
 <Form.Group as={Col} md="4">
                                                         <Form.Label htmlFor="mobile_number">Street</Form.Label>
                                                         <TextInput
@@ -935,6 +944,8 @@ address:'',
                                                             autoComplete="off"
                                                         />
                                                     </Form.Group>
+                                        </Form.Row>
+                                        <Form.Row> 
 
 <Form.Group as={Col} md="2">
                                                         <Form.Label htmlFor="time_at_address_year">Time at Address</Form.Label>
@@ -954,6 +965,8 @@ address:'',
                                                                 <option value="5">5</option>
 
                                                         </SelectGroup>
+                                                        { (this.state.total_history_year?<div style={{display:'block'}} class="invalid-feedback">5 year history required</div>:'') }
+                                                        
                                                     </Form.Group>
 
 <Form.Group as={Col} md="1">

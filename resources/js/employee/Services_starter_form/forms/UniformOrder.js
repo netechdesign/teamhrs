@@ -316,17 +316,21 @@ class UniformOrder extends React.Component {
                                                     </Form.Group>
                                                     <Form.Group as={Col} md="2">
                                                         <Form.Label htmlFor="trouser_length">length</Form.Label>
-                                                        <TextInput
-                                                            name="trouser_length"
-                                                            id="trouser_length"
-                                                            type="number"
-                                                            step=".01"
-                                                            placeholder="length"
-                                                            onChange={this.handleChange}
-                                                            required
-                                                            value={this.state.trouser_length}
-                                                            autoComplete="off"
-                                                        />
+                                                       
+                                                        <div className="custom-controls-stacked radio">
+                                                            <Radio.RadioGroup 
+                                                                name="trouser_length"
+                                                                required
+                                                                valueSelected={this.state.trouser_length}
+                                                                inline={true}
+                                                                onChange={this.handleChange}>
+                                                                <Radio.RadioItem  id="trouser_lengthS" label="Short" value="Short" />
+                                                                <Radio.RadioItem id="trouser_lengthR" label="Regular" value="Regular" />
+                                                                <Radio.RadioItem id="trouser_lengthL" label="Long" value="Long" />
+                                                                
+
+                                                            </Radio.RadioGroup>
+                                                        </div>
                                                     </Form.Group>
         
         </Form.Row>

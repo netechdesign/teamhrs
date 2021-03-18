@@ -9,7 +9,7 @@ use DB;
 use App\Models\Employee_details;
 use App\Models\Application_Forms;
 use App\Models\Address_histories;
-
+use App\Models\Offerletters;
 class Employee_detailsController extends Controller
 {
     /**
@@ -105,6 +105,7 @@ class Employee_detailsController extends Controller
             $Employee_details->date_of_birth = date('d/m/Y',strtotime($Employee_details->date_of_birth));
         }
     }else{
+
         $Application_Forms = Application_Forms::where('user_id',$id)->first();
         $Employee_details= new \stdClass();
         $Employee_details->first_name =	$Application_Forms->fore_name;
@@ -112,6 +113,13 @@ class Employee_detailsController extends Controller
         $Employee_details->last_name= $Application_Forms->surname;
         $Employee_details->getaddress_id= $Application_Forms->getaddress_id;
         $Employee_details->telephone_number= $Application_Forms->telephone_number; 
+        if($Application_Forms->offer_letter_approved_id)
+          {
+            $Offerletters = Offerletters::select('confirm_Date')->find($Application_Forms->offer_letter_approved_id);
+            if($Offerletters){
+                 $Employee_details->start_date= $Offerletters->confirm_Date;
+            }
+          }
         
     }
         return response()->json(array('success' => true,'Employee_details'=> $Employee_details));
@@ -149,7 +157,9 @@ class Employee_detailsController extends Controller
         //
  
         try{
-        
+            $user = JWTAuth::toUser($request->input('token'));
+            $request->request->add(['updated_by'=> $user->id]);
+            
  
             $Employee_details = Employee_details::find($id);
             $Employee_details->first_name = $request->first_name;
@@ -184,7 +194,7 @@ class Employee_detailsController extends Controller
             $Employee_details->relationship = $request->relationship;
             $Employee_details->contact_number = $request->contact_number;
             $Employee_details->address = $request->address;
-
+            $Uniform_orders->updated_by = $request->updated_by;
 
             if($Employee_details->save()){
               

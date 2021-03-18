@@ -50,6 +50,8 @@ class ConsentStatement extends React.Component {
         showModal: false,
         visible : true,
         i_confirm:false,
+        is_produce_my_certificate:false,
+        is_drug_and_alcohol:false,
         formSubmitting: false,
         buttonName:'Save',
     };
@@ -195,7 +197,10 @@ class ConsentStatement extends React.Component {
         this.alreadyAdded();
         const {name,email} = localStorage.getItem('userData')? JSON.parse(localStorage.getItem('userData')).user : 'Null';
         let emailaddress = email;
+        this.setState({recruitment_employee_name: name,screening_employee_name: name,confirm_employee_name: name})
         
+        
+         
     }
     recruitment_employee = {}
     recruitment_employee_trim = () => {
@@ -301,7 +306,11 @@ class ConsentStatement extends React.Component {
                                         </Form.Group>
                                         </Form.Row>
                                     <Form.Row style={style.rowline} >
-                                        <Form.Group as={Col} md="12">I also hereby agree to produce my certificate if requested to do so during the recruitment process.</Form.Group>
+                                        <Form.Group as={Col} md="12">
+                                        <div className="checkbox">
+                                        <Checkbox name="is_produce_my_certificate" label="I also hereby agree to produce my certificate if requested to do so during the recruitment process." id="is_produce_my_certificate" value={this.state.is_produce_my_certificate} required onChange={this.handleCheckboxChange} />
+                                          </div>
+                                            </Form.Group>
                                         <Form.Group as={Col} md="3">
                                                               <Form.Label htmlFor="recruitment_employee_name">Employee Name</Form.Label>
                                                             
@@ -336,7 +345,11 @@ class ConsentStatement extends React.Component {
 
 
                                     <Form.Row style={style.rowline} >
-                                        <Form.Group as={Col} md="12">Should your role require drug and alcohol screening tests you understand and consent to such screening tests for the detection of drugs and alcohol from a sample of saliva</Form.Group>
+                                        <Form.Group as={Col} md="12">
+                                        <div className="checkbox">
+                                        <Checkbox name="is_drug_and_alcohol" label="Should your role require drug and alcohol screening tests you understand and consent to such screening tests for the detection of drugs and alcohol from a sample of saliva." id="is_drug_and_alcohol" value={this.state.is_drug_and_alcohol} required onChange={this.handleCheckboxChange} />
+                                        </div>
+                                            </Form.Group>
                                         <Form.Group as={Col} md="3">
                                                               <Form.Label htmlFor="screening_employee_name">Employee Name</Form.Label>
                                                             

@@ -902,9 +902,12 @@ class Application_formsController extends Controller
                             $UserController = new UserController();
                             
                             $result = $UserController->store($request);
-                                            
+                            
                                 if(isset($result->getData()->success)){
                                             $user_details->offer_letter_approved_id = $request->offerletters_id;
+                                            if(isset($result->getData()->data)){
+                                                $user_details->user_id = $result->getData()->data->id;
+                                            }
                                             $user_details->save();
                                             
                                             $Offerletters = Offerletters::find($request->offerletters_id);

@@ -113,7 +113,10 @@ class Bank_detailsController extends Controller
         //
  
         try{
-        
+            $user = JWTAuth::toUser($request->input('token'));
+            $request->request->add(['updated_by'=> $user->id]);
+            
+            
  
             $Bank_details = Bank_details::find($id);
             
@@ -122,7 +125,8 @@ class Bank_detailsController extends Controller
             $Bank_details->name_of_account_holder = $request->name_of_account_holder;
             $Bank_details->sort_code = $request->sort_code;
             $Bank_details->account_number = $request->account_number;
-         
+            $Bank_details->updated_by = $request->updated_by;
+            
             if($Bank_details->save()){
               
                 return response()->json(array('success' => true,

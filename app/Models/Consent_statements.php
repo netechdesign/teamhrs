@@ -17,6 +17,8 @@ class Consent_statements extends Model
                             'screening_employee_signature',
                             'screening_Date',
                             'i_confirm',
+                            'is_produce_my_certificate',
+                            'is_drug_and_alcohol',
                             'confirm_employee_name',
                             'confirm_employee_signature',
                             'confirm_Date',

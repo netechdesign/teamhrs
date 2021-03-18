@@ -113,7 +113,10 @@ class Uniform_ordersController extends Controller
         //
         try{
         
- 
+            $user = JWTAuth::toUser($request->input('token'));
+            $request->request->add(['updated_by'=> $user->id]);
+            
+            
             $Uniform_orders = Uniform_orders::find($id);
             
             $Uniform_orders->polo_shirts = $request->polo_shirts;
@@ -123,6 +126,8 @@ class Uniform_ordersController extends Controller
             $Uniform_orders->glove_size = $request->glove_size;
             $Uniform_orders->trouser_waist = $request->trouser_waist;
             $Uniform_orders->trouser_length = $request->trouser_length;
+            $Uniform_orders->updated_by = $request->updated_by;
+            
             if($Uniform_orders->save()){
               
                 return response()->json(array('success' => true,

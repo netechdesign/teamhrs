@@ -22,7 +22,7 @@ class CreateUniformOrdersTable extends Migration
                     $table->float('shoe_size')->nullable();
                     $table->float('glove_size')->nullable();
                     $table->float('trouser_waist')->nullable();
-                    $table->float('trouser_length')->nullable();
+                    $table->string('trouser_length')->nullable();
                     $table->integer('created_by')->nullable();
                     $table->integer('updated_by')->nullable();
                     $table->foreign('user_id')->references('id')->on('users')->onUpdate('RESTRICT')->onDelete('CASCADE');

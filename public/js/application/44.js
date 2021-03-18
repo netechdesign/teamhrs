@@ -423,6 +423,8 @@ var ConsentStatement = /*#__PURE__*/function (_React$Component) {
       showModal: false,
       visible: true,
       i_confirm: false,
+      is_produce_my_certificate: false,
+      is_drug_and_alcohol: false,
       formSubmitting: false,
       buttonName: 'Save'
     });
@@ -749,6 +751,11 @@ var ConsentStatement = /*#__PURE__*/function (_React$Component) {
           email = _ref3.email;
 
       var emailaddress = email;
+      this.setState({
+        recruitment_employee_name: name,
+        screening_employee_name: name,
+        confirm_employee_name: name
+      });
     }
   }, {
     key: "render",
@@ -773,7 +780,16 @@ var ConsentStatement = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
         as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
         md: "12"
-      }, "I also hereby agree to produce my certificate if requested to do so during the recruitment process."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "checkbox"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["Checkbox"], {
+        name: "is_produce_my_certificate",
+        label: "I also hereby agree to produce my certificate if requested to do so during the recruitment process.",
+        id: "is_produce_my_certificate",
+        value: this.state.is_produce_my_certificate,
+        required: true,
+        onChange: this.handleCheckboxChange
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
         as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
         md: "3"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
@@ -838,7 +854,16 @@ var ConsentStatement = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
         as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
         md: "12"
-      }, "Should your role require drug and alcohol screening tests you understand and consent to such screening tests for the detection of drugs and alcohol from a sample of saliva"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "checkbox"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["Checkbox"], {
+        name: "is_drug_and_alcohol",
+        label: "Should your role require drug and alcohol screening tests you understand and consent to such screening tests for the detection of drugs and alcohol from a sample of saliva.",
+        id: "is_drug_and_alcohol",
+        value: this.state.is_drug_and_alcohol,
+        required: true,
+        onChange: this.handleCheckboxChange
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
         as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
         md: "3"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {

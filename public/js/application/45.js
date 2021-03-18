@@ -642,8 +642,7 @@ var EmployeeDetails = /*#__PURE__*/function (_React$Component) {
     _defineProperty(_assertThisInitialized(_this), "addressHistoryChange", function (element) {
       var index = element.target.id;
 
-      if (element.target.name == 'house_no') {
-        _this.state.address_history[index].house_no = element.target.value;
+      if (element.target.name == 'house_no') {// this.state.address_history[index].house_no = element.target.value;
       }
 
       if (element.target.name == 'street') {
@@ -798,11 +797,10 @@ var EmployeeDetails = /*#__PURE__*/function (_React$Component) {
             street_line += ' ,' + data.line_4;
           }
 
-          if (data.building_number != '') {
-            self.state.address_history[index].house_no = data.building_number;
-          } else {}
+          if (data.building_number != '') {// self.state.address_history[index].house_no = data.building_number;
+          } else {} // self.state.address_history[index].house_no = data.building_number;
 
-          self.state.address_history[index].house_no = data.building_number;
+
           self.state.address_history[index].street = street_line;
           self.state.address_history[index].city = data.town_or_city;
           self.state.address_history[index].county = data.county;
@@ -836,10 +834,8 @@ var EmployeeDetails = /*#__PURE__*/function (_React$Component) {
           }
 
           var houseno = data.building_number; //+' '+data.building_name;
+          // self.setState({house_no:houseno});
 
-          self.setState({
-            house_no: houseno
-          });
           var street_line = '';
 
           if (data.line_1 != '') {
@@ -868,10 +864,8 @@ var EmployeeDetails = /*#__PURE__*/function (_React$Component) {
           });
           self.setState({
             postcode: data.postcode
-          });
-          self.setState({
-            address: fullAddress + ' ' + data.postcode
-          }); // data.latitude data.longitude
+          }); // self.setState({address:fullAddress+' '+data.postcode});
+          // data.latitude data.longitude
 
           $("#location").val('');
           $('#addressList').html('').hide();
@@ -1033,7 +1027,7 @@ var EmployeeDetails = /*#__PURE__*/function (_React$Component) {
       var _this2 = this;
 
       var address_historyList = this.state.address_history.map(function (item, index) {
-        var _React$createElement, _React$createElement2, _React$createElement3, _React$createElement4, _React$createElement5, _React$createElement6, _React$createElement7, _React$createElement8;
+        var _React$createElement, _React$createElement2, _React$createElement3, _React$createElement4, _React$createElement5, _React$createElement6, _React$createElement7;
 
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           key: index
@@ -1075,45 +1069,33 @@ var EmployeeDetails = /*#__PURE__*/function (_React$Component) {
           }
         })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
           as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-          md: "2"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
-          htmlFor: "house_no"
-        }, "House no"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["TextInput"], (_React$createElement2 = {
-          name: "house_no",
-          id: "house_no",
-          type: "text",
-          placeholder: "house no"
-        }, _defineProperty(_React$createElement2, "id", index), _defineProperty(_React$createElement2, "onChange", function onChange(e) {
-          return _this2.addressHistoryChange(e);
-        }), _defineProperty(_React$createElement2, "value", item.house_no), _defineProperty(_React$createElement2, "autoComplete", "off"), _React$createElement2))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-          as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
           md: "4"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
           htmlFor: "mobile_number"
-        }, "Street"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["TextInput"], (_React$createElement3 = {
+        }, "Street"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["TextInput"], (_React$createElement2 = {
           name: "street",
           id: "street",
           type: "text"
-        }, _defineProperty(_React$createElement3, "id", index), _defineProperty(_React$createElement3, "placeholder", "street"), _defineProperty(_React$createElement3, "onChange", function onChange(e) {
+        }, _defineProperty(_React$createElement2, "id", index), _defineProperty(_React$createElement2, "placeholder", "street"), _defineProperty(_React$createElement2, "onChange", function onChange(e) {
           return _this2.addressHistoryChange(e);
-        }), _defineProperty(_React$createElement3, "required", true), _defineProperty(_React$createElement3, "value", item.street), _defineProperty(_React$createElement3, "autoComplete", "off"), _React$createElement3))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
+        }), _defineProperty(_React$createElement2, "required", true), _defineProperty(_React$createElement2, "value", item.street), _defineProperty(_React$createElement2, "autoComplete", "off"), _React$createElement2))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
           as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
           md: "2"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
           htmlFor: "mobile_number"
-        }, "City"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["TextInput"], (_React$createElement4 = {
+        }, "City"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["TextInput"], (_React$createElement3 = {
           name: "city",
           id: "city",
           type: "text",
           placeholder: "city"
-        }, _defineProperty(_React$createElement4, "id", index), _defineProperty(_React$createElement4, "onChange", function onChange(e) {
+        }, _defineProperty(_React$createElement3, "id", index), _defineProperty(_React$createElement3, "onChange", function onChange(e) {
           return _this2.addressHistoryChange(e);
-        }), _defineProperty(_React$createElement4, "required", true), _defineProperty(_React$createElement4, "value", item.city), _defineProperty(_React$createElement4, "autoComplete", "off"), _React$createElement4))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
+        }), _defineProperty(_React$createElement3, "required", true), _defineProperty(_React$createElement3, "value", item.city), _defineProperty(_React$createElement3, "autoComplete", "off"), _React$createElement3))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
           as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
           md: "2"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
           htmlFor: "mobile_number"
-        }, "County"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["TextInput"], (_React$createElement5 = {
+        }, "County"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["TextInput"], (_React$createElement4 = {
           name: "county",
           id: "county",
           type: "text",
@@ -1123,12 +1105,12 @@ var EmployeeDetails = /*#__PURE__*/function (_React$Component) {
           },
           required: true,
           value: item.county
-        }, _defineProperty(_React$createElement5, "id", index), _defineProperty(_React$createElement5, "autoComplete", "off"), _React$createElement5))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
+        }, _defineProperty(_React$createElement4, "id", index), _defineProperty(_React$createElement4, "autoComplete", "off"), _React$createElement4))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
           as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
           md: "2"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
           htmlFor: "mobile_number"
-        }, "Postcode"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["TextInput"], (_React$createElement6 = {
+        }, "Postcode"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["TextInput"], (_React$createElement5 = {
           name: "postcode",
           id: "postcode",
           type: "text",
@@ -1138,20 +1120,20 @@ var EmployeeDetails = /*#__PURE__*/function (_React$Component) {
           },
           required: true,
           value: item.postcode
-        }, _defineProperty(_React$createElement6, "id", index), _defineProperty(_React$createElement6, "autoComplete", "off"), _React$createElement6))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
+        }, _defineProperty(_React$createElement5, "id", index), _defineProperty(_React$createElement5, "autoComplete", "off"), _React$createElement5))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
           as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
           md: "2"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
           htmlFor: "time_at_address_year"
-        }, "Time at Address"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["SelectGroup"], (_React$createElement7 = {
+        }, "Time at Address"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["SelectGroup"], (_React$createElement6 = {
           name: "time_at_address_year",
           id: "time_at_address_year",
           value: item.time_at_address_year,
           required: true,
           errorMessage: "Please select a year."
-        }, _defineProperty(_React$createElement7, "id", index), _defineProperty(_React$createElement7, "onChange", function onChange(e) {
+        }, _defineProperty(_React$createElement6, "id", index), _defineProperty(_React$createElement6, "onChange", function onChange(e) {
           return _this2.addressHistoryChange(e);
-        }), _React$createElement7), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        }), _React$createElement6), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
           value: ""
         }, "select a Year"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
           value: "1"
@@ -1168,13 +1150,13 @@ var EmployeeDetails = /*#__PURE__*/function (_React$Component) {
           md: "1"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
           htmlFor: "mobile_number"
-        }, "\xA0"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["SelectGroup"], (_React$createElement8 = {
+        }, "\xA0"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["SelectGroup"], (_React$createElement7 = {
           name: "time_at_address_month",
           id: "time_at_address_month",
           value: item.time_at_address_month
-        }, _defineProperty(_React$createElement8, "id", index), _defineProperty(_React$createElement8, "errorMessage", "Month."), _defineProperty(_React$createElement8, "onChange", function onChange(e) {
+        }, _defineProperty(_React$createElement7, "id", index), _defineProperty(_React$createElement7, "errorMessage", "Month."), _defineProperty(_React$createElement7, "onChange", function onChange(e) {
           return _this2.addressHistoryChange(e);
-        }), _React$createElement8), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        }), _React$createElement7), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
           value: ""
         }, "Please select a Month"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
           value: "1"
@@ -1252,32 +1234,13 @@ var EmployeeDetails = /*#__PURE__*/function (_React$Component) {
         md: "2"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
         htmlFor: "region"
-      }, "start date"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_datetime__WEBPACK_IMPORTED_MODULE_2___default.a, {
-        closeOnSelect: true,
-        onChange: this.startdateChange,
-        value: this.state.start_date,
-        dateFormat: "D/M/Y",
-        timeFormat: false,
-        maxDate: new Date(),
-        inputProps: {
-          required: 'required',
-          name: "start_date",
-          placeholder: 'Select Date',
-          autoComplete: 'off'
-        }
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "2"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
-        htmlFor: "region"
-      }, "region"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["TextInput"], {
-        name: "region",
-        id: "region",
+      }, "Start Date"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["TextInput"], {
+        name: "start_date",
+        id: "start_date",
         type: "text",
-        placeholder: "region",
-        onChange: this.handleChange,
+        placeholder: "start date",
         required: true,
-        value: this.state.region,
+        value: this.state.start_date,
         autoComplete: "off"
       }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Row, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
         as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
@@ -1363,7 +1326,9 @@ var EmployeeDetails = /*#__PURE__*/function (_React$Component) {
       }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Row, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
         as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
         md: "2"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["TextInput"], {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
+        htmlFor: "house_no"
+      }, "\xA0"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["TextInput"], {
         name: "location",
         id: "location",
         type: "text",
@@ -1380,19 +1345,6 @@ var EmployeeDetails = /*#__PURE__*/function (_React$Component) {
           height: '600%',
           overflowY: 'overlay'
         }
-      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Row, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "2"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
-        htmlFor: "house_no"
-      }, "House no"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["TextInput"], {
-        name: "house_no",
-        id: "house_no",
-        type: "text",
-        placeholder: "house no",
-        onChange: this.handleChange,
-        value: this.state.house_no,
-        autoComplete: "off"
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
         as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
         md: "4"
@@ -1449,7 +1401,7 @@ var EmployeeDetails = /*#__PURE__*/function (_React$Component) {
         required: true,
         value: this.state.postcode,
         autoComplete: "off"
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Row, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
         as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
         md: "2"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
@@ -1473,7 +1425,12 @@ var EmployeeDetails = /*#__PURE__*/function (_React$Component) {
         value: "4"
       }, "4"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
         value: "5"
-      }, "5"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
+      }, "5")), this.state.total_history_year ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        style: {
+          display: 'block'
+        },
+        "class": "invalid-feedback"
+      }, "5 year history required") : ''), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
         as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
         md: "1"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
