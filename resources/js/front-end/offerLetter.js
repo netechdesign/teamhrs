@@ -467,7 +467,7 @@ class OfferLetter extends React.Component {
                                 
                         <p style={{textAlign:'center'}}><b>Employment with Bespoke Metering Solutions Limited. </b></p>
                         <p>
-                        As discussed, we are delighted to offer you employment as {this.state.job_title_text}. This offer is conditional upon Bespoke Metering Solutions Limited receiving satisfactory results from necessary pre-employment checks, which may include a basic DBS check depending on the nature of your role.
+                        As discussed, we are delighted to offer you employment as {this.state.job_title_text}. This offer is conditional upon Bespoke Metering Solutions Limited receiving satisfactory results from necessary pre-employment checks and assessments, which may include a basic DBS check depending on the nature of your role.
                         </p>
                         <p>Employment with the Bespoke Metering Solutions Limited will commence on the date shown in the Schedule. The first six months of your contract will be treated as a probationary period during which time Bespoke Metering Solutions Limited or yourself may terminate your employment by the notice period stated in your contract. 
                         </p>
@@ -475,7 +475,7 @@ class OfferLetter extends React.Component {
                         Your basic remuneration at the commencement of your employment is as shown in the Schedule. Your entitlement to salary accrues daily, payable monthly in arrears on the last working day of the month, directly into your bank or building society account.
                         </p>
                         <p>
-                        Your paid holiday entitlement will be at the rate of 28 days per year (increasing to 31 days from 1st April 2021), inclusive of statutory bank holidays. Your holiday accrues daily. If you work part-time your holiday entitlement will be on a pro-rata basis.
+                        Your paid holiday entitlement will be at the rate of 31 days per year, inclusive of statutory bank holidays. Your holiday accrues daily. If you work part-time your holiday entitlement will be on a pro-rata basis.
                         </p>
                         <p>
                         Full terms of employment are available in the Employee Handbook, which will be made available to you. 
@@ -606,7 +606,7 @@ class OfferLetter extends React.Component {
                         <li style={{marginTop:'20px'}}><b>Holiday and holiday pay</b>
                             <ol>
                               <li>The holiday year runs from 1st April to 31st March. </li>
-                              <li>From the commencement of your employment, your paid holiday entitlement will be at the rate of 28 days per year, inclusive of statutory bank holidays. Your holiday accrues daily. If you work part-time your holiday entitlement will be on a pro-rata basis.</li>
+                              <li>From the commencement of your employment, your paid holiday entitlement will be at the rate of 31 days per year, inclusive of statutory bank holidays. Your holiday accrues daily. If you work part-time your holiday entitlement will be on a pro-rata basis.</li>
                               <li>Holiday may be taken only at times convenient to the Employer as previously arranged by notice. Further details of the notice arrangements can be found in the Employer's Holiday Policy which is contained in the Employee Handbook.</li>
                              <li>Holiday not taken by 31st March may not be carried forward to the following holiday year without the Employer's written permission. Payment will not be made for holiday not taken.</li>
                              <li>On termination of your employment, any holiday entitlement untaken but accrued in the current holiday year, will be paid by the Employer. The amount of such sum shall be 1/260th of your full-time equivalent normal basic remuneration for each day accrued but untaken. Any holiday taken in excess of your pro rata entitlement will be deducted from your final salary payment.</li>
@@ -622,7 +622,7 @@ class OfferLetter extends React.Component {
                           <ol>
                               <li>A self-certification system operates for absence from work due to sickness or injury not exceeding seven days.</li>
                               <li> If you cannot attend work because of sickness or injury you must, unless there is some good reason to the contrary, follow absence reporting procedures. Failure to do so may result in sickness pay not being paid.</li>
-                                <li>Immediately on your return to work you must obtain, complete and return a return to work form and a self- certification form or doctor's fit note for periods exceeding seven days.</li>
+                                <li>Immediately on your return to work you must obtain, complete and return a return-to-work form and a self- certification form or doctor's fit note for periods exceeding seven days.</li>
                                <li>Sickness or injury absence exceeding seven days must be covered by a doctor's fit note.</li>
                                <li>All sickness or injury absence will be entered on your employment record.</li>
                                <li>If you are absent from work for four or more days by reason of sickness or injury, you are entitled to statutory sick pay (SSP); as per SSP rules the first 3 qualifying days are not paid for each period of absence.</li>
@@ -694,13 +694,13 @@ class OfferLetter extends React.Component {
                         <li style={{marginTop:'20px'}}><b>Employer’s property</b>
                            <ol>
                               <li>All documents, manuals, hardware and software provided for your use by the Employer, and any data or documents (including copies) produced, maintained or stored on our computer systems or other electronic equipment (including mobile phones), remain the property of the Employer.</li>
-                              <li>Any property of the Employer in your possession and any original or copy documents obtained by you in the course of you employment shall be returned to the Employer at any time on request and in any event prior to the termination of your employment with the Employer.</li> 
+                              <li>Any property of the Employer in your possession and any original or copy documents obtained by you in the course of your employment shall be returned to the Employer at any time on request and in any event prior to the termination of your employment with the Employer.</li> 
                            </ol>
                         </li>
                         <li style={{marginTop:'20px'}}><b>Use of communications</b>
                             <ol>
-                            <li>You consent to the Employer monitoring, checking, recording and reviewing telephone calls, computer files, records and emails and to carry out any other compliance, security or risk analysis checks the Employer considers necessary on Employers property.</li>
-                          <li>You understand and accept that you have no expectation of privacy in respect of any electronic, telephone or other communications made at work using or stored on Employers property.</li>
+                            <li>You consent to the Employer monitoring, checking, recording and reviewing telephone calls, computer files, records and emails and to carry out any other compliance, security or risk analysis checks the Employer considers necessary on Employer's property.</li>
+                          <li>You understand and accept that you have no expectation of privacy in respect of any electronic, telephone or other communications made at work using or stored on Employer's property.</li>
 
                             </ol>
                         </li>
