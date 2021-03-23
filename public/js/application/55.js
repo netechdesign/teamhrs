@@ -486,6 +486,9 @@ var submitCertification = /*#__PURE__*/function (_React$Component) {
       }, "Cma 1"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "custom-file"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_9__["FileInput"], {
+        style: {
+          margin: '0px'
+        },
         name: "cma_1",
         id: "cma_1",
         required: true,
@@ -508,6 +511,9 @@ var submitCertification = /*#__PURE__*/function (_React$Component) {
       }, "Met 1"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "custom-file"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_9__["FileInput"], {
+        style: {
+          margin: '0px'
+        },
         name: "met_1",
         id: "met_1",
         required: true,
@@ -530,6 +536,9 @@ var submitCertification = /*#__PURE__*/function (_React$Component) {
       }, "Single Phase"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "custom-file"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_9__["FileInput"], {
+        style: {
+          margin: '0px'
+        },
         name: "single_phase",
         id: "single_phase",
         required: true,
@@ -552,6 +561,9 @@ var submitCertification = /*#__PURE__*/function (_React$Component) {
       }, "Single off Multi"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "custom-file"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_9__["FileInput"], {
+        style: {
+          margin: '0px'
+        },
         name: "single_off_multi",
         id: "single_off_multi",
         required: true,
@@ -571,32 +583,44 @@ var submitCertification = /*#__PURE__*/function (_React$Component) {
         xs: 12
       }, _defineProperty(_React$createElement5, "xs", 12), _defineProperty(_React$createElement5, "sm", 12), _React$createElement5), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
         htmlFor: "upload_avatar"
-      }, "Driving Licence Check Code"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "custom-file"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_9__["FileInput"], {
-        name: "driving_licence_code",
-        id: "driving_licence_code",
-        required: true,
-        fileType: ["pdf", "docx", "jpeg", "jpg"] // maxFileSize="10000 kb"
-        ,
-        errorMessage: {
-          required: "Please upload a file",
-          fileType: "Only jpeg, pdf and word file is allowed" // maxFileSize: "Max file size is 10000 kb"
-
+      }, "Driving Licence"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_9__["TextInput"], {
+        style: {
+          margin: '0px'
         },
-        onChange: this.onUploadCv
-      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, (_React$createElement6 = {
+        name: "driving_licence_number",
+        placeholder: "Driving Licence Number",
+        required: true,
+        autoComplete: "off"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        style: {
+          display: 'block',
+          color: 'black'
+        },
+        "class": "invalid-feedback"
+      }, "Please enter Last Eight characters of Driving Licence Number")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, (_React$createElement6 = {
         as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
         md: "4",
         xs: 12
       }, _defineProperty(_React$createElement6, "xs", 12), _defineProperty(_React$createElement6, "sm", 12), _React$createElement6), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
         htmlFor: "upload_avatar"
       }, "\xA0"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_9__["TextInput"], {
+        style: {
+          margin: '0px'
+        },
         name: "driving_licence_code_text",
         placeholder: "Driving Licence Check Code",
         required: true,
         autoComplete: "off"
-      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Row, {
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        style: {
+          display: 'block',
+          color: 'black'
+        },
+        "class": "invalid-feedback"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "https://www.gov.uk/view-driving-licence",
+        target: "_blank"
+      }, "Please click here to get your check code from DVLA website."), " "))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Row, {
         style: style.rowline
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
         as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],

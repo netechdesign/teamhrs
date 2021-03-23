@@ -329,7 +329,7 @@ other_documentDelete =(element) =>{
                                             <Form.Group as={Col} md="4" xs={12} xs={12} sm={12}>
                                                 <Form.Label htmlFor="upload_avatar">Cma 1</Form.Label>
                                                 <div className="custom-file">
-                                                    <FileInput
+                                                    <FileInput style={{margin:'0px'}}
                                                     name="cma_1"
                                                     id="cma_1"
                                                     required
@@ -350,7 +350,7 @@ other_documentDelete =(element) =>{
                                             <Form.Group as={Col} md="4" xs={12} xs={12} sm={12}>
                                                 <Form.Label htmlFor="upload_avatar">Met 1</Form.Label>
                                                 <div className="custom-file">
-                                                    <FileInput
+                                                    <FileInput style={{margin:'0px'}}
                                                     name="met_1"
                                                     id="met_1"
                                                     required
@@ -372,7 +372,7 @@ other_documentDelete =(element) =>{
                                             <Form.Group as={Col} md="4" xs={12} xs={12} sm={12}>
                                                 <Form.Label htmlFor="upload_avatar">Single Phase</Form.Label>
                                                 <div className="custom-file">
-                                                    <FileInput
+                                                    <FileInput style={{margin:'0px'}}
                                                     name="single_phase"
                                                     id="single_phase"
                                                     required
@@ -394,7 +394,7 @@ other_documentDelete =(element) =>{
                                             <Form.Group as={Col} md="4" xs={12} xs={12} sm={12}>
                                                 <Form.Label htmlFor="upload_avatar">Single off Multi</Form.Label>
                                                 <div className="custom-file">
-                                                    <FileInput
+                                                    <FileInput style={{margin:'0px'}}
                                                     name="single_off_multi"
                                                     id="single_off_multi"
                                                     required
@@ -414,8 +414,8 @@ other_documentDelete =(element) =>{
 
 <Form.Row style={style.rowline} >
                                             <Form.Group as={Col} md="4" xs={12} xs={12} sm={12}>
-                                                <Form.Label htmlFor="upload_avatar">Driving Licence Check Code</Form.Label>
-                                                <div className="custom-file">
+                                                <Form.Label htmlFor="upload_avatar">Driving Licence</Form.Label>
+                                             {/*   <div className="custom-file">
                                                     <FileInput
                                                     name="driving_licence_code"
                                                     id="driving_licence_code"
@@ -431,16 +431,24 @@ other_documentDelete =(element) =>{
                                                     onChange={this.onUploadCv}
                                                     />
                                                 </div>
+                                                */}
+                                                <TextInput style={{margin:'0px'}}
+                                                          name="driving_licence_number"
+                                                         placeholder="Driving Licence Number"
+                                                        required
+                                                        autoComplete="off"
+                                                   />
+                                               <div style={{display:'block',color:'black'}} class="invalid-feedback">Please enter Last Eight characters of Driving Licence Number</div>
                                                 </Form.Group>
                                             <Form.Group as={Col} md="4" xs={12} xs={12} sm={12}>
                                             <Form.Label htmlFor="upload_avatar">&nbsp;</Form.Label>
-                                            <TextInput
+                                            <TextInput style={{margin:'0px'}}
                                                           name="driving_licence_code_text"
                                                          placeholder="Driving Licence Check Code"
                                                         required
                                                         autoComplete="off"
                                                    />
-                                               
+                                              <div style={{display:'block',color:'black'}} class="invalid-feedback"><a href="https://www.gov.uk/view-driving-licence" target="_blank" >Please click here to get your check code from DVLA website.</a> </div> 
                                             </Form.Group>
                                         </Form.Row>
                                         <Form.Row style={style.rowline} >
