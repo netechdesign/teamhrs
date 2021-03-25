@@ -22,14 +22,15 @@ const Oneform = React.lazy(() => import("./forms/EmployeeDetails"));
 const BankDetails = React.lazy(() => import("./forms/BankDetails"));
 const UniformOrder = React.lazy(() => import("./forms/UniformOrder"));
 const ConsentStatement = React.lazy(() => import("./forms/ConsentStatement"));
+const ProofOfIdentification = React.lazy(() => import("./forms/ProofOfIdentification"));
 
 const routes = [
     { path:'/services-starter/Employee-Details', exact:true, name:'Oneform',component:Oneform},
     { path:'/services-starter/Bank-Details',exact:true,name:'Services_starter_one',component:BankDetails},
     { path:'/services-starter/Uniform-Order',exact:true,name:'Services_starter_one',component:UniformOrder},
     { path:'/services-starter/Consent-Statement',exact:true,name:'Services_starter_one',component:ConsentStatement},
-    
-  ];
+    { path:'/services-starter/Proof-of-Identification',exact:true,name:'ProofOfIdentification',component:ProofOfIdentification},
+    ];
 
 class Services_starter_one extends Component {
     state = {
@@ -62,7 +63,7 @@ class Services_starter_one extends Component {
                             <Card.Body>
                                     
                             <nav class="navbar navbar-expand-lg  navbar-expand-sm  navbar-light bg-light">
-                                <div class="collapse navbar-collapse" id="navbarText">
+                                <div class="collapse navbar-collapse" style={{display:'block'}} id="navbarText">
                                 <ul class="navbar-nav mr-auto formnev">
                                 <li class="nav-item">
                                 <NavLink  to='/services-starter/Employee-Details' className="nav-link link" activeClassName="active" style={{borderRight: 'solid 1px #04a9f5'}}>Employee Details</NavLink>
@@ -76,6 +77,9 @@ class Services_starter_one extends Component {
                                 </li>
                                 <li class="nav-item">
                                 <NavLink  to='/services-starter/Consent-Statement' className="nav-link link" style={{borderRight: 'solid 1px #04a9f5'}} >Consent Statement</NavLink>
+                                </li>
+                                <li class="nav-item">
+                                <NavLink  to='/services-starter/Proof-of-Identification' className="nav-link link" style={{borderRight: 'solid 1px #04a9f5'}} >Proof of Identification</NavLink>
                                 </li>
                                 
                                 </ul>

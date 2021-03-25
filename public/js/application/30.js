@@ -370,16 +370,19 @@ var loaders = function loaders() {
 };
 
 var Oneform = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(2), __webpack_require__.e(3), __webpack_require__.e(4), __webpack_require__.e(5), __webpack_require__.e(7), __webpack_require__.e(45)]).then(__webpack_require__.bind(null, /*! ./forms/EmployeeDetails */ "./resources/js/employee/Services_starter_form/forms/EmployeeDetails.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(58), __webpack_require__.e(1), __webpack_require__.e(2), __webpack_require__.e(3), __webpack_require__.e(4), __webpack_require__.e(5), __webpack_require__.e(6), __webpack_require__.e(45)]).then(__webpack_require__.bind(null, /*! ./forms/EmployeeDetails */ "./resources/js/employee/Services_starter_form/forms/EmployeeDetails.js"));
 });
 var BankDetails = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(2), __webpack_require__.e(3), __webpack_require__.e(4), __webpack_require__.e(5), __webpack_require__.e(43)]).then(__webpack_require__.bind(null, /*! ./forms/BankDetails */ "./resources/js/employee/Services_starter_form/forms/BankDetails.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(58), __webpack_require__.e(1), __webpack_require__.e(2), __webpack_require__.e(3), __webpack_require__.e(4), __webpack_require__.e(5), __webpack_require__.e(43)]).then(__webpack_require__.bind(null, /*! ./forms/BankDetails */ "./resources/js/employee/Services_starter_form/forms/BankDetails.js"));
 });
 var UniformOrder = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(2), __webpack_require__.e(3), __webpack_require__.e(4), __webpack_require__.e(5), __webpack_require__.e(46)]).then(__webpack_require__.bind(null, /*! ./forms/UniformOrder */ "./resources/js/employee/Services_starter_form/forms/UniformOrder.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(58), __webpack_require__.e(1), __webpack_require__.e(2), __webpack_require__.e(3), __webpack_require__.e(4), __webpack_require__.e(5), __webpack_require__.e(46)]).then(__webpack_require__.bind(null, /*! ./forms/UniformOrder */ "./resources/js/employee/Services_starter_form/forms/UniformOrder.js"));
 });
 var ConsentStatement = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(2), __webpack_require__.e(3), __webpack_require__.e(4), __webpack_require__.e(5), __webpack_require__.e(6), __webpack_require__.e(44)]).then(__webpack_require__.bind(null, /*! ./forms/ConsentStatement */ "./resources/js/employee/Services_starter_form/forms/ConsentStatement.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(58), __webpack_require__.e(1), __webpack_require__.e(2), __webpack_require__.e(3), __webpack_require__.e(4), __webpack_require__.e(5), __webpack_require__.e(7), __webpack_require__.e(44)]).then(__webpack_require__.bind(null, /*! ./forms/ConsentStatement */ "./resources/js/employee/Services_starter_form/forms/ConsentStatement.js"));
+});
+var ProofOfIdentification = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
+  return Promise.all(/*! import() */[__webpack_require__.e(58), __webpack_require__.e(1), __webpack_require__.e(2), __webpack_require__.e(3), __webpack_require__.e(4), __webpack_require__.e(5), __webpack_require__.e(7), __webpack_require__.e(57)]).then(__webpack_require__.bind(null, /*! ./forms/ProofOfIdentification */ "./resources/js/employee/Services_starter_form/forms/ProofOfIdentification.js"));
 });
 var routes = [{
   path: '/services-starter/Employee-Details',
@@ -401,6 +404,11 @@ var routes = [{
   exact: true,
   name: 'Services_starter_one',
   component: ConsentStatement
+}, {
+  path: '/services-starter/Proof-of-Identification',
+  exact: true,
+  name: 'ProofOfIdentification',
+  component: ProofOfIdentification
 }];
 
 var Services_starter_one = /*#__PURE__*/function (_Component) {
@@ -446,6 +454,9 @@ var Services_starter_one = /*#__PURE__*/function (_Component) {
         "class": "navbar navbar-expand-lg  navbar-expand-sm  navbar-light bg-light"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         "class": "collapse navbar-collapse",
+        style: {
+          display: 'block'
+        },
         id: "navbarText"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         "class": "navbar-nav mr-auto formnev"
@@ -482,7 +493,15 @@ var Services_starter_one = /*#__PURE__*/function (_Component) {
         style: {
           borderRight: 'solid 1px #04a9f5'
         }
-      }, "Consent Statement"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+      }, "Consent Statement")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        "class": "nav-item"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
+        to: "/services-starter/Proof-of-Identification",
+        className: "nav-link link",
+        style: {
+          borderRight: 'solid 1px #04a9f5'
+        }
+      }, "Proof of Identification"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         "class": "navbar-text"
       }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "tabs"

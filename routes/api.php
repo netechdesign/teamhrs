@@ -43,6 +43,7 @@ Route::group(['middleware' => ['jwt.auth','api-header']], function () {
         Route::resource('application_form', 'Application_formsController');
         Route::resource('telephone_pre_answers', 'Telephone_pre_answersController');
         Route::resource('check_list', 'Check_listController');
+        Route::resource('proof_of_identification', 'Proof_of_identificationController');
         
         Route::get('newapplicationcount', 'Application_formsController@newapplicationcount');
         Route::post('request_certification', 'Application_formsController@request_certification');

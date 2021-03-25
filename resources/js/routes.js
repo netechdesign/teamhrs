@@ -43,7 +43,7 @@ const routes = [
     { path:'/services-starter/Bank-Details',exact:true,name:'Services_starter_one',component:Services_starter_one},
     { path:'/services-starter/Uniform-Order',exact:true,name:'Services_starter_one',component:Services_starter_one},
     { path:'/services-starter/Consent-Statement',exact:true,name:'Services_starter_one',component:Services_starter_one},
-  
+    { path:'/services-starter/Proof-of-Identification',exact:true,name:'Services_starter_one',component:Services_starter_one},
     { path:'/application-form',exact:true,name:'ApplicationForm',component:ApplicationForm},
     {path:'/applications',exact:true,name:'Employee',component:List},
     // for demo Examples.
