@@ -107,8 +107,11 @@ class Proof_of_identificationController extends Controller
             if(isset($request->p45form) && $request->p45form!="null")
             {
                 $data['p45form'] = $request->p45form->store('documents/'.$userpath, 'public');
-                
-            
+            }
+
+            if(isset($request->hmrc_starter_checklist) && $request->hmrc_starter_checklist!="null")
+            {
+                $data['hmrc_starter_checklist'] = $request->hmrc_starter_checklist->store('documents/'.$userpath, 'public');
             }
 
             

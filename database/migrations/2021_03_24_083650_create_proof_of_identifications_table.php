@@ -28,6 +28,7 @@ class CreateProofOfIdentificationsTable extends Migration
             $table->longText('passport_style_photograph')->nullable();
             $table->string('p45_available')->nullable();
             $table->longText('p45form')->nullable();
+            $table->longText('hmrc_starter_checklist')->nullable();
             $table->integer('created_by')->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('RESTRICT')->onDelete('CASCADE');
             $table->softDeletes();

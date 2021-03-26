@@ -454,7 +454,26 @@ class ProofOfIdentification extends React.Component {
                                                             onChange={this.onUploadCv}
                                                             />
                                                         </div>
-                                                    </Form.Group>:''
+                                                    </Form.Group>:
+                                                    (this.state.p45_available=='No'?<Form.Group as={Col} md="4" xs={12} xs={12} sm={12}>
+                                                        <Form.Label htmlFor="upload_avatar">HMRC Starter Checklist</Form.Label>
+                                                        <div className="custom-file">
+                                                        <FileInput style={{margin:'0px'}}
+                                                        name="hmrc_starter_checklist"
+                                                        id="hmrc_starter_checklist"
+                                                        required
+                                                        fileType={["pdf","docx","jpeg","jpg"]}
+                                                        // maxFileSize="10000 kb"
+                                                        errorMessage={
+                                                        {required: "Please upload HMRC Starter Checklist",fileType:"Only jpeg, pdf and word file is allowed",
+                                                        // maxFileSize: "Max file size is 10000 kb"
+                                                        }
+                                                        }
+                                                        onChange={this.onUploadCv}
+                                                        />
+                                                        </div>
+                                                        <div style={{display:'block',color:'black',marginTop: '15px'}} class="invalid-feedback"><a href={baseurl+'/uploaded/HMRC_STARTER_CHECKLIST.pdf'} target="_blank" >Please click here to download  HMRC STARTER CHECKLIST.</a> </div> 
+                                                    </Form.Group>:'')
                                                     )
                                                 }
                                         </Form.Row>
