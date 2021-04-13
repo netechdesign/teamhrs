@@ -302,10 +302,10 @@ webpackContext.id = "./node_modules/moment/locale sync recursive ^\\.\\/.*$";
 
 /***/ }),
 
-/***/ "./resources/js/employee/Services_starter_form/forms/UniformOrder.js":
-/*!***************************************************************************!*\
-  !*** ./resources/js/employee/Services_starter_form/forms/UniformOrder.js ***!
-  \***************************************************************************/
+/***/ "./resources/js/employee/Services_starter_form/forms/BankDetails.js":
+/*!**************************************************************************!*\
+  !*** ./resources/js/employee/Services_starter_form/forms/BankDetails.js ***!
+  \**************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -369,10 +369,10 @@ var baseurl = window.location.origin;
 var ajaxabort;
 
 function successDesktopPNotify(id) {
-  var message = "Uniform orders added successfully";
+  var message = "Bank Details added successfully";
 
   if (id != '') {
-    message = "Uniform orders updated successfully";
+    message = "Bank Details updated successfully";
   }
 
   pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_7__["default"].success({
@@ -386,15 +386,15 @@ function successDesktopPNotify(id) {
   }).on('click', function (e) {});
 }
 
-var UniformOrder = /*#__PURE__*/function (_React$Component) {
-  _inherits(UniformOrder, _React$Component);
+var BankDetails = /*#__PURE__*/function (_React$Component) {
+  _inherits(BankDetails, _React$Component);
 
-  var _super = _createSuper(UniformOrder);
+  var _super = _createSuper(BankDetails);
 
-  function UniformOrder() {
+  function BankDetails() {
     var _this;
 
-    _classCallCheck(this, UniformOrder);
+    _classCallCheck(this, BankDetails);
 
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
@@ -405,13 +405,11 @@ var UniformOrder = /*#__PURE__*/function (_React$Component) {
     _defineProperty(_assertThisInitialized(_this), "state", {
       _method: '',
       id: "",
-      polo_shirts: '',
-      sweater: '',
-      jacket: '',
-      shoe_size: '',
-      glove_size: '',
-      trouser_waist: '',
-      trouser_length: '',
+      bank_name: '',
+      bank_address: '',
+      name_of_account_holder: '',
+      sort_code: '',
+      account_number: '',
       showModal: false,
       visible: true,
       formSubmitting: false,
@@ -453,7 +451,7 @@ var UniformOrder = /*#__PURE__*/function (_React$Component) {
         urlid = '/' + _this.state.id;
       }
 
-      axios__WEBPACK_IMPORTED_MODULE_6___default.a.post(baseurl + '/api/uniform_orders' + urlid, _this.state, {
+      axios__WEBPACK_IMPORTED_MODULE_6___default.a.post(baseurl + '/api/bank_details' + urlid, _this.state, {
         headers: {
           'Accept': 'application/json',
           'Authorization': 'Bearer ' + auth_token
@@ -471,7 +469,7 @@ var UniformOrder = /*#__PURE__*/function (_React$Component) {
 
           successDesktopPNotify(_this.state.id);
 
-          _this.props.history.push('/services-starter/Consent-Statement');
+          _this.props.history.push('/services-starter/Uniform-Order');
         } else {
           var errorMassage = '';
 
@@ -539,14 +537,16 @@ var UniformOrder = /*#__PURE__*/function (_React$Component) {
       //data.append('name', this.state.name);
 
 
-      axios__WEBPACK_IMPORTED_MODULE_6___default.a.get(baseurl + '/api/uniform_orders/' + id, {
+      axios__WEBPACK_IMPORTED_MODULE_6___default.a.get(baseurl + '/api/bank_details/' + id, {
         headers: {
           'Accept': 'application/json',
           'Authorization': 'Bearer ' + auth_token
         }
       }).then(function (res) {
         if (res.data.success) {
-          _this.setState(res.data.Uniform_orders);
+          console.log(res.data.Bank_details);
+
+          _this.setState(res.data.Bank_details);
 
           _this.setState({
             formSubmitting: false
@@ -595,7 +595,7 @@ var UniformOrder = /*#__PURE__*/function (_React$Component) {
     return _this;
   }
 
-  _createClass(UniformOrder, [{
+  _createClass(BankDetails, [{
     key: "componentDidMount",
     value: function componentDidMount() {
       this.alreadyAdded();
@@ -614,222 +614,74 @@ var UniformOrder = /*#__PURE__*/function (_React$Component) {
         id: "formid",
         onSubmit: this.handleSubmit,
         onErrorSubmit: this.handleErrorSubmit
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Uniform"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Row, {
-        style: style.rowline
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Row"],
-        style: {
-          width: '100%',
-          marginBottom: '0rem'
-        },
-        controlId: "formHorizontalpolo_shirts"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
-        column: true,
-        sm: 2
-      }, "Polo Shirts:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
-        sm: 10
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "custom-controls-stacked radio"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["Radio"].RadioGroup, {
-        name: "polo_shirts",
-        required: true,
-        valueSelected: this.state.polo_shirts,
-        inline: true,
-        onChange: this.handleChange
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["Radio"].RadioItem, {
-        id: "polo_shirtsS",
-        label: "S",
-        value: "S"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["Radio"].RadioItem, {
-        id: "polo_shirtsM",
-        label: "M",
-        value: "M"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["Radio"].RadioItem, {
-        id: "polo_shirtsL",
-        label: "L",
-        value: "L"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["Radio"].RadioItem, {
-        id: "polo_shirtsXL",
-        label: "XL",
-        value: "XL"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["Radio"].RadioItem, {
-        id: "polo_shirts2XL",
-        label: "2XL",
-        value: "2XL"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["Radio"].RadioItem, {
-        id: "polo_shirts3XL",
-        label: "3XL",
-        value: "3XL"
-      }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Row"],
-        style: {
-          width: '100%',
-          marginBottom: '0rem'
-        },
-        controlId: "formHorizontalSweater"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
-        column: true,
-        sm: 2
-      }, "Sweater:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
-        sm: 10
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "custom-controls-stacked radio"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["Radio"].RadioGroup, {
-        name: "sweater",
-        required: true,
-        valueSelected: this.state.sweater,
-        inline: true,
-        onChange: this.handleChange
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["Radio"].RadioItem, {
-        id: "SweaterS",
-        label: "S",
-        value: "S"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["Radio"].RadioItem, {
-        id: "SweaterM",
-        label: "M",
-        value: "M"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["Radio"].RadioItem, {
-        id: "SweaterL",
-        label: "L",
-        value: "L"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["Radio"].RadioItem, {
-        id: "SweaterXL",
-        label: "XL",
-        value: "XL"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["Radio"].RadioItem, {
-        id: "Sweater2XL",
-        label: "2XL",
-        value: "2XL"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["Radio"].RadioItem, {
-        id: "Sweater3XL",
-        label: "3XL",
-        value: "3XL"
-      }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Row"],
-        style: {
-          width: '100%',
-          marginBottom: '0rem'
-        },
-        controlId: "formHorizontalJacket"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
-        column: true,
-        sm: 2
-      }, "Jacket:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
-        sm: 10
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "custom-controls-stacked radio"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["Radio"].RadioGroup, {
-        name: "jacket",
-        required: true,
-        valueSelected: this.state.jacket,
-        inline: true,
-        onChange: this.handleChange
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["Radio"].RadioItem, {
-        id: "JacketS",
-        label: "S",
-        value: "S"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["Radio"].RadioItem, {
-        id: "JacketM",
-        label: "M",
-        value: "M"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["Radio"].RadioItem, {
-        id: "JacketL",
-        label: "L",
-        value: "L"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["Radio"].RadioItem, {
-        id: "JacketXL",
-        label: "XL",
-        value: "XL"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["Radio"].RadioItem, {
-        id: "Jacket2XL",
-        label: "2XL",
-        value: "2XL"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["Radio"].RadioItem, {
-        id: "Jacket3XL",
-        label: "3XL",
-        value: "3XL"
-      })))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Row, {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Row, {
         style: style.rowline
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
         as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "2"
+        md: "3"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
-        htmlFor: "shoe_size"
-      }, "Shoe Size"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["TextInput"], {
-        name: "shoe_size",
-        id: "shoe_size",
-        type: "number",
-        step: ".01",
-        placeholder: "Shoe Size",
+        htmlFor: "bank_name"
+      }, "Bank Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["TextInput"], {
+        name: "bank_name",
+        id: "bank_name",
+        placeholder: "Bank Name",
+        required: true,
+        value: this.state.bank_name,
         onChange: this.handleChange,
-        required: true,
-        value: this.state.shoe_size,
-        autoComplete: "off"
-      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Row, {
-        style: style.rowline
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "2"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
-        htmlFor: "glove_size"
-      }, "Glove Size"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["TextInput"], {
-        name: "glove_size",
-        id: "glove_size",
-        type: "number",
-        step: ".01",
-        placeholder: "Glove Size",
-        onChange: this.handleChange,
-        required: true,
-        value: this.state.glove_size,
-        autoComplete: "off"
-      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Row, {
-        style: style.rowline
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "1"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
-        htmlFor: "trouser"
-      }, "Trouser:")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "2"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
-        htmlFor: "trouser_waist"
-      }, "waist"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["TextInput"], {
-        name: "trouser_waist",
-        id: "trouser_waist",
-        type: "number",
-        step: ".01",
-        placeholder: "waist",
-        onChange: this.handleChange,
-        required: true,
-        value: this.state.trouser_waist,
         autoComplete: "off"
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
         as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "2"
+        md: "3"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
-        htmlFor: "trouser_length"
-      }, "length"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "custom-controls-stacked radio"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["Radio"].RadioGroup, {
-        name: "trouser_length",
+        htmlFor: "name_of_account_holder"
+      }, "name of account holder"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["TextInput"], {
+        name: "name_of_account_holder",
+        id: "name_of_account_holder",
+        placeholder: "name of account holder",
         required: true,
-        valueSelected: this.state.trouser_length,
-        inline: true,
-        onChange: this.handleChange
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["Radio"].RadioItem, {
-        id: "trouser_lengthS",
-        label: "Short",
-        value: "Short"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["Radio"].RadioItem, {
-        id: "trouser_lengthR",
-        label: "Regular",
-        value: "Regular"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["Radio"].RadioItem, {
-        id: "trouser_lengthL",
-        label: "Long",
-        value: "Long"
-      }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Row, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
+        value: this.state.name_of_account_holder,
+        onChange: this.handleChange,
+        autoComplete: "off"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
+        htmlFor: "account_number"
+      }, "Account Number"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["TextInput"], {
+        name: "account_number",
+        id: "account_number",
+        placeholder: "account number",
+        required: true,
+        value: this.state.account_number,
+        onChange: this.handleChange,
+        autoComplete: "off"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
+        htmlFor: "sort_code"
+      }, "sort code"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["TextInput"], {
+        name: "sort_code",
+        id: "sort_code",
+        placeholder: "sort code",
+        required: true,
+        value: this.state.sort_code,
+        onChange: this.handleChange,
+        autoComplete: "off"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
+        md: "6"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
+        htmlFor: "bank_address"
+      }, "Bank Address"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["TextInput"], {
+        name: "bank_address",
+        id: "bank_address",
+        placeholder: "Bank Address",
+        required: true,
+        value: this.state.bank_address,
+        onChange: this.handleChange,
+        autoComplete: "off"
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Row, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
         as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
         sm: 12,
         className: "mt-3"
@@ -840,7 +692,7 @@ var UniformOrder = /*#__PURE__*/function (_React$Component) {
     }
   }]);
 
-  return UniformOrder;
+  return BankDetails;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 var style = {
@@ -849,7 +701,7 @@ var style = {
     marginBottom: '15px'
   }
 };
-/* harmony default export */ __webpack_exports__["default"] = (UniformOrder);
+/* harmony default export */ __webpack_exports__["default"] = (BankDetails);
 
 /***/ })
 

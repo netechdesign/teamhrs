@@ -1,339 +1,58 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[57],{
 
-/***/ "./node_modules/moment/locale sync recursive ^\\.\\/.*$":
-/*!**************************************************!*\
-  !*** ./node_modules/moment/locale sync ^\.\/.*$ ***!
-  \**************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var map = {
-	"./af": "./node_modules/moment/locale/af.js",
-	"./af.js": "./node_modules/moment/locale/af.js",
-	"./ar": "./node_modules/moment/locale/ar.js",
-	"./ar-dz": "./node_modules/moment/locale/ar-dz.js",
-	"./ar-dz.js": "./node_modules/moment/locale/ar-dz.js",
-	"./ar-kw": "./node_modules/moment/locale/ar-kw.js",
-	"./ar-kw.js": "./node_modules/moment/locale/ar-kw.js",
-	"./ar-ly": "./node_modules/moment/locale/ar-ly.js",
-	"./ar-ly.js": "./node_modules/moment/locale/ar-ly.js",
-	"./ar-ma": "./node_modules/moment/locale/ar-ma.js",
-	"./ar-ma.js": "./node_modules/moment/locale/ar-ma.js",
-	"./ar-sa": "./node_modules/moment/locale/ar-sa.js",
-	"./ar-sa.js": "./node_modules/moment/locale/ar-sa.js",
-	"./ar-tn": "./node_modules/moment/locale/ar-tn.js",
-	"./ar-tn.js": "./node_modules/moment/locale/ar-tn.js",
-	"./ar.js": "./node_modules/moment/locale/ar.js",
-	"./az": "./node_modules/moment/locale/az.js",
-	"./az.js": "./node_modules/moment/locale/az.js",
-	"./be": "./node_modules/moment/locale/be.js",
-	"./be.js": "./node_modules/moment/locale/be.js",
-	"./bg": "./node_modules/moment/locale/bg.js",
-	"./bg.js": "./node_modules/moment/locale/bg.js",
-	"./bm": "./node_modules/moment/locale/bm.js",
-	"./bm.js": "./node_modules/moment/locale/bm.js",
-	"./bn": "./node_modules/moment/locale/bn.js",
-	"./bn-bd": "./node_modules/moment/locale/bn-bd.js",
-	"./bn-bd.js": "./node_modules/moment/locale/bn-bd.js",
-	"./bn.js": "./node_modules/moment/locale/bn.js",
-	"./bo": "./node_modules/moment/locale/bo.js",
-	"./bo.js": "./node_modules/moment/locale/bo.js",
-	"./br": "./node_modules/moment/locale/br.js",
-	"./br.js": "./node_modules/moment/locale/br.js",
-	"./bs": "./node_modules/moment/locale/bs.js",
-	"./bs.js": "./node_modules/moment/locale/bs.js",
-	"./ca": "./node_modules/moment/locale/ca.js",
-	"./ca.js": "./node_modules/moment/locale/ca.js",
-	"./cs": "./node_modules/moment/locale/cs.js",
-	"./cs.js": "./node_modules/moment/locale/cs.js",
-	"./cv": "./node_modules/moment/locale/cv.js",
-	"./cv.js": "./node_modules/moment/locale/cv.js",
-	"./cy": "./node_modules/moment/locale/cy.js",
-	"./cy.js": "./node_modules/moment/locale/cy.js",
-	"./da": "./node_modules/moment/locale/da.js",
-	"./da.js": "./node_modules/moment/locale/da.js",
-	"./de": "./node_modules/moment/locale/de.js",
-	"./de-at": "./node_modules/moment/locale/de-at.js",
-	"./de-at.js": "./node_modules/moment/locale/de-at.js",
-	"./de-ch": "./node_modules/moment/locale/de-ch.js",
-	"./de-ch.js": "./node_modules/moment/locale/de-ch.js",
-	"./de.js": "./node_modules/moment/locale/de.js",
-	"./dv": "./node_modules/moment/locale/dv.js",
-	"./dv.js": "./node_modules/moment/locale/dv.js",
-	"./el": "./node_modules/moment/locale/el.js",
-	"./el.js": "./node_modules/moment/locale/el.js",
-	"./en-au": "./node_modules/moment/locale/en-au.js",
-	"./en-au.js": "./node_modules/moment/locale/en-au.js",
-	"./en-ca": "./node_modules/moment/locale/en-ca.js",
-	"./en-ca.js": "./node_modules/moment/locale/en-ca.js",
-	"./en-gb": "./node_modules/moment/locale/en-gb.js",
-	"./en-gb.js": "./node_modules/moment/locale/en-gb.js",
-	"./en-ie": "./node_modules/moment/locale/en-ie.js",
-	"./en-ie.js": "./node_modules/moment/locale/en-ie.js",
-	"./en-il": "./node_modules/moment/locale/en-il.js",
-	"./en-il.js": "./node_modules/moment/locale/en-il.js",
-	"./en-in": "./node_modules/moment/locale/en-in.js",
-	"./en-in.js": "./node_modules/moment/locale/en-in.js",
-	"./en-nz": "./node_modules/moment/locale/en-nz.js",
-	"./en-nz.js": "./node_modules/moment/locale/en-nz.js",
-	"./en-sg": "./node_modules/moment/locale/en-sg.js",
-	"./en-sg.js": "./node_modules/moment/locale/en-sg.js",
-	"./eo": "./node_modules/moment/locale/eo.js",
-	"./eo.js": "./node_modules/moment/locale/eo.js",
-	"./es": "./node_modules/moment/locale/es.js",
-	"./es-do": "./node_modules/moment/locale/es-do.js",
-	"./es-do.js": "./node_modules/moment/locale/es-do.js",
-	"./es-mx": "./node_modules/moment/locale/es-mx.js",
-	"./es-mx.js": "./node_modules/moment/locale/es-mx.js",
-	"./es-us": "./node_modules/moment/locale/es-us.js",
-	"./es-us.js": "./node_modules/moment/locale/es-us.js",
-	"./es.js": "./node_modules/moment/locale/es.js",
-	"./et": "./node_modules/moment/locale/et.js",
-	"./et.js": "./node_modules/moment/locale/et.js",
-	"./eu": "./node_modules/moment/locale/eu.js",
-	"./eu.js": "./node_modules/moment/locale/eu.js",
-	"./fa": "./node_modules/moment/locale/fa.js",
-	"./fa.js": "./node_modules/moment/locale/fa.js",
-	"./fi": "./node_modules/moment/locale/fi.js",
-	"./fi.js": "./node_modules/moment/locale/fi.js",
-	"./fil": "./node_modules/moment/locale/fil.js",
-	"./fil.js": "./node_modules/moment/locale/fil.js",
-	"./fo": "./node_modules/moment/locale/fo.js",
-	"./fo.js": "./node_modules/moment/locale/fo.js",
-	"./fr": "./node_modules/moment/locale/fr.js",
-	"./fr-ca": "./node_modules/moment/locale/fr-ca.js",
-	"./fr-ca.js": "./node_modules/moment/locale/fr-ca.js",
-	"./fr-ch": "./node_modules/moment/locale/fr-ch.js",
-	"./fr-ch.js": "./node_modules/moment/locale/fr-ch.js",
-	"./fr.js": "./node_modules/moment/locale/fr.js",
-	"./fy": "./node_modules/moment/locale/fy.js",
-	"./fy.js": "./node_modules/moment/locale/fy.js",
-	"./ga": "./node_modules/moment/locale/ga.js",
-	"./ga.js": "./node_modules/moment/locale/ga.js",
-	"./gd": "./node_modules/moment/locale/gd.js",
-	"./gd.js": "./node_modules/moment/locale/gd.js",
-	"./gl": "./node_modules/moment/locale/gl.js",
-	"./gl.js": "./node_modules/moment/locale/gl.js",
-	"./gom-deva": "./node_modules/moment/locale/gom-deva.js",
-	"./gom-deva.js": "./node_modules/moment/locale/gom-deva.js",
-	"./gom-latn": "./node_modules/moment/locale/gom-latn.js",
-	"./gom-latn.js": "./node_modules/moment/locale/gom-latn.js",
-	"./gu": "./node_modules/moment/locale/gu.js",
-	"./gu.js": "./node_modules/moment/locale/gu.js",
-	"./he": "./node_modules/moment/locale/he.js",
-	"./he.js": "./node_modules/moment/locale/he.js",
-	"./hi": "./node_modules/moment/locale/hi.js",
-	"./hi.js": "./node_modules/moment/locale/hi.js",
-	"./hr": "./node_modules/moment/locale/hr.js",
-	"./hr.js": "./node_modules/moment/locale/hr.js",
-	"./hu": "./node_modules/moment/locale/hu.js",
-	"./hu.js": "./node_modules/moment/locale/hu.js",
-	"./hy-am": "./node_modules/moment/locale/hy-am.js",
-	"./hy-am.js": "./node_modules/moment/locale/hy-am.js",
-	"./id": "./node_modules/moment/locale/id.js",
-	"./id.js": "./node_modules/moment/locale/id.js",
-	"./is": "./node_modules/moment/locale/is.js",
-	"./is.js": "./node_modules/moment/locale/is.js",
-	"./it": "./node_modules/moment/locale/it.js",
-	"./it-ch": "./node_modules/moment/locale/it-ch.js",
-	"./it-ch.js": "./node_modules/moment/locale/it-ch.js",
-	"./it.js": "./node_modules/moment/locale/it.js",
-	"./ja": "./node_modules/moment/locale/ja.js",
-	"./ja.js": "./node_modules/moment/locale/ja.js",
-	"./jv": "./node_modules/moment/locale/jv.js",
-	"./jv.js": "./node_modules/moment/locale/jv.js",
-	"./ka": "./node_modules/moment/locale/ka.js",
-	"./ka.js": "./node_modules/moment/locale/ka.js",
-	"./kk": "./node_modules/moment/locale/kk.js",
-	"./kk.js": "./node_modules/moment/locale/kk.js",
-	"./km": "./node_modules/moment/locale/km.js",
-	"./km.js": "./node_modules/moment/locale/km.js",
-	"./kn": "./node_modules/moment/locale/kn.js",
-	"./kn.js": "./node_modules/moment/locale/kn.js",
-	"./ko": "./node_modules/moment/locale/ko.js",
-	"./ko.js": "./node_modules/moment/locale/ko.js",
-	"./ku": "./node_modules/moment/locale/ku.js",
-	"./ku.js": "./node_modules/moment/locale/ku.js",
-	"./ky": "./node_modules/moment/locale/ky.js",
-	"./ky.js": "./node_modules/moment/locale/ky.js",
-	"./lb": "./node_modules/moment/locale/lb.js",
-	"./lb.js": "./node_modules/moment/locale/lb.js",
-	"./lo": "./node_modules/moment/locale/lo.js",
-	"./lo.js": "./node_modules/moment/locale/lo.js",
-	"./lt": "./node_modules/moment/locale/lt.js",
-	"./lt.js": "./node_modules/moment/locale/lt.js",
-	"./lv": "./node_modules/moment/locale/lv.js",
-	"./lv.js": "./node_modules/moment/locale/lv.js",
-	"./me": "./node_modules/moment/locale/me.js",
-	"./me.js": "./node_modules/moment/locale/me.js",
-	"./mi": "./node_modules/moment/locale/mi.js",
-	"./mi.js": "./node_modules/moment/locale/mi.js",
-	"./mk": "./node_modules/moment/locale/mk.js",
-	"./mk.js": "./node_modules/moment/locale/mk.js",
-	"./ml": "./node_modules/moment/locale/ml.js",
-	"./ml.js": "./node_modules/moment/locale/ml.js",
-	"./mn": "./node_modules/moment/locale/mn.js",
-	"./mn.js": "./node_modules/moment/locale/mn.js",
-	"./mr": "./node_modules/moment/locale/mr.js",
-	"./mr.js": "./node_modules/moment/locale/mr.js",
-	"./ms": "./node_modules/moment/locale/ms.js",
-	"./ms-my": "./node_modules/moment/locale/ms-my.js",
-	"./ms-my.js": "./node_modules/moment/locale/ms-my.js",
-	"./ms.js": "./node_modules/moment/locale/ms.js",
-	"./mt": "./node_modules/moment/locale/mt.js",
-	"./mt.js": "./node_modules/moment/locale/mt.js",
-	"./my": "./node_modules/moment/locale/my.js",
-	"./my.js": "./node_modules/moment/locale/my.js",
-	"./nb": "./node_modules/moment/locale/nb.js",
-	"./nb.js": "./node_modules/moment/locale/nb.js",
-	"./ne": "./node_modules/moment/locale/ne.js",
-	"./ne.js": "./node_modules/moment/locale/ne.js",
-	"./nl": "./node_modules/moment/locale/nl.js",
-	"./nl-be": "./node_modules/moment/locale/nl-be.js",
-	"./nl-be.js": "./node_modules/moment/locale/nl-be.js",
-	"./nl.js": "./node_modules/moment/locale/nl.js",
-	"./nn": "./node_modules/moment/locale/nn.js",
-	"./nn.js": "./node_modules/moment/locale/nn.js",
-	"./oc-lnc": "./node_modules/moment/locale/oc-lnc.js",
-	"./oc-lnc.js": "./node_modules/moment/locale/oc-lnc.js",
-	"./pa-in": "./node_modules/moment/locale/pa-in.js",
-	"./pa-in.js": "./node_modules/moment/locale/pa-in.js",
-	"./pl": "./node_modules/moment/locale/pl.js",
-	"./pl.js": "./node_modules/moment/locale/pl.js",
-	"./pt": "./node_modules/moment/locale/pt.js",
-	"./pt-br": "./node_modules/moment/locale/pt-br.js",
-	"./pt-br.js": "./node_modules/moment/locale/pt-br.js",
-	"./pt.js": "./node_modules/moment/locale/pt.js",
-	"./ro": "./node_modules/moment/locale/ro.js",
-	"./ro.js": "./node_modules/moment/locale/ro.js",
-	"./ru": "./node_modules/moment/locale/ru.js",
-	"./ru.js": "./node_modules/moment/locale/ru.js",
-	"./sd": "./node_modules/moment/locale/sd.js",
-	"./sd.js": "./node_modules/moment/locale/sd.js",
-	"./se": "./node_modules/moment/locale/se.js",
-	"./se.js": "./node_modules/moment/locale/se.js",
-	"./si": "./node_modules/moment/locale/si.js",
-	"./si.js": "./node_modules/moment/locale/si.js",
-	"./sk": "./node_modules/moment/locale/sk.js",
-	"./sk.js": "./node_modules/moment/locale/sk.js",
-	"./sl": "./node_modules/moment/locale/sl.js",
-	"./sl.js": "./node_modules/moment/locale/sl.js",
-	"./sq": "./node_modules/moment/locale/sq.js",
-	"./sq.js": "./node_modules/moment/locale/sq.js",
-	"./sr": "./node_modules/moment/locale/sr.js",
-	"./sr-cyrl": "./node_modules/moment/locale/sr-cyrl.js",
-	"./sr-cyrl.js": "./node_modules/moment/locale/sr-cyrl.js",
-	"./sr.js": "./node_modules/moment/locale/sr.js",
-	"./ss": "./node_modules/moment/locale/ss.js",
-	"./ss.js": "./node_modules/moment/locale/ss.js",
-	"./sv": "./node_modules/moment/locale/sv.js",
-	"./sv.js": "./node_modules/moment/locale/sv.js",
-	"./sw": "./node_modules/moment/locale/sw.js",
-	"./sw.js": "./node_modules/moment/locale/sw.js",
-	"./ta": "./node_modules/moment/locale/ta.js",
-	"./ta.js": "./node_modules/moment/locale/ta.js",
-	"./te": "./node_modules/moment/locale/te.js",
-	"./te.js": "./node_modules/moment/locale/te.js",
-	"./tet": "./node_modules/moment/locale/tet.js",
-	"./tet.js": "./node_modules/moment/locale/tet.js",
-	"./tg": "./node_modules/moment/locale/tg.js",
-	"./tg.js": "./node_modules/moment/locale/tg.js",
-	"./th": "./node_modules/moment/locale/th.js",
-	"./th.js": "./node_modules/moment/locale/th.js",
-	"./tk": "./node_modules/moment/locale/tk.js",
-	"./tk.js": "./node_modules/moment/locale/tk.js",
-	"./tl-ph": "./node_modules/moment/locale/tl-ph.js",
-	"./tl-ph.js": "./node_modules/moment/locale/tl-ph.js",
-	"./tlh": "./node_modules/moment/locale/tlh.js",
-	"./tlh.js": "./node_modules/moment/locale/tlh.js",
-	"./tr": "./node_modules/moment/locale/tr.js",
-	"./tr.js": "./node_modules/moment/locale/tr.js",
-	"./tzl": "./node_modules/moment/locale/tzl.js",
-	"./tzl.js": "./node_modules/moment/locale/tzl.js",
-	"./tzm": "./node_modules/moment/locale/tzm.js",
-	"./tzm-latn": "./node_modules/moment/locale/tzm-latn.js",
-	"./tzm-latn.js": "./node_modules/moment/locale/tzm-latn.js",
-	"./tzm.js": "./node_modules/moment/locale/tzm.js",
-	"./ug-cn": "./node_modules/moment/locale/ug-cn.js",
-	"./ug-cn.js": "./node_modules/moment/locale/ug-cn.js",
-	"./uk": "./node_modules/moment/locale/uk.js",
-	"./uk.js": "./node_modules/moment/locale/uk.js",
-	"./ur": "./node_modules/moment/locale/ur.js",
-	"./ur.js": "./node_modules/moment/locale/ur.js",
-	"./uz": "./node_modules/moment/locale/uz.js",
-	"./uz-latn": "./node_modules/moment/locale/uz-latn.js",
-	"./uz-latn.js": "./node_modules/moment/locale/uz-latn.js",
-	"./uz.js": "./node_modules/moment/locale/uz.js",
-	"./vi": "./node_modules/moment/locale/vi.js",
-	"./vi.js": "./node_modules/moment/locale/vi.js",
-	"./x-pseudo": "./node_modules/moment/locale/x-pseudo.js",
-	"./x-pseudo.js": "./node_modules/moment/locale/x-pseudo.js",
-	"./yo": "./node_modules/moment/locale/yo.js",
-	"./yo.js": "./node_modules/moment/locale/yo.js",
-	"./zh-cn": "./node_modules/moment/locale/zh-cn.js",
-	"./zh-cn.js": "./node_modules/moment/locale/zh-cn.js",
-	"./zh-hk": "./node_modules/moment/locale/zh-hk.js",
-	"./zh-hk.js": "./node_modules/moment/locale/zh-hk.js",
-	"./zh-mo": "./node_modules/moment/locale/zh-mo.js",
-	"./zh-mo.js": "./node_modules/moment/locale/zh-mo.js",
-	"./zh-tw": "./node_modules/moment/locale/zh-tw.js",
-	"./zh-tw.js": "./node_modules/moment/locale/zh-tw.js"
-};
-
-
-function webpackContext(req) {
-	var id = webpackContextResolve(req);
-	return __webpack_require__(id);
-}
-function webpackContextResolve(req) {
-	if(!__webpack_require__.o(map, req)) {
-		var e = new Error("Cannot find module '" + req + "'");
-		e.code = 'MODULE_NOT_FOUND';
-		throw e;
-	}
-	return map[req];
-}
-webpackContext.keys = function webpackContextKeys() {
-	return Object.keys(map);
-};
-webpackContext.resolve = webpackContextResolve;
-module.exports = webpackContext;
-webpackContext.id = "./node_modules/moment/locale sync recursive ^\\.\\/.*$";
-
-/***/ }),
-
-/***/ "./resources/js/employee/Services_starter_form/forms/ProofOfIdentification.js":
-/*!************************************************************************************!*\
-  !*** ./resources/js/employee/Services_starter_form/forms/ProofOfIdentification.js ***!
-  \************************************************************************************/
+/***/ "./resources/js/front-end/OfferLetter.js":
+/*!***********************************************!*\
+  !*** ./resources/js/front-end/OfferLetter.js ***!
+  \***********************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* WEBPACK VAR INJECTION */(function(global) {/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/index.js");
-/* harmony import */ var react_datetime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-datetime */ "./node_modules/react-datetime/DateTime.js");
-/* harmony import */ var react_datetime__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_datetime__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-bootstrap4-form-validation */ "./node_modules/react-bootstrap4-form-validation/lib/index.js");
-/* harmony import */ var react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var react_text_mask__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-text-mask */ "./node_modules/react-text-mask/dist/reactTextMask.js");
-/* harmony import */ var react_text_mask__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_text_mask__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var validator__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! validator */ "./node_modules/validator/index.js");
-/* harmony import */ var validator__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(validator__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! pnotify/dist/es/PNotify */ "./node_modules/pnotify/dist/es/PNotify.js");
-/* harmony import */ var pnotify_dist_es_PNotifyButtons__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! pnotify/dist/es/PNotifyButtons */ "./node_modules/pnotify/dist/es/PNotifyButtons.js");
-/* harmony import */ var pnotify_dist_es_PNotifyConfirm__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! pnotify/dist/es/PNotifyConfirm */ "./node_modules/pnotify/dist/es/PNotifyConfirm.js");
-/* harmony import */ var pnotify_dist_es_PNotifyCallbacks__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! pnotify/dist/es/PNotifyCallbacks */ "./node_modules/pnotify/dist/es/PNotifyCallbacks.js");
-/* harmony import */ var _hoc_Aux__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../../hoc/_Aux */ "./resources/js/hoc/_Aux/index.js");
-/* harmony import */ var react_signature_canvas__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! react-signature-canvas */ "./node_modules/react-signature-canvas/build/index.js");
-/* harmony import */ var react_signature_canvas__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(react_signature_canvas__WEBPACK_IMPORTED_MODULE_12__);
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _assets_css_styles_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./assets/css/styles.scss */ "./resources/js/front-end/assets/css/styles.scss");
+/* harmony import */ var _assets_css_styles_scss__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_assets_css_styles_scss__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _assets_css_app_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./assets/css/app.scss */ "./resources/js/front-end/assets/css/app.scss");
+/* harmony import */ var _assets_css_app_scss__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_assets_css_app_scss__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _hoc_Aux__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../hoc/_Aux */ "./resources/js/hoc/_Aux/index.js");
+/* harmony import */ var _store_constant__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../store/constant */ "./resources/js/store/constant.js");
+/* harmony import */ var _App_layout_AdminLayout_Breadcrumb__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../App/layout/AdminLayout/Breadcrumb */ "./resources/js/App/layout/AdminLayout/Breadcrumb/index.js");
+/* harmony import */ var react_datetime__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-datetime */ "./node_modules/react-datetime/DateTime.js");
+/* harmony import */ var react_datetime__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(react_datetime__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-bootstrap4-form-validation */ "./node_modules/react-bootstrap4-form-validation/lib/index.js");
+/* harmony import */ var react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var react_loki__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-loki */ "./node_modules/react-loki/es/index.js");
+/* harmony import */ var react_loadable__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react-loadable */ "./node_modules/react-loadable/lib/index.js");
+/* harmony import */ var react_loadable__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(react_loadable__WEBPACK_IMPORTED_MODULE_11__);
+/* harmony import */ var react_full_screen__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! react-full-screen */ "./node_modules/react-full-screen/dist/index.js");
+/* harmony import */ var react_full_screen__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(react_full_screen__WEBPACK_IMPORTED_MODULE_12__);
+/* harmony import */ var react_window_size__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! react-window-size */ "./node_modules/react-window-size/index.js");
+/* harmony import */ var react_window_size__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(react_window_size__WEBPACK_IMPORTED_MODULE_13__);
+/* harmony import */ var react_text_mask__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! react-text-mask */ "./node_modules/react-text-mask/dist/reactTextMask.js");
+/* harmony import */ var react_text_mask__WEBPACK_IMPORTED_MODULE_14___default = /*#__PURE__*/__webpack_require__.n(react_text_mask__WEBPACK_IMPORTED_MODULE_14__);
+/* harmony import */ var validator__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! validator */ "./node_modules/validator/index.js");
+/* harmony import */ var validator__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__webpack_require__.n(validator__WEBPACK_IMPORTED_MODULE_15__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_16___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_16__);
+/* harmony import */ var pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! pnotify/dist/es/PNotify */ "./node_modules/pnotify/dist/es/PNotify.js");
+/* harmony import */ var pnotify_dist_es_PNotifyButtons__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! pnotify/dist/es/PNotifyButtons */ "./node_modules/pnotify/dist/es/PNotifyButtons.js");
+/* harmony import */ var pnotify_dist_es_PNotifyConfirm__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! pnotify/dist/es/PNotifyConfirm */ "./node_modules/pnotify/dist/es/PNotifyConfirm.js");
+/* harmony import */ var pnotify_dist_es_PNotifyCallbacks__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! pnotify/dist/es/PNotifyCallbacks */ "./node_modules/pnotify/dist/es/PNotifyCallbacks.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_21___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_21__);
+/* harmony import */ var sweetalert2_react_content__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! sweetalert2-react-content */ "./node_modules/sweetalert2-react-content/dist/sweetalert2-react-content.umd.js");
+/* harmony import */ var sweetalert2_react_content__WEBPACK_IMPORTED_MODULE_22___default = /*#__PURE__*/__webpack_require__.n(sweetalert2_react_content__WEBPACK_IMPORTED_MODULE_22__);
+/* harmony import */ var react_signature_canvas__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! react-signature-canvas */ "./node_modules/react-signature-canvas/build/index.js");
+/* harmony import */ var react_signature_canvas__WEBPACK_IMPORTED_MODULE_23___default = /*#__PURE__*/__webpack_require__.n(react_signature_canvas__WEBPACK_IMPORTED_MODULE_23__);
+/* harmony import */ var react_super_responsive_table__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! react-super-responsive-table */ "./node_modules/react-super-responsive-table/dist/index.js");
+/* harmony import */ var react_super_responsive_table__WEBPACK_IMPORTED_MODULE_24___default = /*#__PURE__*/__webpack_require__.n(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_24__);
+/* harmony import */ var react_super_responsive_table_dist_SuperResponsiveTableStyle_css__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! react-super-responsive-table/dist/SuperResponsiveTableStyle.css */ "./node_modules/react-super-responsive-table/dist/SuperResponsiveTableStyle.css");
+/* harmony import */ var react_super_responsive_table_dist_SuperResponsiveTableStyle_css__WEBPACK_IMPORTED_MODULE_25___default = /*#__PURE__*/__webpack_require__.n(react_super_responsive_table_dist_SuperResponsiveTableStyle_css__WEBPACK_IMPORTED_MODULE_25__);
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -355,6 +74,22 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
+window.jQuery = jquery__WEBPACK_IMPORTED_MODULE_2___default.a;
+window.$ = jquery__WEBPACK_IMPORTED_MODULE_2___default.a;
+global.jQuery = jquery__WEBPACK_IMPORTED_MODULE_2___default.a;
+
+
+
+
+
+
+
+
 
 
 
@@ -369,16 +104,18 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 var baseurl = window.location.origin;
+
+
 var ajaxabort;
 
 function successDesktopPNotify(id) {
-  var message = "Proof Of Identification added successfully";
+  var message = "Appication Form Send successfully";
 
   if (id != '') {
-    message = "Proof Of Identification updated successfully";
+    message = "Application Form updated successfully";
   }
 
-  pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_7__["default"].success({
+  pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_17__["default"].success({
     title: 'Success',
     text: message,
     modules: {
@@ -389,128 +126,24 @@ function successDesktopPNotify(id) {
   }).on('click', function (e) {});
 }
 
-var Passport_birth = /*#__PURE__*/function (_React$Component) {
-  _inherits(Passport_birth, _React$Component);
+var today = new Date();
+var dd = String(today.getDate()).padStart(2, '0');
+var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
 
-  var _super = _createSuper(Passport_birth);
+var yyyy = today.getFullYear();
+var todaydate = dd + '/' + mm + '/' + yyyy;
 
-  function Passport_birth() {
-    _classCallCheck(this, Passport_birth);
+var OfferLetter = /*#__PURE__*/function (_React$Component) {
+  _inherits(OfferLetter, _React$Component);
 
-    return _super.apply(this, arguments);
-  }
+  var _super = _createSuper(OfferLetter);
 
-  _createClass(Passport_birth, [{
-    key: "render",
-    value: function render() {
-      var _React$createElement, _React$createElement2, _React$createElement3;
-
-      var contents = this.props.passport_birth == 1 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, (_React$createElement = {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "4",
-        xs: 12
-      }, _defineProperty(_React$createElement, "xs", 12), _defineProperty(_React$createElement, "sm", 12), _React$createElement), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
-        htmlFor: "upload_avatar"
-      }, "Passport Inside "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "custom-file"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["FileInput"], {
-        style: {
-          margin: '0px'
-        },
-        name: "passport_inside",
-        id: "passport_inside",
-        required: true,
-        fileType: ["pdf", "docx", "jpeg", "jpg"] // maxFileSize="10000 kb"
-        ,
-        errorMessage: {
-          required: "Please upload Passport Inside",
-          fileType: "Only jpeg, pdf and word file is allowed" // maxFileSize: "Max file size is 10000 kb"
-
-        },
-        onChange: this.onUploadCv
-      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, (_React$createElement2 = {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "4",
-        xs: 12
-      }, _defineProperty(_React$createElement2, "xs", 12), _defineProperty(_React$createElement2, "sm", 12), _React$createElement2), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
-        htmlFor: "upload_avatar"
-      }, "Passport Outside"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "custom-file"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["FileInput"], {
-        style: {
-          margin: '0px'
-        },
-        name: "passport_outside",
-        id: "passport_outside",
-        required: true,
-        fileType: ["pdf", "docx", "jpeg", "jpg"] // maxFileSize="10000 kb"
-        ,
-        errorMessage: {
-          required: "Please upload Passport Inside",
-          fileType: "Only jpeg, pdf and word file is allowed" // maxFileSize: "Max file size is 10000 kb"
-
-        },
-        onChange: this.onUploadCv
-      })))) : this.props.passport_birth == 2 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, (_React$createElement3 = {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "4",
-        xs: 12
-      }, _defineProperty(_React$createElement3, "xs", 12), _defineProperty(_React$createElement3, "sm", 12), _React$createElement3), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
-        htmlFor: "upload_avatar"
-      }, "Birth Certificate"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "custom-file"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["FileInput"], {
-        style: {
-          margin: '0px'
-        },
-        name: "birth_certificate",
-        id: "birth_certificate",
-        required: true,
-        fileType: ["pdf", "docx", "jpeg", "jpg"] // maxFileSize="10000 kb"
-        ,
-        errorMessage: {
-          required: "Please upload Birth Certificate",
-          fileType: "Only jpeg, pdf and word file is allowed" // maxFileSize: "Max file size is 10000 kb"
-
-        },
-        onChange: this.onUploadCv
-      }))) : '';
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, contents);
-    }
-  }]);
-
-  return Passport_birth;
-}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
-
-var ProofOfIdentification = /*#__PURE__*/function (_React$Component2) {
-  _inherits(ProofOfIdentification, _React$Component2);
-
-  var _super2 = _createSuper(ProofOfIdentification);
-
-  function ProofOfIdentification() {
+  function OfferLetter(props) {
     var _this;
 
-    _classCallCheck(this, ProofOfIdentification);
+    _classCallCheck(this, OfferLetter);
 
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    _this = _super2.call.apply(_super2, [this].concat(args));
-
-    _defineProperty(_assertThisInitialized(_this), "state", {
-      _method: '',
-      id: "",
-      passport_birth: '',
-      p45_available: '',
-      showModal: false,
-      visible: true,
-      i_confirm: false,
-      is_produce_my_certificate: false,
-      is_drug_and_alcohol: false,
-      formSubmitting: false,
-      buttonName: 'Save'
-    });
+    _this = _super.call(this, props);
 
     _defineProperty(_assertThisInitialized(_this), "handleCheckboxChange", function (e, value) {
       _this.setState(_defineProperty({}, e.target.name, value));
@@ -536,26 +169,20 @@ var ProofOfIdentification = /*#__PURE__*/function (_React$Component2) {
 
       var _ref = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
           id = _ref.id,
-          auth_token = _ref.auth_token,
-          application_forms_id = _ref.application_forms_id,
-          name = _ref.name;
+          auth_token = _ref.auth_token;
 
-      var data = new FormData($('#ProofofIdentification')[0]);
-      data.append('passport_birth', _this.state.passport_birth);
-      data.append('p45_available', _this.state.p45_available);
-      data.append('application_forms_id', application_forms_id);
-      data.append('fore_name', name);
+      var data = new FormData(); //data.append('name', this.state.name);
+
+      var formdata = _this.state;
       var urlid = '';
 
       if (_this.state.id != '') {
         urlid = '/' + _this.state.id;
       }
 
-      axios__WEBPACK_IMPORTED_MODULE_6___default.a.post(baseurl + '/api/proof_of_identification' + urlid, data, {
+      axios__WEBPACK_IMPORTED_MODULE_16___default.a.post(baseurl + '/api/submitofferletter' + urlid, formdata, {
         headers: {
-          'Accept': 'application/json',
-          'Authorization': 'Bearer ' + auth_token,
-          'content-type': 'multipart/form-data'
+          'Accept': 'application/json'
         }
       }).then(function (res) {
         if (res.data.success) {
@@ -565,22 +192,40 @@ var ProofOfIdentification = /*#__PURE__*/function (_React$Component2) {
           });
 
           _this.setState({
-            buttonName: 'Save'
+            buttonName: 'Submit'
           });
 
           successDesktopPNotify(_this.state.id);
+          var userData = JSON.parse(localStorage.getItem('userData'));
+          userData.application_forms_id = 1;
+          localStorage.setItem('userData', JSON.stringify(userData));
 
-          _this.props.history.push('/services-starter/Employee-Details');
+          _this.props.history.push({
+            pathname: '/thanks',
+            state: {
+              user_name: _this.state.fore_name
+            }
+          });
+
+          _this.setState(_this.baseState); // this.props.history.push('/application');
+
         } else {
           var errorMassage = '';
 
+          if (res.data.message) {
+            errorMassage = res.data.message;
+          }
+
           if (res.data.errors) {
             errorMassage = res.data.errors.name;
-          } else {
+          } //tes
+
+
+          if (res.data.email) {
             errorMassage = res.data.email;
           }
 
-          pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_7__["default"].error({
+          pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_17__["default"].error({
             title: "System Error",
             text: errorMassage
           });
@@ -590,11 +235,11 @@ var ProofOfIdentification = /*#__PURE__*/function (_React$Component2) {
           });
 
           _this.setState({
-            buttonName: 'Save'
+            buttonName: 'Submit'
           });
         }
       })["catch"](function (err) {
-        pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_7__["default"].error({
+        pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_17__["default"].error({
           title: "System Error",
           text: err
         });
@@ -604,7 +249,7 @@ var ProofOfIdentification = /*#__PURE__*/function (_React$Component2) {
         });
 
         _this.setState({
-          buttonName: 'Add'
+          buttonName: 'Submit'
         });
 
         _this.setState({
@@ -616,380 +261,572 @@ var ProofOfIdentification = /*#__PURE__*/function (_React$Component2) {
     _defineProperty(_assertThisInitialized(_this), "handleErrorSubmit", function (e, formData, errorInputs) {//console.log(errorInputs);
     });
 
-    _defineProperty(_assertThisInitialized(_this), "matchPassword", function (value) {
-      return value && value === _this.state.password;
+    _defineProperty(_assertThisInitialized(_this), "handleClickOutside", function (e) {
+      jquery__WEBPACK_IMPORTED_MODULE_2___default()('#addressList').html('').hide(); //$('#location').val('');
     });
 
-    _defineProperty(_assertThisInitialized(_this), "alreadyAdded", function () {
+    _defineProperty(_assertThisInitialized(_this), "confirm_employee", {});
+
+    _defineProperty(_assertThisInitialized(_this), "confirm_employee_trim", function () {
       _this.setState({
-        formSubmitting: true
-      });
+        confirm_employee_signature: _this.confirm_employee.getTrimmedCanvas().toDataURL('image/png')
+      }); // this.setState({confirm_employee_signature_show: this.state.confirm_employee_signature })
 
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "confirm_employee_clear", function () {
+      _this.confirm_employee.clear();
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "confirmChange", function (e) {
       _this.setState({
-        buttonName: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-          className: "spinner-grow spinner-grow-sm mr-1",
-          role: "status"
-        }), "Loading")
-      });
-
-      var _ref2 = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
-          id = _ref2.id,
-          auth_token = _ref2.auth_token; //const data = new FormData()
-      //data.append('name', this.state.name);
-
-
-      axios__WEBPACK_IMPORTED_MODULE_6___default.a.get(baseurl + '/api/consent_statement/' + id, {
-        headers: {
-          'Accept': 'application/json',
-          'Authorization': 'Bearer ' + auth_token
-        }
-      }).then(function (res) {
-        if (res.data.success) {
-          _this.setState(res.data.Consent_statements);
-
-          _this.setState({
-            recruitment_employee_signature_show: _this.state.recruitment_employee_signature
-          });
-
-          _this.setState({
-            recruitment_employee_signature: null
-          });
-
-          _this.setState({
-            screening_employee_signature_show: _this.state.screening_employee_signature
-          });
-
-          _this.setState({
-            screening_employee_signature: null
-          });
-
-          _this.setState({
-            confirm_employee_signature_show: _this.state.confirm_employee_signature
-          });
-
-          _this.setState({
-            confirm_employee_signature: null
-          });
-
-          _this.setState({
-            formSubmitting: false
-          });
-
-          _this.setState({
-            buttonName: 'Save'
-          });
-        } else {
-          var errorMassage = '';
-
-          if (res.data.errors) {
-            errorMassage = res.data.errors.name;
-          } else {
-            errorMassage = res.data.email;
-          }
-
-          _this.setState({
-            formSubmitting: false
-          });
-
-          _this.setState({
-            buttonName: 'Save'
-          });
-        }
-      })["catch"](function (err) {
-        pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_7__["default"].error({
-          title: "System Error",
-          text: err
-        });
-
-        _this.setState({
-          formSubmitting: false
-        });
-
-        _this.setState({
-          buttonName: 'Add'
-        });
-
-        _this.setState({
-          selectedFile: null
-        });
+        confirm_Date: e
       });
     });
 
+    _defineProperty(_assertThisInitialized(_this), "information_provided", {});
+
+    _defineProperty(_assertThisInitialized(_this), "information_provided_trim", function () {
+      _this.setState({
+        information_provided_signature: _this.information_provided.getTrimmedCanvas().toDataURL('image/png')
+      }); //  this.setState({information_provided_signature_show: this.state.information_provided_signature })
+
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "information_provided_clear", function () {
+      _this.information_provided.clear();
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "confirm_employee_dateChange", function (e) {
+      _this.setState({
+        confirm_employee_date: e
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "information_providedChange", function (e) {
+      _this.setState({
+        information_provided_date: e
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "place_of_employment", function (place_of_employment) {
+      if (place_of_employment == 1) {
+        return 'Your place of employment shall not be fixed. Your region will be allocated in line with the Employer’s assessment of business conditions.';
+      } else if (place_of_employment == 2) {
+        return 'Your line manager will allocate your region of management responsibility with your agreed assessment of business conditionsThe Employer reserves the right, subject to prior discussion with you, to alter the size or nature of this region or to reassign the region, in line with the Company’s assessment of business conditions.';
+      } else if (place_of_employment == 3) {
+        return 'Bespoke Metering Solutions, Unit 6, Glover Network Centre, Spire Road, Washington, NE37 3HB';
+      } else if (place_of_employment == 4) {
+        return 'Bespoke Metering Solutions, Gateway House, Gateway West, Newburn Riverside, Newcastle upon Tyne NE15 8NX';
+      } else if (place_of_employment == 5) {
+        return 'Bespoke Metering Solutions, Unit 7, Grovewood Business Centre, Strathclyde Business Park, Bellhill, ML4 3NQ';
+      }
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "hours_of_work", function (hours_of_work) {
+      if (hours_of_work == 1) {
+        return '45 hours per week, between Monday to Sunday to be worked between the hours of 8am and 10pm. You may be required as part of your role to attend out of hours and emergency callouts as requested by the Employer';
+      } else if (hours_of_work == 2) {
+        return 'Your normal working hours will be 40 hours per week between 08.00 and 18.00 Monday to Friday. You are, however, expected to work without additional pay for additional hours according to the requirements of the Company';
+      } else if (hours_of_work == 3) {
+        return 'Manually';
+      }
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "getaddist", function (vl) {
+      if (vl != "") {
+        return vl;
+      }
+    });
+
+    _this.state = {
+      _method: '',
+      application_forms_id: '',
+      confirm_employee_signature: '',
+      confirm_employee_date: todaydate,
+      information_provided_signature: '',
+      information_provided_date: todaydate,
+      showModal: false,
+      visible: true,
+      formSubmitting: false,
+      buttonName: 'Submit',
+      basic: '',
+      bonus: "",
+      confirm_Date: "",
+      dbscheck: "",
+      fore_name: "",
+      hours_of_work: "",
+      id: '',
+      job_title: "",
+      job_title_text: '',
+      place_of_employment: "",
+      remuneration_and_benefits: "",
+      surname: "",
+      title: "",
+      line_1: '',
+      line_2: '',
+      line_3: '',
+      line_4: '',
+      town_or_city: '',
+      postcode: '',
+      offerletterlist_id: '',
+      created_at: '',
+      showofferletter: 'none',
+      alreadyalert: 'none'
+    }; // preserve the initial state in a new object
+
+    _this.baseState = _this.state;
     return _this;
   }
 
-  _createClass(ProofOfIdentification, [{
+  _createClass(OfferLetter, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      // this.alreadyAdded();
-      var _ref3 = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
-          name = _ref3.name,
-          email = _ref3.email;
-    }
+      var _this2 = this;
+
+      if (this.props.match.params.id) {
+        var data = JSON.parse(atob(this.props.match.params.id));
+        this.setState({
+          offerletterlist_id: data['offerletterlist_id']
+        }); //offerletters_id = offerletterlist_id
+
+        this.setState({
+          basic: data['basic']
+        });
+        this.setState({
+          bonus: data['bonus']
+        });
+        this.setState({
+          confirm_Date: data['confirm_Date']
+        });
+        this.setState({
+          dbscheck: data['dbscheck']
+        });
+        this.setState({
+          fore_name: data['fore_name']
+        });
+        this.setState({
+          hours_of_work: data['hours_of_work']
+        });
+        this.setState({
+          application_forms_id: data['application_Forms_id']
+        }); //application_Forms_id =id
+
+        this.setState({
+          job_title: data['job_title']
+        });
+        this.setState({
+          place_of_employment: data['place_of_employment']
+        });
+        this.setState({
+          surname: data['surname']
+        });
+        this.setState({
+          title: data['title']
+        });
+
+        if (data['address_details']) {
+          this.setState({
+            line_1: data['address_details']['line_1']
+          });
+          this.setState({
+            line_2: data['address_details']['line_2']
+          });
+          this.setState({
+            line_3: data['address_details']['line_3']
+          });
+          this.setState({
+            line_4: data['address_details']['line_4']
+          });
+          this.setState({
+            postcode: data['address_details']['postcode']
+          });
+          this.setState({
+            town_or_city: data['address_details']['town_or_city']
+          });
+        }
+
+        if (data['line_1']) {
+          this.setState({
+            line_1: data['line_1']
+          });
+          this.setState({
+            line_2: data['line_2']
+          });
+          this.setState({
+            line_3: data['line_3']
+          });
+          this.setState({
+            line_4: data['line_4']
+          });
+          this.setState({
+            postcode: data['postcode']
+          });
+          this.setState({
+            town_or_city: data['town_or_city']
+          });
+        }
+
+        this.setState({
+          created_at: data['created_at']
+        });
+        axios__WEBPACK_IMPORTED_MODULE_16___default.a.get(baseurl + '/api/applicant_send_offer_letter/' + data['offerletterlist_id']).then(function (res) {
+          if (res.data.success) {
+            if (res.data.data == 1) {
+              _this2.setState({
+                formSubmitting: true,
+                showofferletter: 'none',
+                alreadyalert: ''
+              });
+
+              pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_17__["default"].error({
+                title: "Sorry",
+                text: 'Your offer letter has been already sent.'
+              });
+            } else {
+              _this2.setState({
+                showofferletter: ''
+              });
+            } // this.setState({job_title_text:res.data.data.name});
+
+          } else {
+            var errorMassage = '';
+
+            if (res.data.message) {
+              errorMassage = res.data.message;
+            }
+
+            pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_17__["default"].error({
+              title: "System Error",
+              text: errorMassage
+            });
+          }
+        })["catch"](function (err) {
+          pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_17__["default"].error({
+            title: "System Error",
+            text: err
+          });
+        });
+        axios__WEBPACK_IMPORTED_MODULE_16___default.a.get(baseurl + '/api/getjobtitle/' + data['job_title']).then(function (res) {
+          if (res.data.success) {
+            _this2.setState({
+              job_title_text: res.data.data.name
+            }); // console.log(res.data.data);
+
+          } else {
+            var errorMassage = '';
+
+            if (res.data.message) {
+              errorMassage = res.data.message;
+            }
+
+            if (res.data.errors) {
+              errorMassage = res.data.errors.name;
+            } //tes
+
+
+            if (res.data.email) {
+              errorMassage = res.data.email;
+            }
+
+            pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_17__["default"].error({
+              title: "System Error",
+              text: errorMassage
+            });
+          }
+        })["catch"](function (err) {
+          pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_17__["default"].error({
+            title: "System Error",
+            text: err
+          });
+        });
+      }
+    } //confirm
+
   }, {
     key: "render",
     value: function render() {
-      var _React$createElement4, _React$createElement5, _React$createElement6, _React$createElement7, _React$createElement8, _React$createElement9, _React$createElement10, _React$createElement11, _React$createElement12, _React$createElement13;
+      var _this3 = this;
 
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_hoc_Aux__WEBPACK_IMPORTED_MODULE_11__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["ValidationForm"], {
+      var basic = this.state.dbscheck == 'Yes' ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Basic: "), this.state.basic) : '';
+      var bonus = this.state.bonus == 'Yes' ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Bonus: "), "You will be paid bonus in accordance with the rules and rates set out in the Bonus Policy relevant to you as amended from time to time") : '';
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_hoc_Aux__WEBPACK_IMPORTED_MODULE_5__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_full_screen__WEBPACK_IMPORTED_MODULE_12___default.a, {
+        enabled: this.props.isFullScreen
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_App_layout_AdminLayout_Breadcrumb__WEBPACK_IMPORTED_MODULE_7__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "wrapper"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
+        className: "navbar navbar-expand-lg navbar-light navbar-default navbar-fixed-top past-main",
+        role: "navigation"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "container",
+        style: {
+          marginLeft: '0px'
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        className: "",
+        href: "#"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        style: {
+          width: '70%'
+        },
+        src: _store_constant__WEBPACK_IMPORTED_MODULE_6__["default"].logo_url,
+        alt: "Team Hr"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: " navbar-collapse",
+        id: "navbarSupportedContent"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        className: "navbar-nav mr-auto"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        style: {
+          position: 'absolute',
+          top: '5px',
+          right: '30px'
+        },
+        className: "navbar-nav my-2 my-lg-0"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "nav-item"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        className: "nav-link",
+        href: _store_constant__WEBPACK_IMPORTED_MODULE_6__["default"].BLANK_LINK
+      }, "Login")))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "pcoded-wrapper"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "pcoded-content"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "pcoded-inner-content"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "main-body"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "page-wrapper"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Header, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Title, {
+        as: "h5"
+      }, "Offer Letter")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        style: {
+          display: this.state.alreadyalert
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        style: {
+          color: 'red',
+          fontSize: '20px'
+        }
+      }, "Your offer letter has been already sent.")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_9__["ValidationForm"], {
+        style: {
+          display: this.state.showofferletter
+        },
         autoComplete: "off",
-        id: "ProofofIdentification",
+        id: "formid",
         onSubmit: this.handleSubmit,
         onErrorSubmit: this.handleErrorSubmit
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Row, {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         style: style.rowline
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, (_React$createElement4 = {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "4",
-        xs: 12
-      }, _defineProperty(_React$createElement4, "xs", 12), _defineProperty(_React$createElement4, "sm", 12), _React$createElement4), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
-        htmlFor: "gender"
-      }, "\xA0"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "custom-controls-stacked radio"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["Radio"].RadioGroup, {
-        name: "passport_birth",
-        required: true,
-        valueSelected: this.state.passport_birth,
-        inline: true,
-        onChange: this.handleChange
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["Radio"].RadioItem, {
-        id: "radio4",
-        label: "Passport",
-        value: "1"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["Radio"].RadioItem, {
-        id: "radio5",
-        label: "Birth Certificate",
-        value: "2"
-      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Passport_birth, {
-        passport_birth: this.state.passport_birth
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Row, {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         style: style.rowline
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, (_React$createElement5 = {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "4",
-        xs: 12
-      }, _defineProperty(_React$createElement5, "xs", 12), _defineProperty(_React$createElement5, "sm", 12), _React$createElement5), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
-        htmlFor: "upload_avatar"
-      }, "Proof of Address (Dated within 3 months)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "custom-file"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["FileInput"], {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Private & Confidential")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.state.title, " ", this.state.fore_name, " ", this.state.surname, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), this.state.line_1, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), this.getaddist(this.state.line_2), this.getaddist(this.state.line_3), this.getaddist(this.state.line_4), this.state.town_or_city, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), this.state.postcode, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "DATE ", this.state.created_at), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Dear ", this.state.fore_name, ",")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         style: {
-          margin: '0px'
-        },
-        name: "proof_of_address",
-        id: "proof_of_address",
-        required: true,
-        fileType: ["pdf", "docx", "jpeg", "jpg"] // maxFileSize="10000 kb"
-        ,
-        errorMessage: {
-          required: "Please upload Proof of Address",
-          fileType: "Only jpeg, pdf and word file is allowed" // maxFileSize: "Max file size is 10000 kb"
-
-        },
-        onChange: this.onUploadCv
-      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, (_React$createElement6 = {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "4",
-        xs: 12
-      }, _defineProperty(_React$createElement6, "xs", 12), _defineProperty(_React$createElement6, "sm", 12), _React$createElement6), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
-        htmlFor: "upload_avatar"
-      }, "Proof of National Insurance number"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "custom-file"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["FileInput"], {
+          textAlign: 'center'
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Employment with Bespoke Metering Solutions Limited. ")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "As discussed, we are delighted to offer you employment as ", this.state.job_title_text, ". This offer is conditional upon Bespoke Metering Solutions Limited receiving satisfactory results from necessary pre-employment checks and assessments, which may include a basic DBS check depending on the nature of your role."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Employment with the Bespoke Metering Solutions Limited will commence on the date shown in the Schedule. The first six months of your contract will be treated as a probationary period during which time Bespoke Metering Solutions Limited or yourself may terminate your employment by the notice period stated in your contract."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Your basic remuneration at the commencement of your employment is as shown in the Schedule. Your entitlement to salary accrues daily, payable monthly in arrears on the last working day of the month, directly into your bank or building society account."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Your paid holiday entitlement will be at the rate of 31 days per year, inclusive of statutory bank holidays. Your holiday accrues daily. If you work part-time your holiday entitlement will be on a pro-rata basis."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Full terms of employment are available in the Employee Handbook, which will be made available to you."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "It\u2019s a pleasure to welcome you fully on board and I am confident you will make a valuable contribution to the Company."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Yours Sincerely,"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         style: {
-          margin: '0px'
+          width: '10%'
         },
-        name: "national_insurance_number",
-        id: "national_insurance_number",
-        required: true,
-        fileType: ["pdf", "docx", "jpeg", "jpg"] // maxFileSize="10000 kb"
-        ,
-        errorMessage: {
-          required: "Please upload National Insurance Number",
-          fileType: "Only jpeg, pdf and word file is allowed" // maxFileSize: "Max file size is 10000 kb"
-
+        src: window.location.origin + '/images/offerletter_sign.png'
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Gareth McKenna", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Operations Director"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "I understand that this is a fixed term contract and accept the employment terms set out in this Offer Letter and the enclosed Terms and Conditions of Employment."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Signed:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_signature_canvas__WEBPACK_IMPORTED_MODULE_23___default.a, {
+        penColor: "black",
+        dotSize: function dotSize() {
+          return (_this3.minWidth + _this3.maxWidth) / 5;
         },
-        onChange: this.onUploadCv
-      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, (_React$createElement7 = {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "4",
-        xs: 12
-      }, _defineProperty(_React$createElement7, "xs", 12), _defineProperty(_React$createElement7, "sm", 12), _React$createElement7), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
-        htmlFor: "upload_avatar"
-      }, "Proof of right to work (if required)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "custom-file"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["FileInput"], {
+        canvasProps: {
+          width: 300,
+          height: 100,
+          className: 'sigCanvas'
+        },
+        ref: function ref(_ref2) {
+          _this3.confirm_employee = _ref2;
+        },
+        onEnd: this.confirm_employee_trim
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "button",
+        onClick: this.confirm_employee_clear
+      }, "Clear")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Dated:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_datetime__WEBPACK_IMPORTED_MODULE_8___default.a, {
+        closeOnSelect: true,
+        onChange: this.confirm_employee_dateChange,
+        value: this.state.confirm_employee_date,
+        dateFormat: "D/M/Y",
+        timeFormat: false,
+        maxDate: new Date(),
+        inputProps: {
+          required: 'required',
+          name: "confirm_Date",
+          placeholder: 'Select Date',
+          autoComplete: 'off'
+        }
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        style: style.rowline
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         style: {
-          margin: '0px'
-        },
-        name: "right_to_work",
-        id: "right_to_work",
-        fileType: ["pdf", "docx", "jpeg", "jpg"] // maxFileSize="10000 kb"
-        ,
-        errorMessage: {
-          fileType: "Only jpeg, pdf and word file is allowed" // maxFileSize: "Max file size is 10000 kb"
-
-        },
-        onChange: this.onUploadCv
-      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Row, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, (_React$createElement8 = {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "4",
-        xs: 12
-      }, _defineProperty(_React$createElement8, "xs", 12), _defineProperty(_React$createElement8, "sm", 12), _React$createElement8), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
-        htmlFor: "upload_avatar"
-      }, "Driving Licence (Front)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "custom-file"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["FileInput"], {
+          fontSize: '22px',
+          textAlign: 'center'
+        }
+      }, "Bespoke Metering Solutions Limited"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         style: {
-          margin: '0px'
-        },
-        name: "driving_licence_front",
-        id: "driving_licence_front",
-        required: true,
-        fileType: ["pdf", "docx", "jpeg", "jpg"] // maxFileSize="10000 kb"
-        ,
-        errorMessage: {
-          required: "Please upload Driving Licence Front",
-          fileType: "Only jpeg, pdf and word file is allowed" // maxFileSize: "Max file size is 10000 kb"
-
-        },
-        onChange: this.onUploadCv
-      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, (_React$createElement9 = {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "4",
-        xs: 12
-      }, _defineProperty(_React$createElement9, "xs", 12), _defineProperty(_React$createElement9, "sm", 12), _React$createElement9), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
-        htmlFor: "upload_avatar"
-      }, "Driving Licence (Back)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "custom-file"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["FileInput"], {
+          fontSize: '22px',
+          textAlign: 'center'
+        }
+      }, "And"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         style: {
-          margin: '0px'
-        },
-        name: "driving_licence_back",
-        id: "driving_licence_back",
-        required: true,
-        fileType: ["pdf", "docx", "jpeg", "jpg"] // maxFileSize="10000 kb"
-        ,
-        errorMessage: {
-          required: "Please upload Driving Licence Back",
-          fileType: "Only jpeg, pdf and word file is allowed" // maxFileSize: "Max file size is 10000 kb"
-
-        },
-        onChange: this.onUploadCv
-      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Row, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, (_React$createElement10 = {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "4",
-        xs: 12
-      }, _defineProperty(_React$createElement10, "xs", 12), _defineProperty(_React$createElement10, "sm", 12), _React$createElement10), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
-        htmlFor: "upload_avatar"
-      }, "Passport style photograph (On white background)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "custom-file"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["FileInput"], {
+          fontSize: '22px',
+          textAlign: 'center'
+        }
+      }, this.state.fore_name, " ", this.state.surname), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         style: {
-          margin: '0px'
-        },
-        name: "passport_style_photograph",
-        id: "passport_style_photograph",
-        required: true,
-        fileType: ["pdf", "docx", "jpeg", "jpg"] // maxFileSize="10000 kb"
-        ,
-        errorMessage: {
-          required: "Please upload Passport style photograph",
-          fileType: "Only jpeg, pdf and word file is allowed" // maxFileSize: "Max file size is 10000 kb"
-
-        },
-        onChange: this.onUploadCv
-      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, (_React$createElement11 = {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "4",
-        xs: 12
-      }, _defineProperty(_React$createElement11, "xs", 12), _defineProperty(_React$createElement11, "sm", 12), _React$createElement11), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
-        htmlFor: "gender"
-      }, "is P45 available?"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "custom-controls-stacked radio"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["Radio"].RadioGroup, {
-        name: "p45_available",
-        required: true,
-        valueSelected: this.state.p45_available,
-        inline: true,
-        onChange: this.handleChange
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["Radio"].RadioItem, {
-        id: "p45_available4",
-        label: "Yes",
-        value: "Yes"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["Radio"].RadioItem, {
-        id: "p45_available5",
-        label: "No",
-        value: "No"
-      })))), this.state.p45_available == 'Yes' ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, (_React$createElement12 = {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "4",
-        xs: 12
-      }, _defineProperty(_React$createElement12, "xs", 12), _defineProperty(_React$createElement12, "sm", 12), _React$createElement12), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
-        htmlFor: "upload_avatar"
-      }, "P45"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "custom-file"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["FileInput"], {
+          fontSize: '22px',
+          textAlign: 'center'
+        }
+      }, "Contract of Employment"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         style: {
-          margin: '0px'
-        },
-        name: "p45form",
-        id: "p45",
-        required: true,
-        fileType: ["pdf", "docx", "jpeg", "jpg"] // maxFileSize="10000 kb"
-        ,
-        errorMessage: {
-          required: "Please upload P45",
-          fileType: "Only jpeg, pdf and word file is allowed" // maxFileSize: "Max file size is 10000 kb"
-
-        },
-        onChange: this.onUploadCv
-      }))) : this.state.p45_available == 'No' ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, (_React$createElement13 = {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "4",
-        xs: 12
-      }, _defineProperty(_React$createElement13, "xs", 12), _defineProperty(_React$createElement13, "sm", 12), _React$createElement13), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
-        htmlFor: "upload_avatar"
-      }, "HMRC Starter Checklist"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "custom-file"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["FileInput"], {
+          fontSize: '22px',
+          textAlign: 'center'
+        }
+      }, "Dated ", this.state.confirm_Date)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        style: style.rowline
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "This is your contract of employment and contains a statement of the applicable terms and conditions of your employment as required by section 1 of the Employment Rights Act 1996. The Schedule attached to the Contract forms part of the Contract.")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "You are referred to the Employee Handbook and Employer Policies which detail the Employer\u2019s employment policies and procedures. These policies and procedures may be changed from time to time and are not contractual. Although they do not form part of your Contract you are required by this Contract to abide by those policies and procedures that apply to you and to carry out any instructions and directions given to you by the Employer.")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ol", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Parties\u2019 details"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ol", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "The parties to the Contract are the employer (\u201CEmployer\u201D/\u201Dus\u201D/\u201Dour\u201D/\u201Dwe\u201D) and the employee (\u201CEmployee\u201D/\u201Dyou\u201D/\u201Dyour\u201D) both of whose details are set out in the Schedule hereto."))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
         style: {
-          margin: '0px'
-        },
-        name: "hmrc_starter_checklist",
-        id: "hmrc_starter_checklist",
-        required: true,
-        fileType: ["pdf", "docx", "jpeg", "jpg"] // maxFileSize="10000 kb"
-        ,
-        errorMessage: {
-          required: "Please upload HMRC Starter Checklist",
-          fileType: "Only jpeg, pdf and word file is allowed" // maxFileSize: "Max file size is 10000 kb"
-
-        },
-        onChange: this.onUploadCv
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          marginTop: '20px'
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Date of commencement of employment"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ol", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Your employment with the Employer will commence on the date shown in the Schedule. No employment with a previous employer shall be regarded as part of a period of continuous employment with the Employer unless otherwise stated."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "You warrant that you are entitled to work in the UK without any additional approvals and will notify the Employer immediately if you cease to be so entitled at any time during your employment."))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
         style: {
-          display: 'block',
-          color: 'black',
-          marginTop: '15px'
+          marginTop: '20px'
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Job Title"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ol", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Your position with the Employer is shown in the Schedule."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "You are required to undertake the duties as set out in your job description, which is attached."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "You may be required from time to time to undertake such other duties as the Employer may reasonably require."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "During your employment you will take instructions from such persons as are notified to you by us from time to time."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "You shall not work for anyone else while you are employed by the Employer."))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        style: {
+          marginTop: '20px'
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Place of employment"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ol", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Your place of work is as shown in the Schedule or at such other location or locations within the United Kingdom as the Employer may from time to time direct. You may be required to travel to any location within the United Kingdom for the performance of your duties."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "The Employer reserves the right, subject to prior discussion with you, to alter your place of work in line with the Employer\u2019s assessment of business conditions."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "You will not be paid any expenses incurred or time spent by you travelling to your normal place of work."))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        style: {
+          marginTop: '20px'
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "References and criminal convictions"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ol", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Your employment is conditional upon receipt of references deemed satisfactory by the Employer. Whilst every effort will be made to obtain all such references as quickly as possible, your employment may start before some or all your references are received. If so, you agree that the Employer may terminate your employment either with or without notice, or by making a payment in lieu of notice, depending upon the circumstances if any reference fails to meet Employer requirements. The Employer\u2019s decision is final as to whether your references meet the required standard."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "If your position requires you to have a satisfactory DBS check as a condition of employment this will be stated in the Schedule and by signing this contract you will be agreeing that:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ol", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "we may conduct this check at our expense; and"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "we may conduct further DBS checks as we require from time to time and on an annual basis at our expense; and"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "should your DBS status change you are required to inform us as soon as possible; and"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "should your DBS check reveal a status that is not consistent with you carrying out your duties your employment may be terminated, either with or without notice, depending upon the circumstances."))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        style: {
+          marginTop: '20px'
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Remuneration and benefits"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ol", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Your basic remuneration is as shown in the Schedule. Your entitlement to salary accrues daily, payable monthly in arrears on the last working day of the month, directly into your bank or building society account."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "We may, in our absolute discretion, pay you a bonus and any bonus that is applicable to you will be set out in the Schedule. However, you have no right to a bonus. Any bonus will be subject to the terms of the policy which applies to it from time to time, it may be withdrawn at any time and the basis upon which it is paid may be varied at any time."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Your salary will be reviewed annually and may be changed from time to time at the discretion of the Employer without affecting the other terms of your employment. There is no obligation to award an increase. There will be no review of salary after notice has been given by either party to terminate your employment."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "If at any time money is owed and payable by you to the Employer, the Employer may lawfully deduct the sum or sums owing to it, from your salary or from any other payment due to be made to you by the Employer. Such deductions may include, but are not limited to, overpayments, loans or advances made to you by the Employer, the costs of repairing any damage or loss to the Employer\u2019s property caused by you, any losses suffered by the Employer as a result of any negligence or breach of duty by you, and any other sums due."))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        style: {
+          marginTop: '20px'
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Expenses"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ol", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "You will be reimbursed on a monthly basis for all reasonable expenses relating to travel, accommodation, entertainment and other out-of-pocket expenses incurred on authorised business in the proper performance of your duties subject to production of all receipts or other evidence as the Employer may require and provided that you comply with the terms of the Employer\u2019s expenses policy."))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        style: {
+          marginTop: '20px'
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Hours of work"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ol", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Your normal working hours are shown in the Schedule."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "You agree that your weekly working hours may be in excess of those prescribed by law (\u201Cthe Waiver\u201D). The Waiver will remain in force indefinitely, but you may give the Employer not less than three months\u2019 notice in writing of your intention to terminate the Waiver."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "The Employer reserves the right to alter working hours as necessary."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "You are required to comply with policies and procedures in force from time to time including those contained in the Employee Handbook, a copy of which will be made available to you."))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        style: {
+          marginTop: '20px'
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Driving"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ol", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Should your role require you to drive, your employment will be conditional upon you having a full current UK Driving Licence with the appropriate accreditations required for driving within your role. You are required to notify the Employer if you lose these accreditations, if a court fines you and \u2018endorses\u2019 your driving license with penalty points or you have your driving licence withdrawn as a result of a criminal conviction. Any failure to comply will be a disciplinary offence that may result in dismissal."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Increasing Health and Safety and duty of care requirements mean that the Employer has a corporate responsibility to check the validity of driving licences for employees who are provided with a company vehicle, drive on company business using their own vehicle or are covered under the company insurance. The Employer requires you to submit your driving licence to carry out the necessary checks"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        style: {
+          marginTop: '20px'
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Holiday and holiday pay"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ol", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "The holiday year runs from 1st April to 31st March. "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "From the commencement of your employment, your paid holiday entitlement will be at the rate of 31 days per year, inclusive of statutory bank holidays. Your holiday accrues daily. If you work part-time your holiday entitlement will be on a pro-rata basis."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Holiday may be taken only at times convenient to the Employer as previously arranged by notice. Further details of the notice arrangements can be found in the Employer's Holiday Policy which is contained in the Employee Handbook."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Holiday not taken by 31st March may not be carried forward to the following holiday year without the Employer's written permission. Payment will not be made for holiday not taken."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "On termination of your employment, any holiday entitlement untaken but accrued in the current holiday year, will be paid by the Employer. The amount of such sum shall be 1/260th of your full-time equivalent normal basic remuneration for each day accrued but untaken. Any holiday taken in excess of your pro rata entitlement will be deducted from your final salary payment."))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        style: {
+          marginTop: '20px'
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Pensions"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ol", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "We will comply with the employer pension duties applicable to you under Part 1 of the Pensions Act 2008. Further details will be made available to you."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "The Employer\u2019s pension arrangement is subject to HM Revenue and Customers rules and the terms may change in the future in order to comply with government legislation."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "If you do not want to be a pension scheme member, you can choose to opt out of saving towards your retirement altogether, although we do recommend you think carefully before you do so."))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        style: {
+          marginTop: '20px'
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Absence due to sickness or injury "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ol", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "A self-certification system operates for absence from work due to sickness or injury not exceeding seven days."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, " If you cannot attend work because of sickness or injury you must, unless there is some good reason to the contrary, follow absence reporting procedures. Failure to do so may result in sickness pay not being paid."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Immediately on your return to work you must obtain, complete and return a return-to-work form and a self- certification form or doctor's fit note for periods exceeding seven days."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Sickness or injury absence exceeding seven days must be covered by a doctor's fit note."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "All sickness or injury absence will be entered on your employment record."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "If you are absent from work for four or more days by reason of sickness or injury, you are entitled to statutory sick pay (SSP); as per SSP rules the first 3 qualifying days are not paid for each period of absence."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Sick pay is subject to the usual deductions for PAYE, national insurance, etc."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "The Employer reserves the right to require you to undergo a medical examination at its request after 12 weeks' absence due to sickness. The Employer will pay the cost of any such examination and all information given in connection with it and any report on it shall be fully disclosed to the Employer."))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        style: {
+          marginTop: '20px'
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Probation period"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ol", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "There is a probationary period of 6 months for new employees, during which time you shall be entitled to notice. The Employer's disciplinary scheme shall not apply. The Employer reserves the right to extend this period as appropriate."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "The probation period will come to an end when confirmed in writing by the Employer."))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        style: {
+          marginTop: '20px'
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Notice to terminate"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ol", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Should your position require you to have a satisfactory DBS check as a condition of employment and you have for any reason not disclosed any information or an unsatisfactory DBS is received, then your contract will be terminated with immediate effect."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Once the probationary period is completed, save in cases of gross misconduct, this contract may be terminated at any time by the following periods of notice."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "The Employer's notice to employees with continuous service from one month up to two years will be one week. Thereafter, employees are entitled to receive one additional week's notice for each year of continuous employment up to a maximum of 12 weeks' notice."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Employees' notice to the Employer will be 4 weeks\u2019 notice in writing."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "We may at our discretion terminate your employment without notice and make a payment in of basic salary in lieu of notice."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "We shall be entitled to dismiss you at any time without notice or payment in lieu of notice if you commit a serious breach of your obligations as an employee, or if you cease to be entitled to work in the United Kingdom."))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        style: {
+          marginTop: '20px'
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Collective Agreements"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ol", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "There are no collective agreements governing your terms and conditions of employment."))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        style: {
+          marginTop: '20px'
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Disciplinary and grievance procedures"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ol", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, " The disciplinary and grievance procedures applicable to your employment are contained in the employee handbook, a copy of which will be made available to you. They are for guidance only and do not form part of your contract of employment."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "If you wish to appeal against a disciplinary decision, you may apply in writing in accordance with the disciplinary procedure."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "We reserve the right to suspend you with pay for a reasonable period for the purposes of investigating any allegation of misconduct or neglect against you."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "If you wish to raise a grievance, you may apply in writing in accordance with the grievance procedure."))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        style: {
+          marginTop: '20px'
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Confidential Information"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ol", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, " You shall not use or disclose to any person either during or at any time after your employment with the Employer any confidential information about the business or affairs of the Employer or any of its business contacts, or about any other matters which may come to your knowledge in the course of your employment. For the purposes of this agreement, Confidential Information means any information or matter which is not in the public domain and which relates to the affairs of the Employer or any of its business contacts."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "The restriction in clause 14.1 does not apply to:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "prevent you from making a protected disclosure within the meaning of section 43A of the Employment Rights Act 1996; or"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "use or disclosure that has been authorised by the Employer, is required by law or by your employment."))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        style: {
+          marginTop: '20px'
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Data Protection"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ol", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "You confirm that you have read and understood the data protection policy of the Employer, a copy of which is contained in the employee handbook. The Employer is entitled to make changes to its data protection policy and will notify employees in writing of any such changes."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "You shall comply with the data protection policy when processing personal data during your employment including personal data relating to any employee, customer, client, supplier or agent of the Employer."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "You consent to the Employer processing data relating to you for legal, personnel, administrative and management purposes and in particular to the processing of any sensitive personal data (as defined in the General Data Protection Regulations Act 2016) relating to you, including, as appropriate:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "information about your physical or mental health or condition in order to monitor sick leave and take decisions as to your fitness for work; or"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "your racial or ethnic origin or religious or similar information in order to monitor compliance with equal opportunities legislation; or"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "information relating to any criminal proceedings in which you have been involved for insurance purposes and in order to comply with legal requirements and obligations to third parties."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "The Employer may make such information available to those who provide products or services to the Employer (such as advisers and payroll administrators), regulatory authorities, potential or future employers, governmental or quasi-governmental organisations and potential purchasers of the business or the business in which you work."))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        style: {
+          marginTop: '20px'
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Changes to your employment"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ol", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "We reserve the right to make reasonable adjustments to any terms of employment. You will be notified in writing of any changes as soon as possible and in event within one month of the change."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "If there is a temporary shortage of work for any reason, we will try to maintain your continuity of employment even if this necessitates placing you on short time working, or alternatively, lay-off. If you are placed on short time working, your pay will be reduced according to time worked. If you are placed on lay-off, you will receive no pay other than statutory guarantee pay if you qualify for this."))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        style: {
+          marginTop: '20px'
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Employer\u2019s property"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ol", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "All documents, manuals, hardware and software provided for your use by the Employer, and any data or documents (including copies) produced, maintained or stored on our computer systems or other electronic equipment (including mobile phones), remain the property of the Employer."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Any property of the Employer in your possession and any original or copy documents obtained by you in the course of your employment shall be returned to the Employer at any time on request and in any event prior to the termination of your employment with the Employer."))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        style: {
+          marginTop: '20px'
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Use of communications"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ol", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "You consent to the Employer monitoring, checking, recording and reviewing telephone calls, computer files, records and emails and to carry out any other compliance, security or risk analysis checks the Employer considers necessary on Employer's property."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "You understand and accept that you have no expectation of privacy in respect of any electronic, telephone or other communications made at work using or stored on Employer's property."))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        style: {
+          textAlign: 'center'
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", {
+        style: {
+          fontSize: '24px'
+        }
+      }, "Schedule")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Parties: ")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "The Employer: "), "Bespoke Metering Solutions Limited incorporated and registered in England and Wales with company number 10670768 whose registered office is at Unit 6, Glover Network Centre, Spire Road, Washington, NE37 3HB (\u201CEmployer\u201D/\u201Dus\u201D/\u201Dour\u201D/\u201Dwe\u201D)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "The Employee: "), this.state.fore_name, ", ", this.state.surname, ",", this.state.line_1, ",", this.state.line_2 != '' ? this.state.line_2 : '', ",", this.state.town_or_city, ",", this.state.postcode, "  (\u201CEmployee\u201D/\u201D you\u201D/\u201D your\u201D)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Date of Commencement: "), this.state.confirm_Date, "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Job Title: "), " ", this.state.job_title_text, "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Place of Employment: "), this.place_of_employment(this.state.place_of_employment)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "DBS Check: "), " ", this.state.dbscheck), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Remuneration and Benefits: ")), basic, bonus, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Hours of Work: "), " ", this.hours_of_work(this.state.hours_of_work)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Signed by Gareth McKenna for and on behalf of Bespoke Metering Solutions Limited: "), "  ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        style: {
+          width: '10%'
         },
-        "class": "invalid-feedback"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: baseurl + '/uploaded/HMRC_STARTER_CHECKLIST.pdf',
-        target: "_blank"
-      }, "Please click here to download  HMRC STARTER CHECKLIST."), " ")) : ''), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Row, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
+        src: window.location.origin + '/images/offerletter_sign.png'
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Date: "), this.state.confirm_Date), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Signed by the Employee: "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_signature_canvas__WEBPACK_IMPORTED_MODULE_23___default.a, {
+        penColor: "black",
+        dotSize: function dotSize() {
+          return (_this3.minWidth + _this3.maxWidth) / 5;
+        },
+        canvasProps: {
+          width: 300,
+          height: 100,
+          className: 'sigCanvas'
+        },
+        ref: function ref(_ref3) {
+          _this3.information_provided = _ref3;
+        },
+        onEnd: this.information_provided_trim
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "button",
+        onClick: this.information_provided_clear
+      }, "Clear"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Date: "), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_datetime__WEBPACK_IMPORTED_MODULE_8___default.a, {
+        closeOnSelect: true,
+        onChange: this.information_providedChange,
+        value: this.state.information_provided_date,
+        dateFormat: "D/M/Y",
+        timeFormat: false,
+        maxDate: new Date(),
+        inputProps: {
+          required: 'required',
+          name: "confirm_Date",
+          placeholder: 'Select Date',
+          autoComplete: 'off'
+        }
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Row, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
         as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
         sm: 12,
+        style: {
+          textAlign: 'center'
+        },
         className: "mt-3"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
         disabled: this.state.formSubmitting,
         type: "submit"
-      }, " ", this.state.buttonName)))))))));
+      }, " ", this.state.buttonName)))))))))))))))));
     }
   }]);
 
-  return ProofOfIdentification;
+  return OfferLetter;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 var style = {
@@ -998,7 +835,8 @@ var style = {
     marginBottom: '15px'
   }
 };
-/* harmony default export */ __webpack_exports__["default"] = (ProofOfIdentification);
+/* harmony default export */ __webpack_exports__["default"] = (OfferLetter);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../node_modules/webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js")))
 
 /***/ })
 

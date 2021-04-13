@@ -19,6 +19,8 @@ const CheckList = React.lazy(() => import("./Back-Office/Tools/List"));
 const Services_starter_one = React.lazy(() => import("./employee/Services_starter_form/Services_starter_one"));
 const ApplicationForm = React.lazy(() => import("./employee/ApplicationForm"));
 const List = React.lazy(()=>import("./employee/ApplicationForm/List") )
+const EmployeeList = React.lazy(() => import("./Back-Office/Employee"));
+const EmployeeDetails = React.lazy(() => import("./Back-Office/Employee/EmployeeDetails"));
 
 //For demo Examples
 const FormsSelect = React.lazy(() => import('./Demo/Forms/FormsSelect'));
@@ -46,6 +48,11 @@ const routes = [
     { path:'/services-starter/Proof-of-Identification',exact:true,name:'Services_starter_one',component:Services_starter_one},
     { path:'/application-form',exact:true,name:'ApplicationForm',component:ApplicationForm},
     {path:'/applications',exact:true,name:'Employee',component:List},
+    {path:'/employee',exact:true,name:'Employee',component:EmployeeList},
+    {path:'/employee-Detail',exact:true,name:'Employee',component:EmployeeDetails},
+    {path:'/employee-Detail/Official',exact:true,name:'Employee',component:EmployeeDetails},
+    {path:'/employee-Detail/Documents', exact:true, name:'Oneform',component:EmployeeDetails},
+    {path:'/employee-Detail/Leave', exact:true, name:'Oneform',component:EmployeeDetails},
     // for demo Examples.
     { path: '/forms/form-select', exact: true, name: 'Forms Select', component: FormsSelect },
     { path: '/dashboard', exact: true, name: 'Default', component: DashboardDefault },

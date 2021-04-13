@@ -10,6 +10,9 @@ use App\Models\Employee_details;
 use App\Models\Application_Forms;
 use App\Models\Address_histories;
 use App\Models\Offerletters;
+use App\User;
+
+
 class Employee_detailsController extends Controller
 {
     /**
@@ -17,9 +20,60 @@ class Employee_detailsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        
+        
+            try {
+                
+               // $totalCol = $request->input('iColumns');
+               
+                
+              //  $columns = explode(',', $request->input('columns'));
+                $start = $request->input('iDisplayStart');
+                $page_length = $request->input('iDisplayLength');
+                if(!isset($request->page)){
+                    $request['page'] = ($start/$page_length)+1;
+                }
+                
+                $jobsrow = User::select('application_forms.position_applied_for','users.email','application_forms.telephone_number','application_forms.address','application_forms.user_id','proof_of_identifications.passport_style_photograph',DB::raw('CONCAT(title," ",fore_name," ",surname) AS full_name'))->join('application_forms','application_forms.id','=','users.application_forms_id')
+                ->leftJoin('proof_of_identifications','proof_of_identifications.user_id','=','users.id')->where(function($query) use ($request){
+                    $search = $request->input('sSearch');
+                  
+                   if($search!=''){
+                       
+                    $query->Where('application_forms.fore_name', 'LIKE', "%{$search}%");
+                    $query->orWhere('application_forms.surname', 'LIKE', "%{$search}%");
+                    $query->orWhere('application_forms.address', 'LIKE', "%{$search}%");
+                    $query->orWhere('users.email', 'LIKE', "%{$search}%");
+                    $query->orWhere('application_forms.position_applied_for', 'LIKE', "%{$search}%");
+                    $query->orWhere('application_forms.telephone_number', 'LIKE', "%{$search}%");
+                    
+                    
+                   } 
+                   
+                });
+                $jobs =$jobsrow->orderBy('users.id', 'DESC')->paginate($page_length)->toArray();
+
+                
+                $response = array(
+                "success"=>true,    
+                "aaData" => $jobs['data'],
+                "iTotalDisplayRecords" => $jobs['total'],
+                "iTotalRecords" => $jobs['total'],
+                "cuttentPage"=>$request['page'],
+                "totalPage" => $jobs['last_page']
+            );
+               
+                return response()->json($response, 201);
+            }
+            catch (exception $e) {
+                return response()->json([
+                    'response' => 'error',
+                    'message' => $e,
+                ]);
+            }
+          
     }
 
     /**
@@ -91,7 +145,7 @@ class Employee_detailsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request,$id)
     {
         //$id = user_id;
         try { 
@@ -103,6 +157,9 @@ class Employee_detailsController extends Controller
         }
         if($Employee_details->date_of_birth){
             $Employee_details->date_of_birth = date('d/m/Y',strtotime($Employee_details->date_of_birth));
+        }
+        if(isset($request->employee_details)){
+            $Employee_details = Application_Forms::where('application_forms.user_id',$id)->leftJoin('proof_of_identifications','proof_of_identifications.user_id','=','application_forms.user_id')->first();
         }
     }else{
 

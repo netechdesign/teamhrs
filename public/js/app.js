@@ -36336,7 +36336,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 var AdminLayout = react_loadable__WEBPACK_IMPORTED_MODULE_2___default()({
   loader: function loader() {
-    return Promise.all(/*! import() */[__webpack_require__.e(8), __webpack_require__.e(9), __webpack_require__.e(11), __webpack_require__.e(39), __webpack_require__.e(21)]).then(__webpack_require__.bind(null, /*! ./layout/AdminLayout */ "./resources/js/App/layout/AdminLayout/index.js"));
+    return Promise.all(/*! import() */[__webpack_require__.e(8), __webpack_require__.e(9), __webpack_require__.e(11), __webpack_require__.e(42), __webpack_require__.e(22)]).then(__webpack_require__.bind(null, /*! ./layout/AdminLayout */ "./resources/js/App/layout/AdminLayout/index.js"));
   },
   loading: _layout_Loader__WEBPACK_IMPORTED_MODULE_4__["default"]
 });
@@ -36641,32 +36641,32 @@ __webpack_require__.r(__webpack_exports__);
  // start job portal route
 
 var SignIn = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(58), __webpack_require__.e(1), __webpack_require__.e(8), __webpack_require__.e(9), __webpack_require__.e(19), __webpack_require__.e(50)]).then(__webpack_require__.bind(null, /*! ./Authentication/SignIn/SignIn */ "./resources/js/Authentication/SignIn/SignIn.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(64), __webpack_require__.e(1), __webpack_require__.e(8), __webpack_require__.e(9), __webpack_require__.e(20), __webpack_require__.e(54)]).then(__webpack_require__.bind(null, /*! ./Authentication/SignIn/SignIn */ "./resources/js/Authentication/SignIn/SignIn.js"));
 }); // End job portal route
 
 var Landing = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(8), __webpack_require__.e(23)]).then(__webpack_require__.bind(null, /*! ./Demo/Landing/index */ "./resources/js/Demo/Landing/index.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(8), __webpack_require__.e(24)]).then(__webpack_require__.bind(null, /*! ./Demo/Landing/index */ "./resources/js/Demo/Landing/index.js"));
 });
 var Frontend = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(58), __webpack_require__.e(1), __webpack_require__.e(2), __webpack_require__.e(3), __webpack_require__.e(4), __webpack_require__.e(5), __webpack_require__.e(7), __webpack_require__.e(6), __webpack_require__.e(8), __webpack_require__.e(9), __webpack_require__.e(10), __webpack_require__.e(11), __webpack_require__.e(12), __webpack_require__.e(53)]).then(__webpack_require__.bind(null, /*! ./front-end/index */ "./resources/js/front-end/index.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(64), __webpack_require__.e(1), __webpack_require__.e(3), __webpack_require__.e(2), __webpack_require__.e(4), __webpack_require__.e(5), __webpack_require__.e(6), __webpack_require__.e(7), __webpack_require__.e(8), __webpack_require__.e(9), __webpack_require__.e(10), __webpack_require__.e(11), __webpack_require__.e(12), __webpack_require__.e(59)]).then(__webpack_require__.bind(null, /*! ./front-end/index */ "./resources/js/front-end/index.js"));
 });
 var Certification = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(58), __webpack_require__.e(1), __webpack_require__.e(2), __webpack_require__.e(3), __webpack_require__.e(4), __webpack_require__.e(5), __webpack_require__.e(7), __webpack_require__.e(6), __webpack_require__.e(8), __webpack_require__.e(9), __webpack_require__.e(10), __webpack_require__.e(11), __webpack_require__.e(12), __webpack_require__.e(55)]).then(__webpack_require__.bind(null, /*! ./front-end/submitCertification */ "./resources/js/front-end/submitCertification.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(64), __webpack_require__.e(1), __webpack_require__.e(3), __webpack_require__.e(2), __webpack_require__.e(4), __webpack_require__.e(5), __webpack_require__.e(6), __webpack_require__.e(7), __webpack_require__.e(8), __webpack_require__.e(9), __webpack_require__.e(10), __webpack_require__.e(11), __webpack_require__.e(12), __webpack_require__.e(61)]).then(__webpack_require__.bind(null, /*! ./front-end/submitCertification */ "./resources/js/front-end/submitCertification.js"));
 });
 var thankstosubmit = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(58), __webpack_require__.e(1), __webpack_require__.e(2), __webpack_require__.e(3), __webpack_require__.e(4), __webpack_require__.e(5), __webpack_require__.e(7), __webpack_require__.e(6), __webpack_require__.e(8), __webpack_require__.e(9), __webpack_require__.e(11), __webpack_require__.e(12), __webpack_require__.e(56)]).then(__webpack_require__.bind(null, /*! ./front-end/thankstosubmit */ "./resources/js/front-end/thankstosubmit.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(64), __webpack_require__.e(1), __webpack_require__.e(3), __webpack_require__.e(2), __webpack_require__.e(4), __webpack_require__.e(5), __webpack_require__.e(6), __webpack_require__.e(7), __webpack_require__.e(8), __webpack_require__.e(9), __webpack_require__.e(11), __webpack_require__.e(12), __webpack_require__.e(62)]).then(__webpack_require__.bind(null, /*! ./front-end/thankstosubmit */ "./resources/js/front-end/thankstosubmit.js"));
 });
 var documentUpload = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(58), __webpack_require__.e(1), __webpack_require__.e(2), __webpack_require__.e(3), __webpack_require__.e(4), __webpack_require__.e(5), __webpack_require__.e(7), __webpack_require__.e(6), __webpack_require__.e(8), __webpack_require__.e(9), __webpack_require__.e(11), __webpack_require__.e(12), __webpack_require__.e(52)]).then(__webpack_require__.bind(null, /*! ./front-end/documentUpload */ "./resources/js/front-end/documentUpload.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(64), __webpack_require__.e(1), __webpack_require__.e(3), __webpack_require__.e(2), __webpack_require__.e(4), __webpack_require__.e(5), __webpack_require__.e(6), __webpack_require__.e(7), __webpack_require__.e(8), __webpack_require__.e(9), __webpack_require__.e(11), __webpack_require__.e(12), __webpack_require__.e(58)]).then(__webpack_require__.bind(null, /*! ./front-end/documentUpload */ "./resources/js/front-end/documentUpload.js"));
 });
 var ReCertification = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(58), __webpack_require__.e(1), __webpack_require__.e(2), __webpack_require__.e(3), __webpack_require__.e(4), __webpack_require__.e(5), __webpack_require__.e(7), __webpack_require__.e(6), __webpack_require__.e(8), __webpack_require__.e(9), __webpack_require__.e(10), __webpack_require__.e(11), __webpack_require__.e(12), __webpack_require__.e(54)]).then(__webpack_require__.bind(null, /*! ./front-end/reSubmitCertification */ "./resources/js/front-end/reSubmitCertification.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(64), __webpack_require__.e(1), __webpack_require__.e(3), __webpack_require__.e(2), __webpack_require__.e(4), __webpack_require__.e(5), __webpack_require__.e(6), __webpack_require__.e(7), __webpack_require__.e(8), __webpack_require__.e(9), __webpack_require__.e(10), __webpack_require__.e(11), __webpack_require__.e(12), __webpack_require__.e(60)]).then(__webpack_require__.bind(null, /*! ./front-end/reSubmitCertification */ "./resources/js/front-end/reSubmitCertification.js"));
 });
 var OfferLetter = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(58), __webpack_require__.e(1), __webpack_require__.e(2), __webpack_require__.e(3), __webpack_require__.e(4), __webpack_require__.e(5), __webpack_require__.e(7), __webpack_require__.e(6), __webpack_require__.e(8), __webpack_require__.e(9), __webpack_require__.e(10), __webpack_require__.e(11), __webpack_require__.e(12), __webpack_require__.e(51)]).then(__webpack_require__.bind(null, /*! ./front-end/OfferLetter */ "./resources/js/front-end/OfferLetter.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(64), __webpack_require__.e(1), __webpack_require__.e(3), __webpack_require__.e(2), __webpack_require__.e(4), __webpack_require__.e(5), __webpack_require__.e(6), __webpack_require__.e(7), __webpack_require__.e(8), __webpack_require__.e(9), __webpack_require__.e(10), __webpack_require__.e(11), __webpack_require__.e(12), __webpack_require__.e(57)]).then(__webpack_require__.bind(null, /*! ./front-end/OfferLetter */ "./resources/js/front-end/OfferLetter.js"));
 });
 var ChangePassword = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(58), __webpack_require__.e(1), __webpack_require__.e(3), __webpack_require__.e(8), __webpack_require__.e(9), __webpack_require__.e(19), __webpack_require__.e(49)]).then(__webpack_require__.bind(null, /*! ./Authentication/ChangePassword */ "./resources/js/Authentication/ChangePassword.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(64), __webpack_require__.e(1), __webpack_require__.e(3), __webpack_require__.e(8), __webpack_require__.e(9), __webpack_require__.e(20), __webpack_require__.e(53)]).then(__webpack_require__.bind(null, /*! ./Authentication/ChangePassword */ "./resources/js/Authentication/ChangePassword.js"));
 });
 /*
 const SignUp1 = React.lazy(() => import('./Demo/Authentication/SignUp/SignUp1'));
