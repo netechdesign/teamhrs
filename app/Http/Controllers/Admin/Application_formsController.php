@@ -646,18 +646,26 @@ class Application_formsController extends Controller
              $request->request->add(['created_by'=> $user->id]);
           //$request->request->add(['user_id'=> $user->id]);
         $data = base64_decode($request->data);
-        $data = json_decode($data, true);
+        //$data = json_decode($data, true);
+        $data = preg_replace("/[\r\n]+/", " ", $data);
+        $data = utf8_encode($data);
+        $data = json_decode($data,true);
         $data['created_by_name'] = $user->name;
         $data['application_forms_id'] = $data['application_Forms_id'];
         //
         $Offerletters= $data;
         if($data['address_details']){
-            $Offerletters['line_1']=$data['address_details']['line_1'];
-            $Offerletters['line_2']=$data['address_details']['line_2'];
-            $Offerletters['line_3']=$data['address_details']['line_3'];
-            $Offerletters['line_4']	=$data['address_details']['line_4'];
-            $Offerletters['postcode']=$data['address_details']['postcode'];
-            $Offerletters['town_or_city']=$data['address_details']['town_or_city'];
+            if(isset($data['address_details']['line_1'])){
+                $Offerletters['line_1']=$data['address_details']['line_1'];
+                $Offerletters['line_2']=$data['address_details']['line_2'];
+                $Offerletters['line_3']=$data['address_details']['line_3'];
+                $Offerletters['line_4']	=$data['address_details']['line_4'];
+                $Offerletters['postcode']=$data['address_details']['postcode'];
+                $Offerletters['town_or_city']=$data['address_details']['town_or_city'];
+            }else{
+                $Offerletters['line_1']=$data['address_details'];
+            }
+            
         }
         
         
@@ -766,7 +774,11 @@ class Application_formsController extends Controller
     }
      public function offer_letter(Request $request){
        $data = base64_decode($request->data);
-       $data = json_decode($data, true);
+      // $data = json_decode($data, true);
+      $data = preg_replace("/[\r\n]+/", " ", $data);
+$data = utf8_encode($data);
+$data = json_decode($data,true);
+
       
        if($data['offerletters_id']!=0){
         $offerletters = Offerletters::find($data['offerletters_id']);

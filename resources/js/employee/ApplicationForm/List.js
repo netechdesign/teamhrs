@@ -798,8 +798,6 @@ other_documentDelete =(element) =>{
     data.fore_name = this.state.application_Forms.fore_name;
     data.surname = this.state.application_Forms.surname;
     data.offerletters_id = offerletters_id;
-    
-    
      
     let results= btoa(JSON.stringify(data)); 
     
