@@ -715,7 +715,8 @@ class Application_formsController extends Controller
             $data["basic"]= $offerletters->basic;
             $data["bonus"]= $offerletters->bonus;
             $data["confirm_Date"]= $offerletters->confirm_Date;
-    
+            $data["remuneration_and_benefits"]= $offerletters->remuneration_and_benefits;
+            
             $data["dbscheck"]= $offerletters->dbscheck;
             $data["hours_of_work"]= $offerletters->hours_of_work;
             $data["job_title"]= $offerletters->job_title;
@@ -774,6 +775,8 @@ class Application_formsController extends Controller
             $data["title"]= $offerletters->title;
             $data["fore_name"]= $offerletters->fore_name;
             $data["surname"]= $offerletters->surname;
+            $data["remuneration_and_benefits"]= $offerletters->remuneration_and_benefits;
+            
             $data["basic"]= $offerletters->basic;
             $data["bonus"]= $offerletters->bonus;
             $data["confirm_Date"]= $offerletters->confirm_Date;

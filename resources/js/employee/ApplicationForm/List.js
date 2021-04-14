@@ -1249,10 +1249,12 @@ OfferlettersApproved = (id) =>{
                                                 <Form.Label column sm={3}>
                                                  Remuneration and Benefits:
                                                 </Form.Label>
-                                              {/*  <Col sm={4}>
-                                                    <Form.Control type="text" name="remuneration_and_benefits" onChange={this.handleChange} required placeholder="Remuneration and Benefits" />
+                                              {  <Col sm={4}>
+                                                    <Form.Control type="text" name="remuneration_and_benefits" onChange={this.handleChange} 
+                                                    value={this.state.remuneration_and_benefits}
+                                                    required placeholder="Remuneration and Benefits" />
                                                 </Col>
-                                              */}
+                                              }
                                      </Form.Group>
                                      <Basic basicChange={(e) =>{this.handleChange(e)}} dbscheck={this.state.dbscheck} />
                                      

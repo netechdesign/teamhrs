@@ -88,6 +88,7 @@ li:before {
                         Gareth McKenna<br>
                         Operations Director
                         </p>
+                        {{--
                         <p>
                         I understand that this is a fixed term contract and accept the employment terms set out in this Offer Letter and the enclosed Terms and Conditions of Employment.<br>
                         <table>
@@ -110,6 +111,7 @@ li:before {
                         </table>
 
                         </p>
+                        --}}
             </div>
             
             <pagebreak>
@@ -353,8 +355,10 @@ li:before {
                 @endif
                       
                 </p>
-                <p><b>DBS Check: </b>{{$dbscheck}}</p>
-                <p><b>Remuneration and Benefits: </b></p>
+                @if($dbscheck=='Yes')
+                <p><b>DBS Check: </b>Required</p>
+                @endif
+                <p><b>Remuneration and Benefits: </b>{{$remuneration_and_benefits}}</p>
                 @if($dbscheck=='Yes')
                 <p><b>Basic: </b>{{$basic}}</p>
                 @endif

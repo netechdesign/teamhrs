@@ -73,6 +73,7 @@ class OfferLetter extends React.Component {
         formSubmitting: false,
         buttonName:'Submit',
         basic: '',
+        remuneration_and_benefits:'',
         bonus: "",
         confirm_Date: "",
         dbscheck: "",
@@ -212,6 +213,8 @@ class OfferLetter extends React.Component {
         this.setState({offerletterlist_id:data['offerletterlist_id']});   //offerletters_id = offerletterlist_id
         this.setState({basic:data['basic']});
         this.setState({bonus:data['bonus']});
+        this.setState({remuneration_and_benefits:data['remuneration_and_benefits']});
+        
         this.setState({confirm_Date:data['confirm_Date']});
         this.setState({dbscheck:data['dbscheck']});
         this.setState({fore_name:data['fore_name']});
@@ -399,6 +402,7 @@ class OfferLetter extends React.Component {
      }
     render() {
       const basic =  (this.state.dbscheck=='Yes'?<p><b>Basic: </b>{this.state.basic}</p>:'');
+      const dbscheck =  (this.state.dbscheck=='Yes'?<p><b>DBS Check: </b>Required</p>:'');
       const bonus =  (this.state.bonus=='Yes'?<p><b>Bonus: </b>You will be paid bonus in accordance with the rules and rates set out in the Bonus Policy relevant to you as amended from time to time</p>:'');        
                 
         return (
@@ -491,7 +495,7 @@ class OfferLetter extends React.Component {
                         Gareth McKenna<br/>
                         Operations Director
                         </p>
-                        <p>
+                      {/*  <p>
                         I understand that this is a fixed term contract and accept the employment terms set out in this Offer Letter and the enclosed Terms and Conditions of Employment.
                         </p>
                         <p><b>Signed:</b>
@@ -502,7 +506,7 @@ class OfferLetter extends React.Component {
                                                                             </button>
                         </p>
                         <p><b>Dated:</b><Datetime closeOnSelect={true} onChange={this.confirm_employee_dateChange} value={this.state.confirm_employee_date}  dateFormat="D/M/Y" timeFormat={false}  maxDate={new Date()} inputProps={{required:'required',name:"confirm_Date",placeholder: 'Select Date',autoComplete:'off'}} /></p>
-                        
+                      */}  
             </div>
             
             
@@ -718,8 +722,8 @@ class OfferLetter extends React.Component {
                 <p><b>Place of Employment: </b>
                  {this.place_of_employment(this.state.place_of_employment)}
                 </p>
-                <p><b>DBS Check: </b> {this.state.dbscheck}</p>
-                <p><b>Remuneration and Benefits: </b></p>
+                {dbscheck}
+                <p><b>Remuneration and Benefits: </b>{this.state.remuneration_and_benefits}</p>
                 {basic}
                 {bonus}
                 

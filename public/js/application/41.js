@@ -2167,7 +2167,16 @@ var List = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Label, {
         column: true,
         sm: 3
-      }, "Remuneration and Benefits:")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Basic, {
+      }, "Remuneration and Benefits:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], {
+        sm: 4
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Control, {
+        type: "text",
+        name: "remuneration_and_benefits",
+        onChange: this.handleChange,
+        value: this.state.remuneration_and_benefits,
+        required: true,
+        placeholder: "Remuneration and Benefits"
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Basic, {
         basicChange: function basicChange(e) {
           _this2.handleChange(e);
         },

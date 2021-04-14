@@ -139,6 +139,8 @@ var OfferLetter = /*#__PURE__*/function (_React$Component) {
   var _super = _createSuper(OfferLetter);
 
   function OfferLetter(props) {
+    var _this$state;
+
     var _this;
 
     _classCallCheck(this, OfferLetter);
@@ -339,7 +341,7 @@ var OfferLetter = /*#__PURE__*/function (_React$Component) {
       }
     });
 
-    _this.state = {
+    _this.state = (_this$state = {
       _method: '',
       application_forms_id: '',
       confirm_employee_signature: '',
@@ -351,6 +353,7 @@ var OfferLetter = /*#__PURE__*/function (_React$Component) {
       formSubmitting: false,
       buttonName: 'Submit',
       basic: '',
+      remuneration_and_benefits: '',
       bonus: "",
       confirm_Date: "",
       dbscheck: "",
@@ -359,21 +362,8 @@ var OfferLetter = /*#__PURE__*/function (_React$Component) {
       id: '',
       job_title: "",
       job_title_text: '',
-      place_of_employment: "",
-      remuneration_and_benefits: "",
-      surname: "",
-      title: "",
-      line_1: '',
-      line_2: '',
-      line_3: '',
-      line_4: '',
-      town_or_city: '',
-      postcode: '',
-      offerletterlist_id: '',
-      created_at: '',
-      showofferletter: 'none',
-      alreadyalert: 'none'
-    }; // preserve the initial state in a new object
+      place_of_employment: ""
+    }, _defineProperty(_this$state, "remuneration_and_benefits", ""), _defineProperty(_this$state, "surname", ""), _defineProperty(_this$state, "title", ""), _defineProperty(_this$state, "line_1", ''), _defineProperty(_this$state, "line_2", ''), _defineProperty(_this$state, "line_3", ''), _defineProperty(_this$state, "line_4", ''), _defineProperty(_this$state, "town_or_city", ''), _defineProperty(_this$state, "postcode", ''), _defineProperty(_this$state, "offerletterlist_id", ''), _defineProperty(_this$state, "created_at", ''), _defineProperty(_this$state, "showofferletter", 'none'), _defineProperty(_this$state, "alreadyalert", 'none'), _this$state); // preserve the initial state in a new object
 
     _this.baseState = _this.state;
     return _this;
@@ -395,6 +385,9 @@ var OfferLetter = /*#__PURE__*/function (_React$Component) {
         });
         this.setState({
           bonus: data['bonus']
+        });
+        this.setState({
+          remuneration_and_benefits: data['remuneration_and_benefits']
         });
         this.setState({
           confirm_Date: data['confirm_Date']
@@ -549,6 +542,7 @@ var OfferLetter = /*#__PURE__*/function (_React$Component) {
       var _this3 = this;
 
       var basic = this.state.dbscheck == 'Yes' ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Basic: "), this.state.basic) : '';
+      var dbscheck = this.state.dbscheck == 'Yes' ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "DBS Check: "), "Required") : '';
       var bonus = this.state.bonus == 'Yes' ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Bonus: "), "You will be paid bonus in accordance with the rules and rates set out in the Bonus Policy relevant to you as amended from time to time") : '';
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_hoc_Aux__WEBPACK_IMPORTED_MODULE_5__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_full_screen__WEBPACK_IMPORTED_MODULE_12___default.a, {
         enabled: this.props.isFullScreen
@@ -630,37 +624,7 @@ var OfferLetter = /*#__PURE__*/function (_React$Component) {
           width: '10%'
         },
         src: window.location.origin + '/images/offerletter_sign.png'
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Gareth McKenna", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Operations Director"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "I understand that this is a fixed term contract and accept the employment terms set out in this Offer Letter and the enclosed Terms and Conditions of Employment."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Signed:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_signature_canvas__WEBPACK_IMPORTED_MODULE_23___default.a, {
-        penColor: "black",
-        dotSize: function dotSize() {
-          return (_this3.minWidth + _this3.maxWidth) / 5;
-        },
-        canvasProps: {
-          width: 300,
-          height: 100,
-          className: 'sigCanvas'
-        },
-        ref: function ref(_ref2) {
-          _this3.confirm_employee = _ref2;
-        },
-        onEnd: this.confirm_employee_trim
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        type: "button",
-        onClick: this.confirm_employee_clear
-      }, "Clear")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Dated:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_datetime__WEBPACK_IMPORTED_MODULE_8___default.a, {
-        closeOnSelect: true,
-        onChange: this.confirm_employee_dateChange,
-        value: this.state.confirm_employee_date,
-        dateFormat: "D/M/Y",
-        timeFormat: false,
-        maxDate: new Date(),
-        inputProps: {
-          required: 'required',
-          name: "confirm_Date",
-          placeholder: 'Select Date',
-          autoComplete: 'off'
-        }
-      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Gareth McKenna", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Operations Director")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         style: style.rowline
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         style: {
@@ -777,7 +741,7 @@ var OfferLetter = /*#__PURE__*/function (_React$Component) {
         style: {
           fontSize: '24px'
         }
-      }, "Schedule")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Parties: ")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "The Employer: "), "Bespoke Metering Solutions Limited incorporated and registered in England and Wales with company number 10670768 whose registered office is at Unit 6, Glover Network Centre, Spire Road, Washington, NE37 3HB (\u201CEmployer\u201D/\u201Dus\u201D/\u201Dour\u201D/\u201Dwe\u201D)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "The Employee: "), this.state.fore_name, ", ", this.state.surname, ",", this.state.line_1, ",", this.state.line_2 != '' ? this.state.line_2 : '', ",", this.state.town_or_city, ",", this.state.postcode, "  (\u201CEmployee\u201D/\u201D you\u201D/\u201D your\u201D)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Date of Commencement: "), this.state.confirm_Date, "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Job Title: "), " ", this.state.job_title_text, "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Place of Employment: "), this.place_of_employment(this.state.place_of_employment)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "DBS Check: "), " ", this.state.dbscheck), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Remuneration and Benefits: ")), basic, bonus, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Hours of Work: "), " ", this.hours_of_work(this.state.hours_of_work)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Signed by Gareth McKenna for and on behalf of Bespoke Metering Solutions Limited: "), "  ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+      }, "Schedule")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Parties: ")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "The Employer: "), "Bespoke Metering Solutions Limited incorporated and registered in England and Wales with company number 10670768 whose registered office is at Unit 6, Glover Network Centre, Spire Road, Washington, NE37 3HB (\u201CEmployer\u201D/\u201Dus\u201D/\u201Dour\u201D/\u201Dwe\u201D)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "The Employee: "), this.state.fore_name, ", ", this.state.surname, ",", this.state.line_1, ",", this.state.line_2 != '' ? this.state.line_2 : '', ",", this.state.town_or_city, ",", this.state.postcode, "  (\u201CEmployee\u201D/\u201D you\u201D/\u201D your\u201D)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Date of Commencement: "), this.state.confirm_Date, "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Job Title: "), " ", this.state.job_title_text, "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Place of Employment: "), this.place_of_employment(this.state.place_of_employment)), dbscheck, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Remuneration and Benefits: "), this.state.remuneration_and_benefits), basic, bonus, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Hours of Work: "), " ", this.hours_of_work(this.state.hours_of_work)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Signed by Gareth McKenna for and on behalf of Bespoke Metering Solutions Limited: "), "  ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         style: {
           width: '10%'
         },
@@ -792,8 +756,8 @@ var OfferLetter = /*#__PURE__*/function (_React$Component) {
           height: 100,
           className: 'sigCanvas'
         },
-        ref: function ref(_ref3) {
-          _this3.information_provided = _ref3;
+        ref: function ref(_ref2) {
+          _this3.information_provided = _ref2;
         },
         onEnd: this.information_provided_trim
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {

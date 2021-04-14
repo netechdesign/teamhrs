@@ -20,6 +20,7 @@ class Offerletters extends Model
      'confirm_employee_date', 
      'confirm_employee_signature', 
      'dbscheck', 
+     'remuneration_and_benefits',
      'hours_of_work', 
      'information_provided_date', 
      'information_provided_signature', 

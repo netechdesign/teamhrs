@@ -19,6 +19,7 @@ class CreateOfferletterlistsTable extends Migration
             $table->string('job_title')->nullable(); 
             $table->string('confirm_Date')->nullable(); 
             $table->string('dbscheck')->nullable(); 
+            $table->string('remuneration_and_benefits')->nullable(); 
             $table->string('basic')->nullable(); 
             $table->string('bonus')->nullable(); 
             $table->string('hours_of_work')->nullable(); 
