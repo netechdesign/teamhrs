@@ -56,7 +56,7 @@ li:before {
                                         {{$town_or_city}} <br/>
                                         {{$postcode}} <br/>
                                     @else
-                                    {{$address_details}}
+                                    {{$address_details}} <br/>
                                     @endif
                                     DATE @if(isset($created_at)){{$created_at}} @else {{date('d/m/Y')}} @endif
                                     
@@ -356,12 +356,12 @@ li:before {
                       
                 </p>
                 @if($dbscheck=='Yes')
-                <p><b>DBS Check: </b>Required</p>
+                <p><b>DBS Check: </b>Basic required</p>
                 @endif
-                <p><b>Remuneration and Benefits: </b>{{$remuneration_and_benefits}}</p>
-                @if($dbscheck=='Yes')
-                <p><b>Basic: </b>{{$basic}}</p>
-                @endif
+                <p><b>Remuneration and Benefits: </b></p>
+                
+                <p><b>Basic: </b>£{{$basic}} per annum</p>
+                
                 @if($bonus=='Yes')
                 <p><b>Bonus: </b>
                     You will be paid bonus in accordance with the rules and rates set out in the Bonus Policy relevant to you as amended from time to time

@@ -401,8 +401,8 @@ class OfferLetter extends React.Component {
          }
      }
     render() {
-      const basic =  (this.state.dbscheck=='Yes'?<p><b>Basic: </b>{this.state.basic}</p>:'');
-      const dbscheck =  (this.state.dbscheck=='Yes'?<p><b>DBS Check: </b>Required</p>:'');
+      const basic =  <p><b>Basic: </b>£{this.state.basic} per annum</p>;
+      const dbscheck =  (this.state.dbscheck=='Yes'?<p><b>DBS Check: </b>Basic required</p>:'');
       const bonus =  (this.state.bonus=='Yes'?<p><b>Bonus: </b>You will be paid bonus in accordance with the rules and rates set out in the Bonus Policy relevant to you as amended from time to time</p>:'');        
                 
         return (

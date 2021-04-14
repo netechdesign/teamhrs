@@ -716,7 +716,7 @@ other_documentDelete =(element) =>{
     data.job_title = this.state.job_title;
     data.place_of_employment = this.state.place_of_employment;
     data.dbscheck = this.state.dbscheck;
-    data.remuneration_and_benefits = this.state.remuneration_and_benefits;
+    //data.remuneration_and_benefits = this.state.remuneration_and_benefits;
     data.basic = this.state.basic;
     data.bonus = this.state.bonus;
     data.hours_of_work = this.state.hours_of_work;
@@ -1247,14 +1247,14 @@ OfferlettersApproved = (id) =>{
                                                 <Form.Label column sm={3}>
                                                  Remuneration and Benefits:
                                                 </Form.Label>
-                                              {  <Col sm={4}>
+                                              {/*  <Col sm={4}>
                                                     <Form.Control type="text" name="remuneration_and_benefits" onChange={this.handleChange} 
                                                     value={this.state.remuneration_and_benefits}
                                                     required placeholder="Remuneration and Benefits" />
                                                 </Col>
-                                              }
+                                      */}
                                      </Form.Group>
-                                     <Basic basicChange={(e) =>{this.handleChange(e)}} dbscheck={this.state.dbscheck} />
+                                     <Basic basicChange={(e) =>{this.handleChange(e)}} dbscheck="Yes" />
                                      
                                      <Form.Group as={Row} controlId="formHorizontalEmail">
                                                 <Form.Label column sm={3}>

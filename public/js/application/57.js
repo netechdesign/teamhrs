@@ -541,8 +541,8 @@ var OfferLetter = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var _this3 = this;
 
-      var basic = this.state.dbscheck == 'Yes' ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Basic: "), this.state.basic) : '';
-      var dbscheck = this.state.dbscheck == 'Yes' ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "DBS Check: "), "Required") : '';
+      var basic = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Basic: "), "\xA3", this.state.basic, " per annum");
+      var dbscheck = this.state.dbscheck == 'Yes' ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "DBS Check: "), "Basic required") : '';
       var bonus = this.state.bonus == 'Yes' ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Bonus: "), "You will be paid bonus in accordance with the rules and rates set out in the Bonus Policy relevant to you as amended from time to time") : '';
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_hoc_Aux__WEBPACK_IMPORTED_MODULE_5__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_full_screen__WEBPACK_IMPORTED_MODULE_12___default.a, {
         enabled: this.props.isFullScreen
