@@ -58,7 +58,8 @@ li:before {
                                     @else
                                     {{$address_details}} <br/>
                                     @endif
-                                    DATE @if(isset($created_at)){{$created_at}} @else {{date('d/m/Y')}} @endif
+                                    <br/>
+                                     @if(isset($created_at)){{$created_at}} @else {{date('d/m/Y')}} @endif
                                     
                                     </p>
                         <p>Dear {{ucfirst($fore_name)}},</p>

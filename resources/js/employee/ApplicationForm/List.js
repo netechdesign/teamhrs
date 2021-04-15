@@ -1254,8 +1254,16 @@ OfferlettersApproved = (id) =>{
                                                 </Col>
                                       */}
                                      </Form.Group>
-                                     <Basic basicChange={(e) =>{this.handleChange(e)}} dbscheck="Yes" />
-                                     
+                                     <Form.Group as={Row} controlId="formHorizontalEmail">
+                                                <Form.Label column sm={3}>
+                                                   Basic:
+                                                </Form.Label>
+                                                <Col sm={4}>
+                                                    <Form.Control type="text" name="basic"  onChange={this.handleChange}
+                                                    value={this.state.basic}
+                                                    required placeholder="Basic" />
+                                                </Col>
+                                                </Form.Group>
                                      <Form.Group as={Row} controlId="formHorizontalEmail">
                                                 <Form.Label column sm={3}>
                                                    Bonus:
