@@ -1147,7 +1147,7 @@ OfferlettersApproved = (id) =>{
                                                         </Form.Group>
                                                     </Form.Row>
                                             </ValidationForm>
-                                            :<DocumentsList resendClick={this.documentResend} documents_list={this.state.application_Forms.documents}  />
+                                            :<DocumentsList  driving_licence_number={this.state.application_Forms.driving_licence_number} driving_licence_code_text={this.state.application_Forms.driving_licence_code_text} resendClick={this.documentResend} documents_list={this.state.application_Forms.documents}  />
                                         ):'')
                                         }
                       </Tab>
@@ -1502,11 +1502,30 @@ dateFormate = (e) => {
                    </Tr>
            )
             })
-
+           const driving_licence_number=  (this.props.driving_licence_number!=''?<Tr style={{borderBottom:'1px solid rgba(0, 0, 0, 0.125)',borderTop:'1px solid rgba(0, 0, 0, 0.125)'}}>
+             <Td style={{padding:'5px'}}>
+             Driving Licence Number
+                   </Td><Td style={{padding:'5px'}}></Td>
+                   <Td style={{padding:'5px'}}>
+                   {this.props.driving_licence_number}
+                   </Td>      
+           </Tr>:'');
+           // this.props.driving_licence_code_text
+           const driving_licence_code_text=  (this.props.driving_licence_code_text!=''?<Tr style={{borderBottom:'1px solid rgba(0, 0, 0, 0.125)',borderTop:'1px solid rgba(0, 0, 0, 0.125)'}}>
+             <Td style={{padding:'5px'}}>
+             Driving Licence Code
+                   </Td><Td style={{padding:'5px'}}></Td>
+                   <Td style={{padding:'5px'}}>
+                   {this.props.driving_licence_code_text}
+                   </Td>      
+           </Tr>:'');
             return(
               <Aux>
              <Button onClick={this.props.resendClick}  type="button">Re-Send</Button>
-                <Tbl><Tbody>{documents_List}</Tbody></Tbl>
+                <Tbl><Tbody>{documents_List}
+                {driving_licence_number}
+                {driving_licence_code_text}
+                </Tbody></Tbl>
               </Aux>
           );
 

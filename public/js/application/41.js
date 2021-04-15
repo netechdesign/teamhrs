@@ -2044,6 +2044,8 @@ var List = /*#__PURE__*/function (_React$Component) {
         disabled: this.state.certificationButton,
         type: "submit"
       }, " ", this.state.application_Forms.is_document_request == 1 ? 'Send' : 'Re-Send')))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(DocumentsList, {
+        driving_licence_number: this.state.application_Forms.driving_licence_number,
+        driving_licence_code_text: this.state.application_Forms.driving_licence_code_text,
         resendClick: this.documentResend,
         documents_list: this.state.application_Forms.documents
       }) : ''), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Tab"], {
@@ -2520,10 +2522,47 @@ var DocumentsList = /*#__PURE__*/function (_React$Component3) {
               "class": "feather icon-file-text"
             }), " view")));
           });
+          var driving_licence_number = this.props.driving_licence_number != '' ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_18__["Tr"], {
+            style: {
+              borderBottom: '1px solid rgba(0, 0, 0, 0.125)',
+              borderTop: '1px solid rgba(0, 0, 0, 0.125)'
+            }
+          }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_18__["Td"], {
+            style: {
+              padding: '5px'
+            }
+          }, "Driving Licence Number"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_18__["Td"], {
+            style: {
+              padding: '5px'
+            }
+          }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_18__["Td"], {
+            style: {
+              padding: '5px'
+            }
+          }, this.props.driving_licence_number)) : ''; // this.props.driving_licence_code_text
+
+          var driving_licence_code_text = this.props.driving_licence_code_text != '' ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_18__["Tr"], {
+            style: {
+              borderBottom: '1px solid rgba(0, 0, 0, 0.125)',
+              borderTop: '1px solid rgba(0, 0, 0, 0.125)'
+            }
+          }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_18__["Td"], {
+            style: {
+              padding: '5px'
+            }
+          }, "Driving Licence Code"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_18__["Td"], {
+            style: {
+              padding: '5px'
+            }
+          }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_18__["Td"], {
+            style: {
+              padding: '5px'
+            }
+          }, this.props.driving_licence_code_text)) : '';
           return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_hoc_Aux__WEBPACK_IMPORTED_MODULE_3__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Button"], {
             onClick: this.props.resendClick,
             type: "button"
-          }, "Re-Send"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_18__["Table"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_18__["Tbody"], null, documents_List)));
+          }, "Re-Send"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_18__["Table"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_18__["Tbody"], null, documents_List, driving_licence_number, driving_licence_code_text)));
         }
       } else {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_hoc_Aux__WEBPACK_IMPORTED_MODULE_3__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "documents_list"));

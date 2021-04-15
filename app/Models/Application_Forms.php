@@ -42,6 +42,7 @@ class Application_Forms extends Model
         'is_ts_done',
         'is_document_request',
         'is_document_get',
+        'driving_licence_number',
         'driving_licence_code_text'
                           ];
 
