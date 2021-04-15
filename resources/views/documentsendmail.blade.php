@@ -254,7 +254,7 @@
                                             Hi {{$data['name']}},
 
                                         </p>
-                                        <p>Please click bellow link to submit your certificates</p>
+                                        <p>Please click the link below to submit your certificates</p>
                                         <table border="0" width="180" cellpadding="0" cellspacing="0"
                                             bgcolor="5caad2" style="margin-bottom:20px;">
 

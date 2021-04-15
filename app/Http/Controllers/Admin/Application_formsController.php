@@ -294,6 +294,11 @@ class Application_formsController extends Controller
                         
                         $results->driving_licence_code_text = $request->driving_licence_code_text;
                     }
+                    if(isset($request->driving_licence_number)){
+                        
+                        $results->driving_licence_number = $request->driving_licence_number;
+                    }
+                    
                     $results->is_document_get=0;
                     $results->save();
                     return response()->json(array('success' => true,'message' => 'document send successfully','form_user' => $data), 200);
