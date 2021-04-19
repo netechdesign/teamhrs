@@ -309,39 +309,51 @@ other_documentDelete =(element) =>{
         })
         
        const formlist= (this.state.forms.length>0 ? this.state.forms.map((item,index) =>{
-          let driving_licence_code_text = (item.key=='driving_licence_code'?<Form.Group as={Col} md="4" xs={12} xs={12} sm={12}>
+          let documentFile = (item.key=='driving_licence_code'?
+          <><Form.Group as={Col} md="4" xs={12} xs={12} sm={12}>
+                                                <Form.Label htmlFor="upload_avatar">Driving Licence</Form.Label>
+                                             
+                                                <TextInput style={{margin:'0px'}}
+                                                          name="driving_licence_number"
+                                                         placeholder="Driving Licence Number"
+                                                        required
+                                                        autoComplete="off"
+                                                   />
+                                               <div style={{display:'block',color:'black'}} class="invalid-feedback">Please enter Last Eight characters of Driving Licence Number</div>
+                                                </Form.Group>
+          <Form.Group as={Col} md="4" xs={12} xs={12} sm={12}>
         <Form.Label htmlFor="upload_avatar">&nbsp;</Form.Label>
-        <TextInput
+        <TextInput style={{margin:'0px'}}
                       name="driving_licence_code_text"
                      placeholder="Driving Licence Check Code"
                     required
                     autoComplete="off"
-               /></Form.Group>:'')
+               /></Form.Group></>:<Form.Group as={Col} md="4" xs={12} xs={12} sm={12}>
+               <Form.Label htmlFor="upload_avatar">{labelget(item.key)}</Form.Label>
+               <div className="custom-file">
+               <FileInput
+               name={item.key}
+               id={index}
+               required
+               fileType={["pdf","docx","jpeg","jpg"]}
+               // maxFileSize="10000 kb"
+               errorMessage={
+               { required: "Please upload a file",
+               fileType:"Only pdf and word file is allowed",
+               // maxFileSize: "Max file size is 10000 kb"
+               }
+               }
+               onChange={this.onUploadCv}
+               />
+               </div>
+               
+               </Form.Group>)
         
         
                               return(
                                     <Form.Row key={index} style={style.rowline} >
-                                    <Form.Group as={Col} md="4" xs={12} xs={12} sm={12}>
-                                    <Form.Label htmlFor="upload_avatar">{labelget(item.key)}</Form.Label>
-                                    <div className="custom-file">
-                                    <FileInput
-                                    name={item.key}
-                                    id={index}
-                                    required
-                                    fileType={["pdf","docx","jpeg","jpg"]}
-                                    // maxFileSize="10000 kb"
-                                    errorMessage={
-                                    { required: "Please upload a file",
-                                    fileType:"Only pdf and word file is allowed",
-                                    // maxFileSize: "Max file size is 10000 kb"
-                                    }
-                                    }
-                                    onChange={this.onUploadCv}
-                                    />
-                                    </div>
                                     
-                                    </Form.Group>
-                                    {driving_licence_code_text}
+                                    {documentFile}
                                     </Form.Row>
                             )
                  }):'')

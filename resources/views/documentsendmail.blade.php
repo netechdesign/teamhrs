@@ -339,7 +339,7 @@
                                             Hi {{$data['name']}},
 
                                         </p>
-                                        <p>Please send bellow certificates</p>
+                                        <p>Please send below certificates</p>
                                         <p>
                                         @if($data['cma_1']) cma 1 , @endif
                                         @if($data['met_1']) met 1 , @endif
