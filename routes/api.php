@@ -45,6 +45,7 @@ Route::group(['middleware' => ['jwt.auth','api-header']], function () {
         Route::resource('check_list', 'Check_listController');
         Route::resource('proof_of_identification', 'Proof_of_identificationController');
         Route::resource('documents', 'DocumentsController');
+        Route::resource('leaves', 'User_leavesController');
         
 
         Route::get('newapplicationcount', 'Application_formsController@newapplicationcount');

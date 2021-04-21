@@ -1,9 +1,9 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[63],{
 
-/***/ "./resources/js/Back-Office/Employee/Tab/Leave.js":
-/*!********************************************************!*\
-  !*** ./resources/js/Back-Office/Employee/Tab/Leave.js ***!
-  \********************************************************/
+/***/ "./resources/js/Back-Office/Employee/Tab/Salary.js":
+/*!*********************************************************!*\
+  !*** ./resources/js/Back-Office/Employee/Tab/Salary.js ***!
+  \*********************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -87,15 +87,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 var baseurl = window.location.origin;
 var ajaxabort;
 
-var Leave = /*#__PURE__*/function (_React$Component) {
-  _inherits(Leave, _React$Component);
+var Salary = /*#__PURE__*/function (_React$Component) {
+  _inherits(Salary, _React$Component);
 
-  var _super = _createSuper(Leave);
+  var _super = _createSuper(Salary);
 
-  function Leave() {
+  function Salary() {
     var _this;
 
-    _classCallCheck(this, Leave);
+    _classCallCheck(this, Salary);
 
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
@@ -178,7 +178,7 @@ var Leave = /*#__PURE__*/function (_React$Component) {
     return _this;
   }
 
-  _createClass(Leave, [{
+  _createClass(Salary, [{
     key: "componentDidMount",
     value: function componentDidMount() {
       var _ref2 = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
@@ -206,7 +206,7 @@ var Leave = /*#__PURE__*/function (_React$Component) {
         style: {
           paddingTop: '15px'
         }
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, "Leave")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, "Employee Detail")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
         md: 2,
         xl: 2,
         style: {
@@ -244,11 +244,89 @@ var Leave = /*#__PURE__*/function (_React$Component) {
         id: "loader"
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         "class": "row view-basic-card "
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "test"))));
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        "class": "col-12 col-md-6 col-lg-3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        "class": "pmd-list-subtitle"
+      }, "First Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        "class": "pmd-list-title"
+      }, this.state.employee_details.length > 0 ? this.state.employee_details[0].first_name : '', "\xA0 ")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        "class": "col-12 col-md-6 col-lg-3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        "class": "pmd-list-subtitle"
+      }, "Last Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        "class": "pmd-list-title"
+      }, this.state.employee_details.length > 0 ? this.state.employee_details[0].last_name : ' ')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        "class": "col-12 col-md-6 col-lg-3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        "class": "pmd-list-subtitle"
+      }, "Middle Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        "class": "pmd-list-title"
+      }, this.state.employee_details.length > 0 ? this.state.employee_details[0].middle_name : ' ')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        "class": "col-12 col-md-6 col-lg-3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        "class": "pmd-list-subtitle"
+      }, "Date of Birth"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        "class": "pmd-list-title"
+      }, this.state.employee_details.length > 0 ? this.state.employee_details[0].date_of_birth : ' ', "\xA0")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        "class": "col-12 col-md-6 col-lg-3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        "class": "pmd-list-subtitle"
+      }, "Personal Email"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        "class": "pmd-list-title"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: this.state.employee_details.length > 0 ? 'mailto:' + this.state.employee_details[0].email : ' ',
+        title: this.state.employee_details.length > 0 ? this.state.employee_details[0].email : ' '
+      }, this.state.employee_details.length > 0 ? this.state.employee_details[0].email : ' '))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        "class": "col-12 col-md-6 col-lg-3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        "class": "pmd-list-subtitle"
+      }, "Telephone Number"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        "class": "pmd-list-title"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: this.state.employee_details.length > 0 ? 'tel:' + this.state.employee_details[0].telephone_number : ' ',
+        title: this.state.employee_details.length > 0 ? this.state.employee_details[0].telephone_number : ' '
+      }, this.state.employee_details.length > 0 ? this.state.employee_details[0].telephone_number : ' '))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        "class": "col-12 col-md-6 col-lg-3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        "class": "pmd-list-subtitle"
+      }, "Mobile Number"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        "class": "pmd-list-title"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: this.state.employee_details.length > 0 ? 'tel:' + this.state.employee_details[0].mobile_number : ' ',
+        title: this.state.employee_details.length > 0 ? this.state.employee_details[0].mobile_number : ' '
+      }, this.state.employee_details.length > 0 ? this.state.employee_details[0].mobile_number : ' '))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        "class": "col-12 col-md-6 col-lg-3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        "class": "pmd-list-subtitle"
+      }, "Emergency Contact"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        "class": "pmd-list-title"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: this.state.employee_details.length > 0 ? 'tel:' + this.state.employee_details[0].emergency_contact : ' ',
+        title: this.state.employee_details.length > 0 ? this.state.employee_details[0].emergency_contact : ' '
+      }, this.state.employee_details.length > 0 ? this.state.employee_details[0].emergency_contact : ' '))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        "class": "col-12 col-md-6 col-lg-3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        "class": "pmd-list-subtitle"
+      }, "Start Date"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        "class": "pmd-list-title"
+      }, this.state.employee_details.length > 0 ? this.state.employee_details[0].start_date : ' ', " \xA0")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        "class": "col-12 col-md-6 col-lg-3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        "class": "pmd-list-subtitle"
+      }, "Gender"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        "class": "pmd-list-title"
+      }, this.state.employee_details.length > 0 ? this.state.employee_details[0].gender == 1 ? 'Male' : 'Female' : '')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        "class": "col-12 col-md-6 col-lg-3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        "class": "pmd-list-subtitle"
+      }, "Address"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        "class": "pmd-list-title"
+      }, this.state.employee_details.length > 0 ? this.state.employee_details[0].street + ', ' + this.state.employee_details[0].city + ', ' + this.state.employee_details[0].county + ', ' + this.state.employee_details[0].postcode : '')))));
     }
   }]);
 
-  return Leave;
+  return Salary;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 var style = {
@@ -257,7 +335,7 @@ var style = {
     marginBottom: '15px'
   }
 };
-/* harmony default export */ __webpack_exports__["default"] = (Leave);
+/* harmony default export */ __webpack_exports__["default"] = (Salary);
 
 /***/ })
 

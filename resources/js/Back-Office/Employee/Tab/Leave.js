@@ -46,7 +46,7 @@ let ajaxabort;
 
 var oTable="";
 const {id,auth_token} = localStorage.getItem('userData')? JSON.parse(localStorage.getItem('userData')).user : 'Null';
-function atable() {
+function atable(user_id) {
   
     
     let tableResponsive = '#data-table-responsive';
@@ -59,7 +59,7 @@ oTable = $(tableResponsive).DataTable({
     "bProcessing": true,
     "iDisplayLength": 10,
     "bServerSide": true,
-    "sAjaxSource": window.location.origin+'/api/application_form',
+    "sAjaxSource": window.location.origin+'/api/leaves',
     'bPaginate': true,
     "fnServerParams": function (aoData) {
 
@@ -70,7 +70,8 @@ oTable = $(tableResponsive).DataTable({
             columns.push(item.data);
         })
         aoData.push({name: 'columns', value: columns});
-
+        aoData.push({name: 'user_id', value: user_id});
+        
         if($('input[name="role_name"]').val()!='') {
             aoData.push({name: 'role_name', value: $('input[name="role_name"]').val()});
         }
@@ -82,13 +83,11 @@ oTable = $(tableResponsive).DataTable({
         },
 
     "columns": [  
-        {"data":"created_at_date"},
-        {"data": "position_applied_for"}, 
-        {"data": "information_provided_name"},
-         {"data": "email"},
-         {"data": "telephone_number"},
-         {"data":"postcode"},
-         {"data": "id"}
+        {"data":"allotted_year"},
+        {"data": "leave_balance"}, 
+        {"data": "used_leave"},
+        {"data": "allotted_leave_limit"},
+        
     ],
     responsive: {
         responsive: {
@@ -133,26 +132,7 @@ oTable = $(tableResponsive).DataTable({
       
     },
     "columnDefs": [
-        {
-            "render": function (data, type, row) {
-              
-                var str_buttons = '<button type="button" class="edit btn btn-info btn-sm" data-id="'+row.id+'" ><i style="margin:0px !important;" class="feather icon-edit"></i></button>';
-                if(row.is_viewed==1){
-                      str_buttons+='<span class="label label-danger is_viewed'+row.id+'" style="font-size: 8px;">NEW</span>';
-                }
-                if(row.is_ts_done==1){
-                  str_buttons+='<span class="label label-danger is_ts_done'+row.id+'" style="font-size: 8px;">TS PENDING</span>';
-            }
-                
-                return [
-                    str_buttons,
-                ].join('');
-               
-            },
-            "targets": $('#data-table-responsive th#action').index(),
-            "orderable": false,
-            "searchable": false
-        }, 
+         
         {
             "targets": 0,
             "orderable": false
@@ -172,8 +152,8 @@ class Leave extends React.Component {
     componentDidMount() {
         
         const {name,email} = localStorage.getItem('userData')? JSON.parse(localStorage.getItem('userData')).user : 'Null';
-        if(this.props.location.state){
-            atable()
+        if(this.props.location.state.userId){
+            atable(this.props.location.state.userId)
         }
         
     }
@@ -214,27 +194,18 @@ class Leave extends React.Component {
                                             <Table ref="tbl" striped hover responsive className="table table-condensed" id="data-table-responsive">
                                     <thead>
                                     <tr>
-                                    
-                                        <th id="created_at_date">Created at</th>
-                                        <th id="position_applied_for">Position applied for</th>
-                                        <th id="information_provided_name">Name</th>
-                                        <th id="email">Email</th>
-                                        <th id="telephone_number">Telephone Number</th>
-                                        <th id="postcode">Postcode</th>
-                                        
-                                        <th id="action">Action</th>
-                                        
-                                      </tr>
+                                        <th id="allotted_year">Allotted Year</th>
+                                        <th id="leave_balance">Leave Balance</th>
+                                        <th id="used_leave">Used Leave</th>
+                                        <th id="allotted_leave_limit">Allotted leave limit</th>
+                                    </tr>
                                     </thead>
                                     <tfoot>
                                     <tr> 
-                                    <th id="created_at_date">Created at</th>
-                                    <th id="position_applied_for">Position applied for</th>
-                                        <th id="information_provided_name">Name</th>
-                                        <th id="email">Email</th>
-                                        <th id="telephone_number">Telephone Number</th>
-                                        <th id="postcode">Postcode</th>
-                                        <th id="action">Action</th>
+                                    <th id="allotted_year">Allotted Year</th>
+                                        <th id="leave_balance">Leave Balance</th>
+                                        <th id="used_leave">Used Leave</th>
+                                        <th id="allotted_leave_limit">Allotted leave limit</th>
                                     </tr>
                                     </tfoot>
                                 </Table>

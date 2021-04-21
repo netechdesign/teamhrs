@@ -15,12 +15,14 @@ import './employee.css';
 const Oneform = React.lazy(() => import("./Tab/Official"));
 const Documents = React.lazy(() => import("./Tab/Documents"));
 const Leave = React.lazy(() => import("./Tab/Leave"))
+const Salary = React.lazy(() => import("./Tab/Salary"))
 let id='';
 let data=[];
 const routes = [
     { path:'/employee-Detail/Official', exact:true, name:'Oneform',component:Oneform},
     { path:'/employee-Detail/Documents', exact:true, name:'Oneform',component:Documents},
     { path:'/employee-Detail/Leave', exact:true, name:'Oneform',component:Leave},
+    { path:'/employee-Detail/Salary', exact:true, name:'Oneform',component:Salary},
     
     ];
     const baseurl= window.location.origin;
@@ -143,16 +145,15 @@ render(){
                         
                         </Nav.Item>
                         <Nav.Item>
-                        <NavLink  to= {{pathname:'/employee-Detail/Leave',state:{userId: this.state.id}}} className="nav-link"><i class="feather icon-file-text"></i> Leave</NavLink> 
-                        
+                            <NavLink  to= {{pathname:'/employee-Detail/Leave',state:{userId: this.state.id}}} className="nav-link"><i class="feather icon-file-text"></i> Leave</NavLink> 
+                        </Nav.Item>
+                        <Nav.Item>
+                            <NavLink  to= {{pathname:'/employee-Detail/Salary',state:{userId: this.state.id}}} className="nav-link"><i class="feather icon-file-text"></i> Salary</NavLink> 
                         </Nav.Item>
                         <Nav.Item>
                         <Nav.Link eventKey="Holidays"><i class="fa fa-lights-holiday"></i> Holidays</Nav.Link>
                         </Nav.Item>
 
-                        <Nav.Item>
-                        <Nav.Link eventKey="Salary"><i class="fa fa-gbp"></i> Salary</Nav.Link>
-                        </Nav.Item>
 
                         <Nav.Item>
                         <Nav.Link eventKey="Personal">Personal</Nav.Link>

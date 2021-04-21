@@ -170,7 +170,7 @@ var _ref = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('u
     id = _ref.id,
     auth_token = _ref.auth_token;
 
-function atable() {
+function atable(user_id) {
   var _$$DataTable;
 
   var tableResponsive = '#data-table-responsive';
@@ -182,7 +182,7 @@ function atable() {
     "bProcessing": true,
     "iDisplayLength": 10,
     "bServerSide": true,
-    "sAjaxSource": window.location.origin + '/api/application_form'
+    "sAjaxSource": window.location.origin + '/api/leaves'
   }, _defineProperty(_$$DataTable, "bPaginate", true), _defineProperty(_$$DataTable, "fnServerParams", function fnServerParams(aoData) {
     var acolumns = this.fnSettings().aoColumns,
         columns = [];
@@ -192,6 +192,10 @@ function atable() {
     aoData.push({
       name: 'columns',
       value: columns
+    });
+    aoData.push({
+      name: 'user_id',
+      value: user_id
     });
 
     if ($('input[name="role_name"]').val() != '') {
@@ -206,19 +210,13 @@ function atable() {
     */
 
   }), _defineProperty(_$$DataTable, "columns", [{
-    "data": "created_at_date"
+    "data": "allotted_year"
   }, {
-    "data": "position_applied_for"
+    "data": "leave_balance"
   }, {
-    "data": "information_provided_name"
+    "data": "used_leave"
   }, {
-    "data": "email"
-  }, {
-    "data": "telephone_number"
-  }, {
-    "data": "postcode"
-  }, {
-    "data": "id"
+    "data": "allotted_leave_limit"
   }]), _defineProperty(_$$DataTable, "responsive", {
     responsive: {
       details: {
@@ -249,23 +247,6 @@ function atable() {
     $('body').css('min-height', $('#data-table-responsive tr').length * 50 + 200);
     $(window).trigger('resize');
   }), _defineProperty(_$$DataTable, "columnDefs", [{
-    "render": function render(data, type, row) {
-      var str_buttons = '<button type="button" class="edit btn btn-info btn-sm" data-id="' + row.id + '" ><i style="margin:0px !important;" class="feather icon-edit"></i></button>';
-
-      if (row.is_viewed == 1) {
-        str_buttons += '<span class="label label-danger is_viewed' + row.id + '" style="font-size: 8px;">NEW</span>';
-      }
-
-      if (row.is_ts_done == 1) {
-        str_buttons += '<span class="label label-danger is_ts_done' + row.id + '" style="font-size: 8px;">TS PENDING</span>';
-      }
-
-      return [str_buttons].join('');
-    },
-    "targets": $('#data-table-responsive th#action').index(),
-    "orderable": false,
-    "searchable": false
-  }, {
     "targets": 0,
     "orderable": false
   }]), _$$DataTable));
@@ -302,8 +283,8 @@ var Leave = /*#__PURE__*/function (_React$Component) {
           name = _ref2.name,
           email = _ref2.email;
 
-      if (this.props.location.state) {
-        atable();
+      if (this.props.location.state.userId) {
+        atable(this.props.location.state.userId);
       }
     }
   }, {
@@ -369,34 +350,22 @@ var Leave = /*#__PURE__*/function (_React$Component) {
         className: "table table-condensed",
         id: "data-table-responsive"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "created_at_date"
-      }, "Created at"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "position_applied_for"
-      }, "Position applied for"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "information_provided_name"
-      }, "Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "email"
-      }, "Email"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "telephone_number"
-      }, "Telephone Number"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "postcode"
-      }, "Postcode"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "action"
-      }, "Action"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tfoot", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "created_at_date"
-      }, "Created at"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "position_applied_for"
-      }, "Position applied for"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "information_provided_name"
-      }, "Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "email"
-      }, "Email"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "telephone_number"
-      }, "Telephone Number"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "postcode"
-      }, "Postcode"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        id: "action"
-      }, "Action")))))));
+        id: "allotted_year"
+      }, "Allotted Year"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        id: "leave_balance"
+      }, "Leave Balance"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        id: "used_leave"
+      }, "Used Leave"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        id: "allotted_leave_limit"
+      }, "Allotted leave limit"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tfoot", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        id: "allotted_year"
+      }, "Allotted Year"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        id: "leave_balance"
+      }, "Leave Balance"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        id: "used_leave"
+      }, "Used Leave"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        id: "allotted_leave_limit"
+      }, "Allotted leave limit")))))));
     }
   }]);
 
