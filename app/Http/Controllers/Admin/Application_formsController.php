@@ -199,6 +199,7 @@ class Application_formsController extends Controller
 
     public function submitdocument(Request $request){
         try {
+            
             if($request->id){
                 if(isset($request->resenddocument)){
                     $data = Application_Forms::where('id',$request->id)->where('email',$request->email)->first();
@@ -208,8 +209,62 @@ class Application_formsController extends Controller
                 $data = Application_Forms::where('id',$whereCase[0])->where('email',$whereCase[1])->first();
                 }
                 if($data){
+                    
                     if($data->is_document_get==1){
                     $userpath = $data->id.'_'.$data->fore_name;
+                    
+                    if(isset($request->gas_safe_card) && $request->gas_safe_card!="null")
+                    {
+                        foreach ($request->gas_safe_card as $gas_safe_card) {  
+                                $file_path = $gas_safe_card->store('documents/'.$userpath, 'public');
+                                $vl = array();
+                                $vl['application_forms_id'] = $data->id; 
+                                $vl['document_name'] = 'Gas Safe Card';
+                                $vl['document_path'] = $file_path;
+                                $Documents = new Documents($vl);
+                                $Documents->save();
+                        }
+                       
+                    }
+                    if(isset($request->gas_metering_certificates) && $request->gas_metering_certificates!="null")
+                    {
+                        foreach ($request->gas_metering_certificates as $gas_metering_certificates) {  
+                                $file_path = $gas_metering_certificates->store('documents/'.$userpath, 'public');
+                                $vl = array();
+                                $vl['application_forms_id'] = $data->id; 
+                                $vl['document_name'] = 'Gas Metering Certificates/Qualifications';
+                                $vl['document_path'] = $file_path;
+                                $Documents = new Documents($vl);
+                                $Documents->save();
+                        }
+                       
+                    }
+                    if(isset($request->electrical_metering_certificates) && $request->electrical_metering_certificates!="null")
+                    {
+                        foreach ($request->electrical_metering_certificates as $electrical_metering_certificates) {  
+                                $file_path = $electrical_metering_certificates->store('documents/'.$userpath, 'public');
+                                $vl = array();
+                                $vl['application_forms_id'] = $data->id; 
+                                $vl['document_name'] = 'Electrical Metering Certificates/Qualifications';
+                                $vl['document_path'] = $file_path;
+                                $Documents = new Documents($vl);
+                                $Documents->save();
+                        }
+                       
+                    }
+                    if(isset($request->eusr_card) && $request->eusr_card!="null")
+                    {
+                        foreach ($request->eusr_card as $eusr_card) {  
+                                $file_path = $eusr_card->store('documents/'.$userpath, 'public');
+                                $vl = array();
+                                $vl['application_forms_id'] = $data->id; 
+                                $vl['document_name'] = 'EUSR Card';
+                                $vl['document_path'] = $file_path;
+                                $Documents = new Documents($vl);
+                                $Documents->save();
+                        }
+                       
+                    }
                     if(isset($request->cma_1) && $request->cma_1!="null")
                     {
                                 
@@ -298,7 +353,10 @@ class Application_formsController extends Controller
                         
                         $results->driving_licence_number = $request->driving_licence_number;
                     }
-                    
+                    if(isset($request->eusr_card_not_issued)){
+                        
+                        $results->eusr_card_not_issued = $request->eusr_card_not_issued;
+                    }
                     $results->is_document_get=0;
                     $results->save();
                     return response()->json(array('success' => true,'message' => 'document send successfully','form_user' => $data), 200);

@@ -302,10 +302,10 @@ webpackContext.id = "./node_modules/moment/locale sync recursive ^\\.\\/.*$";
 
 /***/ }),
 
-/***/ "./resources/js/employee/Services_starter_form/forms/UniformOrder.js":
-/*!***************************************************************************!*\
-  !*** ./resources/js/employee/Services_starter_form/forms/UniformOrder.js ***!
-  \***************************************************************************/
+/***/ "./resources/js/employee/Services_starter_form/forms/ProofOfIdentification.js":
+/*!************************************************************************************!*\
+  !*** ./resources/js/employee/Services_starter_form/forms/ProofOfIdentification.js ***!
+  \************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -329,7 +329,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var pnotify_dist_es_PNotifyConfirm__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! pnotify/dist/es/PNotifyConfirm */ "./node_modules/pnotify/dist/es/PNotifyConfirm.js");
 /* harmony import */ var pnotify_dist_es_PNotifyCallbacks__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! pnotify/dist/es/PNotifyCallbacks */ "./node_modules/pnotify/dist/es/PNotifyCallbacks.js");
 /* harmony import */ var _hoc_Aux__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../../hoc/_Aux */ "./resources/js/hoc/_Aux/index.js");
+/* harmony import */ var react_signature_canvas__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! react-signature-canvas */ "./node_modules/react-signature-canvas/build/index.js");
+/* harmony import */ var react_signature_canvas__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(react_signature_canvas__WEBPACK_IMPORTED_MODULE_12__);
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -351,7 +355,6 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
 
@@ -369,10 +372,10 @@ var baseurl = window.location.origin;
 var ajaxabort;
 
 function successDesktopPNotify(id) {
-  var message = "Uniform orders added successfully";
+  var message = "Proof Of Identification added successfully";
 
   if (id != '') {
-    message = "Uniform orders updated successfully";
+    message = "Proof Of Identification updated successfully";
   }
 
   pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_7__["default"].success({
@@ -386,34 +389,125 @@ function successDesktopPNotify(id) {
   }).on('click', function (e) {});
 }
 
-var UniformOrder = /*#__PURE__*/function (_React$Component) {
-  _inherits(UniformOrder, _React$Component);
+var Passport_birth = /*#__PURE__*/function (_React$Component) {
+  _inherits(Passport_birth, _React$Component);
 
-  var _super = _createSuper(UniformOrder);
+  var _super = _createSuper(Passport_birth);
 
-  function UniformOrder() {
+  function Passport_birth() {
+    _classCallCheck(this, Passport_birth);
+
+    return _super.apply(this, arguments);
+  }
+
+  _createClass(Passport_birth, [{
+    key: "render",
+    value: function render() {
+      var _React$createElement, _React$createElement2, _React$createElement3;
+
+      var contents = this.props.passport_birth == 1 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, (_React$createElement = {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
+        md: "4",
+        xs: 12
+      }, _defineProperty(_React$createElement, "xs", 12), _defineProperty(_React$createElement, "sm", 12), _React$createElement), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
+        htmlFor: "upload_avatar"
+      }, "Passport Inside "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "custom-file"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["FileInput"], {
+        style: {
+          margin: '0px'
+        },
+        name: "passport_inside",
+        id: "passport_inside",
+        required: true,
+        fileType: ["pdf", "docx", "jpeg", "jpg"] // maxFileSize="10000 kb"
+        ,
+        errorMessage: {
+          required: "Please upload Passport Inside",
+          fileType: "Only jpeg, pdf and word file is allowed" // maxFileSize: "Max file size is 10000 kb"
+
+        },
+        onChange: this.onUploadCv
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, (_React$createElement2 = {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
+        md: "4",
+        xs: 12
+      }, _defineProperty(_React$createElement2, "xs", 12), _defineProperty(_React$createElement2, "sm", 12), _React$createElement2), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
+        htmlFor: "upload_avatar"
+      }, "Passport Outside"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "custom-file"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["FileInput"], {
+        style: {
+          margin: '0px'
+        },
+        name: "passport_outside",
+        id: "passport_outside",
+        required: true,
+        fileType: ["pdf", "docx", "jpeg", "jpg"] // maxFileSize="10000 kb"
+        ,
+        errorMessage: {
+          required: "Please upload Passport Inside",
+          fileType: "Only jpeg, pdf and word file is allowed" // maxFileSize: "Max file size is 10000 kb"
+
+        },
+        onChange: this.onUploadCv
+      })))) : this.props.passport_birth == 2 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, (_React$createElement3 = {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
+        md: "4",
+        xs: 12
+      }, _defineProperty(_React$createElement3, "xs", 12), _defineProperty(_React$createElement3, "sm", 12), _React$createElement3), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
+        htmlFor: "upload_avatar"
+      }, "Birth Certificate"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "custom-file"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["FileInput"], {
+        style: {
+          margin: '0px'
+        },
+        name: "birth_certificate",
+        id: "birth_certificate",
+        required: true,
+        fileType: ["pdf", "docx", "jpeg", "jpg"] // maxFileSize="10000 kb"
+        ,
+        errorMessage: {
+          required: "Please upload Birth Certificate",
+          fileType: "Only jpeg, pdf and word file is allowed" // maxFileSize: "Max file size is 10000 kb"
+
+        },
+        onChange: this.onUploadCv
+      }))) : '';
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, contents);
+    }
+  }]);
+
+  return Passport_birth;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+var ProofOfIdentification = /*#__PURE__*/function (_React$Component2) {
+  _inherits(ProofOfIdentification, _React$Component2);
+
+  var _super2 = _createSuper(ProofOfIdentification);
+
+  function ProofOfIdentification() {
     var _this;
 
-    _classCallCheck(this, UniformOrder);
+    _classCallCheck(this, ProofOfIdentification);
 
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
 
-    _this = _super.call.apply(_super, [this].concat(args));
+    _this = _super2.call.apply(_super2, [this].concat(args));
 
     _defineProperty(_assertThisInitialized(_this), "state", {
       _method: '',
       id: "",
-      polo_shirts: '',
-      sweater: '',
-      jacket: '',
-      shoe_size: '',
-      glove_size: '',
-      trouser_waist: '',
-      trouser_length: '',
+      passport_birth: '',
+      p45_available: '',
       showModal: false,
       visible: true,
+      i_confirm: false,
+      is_produce_my_certificate: false,
+      is_drug_and_alcohol: false,
       formSubmitting: false,
       buttonName: 'Save'
     });
@@ -442,21 +536,26 @@ var UniformOrder = /*#__PURE__*/function (_React$Component) {
 
       var _ref = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
           id = _ref.id,
-          auth_token = _ref.auth_token; //const data = new FormData()
-      //data.append('name', this.state.name);
+          auth_token = _ref.auth_token,
+          application_forms_id = _ref.application_forms_id,
+          name = _ref.name;
 
-
-      var formdata = _this.state;
+      var data = new FormData($('#ProofofIdentification')[0]);
+      data.append('passport_birth', _this.state.passport_birth);
+      data.append('p45_available', _this.state.p45_available);
+      data.append('application_forms_id', application_forms_id);
+      data.append('fore_name', name);
       var urlid = '';
 
       if (_this.state.id != '') {
         urlid = '/' + _this.state.id;
       }
 
-      axios__WEBPACK_IMPORTED_MODULE_6___default.a.post(baseurl + '/api/uniform_orders' + urlid, _this.state, {
+      axios__WEBPACK_IMPORTED_MODULE_6___default.a.post(baseurl + '/api/proof_of_identification' + urlid, data, {
         headers: {
           'Accept': 'application/json',
-          'Authorization': 'Bearer ' + auth_token
+          'Authorization': 'Bearer ' + auth_token,
+          'content-type': 'multipart/form-data'
         }
       }).then(function (res) {
         if (res.data.success) {
@@ -471,7 +570,7 @@ var UniformOrder = /*#__PURE__*/function (_React$Component) {
 
           successDesktopPNotify(_this.state.id);
 
-          _this.props.history.push('/services-starter/Consent-Statement');
+          _this.props.history.push('/services-starter/Employee-Details');
         } else {
           var errorMassage = '';
 
@@ -539,14 +638,38 @@ var UniformOrder = /*#__PURE__*/function (_React$Component) {
       //data.append('name', this.state.name);
 
 
-      axios__WEBPACK_IMPORTED_MODULE_6___default.a.get(baseurl + '/api/uniform_orders/' + id, {
+      axios__WEBPACK_IMPORTED_MODULE_6___default.a.get(baseurl + '/api/consent_statement/' + id, {
         headers: {
           'Accept': 'application/json',
           'Authorization': 'Bearer ' + auth_token
         }
       }).then(function (res) {
         if (res.data.success) {
-          _this.setState(res.data.Uniform_orders);
+          _this.setState(res.data.Consent_statements);
+
+          _this.setState({
+            recruitment_employee_signature_show: _this.state.recruitment_employee_signature
+          });
+
+          _this.setState({
+            recruitment_employee_signature: null
+          });
+
+          _this.setState({
+            screening_employee_signature_show: _this.state.screening_employee_signature
+          });
+
+          _this.setState({
+            screening_employee_signature: null
+          });
+
+          _this.setState({
+            confirm_employee_signature_show: _this.state.confirm_employee_signature
+          });
+
+          _this.setState({
+            confirm_employee_signature: null
+          });
 
           _this.setState({
             formSubmitting: false
@@ -595,241 +718,267 @@ var UniformOrder = /*#__PURE__*/function (_React$Component) {
     return _this;
   }
 
-  _createClass(UniformOrder, [{
+  _createClass(ProofOfIdentification, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      this.alreadyAdded();
-
+      // this.alreadyAdded();
       var _ref3 = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
           name = _ref3.name,
           email = _ref3.email;
-
-      var emailaddress = email;
     }
   }, {
     key: "render",
     value: function render() {
+      var _React$createElement4, _React$createElement5, _React$createElement6, _React$createElement7, _React$createElement8, _React$createElement9, _React$createElement10, _React$createElement11, _React$createElement12, _React$createElement13;
+
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_hoc_Aux__WEBPACK_IMPORTED_MODULE_11__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["ValidationForm"], {
         autoComplete: "off",
-        id: "formid",
+        id: "ProofofIdentification",
         onSubmit: this.handleSubmit,
         onErrorSubmit: this.handleErrorSubmit
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Uniform"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Row, {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Row, {
         style: style.rowline
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Row"],
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, (_React$createElement4 = {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
+        md: "4",
+        xs: 12
+      }, _defineProperty(_React$createElement4, "xs", 12), _defineProperty(_React$createElement4, "sm", 12), _React$createElement4), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
+        htmlFor: "gender"
+      }, "\xA0"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "custom-controls-stacked radio"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["Radio"].RadioGroup, {
+        name: "passport_birth",
+        required: true,
+        valueSelected: this.state.passport_birth,
+        inline: true,
+        onChange: this.handleChange
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["Radio"].RadioItem, {
+        id: "radio4",
+        label: "Passport",
+        value: "1"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["Radio"].RadioItem, {
+        id: "radio5",
+        label: "Birth Certificate",
+        value: "2"
+      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Passport_birth, {
+        passport_birth: this.state.passport_birth
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Row, {
+        style: style.rowline
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, (_React$createElement5 = {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
+        md: "4",
+        xs: 12
+      }, _defineProperty(_React$createElement5, "xs", 12), _defineProperty(_React$createElement5, "sm", 12), _React$createElement5), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
+        htmlFor: "upload_avatar"
+      }, "Proof of Address (Dated within 3 months)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "custom-file"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["FileInput"], {
         style: {
-          width: '100%',
-          marginBottom: '0rem'
+          margin: '0px'
         },
-        controlId: "formHorizontalpolo_shirts"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
-        column: true,
-        sm: 2
-      }, "Polo Shirts:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
-        sm: 10
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "custom-controls-stacked radio"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["Radio"].RadioGroup, {
-        name: "polo_shirts",
+        name: "proof_of_address",
+        id: "proof_of_address",
         required: true,
-        valueSelected: this.state.polo_shirts,
-        inline: true,
-        onChange: this.handleChange
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["Radio"].RadioItem, {
-        id: "polo_shirtsS",
-        label: "S",
-        value: "S"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["Radio"].RadioItem, {
-        id: "polo_shirtsM",
-        label: "M",
-        value: "M"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["Radio"].RadioItem, {
-        id: "polo_shirtsL",
-        label: "L",
-        value: "L"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["Radio"].RadioItem, {
-        id: "polo_shirtsXL",
-        label: "XL",
-        value: "XL"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["Radio"].RadioItem, {
-        id: "polo_shirts2XL",
-        label: "2XL",
-        value: "2XL"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["Radio"].RadioItem, {
-        id: "polo_shirts3XL",
-        label: "3XL",
-        value: "3XL"
-      }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Row"],
+        fileType: ["pdf", "docx", "jpeg", "jpg"] // maxFileSize="10000 kb"
+        ,
+        errorMessage: {
+          required: "Please upload Proof of Address",
+          fileType: "Only jpeg, pdf and word file is allowed" // maxFileSize: "Max file size is 10000 kb"
+
+        },
+        onChange: this.onUploadCv
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, (_React$createElement6 = {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
+        md: "4",
+        xs: 12
+      }, _defineProperty(_React$createElement6, "xs", 12), _defineProperty(_React$createElement6, "sm", 12), _React$createElement6), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
+        htmlFor: "upload_avatar"
+      }, "Proof of National Insurance number"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "custom-file"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["FileInput"], {
         style: {
-          width: '100%',
-          marginBottom: '0rem'
+          margin: '0px'
         },
-        controlId: "formHorizontalSweater"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
-        column: true,
-        sm: 2
-      }, "Sweater:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
-        sm: 10
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "custom-controls-stacked radio"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["Radio"].RadioGroup, {
-        name: "sweater",
+        name: "national_insurance_number",
+        id: "national_insurance_number",
         required: true,
-        valueSelected: this.state.sweater,
-        inline: true,
-        onChange: this.handleChange
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["Radio"].RadioItem, {
-        id: "SweaterS",
-        label: "S",
-        value: "S"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["Radio"].RadioItem, {
-        id: "SweaterM",
-        label: "M",
-        value: "M"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["Radio"].RadioItem, {
-        id: "SweaterL",
-        label: "L",
-        value: "L"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["Radio"].RadioItem, {
-        id: "SweaterXL",
-        label: "XL",
-        value: "XL"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["Radio"].RadioItem, {
-        id: "Sweater2XL",
-        label: "2XL",
-        value: "2XL"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["Radio"].RadioItem, {
-        id: "Sweater3XL",
-        label: "3XL",
-        value: "3XL"
-      }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Row"],
+        fileType: ["pdf", "docx", "jpeg", "jpg"] // maxFileSize="10000 kb"
+        ,
+        errorMessage: {
+          required: "Please upload National Insurance Number",
+          fileType: "Only jpeg, pdf and word file is allowed" // maxFileSize: "Max file size is 10000 kb"
+
+        },
+        onChange: this.onUploadCv
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, (_React$createElement7 = {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
+        md: "4",
+        xs: 12
+      }, _defineProperty(_React$createElement7, "xs", 12), _defineProperty(_React$createElement7, "sm", 12), _React$createElement7), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
+        htmlFor: "upload_avatar"
+      }, "Proof of right to work (if required)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "custom-file"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["FileInput"], {
         style: {
-          width: '100%',
-          marginBottom: '0rem'
+          margin: '0px'
         },
-        controlId: "formHorizontalJacket"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
-        column: true,
-        sm: 2
-      }, "Jacket:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
-        sm: 10
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        name: "right_to_work",
+        id: "right_to_work",
+        fileType: ["pdf", "docx", "jpeg", "jpg"] // maxFileSize="10000 kb"
+        ,
+        errorMessage: {
+          fileType: "Only jpeg, pdf and word file is allowed" // maxFileSize: "Max file size is 10000 kb"
+
+        },
+        onChange: this.onUploadCv
+      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Row, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, (_React$createElement8 = {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
+        md: "4",
+        xs: 12
+      }, _defineProperty(_React$createElement8, "xs", 12), _defineProperty(_React$createElement8, "sm", 12), _React$createElement8), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
+        htmlFor: "upload_avatar"
+      }, "Driving Licence (Front)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "custom-file"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["FileInput"], {
+        style: {
+          margin: '0px'
+        },
+        name: "driving_licence_front",
+        id: "driving_licence_front",
+        required: true,
+        fileType: ["pdf", "docx", "jpeg", "jpg"] // maxFileSize="10000 kb"
+        ,
+        errorMessage: {
+          required: "Please upload Driving Licence Front",
+          fileType: "Only jpeg, pdf and word file is allowed" // maxFileSize: "Max file size is 10000 kb"
+
+        },
+        onChange: this.onUploadCv
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, (_React$createElement9 = {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
+        md: "4",
+        xs: 12
+      }, _defineProperty(_React$createElement9, "xs", 12), _defineProperty(_React$createElement9, "sm", 12), _React$createElement9), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
+        htmlFor: "upload_avatar"
+      }, "Driving Licence (Back)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "custom-file"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["FileInput"], {
+        style: {
+          margin: '0px'
+        },
+        name: "driving_licence_back",
+        id: "driving_licence_back",
+        required: true,
+        fileType: ["pdf", "docx", "jpeg", "jpg"] // maxFileSize="10000 kb"
+        ,
+        errorMessage: {
+          required: "Please upload Driving Licence Back",
+          fileType: "Only jpeg, pdf and word file is allowed" // maxFileSize: "Max file size is 10000 kb"
+
+        },
+        onChange: this.onUploadCv
+      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Row, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, (_React$createElement10 = {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
+        md: "4",
+        xs: 12
+      }, _defineProperty(_React$createElement10, "xs", 12), _defineProperty(_React$createElement10, "sm", 12), _React$createElement10), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
+        htmlFor: "upload_avatar"
+      }, "Passport style photograph (On white background)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "custom-file"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["FileInput"], {
+        style: {
+          margin: '0px'
+        },
+        name: "passport_style_photograph",
+        id: "passport_style_photograph",
+        required: true,
+        fileType: ["pdf", "docx", "jpeg", "jpg"] // maxFileSize="10000 kb"
+        ,
+        errorMessage: {
+          required: "Please upload Passport style photograph",
+          fileType: "Only jpeg, pdf and word file is allowed" // maxFileSize: "Max file size is 10000 kb"
+
+        },
+        onChange: this.onUploadCv
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, (_React$createElement11 = {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
+        md: "4",
+        xs: 12
+      }, _defineProperty(_React$createElement11, "xs", 12), _defineProperty(_React$createElement11, "sm", 12), _React$createElement11), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
+        htmlFor: "gender"
+      }, "is P45 available?"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "custom-controls-stacked radio"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["Radio"].RadioGroup, {
-        name: "jacket",
+        name: "p45_available",
         required: true,
-        valueSelected: this.state.jacket,
+        valueSelected: this.state.p45_available,
         inline: true,
         onChange: this.handleChange
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["Radio"].RadioItem, {
-        id: "JacketS",
-        label: "S",
-        value: "S"
+        id: "p45_available4",
+        label: "Yes",
+        value: "Yes"
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["Radio"].RadioItem, {
-        id: "JacketM",
-        label: "M",
-        value: "M"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["Radio"].RadioItem, {
-        id: "JacketL",
-        label: "L",
-        value: "L"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["Radio"].RadioItem, {
-        id: "JacketXL",
-        label: "XL",
-        value: "XL"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["Radio"].RadioItem, {
-        id: "Jacket2XL",
-        label: "2XL",
-        value: "2XL"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["Radio"].RadioItem, {
-        id: "Jacket3XL",
-        label: "3XL",
-        value: "3XL"
-      })))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Row, {
-        style: style.rowline
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
+        id: "p45_available5",
+        label: "No",
+        value: "No"
+      })))), this.state.p45_available == 'Yes' ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, (_React$createElement12 = {
         as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "2"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
-        htmlFor: "shoe_size"
-      }, "Shoe Size"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["TextInput"], {
-        name: "shoe_size",
-        id: "shoe_size",
-        type: "number",
-        step: ".01",
-        placeholder: "Shoe Size",
-        onChange: this.handleChange,
+        md: "4",
+        xs: 12
+      }, _defineProperty(_React$createElement12, "xs", 12), _defineProperty(_React$createElement12, "sm", 12), _React$createElement12), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
+        htmlFor: "upload_avatar"
+      }, "P45"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "custom-file"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["FileInput"], {
+        style: {
+          margin: '0px'
+        },
+        name: "p45form",
+        id: "p45",
         required: true,
-        value: this.state.shoe_size,
-        autoComplete: "off"
-      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Row, {
-        style: style.rowline
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
+        fileType: ["pdf", "docx", "jpeg", "jpg"] // maxFileSize="10000 kb"
+        ,
+        errorMessage: {
+          required: "Please upload P45",
+          fileType: "Only jpeg, pdf and word file is allowed" // maxFileSize: "Max file size is 10000 kb"
+
+        },
+        onChange: this.onUploadCv
+      }))) : this.state.p45_available == 'No' ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, (_React$createElement13 = {
         as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "2"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
-        htmlFor: "glove_size"
-      }, "Glove Size"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["TextInput"], {
-        name: "glove_size",
-        id: "glove_size",
-        type: "number",
-        step: ".01",
-        placeholder: "Glove Size",
-        onChange: this.handleChange,
+        md: "4",
+        xs: 12
+      }, _defineProperty(_React$createElement13, "xs", 12), _defineProperty(_React$createElement13, "sm", 12), _React$createElement13), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
+        htmlFor: "upload_avatar"
+      }, "HMRC Starter Checklist"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "custom-file"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["FileInput"], {
+        style: {
+          margin: '0px'
+        },
+        name: "hmrc_starter_checklist",
+        id: "hmrc_starter_checklist",
         required: true,
-        value: this.state.glove_size,
-        autoComplete: "off"
-      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Row, {
-        style: style.rowline
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "1"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
-        htmlFor: "trouser"
-      }, "Trouser:")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "2"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
-        htmlFor: "trouser_waist"
-      }, "waist"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["TextInput"], {
-        name: "trouser_waist",
-        id: "trouser_waist",
-        type: "number",
-        step: ".01",
-        placeholder: "waist",
-        onChange: this.handleChange,
-        required: true,
-        value: this.state.trouser_waist,
-        autoComplete: "off"
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "2"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
-        htmlFor: "trouser_length"
-      }, "length"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "custom-controls-stacked radio"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["Radio"].RadioGroup, {
-        name: "trouser_length",
-        required: true,
-        valueSelected: this.state.trouser_length,
-        inline: true,
-        onChange: this.handleChange
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["Radio"].RadioItem, {
-        id: "trouser_lengthS",
-        label: "Short",
-        value: "Short"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["Radio"].RadioItem, {
-        id: "trouser_lengthR",
-        label: "Regular",
-        value: "Regular"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["Radio"].RadioItem, {
-        id: "trouser_lengthL",
-        label: "Long",
-        value: "Long"
-      }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Row, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
+        fileType: ["pdf", "docx", "jpeg", "jpg"] // maxFileSize="10000 kb"
+        ,
+        errorMessage: {
+          required: "Please upload HMRC Starter Checklist",
+          fileType: "Only jpeg, pdf and word file is allowed" // maxFileSize: "Max file size is 10000 kb"
+
+        },
+        onChange: this.onUploadCv
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        style: {
+          display: 'block',
+          color: 'black',
+          marginTop: '15px'
+        },
+        "class": "invalid-feedback"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: baseurl + '/uploaded/HMRC_STARTER_CHECKLIST.pdf',
+        target: "_blank"
+      }, "Please click here to download  HMRC STARTER CHECKLIST."), " ")) : ''), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Row, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
         as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
         sm: 12,
         className: "mt-3"
@@ -840,7 +989,7 @@ var UniformOrder = /*#__PURE__*/function (_React$Component) {
     }
   }]);
 
-  return UniformOrder;
+  return ProofOfIdentification;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 var style = {
@@ -849,7 +998,7 @@ var style = {
     marginBottom: '15px'
   }
 };
-/* harmony default export */ __webpack_exports__["default"] = (UniformOrder);
+/* harmony default export */ __webpack_exports__["default"] = (ProofOfIdentification);
 
 /***/ })
 

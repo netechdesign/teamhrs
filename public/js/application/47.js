@@ -302,10 +302,10 @@ webpackContext.id = "./node_modules/moment/locale sync recursive ^\\.\\/.*$";
 
 /***/ }),
 
-/***/ "./resources/js/employee/Services_starter_form/forms/ConsentStatement.js":
-/*!*******************************************************************************!*\
-  !*** ./resources/js/employee/Services_starter_form/forms/ConsentStatement.js ***!
-  \*******************************************************************************/
+/***/ "./resources/js/employee/Services_starter_form/forms/BankDetails.js":
+/*!**************************************************************************!*\
+  !*** ./resources/js/employee/Services_starter_form/forms/BankDetails.js ***!
+  \**************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -329,8 +329,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var pnotify_dist_es_PNotifyConfirm__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! pnotify/dist/es/PNotifyConfirm */ "./node_modules/pnotify/dist/es/PNotifyConfirm.js");
 /* harmony import */ var pnotify_dist_es_PNotifyCallbacks__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! pnotify/dist/es/PNotifyCallbacks */ "./node_modules/pnotify/dist/es/PNotifyCallbacks.js");
 /* harmony import */ var _hoc_Aux__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../../hoc/_Aux */ "./resources/js/hoc/_Aux/index.js");
-/* harmony import */ var react_signature_canvas__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! react-signature-canvas */ "./node_modules/react-signature-canvas/build/index.js");
-/* harmony import */ var react_signature_canvas__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(react_signature_canvas__WEBPACK_IMPORTED_MODULE_12__);
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -367,15 +365,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
-
 var baseurl = window.location.origin;
 var ajaxabort;
 
 function successDesktopPNotify(id) {
-  var message = "Consent Statement added successfully";
+  var message = "Bank Details added successfully";
 
   if (id != '') {
-    message = "Consent Statement updated successfully";
+    message = "Bank Details updated successfully";
   }
 
   pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_7__["default"].success({
@@ -389,15 +386,15 @@ function successDesktopPNotify(id) {
   }).on('click', function (e) {});
 }
 
-var ConsentStatement = /*#__PURE__*/function (_React$Component) {
-  _inherits(ConsentStatement, _React$Component);
+var BankDetails = /*#__PURE__*/function (_React$Component) {
+  _inherits(BankDetails, _React$Component);
 
-  var _super = _createSuper(ConsentStatement);
+  var _super = _createSuper(BankDetails);
 
-  function ConsentStatement() {
+  function BankDetails() {
     var _this;
 
-    _classCallCheck(this, ConsentStatement);
+    _classCallCheck(this, BankDetails);
 
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
@@ -408,23 +405,13 @@ var ConsentStatement = /*#__PURE__*/function (_React$Component) {
     _defineProperty(_assertThisInitialized(_this), "state", {
       _method: '',
       id: "",
-      recruitment_employee_name: '',
-      recruitment_employee_signature: null,
-      recruitment_employee_signature_show: null,
-      recruitment_Date: new Date(),
-      screening_employee_name: '',
-      screening_employee_signature: null,
-      screening_employee_signature_show: null,
-      screening_Date: new Date(),
-      confirm_employee_name: '',
-      confirm_employee_signature: null,
-      confirm_employee_signature_show: null,
-      confirm_Date: new Date(),
+      bank_name: '',
+      bank_address: '',
+      name_of_account_holder: '',
+      sort_code: '',
+      account_number: '',
       showModal: false,
       visible: true,
-      i_confirm: false,
-      is_produce_my_certificate: false,
-      is_drug_and_alcohol: false,
       formSubmitting: false,
       buttonName: 'Save'
     });
@@ -464,7 +451,7 @@ var ConsentStatement = /*#__PURE__*/function (_React$Component) {
         urlid = '/' + _this.state.id;
       }
 
-      axios__WEBPACK_IMPORTED_MODULE_6___default.a.post(baseurl + '/api/consent_statement' + urlid, _this.state, {
+      axios__WEBPACK_IMPORTED_MODULE_6___default.a.post(baseurl + '/api/bank_details' + urlid, _this.state, {
         headers: {
           'Accept': 'application/json',
           'Authorization': 'Bearer ' + auth_token
@@ -482,7 +469,7 @@ var ConsentStatement = /*#__PURE__*/function (_React$Component) {
 
           successDesktopPNotify(_this.state.id);
 
-          _this.props.history.push('/services-starter/Employee-Details');
+          _this.props.history.push('/services-starter/Uniform-Order');
         } else {
           var errorMassage = '';
 
@@ -550,38 +537,16 @@ var ConsentStatement = /*#__PURE__*/function (_React$Component) {
       //data.append('name', this.state.name);
 
 
-      axios__WEBPACK_IMPORTED_MODULE_6___default.a.get(baseurl + '/api/consent_statement/' + id, {
+      axios__WEBPACK_IMPORTED_MODULE_6___default.a.get(baseurl + '/api/bank_details/' + id, {
         headers: {
           'Accept': 'application/json',
           'Authorization': 'Bearer ' + auth_token
         }
       }).then(function (res) {
         if (res.data.success) {
-          _this.setState(res.data.Consent_statements);
+          console.log(res.data.Bank_details);
 
-          _this.setState({
-            recruitment_employee_signature_show: _this.state.recruitment_employee_signature
-          });
-
-          _this.setState({
-            recruitment_employee_signature: null
-          });
-
-          _this.setState({
-            screening_employee_signature_show: _this.state.screening_employee_signature
-          });
-
-          _this.setState({
-            screening_employee_signature: null
-          });
-
-          _this.setState({
-            confirm_employee_signature_show: _this.state.confirm_employee_signature
-          });
-
-          _this.setState({
-            confirm_employee_signature: null
-          });
+          _this.setState(res.data.Bank_details);
 
           _this.setState({
             formSubmitting: false
@@ -627,121 +592,10 @@ var ConsentStatement = /*#__PURE__*/function (_React$Component) {
       });
     });
 
-    _defineProperty(_assertThisInitialized(_this), "recruitment_employee", {});
-
-    _defineProperty(_assertThisInitialized(_this), "recruitment_employee_trim", function () {
-      _this.setState({
-        recruitment_employee_signature: _this.recruitment_employee.getTrimmedCanvas().toDataURL('image/png')
-      });
-
-      _this.setState({
-        recruitment_employee_signature_show: _this.state.recruitment_employee_signature
-      });
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "recruitment_employee_clear", function () {
-      _this.recruitment_employee.clear();
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "recruitmentChange", function (e) {
-      var today = new Date(e);
-      var dd = today.getDate();
-      var mm = today.getMonth() + 1;
-      var yyyy = today.getFullYear();
-
-      if (dd < 10) {
-        dd = '0' + dd;
-      }
-
-      if (mm < 10) {
-        mm = '0' + mm;
-      }
-
-      var today = dd + '/' + mm + '/' + yyyy;
-
-      _this.setState({
-        recruitment_Date: today
-      });
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "screening_employee", {});
-
-    _defineProperty(_assertThisInitialized(_this), "screening_employee_trim", function () {
-      _this.setState({
-        screening_employee_signature: _this.screening_employee.getTrimmedCanvas().toDataURL('image/png')
-      });
-
-      _this.setState({
-        screening_employee_signature_show: _this.state.screening_employee_signature
-      });
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "screening_employee_clear", function () {
-      _this.screening_employee.clear();
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "screeningChange", function (e) {
-      var today = new Date(e);
-      var dd = today.getDate();
-      var mm = today.getMonth() + 1;
-      var yyyy = today.getFullYear();
-
-      if (dd < 10) {
-        dd = '0' + dd;
-      }
-
-      if (mm < 10) {
-        mm = '0' + mm;
-      }
-
-      var today = dd + '/' + mm + '/' + yyyy;
-
-      _this.setState({
-        screening_Date: today
-      });
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "confirm_employee", {});
-
-    _defineProperty(_assertThisInitialized(_this), "confirm_employee_trim", function () {
-      _this.setState({
-        confirm_employee_signature: _this.confirm_employee.getTrimmedCanvas().toDataURL('image/png')
-      });
-
-      _this.setState({
-        confirm_employee_signature_show: _this.state.confirm_employee_signature
-      });
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "confirm_employee_clear", function () {
-      _this.confirm_employee.clear();
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "confirmChange", function (e) {
-      var today = new Date(e);
-      var dd = today.getDate();
-      var mm = today.getMonth() + 1;
-      var yyyy = today.getFullYear();
-
-      if (dd < 10) {
-        dd = '0' + dd;
-      }
-
-      if (mm < 10) {
-        mm = '0' + mm;
-      }
-
-      var today = dd + '/' + mm + '/' + yyyy;
-
-      _this.setState({
-        confirm_Date: today
-      });
-    });
-
     return _this;
   }
 
-  _createClass(ConsentStatement, [{
+  _createClass(BankDetails, [{
     key: "componentDidMount",
     value: function componentDidMount() {
       this.alreadyAdded();
@@ -751,17 +605,10 @@ var ConsentStatement = /*#__PURE__*/function (_React$Component) {
           email = _ref3.email;
 
       var emailaddress = email;
-      this.setState({
-        recruitment_employee_name: name,
-        screening_employee_name: name,
-        confirm_employee_name: name
-      });
     }
   }, {
     key: "render",
     value: function render() {
-      var _this2 = this;
-
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_hoc_Aux__WEBPACK_IMPORTED_MODULE_11__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["ValidationForm"], {
         autoComplete: "off",
         id: "formid",
@@ -771,236 +618,70 @@ var ConsentStatement = /*#__PURE__*/function (_React$Component) {
         style: style.rowline
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
         as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "12"
-      }, "Should your role require a DBS check the Company will apply through a third-party intermediary for a basic disclosure. If you have any unspent convictions they should have been disclosed on the application form you completed. Company policy requires any unspent convictions to be reviewed and a risk assessment to be complete. A basic disclosure will contain information about any unspent convictions in your name. By ticking the below boxes and signing this statement you are consenting to some or all the statements."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "12"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "I understand and give my consent to Bespoke Metering Solutions Limited:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Submitting an online application to Staffvetting.com for me to complete;"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Reviewing the application process;"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Being advised by email from Staffvetting.com should my disclosure certificate contain information regarding unspent convictions;")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Row, {
-        style: style.rowline
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "12"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "checkbox"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["Checkbox"], {
-        name: "is_produce_my_certificate",
-        label: "I also hereby agree to produce my certificate if requested to do so during the recruitment process.",
-        id: "is_produce_my_certificate",
-        value: this.state.is_produce_my_certificate,
-        required: true,
-        onChange: this.handleCheckboxChange
-      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
         md: "3"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
-        htmlFor: "recruitment_employee_name"
-      }, "Employee Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["TextInput"], {
-        name: "recruitment_employee_name",
-        id: "recruitment_employee_name",
-        placeholder: "Employee Name",
+        htmlFor: "bank_name"
+      }, "Bank Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["TextInput"], {
+        name: "bank_name",
+        id: "bank_name",
+        placeholder: "Bank Name",
         required: true,
-        value: this.state.recruitment_employee_name,
+        value: this.state.bank_name,
         onChange: this.handleChange,
         autoComplete: "off"
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
         as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "4"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_signature_canvas__WEBPACK_IMPORTED_MODULE_12___default.a, {
-        penColor: "black",
-        dotSize: function dotSize() {
-          return (_this2.minWidth + _this2.maxWidth) / 5;
-        },
-        canvasProps: {
-          width: 300,
-          height: 100,
-          className: 'sigCanvas'
-        },
-        ref: function ref(_ref4) {
-          _this2.recruitment_employee = _ref4;
-        },
-        onEnd: this.recruitment_employee_trim
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        type: "button",
-        style: {
-          position: 'absolute',
-          bottom: '6px'
-        },
-        onClick: this.recruitment_employee_clear
-      }, "Clear")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "2"
-      }, this.state.recruitment_employee_signature_show ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: this.state.recruitment_employee_signature_show
-      }) : null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "2"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
-        htmlFor: "region"
-      }, "Signature Date"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_datetime__WEBPACK_IMPORTED_MODULE_2___default.a, {
-        closeOnSelect: true,
-        onChange: this.recruitmentChange,
-        value: this.state.recruitment_Date,
-        dateFormat: "D/M/Y",
-        timeFormat: false,
-        maxDate: new Date(),
-        inputProps: {
-          required: 'required',
-          name: "recruitment_Date",
-          placeholder: 'Select Date',
-          autoComplete: 'off'
-        }
-      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Row, {
-        style: style.rowline
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "12"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "checkbox"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["Checkbox"], {
-        name: "is_drug_and_alcohol",
-        label: "Should your role require drug and alcohol screening tests you understand and consent to such screening tests for the detection of drugs and alcohol from a sample of saliva.",
-        id: "is_drug_and_alcohol",
-        value: this.state.is_drug_and_alcohol,
-        required: true,
-        onChange: this.handleCheckboxChange
-      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
         md: "3"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
-        htmlFor: "screening_employee_name"
-      }, "Employee Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["TextInput"], {
-        name: "screening_employee_name",
-        id: "screening_employee_name",
-        placeholder: "Employee Name",
+        htmlFor: "name_of_account_holder"
+      }, "name of account holder"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["TextInput"], {
+        name: "name_of_account_holder",
+        id: "name_of_account_holder",
+        placeholder: "name of account holder",
         required: true,
-        value: this.state.screening_employee_name,
+        value: this.state.name_of_account_holder,
         onChange: this.handleChange,
         autoComplete: "off"
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
         as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "4"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_signature_canvas__WEBPACK_IMPORTED_MODULE_12___default.a, {
-        penColor: "black",
-        dotSize: function dotSize() {
-          return (_this2.minWidth + _this2.maxWidth) / 5;
-        },
-        canvasProps: {
-          width: 300,
-          height: 100,
-          className: 'sigCanvas'
-        },
-        ref: function ref(_ref5) {
-          _this2.screening_employee = _ref5;
-        },
-        onEnd: this.screening_employee_trim
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        type: "button",
-        style: {
-          position: 'absolute',
-          bottom: '6px'
-        },
-        onClick: this.screening_employee_clear
-      }, "Clear")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "2"
-      }, this.state.screening_employee_signature_show ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: this.state.screening_employee_signature_show
-      }) : null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "2"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
-        htmlFor: "region"
-      }, "Signature Date"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_datetime__WEBPACK_IMPORTED_MODULE_2___default.a, {
-        closeOnSelect: true,
-        onChange: this.screeningChange,
-        value: this.state.screening_Date,
-        dateFormat: "D/M/Y",
-        timeFormat: false,
-        maxDate: new Date(),
-        inputProps: {
-          required: 'required',
-          name: "screening_Date",
-          placeholder: 'Select Date',
-          autoComplete: 'off'
-        }
-      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Row, {
-        style: style.rowline
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "12"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "checkbox"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["Checkbox"], {
-        name: "i_confirm",
-        label: "I confirm that the information given in this form is true, complete and accurate.",
-        id: "i_confirm",
-        value: this.state.i_confirm,
-        required: true,
-        onChange: this.handleCheckboxChange
-      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
         md: "3"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
-        htmlFor: "confirm_employee_name"
-      }, "Employee Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["TextInput"], {
-        name: "confirm_employee_name",
-        id: "confirm_employee_name",
-        placeholder: "Employee Name",
+        htmlFor: "account_number"
+      }, "Account Number"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["TextInput"], {
+        name: "account_number",
+        id: "account_number",
+        placeholder: "account number",
         required: true,
-        value: this.state.confirm_employee_name,
+        value: this.state.account_number,
         onChange: this.handleChange,
         autoComplete: "off"
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
         as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "4"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_signature_canvas__WEBPACK_IMPORTED_MODULE_12___default.a, {
-        penColor: "black",
-        dotSize: function dotSize() {
-          return (_this2.minWidth + _this2.maxWidth) / 5;
-        },
-        canvasProps: {
-          width: 300,
-          height: 100,
-          className: 'sigCanvas'
-        },
-        ref: function ref(_ref6) {
-          _this2.confirm_employee = _ref6;
-        },
-        onEnd: this.confirm_employee_trim
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        type: "button",
-        style: {
-          position: 'absolute',
-          bottom: '6px'
-        },
-        onClick: this.confirm_employee_clear
-      }, "Clear")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "2"
-      }, this.state.confirm_employee_signature_show ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: this.state.confirm_employee_signature_show
-      }) : null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "2"
+        md: "3"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
-        htmlFor: "region"
-      }, "Signature Date"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_datetime__WEBPACK_IMPORTED_MODULE_2___default.a, {
-        closeOnSelect: true,
-        onChange: this.confirmChange,
-        value: this.state.confirm_Date,
-        dateFormat: "D/M/Y",
-        timeFormat: false,
-        maxDate: new Date(),
-        inputProps: {
-          required: 'required',
-          name: "confirm_Date",
-          placeholder: 'Select Date',
-          autoComplete: 'off'
-        }
+        htmlFor: "sort_code"
+      }, "sort code"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["TextInput"], {
+        name: "sort_code",
+        id: "sort_code",
+        placeholder: "sort code",
+        required: true,
+        value: this.state.sort_code,
+        onChange: this.handleChange,
+        autoComplete: "off"
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
         as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "12"
-      }, "All information provided on these forms will be handled with the utmost sensitivity and confidentiality")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Row, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
+        md: "6"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
+        htmlFor: "bank_address"
+      }, "Bank Address"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["TextInput"], {
+        name: "bank_address",
+        id: "bank_address",
+        placeholder: "Bank Address",
+        required: true,
+        value: this.state.bank_address,
+        onChange: this.handleChange,
+        autoComplete: "off"
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Row, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
         as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
         sm: 12,
         className: "mt-3"
@@ -1011,7 +692,7 @@ var ConsentStatement = /*#__PURE__*/function (_React$Component) {
     }
   }]);
 
-  return ConsentStatement;
+  return BankDetails;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 var style = {
@@ -1020,7 +701,7 @@ var style = {
     marginBottom: '15px'
   }
 };
-/* harmony default export */ __webpack_exports__["default"] = (ConsentStatement);
+/* harmony default export */ __webpack_exports__["default"] = (BankDetails);
 
 /***/ })
 

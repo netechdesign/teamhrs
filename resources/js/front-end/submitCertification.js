@@ -62,10 +62,11 @@ class submitCertification extends React.Component {
     constructor(props){
         super(props)
         this.state = {
-            cma_1:null,
-            met_1:null,
-            single_phase:null,
-            single_off_multi:null,
+            gas_safe_card:null,
+            gas_metering_certificates:null,
+            electrical_metering_certificates:null,
+            eusr_card_not_issued:false,
+            eusr_card:null,
             driving_licence_code:null,
             other_documents:[],
             chkBasic: false,
@@ -107,6 +108,7 @@ class submitCertification extends React.Component {
        
         const data = new FormData($('#documentUpload')[0]);
         data.append('id', this.props.match.params.id);
+        data.append('eusr_card_not_issued',this.state.eusr_card_not_issued)
        // let formdata = this.state;
        // data.append('user_cv', this.state.user_cv);
         let urlid='';
@@ -183,7 +185,7 @@ class submitCertification extends React.Component {
     
       
     componentDidMount() {
-      
+        
         console.log(this.props.match.params.id);
         
     }
@@ -242,6 +244,11 @@ other_documentDelete =(element) =>{
         
       }
 }
+
+toggleHandler = () => {
+    
+    this.setState(prevState => { return {eusr_card_not_issued: !prevState.eusr_card_not_issued}})
+};
     render() {
         
         const other_documents = this.state.other_documents.map((item, index) => {
@@ -327,11 +334,12 @@ other_documentDelete =(element) =>{
                                         
                                         <Form.Row style={style.rowline} >
                                             <Form.Group as={Col} md="4" xs={12} xs={12} sm={12}>
-                                                <Form.Label htmlFor="upload_avatar">Cma 1</Form.Label>
+                                                <Form.Label htmlFor="upload_avatar">Gas Safe Card (include front and back)</Form.Label>
                                                 <div className="custom-file">
                                                     <FileInput style={{margin:'0px'}}
-                                                    name="cma_1"
-                                                    id="cma_1"
+                                                    name="gas_safe_card[]"
+                                                    multiple 
+                                                    id="gas_safe_card"
                                                     required
                                                     fileType={["pdf","docx","jpeg","jpg"]}
                                                     // maxFileSize="10000 kb"
@@ -348,11 +356,12 @@ other_documentDelete =(element) =>{
                                         </Form.Row>
                                         <Form.Row style={style.rowline} >
                                             <Form.Group as={Col} md="4" xs={12} xs={12} sm={12}>
-                                                <Form.Label htmlFor="upload_avatar">Met 1</Form.Label>
+                                                <Form.Label htmlFor="upload_avatar">Gas Metering Certificates/Qualifications (include all that are relevant for Low Pressure, Medium Pressure, Metering)</Form.Label>
                                                 <div className="custom-file">
                                                     <FileInput style={{margin:'0px'}}
-                                                    name="met_1"
-                                                    id="met_1"
+                                                    name="gas_metering_certificates[]"
+                                                    multiple 
+                                                    id="gas_metering_certificates"
                                                     required
                                                     fileType={["pdf","docx","jpeg","jpg"]}
                                                     // maxFileSize="10000 kb"
@@ -370,11 +379,12 @@ other_documentDelete =(element) =>{
 
 <Form.Row style={style.rowline} >
                                             <Form.Group as={Col} md="4" xs={12} xs={12} sm={12}>
-                                                <Form.Label htmlFor="upload_avatar">Single Phase</Form.Label>
+                                                <Form.Label htmlFor="upload_avatar">Electrical Metering Certificates/Qualifications (include all that are relevant for Single Phase, Single off Multi, Three Phase)</Form.Label>
                                                 <div className="custom-file">
                                                     <FileInput style={{margin:'0px'}}
-                                                    name="single_phase"
-                                                    id="single_phase"
+                                                    name="electrical_metering_certificates[]"
+                                                    multiple 
+                                                    id="electrical_metering_certificates"
                                                     required
                                                     fileType={["pdf","docx","jpeg","jpg"]}
                                                     // maxFileSize="10000 kb"
@@ -389,28 +399,17 @@ other_documentDelete =(element) =>{
                                                 </div>
                                             </Form.Group>
                                         </Form.Row>
-
-<Form.Row style={style.rowline} >
-                                            <Form.Group as={Col} md="4" xs={12} xs={12} sm={12}>
-                                                <Form.Label htmlFor="upload_avatar">Single off Multi</Form.Label>
-                                                <div className="custom-file">
-                                                    <FileInput style={{margin:'0px'}}
-                                                    name="single_off_multi"
-                                                    id="single_off_multi"
-                                                    required
-                                                    fileType={["pdf","docx","jpeg","jpg"]}
-                                                    // maxFileSize="10000 kb"
-                                                    errorMessage={
-                                                    { required: "Please upload a file",
-                                                    fileType:"Only jpeg, pdf and word file is allowed",
-                                                    // maxFileSize: "Max file size is 10000 kb"
-                                                    }
-                                                    }
-                                                    onChange={this.onUploadCv}
-                                                    />
-                                                </div>
-                                            </Form.Group>
-                                        </Form.Row>
+                                            <Form.Row style={style.rowline} >
+                                            <Form.Group as={Col} md="3" xs={12} xs={12} sm={12}>
+                                            
+                                            <div className="switch d-inline m-r-10">
+                                                <Form.Control type="checkbox" id="unchecked-default" defaultChecked={!this.state.eusr_card_not_issued} onChange={this.toggleHandler} />
+                                                <Form.Label htmlFor="unchecked-default" className="cr" />
+                                            </div>
+                                            <Form.Label>Eusr card not issued</Form.Label>
+                                        </Form.Group>
+                                        <EUSRcard card_issued={this.state.eusr_card_not_issued} />
+                                            </Form.Row>
 
 <Form.Row style={style.rowline} >
                                             <Form.Group as={Col} md="4" xs={12} xs={12} sm={12}>
@@ -487,6 +486,35 @@ other_documentDelete =(element) =>{
                 </Fullscreen>
             </Aux>
         );
+    }
+}
+
+class EUSRcard extends React.Component {
+    render(){
+        
+        return(<>
+        {(this.props.card_issued==false?<Form.Group as={Col} md="4" xs={12} xs={12} sm={12}>
+                                                <Form.Label htmlFor="upload_avatar">EUSR Card (include front and back)</Form.Label>
+                                                <div className="custom-file">
+                                                    <FileInput style={{margin:'0px'}}
+                                                    name="eusr_card[]"
+                                                    multiple 
+                                                    id="eusr_card"
+                                                    required
+                                                    fileType={["pdf","docx","jpeg","jpg"]}
+                                                    // maxFileSize="10000 kb"
+                                                    errorMessage={
+                                                    { required: "Please upload a file",
+                                                    fileType:"Only jpeg, pdf and word file is allowed",
+                                                    // maxFileSize: "Max file size is 10000 kb"
+                                                    }
+                                                    }
+                                                    onChange={this.onUploadCv}
+                                                    />
+                                                </div>
+                                            </Form.Group>:'')
+                                                }
+        </>)
     }
 }
 const style = {

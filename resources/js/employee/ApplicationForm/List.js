@@ -252,7 +252,7 @@ class List extends React.Component {
                       certification:true,
                       certificationButton:false,
                       other_documents:[],
-                      cma_1:false,
+                      gas_safe_card:false,
                       met_1:false,
                       single_phase:false,
                       single_off_multi:false,
@@ -338,7 +338,7 @@ other_documentDelete =(element) =>{
 
   applicationShow= (application_id)=>{
     this.setState({isLarge:true,apiload:true,application_Forms:[],key :'home',suitability_offered_for:'',suitability_offered_comments:'',other_documents:[],
-    cma_1:false,
+    gas_safe_card:false,
     met_1:false,
     single_phase:false,
     single_off_multi:false,
@@ -1342,7 +1342,7 @@ OfferlettersApproved = (id) =>{
                                                     <Col sm={10}>
                                 
                                                         <div className="checkbox">
-                                  <Checkbox name="cma_1" label="CMA 1" id="cma_1" value={this.state.cma_1} onChange={this.handleCheckboxChange} />
+                                  <Checkbox name="gas_safe_card" label="Gas Safe Card (include front and back)" id="gas_safe_card" value={this.state.gas_safe_card} onChange={this.handleCheckboxChange} />
                                   <Checkbox name="met_1" label="MET 1" id="met_1" value={this.state.met_1} onChange={this.handleCheckboxChange} />
                                   <Checkbox name="single_phase" label="Single Phase" id="single_phase" value={this.state.single_phase} onChange={this.handleCheckboxChange} />
                                   <Checkbox name="single_off_multi" label="single off multi" id="single_off_multi" value={this.state.single_off_multi}  onChange={this.handleCheckboxChange} />
