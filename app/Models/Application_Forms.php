@@ -43,7 +43,8 @@ class Application_Forms extends Model
         'is_document_request',
         'is_document_get',
         'driving_licence_number',
-        'driving_licence_code_text'
+        'driving_licence_code_text',
+        'eusr_card_not_issued'
                           ];
 
 

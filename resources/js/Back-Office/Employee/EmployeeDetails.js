@@ -127,6 +127,7 @@ render(){
             </Col>
             </Row>
             <div class="invoice-lable text-right"  style={{position: 'absolute',top: '10px',right:'5px'}}>
+                <Button className="shadow-5 btn-sm btn-secondary"><i class="fa fa-download"></i>Download</Button>
                 <NavLink  to= {{pathname:'/employee'}} className="shadow-5 btn-sm btn-info"><i class="fa fa-mail-reply"></i> BACK</NavLink> 
             </div>
                             </Card.Body>

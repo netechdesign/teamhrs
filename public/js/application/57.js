@@ -254,15 +254,15 @@ var Official = /*#__PURE__*/function (_React$Component) {
         "class": "col-12 col-md-6 col-lg-3"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         "class": "pmd-list-subtitle"
-      }, "Last Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        "class": "pmd-list-title"
-      }, this.state.employee_details.length > 0 ? this.state.employee_details[0].last_name : ' ')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "col-12 col-md-6 col-lg-3"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        "class": "pmd-list-subtitle"
       }, "Middle Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         "class": "pmd-list-title"
       }, this.state.employee_details.length > 0 ? this.state.employee_details[0].middle_name : ' ')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        "class": "col-12 col-md-6 col-lg-3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        "class": "pmd-list-subtitle"
+      }, "Last Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        "class": "pmd-list-title"
+      }, this.state.employee_details.length > 0 ? this.state.employee_details[0].last_name : ' ')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         "class": "col-12 col-md-6 col-lg-3"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         "class": "pmd-list-subtitle"

@@ -115,13 +115,14 @@ class Official extends React.Component {
 														<p class="pmd-list-title">{(this.state.employee_details.length>0?this.state.employee_details[0].first_name:'')}&nbsp; </p>
 													</div>
 													<div class="col-12 col-md-6 col-lg-3">
-														<label class="pmd-list-subtitle">Last Name</label>
-														<p class="pmd-list-title">{(this.state.employee_details.length>0?this.state.employee_details[0].last_name:' ')}</p>
-													</div>
-													<div class="col-12 col-md-6 col-lg-3">
 														<label class="pmd-list-subtitle">Middle Name</label>
 														<p class="pmd-list-title">{(this.state.employee_details.length>0?this.state.employee_details[0].middle_name:' ')}</p>
 													</div>
+                                                    <div class="col-12 col-md-6 col-lg-3">
+														<label class="pmd-list-subtitle">Last Name</label>
+														<p class="pmd-list-title">{(this.state.employee_details.length>0?this.state.employee_details[0].last_name:' ')}</p>
+													</div>
+													
                                                     <div class="col-12 col-md-6 col-lg-3">
 														<label class="pmd-list-subtitle">Date of Birth</label>
 														<p class="pmd-list-title">{(this.state.employee_details.length>0?this.state.employee_details[0].date_of_birth:' ')}&nbsp;</p>
