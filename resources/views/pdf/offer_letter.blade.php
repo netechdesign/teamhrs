@@ -87,7 +87,7 @@ li:before {
                         <p>
                         <img style="width:30%;" src="images/offerletter_sign.png" /><br>
                         Gareth McKenna<br>
-                        Operations Director
+                        Managing Director
                         </p>
                         {{--
                         <p>
@@ -323,12 +323,11 @@ li:before {
                 <p><b>The Employer: </b>Bespoke Metering Solutions Limited incorporated and registered in England and Wales with company number 10670768 whose registered office is at Unit 6, Glover Network Centre, Spire Road, Washington, NE37 3HB (“Employer”/”us”/”our”/”we”)</p>
                 <p><b>The Employee: </b> {{ucfirst($fore_name)}} {{ucfirst($surname)}},
                                      @if(isset($address_details['line_1']))
-                                        {{$address_details['line_1']}} ,
-                                        @if($address_details['line_2']!='') {{$address_details['line_2']}} , @endif
-                                        @if($address_details['line_3']!='') {{$address_details['line_3']}} , @endif
-                                        @if($address_details['line_4']!='') {{$address_details['line_4']}} , @endif
-                                        {{$address_details['town_or_city']}}  ,
-                                        {{$address_details['postcode']}}
+                                        {{$address_details['line_1']}},
+                                        @if($address_details['line_2']!='')  {{$address_details['line_2']}}, @endif
+                                        @if($address_details['line_3']!='')  {{$address_details['line_3']}}, @endif
+                                        @if($address_details['line_4']!='')  {{$address_details['line_4']}}, @endif
+                                        {{$address_details['town_or_city']}}, {{$address_details['postcode']}}.
                                     @elseif(isset($line_1))
                                     {{$line_1}} ,
                                         @if($line_2!='') {{$line_2}} , @endif
@@ -357,33 +356,33 @@ li:before {
                       
                 </p>
                 @if($dbscheck=='Yes')
-                <p><b>DBS Check: </b>Basic required</p>
+                <p><b>DBS Check: </b>Basic required.</p>
                 @endif
                 <p><b>Remuneration and Benefits: </b></p>
                 
-                <p><b>Basic: </b>£{{$basic}} per annum</p>
+                <p><b>Basic: </b>£{{$basic}} per annum.</p>
                 
                 @if($bonus=='Yes')
                 <p><b>Bonus: </b>
-                    You will be paid bonus in accordance with the rules and rates set out in the Bonus Policy relevant to you as amended from time to time
+                    You will be paid bonus in accordance with the rules and rates set out in the Bonus Policy relevant to you as amended from time to time.
                 </p>
                 @endif
                 <p><b>Hours of Work: </b>
                 @if($hours_of_work==1)
-                    45 hours per week, between Monday to Sunday to be worked between the hours of 8am and 10pm. You may be required as part of your role to attend out of hours and emergency callouts as requested by the Employer
+                    45 hours per week, between Monday to Sunday to be worked between the hours of 8am and 10pm. You may be required as part of your role to attend out of hours and emergency callouts as requested by the Employer.
                 @elseif($hours_of_work==2)
-                    Your normal working hours will be 40 hours per week between 08.00 and 18.00 Monday to Friday. You are, however, expected to work without additional pay for additional hours according to the requirements of the Company
+                    Your normal working hours will be 40 hours per week between 08.00 and 18.00 Monday to Friday. You are, however, expected to work without additional pay for additional hours according to the requirements of the Company.
                  @elseif($hours_of_work==3)
                     Manually
                 @endif
                 </p>
                 <table border='1'>
                 <tr>
-                    <td width="33.33%" valign="top">Signed by Gareth McKenna for and on behalf of Bespoke Metering Solutions Limited</td>
-                    <td width="33.33%" valign="top">Signature
+                    <td width="33.33%" valign="top" style="padding: 5px;">Signed by Gareth McKenna for and on behalf of Bespoke Metering Solutions Limited</td>
+                    <td width="33.33%" valign="top" style="padding: 5px;">Signature
                     <img style="width:30%;" src="images/offerletter_sign.png" /><br>
                     </td>
-                    <td width="33.33%" valign="top">Date <br/>
+                    <td width="33.33%" valign="top" style="padding: 5px;">Date <br/>
                     @if(!isset($created))
                     {{date('d/m/y')}}
                     @else
@@ -392,14 +391,14 @@ li:before {
                     </td>
                 </tr>
                 <tr>
-                    <td valign="top">Signed by the Employee</td>
-                    <td valign="top">Signature<br/>
+                    <td valign="top" style="padding: 5px;">Signed by the Employee</td>
+                    <td valign="top" style="padding: 5px;">Signature<br/>
                     @if(isset($information_provided_signature))
                         
                         <img style="width:10%;margin-top:10px;" src="{{$information_provided_signature}}" /> 
                    @endif
                     </td>
-                    <td valign="top">Date<br/>
+                    <td valign="top" style="padding: 5px;">Date<br/>
                     @if(isset($information_provided_date))
                         {{$information_provided_date}}
                    @endif

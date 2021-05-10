@@ -256,7 +256,7 @@
                                         </p>
                                         <p>Please click the link below to view and sign your offer letter and contract.</p>
                                         <table border="0" width="180" cellpadding="0" cellspacing="0"
-                                            bgcolor="5caad2" style="margin-bottom:20px;">
+                                            bgcolor="5caad2" style="margin-bottom:20px;margin-top:20px;">
 
                                             <tr>
                                                 <td align="center"
@@ -276,7 +276,7 @@
                                         </table>
                                         <p style="line-height: 24px">
                                             Thanks,</br>
-                                            Hr Team.
+                                            HR Team.
                                         </p>
 
                                     </td>

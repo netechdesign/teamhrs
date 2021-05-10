@@ -230,7 +230,7 @@
 
                             <div style="line-height: 35px">
 
-                                Welcome to <span style="color: #5caad2;">Hr System</span>
+                                Welcome to <span style="color: #5caad2;">our HR System</span>
 
                             </div>
                         </td>
@@ -301,7 +301,7 @@
                                         </table>
                                         <p style="line-height: 24px">
                                             Thanks,</br>
-                                            Hr Team.
+                                            HR Team.
                                         </p>
 
                                     </td>
