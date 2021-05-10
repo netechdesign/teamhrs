@@ -443,7 +443,7 @@ var Passport_birth = /*#__PURE__*/function (_React$Component) {
         name: "passport_outside",
         id: "passport_outside",
         required: true,
-        fileType: ["pdf", "docx", "jpeg", "jpg"] // maxFileSize="10000 kb"
+        fileType: ["pdf", "docx", "jpeg", "jpg", "png"] // maxFileSize="10000 kb"
         ,
         errorMessage: {
           required: "Please upload Passport Inside",
@@ -466,7 +466,7 @@ var Passport_birth = /*#__PURE__*/function (_React$Component) {
         name: "birth_certificate",
         id: "birth_certificate",
         required: true,
-        fileType: ["pdf", "docx", "jpeg", "jpg"] // maxFileSize="10000 kb"
+        fileType: ["pdf", "docx", "jpeg", "jpg", "png"] // maxFileSize="10000 kb"
         ,
         errorMessage: {
           required: "Please upload Birth Certificate",
@@ -779,7 +779,7 @@ var ProofOfIdentification = /*#__PURE__*/function (_React$Component2) {
         name: "proof_of_address",
         id: "proof_of_address",
         required: true,
-        fileType: ["pdf", "docx", "jpeg", "jpg"] // maxFileSize="10000 kb"
+        fileType: ["pdf", "docx", "jpeg", "jpg", "png"] // maxFileSize="10000 kb"
         ,
         errorMessage: {
           required: "Please upload Proof of Address",
@@ -802,7 +802,7 @@ var ProofOfIdentification = /*#__PURE__*/function (_React$Component2) {
         name: "national_insurance_number",
         id: "national_insurance_number",
         required: true,
-        fileType: ["pdf", "docx", "jpeg", "jpg"] // maxFileSize="10000 kb"
+        fileType: ["pdf", "docx", "jpeg", "jpg", "png"] // maxFileSize="10000 kb"
         ,
         errorMessage: {
           required: "Please upload National Insurance Number",
@@ -824,7 +824,7 @@ var ProofOfIdentification = /*#__PURE__*/function (_React$Component2) {
         },
         name: "right_to_work",
         id: "right_to_work",
-        fileType: ["pdf", "docx", "jpeg", "jpg"] // maxFileSize="10000 kb"
+        fileType: ["pdf", "docx", "jpeg", "jpg", "png"] // maxFileSize="10000 kb"
         ,
         errorMessage: {
           fileType: "Only jpeg, pdf and word file is allowed" // maxFileSize: "Max file size is 10000 kb"
@@ -846,7 +846,7 @@ var ProofOfIdentification = /*#__PURE__*/function (_React$Component2) {
         name: "driving_licence_front",
         id: "driving_licence_front",
         required: true,
-        fileType: ["pdf", "docx", "jpeg", "jpg"] // maxFileSize="10000 kb"
+        fileType: ["pdf", "docx", "jpeg", "jpg", "png"] // maxFileSize="10000 kb"
         ,
         errorMessage: {
           required: "Please upload Driving Licence Front",
@@ -869,7 +869,7 @@ var ProofOfIdentification = /*#__PURE__*/function (_React$Component2) {
         name: "driving_licence_back",
         id: "driving_licence_back",
         required: true,
-        fileType: ["pdf", "docx", "jpeg", "jpg"] // maxFileSize="10000 kb"
+        fileType: ["pdf", "docx", "jpeg", "jpg", "png"] // maxFileSize="10000 kb"
         ,
         errorMessage: {
           required: "Please upload Driving Licence Back",
@@ -892,7 +892,7 @@ var ProofOfIdentification = /*#__PURE__*/function (_React$Component2) {
         name: "passport_style_photograph",
         id: "passport_style_photograph",
         required: true,
-        fileType: ["pdf", "docx", "jpeg", "jpg"] // maxFileSize="10000 kb"
+        fileType: ["pdf", "docx", "jpeg", "jpg", "png"] // maxFileSize="10000 kb"
         ,
         errorMessage: {
           required: "Please upload Passport style photograph",
@@ -937,7 +937,7 @@ var ProofOfIdentification = /*#__PURE__*/function (_React$Component2) {
         name: "p45form",
         id: "p45",
         required: true,
-        fileType: ["pdf", "docx", "jpeg", "jpg"] // maxFileSize="10000 kb"
+        fileType: ["pdf", "docx", "jpeg", "jpg", "png"] // maxFileSize="10000 kb"
         ,
         errorMessage: {
           required: "Please upload P45",
@@ -960,7 +960,7 @@ var ProofOfIdentification = /*#__PURE__*/function (_React$Component2) {
         name: "hmrc_starter_checklist",
         id: "hmrc_starter_checklist",
         required: true,
-        fileType: ["pdf", "docx", "jpeg", "jpg"] // maxFileSize="10000 kb"
+        fileType: ["pdf", "docx", "jpeg", "jpg", "png"] // maxFileSize="10000 kb"
         ,
         errorMessage: {
           required: "Please upload HMRC Starter Checklist",

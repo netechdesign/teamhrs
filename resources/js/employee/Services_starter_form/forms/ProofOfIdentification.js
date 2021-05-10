@@ -62,7 +62,7 @@ class Passport_birth extends React.Component {
            name="passport_outside"
            id="passport_outside"
            required
-           fileType={["pdf","docx","jpeg","jpg"]}
+           fileType={["pdf","docx","jpeg","jpg","png"]}
            // maxFileSize="10000 kb"
            errorMessage={
            { required: "Please upload Passport Inside", fileType:"Only jpeg, pdf and word file is allowed",
@@ -79,7 +79,7 @@ class Passport_birth extends React.Component {
                                                     name="birth_certificate"
                                                     id="birth_certificate"
                                                     required
-                                                    fileType={["pdf","docx","jpeg","jpg"]}
+                                                    fileType={["pdf","docx","jpeg","jpg","png"]}
                                                     // maxFileSize="10000 kb"
                                                     errorMessage={
                                                     { required: "Please upload Birth Certificate", fileType:"Only jpeg, pdf and word file is allowed",
@@ -302,7 +302,7 @@ class ProofOfIdentification extends React.Component {
                                                     name="proof_of_address"
                                                     id="proof_of_address"
                                                     required
-                                                    fileType={["pdf","docx","jpeg","jpg"]}
+                                                    fileType={["pdf","docx","jpeg","jpg","png"]}
                                                     // maxFileSize="10000 kb"
                                                     errorMessage={
                                                     { required: "Please upload Proof of Address",
@@ -323,7 +323,7 @@ class ProofOfIdentification extends React.Component {
                                                         name="national_insurance_number"
                                                         id="national_insurance_number"
                                                         required
-                                                        fileType={["pdf","docx","jpeg","jpg"]}
+                                                        fileType={["pdf","docx","jpeg","jpg","png"]}
                                                         // maxFileSize="10000 kb"
                                                         errorMessage={
                                                         { required: "Please upload National Insurance Number",
@@ -342,7 +342,7 @@ class ProofOfIdentification extends React.Component {
                                                         <FileInput style={{margin:'0px'}}
                                                         name="right_to_work"
                                                         id="right_to_work"
-                                                        fileType={["pdf","docx","jpeg","jpg"]}
+                                                        fileType={["pdf","docx","jpeg","jpg","png"]}
                                                         // maxFileSize="10000 kb"
                                                         errorMessage={
                                                         {fileType:"Only jpeg, pdf and word file is allowed",
@@ -364,7 +364,7 @@ class ProofOfIdentification extends React.Component {
                                                         name="driving_licence_front"
                                                         id="driving_licence_front"
                                                         required
-                                                        fileType={["pdf","docx","jpeg","jpg"]}
+                                                        fileType={["pdf","docx","jpeg","jpg","png"]}
                                                         // maxFileSize="10000 kb"
                                                         errorMessage={
                                                         { required: "Please upload Driving Licence Front",
@@ -383,7 +383,7 @@ class ProofOfIdentification extends React.Component {
                                                         name="driving_licence_back"
                                                         id="driving_licence_back"
                                                         required
-                                                        fileType={["pdf","docx","jpeg","jpg"]}
+                                                        fileType={["pdf","docx","jpeg","jpg","png"]}
                                                         // maxFileSize="10000 kb"
                                                         errorMessage={
                                                         { required: "Please upload Driving Licence Back",
@@ -406,7 +406,7 @@ class ProofOfIdentification extends React.Component {
                                                         name="passport_style_photograph"
                                                         id="passport_style_photograph"
                                                         required
-                                                        fileType={["pdf","docx","jpeg","jpg"]}
+                                                        fileType={["pdf","docx","jpeg","jpg","png"]}
                                                         // maxFileSize="10000 kb"
                                                         errorMessage={
                                                         {required: "Please upload Passport style photograph",fileType:"Only jpeg, pdf and word file is allowed",
@@ -444,7 +444,7 @@ class ProofOfIdentification extends React.Component {
                                                             name="p45form"
                                                             id="p45"
                                                             required
-                                                            fileType={["pdf","docx","jpeg","jpg"]}
+                                                            fileType={["pdf","docx","jpeg","jpg","png"]}
                                                             // maxFileSize="10000 kb"
                                                             errorMessage={
                                                             {required: "Please upload P45",fileType:"Only jpeg, pdf and word file is allowed",
@@ -462,7 +462,7 @@ class ProofOfIdentification extends React.Component {
                                                         name="hmrc_starter_checklist"
                                                         id="hmrc_starter_checklist"
                                                         required
-                                                        fileType={["pdf","docx","jpeg","jpg"]}
+                                                        fileType={["pdf","docx","jpeg","jpg","png"]}
                                                         // maxFileSize="10000 kb"
                                                         errorMessage={
                                                         {required: "Please upload HMRC Starter Checklist",fileType:"Only jpeg, pdf and word file is allowed",
