@@ -996,6 +996,16 @@ address:'',
 
                                                         </SelectGroup>
                                                     </Form.Group>
+                                                    </Form.Row>
+                                                    <Form.Row>
+                                                    {this.state.address_history.length>0?
+                                                        <div style={{marginBottom:'10px'}}><i class="fa fa-history" aria-hidden="true"></i> <b>Address History</b></div>:''}
+                                                        <Form.Group as={Col} md="12">{address_historyList}</Form.Group>
+                                                        <Form.Group as={Col} md="4">
+                                                        { (this.state.total_history_year?<><Button variant='secondary' onClick={this.addAddressHistory}  size='sm'>+Add Address</Button></>:'') }   
+                                                        </Form.Group>
+                                                    </Form.Row>
+                                                    <Form.Row>
 
 <Form.Group as={Col} md="2">
                                                         <Form.Label htmlFor="mobile_number">Town of Birth</Form.Label>
@@ -1096,12 +1106,7 @@ address:'',
 
 
                                         </Form.Row>
-                                        <hr/>
-                                      { (this.state.total_history_year?<><Button variant='secondary' onClick={this.addAddressHistory}  size='sm'>+Add Address</Button></>:'') }   
-                                        {this.state.address_history.length>0?
-                                         <div style={{marginBottom:'10px'}}><i class="fa fa-history" aria-hidden="true"></i> <b>Address History</b></div>:''}
-                                     
-                                        {address_historyList}
+                                        
                                         <Form.Row>   
                                         <Form.Group as={Col} sm={12} className="mt-3">
                                         <Button disabled={this.state.formSubmitting}  type="submit"> {this.state.buttonName}</Button>

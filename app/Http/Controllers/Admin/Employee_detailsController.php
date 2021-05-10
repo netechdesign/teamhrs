@@ -214,6 +214,7 @@ class Employee_detailsController extends Controller
         //
  
         try{
+            
             $user = JWTAuth::toUser($request->input('token'));
             $request->request->add(['updated_by'=> $user->id]);
             
@@ -251,10 +252,21 @@ class Employee_detailsController extends Controller
             $Employee_details->relationship = $request->relationship;
             $Employee_details->contact_number = $request->contact_number;
             $Employee_details->address = $request->address;
-            $Uniform_orders->updated_by = $request->updated_by;
+            $Employee_details->updated_by = $request->updated_by;
 
             if($Employee_details->save()){
-              
+                $address_histories= $request->only('address_history');
+                foreach($address_histories['address_history'] as $vl){ 
+                      
+                        $vl['created_by'] = $user->id;
+                        $vl['user_id']  = $user->id;
+                        
+    //                    use App\Models\Employment_references;
+    
+                        $Address_histories = new Address_histories($vl);
+                        $Address_histories->save();
+                        
+                   }
                 return response()->json(array('success' => true,
                 'message' => 'User updated successfully'
                 ), 200);
