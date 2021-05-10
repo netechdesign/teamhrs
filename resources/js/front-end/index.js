@@ -985,7 +985,7 @@ class Home extends React.Component {
                                             <Form.Row style={style.rowline} >
                                                          <Form.Group as={Col} md="12">I confirm that the information I have provided on this form is correct and I accept that providing deliberately false information could result in my dismissal.</Form.Group>
                                                          <Form.Group as={Col} md="3">
-                                                              <Form.Label htmlFor="confirm_employee_name">Employee Name</Form.Label>
+                                                              <Form.Label htmlFor="confirm_employee_name">Applicant Name</Form.Label>
                                                             
                                                                     <TextInput
                                                                     name="confirm_employee_name"
