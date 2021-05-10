@@ -341,7 +341,7 @@ toggleHandler = () => {
                                                     multiple 
                                                     id="gas_safe_card"
                                                     required
-                                                    fileType={["pdf","docx","jpeg","jpg"]}
+                                                    fileType={["pdf","docx","jpeg","jpg","png"]}
                                                     // maxFileSize="10000 kb"
                                                     errorMessage={
                                                     { required: "Please upload a file",
@@ -363,7 +363,7 @@ toggleHandler = () => {
                                                     multiple 
                                                     id="gas_metering_certificates"
                                                     required
-                                                    fileType={["pdf","docx","jpeg","jpg"]}
+                                                    fileType={["pdf","docx","jpeg","jpg","png"]}
                                                     // maxFileSize="10000 kb"
                                                     errorMessage={
                                                     { required: "Please upload a file",
@@ -386,7 +386,7 @@ toggleHandler = () => {
                                                     multiple 
                                                     id="electrical_metering_certificates"
                                                     required
-                                                    fileType={["pdf","docx","jpeg","jpg"]}
+                                                    fileType={["pdf","docx","jpeg","jpg","png"]}
                                                     // maxFileSize="10000 kb"
                                                     errorMessage={
                                                     { required: "Please upload a file",

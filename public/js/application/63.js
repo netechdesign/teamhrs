@@ -503,7 +503,7 @@ var submitCertification = /*#__PURE__*/function (_React$Component) {
         multiple: true,
         id: "gas_safe_card",
         required: true,
-        fileType: ["pdf", "docx", "jpeg", "jpg"] // maxFileSize="10000 kb"
+        fileType: ["pdf", "docx", "jpeg", "jpg", "png"] // maxFileSize="10000 kb"
         ,
         errorMessage: {
           required: "Please upload a file",
@@ -529,7 +529,7 @@ var submitCertification = /*#__PURE__*/function (_React$Component) {
         multiple: true,
         id: "gas_metering_certificates",
         required: true,
-        fileType: ["pdf", "docx", "jpeg", "jpg"] // maxFileSize="10000 kb"
+        fileType: ["pdf", "docx", "jpeg", "jpg", "png"] // maxFileSize="10000 kb"
         ,
         errorMessage: {
           required: "Please upload a file",
@@ -555,7 +555,7 @@ var submitCertification = /*#__PURE__*/function (_React$Component) {
         multiple: true,
         id: "electrical_metering_certificates",
         required: true,
-        fileType: ["pdf", "docx", "jpeg", "jpg"] // maxFileSize="10000 kb"
+        fileType: ["pdf", "docx", "jpeg", "jpg", "png"] // maxFileSize="10000 kb"
         ,
         errorMessage: {
           required: "Please upload a file",
