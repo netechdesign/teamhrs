@@ -35,7 +35,7 @@ import { Table, Thead, Tbody, Tr, Th, Td } from 'react-super-responsive-table';
 import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css';
 let ajaxabort;
 function successDesktopPNotify(id) {
-   let message = "Appication Form Send successfully";
+   let message = "Application Form submitted successfully";
     if(id!=''){
         message = "Application Form updated successfully"
     }
@@ -660,13 +660,13 @@ class Home extends React.Component {
                                                         </Form.Group>
 
                                                         <Form.Group as={Col} md="2">
-                                                              <Form.Label htmlFor="asm_name">Fore Name</Form.Label>
+                                                              <Form.Label htmlFor="asm_name">Forename</Form.Label>
                                                         
                                                         <TextInput
                                                             name="fore_name"
                                                             id="fore_name"
                                                             type="text"
-                                                            placeholder="Fore Name"
+                                                            placeholder="Forename"
                                                             value={this.state.fore_name}
                                                             onChange={this.handleChange}
                                                             autoComplete="off"
@@ -1019,12 +1019,12 @@ class Home extends React.Component {
                                             <Form.Row style={style.rowline} >
                                                          <Form.Group as={Col} md="12">I hereby give my consent for the contact information provided on this form to be held on computer or other relevant filing systems and to be shared with other accredited organisations or agencies for recruitment opportunities.</Form.Group>
                                                          <Form.Group as={Col} md="3">
-                                                              <Form.Label htmlFor="information provided_name">Employee Name</Form.Label>
+                                                              <Form.Label htmlFor="information provided_name">Applicant Name</Form.Label>
                                                             
                                                                     <TextInput
                                                                     name="information_provided_name"
                                                                     id="information_provided_name"
-                                                                    placeholder="Employee Name"
+                                                                    placeholder="Applicant Name"
                                                                     required value={this.state.fore_name+" "+this.state.surname}
                                                                     onChange={this.handleChange}
                                                                     autoComplete="off"

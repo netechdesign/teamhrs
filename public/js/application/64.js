@@ -176,7 +176,7 @@ var Thankstosubmit = /*#__PURE__*/function (_React$Component) {
       }, "Thank you ", capitalize(this.props.location.state.user_name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "wow fadeInUp",
         "data-wow-delay": "0.2s"
-      }, "We are still in the process of reviewing applications and anticipate beginning the interview process.", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", {
+      }, "We are still in the process of reviewing applications and anticipate beginning the interview process shortly.", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", {
         className: "hidden-xs"
       }), " If you are selected to move forward with the interview process, you will hear from our HR department."))))))))));
     }

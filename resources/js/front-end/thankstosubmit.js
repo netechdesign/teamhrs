@@ -75,7 +75,7 @@ class Thankstosubmit extends React.Component {
                                             <div className="col-md-10">
                                                 <h1 className="wow fadeInUp" data-wow-delay="0s">Thank you {capitalize(this.props.location.state.user_name)}</h1>
                                                 <p className="wow fadeInUp" data-wow-delay="0.2s">
-                                                We are still in the process of reviewing applications and anticipate beginning the interview process.
+                                                We are still in the process of reviewing applications and anticipate beginning the interview process shortly.
                                                   <br className="hidden-xs" /> If you are selected to move forward with the interview process, you will hear from our HR department.
                                                 </p>
                                             

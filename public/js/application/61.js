@@ -121,7 +121,7 @@ var baseurl = window.location.origin;
 var ajaxabort;
 
 function successDesktopPNotify(id) {
-  var message = "Appication Form Send successfully";
+  var message = "Application Form submitted successfully";
 
   if (id != '') {
     message = "Application Form updated successfully";
@@ -903,11 +903,11 @@ var Home = /*#__PURE__*/function (_React$Component) {
         md: "2"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
         htmlFor: "asm_name"
-      }, "Fore Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_9__["TextInput"], {
+      }, "Forename"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_9__["TextInput"], {
         name: "fore_name",
         id: "fore_name",
         type: "text",
-        placeholder: "Fore Name",
+        placeholder: "Forename",
         value: this.state.fore_name,
         onChange: this.handleChange,
         autoComplete: "off"
@@ -1291,10 +1291,10 @@ var Home = /*#__PURE__*/function (_React$Component) {
         md: "3"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
         htmlFor: "information provided_name"
-      }, "Employee Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_9__["TextInput"], {
+      }, "Applicant Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_9__["TextInput"], {
         name: "information_provided_name",
         id: "information_provided_name",
-        placeholder: "Employee Name",
+        placeholder: "Applicant Name",
         required: true,
         value: this.state.fore_name + " " + this.state.surname,
         onChange: this.handleChange,
