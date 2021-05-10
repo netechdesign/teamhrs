@@ -253,9 +253,9 @@ class List extends React.Component {
                       certificationButton:false,
                       other_documents:[],
                       gas_safe_card:false,
-                      met_1:false,
-                      single_phase:false,
-                      single_off_multi:false,
+                      gas_metering_certificates:false,
+                      electrical_metering_certificates:false,
+                      eusr_card:false,
                       driving_licence_code:false,
                       is_other_documents:false,
                       confirm_employee_signature:null,
@@ -339,9 +339,9 @@ other_documentDelete =(element) =>{
   applicationShow= (application_id)=>{
     this.setState({isLarge:true,apiload:true,application_Forms:[],key :'home',suitability_offered_for:'',suitability_offered_comments:'',other_documents:[],
     gas_safe_card:false,
-    met_1:false,
-    single_phase:false,
-    single_off_multi:false,
+    gas_metering_certificates:false,
+    electrical_metering_certificates:false,
+    eusr_card:false,
     driving_licence_code:false,
     is_other_documents:false,
     offerletterslist:[],
@@ -1342,10 +1342,11 @@ OfferlettersApproved = (id) =>{
                                                     <Col sm={10}>
                                 
                                                         <div className="checkbox">
-                                  <Checkbox name="gas_safe_card" label="Gas Safe Card (include front and back)" id="gas_safe_card" value={this.state.gas_safe_card} onChange={this.handleCheckboxChange} />
-                                  <Checkbox name="met_1" label="MET 1" id="met_1" value={this.state.met_1} onChange={this.handleCheckboxChange} />
-                                  <Checkbox name="single_phase" label="Single Phase" id="single_phase" value={this.state.single_phase} onChange={this.handleCheckboxChange} />
-                                  <Checkbox name="single_off_multi" label="single off multi" id="single_off_multi" value={this.state.single_off_multi}  onChange={this.handleCheckboxChange} />
+                                  <Checkbox name="gas_safe_card" label="Gas Safe Card" id="gas_safe_card" value={this.state.gas_safe_card} onChange={this.handleCheckboxChange} />
+                                  <Checkbox name="gas_metering_certificates" label="Gas Metering Certificates/Qualifications" id="gas_metering_certificates" value={this.state.gas_metering_certificates} onChange={this.handleCheckboxChange} />
+                                  <Checkbox name="electrical_metering_certificates" label="Electrical Metering Certificates/Qualifications" id="electrical_metering_certificates" value={this.state.electrical_metering_certificates} onChange={this.handleCheckboxChange} />
+
+                                  <Checkbox name="eusr_card" label="EUSR Card" id="eusr_card" value={this.state.eusr_card}  onChange={this.handleCheckboxChange} />
                                   <Checkbox name="driving_licence_code" label="Driving licence code" id="driving_licence_code" value={this.state.driving_licence_code} onChange={this.handleCheckboxChange} />
                                   <Checkbox name="is_other_documents" label="Other" id="Other_documents" value={this.state.is_other_documents} onChange={this.handleCheckboxChange} />
                                 </div>

@@ -38,10 +38,10 @@ class Documents extends React.Component {
                            // this.getAddress(res.data.Employee_details.getaddress_id);
                              
                              let Documents = res.data.Documents;
-                            // let proof_of_identifications = res.data.Proof_of_identifications;
+                             let proof_of_identifications = res.data.Proof_of_identifications;
                              
                             this.setState({Documents:Documents});
-                            //this.setState({proof_of_identifications:proof_of_identifications});
+                            this.setState({proof_of_identifications:proof_of_identifications});
                               this.setState({apiload:false});
                              }else{
                               let errorMassage = '';
@@ -100,7 +100,7 @@ class Documents extends React.Component {
                     return (<tr key={index}>
                                 <th>{ext}</th>
                                 <th>{item.document_name}</th>
-                                <th><Button className="btn-sm" style={{width: '20%',padding: '5px 0px'}} variant='secondary'><i style={{marginRight:'0px'}} class="fa fa-eye"></i></Button></th>
+                                <th><a target="_black" href={baseurl+'/uploaded/'+item.document_path} className="btn-sm" style={{width: '20%',padding: '5px 0px'}} variant='secondary'><i style={{marginRight:'0px'}} class="fa fa-eye"></i></a></th>
                             </tr>
                             )      
                }):<tr><td>Document not found</td></tr>);
@@ -146,8 +146,8 @@ class Documents extends React.Component {
                                     <tbody>
                                      {document}
                                      
-                                    {/* <Proofofidentification data={this.state.proof_of_identifications} />
-                                    */}
+                                    <Proofofidentification data={this.state.proof_of_identifications} />
+                                    
                                     </tbody>
                                 </Table>
 													</div>
@@ -181,20 +181,20 @@ class Proofofidentification extends React.Component {
     
     render() {
         return(<Aux>
-            {(this.props.data.birth_certificate?<tr><th>{this.getExt(this.props.data.birth_certificate)}</th><th>Birth Certificate</th><th><Button className="btn-sm" style={{width: '20%',padding: '5px 0px'}} variant='secondary'><i style={{marginRight:'0px'}} class="fa fa-eye"></i></Button></th></tr>:'')}
-            {(this.props.data.driving_licence_front?<tr><th>{this.getExt(this.props.data.driving_licence_front)}</th><th>Driving Licence</th><th><Button className="btn-sm" style={{width: '20%',padding: '5px 0px'}} variant='secondary'><i style={{marginRight:'0px'}} class="fa fa-eye"></i></Button></th></tr>:'')}
+            {(this.props.data.birth_certificate?<tr><th>{this.getExt(this.props.data.birth_certificate)}</th><th>Birth Certificate</th><th><a target="_black" href={baseurl+'/uploaded/'+this.props.data.birth_certificate} className="btn-sm" style={{width: '20%',padding: '5px 0px'}} variant='secondary'><i style={{marginRight:'0px'}} class="fa fa-eye"></i></a></th></tr>:'')}
+            {(this.props.data.driving_licence_front?<tr><th>{this.getExt(this.props.data.driving_licence_front)}</th><th>Driving Licence</th><th><a target="_black" href={baseurl+'/uploaded/'+this.props.data.driving_licence_front} className="btn-sm" style={{width: '20%',padding: '5px 0px'}} variant='secondary'><i style={{marginRight:'0px'}} class="fa fa-eye"></i></a></th></tr>:'')}
             
-            {(this.props.data.national_insurance_number?<tr><th>{this.getExt(this.props.data.national_insurance_number)}</th><th>National Insurance Number</th><th><Button className="btn-sm" style={{width: '20%',padding: '5px 0px'}} variant='secondary'><i style={{marginRight:'0px'}} class="fa fa-eye"></i></Button></th></tr>:'')}
+            {(this.props.data.national_insurance_number?<tr><th>{this.getExt(this.props.data.national_insurance_number)}</th><th>National Insurance Number</th><th><a target="_black" href={baseurl+'/uploaded/'+this.props.data.national_insurance_number} className="btn-sm" style={{width: '20%',padding: '5px 0px'}} variant='secondary'><i style={{marginRight:'0px'}} class="fa fa-eye"></i></a></th></tr>:'')}
             
-            {(this.props.data.p45form?<tr><th>{this.getExt(this.props.data.p45form)}</th><th>p45 Form</th><th><Button className="btn-sm" style={{width: '20%',padding: '5px 0px'}} variant='secondary'><i style={{marginRight:'0px'}} class="fa fa-eye"></i></Button></th></tr>:'')}
+            {(this.props.data.p45form?<tr><th>{this.getExt(this.props.data.p45form)}</th><th>p45 Form</th><th><a target="_black" href={baseurl+'/uploaded/'+this.props.data.p45form} className="btn-sm" style={{width: '20%',padding: '5px 0px'}} variant='secondary'><i style={{marginRight:'0px'}} class="fa fa-eye"></i></a></th></tr>:'')}
             
-            {(this.props.data.passport_style_photograph?<tr><th>{this.getExt(this.props.data.passport_style_photograph)}</th><th>Passport style Photograph</th><th><Button className="btn-sm" style={{width: '20%',padding: '5px 0px'}} variant='secondary'><i style={{marginRight:'0px'}} class="fa fa-eye"></i></Button></th></tr>:'')}
+            {(this.props.data.passport_style_photograph?<tr><th>{this.getExt(this.props.data.passport_style_photograph)}</th><th>Passport style Photograph</th><th><a target="_black" href={baseurl+'/uploaded/'+this.props.data.passport_style_photograph} className="btn-sm" style={{width: '20%',padding: '5px 0px'}} variant='secondary'><i style={{marginRight:'0px'}} class="fa fa-eye"></i></a></th></tr>:'')}
             
-            {(this.props.data.passport_inside?<tr><th>{this.getExt(this.props.data.passport_inside)}</th><th>Passport</th><th><Button className="btn-sm" style={{width: '20%',padding: '5px 0px'}} variant='secondary'><i style={{marginRight:'0px'}} class="fa fa-eye"></i></Button></th></tr>:'')}
+            {(this.props.data.passport_inside?<tr><th>{this.getExt(this.props.data.passport_inside)}</th><th>Passport</th><th><a target="_black" href={baseurl+'/uploaded/'+this.props.data.passport_inside} className="btn-sm" style={{width: '20%',padding: '5px 0px'}} variant='secondary'><i style={{marginRight:'0px'}} class="fa fa-eye"></i></a></th></tr>:'')}
             
-            {(this.props.data.proof_of_address?<tr><th>{this.getExt(this.props.data.proof_of_address)}</th><th>Proof of Address</th><th><Button className="btn-sm" style={{width: '20%',padding: '5px 0px'}} variant='secondary'><i style={{marginRight:'0px'}} class="fa fa-eye"></i></Button></th></tr>:'')}
+            {(this.props.data.proof_of_address?<tr><th>{this.getExt(this.props.data.proof_of_address)}</th><th>Proof of Address</th><th><a target="_black" href={baseurl+'/uploaded/'+this.props.data.proof_of_address} className="btn-sm" style={{width: '20%',padding: '5px 0px'}} variant='secondary'><i style={{marginRight:'0px'}} class="fa fa-eye"></i></a></th></tr>:'')}
             
-            {(this.props.data.right_to_work?<tr><th>{this.getExt(this.props.data.right_to_work)}</th><th>Right to work</th><th><Button className="btn-sm" style={{width: '20%',padding: '5px 0px'}} variant='secondary'><i style={{marginRight:'0px'}} class="fa fa-eye"></i></Button></th></tr>:'')}
+            {(this.props.data.right_to_work?<tr><th>{this.getExt(this.props.data.right_to_work)}</th><th>Right to work</th><th><a target="_black" href={baseurl+'/uploaded/'+this.props.data.right_to_work} className="btn-sm" style={{width: '20%',padding: '5px 0px'}} variant='secondary'><i style={{marginRight:'0px'}} class="fa fa-eye"></i></a></th></tr>:'')}
             </Aux>);
     }
 }

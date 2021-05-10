@@ -847,9 +847,9 @@ var List = /*#__PURE__*/function (_React$Component) {
         suitability_offered_comments: '',
         other_documents: [],
         gas_safe_card: false,
-        met_1: false,
-        single_phase: false,
-        single_off_multi: false,
+        gas_metering_certificates: false,
+        electrical_metering_certificates: false,
+        eusr_card: false,
         driving_licence_code: false,
         is_other_documents: false,
         offerletterslist: [],
@@ -1590,9 +1590,9 @@ var List = /*#__PURE__*/function (_React$Component) {
       certificationButton: false,
       other_documents: [],
       gas_safe_card: false,
-      met_1: false,
-      single_phase: false,
-      single_off_multi: false,
+      gas_metering_certificates: false,
+      electrical_metering_certificates: false,
+      eusr_card: false,
       driving_licence_code: false,
       is_other_documents: false,
       confirm_employee_signature: null,
@@ -2273,27 +2273,27 @@ var List = /*#__PURE__*/function (_React$Component) {
         className: "checkbox"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_9__["Checkbox"], {
         name: "gas_safe_card",
-        label: "Gas Safe Card (include front and back)",
+        label: "Gas Safe Card",
         id: "gas_safe_card",
         value: this.state.gas_safe_card,
         onChange: this.handleCheckboxChange
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_9__["Checkbox"], {
-        name: "met_1",
-        label: "MET 1",
-        id: "met_1",
-        value: this.state.met_1,
+        name: "gas_metering_certificates",
+        label: "Gas Metering Certificates/Qualifications",
+        id: "gas_metering_certificates",
+        value: this.state.gas_metering_certificates,
         onChange: this.handleCheckboxChange
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_9__["Checkbox"], {
-        name: "single_phase",
-        label: "Single Phase",
-        id: "single_phase",
-        value: this.state.single_phase,
+        name: "electrical_metering_certificates",
+        label: "Electrical Metering Certificates/Qualifications",
+        id: "electrical_metering_certificates",
+        value: this.state.electrical_metering_certificates,
         onChange: this.handleCheckboxChange
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_9__["Checkbox"], {
-        name: "single_off_multi",
-        label: "single off multi",
-        id: "single_off_multi",
-        value: this.state.single_off_multi,
+        name: "eusr_card",
+        label: "EUSR Card",
+        id: "eusr_card",
+        value: this.state.eusr_card,
         onChange: this.handleCheckboxChange
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_9__["Checkbox"], {
         name: "driving_licence_code",

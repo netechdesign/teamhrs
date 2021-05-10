@@ -341,10 +341,10 @@
                                         </p>
                                         <p>Please send below certificates</p>
                                         <p>
-                                        @if($data['cma_1']) cma 1 , @endif
-                                        @if($data['met_1']) met 1 , @endif
-                                        @if($data['single_phase']) single phase , @endif
-                                        @if($data['single_off_multi']) single off multi , @endif
+                                        @if($data['gas_safe_card']) Gas Safe Card , @endif
+                                        @if($data['gas_metering_certificates']) Gas Metering Certificates/Qualifications , @endif
+                                        @if($data['electrical_metering_certificates']) Electrical Metering Certificates/Qualifications , @endif
+                                        @if($data['eusr_card']) EUSR Card , @endif
                                         @if($data['driving_licence_code']) driving licence code , @endif
                                         </p>
                                         <p>

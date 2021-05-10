@@ -345,10 +345,11 @@ var reSubmitCertification = /*#__PURE__*/function (_React$Component) {
     });
 
     _this.state = {
-      cma_1: null,
-      met_1: null,
-      single_phase: null,
-      single_off_multi: null,
+      gas_safe_card: null,
+      gas_metering_certificates: null,
+      electrical_metering_certificates: null,
+      eusr_card_not_issued: false,
+      eusr_card: null,
       driving_licence_code: null,
       other_documents: [],
       chkBasic: false,
@@ -479,9 +480,10 @@ var reSubmitCertification = /*#__PURE__*/function (_React$Component) {
         }, labelget(item.key)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "custom-file"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_9__["FileInput"], {
-          name: item.key,
+          name: item.key + "[]",
           id: index,
           required: true,
+          multiple: true,
           fileType: ["pdf", "docx", "jpeg", "jpg"] // maxFileSize="10000 kb"
           ,
           errorMessage: {

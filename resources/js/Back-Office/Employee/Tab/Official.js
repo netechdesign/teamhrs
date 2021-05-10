@@ -78,7 +78,28 @@ class Official extends React.Component {
         }
         
     }
-
+    getMonth =(m)=>{
+        if(m!=''){
+            if(m>1){
+                return m+ ' Months';
+            }else{
+                return m+ ' Month';
+            }
+        }else{
+            return '';
+        }
+    }
+    getYear =(m)=>{
+        if(m!=''){
+            if(m>1){
+                return m+ ' Years';
+            }else{
+                return m+ ' Year';
+            }
+        }else{
+            return '';
+        }
+    }
     render() {
         
         const title = <i className='feather icon-more-vertical' />;
@@ -161,8 +182,34 @@ class Official extends React.Component {
 														<p class="pmd-list-title">{(this.state.employee_details.length>0?(this.state.employee_details[0].gender==1?'Male':'Female'):'')}</p>
 													</div>
                                                     <div class="col-12 col-md-6 col-lg-3">
+														<label class="pmd-list-subtitle">Town of Birth</label>
+														<p class="pmd-list-title">{(this.state.employee_details.length>0?this.state.employee_details[0].town_of_birth_detail:' ')} &nbsp;</p>
+													</div>
+                                                    <div class="col-12 col-md-6 col-lg-3">
+														<label class="pmd-list-subtitle">Ni Number</label>
+														<p class="pmd-list-title">{(this.state.employee_details.length>0?this.state.employee_details[0].ni_number:' ')} &nbsp;</p>
+													</div>
+                                                    <div class="col-12 col-md-6 col-lg-3">
+														<label class="pmd-list-subtitle">Mothers Maiden</label>
+														<p class="pmd-list-title">{(this.state.employee_details.length>0?this.state.employee_details[0].mothers_maiden:' ')} &nbsp;</p>
+													</div>
+                                                    <div class="col-12 col-md-6 col-lg-3">
+														<label class="pmd-list-subtitle">Relationship</label>
+														<p class="pmd-list-title">{(this.state.employee_details.length>0?this.state.employee_details[0].relationship:' ')} &nbsp;</p>
+													</div>
+                                                    <div class="col-12 col-md-6 col-lg-3">
+														<label class="pmd-list-subtitle">Contact Number</label>
+														<p class="pmd-list-title">{(this.state.employee_details.length>0?this.state.employee_details[0].contact_number:' ')} &nbsp;</p>
+													</div>
+                                                    </div>                                                    
+                                                    <div class="row view-basic-card ">
+                                                    <div class="col-12 col-md-6 col-lg-6">
 														<label class="pmd-list-subtitle">Address</label>
 														<p class="pmd-list-title">{(this.state.employee_details.length>0?this.state.employee_details[0].street+', '+this.state.employee_details[0].city+', '+this.state.employee_details[0].county+', '+this.state.employee_details[0].postcode:'')}</p>
+													</div>
+                                                    <div class="col-12 col-md-6 col-lg-3">
+														<label class="pmd-list-subtitle">Time at Address</label>
+														<p class="pmd-list-title">{(this.state.employee_details.length>0?this.getYear(this.state.employee_details[0].time_at_address_year):' ')} {(this.state.employee_details.length>0?this.getMonth(this.state.employee_details[0].time_at_address_month):' ')}&nbsp;</p>
 													</div>
 													   
 												</div>

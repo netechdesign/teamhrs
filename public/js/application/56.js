@@ -116,12 +116,16 @@ var Documents = /*#__PURE__*/function (_React$Component) {
       }).then(function (res) {
         if (res.data.success) {
           // this.getAddress(res.data.Employee_details.getaddress_id);
-          var _Documents2 = res.data.Documents; // let proof_of_identifications = res.data.Proof_of_identifications;
+          var _Documents2 = res.data.Documents;
+          var proof_of_identifications = res.data.Proof_of_identifications;
 
           _this.setState({
             Documents: _Documents2
-          }); //this.setState({proof_of_identifications:proof_of_identifications});
+          });
 
+          _this.setState({
+            proof_of_identifications: proof_of_identifications
+          });
 
           _this.setState({
             apiload: false
@@ -211,7 +215,9 @@ var Documents = /*#__PURE__*/function (_React$Component) {
 
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
           key: index
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, ext), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, item.document_name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, ext), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, item.document_name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+          target: "_black",
+          href: baseurl + '/uploaded/' + item.document_path,
           className: "btn-sm",
           style: {
             width: '20%',
@@ -283,7 +289,9 @@ var Documents = /*#__PURE__*/function (_React$Component) {
         responsive: true,
         className: "table table-condensed",
         id: "data-table-responsive"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "#"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, document))))));
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "#"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, document, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Proofofidentification, {
+        data: this.state.proof_of_identifications
+      })))))));
     }
   }]);
 
@@ -348,7 +356,9 @@ var Proofofidentification = /*#__PURE__*/function (_React$Component2) {
   _createClass(Proofofidentification, [{
     key: "render",
     value: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_hoc_Aux__WEBPACK_IMPORTED_MODULE_11__["default"], null, this.props.data.birth_certificate ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, this.getExt(this.props.data.birth_certificate)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Birth Certificate"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_hoc_Aux__WEBPACK_IMPORTED_MODULE_11__["default"], null, this.props.data.birth_certificate ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, this.getExt(this.props.data.birth_certificate)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Birth Certificate"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        target: "_black",
+        href: baseurl + '/uploaded/' + this.props.data.birth_certificate,
         className: "btn-sm",
         style: {
           width: '20%',
@@ -360,7 +370,9 @@ var Proofofidentification = /*#__PURE__*/function (_React$Component2) {
           marginRight: '0px'
         },
         "class": "fa fa-eye"
-      })))) : '', this.props.data.driving_licence_front ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, this.getExt(this.props.data.driving_licence_front)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Driving Licence"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
+      })))) : '', this.props.data.driving_licence_front ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, this.getExt(this.props.data.driving_licence_front)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Driving Licence"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        target: "_black",
+        href: baseurl + '/uploaded/' + this.props.data.driving_licence_front,
         className: "btn-sm",
         style: {
           width: '20%',
@@ -372,7 +384,9 @@ var Proofofidentification = /*#__PURE__*/function (_React$Component2) {
           marginRight: '0px'
         },
         "class": "fa fa-eye"
-      })))) : '', this.props.data.national_insurance_number ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, this.getExt(this.props.data.national_insurance_number)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "National Insurance Number"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
+      })))) : '', this.props.data.national_insurance_number ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, this.getExt(this.props.data.national_insurance_number)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "National Insurance Number"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        target: "_black",
+        href: baseurl + '/uploaded/' + this.props.data.national_insurance_number,
         className: "btn-sm",
         style: {
           width: '20%',
@@ -384,7 +398,9 @@ var Proofofidentification = /*#__PURE__*/function (_React$Component2) {
           marginRight: '0px'
         },
         "class": "fa fa-eye"
-      })))) : '', this.props.data.p45form ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, this.getExt(this.props.data.p45form)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "p45 Form"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
+      })))) : '', this.props.data.p45form ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, this.getExt(this.props.data.p45form)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "p45 Form"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        target: "_black",
+        href: baseurl + '/uploaded/' + this.props.data.p45form,
         className: "btn-sm",
         style: {
           width: '20%',
@@ -396,7 +412,9 @@ var Proofofidentification = /*#__PURE__*/function (_React$Component2) {
           marginRight: '0px'
         },
         "class": "fa fa-eye"
-      })))) : '', this.props.data.passport_style_photograph ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, this.getExt(this.props.data.passport_style_photograph)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Passport style Photograph"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
+      })))) : '', this.props.data.passport_style_photograph ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, this.getExt(this.props.data.passport_style_photograph)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Passport style Photograph"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        target: "_black",
+        href: baseurl + '/uploaded/' + this.props.data.passport_style_photograph,
         className: "btn-sm",
         style: {
           width: '20%',
@@ -408,7 +426,9 @@ var Proofofidentification = /*#__PURE__*/function (_React$Component2) {
           marginRight: '0px'
         },
         "class": "fa fa-eye"
-      })))) : '', this.props.data.passport_inside ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, this.getExt(this.props.data.passport_inside)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Passport"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
+      })))) : '', this.props.data.passport_inside ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, this.getExt(this.props.data.passport_inside)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Passport"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        target: "_black",
+        href: baseurl + '/uploaded/' + this.props.data.passport_inside,
         className: "btn-sm",
         style: {
           width: '20%',
@@ -420,7 +440,9 @@ var Proofofidentification = /*#__PURE__*/function (_React$Component2) {
           marginRight: '0px'
         },
         "class": "fa fa-eye"
-      })))) : '', this.props.data.proof_of_address ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, this.getExt(this.props.data.proof_of_address)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Proof of Address"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
+      })))) : '', this.props.data.proof_of_address ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, this.getExt(this.props.data.proof_of_address)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Proof of Address"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        target: "_black",
+        href: baseurl + '/uploaded/' + this.props.data.proof_of_address,
         className: "btn-sm",
         style: {
           width: '20%',
@@ -432,7 +454,9 @@ var Proofofidentification = /*#__PURE__*/function (_React$Component2) {
           marginRight: '0px'
         },
         "class": "fa fa-eye"
-      })))) : '', this.props.data.right_to_work ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, this.getExt(this.props.data.right_to_work)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Right to work"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
+      })))) : '', this.props.data.right_to_work ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, this.getExt(this.props.data.right_to_work)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Right to work"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        target: "_black",
+        href: baseurl + '/uploaded/' + this.props.data.right_to_work,
         className: "btn-sm",
         style: {
           width: '20%',

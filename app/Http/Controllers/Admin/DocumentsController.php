@@ -30,8 +30,8 @@ class DocumentsController extends Controller
                     $user = User::find($request->user_id);
                     if($user->application_forms_id){
                        $Documents = Documents::where('application_forms_id',$user->application_forms_id)->get();
-                       //$Proof_of_identifications= Proof_of_identifications::where('user_id',$request->user_id)->first(); 
-                       return response()->json(array('success' => true,'Documents'=> $Documents,'Proof_of_identifications'=> 'Proof_of_identifications'));   
+                       $Proof_of_identifications= Proof_of_identifications::where('user_id',$request->user_id)->first(); 
+                       return response()->json(array('success' => true,'Documents'=> $Documents,'Proof_of_identifications'=> $Proof_of_identifications));   
                     }
                     
                 }

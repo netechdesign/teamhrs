@@ -215,6 +215,7 @@ class Application_formsController extends Controller
                     
                     if(isset($request->gas_safe_card) && $request->gas_safe_card!="null")
                     {
+                        
                         foreach ($request->gas_safe_card as $gas_safe_card) {  
                                 $file_path = $gas_safe_card->store('documents/'.$userpath, 'public');
                                 $vl = array();
@@ -638,10 +639,10 @@ class Application_formsController extends Controller
         $data['name'] = ucfirst($request->application_Forms['fore_name']);
         
         
-        $data['cma_1']= $request->cma_1;
-        $data['met_1']= $request->met_1;
-        $data['single_phase']= $request->single_phase;
-        $data['single_off_multi']= $request->single_off_multi;
+        $data['gas_safe_card']= $request->gas_safe_card;
+        $data['gas_metering_certificates']= $request->gas_metering_certificates;
+        $data['electrical_metering_certificates']= $request->electrical_metering_certificates;
+        $data['eusr_card']= $request->eusr_card;
         $data['driving_licence_code']= $request->driving_licence_code;
         $data['is_other_documents']= $request->is_other_documents;
         
@@ -652,21 +653,21 @@ class Application_formsController extends Controller
         $form_array['id'] = $request->application_Forms['id'];
         $form_array['email'] = $request->application_Forms['email'];
         $form = array();
-        if($request->cma_1){
-             $a['key']='cma_1';
+        if($request->gas_safe_card){
+             $a['key']='gas_safe_card';
             array_push($form,$a);
 
         }
-        if($request->met_1){
-            $a['key']='met_1';
+        if($request->gas_metering_certificates){
+            $a['key']='gas_metering_certificates';
             array_push($form,$a);
         }
-        if($request->single_phase){
-            $a['key']='single_phase';
+        if($request->electrical_metering_certificates){
+            $a['key']='electrical_metering_certificates';
             array_push($form,$a);
         }
-        if($request->single_off_multi){
-            $a['key']='single_off_multi';
+        if($request->eusr_card){
+            $a['key']='eusr_card';
             array_push($form,$a);
         }
         if($request->driving_licence_code){
