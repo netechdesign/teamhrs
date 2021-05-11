@@ -116,8 +116,56 @@ class Proof_of_identificationController extends Controller
 
             
             
+            $Proof_of_identifications =Proof_of_identifications::where('user_id',$user->id)->first();
+            if($Proof_of_identifications){
+                
+                    if(isset($data['passport_inside'])){
+                        $Proof_of_identifications->passport_inside =$data['passport_inside'];
+                      }
+                
+                if(isset($data['passport_outside'])){
+                    $Proof_of_identifications->passport_outside =$data['passport_outside'];
+                  }
+                
+                if(isset($data['birth_certificate'])){
+                    $Proof_of_identifications->birth_certificate =$data['birth_certificate'];
+                  }
+                
+                if(isset($data['proof_of_address'])){
+                    $Proof_of_identifications->proof_of_address =$data['proof_of_address'];
+                  }
+                
+                if(isset($data['national_insurance_number'])){
+                    $Proof_of_identifications->national_insurance_number =$data['national_insurance_number'];
+                  }
+                
+                if(isset($data['right_to_work'])){
+                    $Proof_of_identifications->right_to_work =$data['right_to_work'];
+                  }
+                
+                if(isset($data['driving_licence_front'])){
+                    $Proof_of_identifications->driving_licence_front =$data['driving_licence_front'];
+                  }
+                
+                if(isset($data['driving_licence_back'])){
+                    $Proof_of_identifications->driving_licence_back =$data['driving_licence_back'];
+                  }
+                
+                if(isset($data['passport_style_photograph'])){
+                    $Proof_of_identifications->passport_style_photograph =$data['passport_style_photograph'];
+                  }
+                
+                if(isset($data['p45form'])){
+                    $Proof_of_identifications->p45form =$data['p45form'];
+                  }
+                
+                if(isset($data['hmrc_starter_checklist'])){
+                    $Proof_of_identifications->hmrc_starter_checklist =$data['hmrc_starter_checklist'];
+                  }
+            }else{
+                $Proof_of_identifications = new Proof_of_identifications($data);
+            }
             
-            $Proof_of_identifications = new Proof_of_identifications($data);
             $Proof_of_identifications =$Proof_of_identifications->save();
             $form_id = 1;
             return response()->json(array('success' => true,'message' => 'Data inserted successfully','form_id' => $form_id), 200);
