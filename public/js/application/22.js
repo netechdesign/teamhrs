@@ -3742,7 +3742,7 @@ var DashboardDefault = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a
   return Promise.all(/*! import() */[__webpack_require__.e(4), __webpack_require__.e(13), __webpack_require__.e(53), __webpack_require__.e(46)]).then(__webpack_require__.bind(null, /*! ./Back-office/Pages/Dashboard */ "./resources/js/Back-office/Pages/Dashboard.js"));
 });
 var RoleList = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(2), __webpack_require__.e(15), __webpack_require__.e(14), __webpack_require__.e(16), __webpack_require__.e(44)]).then(__webpack_require__.bind(null, /*! ./Back-Office/Role */ "./resources/js/Back-Office/Role/index.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(1), __webpack_require__.e(15), __webpack_require__.e(14), __webpack_require__.e(16), __webpack_require__.e(44)]).then(__webpack_require__.bind(null, /*! ./Back-Office/Role */ "./resources/js/Back-Office/Role/index.js"));
 });
 var RoleAdd = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
   return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(2), __webpack_require__.e(1), __webpack_require__.e(3), __webpack_require__.e(17), __webpack_require__.e(34)]).then(__webpack_require__.bind(null, /*! ./Back-Office/Role/add */ "./resources/js/Back-Office/Role/add.js"));
@@ -3751,7 +3751,7 @@ var RoleEdit = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(fu
   return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(2), __webpack_require__.e(1), __webpack_require__.e(3), __webpack_require__.e(17), __webpack_require__.e(35)]).then(__webpack_require__.bind(null, /*! ./Back-Office/Role/edit */ "./resources/js/Back-Office/Role/edit.js"));
 });
 var UserList = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(2), __webpack_require__.e(15), __webpack_require__.e(14), __webpack_require__.e(16), __webpack_require__.e(45)]).then(__webpack_require__.bind(null, /*! ./Back-Office/User */ "./resources/js/Back-Office/User/index.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(1), __webpack_require__.e(15), __webpack_require__.e(14), __webpack_require__.e(16), __webpack_require__.e(45)]).then(__webpack_require__.bind(null, /*! ./Back-Office/User */ "./resources/js/Back-Office/User/index.js"));
 });
 var UserAdd = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
   return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(2), __webpack_require__.e(1), __webpack_require__.e(3), __webpack_require__.e(17), __webpack_require__.e(18), __webpack_require__.e(36)]).then(__webpack_require__.bind(null, /*! ./Back-Office/User/add */ "./resources/js/Back-Office/User/add.js"));
@@ -3778,7 +3778,7 @@ var EmployeeList = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.laz
   return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(2), __webpack_require__.e(1), __webpack_require__.e(3), __webpack_require__.e(4), __webpack_require__.e(5), __webpack_require__.e(6), __webpack_require__.e(7), __webpack_require__.e(10), __webpack_require__.e(15), __webpack_require__.e(28)]).then(__webpack_require__.bind(null, /*! ./Back-Office/Employee */ "./resources/js/Back-Office/Employee/index.js"));
 });
 var EmployeeDetails = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(2), __webpack_require__.e(4), __webpack_require__.e(5), __webpack_require__.e(27)]).then(__webpack_require__.bind(null, /*! ./Back-Office/Employee/EmployeeDetails */ "./resources/js/Back-Office/Employee/EmployeeDetails.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(1), __webpack_require__.e(4), __webpack_require__.e(5), __webpack_require__.e(27)]).then(__webpack_require__.bind(null, /*! ./Back-Office/Employee/EmployeeDetails */ "./resources/js/Back-Office/Employee/EmployeeDetails.js"));
 }); //For demo Examples
 
 var FormsSelect = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
@@ -3906,6 +3906,11 @@ var routes = [{
   component: EmployeeDetails
 }, {
   path: '/employee-Detail/Salary',
+  exact: true,
+  name: 'Oneform',
+  component: EmployeeDetails
+}, {
+  path: '/employee-Detail/Bank-Details',
   exact: true,
   name: 'Oneform',
   component: EmployeeDetails

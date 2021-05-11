@@ -74,11 +74,17 @@ class Bank_detailsController extends Controller
     {
         //
             //$id = user_id;
-            try { 
-                $Bank_details = Bank_details::where('user_id',$id)->first();
-                $Bank_details->_method = 'PUT';
+            try {
                 
-                return response()->json(array('success' => true,'Bank_details'=> $Bank_details));
+                $Bank_details = Bank_details::where('user_id',$id)->first();
+                
+                if($Bank_details){
+                    $Bank_details->_method = 'PUT';
+                    return response()->json(array('success' => true,'Bank_details'=> $Bank_details));
+                }else{
+                    return response()->json(array('success' => false,'message'=> 'Data not found')); 
+                }
+                
                  } catch (\Exception $e) 
                    {
                         $message = $e->getMessage();

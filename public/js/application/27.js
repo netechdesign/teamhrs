@@ -392,16 +392,19 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 var Oneform = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(3), __webpack_require__.e(6), __webpack_require__.e(57)]).then(__webpack_require__.bind(null, /*! ./Tab/Official */ "./resources/js/Back-Office/Employee/Tab/Official.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(2), __webpack_require__.e(3), __webpack_require__.e(6), __webpack_require__.e(57)]).then(__webpack_require__.bind(null, /*! ./Tab/Official */ "./resources/js/Back-Office/Employee/Tab/Official.js"));
 });
 var Documents = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(3), __webpack_require__.e(6), __webpack_require__.e(56)]).then(__webpack_require__.bind(null, /*! ./Tab/Documents */ "./resources/js/Back-Office/Employee/Tab/Documents.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(2), __webpack_require__.e(3), __webpack_require__.e(6), __webpack_require__.e(56)]).then(__webpack_require__.bind(null, /*! ./Tab/Documents */ "./resources/js/Back-Office/Employee/Tab/Documents.js"));
 });
 var Leave = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(3), __webpack_require__.e(6), __webpack_require__.e(15), __webpack_require__.e(14), __webpack_require__.e(16), __webpack_require__.e(38)]).then(__webpack_require__.bind(null, /*! ./Tab/Leave */ "./resources/js/Back-Office/Employee/Tab/Leave.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(2), __webpack_require__.e(3), __webpack_require__.e(6), __webpack_require__.e(15), __webpack_require__.e(14), __webpack_require__.e(16), __webpack_require__.e(38)]).then(__webpack_require__.bind(null, /*! ./Tab/Leave */ "./resources/js/Back-Office/Employee/Tab/Leave.js"));
 });
 var Salary = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(3), __webpack_require__.e(6), __webpack_require__.e(58)]).then(__webpack_require__.bind(null, /*! ./Tab/Salary */ "./resources/js/Back-Office/Employee/Tab/Salary.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(2), __webpack_require__.e(3), __webpack_require__.e(6), __webpack_require__.e(58)]).then(__webpack_require__.bind(null, /*! ./Tab/Salary */ "./resources/js/Back-Office/Employee/Tab/Salary.js"));
+});
+var BankDetails = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(2), __webpack_require__.e(3), __webpack_require__.e(6), __webpack_require__.e(65)]).then(__webpack_require__.bind(null, /*! ./Tab/BankDetails */ "./resources/js/Back-Office/Employee/Tab/BankDetails.js"));
 });
 var id = '';
 var data = [];
@@ -425,6 +428,11 @@ var routes = [{
   exact: true,
   name: 'Oneform',
   component: Salary
+}, {
+  path: '/employee-Detail/Bank-Details',
+  exact: true,
+  name: 'Oneform',
+  component: BankDetails
 }];
 var baseurl = window.location.origin;
 
@@ -669,6 +677,16 @@ var EmployeeDetails = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         "class": "feather icon-file-text"
       }), " Documents")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Nav"].Item, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
+        to: {
+          pathname: '/employee-Detail/Bank-Details',
+          state: {
+            userId: this.state.id
+          }
+        },
+        className: "nav-link"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        "class": "feather icon-file-text"
+      }), " Bank Details")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Nav"].Item, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
         to: {
           pathname: '/employee-Detail/Leave',
           state: {

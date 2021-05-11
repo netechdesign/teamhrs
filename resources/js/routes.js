@@ -54,6 +54,7 @@ const routes = [
     {path:'/employee-Detail/Documents', exact:true, name:'Oneform',component:EmployeeDetails},
     {path:'/employee-Detail/Leave', exact:true, name:'Oneform',component:EmployeeDetails},
     {path:'/employee-Detail/Salary', exact:true, name:'Oneform',component:EmployeeDetails},
+    {path:'/employee-Detail/Bank-Details', exact:true, name:'Oneform',component:EmployeeDetails},
     // for demo Examples.
     { path: '/forms/form-select', exact: true, name: 'Forms Select', component: FormsSelect },
     { path: '/dashboard', exact: true, name: 'Default', component: DashboardDefault },

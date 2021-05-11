@@ -36641,7 +36641,7 @@ __webpack_require__.r(__webpack_exports__);
  // start job portal route
 
 var SignIn = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(2), __webpack_require__.e(8), __webpack_require__.e(9), __webpack_require__.e(20), __webpack_require__.e(55)]).then(__webpack_require__.bind(null, /*! ./Authentication/SignIn/SignIn */ "./resources/js/Authentication/SignIn/SignIn.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(8), __webpack_require__.e(9), __webpack_require__.e(20), __webpack_require__.e(55)]).then(__webpack_require__.bind(null, /*! ./Authentication/SignIn/SignIn */ "./resources/js/Authentication/SignIn/SignIn.js"));
 }); // End job portal route
 
 var Landing = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
