@@ -1,8 +1,8 @@
-(window["webpackJsonp"] = window["webpackJsonp"] || []).push([[62],{
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([[66],{
 
-/***/ "./resources/js/front-end/documentUpload.js":
+/***/ "./resources/js/front-end/thankstosubmit.js":
 /*!**************************************************!*\
-  !*** ./resources/js/front-end/documentUpload.js ***!
+  !*** ./resources/js/front-end/thankstosubmit.js ***!
   \**************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -99,18 +99,18 @@ global.jQuery = jquery__WEBPACK_IMPORTED_MODULE_2___default.a;
 
 var baseurl = window.location.origin;
 
-var DocumentUpload = /*#__PURE__*/function (_React$Component) {
-  _inherits(DocumentUpload, _React$Component);
+var Thankstosubmit = /*#__PURE__*/function (_React$Component) {
+  _inherits(Thankstosubmit, _React$Component);
 
-  var _super = _createSuper(DocumentUpload);
+  var _super = _createSuper(Thankstosubmit);
 
-  function DocumentUpload() {
-    _classCallCheck(this, DocumentUpload);
+  function Thankstosubmit() {
+    _classCallCheck(this, Thankstosubmit);
 
     return _super.apply(this, arguments);
   }
 
-  _createClass(DocumentUpload, [{
+  _createClass(Thankstosubmit, [{
     key: "componentDidMount",
     value: function componentDidMount() {}
   }, {
@@ -176,14 +176,16 @@ var DocumentUpload = /*#__PURE__*/function (_React$Component) {
       }, "Thank you ", capitalize(this.props.location.state.user_name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "wow fadeInUp",
         "data-wow-delay": "0.2s"
-      }, "Documents sent successfully"))))))))));
+      }, "We are still in the process of reviewing applications and anticipate beginning the interview process shortly.", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", {
+        className: "hidden-xs"
+      }), " If you are selected to move forward with the interview process, you will hear from our HR department."))))))))));
     }
   }]);
 
-  return DocumentUpload;
+  return Thankstosubmit;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (DocumentUpload);
+/* harmony default export */ __webpack_exports__["default"] = (Thankstosubmit);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../node_modules/webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js")))
 
 /***/ })

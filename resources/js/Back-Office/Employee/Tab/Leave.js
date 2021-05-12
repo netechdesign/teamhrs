@@ -1,5 +1,6 @@
 import React from 'react';
 import {Row, Col, Card, Form, Button,Dropdown,DropdownButton,Table} from 'react-bootstrap';
+import {Route, Switch, Redirect,NavLink,Link} from 'react-router-dom';
 import Datetime from 'react-datetime';
 import { ValidationForm, TextInput, BaseFormControl, SelectGroup, FileInput, Checkbox, Radio } from 'react-bootstrap4-form-validation';
 import MaskedInput from 'react-text-mask';
@@ -87,7 +88,7 @@ oTable = $(tableResponsive).DataTable({
         {"data": "leave_balance"}, 
         {"data": "used_leave"},
         {"data": "allotted_leave_limit"},
-        
+        {"data": "id"}
     ],
     responsive: {
         responsive: {
@@ -132,7 +133,20 @@ oTable = $(tableResponsive).DataTable({
       
     },
     "columnDefs": [
-         
+        {
+            "render": function (data, type, row) {
+              
+                var str_buttons = '<button type="button" class="edit btn btn-info btn-sm" data-id="'+row.id+'" ><i style="margin:0px !important;" class="feather icon-edit"></i></button>';
+                
+                return [
+                    str_buttons,
+                ].join('');
+               
+            },
+            "targets": $('#data-table-responsive th#action').index(),
+            "orderable": false,
+            "searchable": false
+        },
         {
             "targets": 0,
             "orderable": false
@@ -144,7 +158,8 @@ oTable = $(tableResponsive).DataTable({
 class Leave extends React.Component {
     state = {
         apiload:false,
-        employee_details:[]
+        employee_details:[],
+        userId:''
         
     };
     
@@ -154,8 +169,16 @@ class Leave extends React.Component {
         const {name,email} = localStorage.getItem('userData')? JSON.parse(localStorage.getItem('userData')).user : 'Null';
         if(this.props.location.state.userId){
             atable(this.props.location.state.userId)
+            this.setState({userId:this.props.location.state.userId});
         }
-        
+        const { match, location, history } = this.props;
+        const self= this;
+        $('#data-table-responsive tbody').on('click', '.edit', function () {
+            var id =  $(this).attr('data-id');
+            
+            history.push('/employee-Detail/Leave/edit/'+id);
+          
+        }) 
     }
 
     render() {
@@ -177,7 +200,9 @@ class Leave extends React.Component {
                         key={'secondary'}
                         className='drp-icon'
                     >
-                        <Dropdown.Item eventKey="1">Add</Dropdown.Item>
+                        <Dropdown.Item eventKey="1">
+                        <NavLink  to= {{pathname:'/employee-Detail/Leave/Add',state:{userId: this.state.userId}}}><i class="feather icon-plus"></i> Add</NavLink> 
+                        </Dropdown.Item>
                         
                          </DropdownButton>
                     
@@ -198,6 +223,7 @@ class Leave extends React.Component {
                                         <th id="leave_balance">Leave Balance</th>
                                         <th id="used_leave">Used Leave</th>
                                         <th id="allotted_leave_limit">Allotted leave limit</th>
+                                        <th id="action">Action</th>
                                     </tr>
                                     </thead>
                                     <tfoot>
@@ -206,6 +232,7 @@ class Leave extends React.Component {
                                         <th id="leave_balance">Leave Balance</th>
                                         <th id="used_leave">Used Leave</th>
                                         <th id="allotted_leave_limit">Allotted leave limit</th>
+                                        <th id="action">Action</th>
                                     </tr>
                                     </tfoot>
                                 </Table>

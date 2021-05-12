@@ -21,6 +21,7 @@ class CreateUserLeavesTable extends Migration
             $table->integer('used_leave')->nullable();
             $table->integer('allotted_leave_limit')->nullable();
             $table->integer('created_by')->nullable();
+            $table->integer('updated_by')->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('RESTRICT')->onDelete('CASCADE');
             $table->softDeletes();
             $table->timestamps();

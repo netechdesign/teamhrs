@@ -13,6 +13,7 @@ class User_leaves extends Model
                             'leave_balance',
                             'used_leave',
                             'allotted_leave_limit',
-                            'created_by'
+                            'created_by',
+                            'updated_by'
     ];
 }

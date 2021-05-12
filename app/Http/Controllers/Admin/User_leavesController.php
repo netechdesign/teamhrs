@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use App\Models\User_leaves;
+use JWTAuth;
 class User_leavesController extends Controller
 {
     /**
@@ -85,6 +87,33 @@ class User_leavesController extends Controller
     public function store(Request $request)
     {
         //
+        try{
+            $v = Validator::make($request->all(), [
+                'allotted_year' => ['required']
+            ]);
+        
+            if ($v->fails()) {return response()->json($v->errors(), 201);}
+            $user = JWTAuth::toUser($request->input('token'));
+            $request->request->add(['created_by'=> $user->id]);
+           
+                       
+            $data= $request->except('token','next');
+            $userAdded= User_leaves::where('allotted_year',$request->allotted_year)->where('user_id',$request->user_id)->count();
+            if($userAdded==0){
+            $User_leaves = new User_leaves($data);
+            $User_leaves->save();
+            $form_id = $User_leaves->id;
+            return response()->json(array('success' => true,'message' => 'Data inserted successfully','form_id' => $form_id), 200);
+            }else{
+                return response()->json(array('success' => false,'message'=> $request->allotted_year.' year already added')); 
+            }
+        }
+        catch (\Exception $e) 
+            {
+               $message = $e->getMessage();
+               
+                return response()->json(array('success' => false,'message'=> $message));
+            }
     }
 
     /**
@@ -96,6 +125,27 @@ class User_leavesController extends Controller
     public function show($id)
     {
         //
+            //$id = user_id;
+            try {
+                
+                $User_leaves = User_leaves::where('id',$id)->first();
+                
+                if($User_leaves){
+                    $User_leaves->_method = 'PUT';
+                    return response()->json(array('success' => true,'User_leaves'=> $User_leaves));
+                }else{
+                    return response()->json(array('success' => false,'message'=> 'Data not found')); 
+                }
+                
+                 } catch (\Exception $e) 
+                   {
+                        $message = $e->getMessage();
+                        
+                        $text = strstr($message, ':', true);
+                    
+                        return response()->json(array('success' => false,'message'=> $message));
+                   }
+            
     }
 
     /**
@@ -119,6 +169,37 @@ class User_leavesController extends Controller
     public function update(Request $request, $id)
     {
         //
+ 
+        try{
+            $user = JWTAuth::toUser($request->input('token'));
+            $request->request->add(['updated_by'=> $user->id]);
+            
+            
+ 
+            $User_leaves = User_leaves::find($id);
+            
+            $User_leaves->allotted_year = $request->allotted_year;
+            $User_leaves->leave_balance = $request->leave_balance;
+            $User_leaves->used_leave = $request->used_leave;
+            $User_leaves->allotted_leave_limit = $request->allotted_leave_limit;
+            $User_leaves->updated_by = $request->updated_by;
+            
+            if($User_leaves->save()){
+              
+                return response()->json(array('success' => true,'updated'=>true,
+                'message' => 'Leave updated successfully'
+                ), 200);
+            }
+            else{
+                return response()->json(array('success' => false,'message'=> 'not update')); 
+            }
+            
+        }catch (\Exception $e) 
+        {
+           $message = $e->getMessage();
+           
+            return response()->json(array('success' => false,'message'=> $message));
+        }
     }
 
     /**

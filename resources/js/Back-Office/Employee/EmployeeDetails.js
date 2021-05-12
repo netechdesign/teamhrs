@@ -15,14 +15,18 @@ import './employee.css';
 const Oneform = React.lazy(() => import("./Tab/Official"));
 const Documents = React.lazy(() => import("./Tab/Documents"));
 const Leave = React.lazy(() => import("./Tab/Leave"))
+const AddLeave = React.lazy(() => import("./Tab/AddLeave"))
 const Salary = React.lazy(() => import("./Tab/Salary"))
 const BankDetails = React.lazy(() => import("./Tab/BankDetails")) 
+
 let id='';
 let data=[];
 const routes = [
     { path:'/employee-Detail/Official', exact:true, name:'Oneform',component:Oneform},
     { path:'/employee-Detail/Documents', exact:true, name:'Oneform',component:Documents},
     { path:'/employee-Detail/Leave', exact:true, name:'Oneform',component:Leave},
+    { path:'/employee-Detail/Leave/Add', exact:true, name:'Oneform',component:AddLeave},
+    { path:'/employee-Detail/Leave/Edit/:id', exact:true, name:'Oneform',component:AddLeave},
     { path:'/employee-Detail/Salary', exact:true, name:'Oneform',component:Salary},
     { path:'/employee-Detail/Bank-Details', exact:true, name:'Oneform',component:BankDetails},
     

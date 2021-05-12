@@ -53,6 +53,8 @@ const routes = [
     {path:'/employee-Detail/Official',exact:true,name:'Employee',component:EmployeeDetails},
     {path:'/employee-Detail/Documents', exact:true, name:'Oneform',component:EmployeeDetails},
     {path:'/employee-Detail/Leave', exact:true, name:'Oneform',component:EmployeeDetails},
+    {path:'/employee-Detail/Leave/Add', exact:true, name:'Oneform',component:EmployeeDetails},
+    { path:'/employee-Detail/Leave/Edit/:id', exact:true, name:'Oneform',component:EmployeeDetails},
     {path:'/employee-Detail/Salary', exact:true, name:'Oneform',component:EmployeeDetails},
     {path:'/employee-Detail/Bank-Details', exact:true, name:'Oneform',component:EmployeeDetails},
     // for demo Examples.

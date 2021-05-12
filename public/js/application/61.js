@@ -1,9 +1,9 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[61],{
 
-/***/ "./resources/js/front-end/index.js":
-/*!*****************************************!*\
-  !*** ./resources/js/front-end/index.js ***!
-  \*****************************************/
+/***/ "./resources/js/front-end/OfferLetter.js":
+/*!***********************************************!*\
+  !*** ./resources/js/front-end/OfferLetter.js ***!
+  \***********************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -53,18 +53,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_super_responsive_table_dist_SuperResponsiveTableStyle_css__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! react-super-responsive-table/dist/SuperResponsiveTableStyle.css */ "./node_modules/react-super-responsive-table/dist/SuperResponsiveTableStyle.css");
 /* harmony import */ var react_super_responsive_table_dist_SuperResponsiveTableStyle_css__WEBPACK_IMPORTED_MODULE_25___default = /*#__PURE__*/__webpack_require__.n(react_super_responsive_table_dist_SuperResponsiveTableStyle_css__WEBPACK_IMPORTED_MODULE_25__);
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
-
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
-
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -121,7 +109,7 @@ var baseurl = window.location.origin;
 var ajaxabort;
 
 function successDesktopPNotify(id) {
-  var message = "Application Form submitted successfully";
+  var message = "Appication Form Send successfully";
 
   if (id != '') {
     message = "Application Form updated successfully";
@@ -145,15 +133,17 @@ var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
 var yyyy = today.getFullYear();
 var todaydate = dd + '/' + mm + '/' + yyyy;
 
-var Home = /*#__PURE__*/function (_React$Component) {
-  _inherits(Home, _React$Component);
+var OfferLetter = /*#__PURE__*/function (_React$Component) {
+  _inherits(OfferLetter, _React$Component);
 
-  var _super = _createSuper(Home);
+  var _super = _createSuper(OfferLetter);
 
-  function Home(props) {
+  function OfferLetter(props) {
+    var _this$state;
+
     var _this;
 
-    _classCallCheck(this, Home);
+    _classCallCheck(this, OfferLetter);
 
     _this = _super.call(this, props);
 
@@ -163,24 +153,6 @@ var Home = /*#__PURE__*/function (_React$Component) {
 
     _defineProperty(_assertThisInitialized(_this), "handleChange", function (e) {
       _this.setState(_defineProperty({}, e.target.name, e.target.value));
-
-      if (e.target.name == 'selected_interview') {
-        e.target.value == 'NO' ? _this.setState({
-          disability: ''
-        }) : '';
-      }
-
-      if (e.target.name == 'medical_condition') {
-        e.target.value == 'NO' ? _this.setState({
-          medical_condition_reasonable: ''
-        }) : '';
-      }
-
-      if (e.target.name == 'any_convictions') {
-        e.target.value == 'NO' ? _this.setState({
-          any_convictions_yes: ''
-        }) : '';
-      }
     });
 
     _defineProperty(_assertThisInitialized(_this), "handleSubmit", function (e, formData, inputs) {
@@ -204,43 +176,15 @@ var Home = /*#__PURE__*/function (_React$Component) {
       var data = new FormData(); //data.append('name', this.state.name);
 
       var formdata = _this.state;
-      data.append('position_applied_for', _this.state.position_applied_for);
-      data.append('title', _this.state.title);
-      data.append('fore_name', _this.state.fore_name);
-      data.append('surname', _this.state.surname);
-      data.append('email', _this.state.email);
-      data.append('telephone_number', _this.state.telephone_number);
-      data.append('getaddress_id', _this.state.getaddress_id);
-      data.append('address', _this.state.address);
-      data.append('postcode', _this.state.postcode);
-      data.append('selected_interview', _this.state.selected_interview);
-      data.append('disability', _this.state.disability);
-      data.append('medical_condition', _this.state.medical_condition);
-      data.append('medical_condition_reasonable', _this.state.medical_condition_reasonable);
-      data.append('any_convictions', _this.state.any_convictions);
-      data.append('any_convictions_yes', _this.state.any_convictions_yes);
-      data.append('work_permit_uk', _this.state.work_permit_uk);
-      data.append('qualifications', _this.state.qualifications);
-      data.append('user_cv', _this.state.user_cv);
-      data.append('employment_history', JSON.stringify(_this.state.employment_history));
-      data.append('employment_references', JSON.stringify(_this.state.employment_references));
-      data.append('unavailable_for_interview', _this.state.unavailable_for_interview);
-      data.append('confirm_employee_name', _this.state.confirm_employee_name);
-      data.append('confirm_employee_signature', _this.state.confirm_employee_signature);
-      data.append('confirm_Date', _this.state.confirm_Date);
-      data.append('information_provided_name', _this.state.information_provided_name);
-      data.append('information_provided_signature', _this.state.information_provided_signature);
-      data.append('information_provided_Date', _this.state.information_provided_Date);
       var urlid = '';
 
       if (_this.state.id != '') {
         urlid = '/' + _this.state.id;
       }
 
-      axios__WEBPACK_IMPORTED_MODULE_16___default.a.post(baseurl + '/api/submitapplication' + urlid, data, {
+      axios__WEBPACK_IMPORTED_MODULE_16___default.a.post(baseurl + '/api/submitofferletter' + urlid, formdata, {
         headers: {
-          'Accept': 'application/json',
-          'content-type': 'multipart/form-data'
+          'Accept': 'application/json'
         }
       }).then(function (res) {
         if (res.data.success) {
@@ -319,201 +263,8 @@ var Home = /*#__PURE__*/function (_React$Component) {
     _defineProperty(_assertThisInitialized(_this), "handleErrorSubmit", function (e, formData, errorInputs) {//console.log(errorInputs);
     });
 
-    _defineProperty(_assertThisInitialized(_this), "locationChange", function (e) {
-      var currentCar = parseInt(e.target.value.length) + 1;
-
-      if (currentCar > 2) {
-        jquery__WEBPACK_IMPORTED_MODULE_2___default()('#addressList').html('<li class="list-group-item">Loading...</li>');
-        var currentVal = e.target.value;
-
-        if (ajaxabort && ajaxabort.readyState != 4) {
-          ajaxabort.abort();
-        }
-
-        var self = _assertThisInitialized(_this);
-
-        ajaxabort = jquery__WEBPACK_IMPORTED_MODULE_2___default.a.ajax({
-          dataType: 'json',
-          method: 'get',
-          url: "https://api.getaddress.io/autocomplete/" + currentVal + "?api-key=XrOjpdAkTEiMj4o5WV_uSQ26499&all=true",
-          beforeSend: function beforeSend() {
-            // setting a timeout
-            jquery__WEBPACK_IMPORTED_MODULE_2___default()('#addressList').html('<li class="list-group-item">Loading...</li>');
-          },
-          success: function success(data) {
-            var listData = '';
-
-            if (data.suggestions.length > 0) {
-              jquery__WEBPACK_IMPORTED_MODULE_2___default.a.each(data.suggestions, function (key, val) {
-                listData += '<li class="list-group-item getArress" data-id="' + val.id + '">' + val.address + '</li>';
-              });
-              jquery__WEBPACK_IMPORTED_MODULE_2___default()('#addressList').html(listData).show();
-              jquery__WEBPACK_IMPORTED_MODULE_2___default()('.getArress').click(function () {
-                var id = jquery__WEBPACK_IMPORTED_MODULE_2___default()(this).attr('data-id');
-                self.getAddress(id);
-              });
-            } else {
-              listData += '<li class="list-group-item">Address not found</li>';
-              jquery__WEBPACK_IMPORTED_MODULE_2___default()('#addressList').html(listData);
-            }
-          }
-        });
-      }
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "getAddress", function (id) {
-      var self = _assertThisInitialized(_this);
-
-      jquery__WEBPACK_IMPORTED_MODULE_2___default.a.ajax({
-        dataType: 'json',
-        method: 'get',
-        url: "https://api.getAddress.io/get/" + id + "?api-key=XrOjpdAkTEiMj4o5WV_uSQ26499",
-        success: function success(data) {
-          var fullAddress = '';
-
-          if (data.formatted_address) {
-            jquery__WEBPACK_IMPORTED_MODULE_2___default.a.each(data.formatted_address, function (k, vl) {
-              if (vl != '') {
-                fullAddress += vl + ', ';
-              }
-            });
-          }
-
-          var houseno = data.building_number + ' ' + data.building_name;
-          self.setState({
-            house_no: houseno
-          });
-          var street_line = '';
-
-          if (data.line_1 != '') {
-            street_line = data.line_1;
-          }
-
-          if (data.line_2 != '') {//  street_line +=' ,'+data.line_2;
-          }
-
-          if (data.line_3 != '') {
-            street_line += ' ,' + data.line_3;
-          }
-
-          if (data.line_4 != '') {
-            street_line += ' ,' + data.line_4;
-          }
-
-          self.setState({
-            street: street_line
-          });
-          self.setState({
-            city: data.town_or_city
-          });
-          self.setState({
-            county: data.county
-          });
-          self.setState({
-            postcode: data.postcode
-          });
-          self.setState({
-            getaddress_id: id
-          });
-          self.setState({
-            address: fullAddress + ' ' + data.postcode
-          }); // data.latitude data.longitude
-
-          jquery__WEBPACK_IMPORTED_MODULE_2___default()("#location").val('');
-          jquery__WEBPACK_IMPORTED_MODULE_2___default()('#addressList').html('').hide();
-        }
-      });
-    });
-
     _defineProperty(_assertThisInitialized(_this), "handleClickOutside", function (e) {
       jquery__WEBPACK_IMPORTED_MODULE_2___default()('#addressList').html('').hide(); //$('#location').val('');
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "employment_historyChange", function (element) {
-      var index = element.target.id;
-
-      if (element.target.name == 'name') {
-        _this.state.employment_history[index].name = element.target.value;
-      }
-
-      if (element.target.name == 'position') {
-        _this.state.employment_history[index].position = element.target.value;
-      }
-
-      if (element.target.name == 'reason_for_leaving') {
-        _this.state.employment_history[index].reason_for_leaving = element.target.value;
-      }
-
-      _this.setState({
-        employment_history: _this.state.employment_history
-      });
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "employment_historyDelete", function (element) {
-      var index = element.target.id;
-
-      if (index !== -1) {
-        var MySwal = sweetalert2_react_content__WEBPACK_IMPORTED_MODULE_22___default()(sweetalert2__WEBPACK_IMPORTED_MODULE_21___default.a);
-        MySwal.fire({
-          title: 'Are you sure?',
-          type: 'warning',
-          showCloseButton: true,
-          showCancelButton: true
-        }).then(function (willDelete) {
-          if (willDelete.value) {
-            var employment_history = _this.state.employment_history;
-            employment_history.splice(index, 1);
-
-            _this.setState({
-              employment_history: employment_history
-            });
-          } else {}
-        });
-      }
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "addEmployment", function () {
-      var employment_history = {
-        name: '',
-        position: '',
-        reason_for_leaving: ''
-      };
-
-      if (_this.state.employment_history.length < 5) {
-        _this.setState(function (previousState) {
-          return {
-            employment_history: [].concat(_toConsumableArray(previousState.employment_history), [employment_history])
-          };
-        });
-      }
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "employment_referencesChange", function (element) {
-      var index = element.target.id;
-
-      if (element.target.name == 'company_name') {
-        _this.state.employment_references[index].company_name = element.target.value;
-      }
-
-      if (element.target.name == 'name') {
-        _this.state.employment_references[index].name = element.target.value;
-      }
-
-      if (element.target.name == 'position') {
-        _this.state.employment_references[index].position = element.target.value;
-      }
-
-      if (element.target.name == 'telephone_no') {
-        _this.state.employment_references[index].telephone_no = element.target.value;
-      }
-
-      if (element.target.name == 'email') {
-        _this.state.employment_references[index].email = element.target.value;
-      }
-
-      _this.setState({
-        employment_references: _this.state.employment_references
-      });
     });
 
     _defineProperty(_assertThisInitialized(_this), "confirm_employee", {});
@@ -521,11 +272,8 @@ var Home = /*#__PURE__*/function (_React$Component) {
     _defineProperty(_assertThisInitialized(_this), "confirm_employee_trim", function () {
       _this.setState({
         confirm_employee_signature: _this.confirm_employee.getTrimmedCanvas().toDataURL('image/png')
-      });
+      }); // this.setState({confirm_employee_signature_show: this.state.confirm_employee_signature })
 
-      _this.setState({
-        confirm_employee_signature_show: _this.state.confirm_employee_signature
-      });
     });
 
     _defineProperty(_assertThisInitialized(_this), "confirm_employee_clear", function () {
@@ -543,273 +291,259 @@ var Home = /*#__PURE__*/function (_React$Component) {
     _defineProperty(_assertThisInitialized(_this), "information_provided_trim", function () {
       _this.setState({
         information_provided_signature: _this.information_provided.getTrimmedCanvas().toDataURL('image/png')
-      });
+      }); //  this.setState({information_provided_signature_show: this.state.information_provided_signature })
 
-      _this.setState({
-        information_provided_signature_show: _this.state.information_provided_signature
-      });
     });
 
     _defineProperty(_assertThisInitialized(_this), "information_provided_clear", function () {
       _this.information_provided.clear();
     });
 
-    _defineProperty(_assertThisInitialized(_this), "information_providedChange", function (e) {
+    _defineProperty(_assertThisInitialized(_this), "confirm_employee_dateChange", function (e) {
       _this.setState({
-        information_provided_Date: e
+        confirm_employee_date: e
       });
     });
 
-    _defineProperty(_assertThisInitialized(_this), "onUploadCv", function (event) {
-      var file = event.target.files[0];
+    _defineProperty(_assertThisInitialized(_this), "information_providedChange", function (e) {
+      _this.setState({
+        information_provided_date: e
+      });
+    });
 
-      if (_this.validateSize(event)) {
-        // if return true allow to setState
-        _this.setState({
-          user_cv: file
-        });
+    _defineProperty(_assertThisInitialized(_this), "place_of_employment", function (place_of_employment) {
+      if (place_of_employment == 1) {
+        return 'Your place of employment shall not be fixed. Your region will be allocated in line with the Employer’s assessment of business conditions.';
+      } else if (place_of_employment == 2) {
+        return 'Your line manager will allocate your region of management responsibility with your agreed assessment of business conditionsThe Employer reserves the right, subject to prior discussion with you, to alter the size or nature of this region or to reassign the region, in line with the Company’s assessment of business conditions.';
+      } else if (place_of_employment == 3) {
+        return 'Bespoke Metering Solutions, Unit 6, Glover Network Centre, Spire Road, Washington, NE37 3HB';
+      } else if (place_of_employment == 4) {
+        return 'Bespoke Metering Solutions, Gateway House, Gateway West, Newburn Riverside, Newcastle upon Tyne NE15 8NX';
+      } else if (place_of_employment == 5) {
+        return 'Bespoke Metering Solutions, Unit 7, Grovewood Business Centre, Strathclyde Business Park, Bellhill, ML4 3NQ';
       }
     });
 
-    _defineProperty(_assertThisInitialized(_this), "validateSize", function (event) {
-      var file = event.target.files[0];
-      var size = 30000000;
-      var err = '';
-      console.log(file.size);
-
-      if (file.size > size) {
-        err = file.type + 'is too large, please pick a smaller file\n';
-        alert(err); //  toast.error(err);
+    _defineProperty(_assertThisInitialized(_this), "hours_of_work", function (hours_of_work) {
+      if (hours_of_work == 1) {
+        return '45 hours per week, between Monday to Sunday to be worked between the hours of 8am and 10pm. You may be required as part of your role to attend out of hours and emergency callouts as requested by the Employer';
+      } else if (hours_of_work == 2) {
+        return 'Your normal working hours will be 40 hours per week between 08.00 and 18.00 Monday to Friday. You are, however, expected to work without additional pay for additional hours according to the requirements of the Company';
+      } else if (hours_of_work == 3) {
+        return 'Manually';
       }
-
-      return true;
     });
 
-    _this.state = {
+    _defineProperty(_assertThisInitialized(_this), "getaddist", function (vl) {
+      if (vl != "") {
+        return vl;
+      }
+    });
+
+    _this.state = (_this$state = {
       _method: '',
-      id: "",
-      position_applied_for: "",
-      title: "",
-      fore_name: "",
-      surname: "",
-      email: "",
-      telephone_number: '',
-      getaddress_id: '',
-      address: '',
-      postcode: '',
-      selected_interview: '',
-      disability: '',
-      medical_condition: '',
-      medical_condition_reasonable: '',
-      any_convictions: '',
-      any_convictions_yes: '',
-      work_permit_uk: '',
-      qualifications: '',
-      user_cv: null,
-      employment_history: [{
-        name: '',
-        position: '',
-        reason_for_leaving: ''
-      }],
-      employment_references: [{
-        company_name: '',
-        name: '',
-        position: '',
-        telephone_no: '',
-        email: ''
-      }, {
-        company_name: '',
-        name: '',
-        position: '',
-        telephone_no: '',
-        email: ''
-      }],
-      unavailable_for_interview: '',
-      confirm_employee_name: '',
-      confirm_employee_signature: null,
-      confirm_employee_signature_show: null,
-      confirm_Date: todaydate,
-      information_provided_name: '',
-      information_provided_signature: null,
-      information_provided_signature_show: null,
-      information_provided_Date: todaydate,
-      chkBasic: false,
-      chkCustom: false,
-      checkMeSwitch: false,
+      application_forms_id: '',
+      confirm_employee_signature: '',
+      confirm_employee_date: todaydate,
+      information_provided_signature: '',
+      information_provided_date: todaydate,
       showModal: false,
       visible: true,
       formSubmitting: false,
-      buttonName: 'Submit'
-    }; // preserve the initial state in a new object
+      buttonName: 'Submit',
+      basic: '',
+      remuneration_and_benefits: '',
+      bonus: "",
+      confirm_Date: "",
+      dbscheck: "",
+      fore_name: "",
+      hours_of_work: "",
+      id: '',
+      job_title: "",
+      job_title_text: '',
+      place_of_employment: ""
+    }, _defineProperty(_this$state, "remuneration_and_benefits", ""), _defineProperty(_this$state, "surname", ""), _defineProperty(_this$state, "title", ""), _defineProperty(_this$state, "line_1", ''), _defineProperty(_this$state, "line_2", ''), _defineProperty(_this$state, "line_3", ''), _defineProperty(_this$state, "line_4", ''), _defineProperty(_this$state, "town_or_city", ''), _defineProperty(_this$state, "postcode", ''), _defineProperty(_this$state, "offerletterlist_id", ''), _defineProperty(_this$state, "created_at", ''), _defineProperty(_this$state, "showofferletter", 'none'), _defineProperty(_this$state, "alreadyalert", 'none'), _this$state); // preserve the initial state in a new object
 
     _this.baseState = _this.state;
     return _this;
   }
 
-  _createClass(Home, [{
+  _createClass(OfferLetter, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      var _ref2 = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
-          name = _ref2.name,
-          email = _ref2.email;
+      var _this2 = this;
 
-      var emailaddress = email;
-      this.setState({
-        first_name: name,
-        confirm_employee_name: name,
-        information_provided_name: name
-      });
-      this.setState({
-        email: emailaddress
-      });
-    }
+      if (this.props.match.params.id) {
+        var data = JSON.parse(atob(this.props.match.params.id));
+        this.setState({
+          offerletterlist_id: data['offerletterlist_id']
+        }); //offerletters_id = offerletterlist_id
+
+        this.setState({
+          basic: data['basic']
+        });
+        this.setState({
+          bonus: data['bonus']
+        });
+        this.setState({
+          remuneration_and_benefits: data['remuneration_and_benefits']
+        });
+        this.setState({
+          confirm_Date: data['confirm_Date']
+        });
+        this.setState({
+          dbscheck: data['dbscheck']
+        });
+        this.setState({
+          fore_name: data['fore_name']
+        });
+        this.setState({
+          hours_of_work: data['hours_of_work']
+        });
+        this.setState({
+          application_forms_id: data['application_Forms_id']
+        }); //application_Forms_id =id
+
+        this.setState({
+          job_title: data['job_title']
+        });
+        this.setState({
+          place_of_employment: data['place_of_employment']
+        });
+        this.setState({
+          surname: data['surname']
+        });
+        this.setState({
+          title: data['title']
+        });
+
+        if (data['address_details']) {
+          this.setState({
+            line_1: data['address_details']['line_1']
+          });
+          this.setState({
+            line_2: data['address_details']['line_2']
+          });
+          this.setState({
+            line_3: data['address_details']['line_3']
+          });
+          this.setState({
+            line_4: data['address_details']['line_4']
+          });
+          this.setState({
+            postcode: data['address_details']['postcode']
+          });
+          this.setState({
+            town_or_city: data['address_details']['town_or_city']
+          });
+        }
+
+        if (data['line_1']) {
+          this.setState({
+            line_1: data['line_1']
+          });
+          this.setState({
+            line_2: data['line_2']
+          });
+          this.setState({
+            line_3: data['line_3']
+          });
+          this.setState({
+            line_4: data['line_4']
+          });
+          this.setState({
+            postcode: data['postcode']
+          });
+          this.setState({
+            town_or_city: data['town_or_city']
+          });
+        }
+
+        this.setState({
+          created_at: data['created_at']
+        });
+        axios__WEBPACK_IMPORTED_MODULE_16___default.a.get(baseurl + '/api/applicant_send_offer_letter/' + data['offerletterlist_id']).then(function (res) {
+          if (res.data.success) {
+            if (res.data.data == 1) {
+              _this2.setState({
+                formSubmitting: true,
+                showofferletter: 'none',
+                alreadyalert: ''
+              });
+
+              pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_17__["default"].error({
+                title: "Sorry",
+                text: 'Your offer letter has been already sent.'
+              });
+            } else {
+              _this2.setState({
+                showofferletter: ''
+              });
+            } // this.setState({job_title_text:res.data.data.name});
+
+          } else {
+            var errorMassage = '';
+
+            if (res.data.message) {
+              errorMassage = res.data.message;
+            }
+
+            pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_17__["default"].error({
+              title: "System Error",
+              text: errorMassage
+            });
+          }
+        })["catch"](function (err) {
+          pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_17__["default"].error({
+            title: "System Error",
+            text: err
+          });
+        });
+        axios__WEBPACK_IMPORTED_MODULE_16___default.a.get(baseurl + '/api/getjobtitle/' + data['job_title']).then(function (res) {
+          if (res.data.success) {
+            _this2.setState({
+              job_title_text: res.data.data.name
+            }); // console.log(res.data.data);
+
+          } else {
+            var errorMassage = '';
+
+            if (res.data.message) {
+              errorMassage = res.data.message;
+            }
+
+            if (res.data.errors) {
+              errorMassage = res.data.errors.name;
+            } //tes
+
+
+            if (res.data.email) {
+              errorMassage = res.data.email;
+            }
+
+            pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_17__["default"].error({
+              title: "System Error",
+              text: errorMassage
+            });
+          }
+        })["catch"](function (err) {
+          pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_17__["default"].error({
+            title: "System Error",
+            text: err
+          });
+        });
+      }
+    } //confirm
+
   }, {
     key: "render",
     value: function render() {
-      var _this2 = this,
-          _React$createElement,
-          _React$createElement2;
+      var _this3 = this;
 
-      var employmenthistoryList = this.state.employment_history.map(function (item, index) {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_24__["Tr"], {
-          key: index
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_24__["Td"], {
-          style: {
-            padding: '5px'
-          }
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_9__["TextInput"], {
-          name: "name",
-          value: item.name,
-          id: index,
-          onChange: function onChange(e) {
-            return _this2.employment_historyChange(e);
-          },
-          placeholder: "Company Name",
-          required: index != 0 ? true : false,
-          autoComplete: "off"
-        })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_24__["Td"], {
-          style: {
-            padding: '5px'
-          }
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_9__["TextInput"], {
-          name: "position",
-          value: item.position,
-          id: index,
-          onChange: function onChange(e) {
-            return _this2.employment_historyChange(e);
-          },
-          placeholder: "Position",
-          required: index != 0 ? true : false,
-          autoComplete: "off"
-        })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_24__["Td"], {
-          style: {
-            padding: '5px'
-          }
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_9__["TextInput"], {
-          name: "reason_for_leaving",
-          value: item.reason_for_leaving,
-          id: index,
-          onChange: function onChange(e) {
-            return _this2.employment_historyChange(e);
-          },
-          placeholder: "Reason for leaving",
-          required: index != 0 ? true : false,
-          autoComplete: "off"
-        })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_24__["Td"], {
-          style: {
-            padding: '5px'
-          }
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
-          variant: "outline-danger",
-          style: {
-            display: index == 0 ? 'none' : ''
-          },
-          id: index,
-          onClick: function onClick(e) {
-            return _this2.employment_historyDelete(e);
-          },
-          size: "sm"
-        }, "X"), index == 0 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
-          variant: "secondary",
-          onClick: _this2.addEmployment,
-          size: "sm"
-        }, "+Add") : ''));
-      });
-      var referencesList = this.state.employment_references.map(function (item, index) {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_24__["Tr"], {
-          key: index
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_24__["Td"], {
-          style: {
-            padding: '5px'
-          }
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_9__["TextInput"], {
-          name: "company_name",
-          value: item.company_name,
-          id: index,
-          onChange: function onChange(e) {
-            return _this2.employment_referencesChange(e);
-          },
-          placeholder: "Company Name",
-          required: index != 1 ? true : false,
-          autoComplete: "off"
-        })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_24__["Td"], {
-          style: {
-            padding: '5px'
-          }
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_9__["TextInput"], {
-          name: "name",
-          value: item.name,
-          id: index,
-          onChange: function onChange(e) {
-            return _this2.employment_referencesChange(e);
-          },
-          placeholder: "Name",
-          required: index != 1 ? true : false,
-          autoComplete: "off"
-        })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_24__["Td"], {
-          style: {
-            padding: '5px'
-          }
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_9__["TextInput"], {
-          name: "position",
-          value: item.position,
-          id: index,
-          onChange: function onChange(e) {
-            return _this2.employment_referencesChange(e);
-          },
-          placeholder: "Position",
-          required: index != 1 ? true : false,
-          autoComplete: "off"
-        })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_24__["Td"], {
-          style: {
-            padding: '5px'
-          }
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_9__["TextInput"], {
-          name: "telephone_no",
-          value: item.telephone_no,
-          id: index,
-          onChange: function onChange(e) {
-            return _this2.employment_referencesChange(e);
-          },
-          placeholder: "Telephone No",
-          required: index != 1 ? true : false,
-          autoComplete: "off"
-        })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_24__["Td"], {
-          style: {
-            padding: '5px'
-          }
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_9__["TextInput"], {
-          name: "email",
-          value: item.email,
-          id: index,
-          onChange: function onChange(e) {
-            return _this2.employment_referencesChange(e);
-          },
-          placeholder: "Email",
-          required: index != 1 ? true : false,
-          autoComplete: "off"
-        })));
-      });
+      var basic = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Basic: "), "\xA3", this.state.basic, " per annum");
+      var dbscheck = this.state.dbscheck == 'Yes' ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "DBS Check: "), "Basic required") : '';
+      var bonus = this.state.bonus == 'Yes' ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Bonus: "), "You will be paid bonus in accordance with the rules and rates set out in the Bonus Policy relevant to you as amended from time to time") : '';
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_hoc_Aux__WEBPACK_IMPORTED_MODULE_5__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_full_screen__WEBPACK_IMPORTED_MODULE_12___default.a, {
         enabled: this.props.isFullScreen
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_App_layout_AdminLayout_Breadcrumb__WEBPACK_IMPORTED_MODULE_7__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -860,483 +594,179 @@ var Home = /*#__PURE__*/function (_React$Component) {
         className: "page-wrapper"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Header, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Title, {
         as: "h5"
-      }, "Application Form")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_9__["ValidationForm"], {
+      }, "Offer Letter")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        style: {
+          display: this.state.alreadyalert
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        style: {
+          color: 'red',
+          fontSize: '20px'
+        }
+      }, "Your offer letter has been already sent.")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_9__["ValidationForm"], {
+        style: {
+          display: this.state.showofferletter
+        },
         autoComplete: "off",
         id: "formid",
         onSubmit: this.handleSubmit,
         onErrorSubmit: this.handleErrorSubmit
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Row, {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         style: style.rowline
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "6"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
-        htmlFor: "position_applied_for"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "POSITION APPLIED FOR")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_9__["TextInput"], {
-        name: "position_applied_for",
-        id: "position_applied_for",
-        placeholder: "Position applied for",
-        required: true,
-        value: this.state.position_applied_for,
-        onChange: this.handleChange,
-        autoComplete: "off"
-      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Row, {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         style: style.rowline
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "12"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "PERSONAL DETAILS")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "2"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
-        htmlFor: "first_name"
-      }, "Title"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_9__["TextInput"], {
-        name: "title",
-        id: "title",
-        placeholder: "Title",
-        required: true,
-        value: this.state.title,
-        onChange: this.handleChange,
-        autoComplete: "off"
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "2"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
-        htmlFor: "asm_name"
-      }, "Forename"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_9__["TextInput"], {
-        name: "fore_name",
-        id: "fore_name",
-        type: "text",
-        placeholder: "Forename",
-        value: this.state.fore_name,
-        onChange: this.handleChange,
-        autoComplete: "off"
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "2"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
-        htmlFor: "surname"
-      }, "Surname"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_9__["TextInput"], {
-        name: "surname",
-        id: "surname",
-        placeholder: "Surname",
-        value: this.state.surname,
-        onChange: this.handleChange,
-        autoComplete: "off"
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "2"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
-        htmlFor: "email"
-      }, "Email"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_9__["TextInput"], {
-        name: "email",
-        id: "email",
-        type: "text",
-        placeholder: "Email",
-        onChange: this.handleChange,
-        required: true,
-        value: this.state.email,
-        autoComplete: "off"
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "2"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
-        htmlFor: "telephone_number"
-      }, "Telephone Number"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_9__["TextInput"], {
-        name: "telephone_number",
-        id: "telephone_number",
-        type: "text",
-        placeholder: "Telephone Number",
-        onChange: this.handleChange,
-        required: true,
-        value: this.state.telephone_number,
-        autoComplete: "off"
-      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Row, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "2"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
-        htmlFor: "mobile_number"
-      }, "\xA0"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_9__["TextInput"], {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Private & Confidential")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.state.title, " ", this.state.fore_name, " ", this.state.surname, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), this.state.line_1, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), this.getaddist(this.state.line_2), this.getaddist(this.state.line_3), this.getaddist(this.state.line_4), this.state.town_or_city, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), this.state.postcode, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "DATE ", this.state.created_at), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Dear ", this.state.fore_name, ",")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         style: {
-          marginBottom: '0px'
-        },
-        name: "location",
-        id: "location",
-        type: "text",
-        placeholder: "Search Address",
-        onChange: this.locationChange,
-        autoComplete: "off"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-        className: "list-group",
-        id: "addressList",
-        style: {
-          display: 'none',
-          position: 'absolute',
-          zIndex: '100',
-          height: '600%',
-          overflowY: 'overlay'
+          textAlign: 'center'
         }
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "4"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
-        htmlFor: "mobile_number"
-      }, "Address"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_9__["TextInput"], {
-        name: "address",
-        id: "address",
-        type: "text",
-        placeholder: "Address",
-        onChange: this.handleChange,
-        required: true,
-        value: this.state.address,
-        autoComplete: "off"
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "2"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
-        htmlFor: "mobile_number"
-      }, "Postcode"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_9__["TextInput"], {
-        name: "postcode",
-        id: "postcode",
-        type: "text",
-        placeholder: "Postcode",
-        onChange: this.handleChange,
-        required: true,
-        value: this.state.postcode,
-        autoComplete: "off"
-      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Row, {
-        style: style.rowline
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "12"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
-        htmlFor: "selected_interview"
-      }, "If selected for interview, do you require any reasonable adjustments to be made on account of a disability?"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "custom-controls-stacked radio"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_9__["Radio"].RadioGroup, {
-        name: "selected_interview",
-        required: true,
-        valueSelected: this.state.selected_interview,
-        inline: true,
-        onChange: this.handleChange
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_9__["Radio"].RadioItem, {
-        id: "selected_interview4",
-        label: "YES",
-        value: "YES"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_9__["Radio"].RadioItem, {
-        id: "selected_interview5",
-        label: "NO",
-        value: "NO"
-      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
-        htmlFor: "selected_interview"
-      }, "Please tell us if there are any \u2018reasonable adjustments\u2019 we can make to assist you in your application or with our recruitment process\u2026\u2026"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_9__["TextInput"], {
-        name: "disability",
-        id: "disability",
-        type: "text",
-        placeholder: "",
-        onChange: this.handleChange,
-        readOnly: this.state.selected_interview == "YES" ? false : true,
-        value: this.state.disability,
-        autoComplete: "off"
-      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Row, {
-        style: style.rowline
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "12"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
-        htmlFor: "selected_interview"
-      }, "If selected for interview, do you require any reasonable adjustments to be made on account of a medical condition?"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "custom-controls-stacked radio"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_9__["Radio"].RadioGroup, {
-        name: "medical_condition",
-        required: true,
-        valueSelected: this.state.medical_condition,
-        inline: true,
-        onChange: this.handleChange
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_9__["Radio"].RadioItem, {
-        id: "medical_condition4",
-        label: "YES",
-        value: "YES"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_9__["Radio"].RadioItem, {
-        id: "medical_condition5",
-        label: "NO",
-        value: "NO"
-      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
-        htmlFor: "selected_interview"
-      }, "Please tell us if there are any \u2018reasonable adjustments\u2019 we can make to assist you in your application or with our recruitment process\u2026\u2026"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_9__["TextInput"], {
-        name: "medical_condition_reasonable",
-        id: "medical_condition_reasonable",
-        type: "text",
-        placeholder: "",
-        onChange: this.handleChange,
-        readOnly: this.state.medical_condition == "YES" ? false : true,
-        value: this.state.medical_condition_reasonable,
-        autoComplete: "off"
-      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Row, {
-        style: style.rowline
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "12"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
-        htmlFor: "selected_interview"
-      }, "Have you any convictions that are not spent under the rehabilitation of offenders act?"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "custom-controls-stacked radio"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_9__["Radio"].RadioGroup, {
-        name: "any_convictions",
-        required: true,
-        valueSelected: this.state.any_convictions,
-        inline: true,
-        onChange: this.handleChange
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_9__["Radio"].RadioItem, {
-        id: "any_convictions4",
-        label: "YES",
-        value: "YES"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_9__["Radio"].RadioItem, {
-        id: "any_convictions5",
-        label: "NO",
-        value: "NO"
-      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
-        htmlFor: "any_convictions"
-      }, "If Yes, please provide further details:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_9__["TextInput"], {
-        name: "any_convictions_yes",
-        id: "any_convictions_yes",
-        type: "text",
-        placeholder: "",
-        onChange: this.handleChange,
-        readOnly: this.state.any_convictions == "YES" ? false : true,
-        value: this.state.any_convictions_yes,
-        autoComplete: "off"
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "12"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
-        htmlFor: "selected_interview"
-      }, "Do you need a work permit to be employed in the UK?"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "custom-controls-stacked radio"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_9__["Radio"].RadioGroup, {
-        name: "work_permit_uk",
-        required: true,
-        valueSelected: this.state.work_permit_uk,
-        inline: true,
-        onChange: this.handleChange
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_9__["Radio"].RadioItem, {
-        id: "work_permit_uk4",
-        label: "YES",
-        value: "YES"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_9__["Radio"].RadioItem, {
-        id: "work_permit_uk5",
-        label: "NO",
-        value: "NO"
-      }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Row, {
-        style: style.rowline
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "12"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "QUALIFICATIONS")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, (_React$createElement = {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "12",
-        xs: 12
-      }, _defineProperty(_React$createElement, "xs", 12), _defineProperty(_React$createElement, "sm", 12), _React$createElement), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
-        htmlFor: "first_name"
-      }, "I confirm that I have the minimum required qualifications for the role I am applying for, please specify below:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_9__["TextInput"], {
-        name: "qualifications",
-        id: "qualifications",
-        placeholder: "",
-        multiline: true,
-        required: true,
-        value: this.state.qualifications,
-        onChange: this.handleChange,
-        rows: "3",
-        autoComplete: "off"
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, (_React$createElement2 = {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "4",
-        xs: 12
-      }, _defineProperty(_React$createElement2, "xs", 12), _defineProperty(_React$createElement2, "sm", 12), _React$createElement2), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
-        htmlFor: "upload_avatar"
-      }, "Upload CV"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "custom-file"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_9__["FileInput"], {
-        name: "user_cv",
-        id: "user_cv",
-        fileType: ["pdf", "docx", "xlsx", "jpeg", "jpg"] // maxFileSize="10000 kb"
-        ,
-        errorMessage: {
-          required: "Please upload a file",
-          fileType: "Only pdf and word file is allowed" // maxFileSize: "Max file size is 10000 kb"
-
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Employment with Bespoke Metering Solutions Limited. ")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "As discussed, we are delighted to offer you employment as ", this.state.job_title_text, ". This offer is conditional upon Bespoke Metering Solutions Limited receiving satisfactory results from necessary pre-employment checks and assessments, which may include a basic DBS check depending on the nature of your role."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Employment with the Bespoke Metering Solutions Limited will commence on the date shown in the Schedule. The first six months of your contract will be treated as a probationary period during which time Bespoke Metering Solutions Limited or yourself may terminate your employment by the notice period stated in your contract."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Your basic remuneration at the commencement of your employment is as shown in the Schedule. Your entitlement to salary accrues daily, payable monthly in arrears on the last working day of the month, directly into your bank or building society account."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Your paid holiday entitlement will be at the rate of 31 days per year, inclusive of statutory bank holidays. Your holiday accrues daily. If you work part-time your holiday entitlement will be on a pro-rata basis."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Full terms of employment are available in the Employee Handbook, which will be made available to you."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "It\u2019s a pleasure to welcome you fully on board and I am confident you will make a valuable contribution to the Company."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Yours Sincerely,"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        style: {
+          width: '10%'
         },
-        onChange: this.onUploadCv
-      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Row, {
+        src: window.location.origin + '/images/offerletter_sign.png'
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Gareth McKenna", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Operations Director")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         style: style.rowline
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "12"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "EMPLOYMENT HISTORY (5YEARS)")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "12"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_24__["Table"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_24__["Thead"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_24__["Tr"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_24__["Th"], {
-        width: "20%"
-      }, "Company Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_24__["Th"], {
-        width: "30%"
-      }, "Position"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_24__["Th"], {
-        width: "40%"
-      }, "Reason for leaving"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_24__["Th"], {
-        width: "10%"
-      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_24__["Tbody"], null, employmenthistoryList)))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Row, {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        style: {
+          fontSize: '22px',
+          textAlign: 'center'
+        }
+      }, "Bespoke Metering Solutions Limited"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        style: {
+          fontSize: '22px',
+          textAlign: 'center'
+        }
+      }, "And"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        style: {
+          fontSize: '22px',
+          textAlign: 'center'
+        }
+      }, this.state.fore_name, " ", this.state.surname), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        style: {
+          fontSize: '22px',
+          textAlign: 'center'
+        }
+      }, "Contract of Employment"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        style: {
+          fontSize: '22px',
+          textAlign: 'center'
+        }
+      }, "Dated ", this.state.confirm_Date)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         style: style.rowline
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "12"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "REFERENCES"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Please provide details of two referees, one should be your most recent employer. By providing their details, you consent to us contacting them.")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "12"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_24__["Table"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_24__["Thead"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_24__["Tr"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_24__["Th"], {
-        width: "20%"
-      }, "Company Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_24__["Th"], {
-        width: "20%"
-      }, "Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_24__["Th"], {
-        width: "20%"
-      }, "Position"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_24__["Th"], {
-        width: "20%"
-      }, "Telephone No."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_24__["Th"], {
-        width: "20%"
-      }, "Email"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_24__["Tbody"], null, referencesList))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "12"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
-        htmlFor: "first_name"
-      }, "Please tell us if there are any dates that you would be unavailable for interview\u2026\u2026"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_9__["TextInput"], {
-        name: "unavailable_for_interview",
-        id: "unavailable_for_interview",
-        placeholder: "",
-        multiline: true,
-        required: true,
-        value: this.state.unavailable_for_interview,
-        onChange: this.handleChange,
-        rows: "3",
-        autoComplete: "off"
-      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Row, {
-        style: style.rowline
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "12"
-      }, "I confirm that the information I have provided on this form is correct and I accept that providing deliberately false information could result in my dismissal."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "3"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
-        htmlFor: "confirm_employee_name"
-      }, "Applicant Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_9__["TextInput"], {
-        name: "confirm_employee_name",
-        id: "confirm_employee_name",
-        placeholder: "Employee Name",
-        required: true,
-        value: this.state.fore_name + " " + this.state.surname,
-        onChange: this.handleChange,
-        autoComplete: "off"
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "4"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_signature_canvas__WEBPACK_IMPORTED_MODULE_23___default.a, {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "This is your contract of employment and contains a statement of the applicable terms and conditions of your employment as required by section 1 of the Employment Rights Act 1996. The Schedule attached to the Contract forms part of the Contract.")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "You are referred to the Employee Handbook and Employer Policies which detail the Employer\u2019s employment policies and procedures. These policies and procedures may be changed from time to time and are not contractual. Although they do not form part of your Contract you are required by this Contract to abide by those policies and procedures that apply to you and to carry out any instructions and directions given to you by the Employer.")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ol", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Parties\u2019 details"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ol", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "The parties to the Contract are the employer (\u201CEmployer\u201D/\u201Dus\u201D/\u201Dour\u201D/\u201Dwe\u201D) and the employee (\u201CEmployee\u201D/\u201Dyou\u201D/\u201Dyour\u201D) both of whose details are set out in the Schedule hereto."))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        style: {
+          marginTop: '20px'
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Date of commencement of employment"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ol", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Your employment with the Employer will commence on the date shown in the Schedule. No employment with a previous employer shall be regarded as part of a period of continuous employment with the Employer unless otherwise stated."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "You warrant that you are entitled to work in the UK without any additional approvals and will notify the Employer immediately if you cease to be so entitled at any time during your employment."))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        style: {
+          marginTop: '20px'
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Job Title"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ol", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Your position with the Employer is shown in the Schedule."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "You are required to undertake the duties as set out in your job description, which is attached."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "You may be required from time to time to undertake such other duties as the Employer may reasonably require."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "During your employment you will take instructions from such persons as are notified to you by us from time to time."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "You shall not work for anyone else while you are employed by the Employer."))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        style: {
+          marginTop: '20px'
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Place of employment"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ol", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Your place of work is as shown in the Schedule or at such other location or locations within the United Kingdom as the Employer may from time to time direct. You may be required to travel to any location within the United Kingdom for the performance of your duties."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "The Employer reserves the right, subject to prior discussion with you, to alter your place of work in line with the Employer\u2019s assessment of business conditions."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "You will not be paid any expenses incurred or time spent by you travelling to your normal place of work."))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        style: {
+          marginTop: '20px'
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "References and criminal convictions"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ol", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Your employment is conditional upon receipt of references deemed satisfactory by the Employer. Whilst every effort will be made to obtain all such references as quickly as possible, your employment may start before some or all your references are received. If so, you agree that the Employer may terminate your employment either with or without notice, or by making a payment in lieu of notice, depending upon the circumstances if any reference fails to meet Employer requirements. The Employer\u2019s decision is final as to whether your references meet the required standard."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "If your position requires you to have a satisfactory DBS check as a condition of employment this will be stated in the Schedule and by signing this contract you will be agreeing that:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ol", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "we may conduct this check at our expense; and"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "we may conduct further DBS checks as we require from time to time and on an annual basis at our expense; and"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "should your DBS status change you are required to inform us as soon as possible; and"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "should your DBS check reveal a status that is not consistent with you carrying out your duties your employment may be terminated, either with or without notice, depending upon the circumstances."))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        style: {
+          marginTop: '20px'
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Remuneration and benefits"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ol", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Your basic remuneration is as shown in the Schedule. Your entitlement to salary accrues daily, payable monthly in arrears on the last working day of the month, directly into your bank or building society account."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "We may, in our absolute discretion, pay you a bonus and any bonus that is applicable to you will be set out in the Schedule. However, you have no right to a bonus. Any bonus will be subject to the terms of the policy which applies to it from time to time, it may be withdrawn at any time and the basis upon which it is paid may be varied at any time."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Your salary will be reviewed annually and may be changed from time to time at the discretion of the Employer without affecting the other terms of your employment. There is no obligation to award an increase. There will be no review of salary after notice has been given by either party to terminate your employment."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "If at any time money is owed and payable by you to the Employer, the Employer may lawfully deduct the sum or sums owing to it, from your salary or from any other payment due to be made to you by the Employer. Such deductions may include, but are not limited to, overpayments, loans or advances made to you by the Employer, the costs of repairing any damage or loss to the Employer\u2019s property caused by you, any losses suffered by the Employer as a result of any negligence or breach of duty by you, and any other sums due."))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        style: {
+          marginTop: '20px'
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Expenses"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ol", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "You will be reimbursed on a monthly basis for all reasonable expenses relating to travel, accommodation, entertainment and other out-of-pocket expenses incurred on authorised business in the proper performance of your duties subject to production of all receipts or other evidence as the Employer may require and provided that you comply with the terms of the Employer\u2019s expenses policy."))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        style: {
+          marginTop: '20px'
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Hours of work"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ol", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Your normal working hours are shown in the Schedule."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "You agree that your weekly working hours may be in excess of those prescribed by law (\u201Cthe Waiver\u201D). The Waiver will remain in force indefinitely, but you may give the Employer not less than three months\u2019 notice in writing of your intention to terminate the Waiver."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "The Employer reserves the right to alter working hours as necessary."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "You are required to comply with policies and procedures in force from time to time including those contained in the Employee Handbook, a copy of which will be made available to you."))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        style: {
+          marginTop: '20px'
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Driving"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ol", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Should your role require you to drive, your employment will be conditional upon you having a full current UK Driving Licence with the appropriate accreditations required for driving within your role. You are required to notify the Employer if you lose these accreditations, if a court fines you and \u2018endorses\u2019 your driving license with penalty points or you have your driving licence withdrawn as a result of a criminal conviction. Any failure to comply will be a disciplinary offence that may result in dismissal."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Increasing Health and Safety and duty of care requirements mean that the Employer has a corporate responsibility to check the validity of driving licences for employees who are provided with a company vehicle, drive on company business using their own vehicle or are covered under the company insurance. The Employer requires you to submit your driving licence to carry out the necessary checks"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        style: {
+          marginTop: '20px'
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Holiday and holiday pay"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ol", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "The holiday year runs from 1st April to 31st March. "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "From the commencement of your employment, your paid holiday entitlement will be at the rate of 31 days per year, inclusive of statutory bank holidays. Your holiday accrues daily. If you work part-time your holiday entitlement will be on a pro-rata basis."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Holiday may be taken only at times convenient to the Employer as previously arranged by notice. Further details of the notice arrangements can be found in the Employer's Holiday Policy which is contained in the Employee Handbook."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Holiday not taken by 31st March may not be carried forward to the following holiday year without the Employer's written permission. Payment will not be made for holiday not taken."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "On termination of your employment, any holiday entitlement untaken but accrued in the current holiday year, will be paid by the Employer. The amount of such sum shall be 1/260th of your full-time equivalent normal basic remuneration for each day accrued but untaken. Any holiday taken in excess of your pro rata entitlement will be deducted from your final salary payment."))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        style: {
+          marginTop: '20px'
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Pensions"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ol", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "We will comply with the employer pension duties applicable to you under Part 1 of the Pensions Act 2008. Further details will be made available to you."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "The Employer\u2019s pension arrangement is subject to HM Revenue and Customers rules and the terms may change in the future in order to comply with government legislation."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "If you do not want to be a pension scheme member, you can choose to opt out of saving towards your retirement altogether, although we do recommend you think carefully before you do so."))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        style: {
+          marginTop: '20px'
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Absence due to sickness or injury "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ol", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "A self-certification system operates for absence from work due to sickness or injury not exceeding seven days."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, " If you cannot attend work because of sickness or injury you must, unless there is some good reason to the contrary, follow absence reporting procedures. Failure to do so may result in sickness pay not being paid."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Immediately on your return to work you must obtain, complete and return a return-to-work form and a self- certification form or doctor's fit note for periods exceeding seven days."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Sickness or injury absence exceeding seven days must be covered by a doctor's fit note."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "All sickness or injury absence will be entered on your employment record."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "If you are absent from work for four or more days by reason of sickness or injury, you are entitled to statutory sick pay (SSP); as per SSP rules the first 3 qualifying days are not paid for each period of absence."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Sick pay is subject to the usual deductions for PAYE, national insurance, etc."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "The Employer reserves the right to require you to undergo a medical examination at its request after 12 weeks' absence due to sickness. The Employer will pay the cost of any such examination and all information given in connection with it and any report on it shall be fully disclosed to the Employer."))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        style: {
+          marginTop: '20px'
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Probation period"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ol", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "There is a probationary period of 6 months for new employees, during which time you shall be entitled to notice. The Employer's disciplinary scheme shall not apply. The Employer reserves the right to extend this period as appropriate."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "The probation period will come to an end when confirmed in writing by the Employer."))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        style: {
+          marginTop: '20px'
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Notice to terminate"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ol", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Should your position require you to have a satisfactory DBS check as a condition of employment and you have for any reason not disclosed any information or an unsatisfactory DBS is received, then your contract will be terminated with immediate effect."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Once the probationary period is completed, save in cases of gross misconduct, this contract may be terminated at any time by the following periods of notice."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "The Employer's notice to employees with continuous service from one month up to two years will be one week. Thereafter, employees are entitled to receive one additional week's notice for each year of continuous employment up to a maximum of 12 weeks' notice."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Employees' notice to the Employer will be 4 weeks\u2019 notice in writing."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "We may at our discretion terminate your employment without notice and make a payment in of basic salary in lieu of notice."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "We shall be entitled to dismiss you at any time without notice or payment in lieu of notice if you commit a serious breach of your obligations as an employee, or if you cease to be entitled to work in the United Kingdom."))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        style: {
+          marginTop: '20px'
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Collective Agreements"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ol", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "There are no collective agreements governing your terms and conditions of employment."))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        style: {
+          marginTop: '20px'
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Disciplinary and grievance procedures"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ol", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, " The disciplinary and grievance procedures applicable to your employment are contained in the employee handbook, a copy of which will be made available to you. They are for guidance only and do not form part of your contract of employment."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "If you wish to appeal against a disciplinary decision, you may apply in writing in accordance with the disciplinary procedure."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "We reserve the right to suspend you with pay for a reasonable period for the purposes of investigating any allegation of misconduct or neglect against you."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "If you wish to raise a grievance, you may apply in writing in accordance with the grievance procedure."))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        style: {
+          marginTop: '20px'
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Confidential Information"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ol", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, " You shall not use or disclose to any person either during or at any time after your employment with the Employer any confidential information about the business or affairs of the Employer or any of its business contacts, or about any other matters which may come to your knowledge in the course of your employment. For the purposes of this agreement, Confidential Information means any information or matter which is not in the public domain and which relates to the affairs of the Employer or any of its business contacts."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "The restriction in clause 14.1 does not apply to:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "prevent you from making a protected disclosure within the meaning of section 43A of the Employment Rights Act 1996; or"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "use or disclosure that has been authorised by the Employer, is required by law or by your employment."))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        style: {
+          marginTop: '20px'
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Data Protection"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ol", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "You confirm that you have read and understood the data protection policy of the Employer, a copy of which is contained in the employee handbook. The Employer is entitled to make changes to its data protection policy and will notify employees in writing of any such changes."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "You shall comply with the data protection policy when processing personal data during your employment including personal data relating to any employee, customer, client, supplier or agent of the Employer."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "You consent to the Employer processing data relating to you for legal, personnel, administrative and management purposes and in particular to the processing of any sensitive personal data (as defined in the General Data Protection Regulations Act 2016) relating to you, including, as appropriate:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "information about your physical or mental health or condition in order to monitor sick leave and take decisions as to your fitness for work; or"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "your racial or ethnic origin or religious or similar information in order to monitor compliance with equal opportunities legislation; or"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "information relating to any criminal proceedings in which you have been involved for insurance purposes and in order to comply with legal requirements and obligations to third parties."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "The Employer may make such information available to those who provide products or services to the Employer (such as advisers and payroll administrators), regulatory authorities, potential or future employers, governmental or quasi-governmental organisations and potential purchasers of the business or the business in which you work."))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        style: {
+          marginTop: '20px'
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Changes to your employment"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ol", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "We reserve the right to make reasonable adjustments to any terms of employment. You will be notified in writing of any changes as soon as possible and in event within one month of the change."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "If there is a temporary shortage of work for any reason, we will try to maintain your continuity of employment even if this necessitates placing you on short time working, or alternatively, lay-off. If you are placed on short time working, your pay will be reduced according to time worked. If you are placed on lay-off, you will receive no pay other than statutory guarantee pay if you qualify for this."))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        style: {
+          marginTop: '20px'
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Employer\u2019s property"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ol", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "All documents, manuals, hardware and software provided for your use by the Employer, and any data or documents (including copies) produced, maintained or stored on our computer systems or other electronic equipment (including mobile phones), remain the property of the Employer."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Any property of the Employer in your possession and any original or copy documents obtained by you in the course of your employment shall be returned to the Employer at any time on request and in any event prior to the termination of your employment with the Employer."))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        style: {
+          marginTop: '20px'
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Use of communications"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ol", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "You consent to the Employer monitoring, checking, recording and reviewing telephone calls, computer files, records and emails and to carry out any other compliance, security or risk analysis checks the Employer considers necessary on Employer's property."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "You understand and accept that you have no expectation of privacy in respect of any electronic, telephone or other communications made at work using or stored on Employer's property."))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        style: {
+          textAlign: 'center'
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", {
+        style: {
+          fontSize: '24px'
+        }
+      }, "Schedule")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Parties: ")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "The Employer: "), "Bespoke Metering Solutions Limited incorporated and registered in England and Wales with company number 10670768 whose registered office is at Unit 6, Glover Network Centre, Spire Road, Washington, NE37 3HB (\u201CEmployer\u201D/\u201Dus\u201D/\u201Dour\u201D/\u201Dwe\u201D)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "The Employee: "), this.state.fore_name, ", ", this.state.surname, ",", this.state.line_1, ",", this.state.line_2 != '' ? this.state.line_2 : '', ",", this.state.town_or_city, ",", this.state.postcode, "  (\u201CEmployee\u201D/\u201D you\u201D/\u201D your\u201D)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Date of Commencement: "), this.state.confirm_Date, "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Job Title: "), " ", this.state.job_title_text, "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Place of Employment: "), this.place_of_employment(this.state.place_of_employment)), dbscheck, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Remuneration and Benefits: "), this.state.remuneration_and_benefits), basic, bonus, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Hours of Work: "), " ", this.hours_of_work(this.state.hours_of_work)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Signed by Gareth McKenna for and on behalf of Bespoke Metering Solutions Limited: "), "  ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        style: {
+          width: '10%'
+        },
+        src: window.location.origin + '/images/offerletter_sign.png'
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Date: "), this.state.confirm_Date), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Signed by the Employee: "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_signature_canvas__WEBPACK_IMPORTED_MODULE_23___default.a, {
         penColor: "black",
         dotSize: function dotSize() {
-          return (_this2.minWidth + _this2.maxWidth) / 5;
+          return (_this3.minWidth + _this3.maxWidth) / 5;
         },
         canvasProps: {
           width: 300,
           height: 100,
           className: 'sigCanvas'
         },
-        ref: function ref(_ref3) {
-          _this2.confirm_employee = _ref3;
-        },
-        onEnd: this.confirm_employee_trim
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        type: "button",
-        style: {
-          position: 'absolute',
-          bottom: '6px'
-        },
-        onClick: this.confirm_employee_clear
-      }, "Clear")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "2"
-      }, this.state.confirm_employee_signature_show ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: this.state.confirm_employee_signature_show
-      }) : null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "2"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
-        htmlFor: "region"
-      }, "Signature Date"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_datetime__WEBPACK_IMPORTED_MODULE_8___default.a, {
-        closeOnSelect: true,
-        onChange: this.confirmChange,
-        value: this.state.confirm_Date,
-        dateFormat: "D/M/Y",
-        timeFormat: false,
-        maxDate: new Date(),
-        inputProps: {
-          required: 'required',
-          name: "confirm_Date",
-          placeholder: 'Select Date',
-          autoComplete: 'off'
-        }
-      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Row, {
-        style: style.rowline
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "12"
-      }, "I hereby give my consent for the contact information provided on this form to be held on computer or other relevant filing systems and to be shared with other accredited organisations or agencies for recruitment opportunities."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "3"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
-        htmlFor: "information provided_name"
-      }, "Applicant Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_9__["TextInput"], {
-        name: "information_provided_name",
-        id: "information_provided_name",
-        placeholder: "Applicant Name",
-        required: true,
-        value: this.state.fore_name + " " + this.state.surname,
-        onChange: this.handleChange,
-        autoComplete: "off"
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "4"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_signature_canvas__WEBPACK_IMPORTED_MODULE_23___default.a, {
-        penColor: "black",
-        dotSize: function dotSize() {
-          return (_this2.minWidth + _this2.maxWidth) / 5;
-        },
-        canvasProps: {
-          width: 300,
-          height: 100,
-          className: 'sigCanvas'
-        },
-        ref: function ref(_ref4) {
-          _this2.information_provided = _ref4;
+        ref: function ref(_ref2) {
+          _this3.information_provided = _ref2;
         },
         onEnd: this.information_provided_trim
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "button",
-        style: {
-          position: 'absolute',
-          bottom: '6px'
-        },
         onClick: this.information_provided_clear
-      }, "Clear")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "2"
-      }, this.state.information_provided_signature_show ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: this.state.information_provided_signature_show
-      }) : null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "2"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
-        htmlFor: "region"
-      }, "Signature Date"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_datetime__WEBPACK_IMPORTED_MODULE_8___default.a, {
+      }, "Clear"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Date: "), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_datetime__WEBPACK_IMPORTED_MODULE_8___default.a, {
         closeOnSelect: true,
         onChange: this.information_providedChange,
-        value: this.state.information_provided_Date,
+        value: this.state.information_provided_date,
         dateFormat: "D/M/Y",
         timeFormat: false,
         maxDate: new Date(),
@@ -1360,7 +790,7 @@ var Home = /*#__PURE__*/function (_React$Component) {
     }
   }]);
 
-  return Home;
+  return OfferLetter;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 var style = {
@@ -1369,7 +799,7 @@ var style = {
     marginBottom: '15px'
   }
 };
-/* harmony default export */ __webpack_exports__["default"] = (Home);
+/* harmony default export */ __webpack_exports__["default"] = (OfferLetter);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../node_modules/webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js")))
 
 /***/ })
