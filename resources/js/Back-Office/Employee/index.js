@@ -111,7 +111,7 @@ class List extends React.Component {
         this.state={ apiload:false,
                       search:'',
                       iDisplayStart:0,
-                      iDisplayLength:10,
+                      iDisplayLength:12,
                       aaData:[],
                       cuttentPage:'',
                       iTotalDisplayRecords:'',

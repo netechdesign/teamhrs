@@ -605,7 +605,7 @@ var List = /*#__PURE__*/function (_React$Component) {
       apiload: false,
       search: '',
       iDisplayStart: 0,
-      iDisplayLength: 10,
+      iDisplayLength: 12,
       aaData: [],
       cuttentPage: '',
       iTotalDisplayRecords: '',
