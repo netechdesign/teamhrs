@@ -18,6 +18,8 @@ const Leave = React.lazy(() => import("./Tab/Leave"))
 const AddLeave = React.lazy(() => import("./Tab/AddLeave"))
 const Salary = React.lazy(() => import("./Tab/Salary"))
 const BankDetails = React.lazy(() => import("./Tab/BankDetails")) 
+const AddressHistory =React.lazy(()=> import("./Tab/AddressHistory"))
+const JobHistory =React.lazy(()=> import("./Tab/JobHistory"))
 
 let id='';
 let data=[];
@@ -29,7 +31,8 @@ const routes = [
     { path:'/employee-Detail/Leave/Edit/:id', exact:true, name:'Oneform',component:AddLeave},
     { path:'/employee-Detail/Salary', exact:true, name:'Oneform',component:Salary},
     { path:'/employee-Detail/Bank-Details', exact:true, name:'Oneform',component:BankDetails},
-    
+    { path:'/employee-Detail/Address-History', exact:true, name:'Oneform',component:AddressHistory},
+    { path:'/employee-Detail/Job-History', exact:true, name:'Oneform',component:JobHistory},
     ];
     const baseurl= window.location.origin;
     
@@ -145,19 +148,31 @@ render(){
             <Nav variant="pills" className="flex-column">
                         <Nav.Item>
                         
-                        <NavLink to={{pathname: "/employee-Detail/Official",state: {userId: this.state.id}}}  className="nav-link">Official</NavLink> 
+                        <NavLink to={{pathname: "/employee-Detail/Official",state: {userId: this.state.id}}}  className="nav-link"><i class="feather icon-user"></i>Official</NavLink> 
                         </Nav.Item>
                         <Nav.Item>
                         <NavLink  to= {{pathname:'/employee-Detail/Documents',state:{userId: this.state.id}}} className="nav-link"><i class="feather icon-file-text"></i> Documents</NavLink> 
                         
                         </Nav.Item>
                         <Nav.Item>
-                            <NavLink  to= {{pathname:'/employee-Detail/Bank-Details',state:{userId: this.state.id}}} className="nav-link"><i class="feather icon-file-text"></i> Bank Details</NavLink> 
+                            <NavLink  to= {{pathname:'/employee-Detail/Bank-Details',state:{userId: this.state.id}}} className="nav-link"><i class="fa fa-university"></i> Bank Details</NavLink> 
                         </Nav.Item>
                         
                         <Nav.Item>
-                            <NavLink  to= {{pathname:'/employee-Detail/Leave',state:{userId: this.state.id}}} className="nav-link"><i class="feather icon-file-text"></i> Leave</NavLink> 
+                            <NavLink  to= {{pathname:'/employee-Detail/Address-History',state:{userId: this.state.id}}} className="nav-link"><i class="fa fa-map-marker" aria-hidden="true"></i> Address History</NavLink> 
                         </Nav.Item>
+                        <Nav.Item>
+                    <NavLink  to= {{pathname:'/employee-Detail/Leave',state:{userId: this.state.id}}} className="nav-link"><i class="fa fa-minus-square" aria-hidden="true"></i> Leave</NavLink> 
+                        </Nav.Item>
+                        <Nav.Item>
+                        
+                        <NavLink  to= {{pathname:'/employee-Detail/Job-History',state:{userId: this.state.id}}} className="nav-link"><i class="fa fa-history" aria-hidden="true"></i> Job History</NavLink> 
+                        
+                        </Nav.Item>
+                        <Nav.Item>
+                        <Nav.Link eventKey="Education"><i class="fa fa-graduation-cap" aria-hidden="true"></i> Education</Nav.Link>
+                        </Nav.Item>
+
                         <Nav.Item>
                             <NavLink  to= {{pathname:'/employee-Detail/Salary',state:{userId: this.state.id}}} className="nav-link"><i class="feather icon-file-text"></i> Salary</NavLink> 
                         </Nav.Item>
@@ -165,31 +180,10 @@ render(){
                         <Nav.Link eventKey="Holidays"><i class="fa fa-lights-holiday"></i> Holidays</Nav.Link>
                         </Nav.Item>
 
-
-                        <Nav.Item>
-                        <Nav.Link eventKey="Personal">Personal</Nav.Link>
-                        </Nav.Item>
-
-                        <Nav.Item>
-                        <Nav.Link eventKey="Contact">Contact</Nav.Link>
-                        </Nav.Item>
-
                         <Nav.Item>
                         <Nav.Link eventKey="Skills">Skills</Nav.Link>
                         </Nav.Item>
-
-                        <Nav.Item>
-                        <Nav.Link eventKey="Job_History">Job History</Nav.Link>
-                        </Nav.Item>
-
-                        <Nav.Item>
-                        <Nav.Link eventKey="Experience">Experience</Nav.Link>
-                        </Nav.Item>
-
-                        <Nav.Item>
-                        <Nav.Link eventKey="Education">Education</Nav.Link>
-                        </Nav.Item>
-
+                        
                         <Nav.Item>
                         <Nav.Link eventKey="Training_Certification">Training & Certification</Nav.Link>
                         </Nav.Item>

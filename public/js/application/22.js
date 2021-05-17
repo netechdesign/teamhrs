@@ -3778,7 +3778,7 @@ var EmployeeList = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.laz
   return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(2), __webpack_require__.e(3), __webpack_require__.e(4), __webpack_require__.e(5), __webpack_require__.e(6), __webpack_require__.e(7), __webpack_require__.e(10), __webpack_require__.e(15), __webpack_require__.e(28)]).then(__webpack_require__.bind(null, /*! ./Back-Office/Employee */ "./resources/js/Back-Office/Employee/index.js"));
 });
 var EmployeeDetails = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(3), __webpack_require__.e(4), __webpack_require__.e(5), __webpack_require__.e(27)]).then(__webpack_require__.bind(null, /*! ./Back-Office/Employee/EmployeeDetails */ "./resources/js/Back-Office/Employee/EmployeeDetails.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(3), __webpack_require__.e(4), __webpack_require__.e(6), __webpack_require__.e(27)]).then(__webpack_require__.bind(null, /*! ./Back-Office/Employee/EmployeeDetails */ "./resources/js/Back-Office/Employee/EmployeeDetails.js"));
 }); //For demo Examples
 
 var FormsSelect = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
@@ -3921,6 +3921,16 @@ var routes = [{
   component: EmployeeDetails
 }, {
   path: '/employee-Detail/Bank-Details',
+  exact: true,
+  name: 'Oneform',
+  component: EmployeeDetails
+}, {
+  path: '/employee-Detail/Address-History',
+  exact: true,
+  name: 'Oneform',
+  component: EmployeeDetails
+}, {
+  path: '/employee-Detail/Job-History',
   exact: true,
   name: 'Oneform',
   component: EmployeeDetails

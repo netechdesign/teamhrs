@@ -9,6 +9,7 @@ use DB;
 use App\Models\Employee_details;
 use App\Models\Application_Forms;
 use App\Models\Address_histories;
+use App\Models\Employment_historys;
 use App\Models\Offerletters;
 use App\User;
 
@@ -139,6 +140,44 @@ class Employee_detailsController extends Controller
         //
     }
 
+    public function Address_history($user_id){
+        
+        try{
+            $Address_histories = Address_histories::where('user_id',$user_id)->get();
+            /**current history */
+            $current_address = Employee_details::select('street','city','county','postcode','time_at_address_year','time_at_address_month')->where('user_id',$user_id)->first();
+                    
+            return response()->json(array('success' => true,'current_address'=>$current_address,'Address_histories'=> $Address_histories));
+            }
+        catch (\Exception $e) 
+           {
+                $message = $e->getMessage();
+                
+                $text = strstr($message, ':', true);
+            
+                return response()->json(array('success' => false,'message'=> $message));
+           }
+    
+    }
+    
+    public function job_history($user_id){
+        
+        try{
+             
+            $Employment_historys = Employment_historys::select('employment_historys.name','employment_historys.position','employment_historys.reason_for_leaving')->join('users','users.application_forms_id','=','employment_historys.application_forms_id')->where('users.id',$user_id)->get();
+                   
+            return response()->json(array('success' => true,'Employment_historys'=>$Employment_historys));
+            }
+        catch (\Exception $e) 
+           {
+                $message = $e->getMessage();
+                
+                $text = strstr($message, ':', true);
+            
+                return response()->json(array('success' => false,'message'=> $message));
+           }
+    
+    }
     /**
      * Display the specified resource.
      *

@@ -46,6 +46,8 @@ Route::group(['middleware' => ['jwt.auth','api-header']], function () {
         Route::resource('proof_of_identification', 'Proof_of_identificationController');
         Route::resource('documents', 'DocumentsController');
         Route::resource('leaves', 'User_leavesController');
+        Route::get('address_history/{id}', 'Employee_detailsController@Address_history');
+        Route::get('job_history/{id}', 'Employee_detailsController@job_history');
         
 
         Route::get('newapplicationcount', 'Application_formsController@newapplicationcount');
