@@ -72,6 +72,8 @@ let employeeForm='';
 let employeeList='';
 let checklist="";
 let employeeDetails='';
+let employeeHoliday="";
+let holidayList='';
 let permissions = this.props.permissions;
 if(permissions){
     
@@ -112,8 +114,16 @@ if(permissions){
                             title: 'New Employee Form',
                             type: 'item',
                             url: '/services-starter/Employee-Details',
+                            icon:'feather icon-file-text'
                   
 
+                        }
+                        employeeHoliday= {
+                            id: 'Holiday-list',
+                            title: 'Holiday',
+                            type: 'item',
+                            url: '/Employee/Holiday',
+                            icon: 'fa fa-plane'
                         }
                 
             }
@@ -131,7 +141,6 @@ if(permissions){
                             badge: this.state.newapplication
 
                         }
-                    
                 
                 
             }
@@ -159,6 +168,13 @@ if(permissions){
                     url: '/employee',
                     icon: 'feather icon-users'
                 }
+                holidayList= {
+                    id: 'Holiday-list',
+                    title: 'Holiday',
+                    type: 'item',
+                    url: '/Holiday',
+                    icon: 'fa fa-plane'
+                }
             }
         }
     })
@@ -182,7 +198,7 @@ if(permissions){
                         url: '/dashboard',
                         icon: 'feather icon-home'
                     },
-                    RoleUser,employeeForm,employeeList,checklist,employeeDetails 
+                    RoleUser,employeeForm,employeeList,checklist,employeeDetails,employeeHoliday,holidayList
                     ]
             }]
             

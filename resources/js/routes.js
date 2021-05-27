@@ -21,7 +21,9 @@ const ApplicationForm = React.lazy(() => import("./employee/ApplicationForm"));
 const List = React.lazy(()=>import("./employee/ApplicationForm/List") )
 const EmployeeList = React.lazy(() => import("./Back-Office/Employee"));
 const EmployeeDetails = React.lazy(() => import("./Back-Office/Employee/EmployeeDetails"));
-
+const Holiday = React.lazy(()=>import("./Back-Office/Pages/Holiday"));
+const HolidayEdit = React.lazy(() => import("./Back-Office/Pages/Holiday/AddHoliday"));
+const EmployeeHoliday = React.lazy(() => import("./employee/Holiday"));
 //For demo Examples
 const FormsSelect = React.lazy(() => import('./Demo/Forms/FormsSelect'));
 const DashboardEcommerce = React.lazy(() => import('./Demo/Dashboard/Ecommerce'));
@@ -59,6 +61,16 @@ const routes = [
     {path:'/employee-Detail/Bank-Details', exact:true, name:'Oneform',component:EmployeeDetails},
     { path:'/employee-Detail/Address-History', exact:true, name:'Oneform',component:EmployeeDetails},
     { path:'/employee-Detail/Job-History', exact:true, name:'Oneform',component:EmployeeDetails},
+    { path:'/employee-Detail/Holiday/Add', exact:true, name:'Oneform',component:EmployeeDetails},
+    { path:'/employee-Detail/Holiday', exact:true, name:'Oneform',component:EmployeeDetails},
+    { path:'/employee-Detail/Holiday/Edit/:id', exact:true, name:'Oneform',component:EmployeeDetails},
+    //all user holiday
+    { path:'/Holiday', exact:true, name:'Oneform',component:Holiday},
+    { path:'/Holiday/Edit/:id', exact:true, name:'Oneform',component:HolidayEdit},
+    { path:'/Employee/Holiday', exact:true, name:'Oneform',component:EmployeeHoliday},
+    { path:'/Employee/Holiday-Add', exact:true, name:'Oneform',component:EmployeeHoliday},
+    { path:'/Employee/Holiday-Edit/:id', exact:true, name:'Oneform',component:EmployeeHoliday},
+    
     // for demo Examples.
     { path: '/forms/form-select', exact: true, name: 'Forms Select', component: FormsSelect },
     { path: '/dashboard', exact: true, name: 'Default', component: DashboardDefault },

@@ -20,6 +20,8 @@ const Salary = React.lazy(() => import("./Tab/Salary"))
 const BankDetails = React.lazy(() => import("./Tab/BankDetails")) 
 const AddressHistory =React.lazy(()=> import("./Tab/AddressHistory"))
 const JobHistory =React.lazy(()=> import("./Tab/JobHistory"))
+const AddHoliday = React.lazy(()=>import("./Tab/AddHoliday"))
+const Holiday = React.lazy(() => import("./Tab/Holiday"))
 
 let id='';
 let data=[];
@@ -33,6 +35,10 @@ const routes = [
     { path:'/employee-Detail/Bank-Details', exact:true, name:'Oneform',component:BankDetails},
     { path:'/employee-Detail/Address-History', exact:true, name:'Oneform',component:AddressHistory},
     { path:'/employee-Detail/Job-History', exact:true, name:'Oneform',component:JobHistory},
+    { path:'/employee-Detail/Holiday/Add', exact:true, name:'Oneform',component:AddHoliday},
+    { path:'/employee-Detail/Holiday', exact:true, name:'Oneform',component:Holiday},
+    { path:'/employee-Detail/Holiday/Edit/:id', exact:true, name:'Oneform',component:AddHoliday},
+    
     ];
     const baseurl= window.location.origin;
     
@@ -162,7 +168,10 @@ render(){
                             <NavLink  to= {{pathname:'/employee-Detail/Address-History',state:{userId: this.state.id}}} className="nav-link"><i class="fa fa-map-marker" aria-hidden="true"></i> Address History</NavLink> 
                         </Nav.Item>
                         <Nav.Item>
-                    <NavLink  to= {{pathname:'/employee-Detail/Leave',state:{userId: this.state.id}}} className="nav-link"><i class="fa fa-minus-square" aria-hidden="true"></i> Leave</NavLink> 
+                                <NavLink  to= {{pathname:'/employee-Detail/Leave',state:{userId: this.state.id}}} className="nav-link"><i class="fa fa-minus-square" aria-hidden="true"></i> Leave</NavLink> 
+                        </Nav.Item>
+                        <Nav.Item>
+                                <NavLink  to= {{pathname:'/employee-Detail/Holiday',state:{userId: this.state.id}}} className="nav-link"><i class="fa fa-plane" aria-hidden="true"></i> Holiday</NavLink> 
                         </Nav.Item>
                         <Nav.Item>
                         

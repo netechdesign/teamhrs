@@ -1,5 +1,23 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[29],{
 
+/***/ "./node_modules/css-loader/dist/cjs.js?!./node_modules/postcss-loader/src/index.js?!./resources/js/employee/Holiday/employee.css":
+/*!************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??ref--6-1!./node_modules/postcss-loader/src??ref--6-2!./resources/js/employee/Holiday/employee.css ***!
+  \************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// Imports
+var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+exports = ___CSS_LOADER_API_IMPORT___(false);
+// Module
+exports.push([module.i, ".hovereffect:hover {\r\n    background: #e1f1fd;\r\n}\r\n\r\n.employeedetails .nav-pills .nav-link.active{\r\n    color: #fff;\r\n    background: linear-gradient(-135deg, #1de9b6 0%, #1dc4e9 100%) !important;\r\n    box-shadow: 0 0px 0px 0 rgb(0 0 0 / 20%) !important;\r\n}\r\n.pmd-list-subtitle{\r\n    color: #1dc4e9;\r\n    font-weight: bold;\r\n}\r\n.pmd-list-title{\r\n    color: #222222;\r\n}\r\n.dropdown-toggle{\r\n    border: none !important;\r\n    margin:0px !important;\r\n}\r\n\r\n#loader {\r\n    position: absolute;\r\n    left: 50%;\r\n    top: 50%;\r\n    z-index: 1;\r\n    width: 50px;\r\n    height: 50px;\r\n    margin: -76px 0 0 -76px;\r\n    border: 10px solid #f3f3f3;\r\n    border-radius: 50%;\r\n    border-top: 10px solid #3498db;\r\n    animation: spin 2s linear infinite;\r\n  }\r\n  \r\n ", ""]);
+// Exports
+module.exports = exports;
+
+
+/***/ }),
+
 /***/ "./node_modules/moment/locale sync recursive ^\\.\\/.*$":
 /*!**************************************************!*\
   !*** ./node_modules/moment/locale sync ^\.\/.*$ ***!
@@ -302,319 +320,170 @@ webpackContext.id = "./node_modules/moment/locale sync recursive ^\\.\\/.*$";
 
 /***/ }),
 
-/***/ "./node_modules/react-loki/es/LokiStep.js":
-/*!************************************************!*\
-  !*** ./node_modules/react-loki/es/LokiStep.js ***!
-  \************************************************/
-/*! exports provided: default */
+/***/ "./resources/js/HttpFunctions.js":
+/*!***************************************!*\
+  !*** ./resources/js/HttpFunctions.js ***!
+  \***************************************/
+/*! exports provided: baseurl, CheckPermission, Login, ChangePasswordurl, Pemissionlist, RoleAdd */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "baseurl", function() { return baseurl; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CheckPermission", function() { return CheckPermission; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Login", function() { return Login; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ChangePasswordurl", function() { return ChangePasswordurl; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Pemissionlist", function() { return Pemissionlist; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RoleAdd", function() { return RoleAdd; });
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./config */ "./resources/js/config.js");
+/* harmony import */ var pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! pnotify/dist/es/PNotify */ "./node_modules/pnotify/dist/es/PNotify.js");
 
 
 
-var LokiStep = function LokiStep(_ref) {
-  var currentStep = _ref.currentStep,
-      stepsDone = _ref.stepsDone,
-      totalSteps = _ref.totalSteps,
-      step = _ref.step,
-      isLokiComplete = _ref.isLokiComplete,
-      goTo = _ref.goTo;
+/**
+ *  baseurl  get baseurl
+ */
 
-  var isActive = currentStep === step.index;
-  var isComplete = currentStep > step.index;
-  var isDisabled = !isActive && !isComplete;
+var baseurl = window.location.origin;
+/**
+ * Login api request
+ * @param {*} user for send Credentials
+ */
 
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
-    "li",
-    {
-      className: "LokiStep " + (isActive && "LokiStep-Active") + " " + ((isComplete || isLokiComplete) && "LokiStep-Complete")
-    },
-    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
-      "a",
-      {
-        href: "#",
-        onClick: function onClick(event) {
-          event.preventDefault();
+var CheckPermission = function CheckPermission(page, page_name, history) {
+  var redirect = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : true;
 
-          if (isDisabled) {
-            return;
-          }
+  var _ref = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
+      id = _ref.id,
+      parmissions = _ref.parmissions,
+      is_one_time_password = _ref.is_one_time_password;
 
-          goTo(step.index);
-        },
-        className: "LokiStep-Link " + (isDisabled && "disabled"),
-        disabled: isDisabled
-      },
-      react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
-        "div",
-        { className: "LokiStep-Icon" },
-        step.icon || step.index
-      )
-    )
-  );
-};
-
-LokiStep.propTypes =  true ? {
-  currentStep: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.number.isRequired,
-  totalSteps: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.number.isRequired,
-  step: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.object.isRequired,
-  isLokiComplete: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.bool.isRequired
-} : undefined;
-
-/* harmony default export */ __webpack_exports__["default"] = (LokiStep);
-
-/***/ }),
-
-/***/ "./node_modules/react-loki/es/LokiStepContainer.js":
-/*!*********************************************************!*\
-  !*** ./node_modules/react-loki/es/LokiStepContainer.js ***!
-  \*********************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-
-
-var LokiStepContainer = function LokiStepContainer(_ref) {
-    var children = _ref.children;
-    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
-        "ol",
-        { className: "LokiSteps" },
-        children
-    );
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (LokiStepContainer);
-
-/***/ }),
-
-/***/ "./node_modules/react-loki/es/index.js":
-/*!*********************************************!*\
-  !*** ./node_modules/react-loki/es/index.js ***!
-  \*********************************************/
-/*! exports provided: default, LokiStepContainer, LokiStep */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Loki; });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _LokiStep__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./LokiStep */ "./node_modules/react-loki/es/LokiStep.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "LokiStep", function() { return _LokiStep__WEBPACK_IMPORTED_MODULE_2__["default"]; });
-
-/* harmony import */ var _LokiStepContainer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./LokiStepContainer */ "./node_modules/react-loki/es/LokiStepContainer.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "LokiStepContainer", function() { return _LokiStepContainer__WEBPACK_IMPORTED_MODULE_3__["default"]; });
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _class, _temp2;
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-
-
-
-
-
-
-var Loki = (_temp2 = _class = function (_Component) {
-  _inherits(Loki, _Component);
-
-  function Loki() {
-    var _temp, _this, _ret;
-
-    _classCallCheck(this, Loki);
-
-    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    return _ret = (_temp = (_this = _possibleConstructorReturn(this, _Component.call.apply(_Component, [this].concat(args))), _this), _this.state = {
-      currentStep: 1,
-      stepsDone: [],
-      complete: false
-    }, _temp), _possibleConstructorReturn(_this, _ret);
+  if (is_one_time_password == 0) {
+    history.push('/change-password');
   }
 
-  Loki.prototype._back = function _back(data) {
-    this.props.onBack && this.props.onBack(data);
-    this.setState({ currentStep: this.state.currentStep - 1 });
-  };
-
-  Loki.prototype._next = function _next(data) {
-    if (this.state.currentStep === this.props.steps.length) {
-      this.props.onFinish(data);
-      return this.setState({ complete: true });
+  var pages = parmissions.filter(function (vl, idx) {
+    if (Object.keys(vl)[0] == page) {
+      return vl;
     }
+  });
 
-    this.props.onNext && this.props.onNext(data);
-    this.setState({
-      currentStep: this.state.currentStep + 1,
-      stepsDone: this.state.stepsDone.concat([this.state.currentStep])
-    });
-  };
-
-  Loki.prototype._lokiData = function _lokiData() {
-    return {
-      currentStep: this.state.currentStep,
-      stepIndex: this.state.currentStep - 1,
-      cantBack: this.state.currentStep === 1,
-      isInFinalStep: this.state.currentStep === this.props.steps.length,
-      backHandler: this._back.bind(this),
-      nextHandler: this._next.bind(this)
-    };
-  };
-
-  Loki.prototype._renderSteps = function _renderSteps() {
-    var _this2 = this;
-
-    if (!this.props.steps) {
-      return;
-    }
-
-    if (this.props.renderSteps) {
-      return this.props.renderSteps(this._lokiData());
-    }
-
-    var steps = this.props.steps.map(function (step, index) {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_LokiStep__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        key: index,
-        stepsDone: _this2.state.stepsDone,
-        currentStep: _this2.state.currentStep,
-        totalSteps: _this2.props.steps.length,
-        step: _extends({}, step, { index: index + 1 }),
-        goTo: function goTo(newStep) {
-          return _this2.setState({ currentStep: newStep });
-        },
-        isLokiComplete: _this2.state.complete
-      });
+  if (pages.length > 0) {
+    var Ischeck = pages[0][page].filter(function (v, i) {
+      if (v['page_name'] == page_name) {
+        if (v['Ischeck']) {
+          return v;
+        }
+      }
     });
 
-    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
-      _LokiStepContainer__WEBPACK_IMPORTED_MODULE_3__["default"],
-      null,
-      steps
-    );
-  };
+    if (Ischeck.length == 0) {
+      if (redirect) {
+        history.goBack();
+      }
 
-  Loki.prototype._renderComponents = function _renderComponents() {
-    if (!this.props.steps) {
-      return;
-    }
-
-    if (this.props.renderComponents) {
-      return this.props.renderComponents(this._lokiData());
-    }
-
-    var _lokiData2 = this._lokiData(),
-        stepIndex = _lokiData2.stepIndex,
-        cantBack = _lokiData2.cantBack,
-        isInFinalStep = _lokiData2.isInFinalStep,
-        backHandler = _lokiData2.backHandler,
-        nextHandler = _lokiData2.nextHandler;
-
-    var component = this.props.steps[stepIndex].component;
-
-    if (this.props.noActions) {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.cloneElement(component, {
-        isComplete: this.state.complete,
-        backLabel: this.props.backLabel,
-        nextLabel: isInFinalStep ? this.props.finishLabel : this.props.nextLabel,
-        cantBack: cantBack,
-        isInFinalStep: isInFinalStep,
-        onBack: backHandler,
-        onNext: nextHandler
+      pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_2__["default"].error({
+        title: "Permission Error",
+        text: _config__WEBPACK_IMPORTED_MODULE_1__["default"].AccessDeniedMessage
       });
+      return 1;
     }
-
-    return component;
-  };
-
-  Loki.prototype._renderActions = function _renderActions() {
-    // If we don't want the buttons we do not render them
-    if (!this.props.steps || this.props.noActions) {
-      return;
+  } else {
+    history.goBack();
+  }
+};
+var Login = function Login(user) {
+  return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(baseurl + '/api/user/login', {
+    email: user.email,
+    password: user.password,
+    remember_me: user.remember
+  }, {
+    headers: {
+      'Content-Type': 'application/json'
     }
+  });
+};
+var ChangePasswordurl = function ChangePasswordurl(user) {
+  var _ref2 = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
+      id = _ref2.id,
+      auth_token = _ref2.auth_token;
 
-    var cantBack = this.state.currentStep === 1;
-    var isInFinalStep = this.state.currentStep === this.props.steps.length;
-
-    // If we want custom actions we render them
-    if (this.props.renderActions) {
-      return this.props.renderActions(this._lokiData());
+  return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(baseurl + '/api/user/changepassword', {
+    user_id: id,
+    new_password: user.new_password,
+    confirm_password: user.confirm_password,
+    current_password: user.current_password
+  }, {
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + auth_token
     }
+  });
+};
+var Pemissionlist = function Pemissionlist(parameter) {
+  var _ref3 = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
+      id = _ref3.id,
+      auth_token = _ref3.auth_token;
 
-    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
-      "div",
-      { className: "Loki-Actions" },
-      react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
-        "button",
-        {
-          type: "button",
-          onClick: this._back.bind(this),
-          disabled: cantBack || this.state.complete
-        },
-        this.props.backLabel
-      ),
-      react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
-        "button",
-        {
-          type: "button",
-          onClick: this._next.bind(this),
-          disabled: this.state.complete
-        },
-        isInFinalStep ? this.props.finishLabel : this.props.nextLabel
-      )
-    );
-  };
-
-  Loki.prototype.render = function render() {
-    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
-      "div",
-      { className: "Loki" },
-      this._renderSteps(),
-      this._renderComponents(),
-      this._renderActions()
-    );
-  };
-
-  return Loki;
-}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]), _class.defaultProps = {
-  backLabel: "Back",
-  nextLabel: "Next",
-  finishLabel: "Finish"
-}, _temp2);
-
-
-Loki.propTypes =  true ? {
-  steps: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.array.isRequired,
-  onFinish: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func.isRequired
-} : undefined;
-
-
+  return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(baseurl + '/api/parmission/list', {
+    'id': id
+  }, {
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + auth_token
+    }
+  });
+};
+var RoleAdd = function RoleAdd(role) {
+  return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(baseurl + '/api/role', {
+    email: role.email,
+    password: role.password,
+    remember_me: role.remember
+  }, {
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  });
+};
 
 /***/ }),
 
-/***/ "./resources/js/employee/ApplicationForm/index.js":
-/*!********************************************************!*\
-  !*** ./resources/js/employee/ApplicationForm/index.js ***!
-  \********************************************************/
+/***/ "./resources/js/employee/Holiday/employee.css":
+/*!****************************************************!*\
+  !*** ./resources/js/employee/Holiday/employee.css ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../node_modules/css-loader/dist/cjs.js??ref--6-1!../../../../node_modules/postcss-loader/src??ref--6-2!./employee.css */ "./node_modules/css-loader/dist/cjs.js?!./node_modules/postcss-loader/src/index.js?!./resources/js/employee/Holiday/employee.css");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./resources/js/employee/Holiday/index.js":
+/*!************************************************!*\
+  !*** ./resources/js/employee/Holiday/index.js ***!
+  \************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -624,35 +493,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
 /* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/index.js");
-/* harmony import */ var react_datetime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-datetime */ "./node_modules/react-datetime/DateTime.js");
-/* harmony import */ var react_datetime__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_datetime__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-bootstrap4-form-validation */ "./node_modules/react-bootstrap4-form-validation/lib/index.js");
-/* harmony import */ var react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var react_loki__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-loki */ "./node_modules/react-loki/es/index.js");
-/* harmony import */ var react_loadable__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-loadable */ "./node_modules/react-loadable/lib/index.js");
-/* harmony import */ var react_loadable__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react_loadable__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _hoc_Aux__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../hoc/_Aux */ "./resources/js/hoc/_Aux/index.js");
-/* harmony import */ var _store_constant__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../store/constant */ "./resources/js/store/constant.js");
-/* harmony import */ var react_text_mask__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-text-mask */ "./node_modules/react-text-mask/dist/reactTextMask.js");
-/* harmony import */ var react_text_mask__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(react_text_mask__WEBPACK_IMPORTED_MODULE_9__);
-/* harmony import */ var validator__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! validator */ "./node_modules/validator/index.js");
-/* harmony import */ var validator__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(validator__WEBPACK_IMPORTED_MODULE_10__);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_11__);
-/* harmony import */ var pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! pnotify/dist/es/PNotify */ "./node_modules/pnotify/dist/es/PNotify.js");
-/* harmony import */ var pnotify_dist_es_PNotifyButtons__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! pnotify/dist/es/PNotifyButtons */ "./node_modules/pnotify/dist/es/PNotifyButtons.js");
-/* harmony import */ var pnotify_dist_es_PNotifyConfirm__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! pnotify/dist/es/PNotifyConfirm */ "./node_modules/pnotify/dist/es/PNotifyConfirm.js");
-/* harmony import */ var pnotify_dist_es_PNotifyCallbacks__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! pnotify/dist/es/PNotifyCallbacks */ "./node_modules/pnotify/dist/es/PNotifyCallbacks.js");
-/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
-/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_16___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_16__);
-/* harmony import */ var sweetalert2_react_content__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! sweetalert2-react-content */ "./node_modules/sweetalert2-react-content/dist/sweetalert2-react-content.umd.js");
-/* harmony import */ var sweetalert2_react_content__WEBPACK_IMPORTED_MODULE_17___default = /*#__PURE__*/__webpack_require__.n(sweetalert2_react_content__WEBPACK_IMPORTED_MODULE_17__);
-/* harmony import */ var react_signature_canvas__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! react-signature-canvas */ "./node_modules/react-signature-canvas/build/index.js");
-/* harmony import */ var react_signature_canvas__WEBPACK_IMPORTED_MODULE_18___default = /*#__PURE__*/__webpack_require__.n(react_signature_canvas__WEBPACK_IMPORTED_MODULE_18__);
-/* harmony import */ var react_super_responsive_table__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! react-super-responsive-table */ "./node_modules/react-super-responsive-table/dist/index.js");
-/* harmony import */ var react_super_responsive_table__WEBPACK_IMPORTED_MODULE_19___default = /*#__PURE__*/__webpack_require__.n(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_19__);
-/* harmony import */ var react_super_responsive_table_dist_SuperResponsiveTableStyle_css__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! react-super-responsive-table/dist/SuperResponsiveTableStyle.css */ "./node_modules/react-super-responsive-table/dist/SuperResponsiveTableStyle.css");
-/* harmony import */ var react_super_responsive_table_dist_SuperResponsiveTableStyle_css__WEBPACK_IMPORTED_MODULE_20___default = /*#__PURE__*/__webpack_require__.n(react_super_responsive_table_dist_SuperResponsiveTableStyle_css__WEBPACK_IMPORTED_MODULE_20__);
+/* harmony import */ var _hoc_Aux__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../hoc/_Aux */ "./resources/js/hoc/_Aux/index.js");
+/* harmony import */ var _HttpFunctions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../HttpFunctions */ "./resources/js/HttpFunctions.js");
+/* harmony import */ var react_datetime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-datetime */ "./node_modules/react-datetime/DateTime.js");
+/* harmony import */ var react_datetime__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react_datetime__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _assets_images_user_avatar_6_png__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../assets/images/user/avatar-6.png */ "./resources/js/assets/images/user/avatar-6.png");
+/* harmony import */ var _assets_images_user_avatar_6_png__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_assets_images_user_avatar_6_png__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _employee_css__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./employee.css */ "./resources/js/employee/Holiday/employee.css");
+/* harmony import */ var _employee_css__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_employee_css__WEBPACK_IMPORTED_MODULE_9__);
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
@@ -699,143 +551,45 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
-
-
-
-
-
-
-
-
-
-
-
+var AddHoliday = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(20), __webpack_require__.e(77)]).then(__webpack_require__.bind(null, /*! ./Tab/AddHoliday */ "./resources/js/employee/Holiday/Tab/AddHoliday.js"));
+});
+var Holiday = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(2), __webpack_require__.e(13), __webpack_require__.e(17), __webpack_require__.e(14), __webpack_require__.e(16), __webpack_require__.e(75)]).then(__webpack_require__.bind(null, /*! ./Tab/Holiday */ "./resources/js/employee/Holiday/Tab/Holiday.js"));
+});
+var id = '';
+var data = [];
+var routes = [{
+  path: '/Employee/Holiday-Add',
+  exact: true,
+  name: 'Oneform',
+  component: AddHoliday
+}, {
+  path: '/Employee/Holiday',
+  exact: true,
+  name: 'Oneform',
+  component: Holiday
+}, {
+  path: '/Employee/Holiday-Edit/:id',
+  exact: true,
+  name: 'Oneform',
+  component: AddHoliday
+}];
 var baseurl = window.location.origin;
-var ajaxabort;
 
-function successDesktopPNotify(id) {
-  var message = "Appication Form Send successfully";
+var EmployeeDetails = /*#__PURE__*/function (_React$Component) {
+  _inherits(EmployeeDetails, _React$Component);
 
-  if (id != '') {
-    message = "Application Form updated successfully";
-  }
+  var _super = _createSuper(EmployeeDetails);
 
-  pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_12__["default"].success({
-    title: 'Success',
-    text: message,
-    modules: {
-      Desktop: {
-        desktop: true
-      }
-    }
-  }).on('click', function (e) {});
-}
-
-var ApplicationForm = /*#__PURE__*/function (_Component) {
-  _inherits(ApplicationForm, _Component);
-
-  var _super = _createSuper(ApplicationForm);
-
-  function ApplicationForm() {
+  function EmployeeDetails(props) {
     var _this;
 
-    _classCallCheck(this, ApplicationForm);
+    _classCallCheck(this, EmployeeDetails);
 
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
+    _this = _super.call(this, props);
 
-    _this = _super.call.apply(_super, [this].concat(args));
-
-    _defineProperty(_assertThisInitialized(_this), "state", {
-      _method: '',
-      id: "",
-      position_applied_for: "",
-      title: "",
-      fore_name: "",
-      surname: "",
-      email: "",
-      telephone_number: '',
-      getaddress_id: '',
-      address: '',
-      postcode: '',
-      selected_interview: '',
-      disability: '',
-      medical_condition: '',
-      medical_condition_reasonable: '',
-      any_convictions: '',
-      any_convictions_yes: '',
-      work_permit_uk: '',
-      qualifications: '',
-      employment_history: [{
-        name: '',
-        position: '',
-        reason_for_leaving: ''
-      }],
-      employment_references: [{
-        company_name: '',
-        name: '',
-        position: '',
-        telephone_no: '',
-        email: ''
-      }, {
-        company_name: '',
-        name: '',
-        position: '',
-        telephone_no: '',
-        email: ''
-      }],
-      unavailable_for_interview: '',
-      confirm_employee_name: '',
-      confirm_employee_signature: null,
-      confirm_employee_signature_show: null,
-      confirm_Date: new Date(),
-      information_provided_name: '',
-      information_provided_signature: null,
-      information_provided_signature_show: null,
-      information_provided_Date: new Date(),
-      chkBasic: false,
-      chkCustom: false,
-      checkMeSwitch: false,
-      showModal: false,
-      visible: true,
-      formSubmitting: false,
-      buttonName: 'Save'
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "handleCheckboxChange", function (e, value) {
-      _this.setState(_defineProperty({}, e.target.name, value));
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "handleChange", function (e) {
-      _this.setState(_defineProperty({}, e.target.name, e.target.value));
-
-      if (e.target.name == 'selected_interview') {
-        e.target.value == 'NO' ? _this.setState({
-          disability: ''
-        }) : '';
-      }
-
-      if (e.target.name == 'medical_condition') {
-        e.target.value == 'NO' ? _this.setState({
-          medical_condition_reasonable: ''
-        }) : '';
-      }
-
-      if (e.target.name == 'any_convictions') {
-        e.target.value == 'NO' ? _this.setState({
-          any_convictions_yes: ''
-        }) : '';
-      }
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "handleSubmit", function (e, formData, inputs) {
-      e.preventDefault();
-
-      _this.setState({
-        formSubmitting: true
-      });
-
+    _defineProperty(_assertThisInitialized(_this), "alreadyAdded", function (id) {
       _this.setState({
         buttonName: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
           className: "spinner-grow spinner-grow-sm mr-1",
@@ -844,40 +598,31 @@ var ApplicationForm = /*#__PURE__*/function (_Component) {
       });
 
       var _ref = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
-          id = _ref.id,
-          auth_token = _ref.auth_token; //const data = new FormData()
-      //data.append('name', this.state.name);
+          auth_token = _ref.auth_token;
 
-
-      var formdata = _this.state;
-      var urlid = '';
-
-      if (_this.state.id != '') {
-        urlid = '/' + _this.state.id;
-      }
-
-      axios__WEBPACK_IMPORTED_MODULE_11___default.a.post(baseurl + '/api/application_form' + urlid, _this.state, {
+      axios__WEBPACK_IMPORTED_MODULE_7___default.a.get(baseurl + '/api/employee_details/' + id, {
+        params: {
+          'employee_details': '1'
+        },
         headers: {
           'Accept': 'application/json',
           'Authorization': 'Bearer ' + auth_token
         }
       }).then(function (res) {
         if (res.data.success) {
-          // console.log(res.data.data);
-          _this.setState({
-            formSubmitting: false
+          // this.getAddress(res.data.Employee_details.getaddress_id);
+          var employee_details = res.data.Employee_details;
+          data = employee_details;
+
+          _this.setState(function (previousState) {
+            return {
+              employee_details: [].concat(_toConsumableArray(previousState.employee_details), [employee_details])
+            };
           });
 
           _this.setState({
-            buttonName: 'Save'
+            apiload: false
           });
-
-          successDesktopPNotify(_this.state.id);
-          var userData = JSON.parse(localStorage.getItem('userData'));
-          userData.application_forms_id = 1;
-          localStorage.setItem('userData', JSON.stringify(userData));
-
-          _this.props.history.push('/dashboard');
         } else {
           var errorMassage = '';
 
@@ -886,11 +631,6 @@ var ApplicationForm = /*#__PURE__*/function (_Component) {
           } else {
             errorMassage = res.data.email;
           }
-
-          pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_12__["default"].error({
-            title: "System Error",
-            text: errorMassage
-          });
 
           _this.setState({
             formSubmitting: false
@@ -901,7 +641,7 @@ var ApplicationForm = /*#__PURE__*/function (_Component) {
           });
         }
       })["catch"](function (err) {
-        pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_12__["default"].error({
+        PNotify.error({
           title: "System Error",
           text: err
         });
@@ -917,871 +657,83 @@ var ApplicationForm = /*#__PURE__*/function (_Component) {
         _this.setState({
           selectedFile: null
         });
-      }); //  this.props.history.push('/role');
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "handleErrorSubmit", function (e, formData, errorInputs) {//console.log(errorInputs);
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "locationChange", function (e) {
-      var currentCar = parseInt(e.target.value.length) + 1;
-
-      if (currentCar > 2) {
-        $('#addressList').html('<li class="list-group-item">Loading...</li>');
-        var currentVal = e.target.value;
-
-        if (ajaxabort && ajaxabort.readyState != 4) {
-          ajaxabort.abort();
-        }
-
-        var self = _assertThisInitialized(_this);
-
-        ajaxabort = $.ajax({
-          dataType: 'json',
-          method: 'get',
-          url: "https://api.getaddress.io/autocomplete/" + currentVal + "?api-key=XrOjpdAkTEiMj4o5WV_uSQ26499&all=true",
-          beforeSend: function beforeSend() {
-            // setting a timeout
-            $('#addressList').html('<li class="list-group-item">Loading...</li>');
-          },
-          success: function success(data) {
-            var listData = '';
-
-            if (data.suggestions.length > 0) {
-              $.each(data.suggestions, function (key, val) {
-                listData += '<li class="list-group-item getArress" data-id="' + val.id + '">' + val.address + '</li>';
-              });
-              $('#addressList').html(listData).show();
-              $('.getArress').click(function () {
-                var id = $(this).attr('data-id');
-                self.getAddress(id);
-              });
-            } else {
-              listData += '<li class="list-group-item">Address not found</li>';
-              $('#addressList').html(listData);
-            }
-          }
-        });
-      }
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "getAddress", function (id) {
-      var self = _assertThisInitialized(_this);
-
-      $.ajax({
-        dataType: 'json',
-        method: 'get',
-        url: "https://api.getAddress.io/get/" + id + "?api-key=XrOjpdAkTEiMj4o5WV_uSQ26499",
-        success: function success(data) {
-          var fullAddress = '';
-
-          if (data.formatted_address) {
-            $.each(data.formatted_address, function (k, vl) {
-              if (vl != '') {
-                fullAddress += vl + ', ';
-              }
-            });
-          }
-
-          var houseno = data.building_number + ' ' + data.building_name;
-          self.setState({
-            house_no: houseno
-          });
-          var street_line = '';
-
-          if (data.line_1 != '') {
-            street_line = data.line_1;
-          }
-
-          if (data.line_2 != '') {//  street_line +=' ,'+data.line_2;
-          }
-
-          if (data.line_3 != '') {
-            street_line += ' ,' + data.line_3;
-          }
-
-          if (data.line_4 != '') {
-            street_line += ' ,' + data.line_4;
-          }
-
-          self.setState({
-            street: street_line
-          });
-          self.setState({
-            city: data.town_or_city
-          });
-          self.setState({
-            county: data.county
-          });
-          self.setState({
-            postcode: data.postcode
-          });
-          self.setState({
-            getaddress_id: id
-          });
-          self.setState({
-            address: fullAddress + ' ' + data.postcode
-          }); // data.latitude data.longitude
-
-          $("#location").val('');
-          $('#addressList').html('').hide();
-        }
       });
     });
 
-    _defineProperty(_assertThisInitialized(_this), "handleClickOutside", function (e) {
-      $('#addressList').html('').hide(); //$('#location').val('');
-    });
+    _this.state = {
+      id: id,
+      employee_details: []
+    };
 
-    _defineProperty(_assertThisInitialized(_this), "employment_historyChange", function (element) {
-      var index = element.target.id;
+    if (_this.props.location.state) {
+      id = _this.props.location.state.userId;
 
-      if (element.target.name == 'name') {
-        _this.state.employment_history[index].name = element.target.value;
-      }
-
-      if (element.target.name == 'position') {
-        _this.state.employment_history[index].position = element.target.value;
-      }
-
-      if (element.target.name == 'reason_for_leaving') {
-        _this.state.employment_history[index].reason_for_leaving = element.target.value;
-      }
-
-      _this.setState({
-        employment_history: _this.state.employment_history
-      });
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "employment_historyDelete", function (element) {
-      var index = element.target.id;
-
-      if (index !== -1) {
-        var MySwal = sweetalert2_react_content__WEBPACK_IMPORTED_MODULE_17___default()(sweetalert2__WEBPACK_IMPORTED_MODULE_16___default.a);
-        MySwal.fire({
-          title: 'Are you sure?',
-          text: 'test',
-          type: 'warning',
-          showCloseButton: true,
-          showCancelButton: true
-        }).then(function (willDelete) {
-          if (willDelete.value) {
-            var employment_history = _this.state.employment_history;
-            employment_history.splice(index, 1);
-
-            _this.setState({
-              employment_history: employment_history
-            });
-          } else {}
-        });
-      }
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "addEmployment", function () {
-      var employment_history = {
-        name: '',
-        position: '',
-        reason_for_leaving: ''
-      };
-
-      if (_this.state.employment_history.length < 5) {
-        _this.setState(function (previousState) {
-          return {
-            employment_history: [].concat(_toConsumableArray(previousState.employment_history), [employment_history])
-          };
-        });
-      }
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "employment_referencesChange", function (element) {
-      var index = element.target.id;
-
-      if (element.target.name == 'company_name') {
-        _this.state.employment_references[index].company_name = element.target.value;
-      }
-
-      if (element.target.name == 'name') {
-        _this.state.employment_references[index].name = element.target.value;
-      }
-
-      if (element.target.name == 'position') {
-        _this.state.employment_references[index].position = element.target.value;
-      }
-
-      if (element.target.name == 'telephone_no') {
-        _this.state.employment_references[index].telephone_no = element.target.value;
-      }
-
-      if (element.target.name == 'email') {
-        _this.state.employment_references[index].email = element.target.value;
-      }
-
-      _this.setState({
-        employment_references: _this.state.employment_references
-      });
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "confirm_employee", {});
-
-    _defineProperty(_assertThisInitialized(_this), "confirm_employee_trim", function () {
-      _this.setState({
-        confirm_employee_signature: _this.confirm_employee.getTrimmedCanvas().toDataURL('image/png')
-      });
-
-      _this.setState({
-        confirm_employee_signature_show: _this.state.confirm_employee_signature
-      });
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "confirm_employee_clear", function () {
-      _this.confirm_employee.clear();
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "confirmChange", function (e) {
-      _this.setState({
-        confirm_Date: e
-      });
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "information_provided", {});
-
-    _defineProperty(_assertThisInitialized(_this), "information_provided_trim", function () {
-      _this.setState({
-        information_provided_signature: _this.information_provided.getTrimmedCanvas().toDataURL('image/png')
-      });
-
-      _this.setState({
-        information_provided_signature_show: _this.state.information_provided_signature
-      });
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "information_provided_clear", function () {
-      _this.information_provided.clear();
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "information_providedChange", function (e) {
-      _this.setState({
-        information_provided_Date: e
-      });
-    });
+      _this.alreadyAdded(id);
+    }
 
     return _this;
   }
 
-  _createClass(ApplicationForm, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      var _ref2 = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
-          name = _ref2.name,
-          email = _ref2.email;
-
-      var emailaddress = email;
-      this.setState({
-        first_name: name,
-        confirm_employee_name: name,
-        information_provided_name: name
-      });
-      this.setState({
-        email: emailaddress
-      });
-    }
-  }, {
+  _createClass(EmployeeDetails, [{
     key: "render",
     value: function render() {
-      var _this2 = this;
-
-      var employmenthistoryList = this.state.employment_history.map(function (item, index) {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_19__["Tr"], {
-          key: index
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_19__["Td"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_4__["TextInput"], {
-          name: "name",
-          value: item.name,
-          id: index,
-          onChange: function onChange(e) {
-            return _this2.employment_historyChange(e);
-          },
-          placeholder: "Company Name",
-          required: index != 0 ? true : false,
-          autoComplete: "off"
-        })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_19__["Td"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_4__["TextInput"], {
-          name: "position",
-          value: item.position,
-          id: index,
-          onChange: function onChange(e) {
-            return _this2.employment_historyChange(e);
-          },
-          placeholder: "Position",
-          required: index != 0 ? true : false,
-          autoComplete: "off"
-        })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_19__["Td"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_4__["TextInput"], {
-          name: "reason_for_leaving",
-          value: item.reason_for_leaving,
-          id: index,
-          onChange: function onChange(e) {
-            return _this2.employment_historyChange(e);
-          },
-          placeholder: "Reason for leaving",
-          required: index != 0 ? true : false,
-          autoComplete: "off"
-        })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_19__["Td"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Button"], {
-          variant: "outline-danger",
-          style: {
-            display: index == 0 ? 'none' : ''
-          },
-          id: index,
-          onClick: function onClick(e) {
-            return _this2.employment_historyDelete(e);
-          },
-          size: "sm"
-        }, "X"), index == 0 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Button"], {
-          variant: "secondary",
-          onClick: _this2.addEmployment,
-          size: "sm"
-        }, "+Add") : ''));
+      var menu = routes.map(function (route, index) {
+        return route.component ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+          key: index,
+          path: route.path,
+          exact: route.exact,
+          name: route.name,
+          render: function render(props) {
+            return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(route.component, props);
+          }
+        }) : null;
       });
-      var referencesList = this.state.employment_references.map(function (item, index) {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
-          key: index
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_4__["TextInput"], {
-          name: "company_name",
-          value: item.company_name,
-          id: index,
-          onChange: function onChange(e) {
-            return _this2.employment_referencesChange(e);
-          },
-          placeholder: "Company Name",
-          required: index != 1 ? true : false,
-          autoComplete: "off"
-        })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_4__["TextInput"], {
-          name: "name",
-          value: item.name,
-          id: index,
-          onChange: function onChange(e) {
-            return _this2.employment_referencesChange(e);
-          },
-          placeholder: "Name",
-          required: index != 1 ? true : false,
-          autoComplete: "off"
-        })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_4__["TextInput"], {
-          name: "position",
-          value: item.position,
-          id: index,
-          onChange: function onChange(e) {
-            return _this2.employment_referencesChange(e);
-          },
-          placeholder: "Position",
-          required: index != 1 ? true : false,
-          autoComplete: "off"
-        })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_4__["TextInput"], {
-          name: "telephone_no",
-          value: item.telephone_no,
-          id: index,
-          onChange: function onChange(e) {
-            return _this2.employment_referencesChange(e);
-          },
-          placeholder: "Telephone No",
-          required: index != 1 ? true : false,
-          autoComplete: "off"
-        })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_4__["TextInput"], {
-          name: "email",
-          value: item.email,
-          id: index,
-          onChange: function onChange(e) {
-            return _this2.employment_referencesChange(e);
-          },
-          placeholder: "Email",
-          required: index != 1 ? true : false,
-          autoComplete: "off"
-        })));
-      });
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_hoc_Aux__WEBPACK_IMPORTED_MODULE_7__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"].Header, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"].Title, {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_hoc_Aux__WEBPACK_IMPORTED_MODULE_3__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"].Header, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"].Title, {
         as: "h5"
-      }, "Application Form")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_4__["ValidationForm"], {
-        autoComplete: "off",
-        id: "formid",
-        onSubmit: this.handleSubmit,
-        onErrorSubmit: this.handleErrorSubmit
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Row, {
-        style: style.rowline
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
-        md: "6"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Label, {
-        htmlFor: "position_applied_for"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "POSITION APPLIED FOR")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_4__["TextInput"], {
-        name: "position_applied_for",
-        id: "position_applied_for",
-        placeholder: "Position applied for",
-        required: true,
-        value: this.state.position_applied_for,
-        onChange: this.handleChange,
-        autoComplete: "off"
-      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Row, {
-        style: style.rowline
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
-        md: "12"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "PERSONAL DETAILS")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
-        md: "2"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Label, {
-        htmlFor: "first_name"
-      }, "Title"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_4__["TextInput"], {
-        name: "title",
-        id: "title",
-        placeholder: "Title",
-        required: true,
-        value: this.state.title,
-        onChange: this.handleChange,
-        autoComplete: "off"
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
-        md: "2"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Label, {
-        htmlFor: "asm_name"
-      }, "Fore Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_4__["TextInput"], {
-        name: "fore_name",
-        id: "fore_name",
-        type: "text",
-        placeholder: "Fore Name",
-        value: this.state.fore_name,
-        onChange: this.handleChange,
-        autoComplete: "off"
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
-        md: "2"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Label, {
-        htmlFor: "surname"
-      }, "Surname"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_4__["TextInput"], {
-        name: "surname",
-        id: "surname",
-        placeholder: "Surname",
-        value: this.state.surname,
-        onChange: this.handleChange,
-        autoComplete: "off"
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
-        md: "2"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Label, {
-        htmlFor: "email"
-      }, "Email"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_4__["TextInput"], {
-        name: "email",
-        id: "email",
-        type: "text",
-        placeholder: "Email",
-        onChange: this.handleChange,
-        required: true,
-        value: this.state.email,
-        autoComplete: "off"
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
-        md: "2"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Label, {
-        htmlFor: "telephone_number"
-      }, "Telephone Number"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_4__["TextInput"], {
-        name: "telephone_number",
-        id: "telephone_number",
-        type: "text",
-        placeholder: "Telephone Number",
-        onChange: this.handleChange,
-        required: true,
-        value: this.state.telephone_number,
-        autoComplete: "off"
-      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Row, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
-        md: "2"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Label, {
-        htmlFor: "mobile_number"
-      }, "\xA0"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_4__["TextInput"], {
-        name: "location",
-        id: "location",
-        type: "text",
-        placeholder: "Search Address",
-        onChange: this.locationChange,
-        autoComplete: "off"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-        className: "list-group",
-        id: "addressList",
+      }, "Holiday")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
+        "class": "navbar navbar-expand-lg  navbar-expand-sm  navbar-light bg-light"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        "class": "collapse navbar-collapse",
         style: {
-          display: 'none',
-          position: 'absolute',
-          zIndex: '100',
-          height: '600%',
-          overflowY: 'overlay'
-        }
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
-        md: "4"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Label, {
-        htmlFor: "mobile_number"
-      }, "Address"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_4__["TextInput"], {
-        name: "address",
-        id: "address",
-        type: "text",
-        placeholder: "Address",
-        onChange: this.handleChange,
-        required: true,
-        value: this.state.address,
-        autoComplete: "off"
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
-        md: "2"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Label, {
-        htmlFor: "mobile_number"
-      }, "Postcode"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_4__["TextInput"], {
-        name: "postcode",
-        id: "postcode",
-        type: "text",
-        placeholder: "Postcode",
-        onChange: this.handleChange,
-        required: true,
-        value: this.state.postcode,
-        autoComplete: "off"
-      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Row, {
-        style: style.rowline
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
-        md: "12"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Label, {
-        htmlFor: "selected_interview"
-      }, "If selected for interview, do you require any reasonable adjustments to be made on account of a disability? (delete as appropriate)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "custom-controls-stacked radio"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_4__["Radio"].RadioGroup, {
-        name: "selected_interview",
-        required: true,
-        valueSelected: this.state.selected_interview,
-        inline: true,
-        onChange: this.handleChange
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_4__["Radio"].RadioItem, {
-        id: "selected_interview4",
-        label: "YES",
-        value: "YES"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_4__["Radio"].RadioItem, {
-        id: "selected_interview5",
-        label: "NO",
-        value: "NO"
-      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Label, {
-        htmlFor: "selected_interview"
-      }, "Please tell us if there are any \u2018reasonable adjustments\u2019 we can make to assist you in your application or with our recruitment process\u2026\u2026"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_4__["TextInput"], {
-        name: "disability",
-        id: "disability",
-        type: "text",
-        placeholder: "",
-        onChange: this.handleChange,
-        readOnly: this.state.selected_interview == "YES" ? false : true,
-        value: this.state.disability,
-        autoComplete: "off"
-      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Row, {
-        style: style.rowline
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
-        md: "12"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Label, {
-        htmlFor: "selected_interview"
-      }, "If selected for interview, do you require any reasonable adjustments to be made on account of a medical condition? (delete as appropriate)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "custom-controls-stacked radio"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_4__["Radio"].RadioGroup, {
-        name: "medical_condition",
-        required: true,
-        valueSelected: this.state.medical_condition,
-        inline: true,
-        onChange: this.handleChange
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_4__["Radio"].RadioItem, {
-        id: "medical_condition4",
-        label: "YES",
-        value: "YES"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_4__["Radio"].RadioItem, {
-        id: "medical_condition5",
-        label: "NO",
-        value: "NO"
-      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Label, {
-        htmlFor: "selected_interview"
-      }, "Please tell us if there are any \u2018reasonable adjustments\u2019 we can make to assist you in your application or with our recruitment process\u2026\u2026"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_4__["TextInput"], {
-        name: "medical_condition_reasonable",
-        id: "medical_condition_reasonable",
-        type: "text",
-        placeholder: "",
-        onChange: this.handleChange,
-        readOnly: this.state.medical_condition == "YES" ? false : true,
-        value: this.state.medical_condition_reasonable,
-        autoComplete: "off"
-      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Row, {
-        style: style.rowline
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
-        md: "12"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Label, {
-        htmlFor: "selected_interview"
-      }, "Have you any convictions that are not spent under the rehabilitation of offenders act? (delete as appropriate)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "custom-controls-stacked radio"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_4__["Radio"].RadioGroup, {
-        name: "any_convictions",
-        required: true,
-        valueSelected: this.state.any_convictions,
-        inline: true,
-        onChange: this.handleChange
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_4__["Radio"].RadioItem, {
-        id: "any_convictions4",
-        label: "YES",
-        value: "YES"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_4__["Radio"].RadioItem, {
-        id: "any_convictions5",
-        label: "NO",
-        value: "NO"
-      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Label, {
-        htmlFor: "any_convictions"
-      }, "If Yes, please provide further details:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_4__["TextInput"], {
-        name: "any_convictions_yes",
-        id: "any_convictions_yes",
-        type: "text",
-        placeholder: "",
-        onChange: this.handleChange,
-        readOnly: this.state.any_convictions == "YES" ? false : true,
-        value: this.state.any_convictions_yes,
-        autoComplete: "off"
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
-        md: "12"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Label, {
-        htmlFor: "selected_interview"
-      }, "Do you need a work permit to be employed in the UK? (delete as appropriate)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "custom-controls-stacked radio"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_4__["Radio"].RadioGroup, {
-        name: "work_permit_uk",
-        required: true,
-        valueSelected: this.state.work_permit_uk,
-        inline: true,
-        onChange: this.handleChange
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_4__["Radio"].RadioItem, {
-        id: "work_permit_uk4",
-        label: "YES",
-        value: "YES"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_4__["Radio"].RadioItem, {
-        id: "work_permit_uk5",
-        label: "NO",
-        value: "NO"
-      }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Row, {
-        style: style.rowline
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
-        md: "12"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "QUALIFICATIONS")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
-        md: "12"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Label, {
-        htmlFor: "first_name"
-      }, "I confirm that I have the minimum required qualifications for the role I am applying for, please specify below:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_4__["TextInput"], {
-        name: "qualifications",
-        id: "qualifications",
-        placeholder: "",
-        multiline: true,
-        required: true,
-        value: this.state.qualifications,
-        onChange: this.handleChange,
-        rows: "3",
-        autoComplete: "off"
-      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Row, {
-        style: style.rowline
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
-        md: "12"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "EMPLOYMENT HISTORY (5YEARS)")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
-        md: "12"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_19__["Table"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_19__["Thead"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_19__["Tr"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_19__["Th"], {
-        width: "20%"
-      }, "Company Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_19__["Th"], {
-        width: "30%"
-      }, "Position"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_19__["Th"], {
-        width: "40%"
-      }, "Reason for leaving"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_19__["Th"], {
-        width: "10%"
-      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_19__["Tbody"], null, employmenthistoryList)))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Row, {
-        style: style.rowline
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
-        md: "12"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "REFERENCES"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Please provide details of two referees, one should be your most recent employer. By providing their details, you consent to us contacting them.")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
-        md: "12"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_19__["Table"], {
-        responsive: true
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        width: "20%"
-      }, "Company Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        width: "20%"
-      }, "Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        width: "20%"
-      }, "Position"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        width: "20%"
-      }, "Telephone No."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        width: "20%"
-      }, "Email"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, referencesList))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
-        md: "12"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Label, {
-        htmlFor: "first_name"
-      }, "Please tell us if there are any dates that you would be unavailable for interview\u2026\u2026"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_4__["TextInput"], {
-        name: "unavailable_for_interview",
-        id: "unavailable_for_interview",
-        placeholder: "",
-        multiline: true,
-        required: true,
-        value: this.state.unavailable_for_interview,
-        onChange: this.handleChange,
-        rows: "3",
-        autoComplete: "off"
-      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Row, {
-        style: style.rowline
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
-        md: "12"
-      }, "I confirm that the information I have provided on this form is correct and I accept that providing deliberately false information could result in my dismissal."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
-        md: "3"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Label, {
-        htmlFor: "confirm_employee_name"
-      }, "Employee Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_4__["TextInput"], {
-        name: "confirm_employee_name",
-        id: "confirm_employee_name",
-        placeholder: "Employee Name",
-        required: true,
-        value: this.state.fore_name + " " + this.state.surname,
-        onChange: this.handleChange,
-        autoComplete: "off"
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
-        md: "4"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_signature_canvas__WEBPACK_IMPORTED_MODULE_18___default.a, {
-        penColor: "black",
-        dotSize: function dotSize() {
-          return (_this2.minWidth + _this2.maxWidth) / 5;
+          display: 'block'
         },
-        canvasProps: {
-          width: 300,
-          height: 100,
-          className: 'sigCanvas'
-        },
-        ref: function ref(_ref3) {
-          _this2.confirm_employee = _ref3;
-        },
-        onEnd: this.confirm_employee_trim
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        type: "button",
+        id: "navbarText"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        "class": "navbar-nav mr-auto formnev"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        "class": "nav-item"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
+        to: "/Employee/Holiday",
+        className: "nav-link link",
+        activeClassName: "active",
         style: {
-          position: 'absolute',
-          bottom: '6px'
-        },
-        onClick: this.confirm_employee_clear
-      }, "Clear")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
-        md: "2"
-      }, this.state.confirm_employee_signature_show ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: this.state.confirm_employee_signature_show
-      }) : null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
-        md: "2"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Label, {
-        htmlFor: "region"
-      }, "Signature Date"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_datetime__WEBPACK_IMPORTED_MODULE_3___default.a, {
-        closeOnSelect: true,
-        onChange: this.confirmChange,
-        value: this.state.confirm_Date,
-        dateFormat: "D/M/Y",
-        timeFormat: false,
-        maxDate: new Date(),
-        inputProps: {
-          required: 'required',
-          name: "confirm_Date",
-          placeholder: 'Select Date',
-          autoComplete: 'off'
+          borderRight: 'solid 1px #04a9f5'
         }
-      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Row, {
-        style: style.rowline
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
-        md: "12"
-      }, "I hereby give my consent for the contact information provided on this form to be held on computer or other relevant filing systems and to be shared with other accredited organisations or agencies for recruitment opportunities."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
-        md: "3"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Label, {
-        htmlFor: "information provided_name"
-      }, "Employee Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_4__["TextInput"], {
-        name: "information_provided_name",
-        id: "information_provided_name",
-        placeholder: "Employee Name",
-        required: true,
-        value: this.state.fore_name + " " + this.state.surname,
-        onChange: this.handleChange,
-        autoComplete: "off"
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
-        md: "4"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_signature_canvas__WEBPACK_IMPORTED_MODULE_18___default.a, {
-        penColor: "black",
-        dotSize: function dotSize() {
-          return (_this2.minWidth + _this2.maxWidth) / 5;
-        },
-        canvasProps: {
-          width: 300,
-          height: 100,
-          className: 'sigCanvas'
-        },
-        ref: function ref(_ref4) {
-          _this2.information_provided = _ref4;
-        },
-        onEnd: this.information_provided_trim
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        type: "button",
+      }, "Holiday")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        "class": "nav-item"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
+        to: "/Employee/Holiday-Add",
+        className: "nav-link link",
         style: {
-          position: 'absolute',
-          bottom: '6px'
-        },
-        onClick: this.information_provided_clear
-      }, "Clear")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
-        md: "2"
-      }, this.state.information_provided_signature_show ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: this.state.information_provided_signature_show
-      }) : null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
-        md: "2"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Label, {
-        htmlFor: "region"
-      }, "Signature Date"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_datetime__WEBPACK_IMPORTED_MODULE_3___default.a, {
-        closeOnSelect: true,
-        onChange: this.information_providedChange,
-        value: this.state.information_provided_Date,
-        dateFormat: "D/M/Y",
-        timeFormat: false,
-        maxDate: new Date(),
-        inputProps: {
-          required: 'required',
-          name: "confirm_Date",
-          placeholder: 'Select Date',
-          autoComplete: 'off'
+          borderRight: 'solid 1px #04a9f5'
         }
-      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Row, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
-        sm: 12,
-        className: "mt-3"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Button"], {
-        disabled: this.state.formSubmitting,
-        type: "submit"
-      }, " ", this.state.buttonName)))))))));
+      }, "Add Holiday"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        "class": "navbar-text"
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "tabs"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0__["Suspense"], {
+        fallback: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("loaders", null)
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Switch"], null, menu, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Redirect"], {
+        from: "/",
+        to: "/Employee/Holiday"
+      })))))))));
     }
   }]);
 
-  return ApplicationForm;
-}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+  return EmployeeDetails;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-var style = {
-  rowline: {
-    borderBottom: 'solid 1px #f8f9fa',
-    marginBottom: '15px'
-  }
-};
-/* harmony default export */ __webpack_exports__["default"] = (ApplicationForm);
+/* harmony default export */ __webpack_exports__["default"] = (EmployeeDetails);
 
 /***/ })
 

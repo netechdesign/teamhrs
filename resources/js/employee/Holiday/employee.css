@@ -1,0 +1,37 @@
+.hovereffect:hover {
+    background: #e1f1fd;
+}
+
+.employeedetails .nav-pills .nav-link.active{
+    color: #fff;
+    background: linear-gradient(-135deg, #1de9b6 0%, #1dc4e9 100%) !important;
+    box-shadow: 0 0px 0px 0 rgb(0 0 0 / 20%) !important;
+}
+.pmd-list-subtitle{
+    color: #1dc4e9;
+    font-weight: bold;
+}
+.pmd-list-title{
+    color: #222222;
+}
+.dropdown-toggle{
+    border: none !important;
+    margin:0px !important;
+}
+
+#loader {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: 1;
+    width: 50px;
+    height: 50px;
+    margin: -76px 0 0 -76px;
+    border: 10px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 10px solid #3498db;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+  }
+  
+ 
