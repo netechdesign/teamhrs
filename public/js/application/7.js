@@ -421,6 +421,9 @@ var AddHoliday = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(
 var Holiday = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
   return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(2), __webpack_require__.e(13), __webpack_require__.e(17), __webpack_require__.e(14), __webpack_require__.e(16), __webpack_require__.e(71)]).then(__webpack_require__.bind(null, /*! ./Tab/Holiday */ "./resources/js/Back-Office/Employee/Tab/Holiday.js"));
 });
+var HolidayCalendar = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(78), __webpack_require__.e(79)]).then(__webpack_require__.bind(null, /*! ./Tab/HolidayCalendar */ "./resources/js/Back-Office/Employee/Tab/HolidayCalendar.js"));
+});
 var id = '';
 var data = [];
 var routes = [{
@@ -483,6 +486,11 @@ var routes = [{
   exact: true,
   name: 'Oneform',
   component: AddHoliday
+}, {
+  path: '/employee-Detail/Holiday/Calendar',
+  exact: true,
+  name: 'Oneform',
+  component: HolidayCalendar
 }];
 var baseurl = window.location.origin;
 

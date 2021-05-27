@@ -22,6 +22,7 @@ const AddressHistory =React.lazy(()=> import("./Tab/AddressHistory"))
 const JobHistory =React.lazy(()=> import("./Tab/JobHistory"))
 const AddHoliday = React.lazy(()=>import("./Tab/AddHoliday"))
 const Holiday = React.lazy(() => import("./Tab/Holiday"))
+const HolidayCalendar = React.lazy(() => import("./Tab/HolidayCalendar"))
 
 let id='';
 let data=[];
@@ -38,6 +39,8 @@ const routes = [
     { path:'/employee-Detail/Holiday/Add', exact:true, name:'Oneform',component:AddHoliday},
     { path:'/employee-Detail/Holiday', exact:true, name:'Oneform',component:Holiday},
     { path:'/employee-Detail/Holiday/Edit/:id', exact:true, name:'Oneform',component:AddHoliday},
+    { path:'/employee-Detail/Holiday/Calendar', exact:true, name:'Oneform',component:HolidayCalendar},
+    
     
     ];
     const baseurl= window.location.origin;

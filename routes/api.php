@@ -50,6 +50,7 @@ Route::group(['middleware' => ['jwt.auth','api-header']], function () {
         
         Route::get('address_history/{id}', 'Employee_detailsController@Address_history');
         Route::get('job_history/{id}', 'Employee_detailsController@job_history');
+        Route::post('holiday_calendar', 'HolidayController@Holiday_calendar');
         
 
         Route::get('newapplicationcount', 'Application_formsController@newapplicationcount');

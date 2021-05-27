@@ -240,9 +240,11 @@ class Holiday extends React.Component {
                         className='drp-icon'
                     >
                         <Dropdown.Item eventKey="1">
-                        <NavLink  to= {{pathname:'/employee-Detail/Holiday/Add',state:{userId: this.state.userId}}}><i class="feather icon-plus"></i> Add</NavLink> 
+                            <NavLink  to= {{pathname:'/employee-Detail/Holiday/Add',state:{userId: this.state.userId}}}><i class="feather icon-plus"></i> Add</NavLink> 
                         </Dropdown.Item>
-                        
+                        <Dropdown.Item eventKey="1">
+                            <NavLink  to= {{pathname:'/employee-Detail/Holiday/Calendar',state:{userId: this.state.userId}}}><i class="feather icon-calendar"></i> Calendar</NavLink> 
+                        </Dropdown.Item>
                          </DropdownButton>
                     
                     </Col>

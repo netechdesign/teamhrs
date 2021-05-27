@@ -339,4 +339,61 @@ class HolidayController extends Controller
              ]);
          }
     }
+    public function Holiday_calendar(Request $request)
+    {
+        
+        //
+        
+            try {
+                
+                $totalCol = $request->input('iColumns');
+               
+                
+                $columns = explode(',', $request->input('columns'));
+                $start = $request->input('iDisplayStart');
+                $page_length = $request->input('iDisplayLength');
+                
+                
+                $jobsrow = Holidays::select("id","notes",DB::raw('(select CONCAT(name," ",lastName) as name from users where id=holidays.user_id) as user_name'),DB::raw('from_date as start'),DB::raw('to_date as end'),DB::raw('notes as title'))->where(function($query) use ($request){
+                    $search = $request->input('sSearch');
+                  if($request->input('user_id')){
+                    $query->where('user_id','=',$request->input('user_id'));
+                   }
+                   
+                });
+                $jobs =$jobsrow->orderBy('id', 'DESC')->get();
+                foreach($jobs as $vl){
+
+                    if($vl->end){
+                        $vl->end= date("Y-m-d", strtotime($vl->end."+1 day"));
+                    }
+                    $vl->borderColor= '#f44236';
+                    $vl->approved_by = Holidays_dates::where('holidays_id', $vl->id)->where('approved_by','!=' ,'null')->count();
+                    if($vl->approved_by>0){
+                        $vl->backgroundColor= '#15c37b';
+                        $vl->borderColor= '#15c37b';
+                    }else{
+                        $vl->backgroundColor= '#f44236';
+                    }
+                    
+                    $vl->textColor= '#fff';
+            }
+            
+                $response = array(
+                'success' => true,
+                "result" => $jobs,
+                
+            );
+               
+                return response()->json($response, 201);
+            }
+            catch (exception $e) {
+                return response()->json([
+                    'response' => 'error',
+                    'message' => $e,
+                ]);
+            }
+          
+    }
+
 }
