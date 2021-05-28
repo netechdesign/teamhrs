@@ -23,6 +23,7 @@ Route::get('/git', function () {
         Route::get('permission/add', 'ParmissionController@index');
         Route::get('offer-letter', 'Application_formsController@offer_letter');
  });
+  
  
     Route::view('/{path?}', 'app');
     Route::view('/{path?}/{segment1?}/{segmen2?}', 'app');

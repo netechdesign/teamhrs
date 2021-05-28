@@ -95,6 +95,7 @@ class HolidayController extends Controller
     {
         //
         try {
+             
             $user = JWTAuth::toUser($request->input('token'));
             
             if($request->user_id){
@@ -120,7 +121,7 @@ class HolidayController extends Controller
             $Holidays = new Holidays($data);
             $Holidays->save();
             $form_id = $Holidays->id;
-            
+            $request->request->add(['form_id'=> $form_id]);
             if($request->dates){
                 
                 foreach($request->dates as $k =>$vl)
@@ -137,7 +138,14 @@ class HolidayController extends Controller
             }
             
             
-                       
+            Mail::send(['html'=>'holidayrequest'], ['data'=>$request], function($message) use ($request)
+            {
+                //$message->to('admin@teamhrs.co.uk')->subject('New application submitted');
+                //,'hr@bespokemeteringsolutions.co.uk','recruitment@bespokemeteringsolutions.co.uk'
+                $message->to(['sandeep@itsupportpeople.co.uk','prakash@itsupportpeople.co.uk'])->subject('Holiday Request');
+                
+
+             });          
                 
             return response()->json(array('success' => true,'message' => 'Data inserted successfully','form_id' => $form_id), 200);
                   
