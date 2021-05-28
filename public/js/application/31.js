@@ -557,6 +557,9 @@ var AddHoliday = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(
 var Holiday = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
   return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(2), __webpack_require__.e(5), __webpack_require__.e(12), __webpack_require__.e(11), __webpack_require__.e(13), __webpack_require__.e(48)]).then(__webpack_require__.bind(null, /*! ./Tab/Holiday */ "./resources/js/employee/Holiday/Tab/Holiday.js"));
 });
+var HolidayCalendar = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(25), __webpack_require__.e(80)]).then(__webpack_require__.bind(null, /*! ./Tab/HolidayCalendar */ "./resources/js/employee/Holiday/Tab/HolidayCalendar.js"));
+});
 var id = '';
 var data = [];
 var routes = [{
@@ -569,6 +572,11 @@ var routes = [{
   exact: true,
   name: 'Oneform',
   component: Holiday
+}, {
+  path: '/Employee/Holiday-Calendar',
+  exact: true,
+  name: 'Oneform',
+  component: HolidayCalendar
 }, {
   path: '/Employee/Holiday-Edit/:id',
   exact: true,
@@ -717,7 +725,16 @@ var EmployeeDetails = /*#__PURE__*/function (_React$Component) {
         style: {
           borderRight: 'solid 1px #04a9f5'
         }
-      }, "Add Holiday"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+      }, "Add Holiday")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        "class": "nav-item"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
+        to: "/Employee/Holiday-Calendar",
+        className: "nav-link link",
+        activeClassName: "active",
+        style: {
+          borderRight: 'solid 1px #04a9f5'
+        }
+      }, "Calendar"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         "class": "navbar-text"
       }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "tabs"

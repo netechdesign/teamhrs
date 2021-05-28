@@ -7,12 +7,19 @@ import validator from 'validator';
 import axios from 'axios'
 import PNotify from "pnotify/dist/es/PNotify";
 const baseurl= window.location.origin;
+
+let today = new Date();
+let dd = String(today.getDate()).padStart(2, '0');
+let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+let yyyy = today.getFullYear();
+const todaydate = yyyy + '-' + mm + '-' + dd;
+
 class HolidayCalendar extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             user_id:'',
-            today: '2021-05-27',
+            today: todaydate,
             events:[]
         };
     }

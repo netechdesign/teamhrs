@@ -226,6 +226,7 @@ class Holiday extends React.Component {
                             <Card>
                                     <Card.Header>
                                         <Card.Title as="h5">Holiday</Card.Title>
+                                        <Button style={{'float':'right'}}  as={Link} to="/Holiday/Calendar" ><i class="feather icon-calendar"></i> Calendar</Button>
                                     </Card.Header>
                                     <Card.Body>
                                         <Table ref="tbl" striped hover responsive className="table table-condensed" id="data-table-responsive">

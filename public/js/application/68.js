@@ -55,6 +55,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 var baseurl = window.location.origin;
+var today = new Date();
+var dd = String(today.getDate()).padStart(2, '0');
+var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+
+var yyyy = today.getFullYear();
+var todaydate = yyyy + '-' + mm + '-' + dd;
 
 var HolidayCalendar = /*#__PURE__*/function (_React$Component) {
   _inherits(HolidayCalendar, _React$Component);
@@ -148,7 +154,7 @@ var HolidayCalendar = /*#__PURE__*/function (_React$Component) {
 
     _this.state = {
       user_id: '',
-      today: '2021-05-27',
+      today: todaydate,
       events: []
     };
     return _this;

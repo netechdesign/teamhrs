@@ -1,9 +1,9 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[79],{
 
-/***/ "./resources/js/Back-Office/Employee/Tab/HolidayCalendar.js":
-/*!******************************************************************!*\
-  !*** ./resources/js/Back-Office/Employee/Tab/HolidayCalendar.js ***!
-  \******************************************************************/
+/***/ "./resources/js/Back-Office/Pages/Holiday/HolidayCalendar.js":
+/*!*******************************************************************!*\
+  !*** ./resources/js/Back-Office/Pages/Holiday/HolidayCalendar.js ***!
+  \*******************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -55,6 +55,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 var baseurl = window.location.origin;
+var today = new Date();
+var dd = String(today.getDate()).padStart(2, '0');
+var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+
+var yyyy = today.getFullYear();
+var todaydate = yyyy + '-' + mm + '-' + dd;
 
 var HolidayCalendar = /*#__PURE__*/function (_React$Component) {
   _inherits(HolidayCalendar, _React$Component);
@@ -68,7 +74,7 @@ var HolidayCalendar = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this, props);
 
-    _defineProperty(_assertThisInitialized(_this), "getData", function (userId) {
+    _defineProperty(_assertThisInitialized(_this), "getData", function () {
       _this.setState({
         formSubmitting: true
       });
@@ -90,7 +96,7 @@ var HolidayCalendar = /*#__PURE__*/function (_React$Component) {
 
 
       axios__WEBPACK_IMPORTED_MODULE_6___default.a.post(baseurl + '/api/holiday_calendar', {
-        user_id: userId
+        c: ''
       }, {
         headers: {
           'Accept': 'application/json',
@@ -148,7 +154,7 @@ var HolidayCalendar = /*#__PURE__*/function (_React$Component) {
 
     _this.state = {
       user_id: '',
-      today: '2021-05-27',
+      today: todaydate,
       events: []
     };
     return _this;
@@ -157,12 +163,7 @@ var HolidayCalendar = /*#__PURE__*/function (_React$Component) {
   _createClass(HolidayCalendar, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      if (this.props.location.state) {
-        this.setState({
-          user_id: this.props.location.state.userId
-        });
-        this.getData(this.props.location.state.userId);
-      }
+      this.getData();
     }
   }, {
     key: "render",

@@ -11,12 +11,14 @@ import './employee.css';
 
 const AddHoliday = React.lazy(()=>import("./Tab/AddHoliday"))
 const Holiday = React.lazy(() => import("./Tab/Holiday"))
+const HolidayCalendar = React.lazy(() => import("./Tab/HolidayCalendar"))
 
 let id='';
 let data=[];
 const routes = [
     { path:'/Employee/Holiday-Add', exact:true, name:'Oneform',component:AddHoliday},
     { path:'/Employee/Holiday', exact:true, name:'Oneform',component:Holiday},
+    { path:'/Employee/Holiday-Calendar', exact:true, name:'Oneform',component:HolidayCalendar},
     { path:'/Employee/Holiday-Edit/:id', exact:true, name:'Oneform',component:AddHoliday},
     ];
     const baseurl= window.location.origin;
@@ -114,6 +116,9 @@ return (
                         </li>
                         <li class="nav-item">
                         <NavLink  to='/Employee/Holiday-Add' className="nav-link link" style={{borderRight: 'solid 1px #04a9f5'}} >Add Holiday</NavLink>
+                        </li>
+                        <li class="nav-item">
+                        <NavLink  to='/Employee/Holiday-Calendar' className="nav-link link" activeClassName="active" style={{borderRight: 'solid 1px #04a9f5'}}>Calendar</NavLink>
                         </li>
                         
                         </ul>

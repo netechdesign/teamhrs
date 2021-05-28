@@ -3800,6 +3800,9 @@ var EmployeeDetails = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.
 var Holiday = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
   return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(2), __webpack_require__.e(3), __webpack_require__.e(4), __webpack_require__.e(5), __webpack_require__.e(6), __webpack_require__.e(12), __webpack_require__.e(11), __webpack_require__.e(13), __webpack_require__.e(33)]).then(__webpack_require__.bind(null, /*! ./Back-Office/Pages/Holiday */ "./resources/js/Back-Office/Pages/Holiday/index.js"));
 });
+var HolidayCalendar = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(3), __webpack_require__.e(4), __webpack_require__.e(25), __webpack_require__.e(79)]).then(__webpack_require__.bind(null, /*! ./Back-Office/Pages/Holiday/HolidayCalendar */ "./resources/js/Back-Office/Pages/Holiday/HolidayCalendar.js"));
+});
 var HolidayEdit = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
   return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(3), __webpack_require__.e(4), __webpack_require__.e(6), __webpack_require__.e(17), __webpack_require__.e(50)]).then(__webpack_require__.bind(null, /*! ./Back-Office/Pages/Holiday/AddHoliday */ "./resources/js/Back-Office/Pages/Holiday/AddHoliday.js"));
 });
@@ -3992,6 +3995,11 @@ var routes = [{
   name: 'Oneform',
   component: HolidayEdit
 }, {
+  path: '/Holiday/Calendar',
+  exact: true,
+  name: 'Oneform',
+  component: HolidayCalendar
+}, {
   path: '/Employee/Holiday',
   exact: true,
   name: 'Oneform',
@@ -4003,6 +4011,11 @@ var routes = [{
   component: EmployeeHoliday
 }, {
   path: '/Employee/Holiday-Edit/:id',
+  exact: true,
+  name: 'Oneform',
+  component: EmployeeHoliday
+}, {
+  path: '/Employee/Holiday-Calendar',
   exact: true,
   name: 'Oneform',
   component: EmployeeHoliday

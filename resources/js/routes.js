@@ -22,6 +22,8 @@ const List = React.lazy(()=>import("./employee/ApplicationForm/List") )
 const EmployeeList = React.lazy(() => import("./Back-Office/Employee"));
 const EmployeeDetails = React.lazy(() => import("./Back-Office/Employee/EmployeeDetails"));
 const Holiday = React.lazy(()=>import("./Back-Office/Pages/Holiday"));
+const HolidayCalendar = React.lazy(()=>import("./Back-Office/Pages/Holiday/HolidayCalendar"));
+
 const HolidayEdit = React.lazy(() => import("./Back-Office/Pages/Holiday/AddHoliday"));
 const EmployeeHoliday = React.lazy(() => import("./employee/Holiday"));
 //For demo Examples
@@ -68,10 +70,11 @@ const routes = [
     //all user holiday
     { path:'/Holiday', exact:true, name:'Oneform',component:Holiday},
     { path:'/Holiday/Edit/:id', exact:true, name:'Oneform',component:HolidayEdit},
+    { path:'/Holiday/Calendar', exact:true, name:'Oneform',component:HolidayCalendar},
     { path:'/Employee/Holiday', exact:true, name:'Oneform',component:EmployeeHoliday},
     { path:'/Employee/Holiday-Add', exact:true, name:'Oneform',component:EmployeeHoliday},
     { path:'/Employee/Holiday-Edit/:id', exact:true, name:'Oneform',component:EmployeeHoliday},
-    
+    { path:'/Employee/Holiday-Calendar', exact:true, name:'Oneform',component:EmployeeHoliday},
     // for demo Examples.
     { path: '/forms/form-select', exact: true, name: 'Forms Select', component: FormsSelect },
     { path: '/dashboard', exact: true, name: 'Default', component: DashboardDefault },
