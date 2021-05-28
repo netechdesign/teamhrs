@@ -1,490 +1,1709 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[20],{
 
-/***/ "./node_modules/highcharts/highcharts.js":
-/*!***********************************************!*\
-  !*** ./node_modules/highcharts/highcharts.js ***!
-  \***********************************************/
+/***/ "./node_modules/call-bind/callBound.js":
+/*!*********************************************!*\
+  !*** ./node_modules/call-bind/callBound.js ***!
+  \*********************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var __WEBPACK_AMD_DEFINE_RESULT__;/*
- Highcharts JS v7.2.2 (2020-08-24)
+"use strict";
 
- (c) 2009-2018 Torstein Honsi
 
- License: www.highcharts.com/license
+var GetIntrinsic = __webpack_require__(/*! get-intrinsic */ "./node_modules/get-intrinsic/index.js");
+
+var callBind = __webpack_require__(/*! ./ */ "./node_modules/call-bind/index.js");
+
+var $indexOf = callBind(GetIntrinsic('String.prototype.indexOf'));
+
+module.exports = function callBoundIntrinsic(name, allowMissing) {
+	var intrinsic = GetIntrinsic(name, !!allowMissing);
+	if (typeof intrinsic === 'function' && $indexOf(name, '.prototype.') > -1) {
+		return callBind(intrinsic);
+	}
+	return intrinsic;
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/call-bind/index.js":
+/*!*****************************************!*\
+  !*** ./node_modules/call-bind/index.js ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var bind = __webpack_require__(/*! function-bind */ "./node_modules/function-bind/index.js");
+var GetIntrinsic = __webpack_require__(/*! get-intrinsic */ "./node_modules/get-intrinsic/index.js");
+
+var $apply = GetIntrinsic('%Function.prototype.apply%');
+var $call = GetIntrinsic('%Function.prototype.call%');
+var $reflectApply = GetIntrinsic('%Reflect.apply%', true) || bind.call($call, $apply);
+
+var $gOPD = GetIntrinsic('%Object.getOwnPropertyDescriptor%', true);
+var $defineProperty = GetIntrinsic('%Object.defineProperty%', true);
+var $max = GetIntrinsic('%Math.max%');
+
+if ($defineProperty) {
+	try {
+		$defineProperty({}, 'a', { value: 1 });
+	} catch (e) {
+		// IE 8 has a broken defineProperty
+		$defineProperty = null;
+	}
+}
+
+module.exports = function callBind(originalFunction) {
+	var func = $reflectApply(bind, $call, arguments);
+	if ($gOPD && $defineProperty) {
+		var desc = $gOPD(func, 'length');
+		if (desc.configurable) {
+			// original length, plus the receiver, minus any additional arguments (after the receiver)
+			$defineProperty(
+				func,
+				'length',
+				{ value: 1 + $max(0, originalFunction.length - (arguments.length - 1)) }
+			);
+		}
+	}
+	return func;
+};
+
+var applyBind = function applyBind() {
+	return $reflectApply(bind, $apply, arguments);
+};
+
+if ($defineProperty) {
+	$defineProperty(module.exports, 'apply', { value: applyBind });
+} else {
+	module.exports.apply = applyBind;
+}
+
+
+/***/ }),
+
+/***/ "./node_modules/deep-equal/index.js":
+/*!******************************************!*\
+  !*** ./node_modules/deep-equal/index.js ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var objectKeys = __webpack_require__(/*! object-keys */ "./node_modules/object-keys/index.js");
+var isArguments = __webpack_require__(/*! is-arguments */ "./node_modules/is-arguments/index.js");
+var is = __webpack_require__(/*! object-is */ "./node_modules/object-is/index.js");
+var isRegex = __webpack_require__(/*! is-regex */ "./node_modules/is-regex/index.js");
+var flags = __webpack_require__(/*! regexp.prototype.flags */ "./node_modules/regexp.prototype.flags/index.js");
+var isDate = __webpack_require__(/*! is-date-object */ "./node_modules/is-date-object/index.js");
+
+var getTime = Date.prototype.getTime;
+
+function deepEqual(actual, expected, options) {
+  var opts = options || {};
+
+  // 7.1. All identical values are equivalent, as determined by ===.
+  if (opts.strict ? is(actual, expected) : actual === expected) {
+    return true;
+  }
+
+  // 7.3. Other pairs that do not both pass typeof value == 'object', equivalence is determined by ==.
+  if (!actual || !expected || (typeof actual !== 'object' && typeof expected !== 'object')) {
+    return opts.strict ? is(actual, expected) : actual == expected;
+  }
+
+  /*
+   * 7.4. For all other Object pairs, including Array objects, equivalence is
+   * determined by having the same number of owned properties (as verified
+   * with Object.prototype.hasOwnProperty.call), the same set of keys
+   * (although not necessarily the same order), equivalent values for every
+   * corresponding key, and an identical 'prototype' property. Note: this
+   * accounts for both named and indexed properties on Arrays.
+   */
+  // eslint-disable-next-line no-use-before-define
+  return objEquiv(actual, expected, opts);
+}
+
+function isUndefinedOrNull(value) {
+  return value === null || value === undefined;
+}
+
+function isBuffer(x) {
+  if (!x || typeof x !== 'object' || typeof x.length !== 'number') {
+    return false;
+  }
+  if (typeof x.copy !== 'function' || typeof x.slice !== 'function') {
+    return false;
+  }
+  if (x.length > 0 && typeof x[0] !== 'number') {
+    return false;
+  }
+  return true;
+}
+
+function objEquiv(a, b, opts) {
+  /* eslint max-statements: [2, 50] */
+  var i, key;
+  if (typeof a !== typeof b) { return false; }
+  if (isUndefinedOrNull(a) || isUndefinedOrNull(b)) { return false; }
+
+  // an identical 'prototype' property.
+  if (a.prototype !== b.prototype) { return false; }
+
+  if (isArguments(a) !== isArguments(b)) { return false; }
+
+  var aIsRegex = isRegex(a);
+  var bIsRegex = isRegex(b);
+  if (aIsRegex !== bIsRegex) { return false; }
+  if (aIsRegex || bIsRegex) {
+    return a.source === b.source && flags(a) === flags(b);
+  }
+
+  if (isDate(a) && isDate(b)) {
+    return getTime.call(a) === getTime.call(b);
+  }
+
+  var aIsBuffer = isBuffer(a);
+  var bIsBuffer = isBuffer(b);
+  if (aIsBuffer !== bIsBuffer) { return false; }
+  if (aIsBuffer || bIsBuffer) { // && would work too, because both are true or both false here
+    if (a.length !== b.length) { return false; }
+    for (i = 0; i < a.length; i++) {
+      if (a[i] !== b[i]) { return false; }
+    }
+    return true;
+  }
+
+  if (typeof a !== typeof b) { return false; }
+
+  try {
+    var ka = objectKeys(a);
+    var kb = objectKeys(b);
+  } catch (e) { // happens when one is a string literal and the other isn't
+    return false;
+  }
+  // having the same number of owned properties (keys incorporates hasOwnProperty)
+  if (ka.length !== kb.length) { return false; }
+
+  // the same set of keys (although not necessarily the same order),
+  ka.sort();
+  kb.sort();
+  // ~~~cheap key test
+  for (i = ka.length - 1; i >= 0; i--) {
+    if (ka[i] != kb[i]) { return false; }
+  }
+  // equivalent values for every corresponding key, and ~~~possibly expensive deep test
+  for (i = ka.length - 1; i >= 0; i--) {
+    key = ka[i];
+    if (!deepEqual(a[key], b[key], opts)) { return false; }
+  }
+
+  return true;
+}
+
+module.exports = deepEqual;
+
+
+/***/ }),
+
+/***/ "./node_modules/define-properties/index.js":
+/*!*************************************************!*\
+  !*** ./node_modules/define-properties/index.js ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var keys = __webpack_require__(/*! object-keys */ "./node_modules/object-keys/index.js");
+var hasSymbols = typeof Symbol === 'function' && typeof Symbol('foo') === 'symbol';
+
+var toStr = Object.prototype.toString;
+var concat = Array.prototype.concat;
+var origDefineProperty = Object.defineProperty;
+
+var isFunction = function (fn) {
+	return typeof fn === 'function' && toStr.call(fn) === '[object Function]';
+};
+
+var arePropertyDescriptorsSupported = function () {
+	var obj = {};
+	try {
+		origDefineProperty(obj, 'x', { enumerable: false, value: obj });
+		// eslint-disable-next-line no-unused-vars, no-restricted-syntax
+		for (var _ in obj) { // jscs:ignore disallowUnusedVariables
+			return false;
+		}
+		return obj.x === obj;
+	} catch (e) { /* this is IE 8. */
+		return false;
+	}
+};
+var supportsDescriptors = origDefineProperty && arePropertyDescriptorsSupported();
+
+var defineProperty = function (object, name, value, predicate) {
+	if (name in object && (!isFunction(predicate) || !predicate())) {
+		return;
+	}
+	if (supportsDescriptors) {
+		origDefineProperty(object, name, {
+			configurable: true,
+			enumerable: false,
+			value: value,
+			writable: true
+		});
+	} else {
+		object[name] = value;
+	}
+};
+
+var defineProperties = function (object, map) {
+	var predicates = arguments.length > 2 ? arguments[2] : {};
+	var props = keys(map);
+	if (hasSymbols) {
+		props = concat.call(props, Object.getOwnPropertySymbols(map));
+	}
+	for (var i = 0; i < props.length; i += 1) {
+		defineProperty(object, props[i], map[props[i]], predicates[props[i]]);
+	}
+};
+
+defineProperties.supportsDescriptors = !!supportsDescriptors;
+
+module.exports = defineProperties;
+
+
+/***/ }),
+
+/***/ "./node_modules/function-bind/implementation.js":
+/*!******************************************************!*\
+  !*** ./node_modules/function-bind/implementation.js ***!
+  \******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/* eslint no-invalid-this: 1 */
+
+var ERROR_MESSAGE = 'Function.prototype.bind called on incompatible ';
+var slice = Array.prototype.slice;
+var toStr = Object.prototype.toString;
+var funcType = '[object Function]';
+
+module.exports = function bind(that) {
+    var target = this;
+    if (typeof target !== 'function' || toStr.call(target) !== funcType) {
+        throw new TypeError(ERROR_MESSAGE + target);
+    }
+    var args = slice.call(arguments, 1);
+
+    var bound;
+    var binder = function () {
+        if (this instanceof bound) {
+            var result = target.apply(
+                this,
+                args.concat(slice.call(arguments))
+            );
+            if (Object(result) === result) {
+                return result;
+            }
+            return this;
+        } else {
+            return target.apply(
+                that,
+                args.concat(slice.call(arguments))
+            );
+        }
+    };
+
+    var boundLength = Math.max(0, target.length - args.length);
+    var boundArgs = [];
+    for (var i = 0; i < boundLength; i++) {
+        boundArgs.push('$' + i);
+    }
+
+    bound = Function('binder', 'return function (' + boundArgs.join(',') + '){ return binder.apply(this,arguments); }')(binder);
+
+    if (target.prototype) {
+        var Empty = function Empty() {};
+        Empty.prototype = target.prototype;
+        bound.prototype = new Empty();
+        Empty.prototype = null;
+    }
+
+    return bound;
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/function-bind/index.js":
+/*!*********************************************!*\
+  !*** ./node_modules/function-bind/index.js ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var implementation = __webpack_require__(/*! ./implementation */ "./node_modules/function-bind/implementation.js");
+
+module.exports = Function.prototype.bind || implementation;
+
+
+/***/ }),
+
+/***/ "./node_modules/get-intrinsic/index.js":
+/*!*********************************************!*\
+  !*** ./node_modules/get-intrinsic/index.js ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var undefined;
+
+var $SyntaxError = SyntaxError;
+var $Function = Function;
+var $TypeError = TypeError;
+
+// eslint-disable-next-line consistent-return
+var getEvalledConstructor = function (expressionSyntax) {
+	try {
+		return $Function('"use strict"; return (' + expressionSyntax + ').constructor;')();
+	} catch (e) {}
+};
+
+var $gOPD = Object.getOwnPropertyDescriptor;
+if ($gOPD) {
+	try {
+		$gOPD({}, '');
+	} catch (e) {
+		$gOPD = null; // this is IE 8, which has a broken gOPD
+	}
+}
+
+var throwTypeError = function () {
+	throw new $TypeError();
+};
+var ThrowTypeError = $gOPD
+	? (function () {
+		try {
+			// eslint-disable-next-line no-unused-expressions, no-caller, no-restricted-properties
+			arguments.callee; // IE 8 does not throw here
+			return throwTypeError;
+		} catch (calleeThrows) {
+			try {
+				// IE 8 throws on Object.getOwnPropertyDescriptor(arguments, '')
+				return $gOPD(arguments, 'callee').get;
+			} catch (gOPDthrows) {
+				return throwTypeError;
+			}
+		}
+	}())
+	: throwTypeError;
+
+var hasSymbols = __webpack_require__(/*! has-symbols */ "./node_modules/has-symbols/index.js")();
+
+var getProto = Object.getPrototypeOf || function (x) { return x.__proto__; }; // eslint-disable-line no-proto
+
+var needsEval = {};
+
+var TypedArray = typeof Uint8Array === 'undefined' ? undefined : getProto(Uint8Array);
+
+var INTRINSICS = {
+	'%AggregateError%': typeof AggregateError === 'undefined' ? undefined : AggregateError,
+	'%Array%': Array,
+	'%ArrayBuffer%': typeof ArrayBuffer === 'undefined' ? undefined : ArrayBuffer,
+	'%ArrayIteratorPrototype%': hasSymbols ? getProto([][Symbol.iterator]()) : undefined,
+	'%AsyncFromSyncIteratorPrototype%': undefined,
+	'%AsyncFunction%': needsEval,
+	'%AsyncGenerator%': needsEval,
+	'%AsyncGeneratorFunction%': needsEval,
+	'%AsyncIteratorPrototype%': needsEval,
+	'%Atomics%': typeof Atomics === 'undefined' ? undefined : Atomics,
+	'%BigInt%': typeof BigInt === 'undefined' ? undefined : BigInt,
+	'%Boolean%': Boolean,
+	'%DataView%': typeof DataView === 'undefined' ? undefined : DataView,
+	'%Date%': Date,
+	'%decodeURI%': decodeURI,
+	'%decodeURIComponent%': decodeURIComponent,
+	'%encodeURI%': encodeURI,
+	'%encodeURIComponent%': encodeURIComponent,
+	'%Error%': Error,
+	'%eval%': eval, // eslint-disable-line no-eval
+	'%EvalError%': EvalError,
+	'%Float32Array%': typeof Float32Array === 'undefined' ? undefined : Float32Array,
+	'%Float64Array%': typeof Float64Array === 'undefined' ? undefined : Float64Array,
+	'%FinalizationRegistry%': typeof FinalizationRegistry === 'undefined' ? undefined : FinalizationRegistry,
+	'%Function%': $Function,
+	'%GeneratorFunction%': needsEval,
+	'%Int8Array%': typeof Int8Array === 'undefined' ? undefined : Int8Array,
+	'%Int16Array%': typeof Int16Array === 'undefined' ? undefined : Int16Array,
+	'%Int32Array%': typeof Int32Array === 'undefined' ? undefined : Int32Array,
+	'%isFinite%': isFinite,
+	'%isNaN%': isNaN,
+	'%IteratorPrototype%': hasSymbols ? getProto(getProto([][Symbol.iterator]())) : undefined,
+	'%JSON%': typeof JSON === 'object' ? JSON : undefined,
+	'%Map%': typeof Map === 'undefined' ? undefined : Map,
+	'%MapIteratorPrototype%': typeof Map === 'undefined' || !hasSymbols ? undefined : getProto(new Map()[Symbol.iterator]()),
+	'%Math%': Math,
+	'%Number%': Number,
+	'%Object%': Object,
+	'%parseFloat%': parseFloat,
+	'%parseInt%': parseInt,
+	'%Promise%': typeof Promise === 'undefined' ? undefined : Promise,
+	'%Proxy%': typeof Proxy === 'undefined' ? undefined : Proxy,
+	'%RangeError%': RangeError,
+	'%ReferenceError%': ReferenceError,
+	'%Reflect%': typeof Reflect === 'undefined' ? undefined : Reflect,
+	'%RegExp%': RegExp,
+	'%Set%': typeof Set === 'undefined' ? undefined : Set,
+	'%SetIteratorPrototype%': typeof Set === 'undefined' || !hasSymbols ? undefined : getProto(new Set()[Symbol.iterator]()),
+	'%SharedArrayBuffer%': typeof SharedArrayBuffer === 'undefined' ? undefined : SharedArrayBuffer,
+	'%String%': String,
+	'%StringIteratorPrototype%': hasSymbols ? getProto(''[Symbol.iterator]()) : undefined,
+	'%Symbol%': hasSymbols ? Symbol : undefined,
+	'%SyntaxError%': $SyntaxError,
+	'%ThrowTypeError%': ThrowTypeError,
+	'%TypedArray%': TypedArray,
+	'%TypeError%': $TypeError,
+	'%Uint8Array%': typeof Uint8Array === 'undefined' ? undefined : Uint8Array,
+	'%Uint8ClampedArray%': typeof Uint8ClampedArray === 'undefined' ? undefined : Uint8ClampedArray,
+	'%Uint16Array%': typeof Uint16Array === 'undefined' ? undefined : Uint16Array,
+	'%Uint32Array%': typeof Uint32Array === 'undefined' ? undefined : Uint32Array,
+	'%URIError%': URIError,
+	'%WeakMap%': typeof WeakMap === 'undefined' ? undefined : WeakMap,
+	'%WeakRef%': typeof WeakRef === 'undefined' ? undefined : WeakRef,
+	'%WeakSet%': typeof WeakSet === 'undefined' ? undefined : WeakSet
+};
+
+var doEval = function doEval(name) {
+	var value;
+	if (name === '%AsyncFunction%') {
+		value = getEvalledConstructor('async function () {}');
+	} else if (name === '%GeneratorFunction%') {
+		value = getEvalledConstructor('function* () {}');
+	} else if (name === '%AsyncGeneratorFunction%') {
+		value = getEvalledConstructor('async function* () {}');
+	} else if (name === '%AsyncGenerator%') {
+		var fn = doEval('%AsyncGeneratorFunction%');
+		if (fn) {
+			value = fn.prototype;
+		}
+	} else if (name === '%AsyncIteratorPrototype%') {
+		var gen = doEval('%AsyncGenerator%');
+		if (gen) {
+			value = getProto(gen.prototype);
+		}
+	}
+
+	INTRINSICS[name] = value;
+
+	return value;
+};
+
+var LEGACY_ALIASES = {
+	'%ArrayBufferPrototype%': ['ArrayBuffer', 'prototype'],
+	'%ArrayPrototype%': ['Array', 'prototype'],
+	'%ArrayProto_entries%': ['Array', 'prototype', 'entries'],
+	'%ArrayProto_forEach%': ['Array', 'prototype', 'forEach'],
+	'%ArrayProto_keys%': ['Array', 'prototype', 'keys'],
+	'%ArrayProto_values%': ['Array', 'prototype', 'values'],
+	'%AsyncFunctionPrototype%': ['AsyncFunction', 'prototype'],
+	'%AsyncGenerator%': ['AsyncGeneratorFunction', 'prototype'],
+	'%AsyncGeneratorPrototype%': ['AsyncGeneratorFunction', 'prototype', 'prototype'],
+	'%BooleanPrototype%': ['Boolean', 'prototype'],
+	'%DataViewPrototype%': ['DataView', 'prototype'],
+	'%DatePrototype%': ['Date', 'prototype'],
+	'%ErrorPrototype%': ['Error', 'prototype'],
+	'%EvalErrorPrototype%': ['EvalError', 'prototype'],
+	'%Float32ArrayPrototype%': ['Float32Array', 'prototype'],
+	'%Float64ArrayPrototype%': ['Float64Array', 'prototype'],
+	'%FunctionPrototype%': ['Function', 'prototype'],
+	'%Generator%': ['GeneratorFunction', 'prototype'],
+	'%GeneratorPrototype%': ['GeneratorFunction', 'prototype', 'prototype'],
+	'%Int8ArrayPrototype%': ['Int8Array', 'prototype'],
+	'%Int16ArrayPrototype%': ['Int16Array', 'prototype'],
+	'%Int32ArrayPrototype%': ['Int32Array', 'prototype'],
+	'%JSONParse%': ['JSON', 'parse'],
+	'%JSONStringify%': ['JSON', 'stringify'],
+	'%MapPrototype%': ['Map', 'prototype'],
+	'%NumberPrototype%': ['Number', 'prototype'],
+	'%ObjectPrototype%': ['Object', 'prototype'],
+	'%ObjProto_toString%': ['Object', 'prototype', 'toString'],
+	'%ObjProto_valueOf%': ['Object', 'prototype', 'valueOf'],
+	'%PromisePrototype%': ['Promise', 'prototype'],
+	'%PromiseProto_then%': ['Promise', 'prototype', 'then'],
+	'%Promise_all%': ['Promise', 'all'],
+	'%Promise_reject%': ['Promise', 'reject'],
+	'%Promise_resolve%': ['Promise', 'resolve'],
+	'%RangeErrorPrototype%': ['RangeError', 'prototype'],
+	'%ReferenceErrorPrototype%': ['ReferenceError', 'prototype'],
+	'%RegExpPrototype%': ['RegExp', 'prototype'],
+	'%SetPrototype%': ['Set', 'prototype'],
+	'%SharedArrayBufferPrototype%': ['SharedArrayBuffer', 'prototype'],
+	'%StringPrototype%': ['String', 'prototype'],
+	'%SymbolPrototype%': ['Symbol', 'prototype'],
+	'%SyntaxErrorPrototype%': ['SyntaxError', 'prototype'],
+	'%TypedArrayPrototype%': ['TypedArray', 'prototype'],
+	'%TypeErrorPrototype%': ['TypeError', 'prototype'],
+	'%Uint8ArrayPrototype%': ['Uint8Array', 'prototype'],
+	'%Uint8ClampedArrayPrototype%': ['Uint8ClampedArray', 'prototype'],
+	'%Uint16ArrayPrototype%': ['Uint16Array', 'prototype'],
+	'%Uint32ArrayPrototype%': ['Uint32Array', 'prototype'],
+	'%URIErrorPrototype%': ['URIError', 'prototype'],
+	'%WeakMapPrototype%': ['WeakMap', 'prototype'],
+	'%WeakSetPrototype%': ['WeakSet', 'prototype']
+};
+
+var bind = __webpack_require__(/*! function-bind */ "./node_modules/function-bind/index.js");
+var hasOwn = __webpack_require__(/*! has */ "./node_modules/has/src/index.js");
+var $concat = bind.call(Function.call, Array.prototype.concat);
+var $spliceApply = bind.call(Function.apply, Array.prototype.splice);
+var $replace = bind.call(Function.call, String.prototype.replace);
+var $strSlice = bind.call(Function.call, String.prototype.slice);
+
+/* adapted from https://github.com/lodash/lodash/blob/4.17.15/dist/lodash.js#L6735-L6744 */
+var rePropName = /[^%.[\]]+|\[(?:(-?\d+(?:\.\d+)?)|(["'])((?:(?!\2)[^\\]|\\.)*?)\2)\]|(?=(?:\.|\[\])(?:\.|\[\]|%$))/g;
+var reEscapeChar = /\\(\\)?/g; /** Used to match backslashes in property paths. */
+var stringToPath = function stringToPath(string) {
+	var first = $strSlice(string, 0, 1);
+	var last = $strSlice(string, -1);
+	if (first === '%' && last !== '%') {
+		throw new $SyntaxError('invalid intrinsic syntax, expected closing `%`');
+	} else if (last === '%' && first !== '%') {
+		throw new $SyntaxError('invalid intrinsic syntax, expected opening `%`');
+	}
+	var result = [];
+	$replace(string, rePropName, function (match, number, quote, subString) {
+		result[result.length] = quote ? $replace(subString, reEscapeChar, '$1') : number || match;
+	});
+	return result;
+};
+/* end adaptation */
+
+var getBaseIntrinsic = function getBaseIntrinsic(name, allowMissing) {
+	var intrinsicName = name;
+	var alias;
+	if (hasOwn(LEGACY_ALIASES, intrinsicName)) {
+		alias = LEGACY_ALIASES[intrinsicName];
+		intrinsicName = '%' + alias[0] + '%';
+	}
+
+	if (hasOwn(INTRINSICS, intrinsicName)) {
+		var value = INTRINSICS[intrinsicName];
+		if (value === needsEval) {
+			value = doEval(intrinsicName);
+		}
+		if (typeof value === 'undefined' && !allowMissing) {
+			throw new $TypeError('intrinsic ' + name + ' exists, but is not available. Please file an issue!');
+		}
+
+		return {
+			alias: alias,
+			name: intrinsicName,
+			value: value
+		};
+	}
+
+	throw new $SyntaxError('intrinsic ' + name + ' does not exist!');
+};
+
+module.exports = function GetIntrinsic(name, allowMissing) {
+	if (typeof name !== 'string' || name.length === 0) {
+		throw new $TypeError('intrinsic name must be a non-empty string');
+	}
+	if (arguments.length > 1 && typeof allowMissing !== 'boolean') {
+		throw new $TypeError('"allowMissing" argument must be a boolean');
+	}
+
+	var parts = stringToPath(name);
+	var intrinsicBaseName = parts.length > 0 ? parts[0] : '';
+
+	var intrinsic = getBaseIntrinsic('%' + intrinsicBaseName + '%', allowMissing);
+	var intrinsicRealName = intrinsic.name;
+	var value = intrinsic.value;
+	var skipFurtherCaching = false;
+
+	var alias = intrinsic.alias;
+	if (alias) {
+		intrinsicBaseName = alias[0];
+		$spliceApply(parts, $concat([0, 1], alias));
+	}
+
+	for (var i = 1, isOwn = true; i < parts.length; i += 1) {
+		var part = parts[i];
+		var first = $strSlice(part, 0, 1);
+		var last = $strSlice(part, -1);
+		if (
+			(
+				(first === '"' || first === "'" || first === '`')
+				|| (last === '"' || last === "'" || last === '`')
+			)
+			&& first !== last
+		) {
+			throw new $SyntaxError('property names with quotes must have matching quotes');
+		}
+		if (part === 'constructor' || !isOwn) {
+			skipFurtherCaching = true;
+		}
+
+		intrinsicBaseName += '.' + part;
+		intrinsicRealName = '%' + intrinsicBaseName + '%';
+
+		if (hasOwn(INTRINSICS, intrinsicRealName)) {
+			value = INTRINSICS[intrinsicRealName];
+		} else if (value != null) {
+			if (!(part in value)) {
+				if (!allowMissing) {
+					throw new $TypeError('base intrinsic for ' + name + ' exists, but the property is not available.');
+				}
+				return void undefined;
+			}
+			if ($gOPD && (i + 1) >= parts.length) {
+				var desc = $gOPD(value, part);
+				isOwn = !!desc;
+
+				// By convention, when a data property is converted to an accessor
+				// property to emulate a data property that does not suffer from
+				// the override mistake, that accessor's getter is marked with
+				// an `originalValue` property. Here, when we detect this, we
+				// uphold the illusion by pretending to see that original data
+				// property, i.e., returning the value rather than the getter
+				// itself.
+				if (isOwn && 'get' in desc && !('originalValue' in desc.get)) {
+					value = desc.get;
+				} else {
+					value = value[part];
+				}
+			} else {
+				isOwn = hasOwn(value, part);
+				value = value[part];
+			}
+
+			if (isOwn && !skipFurtherCaching) {
+				INTRINSICS[intrinsicRealName] = value;
+			}
+		}
+	}
+	return value;
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/has-symbols/index.js":
+/*!*******************************************!*\
+  !*** ./node_modules/has-symbols/index.js ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(global) {
+
+var origSymbol = global.Symbol;
+var hasSymbolSham = __webpack_require__(/*! ./shams */ "./node_modules/has-symbols/shams.js");
+
+module.exports = function hasNativeSymbols() {
+	if (typeof origSymbol !== 'function') { return false; }
+	if (typeof Symbol !== 'function') { return false; }
+	if (typeof origSymbol('foo') !== 'symbol') { return false; }
+	if (typeof Symbol('bar') !== 'symbol') { return false; }
+
+	return hasSymbolSham();
+};
+
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js")))
+
+/***/ }),
+
+/***/ "./node_modules/has-symbols/shams.js":
+/*!*******************************************!*\
+  !*** ./node_modules/has-symbols/shams.js ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/* eslint complexity: [2, 18], max-statements: [2, 33] */
+module.exports = function hasSymbols() {
+	if (typeof Symbol !== 'function' || typeof Object.getOwnPropertySymbols !== 'function') { return false; }
+	if (typeof Symbol.iterator === 'symbol') { return true; }
+
+	var obj = {};
+	var sym = Symbol('test');
+	var symObj = Object(sym);
+	if (typeof sym === 'string') { return false; }
+
+	if (Object.prototype.toString.call(sym) !== '[object Symbol]') { return false; }
+	if (Object.prototype.toString.call(symObj) !== '[object Symbol]') { return false; }
+
+	// temp disabled per https://github.com/ljharb/object.assign/issues/17
+	// if (sym instanceof Symbol) { return false; }
+	// temp disabled per https://github.com/WebReflection/get-own-property-symbols/issues/4
+	// if (!(symObj instanceof Symbol)) { return false; }
+
+	// if (typeof Symbol.prototype.toString !== 'function') { return false; }
+	// if (String(sym) !== Symbol.prototype.toString.call(sym)) { return false; }
+
+	var symVal = 42;
+	obj[sym] = symVal;
+	for (sym in obj) { return false; } // eslint-disable-line no-restricted-syntax
+	if (typeof Object.keys === 'function' && Object.keys(obj).length !== 0) { return false; }
+
+	if (typeof Object.getOwnPropertyNames === 'function' && Object.getOwnPropertyNames(obj).length !== 0) { return false; }
+
+	var syms = Object.getOwnPropertySymbols(obj);
+	if (syms.length !== 1 || syms[0] !== sym) { return false; }
+
+	if (!Object.prototype.propertyIsEnumerable.call(obj, sym)) { return false; }
+
+	if (typeof Object.getOwnPropertyDescriptor === 'function') {
+		var descriptor = Object.getOwnPropertyDescriptor(obj, sym);
+		if (descriptor.value !== symVal || descriptor.enumerable !== true) { return false; }
+	}
+
+	return true;
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/has/src/index.js":
+/*!***************************************!*\
+  !*** ./node_modules/has/src/index.js ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var bind = __webpack_require__(/*! function-bind */ "./node_modules/function-bind/index.js");
+
+module.exports = bind.call(Function.call, Object.prototype.hasOwnProperty);
+
+
+/***/ }),
+
+/***/ "./node_modules/is-arguments/index.js":
+/*!********************************************!*\
+  !*** ./node_modules/is-arguments/index.js ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var hasToStringTag = typeof Symbol === 'function' && typeof Symbol.toStringTag === 'symbol';
+var callBound = __webpack_require__(/*! call-bind/callBound */ "./node_modules/call-bind/callBound.js");
+
+var $toString = callBound('Object.prototype.toString');
+
+var isStandardArguments = function isArguments(value) {
+	if (hasToStringTag && value && typeof value === 'object' && Symbol.toStringTag in value) {
+		return false;
+	}
+	return $toString(value) === '[object Arguments]';
+};
+
+var isLegacyArguments = function isArguments(value) {
+	if (isStandardArguments(value)) {
+		return true;
+	}
+	return value !== null &&
+		typeof value === 'object' &&
+		typeof value.length === 'number' &&
+		value.length >= 0 &&
+		$toString(value) !== '[object Array]' &&
+		$toString(value.callee) === '[object Function]';
+};
+
+var supportsStandardArguments = (function () {
+	return isStandardArguments(arguments);
+}());
+
+isStandardArguments.isLegacyArguments = isLegacyArguments; // for tests
+
+module.exports = supportsStandardArguments ? isStandardArguments : isLegacyArguments;
+
+
+/***/ }),
+
+/***/ "./node_modules/is-date-object/index.js":
+/*!**********************************************!*\
+  !*** ./node_modules/is-date-object/index.js ***!
+  \**********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var getDay = Date.prototype.getDay;
+var tryDateObject = function tryDateGetDayCall(value) {
+	try {
+		getDay.call(value);
+		return true;
+	} catch (e) {
+		return false;
+	}
+};
+
+var toStr = Object.prototype.toString;
+var dateClass = '[object Date]';
+var hasToStringTag = typeof Symbol === 'function' && typeof Symbol.toStringTag === 'symbol';
+
+module.exports = function isDateObject(value) {
+	if (typeof value !== 'object' || value === null) {
+		return false;
+	}
+	return hasToStringTag ? tryDateObject(value) : toStr.call(value) === dateClass;
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/is-regex/index.js":
+/*!****************************************!*\
+  !*** ./node_modules/is-regex/index.js ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var callBound = __webpack_require__(/*! call-bind/callBound */ "./node_modules/call-bind/callBound.js");
+var hasSymbols = __webpack_require__(/*! has-symbols */ "./node_modules/has-symbols/index.js")();
+var hasToStringTag = hasSymbols && typeof Symbol.toStringTag === 'symbol';
+var has;
+var $exec;
+var isRegexMarker;
+var badStringifier;
+
+if (hasToStringTag) {
+	has = callBound('Object.prototype.hasOwnProperty');
+	$exec = callBound('RegExp.prototype.exec');
+	isRegexMarker = {};
+
+	var throwRegexMarker = function () {
+		throw isRegexMarker;
+	};
+	badStringifier = {
+		toString: throwRegexMarker,
+		valueOf: throwRegexMarker
+	};
+
+	if (typeof Symbol.toPrimitive === 'symbol') {
+		badStringifier[Symbol.toPrimitive] = throwRegexMarker;
+	}
+}
+
+var $toString = callBound('Object.prototype.toString');
+var gOPD = Object.getOwnPropertyDescriptor;
+var regexClass = '[object RegExp]';
+
+module.exports = hasToStringTag
+	// eslint-disable-next-line consistent-return
+	? function isRegex(value) {
+		if (!value || typeof value !== 'object') {
+			return false;
+		}
+
+		var descriptor = gOPD(value, 'lastIndex');
+		var hasLastIndexDataProperty = descriptor && has(descriptor, 'value');
+		if (!hasLastIndexDataProperty) {
+			return false;
+		}
+
+		try {
+			$exec(value, badStringifier);
+		} catch (e) {
+			return e === isRegexMarker;
+		}
+	}
+	: function isRegex(value) {
+		// In older browsers, typeof regex incorrectly returns 'function'
+		if (!value || (typeof value !== 'object' && typeof value !== 'function')) {
+			return false;
+		}
+
+		return $toString(value) === regexClass;
+	};
+
+
+/***/ }),
+
+/***/ "./node_modules/object-is/implementation.js":
+/*!**************************************************!*\
+  !*** ./node_modules/object-is/implementation.js ***!
+  \**************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var numberIsNaN = function (value) {
+	return value !== value;
+};
+
+module.exports = function is(a, b) {
+	if (a === 0 && b === 0) {
+		return 1 / a === 1 / b;
+	}
+	if (a === b) {
+		return true;
+	}
+	if (numberIsNaN(a) && numberIsNaN(b)) {
+		return true;
+	}
+	return false;
+};
+
+
+
+/***/ }),
+
+/***/ "./node_modules/object-is/index.js":
+/*!*****************************************!*\
+  !*** ./node_modules/object-is/index.js ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var define = __webpack_require__(/*! define-properties */ "./node_modules/define-properties/index.js");
+var callBind = __webpack_require__(/*! call-bind */ "./node_modules/call-bind/index.js");
+
+var implementation = __webpack_require__(/*! ./implementation */ "./node_modules/object-is/implementation.js");
+var getPolyfill = __webpack_require__(/*! ./polyfill */ "./node_modules/object-is/polyfill.js");
+var shim = __webpack_require__(/*! ./shim */ "./node_modules/object-is/shim.js");
+
+var polyfill = callBind(getPolyfill(), Object);
+
+define(polyfill, {
+	getPolyfill: getPolyfill,
+	implementation: implementation,
+	shim: shim
+});
+
+module.exports = polyfill;
+
+
+/***/ }),
+
+/***/ "./node_modules/object-is/polyfill.js":
+/*!********************************************!*\
+  !*** ./node_modules/object-is/polyfill.js ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var implementation = __webpack_require__(/*! ./implementation */ "./node_modules/object-is/implementation.js");
+
+module.exports = function getPolyfill() {
+	return typeof Object.is === 'function' ? Object.is : implementation;
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/object-is/shim.js":
+/*!****************************************!*\
+  !*** ./node_modules/object-is/shim.js ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var getPolyfill = __webpack_require__(/*! ./polyfill */ "./node_modules/object-is/polyfill.js");
+var define = __webpack_require__(/*! define-properties */ "./node_modules/define-properties/index.js");
+
+module.exports = function shimObjectIs() {
+	var polyfill = getPolyfill();
+	define(Object, { is: polyfill }, {
+		is: function testObjectIs() {
+			return Object.is !== polyfill;
+		}
+	});
+	return polyfill;
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/object-keys/implementation.js":
+/*!****************************************************!*\
+  !*** ./node_modules/object-keys/implementation.js ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var keysShim;
+if (!Object.keys) {
+	// modified from https://github.com/es-shims/es5-shim
+	var has = Object.prototype.hasOwnProperty;
+	var toStr = Object.prototype.toString;
+	var isArgs = __webpack_require__(/*! ./isArguments */ "./node_modules/object-keys/isArguments.js"); // eslint-disable-line global-require
+	var isEnumerable = Object.prototype.propertyIsEnumerable;
+	var hasDontEnumBug = !isEnumerable.call({ toString: null }, 'toString');
+	var hasProtoEnumBug = isEnumerable.call(function () {}, 'prototype');
+	var dontEnums = [
+		'toString',
+		'toLocaleString',
+		'valueOf',
+		'hasOwnProperty',
+		'isPrototypeOf',
+		'propertyIsEnumerable',
+		'constructor'
+	];
+	var equalsConstructorPrototype = function (o) {
+		var ctor = o.constructor;
+		return ctor && ctor.prototype === o;
+	};
+	var excludedKeys = {
+		$applicationCache: true,
+		$console: true,
+		$external: true,
+		$frame: true,
+		$frameElement: true,
+		$frames: true,
+		$innerHeight: true,
+		$innerWidth: true,
+		$onmozfullscreenchange: true,
+		$onmozfullscreenerror: true,
+		$outerHeight: true,
+		$outerWidth: true,
+		$pageXOffset: true,
+		$pageYOffset: true,
+		$parent: true,
+		$scrollLeft: true,
+		$scrollTop: true,
+		$scrollX: true,
+		$scrollY: true,
+		$self: true,
+		$webkitIndexedDB: true,
+		$webkitStorageInfo: true,
+		$window: true
+	};
+	var hasAutomationEqualityBug = (function () {
+		/* global window */
+		if (typeof window === 'undefined') { return false; }
+		for (var k in window) {
+			try {
+				if (!excludedKeys['$' + k] && has.call(window, k) && window[k] !== null && typeof window[k] === 'object') {
+					try {
+						equalsConstructorPrototype(window[k]);
+					} catch (e) {
+						return true;
+					}
+				}
+			} catch (e) {
+				return true;
+			}
+		}
+		return false;
+	}());
+	var equalsConstructorPrototypeIfNotBuggy = function (o) {
+		/* global window */
+		if (typeof window === 'undefined' || !hasAutomationEqualityBug) {
+			return equalsConstructorPrototype(o);
+		}
+		try {
+			return equalsConstructorPrototype(o);
+		} catch (e) {
+			return false;
+		}
+	};
+
+	keysShim = function keys(object) {
+		var isObject = object !== null && typeof object === 'object';
+		var isFunction = toStr.call(object) === '[object Function]';
+		var isArguments = isArgs(object);
+		var isString = isObject && toStr.call(object) === '[object String]';
+		var theKeys = [];
+
+		if (!isObject && !isFunction && !isArguments) {
+			throw new TypeError('Object.keys called on a non-object');
+		}
+
+		var skipProto = hasProtoEnumBug && isFunction;
+		if (isString && object.length > 0 && !has.call(object, 0)) {
+			for (var i = 0; i < object.length; ++i) {
+				theKeys.push(String(i));
+			}
+		}
+
+		if (isArguments && object.length > 0) {
+			for (var j = 0; j < object.length; ++j) {
+				theKeys.push(String(j));
+			}
+		} else {
+			for (var name in object) {
+				if (!(skipProto && name === 'prototype') && has.call(object, name)) {
+					theKeys.push(String(name));
+				}
+			}
+		}
+
+		if (hasDontEnumBug) {
+			var skipConstructor = equalsConstructorPrototypeIfNotBuggy(object);
+
+			for (var k = 0; k < dontEnums.length; ++k) {
+				if (!(skipConstructor && dontEnums[k] === 'constructor') && has.call(object, dontEnums[k])) {
+					theKeys.push(dontEnums[k]);
+				}
+			}
+		}
+		return theKeys;
+	};
+}
+module.exports = keysShim;
+
+
+/***/ }),
+
+/***/ "./node_modules/object-keys/index.js":
+/*!*******************************************!*\
+  !*** ./node_modules/object-keys/index.js ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var slice = Array.prototype.slice;
+var isArgs = __webpack_require__(/*! ./isArguments */ "./node_modules/object-keys/isArguments.js");
+
+var origKeys = Object.keys;
+var keysShim = origKeys ? function keys(o) { return origKeys(o); } : __webpack_require__(/*! ./implementation */ "./node_modules/object-keys/implementation.js");
+
+var originalKeys = Object.keys;
+
+keysShim.shim = function shimObjectKeys() {
+	if (Object.keys) {
+		var keysWorksWithArguments = (function () {
+			// Safari 5.0 bug
+			var args = Object.keys(arguments);
+			return args && args.length === arguments.length;
+		}(1, 2));
+		if (!keysWorksWithArguments) {
+			Object.keys = function keys(object) { // eslint-disable-line func-name-matching
+				if (isArgs(object)) {
+					return originalKeys(slice.call(object));
+				}
+				return originalKeys(object);
+			};
+		}
+	} else {
+		Object.keys = keysShim;
+	}
+	return Object.keys || keysShim;
+};
+
+module.exports = keysShim;
+
+
+/***/ }),
+
+/***/ "./node_modules/object-keys/isArguments.js":
+/*!*************************************************!*\
+  !*** ./node_modules/object-keys/isArguments.js ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var toStr = Object.prototype.toString;
+
+module.exports = function isArguments(value) {
+	var str = toStr.call(value);
+	var isArgs = str === '[object Arguments]';
+	if (!isArgs) {
+		isArgs = str !== '[object Array]' &&
+			value !== null &&
+			typeof value === 'object' &&
+			typeof value.length === 'number' &&
+			value.length >= 0 &&
+			toStr.call(value.callee) === '[object Function]';
+	}
+	return isArgs;
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/react-flot/flot-override/jquery.flot.resize.js":
+/*!*********************************************************************!*\
+  !*** ./node_modules/react-flot/flot-override/jquery.flot.resize.js ***!
+  \*********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+/* Flot plugin for automatically redrawing plots as the placeholder resizes.
+
+Copyright (c) 2007-2014 IOLA and Ole Laursen.
+Licensed under the MIT license.
+
+It works by listening for changes on the placeholder div (through the jQuery
+resize event plugin) - if the size changes, it will redraw the plot.
+
+There are no options. If you need to disable the plugin for some plots, you
+can just fix the size of their placeholders.
+
 */
-(function(P,M){ true&&module.exports?(M["default"]=M,module.exports=P.document?M(P):M): true?!(__WEBPACK_AMD_DEFINE_RESULT__ = (function(){return M(P)}).call(exports, __webpack_require__, exports, module),
-				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)):(undefined)})("undefined"!==typeof window?window:this,function(P){function M(c,f,F,G){c.hasOwnProperty(f)||(c[f]=G.apply(null,F))}var I={};M(I,"parts/Globals.js",[],function(){var c="undefined"!==typeof P?P:"undefined"!==typeof window?window:{},f=c.document,
-F=c.navigator&&c.navigator.userAgent||"",G=f&&f.createElementNS&&!!f.createElementNS("http://www.w3.org/2000/svg","svg").createSVGRect,z=/(edge|msie|trident)/i.test(F)&&!c.opera,B=-1!==F.indexOf("Firefox"),t=-1!==F.indexOf("Chrome"),v=B&&4>parseInt(F.split("Firefox/")[1],10);return{product:"Highcharts",version:"7.2.2",deg2rad:2*Math.PI/360,doc:f,hasBidiBug:v,hasTouch:!!c.TouchEvent,isMS:z,isWebKit:-1!==F.indexOf("AppleWebKit"),isFirefox:B,isChrome:t,isSafari:!t&&-1!==F.indexOf("Safari"),isTouchDevice:/(Mobile|Android|Windows Phone)/.test(F),
-SVG_NS:"http://www.w3.org/2000/svg",chartCount:0,seriesTypes:{},symbolSizes:{},svg:G,win:c,marginNames:["plotTop","marginRight","marginBottom","plotLeft"],noop:function(){},charts:[],dateFormats:{}}});M(I,"parts/Utilities.js",[I["parts/Globals.js"]],function(c){function f(a,d){return parseInt(a,d||10)}function F(a){return"string"===typeof a}function G(a){a=Object.prototype.toString.call(a);return"[object Array]"===a||"[object Array Iterator]"===a}function z(a,d){return!!a&&"object"===typeof a&&(!d||
-!G(a))}function B(a){return z(a)&&"number"===typeof a.nodeType}function t(a){var d=a&&a.constructor;return!(!z(a,!0)||B(a)||!d||!d.name||"Object"===d.name)}function v(a){return"number"===typeof a&&!isNaN(a)&&Infinity>a&&-Infinity<a}function C(a){return"undefined"!==typeof a&&null!==a}function H(a,d,e){var b;F(d)?C(e)?a.setAttribute(d,e):a&&a.getAttribute&&((b=a.getAttribute(d))||"class"!==d||(b=a.getAttribute(d+"Name"))):n(d,function(d,e){a.setAttribute(e,d)});return b}function y(a,d){var e;a||(a=
-{});for(e in d)a[e]=d[e];return a}function h(){for(var a=arguments,d=a.length,e=0;e<d;e++){var b=a[e];if("undefined"!==typeof b&&null!==b)return b}}function n(a,d,e){for(var b in a)Object.hasOwnProperty.call(a,b)&&d.call(e||a[b],a[b],b,a)}c.timers=[];var q=c.charts,g=c.doc,b=c.win;c.error=function(a,d,e,l){var g=v(a),h=g?"Highcharts error #"+a+": www.highcharts.com/errors/"+a+"/":a.toString(),p=function(){if(d)throw Error(h);b.console&&console.log(h)};if("undefined"!==typeof l){var u="";g&&(h+="?");
-c.objectEach(l,function(a,d){u+="\n"+d+": "+a;g&&(h+=encodeURI(d)+"="+encodeURI(a))});h+=u}e?c.fireEvent(e,"displayError",{code:a,message:h,params:l},p):p()};c.Fx=function(a,d,e){this.options=d;this.elem=a;this.prop=e};c.Fx.prototype={dSetter:function(){var a=this.paths[0],d=this.paths[1],e=[],b=this.now,g=a.length;if(1===b)e=this.toD;else if(g===d.length&&1>b)for(;g--;){var c=parseFloat(a[g]);e[g]=isNaN(c)||"A"===d[g-4]||"A"===d[g-5]?d[g]:b*parseFloat(""+(d[g]-c))+c}else e=d;this.elem.attr("d",e,
-null,!0)},update:function(){var a=this.elem,d=this.prop,e=this.now,b=this.options.step;if(this[d+"Setter"])this[d+"Setter"]();else a.attr?a.element&&a.attr(d,e,null,!0):a.style[d]=e+this.unit;b&&b.call(a,e,this)},run:function(a,d,e){var l=this,g=l.options,h=function(a){return h.stopped?!1:l.step(a)},p=b.requestAnimationFrame||function(a){setTimeout(a,13)},u=function(){for(var a=0;a<c.timers.length;a++)c.timers[a]()||c.timers.splice(a--,1);c.timers.length&&p(u)};a!==d||this.elem["forceAnimate:"+this.prop]?
-(this.startTime=+new Date,this.start=a,this.end=d,this.unit=e,this.now=this.start,this.pos=0,h.elem=this.elem,h.prop=this.prop,h()&&1===c.timers.push(h)&&p(u)):(delete g.curAnim[this.prop],g.complete&&0===Object.keys(g.curAnim).length&&g.complete.call(this.elem))},step:function(a){var d=+new Date,e=this.options,b=this.elem,g=e.complete,c=e.duration,p=e.curAnim;if(b.attr&&!b.element)a=!1;else if(a||d>=c+this.startTime){this.now=this.end;this.pos=1;this.update();var u=p[this.prop]=!0;n(p,function(a){!0!==
-a&&(u=!1)});u&&g&&g.call(b);a=!1}else this.pos=e.easing((d-this.startTime)/c),this.now=this.start+(this.end-this.start)*this.pos,this.update(),a=!0;return a},initPath:function(a,d,e){function b(a){for(A=a.length;A--;){var d="M"===a[A]||"L"===a[A];var e=/[a-zA-Z]/.test(a[A+3]);d&&e&&a.splice(A+1,0,a[A+1],a[A+2],a[A+1],a[A+2])}}function g(a,d){for(;a.length<h;){a[0]=d[h-a.length];var e=a.slice(0,r);[].splice.apply(a,[0,0].concat(e));w&&(e=a.slice(a.length-r),[].splice.apply(a,[a.length,0].concat(e)),
-A--)}a[0]="M"}function c(a,d){for(var e=(h-a.length)/r;0<e&&e--;)x=a.slice().splice(a.length/m-r,r*m),x[0]=d[h-r-e*r],k&&(x[r-6]=x[r-2],x[r-5]=x[r-1]),[].splice.apply(a,[a.length/m,0].concat(x)),w&&e--}d=d||"";var p=a.startX,u=a.endX,k=-1<d.indexOf("C"),r=k?7:3,x,A;d=d.split(" ");e=e.slice();var w=a.isArea,m=w?2:1;k&&(b(d),b(e));if(p&&u){for(A=0;A<p.length;A++)if(p[A]===u[0]){var K=A;break}else if(p[0]===u[u.length-p.length+A]){K=A;var J=!0;break}else if(p[p.length-1]===u[u.length-p.length+A]){K=
-p.length-A;break}"undefined"===typeof K&&(d=[])}if(d.length&&v(K)){var h=e.length+K*m*r;J?(g(d,e),c(e,d)):(g(e,d),c(d,e))}return[d,e]},fillSetter:function(){c.Fx.prototype.strokeSetter.apply(this,arguments)},strokeSetter:function(){this.elem.attr(this.prop,c.color(this.start).tweenTo(c.color(this.end),this.pos),null,!0)}};c.merge=function(){var a,d=arguments,e={},b=function(a,d){"object"!==typeof a&&(a={});n(d,function(e,k){!z(e,!0)||t(e)||B(e)?a[k]=d[k]:a[k]=b(a[k]||{},e)});return a};!0===d[0]&&
-(e=d[1],d=Array.prototype.slice.call(d,2));var g=d.length;for(a=0;a<g;a++)e=b(e,d[a]);return e};c.clearTimeout=function(a){C(a)&&clearTimeout(a)};c.css=function(a,d){c.isMS&&!c.svg&&d&&"undefined"!==typeof d.opacity&&(d.filter="alpha(opacity="+100*d.opacity+")");y(a.style,d)};c.createElement=function(a,d,e,b,L){a=g.createElement(a);var l=c.css;d&&y(a,d);L&&l(a,{padding:"0",border:"none",margin:"0"});e&&l(a,e);b&&b.appendChild(a);return a};c.extendClass=function(a,d){var e=function(){};e.prototype=
-new a;y(e.prototype,d);return e};c.pad=function(a,d,e){return Array((d||2)+1-String(a).replace("-","").length).join(e||"0")+a};c.relativeLength=function(a,d,e){return/%$/.test(a)?d*parseFloat(a)/100+(e||0):parseFloat(a)};c.wrap=function(a,d,e){var b=a[d];a[d]=function(){var a=Array.prototype.slice.call(arguments),d=arguments,l=this;l.proceed=function(){b.apply(l,arguments.length?arguments:d)};a.unshift(b);a=e.apply(this,a);l.proceed=null;return a}};c.datePropsToTimestamps=function(a){n(a,function(d,
-e){z(d)&&"function"===typeof d.getTime?a[e]=d.getTime():(z(d)||G(d))&&c.datePropsToTimestamps(d)})};c.formatSingle=function(a,d,e){var b=/\.([0-9])/,g=c.defaultOptions.lang;/f$/.test(a)?(e=(e=a.match(b))?e[1]:-1,null!==d&&(d=c.numberFormat(d,e,g.decimalPoint,-1<a.indexOf(",")?g.thousandsSep:""))):d=(e||c.time).dateFormat(a,d);return d};c.format=function(a,d,e){for(var b="{",g=!1,h,p,u,k,r=[],x;a;){b=a.indexOf(b);if(-1===b)break;h=a.slice(0,b);if(g){h=h.split(":");p=h.shift().split(".");k=p.length;
-x=d;for(u=0;u<k;u++)x&&(x=x[p[u]]);h.length&&(x=c.formatSingle(h.join(":"),x,e));r.push(x)}else r.push(h);a=a.slice(b+1);b=(g=!g)?"}":"{"}r.push(a);return r.join("")};c.getMagnitude=function(a){return Math.pow(10,Math.floor(Math.log(a)/Math.LN10))};c.normalizeTickInterval=function(a,d,e,b,g){var l=a;e=h(e,1);var p=a/e;d||(d=g?[1,1.2,1.5,2,2.5,3,4,5,6,8,10]:[1,2,2.5,5,10],!1===b&&(1===e?d=d.filter(function(a){return 0===a%1}):.1>=e&&(d=[1/e])));for(b=0;b<d.length&&!(l=d[b],g&&l*e>=a||!g&&p<=(d[b]+
-(d[b+1]||d[b]))/2);b++);return l=c.correctFloat(l*e,-Math.round(Math.log(.001)/Math.LN10))};c.stableSort=function(a,d){var b=a.length,l,g;for(g=0;g<b;g++)a[g].safeI=g;a.sort(function(a,b){l=d(a,b);return 0===l?a.safeI-b.safeI:l});for(g=0;g<b;g++)delete a[g].safeI};c.correctFloat=function(a,d){return parseFloat(a.toPrecision(d||14))};c.animObject=function(a){return z(a)?c.merge(a):{duration:a?500:0}};c.timeUnits={millisecond:1,second:1E3,minute:6E4,hour:36E5,day:864E5,week:6048E5,month:24192E5,year:314496E5};
-c.numberFormat=function(a,d,b,l){a=+a||0;d=+d;var e=c.defaultOptions.lang,g=(a.toString().split(".")[1]||"").split("e")[0].length,p=a.toString().split("e");if(-1===d)d=Math.min(g,20);else if(!v(d))d=2;else if(d&&p[1]&&0>p[1]){var u=d+ +p[1];0<=u?(p[0]=(+p[0]).toExponential(u).split("e")[0],d=u):(p[0]=p[0].split(".")[0]||0,a=20>d?(p[0]*Math.pow(10,p[1])).toFixed(d):0,p[1]=0)}var k=(Math.abs(p[1]?p[0]:a)+Math.pow(10,-Math.max(d,g)-1)).toFixed(d);g=String(f(k));u=3<g.length?g.length%3:0;b=h(b,e.decimalPoint);
-l=h(l,e.thousandsSep);a=(0>a?"-":"")+(u?g.substr(0,u)+l:"");a+=g.substr(u).replace(/(\d{3})(?=\d)/g,"$1"+l);d&&(a+=b+k.slice(-d));p[1]&&0!==+a&&(a+="e"+p[1]);return a};Math.easeInOutSine=function(a){return-.5*(Math.cos(Math.PI*a)-1)};c.getStyle=function(a,d,e){if("width"===d)return d=Math.min(a.offsetWidth,a.scrollWidth),e=a.getBoundingClientRect&&a.getBoundingClientRect().width,e<d&&e>=d-1&&(d=Math.floor(e)),Math.max(0,d-c.getStyle(a,"padding-left")-c.getStyle(a,"padding-right"));if("height"===d)return Math.max(0,
-Math.min(a.offsetHeight,a.scrollHeight)-c.getStyle(a,"padding-top")-c.getStyle(a,"padding-bottom"));b.getComputedStyle||c.error(27,!0);if(a=b.getComputedStyle(a,void 0))a=a.getPropertyValue(d),h(e,"opacity"!==d)&&(a=f(a));return a};c.inArray=function(a,d,b){return d.indexOf(a,b)};c.find=Array.prototype.find?function(a,d){return a.find(d)}:function(a,d){var b,l=a.length;for(b=0;b<l;b++)if(d(a[b],b))return a[b]};c.keys=Object.keys;c.offset=function(a){var d=g.documentElement;a=a.parentElement||a.parentNode?
-a.getBoundingClientRect():{top:0,left:0};return{top:a.top+(b.pageYOffset||d.scrollTop)-(d.clientTop||0),left:a.left+(b.pageXOffset||d.scrollLeft)-(d.clientLeft||0)}};c.stop=function(a,b){for(var d=c.timers.length;d--;)c.timers[d].elem!==a||b&&b!==c.timers[d].prop||(c.timers[d].stopped=!0)};n({map:"map",each:"forEach",grep:"filter",reduce:"reduce",some:"some"},function(a,b){c[b]=function(b){return Array.prototype[a].apply(b,[].slice.call(arguments,1))}});c.addEvent=function(a,b,e,l){void 0===l&&(l=
-{});var d=a.addEventListener||c.addEventListenerPolyfill;var g="function"===typeof a&&a.prototype?a.prototype.protoEvents=a.prototype.protoEvents||{}:a.hcEvents=a.hcEvents||{};c.Point&&a instanceof c.Point&&a.series&&a.series.chart&&(a.series.chart.runTrackerClick=!0);d&&d.call(a,b,e,!1);g[b]||(g[b]=[]);g[b].push({fn:e,order:"number"===typeof l.order?l.order:Infinity});g[b].sort(function(a,b){return a.order-b.order});return function(){c.removeEvent(a,b,e)}};c.removeEvent=function(a,b,e){function d(b,
-d){var e=a.removeEventListener||c.removeEventListenerPolyfill;e&&e.call(a,b,d,!1)}function g(e){var l;if(a.nodeName){if(b){var k={};k[b]=!0}else k=e;n(k,function(a,b){if(e[b])for(l=e[b].length;l--;)d(b,e[b][l].fn)})}}var h;["protoEvents","hcEvents"].forEach(function(l,c){var k=(c=c?a:a.prototype)&&c[l];k&&(b?(h=k[b]||[],e?(k[b]=h.filter(function(a){return e!==a.fn}),d(b,e)):(g(k),k[b]=[])):(g(k),c[l]={}))})};c.fireEvent=function(a,b,e,l){var d;e=e||{};if(g.createEvent&&(a.dispatchEvent||a.fireEvent)){var c=
-g.createEvent("Events");c.initEvent(b,!0,!0);y(c,e);a.dispatchEvent?a.dispatchEvent(c):a.fireEvent(b,c)}else e.target||y(e,{preventDefault:function(){e.defaultPrevented=!0},target:a,type:b}),function(b,l){void 0===b&&(b=[]);void 0===l&&(l=[]);var k=0,r=0,g=b.length+l.length;for(d=0;d<g;d++)!1===(b[k]?l[r]?b[k].order<=l[r].order?b[k++]:l[r++]:b[k++]:l[r++]).fn.call(a,e)&&e.preventDefault()}(a.protoEvents&&a.protoEvents[b],a.hcEvents&&a.hcEvents[b]);l&&!e.defaultPrevented&&l.call(a,e)};c.animate=function(a,
-b,e){var d,g="",h,p;if(!z(e)){var u=arguments;e={duration:u[2],easing:u[3],complete:u[4]}}v(e.duration)||(e.duration=400);e.easing="function"===typeof e.easing?e.easing:Math[e.easing]||Math.easeInOutSine;e.curAnim=c.merge(b);n(b,function(k,l){c.stop(a,l);p=new c.Fx(a,e,l);h=null;"d"===l?(p.paths=p.initPath(a,a.d,b.d),p.toD=b.d,d=0,h=1):a.attr?d=a.attr(l):(d=parseFloat(c.getStyle(a,l))||0,"opacity"!==l&&(g="px"));h||(h=k);h&&h.match&&h.match("px")&&(h=h.replace(/px/g,""));p.run(d,h,g)})};c.seriesType=
-function(a,b,e,l,g){var d=c.getOptions(),p=c.seriesTypes;d.plotOptions[a]=c.merge(d.plotOptions[b],e);p[a]=c.extendClass(p[b]||function(){},l);p[a].prototype.type=a;g&&(p[a].prototype.pointClass=c.extendClass(c.Point,g));return p[a]};c.uniqueKey=function(){var a=Math.random().toString(36).substring(2,9),b=0;return function(){return"highcharts-"+a+"-"+b++}}();c.isFunction=function(a){return"function"===typeof a};b.jQuery&&(b.jQuery.fn.highcharts=function(){var a=[].slice.call(arguments);if(this[0])return a[0]?
-(new (c[F(a[0])?a.shift():"Chart"])(this[0],a[0],a[1]),this):q[H(this[0],"data-highcharts-chart")]});return{arrayMax:function(a){for(var b=a.length,e=a[0];b--;)a[b]>e&&(e=a[b]);return e},arrayMin:function(a){for(var b=a.length,e=a[0];b--;)a[b]<e&&(e=a[b]);return e},attr:H,defined:C,destroyObjectProperties:function(a,b){n(a,function(d,l){d&&d!==b&&d.destroy&&d.destroy();delete a[l]})},discardElement:function(a){var b=c.garbageBin;b||(b=c.createElement("div"));a&&b.appendChild(a);b.innerHTML=""},erase:function(a,
-b){for(var d=a.length;d--;)if(a[d]===b){a.splice(d,1);break}},extend:y,isArray:G,isClass:t,isDOMElement:B,isNumber:v,isObject:z,isString:F,objectEach:n,pick:h,pInt:f,setAnimation:function(a,b){b.renderer.globalAnimation=h(a,b.options.chart.animation,!0)},splat:function(a){return G(a)?a:[a]},syncTimeout:function(a,b,e){if(0<b)return setTimeout(a,b,e);a.call(0,e);return-1}}});M(I,"parts/Color.js",[I["parts/Globals.js"],I["parts/Utilities.js"]],function(c,f){var F=f.isNumber,G=f.pInt,z=c.merge;c.Color=
-function(f){if(!(this instanceof c.Color))return new c.Color(f);this.init(f)};c.Color.prototype={parsers:[{regex:/rgba\(\s*([0-9]{1,3})\s*,\s*([0-9]{1,3})\s*,\s*([0-9]{1,3})\s*,\s*([0-9]?(?:\.[0-9]+)?)\s*\)/,parse:function(c){return[G(c[1]),G(c[2]),G(c[3]),parseFloat(c[4],10)]}},{regex:/rgb\(\s*([0-9]{1,3})\s*,\s*([0-9]{1,3})\s*,\s*([0-9]{1,3})\s*\)/,parse:function(c){return[G(c[1]),G(c[2]),G(c[3]),1]}}],names:{white:"#ffffff",black:"#000000"},init:function(f){var t,v;if((this.input=f=this.names[f&&
-f.toLowerCase?f.toLowerCase():""]||f)&&f.stops)this.stops=f.stops.map(function(f){return new c.Color(f[1])});else{if(f&&f.charAt&&"#"===f.charAt()){var C=f.length;f=parseInt(f.substr(1),16);7===C?t=[(f&16711680)>>16,(f&65280)>>8,f&255,1]:4===C&&(t=[(f&3840)>>4|(f&3840)>>8,(f&240)>>4|f&240,(f&15)<<4|f&15,1])}if(!t)for(v=this.parsers.length;v--&&!t;){var B=this.parsers[v];(C=B.regex.exec(f))&&(t=B.parse(C))}}this.rgba=t||[]},get:function(c){var f=this.input,v=this.rgba;if(this.stops){var C=z(f);C.stops=
-[].concat(C.stops);this.stops.forEach(function(f,v){C.stops[v]=[C.stops[v][0],f.get(c)]})}else C=v&&F(v[0])?"rgb"===c||!c&&1===v[3]?"rgb("+v[0]+","+v[1]+","+v[2]+")":"a"===c?v[3]:"rgba("+v.join(",")+")":f;return C},brighten:function(c){var f,v=this.rgba;if(this.stops)this.stops.forEach(function(f){f.brighten(c)});else if(F(c)&&0!==c)for(f=0;3>f;f++)v[f]+=G(255*c),0>v[f]&&(v[f]=0),255<v[f]&&(v[f]=255);return this},setOpacity:function(c){this.rgba[3]=c;return this},tweenTo:function(c,f){var v=this.rgba,
-t=c.rgba;t.length&&v&&v.length?(c=1!==t[3]||1!==v[3],f=(c?"rgba(":"rgb(")+Math.round(t[0]+(v[0]-t[0])*(1-f))+","+Math.round(t[1]+(v[1]-t[1])*(1-f))+","+Math.round(t[2]+(v[2]-t[2])*(1-f))+(c?","+(t[3]+(v[3]-t[3])*(1-f)):"")+")"):f=c.input||"none";return f}};c.color=function(f){return new c.Color(f)}});M(I,"parts/SvgRenderer.js",[I["parts/Globals.js"],I["parts/Utilities.js"]],function(c,f){var F=f.attr,G=f.defined,z=f.destroyObjectProperties,B=f.erase,t=f.extend,v=f.isArray,C=f.isNumber,H=f.isObject,
-y=f.isString,h=f.objectEach,n=f.pick,q=f.pInt,g=f.splat,b=c.addEvent,a=c.animate,d=c.charts,e=c.color,l=c.css,L=c.createElement,E=c.deg2rad,p=c.doc,u=c.hasTouch,k=c.isFirefox,r=c.isMS,x=c.isWebKit,A=c.merge,w=c.noop,m=c.removeEvent,K=c.stop,J=c.svg,U=c.SVG_NS,S=c.symbolSizes,Q=c.win;var O=c.SVGElement=function(){return this};t(O.prototype,{opacity:1,SVG_NS:U,textProps:"direction fontSize fontWeight fontFamily fontStyle color lineHeight width textAlign textDecoration textOverflow textOutline cursor".split(" "),
-init:function(a,b){this.element="span"===b?L(b):p.createElementNS(this.SVG_NS,b);this.renderer=a;c.fireEvent(this,"afterInit")},animate:function(b,d,m){var D=c.animObject(n(d,this.renderer.globalAnimation,!0));n(p.hidden,p.msHidden,p.webkitHidden,!1)&&(D.duration=0);0!==D.duration?(m&&(D.complete=m),a(this,b,D)):(this.attr(b,void 0,m),h(b,function(a,b){D.step&&D.step.call(this,a,{prop:b,pos:1})},this));return this},complexColor:function(a,b,d){var D=this.renderer,m,e,w,N,k,l,g,r,x,p,K,J=[],T;c.fireEvent(this.renderer,
-"complexColor",{args:arguments},function(){a.radialGradient?e="radialGradient":a.linearGradient&&(e="linearGradient");e&&(w=a[e],k=D.gradients,g=a.stops,p=d.radialReference,v(w)&&(a[e]=w={x1:w[0],y1:w[1],x2:w[2],y2:w[3],gradientUnits:"userSpaceOnUse"}),"radialGradient"===e&&p&&!G(w.gradientUnits)&&(N=w,w=A(w,D.getRadialAttr(p,N),{gradientUnits:"userSpaceOnUse"})),h(w,function(a,b){"id"!==b&&J.push(b,a)}),h(g,function(a){J.push(a)}),J=J.join(","),k[J]?K=k[J].attr("id"):(w.id=K=c.uniqueKey(),k[J]=l=
-D.createElement(e).attr(w).add(D.defs),l.radAttr=N,l.stops=[],g.forEach(function(a){0===a[1].indexOf("rgba")?(m=c.color(a[1]),r=m.get("rgb"),x=m.get("a")):(r=a[1],x=1);a=D.createElement("stop").attr({offset:a[0],"stop-color":r,"stop-opacity":x}).add(l);l.stops.push(a)})),T="url("+D.url+"#"+K+")",d.setAttribute(b,T),d.gradient=J,a.toString=function(){return T})})},applyTextOutline:function(a){var b=this.element,D;-1!==a.indexOf("contrast")&&(a=a.replace(/contrast/g,this.renderer.getContrast(b.style.fill)));
-a=a.split(" ");var d=a[a.length-1];if((D=a[0])&&"none"!==D&&c.svg){this.fakeTS=!0;a=[].slice.call(b.getElementsByTagName("tspan"));this.ySetter=this.xSetter;D=D.replace(/(^[\d\.]+)(.*?)$/g,function(a,b,D){return 2*b+D});this.removeTextOutline(a);var m=b.firstChild;a.forEach(function(a,e){0===e&&(a.setAttribute("x",b.getAttribute("x")),e=b.getAttribute("y"),a.setAttribute("y",e||0),null===e&&b.setAttribute("y",0));a=a.cloneNode(1);F(a,{"class":"highcharts-text-outline",fill:d,stroke:d,"stroke-width":D,
-"stroke-linejoin":"round"});b.insertBefore(a,m)})}},removeTextOutline:function(a){for(var b=a.length,D;b--;)D=a[b],"highcharts-text-outline"===D.getAttribute("class")&&B(a,this.element.removeChild(D))},symbolCustomAttribs:"x y width height r start end innerR anchorX anchorY rounded".split(" "),attr:function(a,b,d,e){var D=this.element,m,w=this,N,k,l=this.symbolCustomAttribs;if("string"===typeof a&&void 0!==b){var g=a;a={};a[g]=b}"string"===typeof a?w=(this[a+"Getter"]||this._defaultGetter).call(this,
-a,D):(h(a,function(b,d){N=!1;e||K(this,d);this.symbolName&&-1!==c.inArray(d,l)&&(m||(this.symbolAttr(a),m=!0),N=!0);!this.rotation||"x"!==d&&"y"!==d||(this.doTransform=!0);N||(k=this[d+"Setter"]||this._defaultSetter,k.call(this,b,d,D),!this.styledMode&&this.shadows&&/^(width|height|visibility|x|y|d|transform|cx|cy|r)$/.test(d)&&this.updateShadows(d,b,k))},this),this.afterSetters());d&&d.call(this);return w},afterSetters:function(){this.doTransform&&(this.updateTransform(),this.doTransform=!1)},updateShadows:function(a,
-b,d){for(var D=this.shadows,e=D.length;e--;)d.call(D[e],"height"===a?Math.max(b-(D[e].cutHeight||0),0):"d"===a?this.d:b,a,D[e])},addClass:function(a,b){var D=b?"":this.attr("class")||"";a=(a||"").split(/ /g).reduce(function(a,b){-1===D.indexOf(b)&&a.push(b);return a},D?[D]:[]).join(" ");a!==D&&this.attr("class",a);return this},hasClass:function(a){return-1!==(this.attr("class")||"").split(" ").indexOf(a)},removeClass:function(a){return this.attr("class",(this.attr("class")||"").replace(y(a)?new RegExp(" ?"+
-a+" ?"):a,""))},symbolAttr:function(a){var b=this;"x y r start end width height innerR anchorX anchorY clockwise".split(" ").forEach(function(D){b[D]=n(a[D],b[D])});b.attr({d:b.renderer.symbols[b.symbolName](b.x,b.y,b.width,b.height,b)})},clip:function(a){return this.attr("clip-path",a?"url("+this.renderer.url+"#"+a.id+")":"none")},crisp:function(a,b){b=b||a.strokeWidth||0;var D=Math.round(b)%2/2;a.x=Math.floor(a.x||this.x||0)+D;a.y=Math.floor(a.y||this.y||0)+D;a.width=Math.floor((a.width||this.width||
-0)-2*D);a.height=Math.floor((a.height||this.height||0)-2*D);G(a.strokeWidth)&&(a.strokeWidth=b);return a},css:function(a){var b=this.styles,D={},d=this.element,e="",m=!b,w=["textOutline","textOverflow","width"];a&&a.color&&(a.fill=a.color);b&&h(a,function(a,d){a!==b[d]&&(D[d]=a,m=!0)});if(m){b&&(a=t(b,D));if(a)if(null===a.width||"auto"===a.width)delete this.textWidth;else if("text"===d.nodeName.toLowerCase()&&a.width)var k=this.textWidth=q(a.width);this.styles=a;k&&!J&&this.renderer.forExport&&delete a.width;
-if(d.namespaceURI===this.SVG_NS){var g=function(a,b){return"-"+b.toLowerCase()};h(a,function(a,b){-1===w.indexOf(b)&&(e+=b.replace(/([A-Z])/g,g)+":"+a+";")});e&&F(d,"style",e)}else l(d,a);this.added&&("text"===this.element.nodeName&&this.renderer.buildText(this),a&&a.textOutline&&this.applyTextOutline(a.textOutline))}return this},getStyle:function(a){return Q.getComputedStyle(this.element||this,"").getPropertyValue(a)},strokeWidth:function(){if(!this.renderer.styledMode)return this["stroke-width"]||
-0;var a=this.getStyle("stroke-width");if(a.indexOf("px")===a.length-2)a=q(a);else{var b=p.createElementNS(U,"rect");F(b,{width:a,"stroke-width":0});this.element.parentNode.appendChild(b);a=b.getBBox().width;b.parentNode.removeChild(b)}return a},on:function(a,b){var d=this,D=d.element;u&&"click"===a?(D.ontouchstart=function(a){d.touchEventFired=Date.now();a.preventDefault();b.call(D,a)},D.onclick=function(a){(-1===Q.navigator.userAgent.indexOf("Android")||1100<Date.now()-(d.touchEventFired||0))&&b.call(D,
-a)}):D["on"+a]=b;return this},setRadialReference:function(a){var b=this.renderer.gradients[this.element.gradient];this.element.radialReference=a;b&&b.radAttr&&b.animate(this.renderer.getRadialAttr(a,b.radAttr));return this},translate:function(a,b){return this.attr({translateX:a,translateY:b})},invert:function(a){this.inverted=a;this.updateTransform();return this},updateTransform:function(){var a=this.translateX||0,b=this.translateY||0,d=this.scaleX,e=this.scaleY,m=this.inverted,w=this.rotation,k=
-this.matrix,l=this.element;m&&(a+=this.width,b+=this.height);a=["translate("+a+","+b+")"];G(k)&&a.push("matrix("+k.join(",")+")");m?a.push("rotate(90) scale(-1,1)"):w&&a.push("rotate("+w+" "+n(this.rotationOriginX,l.getAttribute("x"),0)+" "+n(this.rotationOriginY,l.getAttribute("y")||0)+")");(G(d)||G(e))&&a.push("scale("+n(d,1)+" "+n(e,1)+")");a.length&&l.setAttribute("transform",a.join(" "))},toFront:function(){var a=this.element;a.parentNode.appendChild(a);return this},align:function(a,b,d){var e,
-m={};var D=this.renderer;var w=D.alignedObjects;var k,l;if(a){if(this.alignOptions=a,this.alignByTranslate=b,!d||y(d))this.alignTo=e=d||"renderer",B(w,this),w.push(this),d=null}else a=this.alignOptions,b=this.alignByTranslate,e=this.alignTo;d=n(d,D[e],D);e=a.align;D=a.verticalAlign;w=(d.x||0)+(a.x||0);var N=(d.y||0)+(a.y||0);"right"===e?k=1:"center"===e&&(k=2);k&&(w+=(d.width-(a.width||0))/k);m[b?"translateX":"x"]=Math.round(w);"bottom"===D?l=1:"middle"===D&&(l=2);l&&(N+=(d.height-(a.height||0))/
-l);m[b?"translateY":"y"]=Math.round(N);this[this.placed?"animate":"attr"](m);this.placed=!0;this.alignAttr=m;return this},getBBox:function(a,b){var d,e=this.renderer,m=this.element,D=this.styles,w=this.textStr,k,l=e.cache,N=e.cacheKeys,g=m.namespaceURI===this.SVG_NS;b=n(b,this.rotation,0);var r=e.styledMode?m&&O.prototype.getStyle.call(m,"font-size"):D&&D.fontSize;if(G(w)){var c=w.toString();-1===c.indexOf("<")&&(c=c.replace(/[0-9]/g,"0"));c+=["",b,r,this.textWidth,D&&D.textOverflow].join()}c&&!a&&
-(d=l[c]);if(!d){if(g||e.forExport){try{(k=this.fakeTS&&function(a){[].forEach.call(m.querySelectorAll(".highcharts-text-outline"),function(b){b.style.display=a})})&&k("none"),d=m.getBBox?t({},m.getBBox()):{width:m.offsetWidth,height:m.offsetHeight},k&&k("")}catch(aa){""}if(!d||0>d.width)d={width:0,height:0}}else d=this.htmlGetBBox();e.isSVG&&(a=d.width,e=d.height,g&&(d.height=e={"11px,17":14,"13px,20":16}[D&&D.fontSize+","+Math.round(e)]||e),b&&(D=b*E,d.width=Math.abs(e*Math.sin(D))+Math.abs(a*Math.cos(D)),
-d.height=Math.abs(e*Math.cos(D))+Math.abs(a*Math.sin(D))));if(c&&0<d.height){for(;250<N.length;)delete l[N.shift()];l[c]||N.push(c);l[c]=d}}return d},show:function(a){return this.attr({visibility:a?"inherit":"visible"})},hide:function(a){a?this.attr({y:-9999}):this.attr({visibility:"hidden"});return this},fadeOut:function(a){var b=this;b.animate({opacity:0},{duration:a||150,complete:function(){b.attr({y:-9999})}})},add:function(a){var b=this.renderer,d=this.element;a&&(this.parentGroup=a);this.parentInverted=
-a&&a.inverted;void 0!==this.textStr&&b.buildText(this);this.added=!0;if(!a||a.handleZ||this.zIndex)var e=this.zIndexSetter();e||(a?a.element:b.box).appendChild(d);if(this.onAdd)this.onAdd();return this},safeRemoveChild:function(a){var b=a.parentNode;b&&b.removeChild(a)},destroy:function(){var a=this,b=a.element||{},d=a.renderer,e=d.isSVG&&"SPAN"===b.nodeName&&a.parentGroup,m=b.ownerSVGElement,w=a.clipPath;b.onclick=b.onmouseout=b.onmouseover=b.onmousemove=b.point=null;K(a);w&&m&&([].forEach.call(m.querySelectorAll("[clip-path],[CLIP-PATH]"),
-function(a){-1<a.getAttribute("clip-path").indexOf(w.element.id)&&a.removeAttribute("clip-path")}),a.clipPath=w.destroy());if(a.stops){for(m=0;m<a.stops.length;m++)a.stops[m]=a.stops[m].destroy();a.stops=null}a.safeRemoveChild(b);for(d.styledMode||a.destroyShadows();e&&e.div&&0===e.div.childNodes.length;)b=e.parentGroup,a.safeRemoveChild(e.div),delete e.div,e=b;a.alignTo&&B(d.alignedObjects,a);h(a,function(b,d){a[d]&&a[d].parentGroup===a&&a[d].destroy&&a[d].destroy();delete a[d]})},shadow:function(a,
-b,d){var e=[],m,w=this.element;if(!a)this.destroyShadows();else if(!this.shadows){var D=n(a.width,3);var k=(a.opacity||.15)/D;var l=this.parentInverted?"(-1,-1)":"("+n(a.offsetX,1)+", "+n(a.offsetY,1)+")";for(m=1;m<=D;m++){var g=w.cloneNode(0);var r=2*D+1-2*m;F(g,{stroke:a.color||"#000000","stroke-opacity":k*m,"stroke-width":r,transform:"translate"+l,fill:"none"});g.setAttribute("class",(g.getAttribute("class")||"")+" highcharts-shadow");d&&(F(g,"height",Math.max(F(g,"height")-r,0)),g.cutHeight=r);
-b?b.element.appendChild(g):w.parentNode&&w.parentNode.insertBefore(g,w);e.push(g)}this.shadows=e}return this},destroyShadows:function(){(this.shadows||[]).forEach(function(a){this.safeRemoveChild(a)},this);this.shadows=void 0},xGetter:function(a){"circle"===this.element.nodeName&&("x"===a?a="cx":"y"===a&&(a="cy"));return this._defaultGetter(a)},_defaultGetter:function(a){a=n(this[a+"Value"],this[a],this.element?this.element.getAttribute(a):null,0);/^[\-0-9\.]+$/.test(a)&&(a=parseFloat(a));return a},
-dSetter:function(a,b,d){a&&a.join&&(a=a.join(" "));/(NaN| {2}|^$)/.test(a)&&(a="M 0 0");this[b]!==a&&(d.setAttribute(b,a),this[b]=a)},dashstyleSetter:function(a){var b,d=this["stroke-width"];"inherit"===d&&(d=1);if(a=a&&a.toLowerCase()){a=a.replace("shortdashdotdot","3,1,1,1,1,1,").replace("shortdashdot","3,1,1,1").replace("shortdot","1,1,").replace("shortdash","3,1,").replace("longdash","8,3,").replace(/dot/g,"1,3,").replace("dash","4,3,").replace(/,$/,"").split(",");for(b=a.length;b--;)a[b]=q(a[b])*
-d;a=a.join(",").replace(/NaN/g,"none");this.element.setAttribute("stroke-dasharray",a)}},alignSetter:function(a){var b={left:"start",center:"middle",right:"end"};b[a]&&(this.alignValue=a,this.element.setAttribute("text-anchor",b[a]))},opacitySetter:function(a,b,d){this[b]=a;d.setAttribute(b,a)},titleSetter:function(a){var b=this.element.getElementsByTagName("title")[0];b||(b=p.createElementNS(this.SVG_NS,"title"),this.element.appendChild(b));b.firstChild&&b.removeChild(b.firstChild);b.appendChild(p.createTextNode(String(n(a,
-"")).replace(/<[^>]*>/g,"").replace(/&lt;/g,"<").replace(/&gt;/g,">")))},textSetter:function(a){a!==this.textStr&&(delete this.bBox,delete this.textPxLength,this.textStr=a,this.added&&this.renderer.buildText(this))},setTextPath:function(a,b){var d=this.element,e={textAnchor:"text-anchor"},m=!1,D=this.textPathWrapper,k=!D;b=A(!0,{enabled:!0,attributes:{dy:-5,startOffset:"50%",textAnchor:"middle"}},b);var l=b.attributes;if(a&&b&&b.enabled){this.options&&this.options.padding&&(l.dx=-this.options.padding);
-D||(this.textPathWrapper=D=this.renderer.createElement("textPath"),m=!0);var g=D.element;(b=a.element.getAttribute("id"))||a.element.setAttribute("id",b=c.uniqueKey());if(k)for(a=d.getElementsByTagName("tspan");a.length;)a[0].setAttribute("y",0),g.appendChild(a[0]);m&&D.add({element:this.text?this.text.element:d});g.setAttributeNS("http://www.w3.org/1999/xlink","href",this.renderer.url+"#"+b);G(l.dy)&&(g.parentNode.setAttribute("dy",l.dy),delete l.dy);G(l.dx)&&(g.parentNode.setAttribute("dx",l.dx),
-delete l.dx);h(l,function(a,b){g.setAttribute(e[b]||b,a)});d.removeAttribute("transform");this.removeTextOutline.call(D,[].slice.call(d.getElementsByTagName("tspan")));this.text&&!this.renderer.styledMode&&this.attr({fill:"none","stroke-width":0});this.applyTextOutline=this.updateTransform=w}else D&&(delete this.updateTransform,delete this.applyTextOutline,this.destroyTextPath(d,a));return this},destroyTextPath:function(a,b){var d;b.element.setAttribute("id","");for(d=this.textPathWrapper.element.childNodes;d.length;)a.firstChild.appendChild(d[0]);
-a.firstChild.removeChild(this.textPathWrapper.element);delete b.textPathWrapper},fillSetter:function(a,b,d){"string"===typeof a?d.setAttribute(b,a):a&&this.complexColor(a,b,d)},visibilitySetter:function(a,b,d){"inherit"===a?d.removeAttribute(b):this[b]!==a&&d.setAttribute(b,a);this[b]=a},zIndexSetter:function(a,b){var d=this.renderer,e=this.parentGroup,m=(e||d).element||d.box,w=this.element,k=!1;d=m===d.box;var D=this.added;var l;G(a)?(w.setAttribute("data-z-index",a),a=+a,this[b]===a&&(D=!1)):G(this[b])&&
-w.removeAttribute("data-z-index");this[b]=a;if(D){(a=this.zIndex)&&e&&(e.handleZ=!0);b=m.childNodes;for(l=b.length-1;0<=l&&!k;l--){e=b[l];D=e.getAttribute("data-z-index");var g=!G(D);if(e!==w)if(0>a&&g&&!d&&!l)m.insertBefore(w,b[l]),k=!0;else if(q(D)<=a||g&&(!G(a)||0<=a))m.insertBefore(w,b[l+1]||null),k=!0}k||(m.insertBefore(w,b[d?3:0]||null),k=!0)}return k},_defaultSetter:function(a,b,d){d.setAttribute(b,a)}});O.prototype.yGetter=O.prototype.xGetter;O.prototype.translateXSetter=O.prototype.translateYSetter=
-O.prototype.rotationSetter=O.prototype.verticalAlignSetter=O.prototype.rotationOriginXSetter=O.prototype.rotationOriginYSetter=O.prototype.scaleXSetter=O.prototype.scaleYSetter=O.prototype.matrixSetter=function(a,b){this[b]=a;this.doTransform=!0};O.prototype["stroke-widthSetter"]=O.prototype.strokeSetter=function(a,b,d){this[b]=a;this.stroke&&this["stroke-width"]?(O.prototype.fillSetter.call(this,this.stroke,"stroke",d),d.setAttribute("stroke-width",this["stroke-width"]),this.hasStroke=!0):"stroke-width"===
-b&&0===a&&this.hasStroke?(d.removeAttribute("stroke"),this.hasStroke=!1):this.renderer.styledMode&&this["stroke-width"]&&(d.setAttribute("stroke-width",this["stroke-width"]),this.hasStroke=!0)};f=c.SVGRenderer=function(){this.init.apply(this,arguments)};t(f.prototype,{Element:O,SVG_NS:U,init:function(a,d,e,m,w,g,r){var D=this.createElement("svg").attr({version:"1.1","class":"highcharts-root"});r||D.css(this.getStyle(m));m=D.element;a.appendChild(m);F(a,"dir","ltr");-1===a.innerHTML.indexOf("xmlns")&&
-F(m,"xmlns",this.SVG_NS);this.isSVG=!0;this.box=m;this.boxWrapper=D;this.alignedObjects=[];this.url=(k||x)&&p.getElementsByTagName("base").length?Q.location.href.split("#")[0].replace(/<[^>]*>/g,"").replace(/([\('\)])/g,"\\$1").replace(/ /g,"%20"):"";this.createElement("desc").add().element.appendChild(p.createTextNode("Created with Highcharts 7.2.2"));this.defs=this.createElement("defs").add();this.allowHTML=g;this.forExport=w;this.styledMode=r;this.gradients={};this.cache={};this.cacheKeys=[];this.imgCount=
-0;this.setSize(d,e,!1);var c;k&&a.getBoundingClientRect&&(d=function(){l(a,{left:0,top:0});c=a.getBoundingClientRect();l(a,{left:Math.ceil(c.left)-c.left+"px",top:Math.ceil(c.top)-c.top+"px"})},d(),this.unSubPixelFix=b(Q,"resize",d))},definition:function(a){function b(a,e){var m;g(a).forEach(function(a){var w=d.createElement(a.tagName),k={};h(a,function(a,b){"tagName"!==b&&"children"!==b&&"textContent"!==b&&(k[b]=a)});w.attr(k);w.add(e||d.defs);a.textContent&&w.element.appendChild(p.createTextNode(a.textContent));
-b(a.children||[],w);m=w});return m}var d=this;return b(a)},getStyle:function(a){return this.style=t({fontFamily:'"Lucida Grande", "Lucida Sans Unicode", Arial, Helvetica, sans-serif',fontSize:"12px"},a)},setStyle:function(a){this.boxWrapper.css(this.getStyle(a))},isHidden:function(){return!this.boxWrapper.getBBox().width},destroy:function(){var a=this.defs;this.box=null;this.boxWrapper=this.boxWrapper.destroy();z(this.gradients||{});this.gradients=null;a&&(this.defs=a.destroy());this.unSubPixelFix&&
-this.unSubPixelFix();return this.alignedObjects=null},createElement:function(a){var b=new this.Element;b.init(this,a);return b},draw:w,getRadialAttr:function(a,b){return{cx:a[0]-a[2]/2+b.cx*a[2],cy:a[1]-a[2]/2+b.cy*a[2],r:b.r*a[2]}},truncate:function(a,b,d,e,m,w,k){var l=this,D=a.rotation,g,r=e?1:0,c=(d||e).length,x=c,J=[],K=function(a){b.firstChild&&b.removeChild(b.firstChild);a&&b.appendChild(p.createTextNode(a))},N=function(w,D){D=D||w;if(void 0===J[D])if(b.getSubStringLength)try{J[D]=m+b.getSubStringLength(0,
-e?D+1:D)}catch(ba){""}else l.getSpanWidth&&(K(k(d||e,w)),J[D]=m+l.getSpanWidth(a,b));return J[D]},A;a.rotation=0;var h=N(b.textContent.length);if(A=m+h>w){for(;r<=c;)x=Math.ceil((r+c)/2),e&&(g=k(e,x)),h=N(x,g&&g.length-1),r===c?r=c+1:h>w?c=x-1:r=x;0===c?K(""):d&&c===d.length-1||K(g||k(d||e,x))}e&&e.splice(0,x);a.actualWidth=h;a.rotation=D;return A},escapes:{"&":"&amp;","<":"&lt;",">":"&gt;","'":"&#39;",'"':"&quot;"},buildText:function(a){var b=a.element,d=this,e=d.forExport,m=n(a.textStr,"").toString(),
-w=-1!==m.indexOf("<"),k=b.childNodes,D,g=F(b,"x"),r=a.styles,c=a.textWidth,x=r&&r.lineHeight,K=r&&r.textOutline,A=r&&"ellipsis"===r.textOverflow,u=r&&"nowrap"===r.whiteSpace,L=r&&r.fontSize,E,f=k.length;r=c&&!a.added&&this.box;var S=function(a){var m;d.styledMode||(m=/(px|em)$/.test(a&&a.style.fontSize)?a.style.fontSize:L||d.style.fontSize||12);return x?q(x):d.fontMetrics(m,a.getAttribute("style")?a:b).h},v=function(a,b){h(d.escapes,function(d,m){b&&-1!==b.indexOf(d)||(a=a.toString().replace(new RegExp(d,
-"g"),m))});return a},O=function(a,b){var d=a.indexOf("<");a=a.substring(d,a.indexOf(">")-d);d=a.indexOf(b+"=");if(-1!==d&&(d=d+b.length+1,b=a.charAt(d),'"'===b||"'"===b))return a=a.substring(d+1),a.substring(0,a.indexOf(b))},Q=/<br.*?>/g;var t=[m,A,u,x,K,L,c].join();if(t!==a.textCache){for(a.textCache=t;f--;)b.removeChild(k[f]);w||K||A||c||-1!==m.indexOf(" ")&&(!u||Q.test(m))?(r&&r.appendChild(b),w?(m=d.styledMode?m.replace(/<(b|strong)>/g,'<span class="highcharts-strong">').replace(/<(i|em)>/g,'<span class="highcharts-emphasized">'):
-m.replace(/<(b|strong)>/g,'<span style="font-weight:bold">').replace(/<(i|em)>/g,'<span style="font-style:italic">'),m=m.replace(/<a/g,"<span").replace(/<\/(b|strong|i|em|a)>/g,"</span>").split(Q)):m=[m],m=m.filter(function(a){return""!==a}),m.forEach(function(m,w){var k=0,r=0;m=m.replace(/^\s+|\s+$/g,"").replace(/<span/g,"|||<span").replace(/<\/span>/g,"</span>|||");var x=m.split("|||");x.forEach(function(m){if(""!==m||1===x.length){var K={},N=p.createElementNS(d.SVG_NS,"tspan"),h,n;(h=O(m,"class"))&&
-F(N,"class",h);if(h=O(m,"style"))h=h.replace(/(;| |^)color([ :])/,"$1fill$2"),F(N,"style",h);if((n=O(m,"href"))&&!e&&-1===n.split(":")[0].toLowerCase().indexOf("javascript")){var T=p.createElementNS(d.SVG_NS,"a");F(T,"href",n);F(N,"class","highcharts-anchor");T.appendChild(N);d.styledMode||l(N,{cursor:"pointer"})}m=v(m.replace(/<[a-zA-Z\/](.|\n)*?>/g,"")||" ");if(" "!==m){N.appendChild(p.createTextNode(m));k?K.dx=0:w&&null!==g&&(K.x=g);F(N,K);b.appendChild(T||N);!k&&E&&(!J&&e&&l(N,{display:"block"}),
-F(N,"dy",S(N)));if(c){var f=m.replace(/([^\^])-/g,"$1- ").split(" ");K=!u&&(1<x.length||w||1<f.length);T=0;n=S(N);if(A)D=d.truncate(a,N,m,void 0,0,Math.max(0,c-parseInt(L||12,10)),function(a,b){return a.substring(0,b)+"\u2026"});else if(K)for(;f.length;)f.length&&!u&&0<T&&(N=p.createElementNS(U,"tspan"),F(N,{dy:n,x:g}),h&&F(N,"style",h),N.appendChild(p.createTextNode(f.join(" ").replace(/- /g,"-"))),b.appendChild(N)),d.truncate(a,N,null,f,0===T?r:0,c,function(a,b){return f.slice(0,b).join(" ").replace(/- /g,
-"-")}),r=a.actualWidth,T++}k++}}});E=E||b.childNodes.length}),A&&D&&a.attr("title",v(a.textStr,["&lt;","&gt;"])),r&&r.removeChild(b),K&&a.applyTextOutline&&a.applyTextOutline(K)):b.appendChild(p.createTextNode(v(m)))}},getContrast:function(a){a=e(a).rgba;a[0]*=1;a[1]*=1.2;a[2]*=.5;return 459<a[0]+a[1]+a[2]?"#000000":"#FFFFFF"},button:function(a,d,m,e,w,k,l,g,c,x){var D=this.label(a,d,m,c,null,null,x,null,"button"),p=0,K=this.styledMode;D.attr(A({padding:8,r:2},w));if(!K){w=A({fill:"#f7f7f7",stroke:"#cccccc",
-"stroke-width":1,style:{color:"#333333",cursor:"pointer",fontWeight:"normal"}},w);var J=w.style;delete w.style;k=A(w,{fill:"#e6e6e6"},k);var N=k.style;delete k.style;l=A(w,{fill:"#e6ebf5",style:{color:"#000000",fontWeight:"bold"}},l);var h=l.style;delete l.style;g=A(w,{style:{color:"#cccccc"}},g);var u=g.style;delete g.style}b(D.element,r?"mouseover":"mouseenter",function(){3!==p&&D.setState(1)});b(D.element,r?"mouseout":"mouseleave",function(){3!==p&&D.setState(p)});D.setState=function(a){1!==a&&
-(D.state=p=a);D.removeClass(/highcharts-button-(normal|hover|pressed|disabled)/).addClass("highcharts-button-"+["normal","hover","pressed","disabled"][a||0]);K||D.attr([w,k,l,g][a||0]).css([J,N,h,u][a||0])};K||D.attr(w).css(t({cursor:"default"},J));return D.on("click",function(a){3!==p&&e.call(D,a)})},crispLine:function(a,b){a[1]===a[4]&&(a[1]=a[4]=Math.round(a[1])-b%2/2);a[2]===a[5]&&(a[2]=a[5]=Math.round(a[2])+b%2/2);return a},path:function(a){var b=this.styledMode?{}:{fill:"none"};v(a)?b.d=a:H(a)&&
-t(b,a);return this.createElement("path").attr(b)},circle:function(a,b,d){a=H(a)?a:void 0===a?{}:{x:a,y:b,r:d};b=this.createElement("circle");b.xSetter=b.ySetter=function(a,b,d){d.setAttribute("c"+b,a)};return b.attr(a)},arc:function(a,b,d,m,e,w){H(a)?(m=a,b=m.y,d=m.r,a=m.x):m={innerR:m,start:e,end:w};a=this.symbol("arc",a,b,d,d,m);a.r=d;return a},rect:function(a,b,d,m,e,w){e=H(a)?a.r:e;var k=this.createElement("rect");a=H(a)?a:void 0===a?{}:{x:a,y:b,width:Math.max(d,0),height:Math.max(m,0)};this.styledMode||
-(void 0!==w&&(a.strokeWidth=w,a=k.crisp(a)),a.fill="none");e&&(a.r=e);k.rSetter=function(a,b,d){k.r=a;F(d,{rx:a,ry:a})};k.rGetter=function(){return k.r};return k.attr(a)},setSize:function(a,b,d){var m=this.alignedObjects,e=m.length;this.width=a;this.height=b;for(this.boxWrapper.animate({width:a,height:b},{step:function(){this.attr({viewBox:"0 0 "+this.attr("width")+" "+this.attr("height")})},duration:n(d,!0)?void 0:0});e--;)m[e].align()},g:function(a){var b=this.createElement("g");return a?b.attr({"class":"highcharts-"+
-a}):b},image:function(a,d,m,e,w,k){var l={preserveAspectRatio:"none"},g=function(a,b){a.setAttributeNS?a.setAttributeNS("http://www.w3.org/1999/xlink","href",b):a.setAttribute("hc-svg-href",b)},r=function(b){g(c.element,a);k.call(c,b)};1<arguments.length&&t(l,{x:d,y:m,width:e,height:w});var c=this.createElement("image").attr(l);k?(g(c.element,"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="),l=new Q.Image,b(l,"load",r),l.src=a,l.complete&&r({})):g(c.element,a);return c},
-symbol:function(a,b,m,e,w,k){var g=this,r=/^url\((.*?)\)$/,c=r.test(a),D=!c&&(this.symbols[a]?a:"circle"),x=D&&this.symbols[D],K=G(b)&&x&&x.call(this.symbols,Math.round(b),Math.round(m),e,w,k);if(x){var J=this.path(K);g.styledMode||J.attr("fill","none");t(J,{symbolName:D,x:b,y:m,width:e,height:w});k&&t(J,k)}else if(c){var A=a.match(r)[1];J=this.image(A);J.imgwidth=n(S[A]&&S[A].width,k&&k.width);J.imgheight=n(S[A]&&S[A].height,k&&k.height);var h=function(){J.attr({width:J.width,height:J.height})};
-["width","height"].forEach(function(a){J[a+"Setter"]=function(a,b){var d={},m=this["img"+b],e="width"===b?"translateX":"translateY";this[b]=a;G(m)&&(k&&"within"===k.backgroundSize&&this.width&&this.height&&(m=Math.round(m*Math.min(this.width/this.imgwidth,this.height/this.imgheight))),this.element&&this.element.setAttribute(b,m),this.alignByTranslate||(d[e]=((this[b]||0)-m)/2,this.attr(d)))}});G(b)&&J.attr({x:b,y:m});J.isImg=!0;G(J.imgwidth)&&G(J.imgheight)?h():(J.attr({width:0,height:0}),L("img",
-{onload:function(){var a=d[g.chartIndex];0===this.width&&(l(this,{position:"absolute",top:"-999em"}),p.body.appendChild(this));S[A]={width:this.width,height:this.height};J.imgwidth=this.width;J.imgheight=this.height;J.element&&h();this.parentNode&&this.parentNode.removeChild(this);g.imgCount--;if(!g.imgCount&&a&&a.onload)a.onload()},src:A}),this.imgCount++)}return J},symbols:{circle:function(a,b,d,m){return this.arc(a+d/2,b+m/2,d/2,m/2,{start:.5*Math.PI,end:2.5*Math.PI,open:!1})},square:function(a,
-b,d,m){return["M",a,b,"L",a+d,b,a+d,b+m,a,b+m,"Z"]},triangle:function(a,b,d,m){return["M",a+d/2,b,"L",a+d,b+m,a,b+m,"Z"]},"triangle-down":function(a,b,d,m){return["M",a,b,"L",a+d,b,a+d/2,b+m,"Z"]},diamond:function(a,b,d,m){return["M",a+d/2,b,"L",a+d,b+m/2,a+d/2,b+m,a,b+m/2,"Z"]},arc:function(a,b,d,m,e){var w=e.start,k=e.r||d,l=e.r||m||d,g=e.end-.001;d=e.innerR;m=n(e.open,.001>Math.abs(e.end-e.start-2*Math.PI));var r=Math.cos(w),c=Math.sin(w),x=Math.cos(g);g=Math.sin(g);w=.001>e.end-w-Math.PI?0:1;
-e=["M",a+k*r,b+l*c,"A",k,l,0,w,n(e.clockwise,1),a+k*x,b+l*g];G(d)&&e.push(m?"M":"L",a+d*x,b+d*g,"A",d,d,0,w,0,a+d*r,b+d*c);e.push(m?"":"Z");return e},callout:function(a,b,d,m,e){var w=Math.min(e&&e.r||0,d,m),k=w+6,l=e&&e.anchorX;e=e&&e.anchorY;var g=["M",a+w,b,"L",a+d-w,b,"C",a+d,b,a+d,b,a+d,b+w,"L",a+d,b+m-w,"C",a+d,b+m,a+d,b+m,a+d-w,b+m,"L",a+w,b+m,"C",a,b+m,a,b+m,a,b+m-w,"L",a,b+w,"C",a,b,a,b,a+w,b];l&&l>d?e>b+k&&e<b+m-k?g.splice(13,3,"L",a+d,e-6,a+d+6,e,a+d,e+6,a+d,b+m-w):g.splice(13,3,"L",a+
-d,m/2,l,e,a+d,m/2,a+d,b+m-w):l&&0>l?e>b+k&&e<b+m-k?g.splice(33,3,"L",a,e+6,a-6,e,a,e-6,a,b+w):g.splice(33,3,"L",a,m/2,l,e,a,m/2,a,b+w):e&&e>m&&l>a+k&&l<a+d-k?g.splice(23,3,"L",l+6,b+m,l,b+m+6,l-6,b+m,a+w,b+m):e&&0>e&&l>a+k&&l<a+d-k&&g.splice(3,3,"L",l-6,b,l,b-6,l+6,b,d-w,b);return g}},clipRect:function(a,b,d,m){var e=c.uniqueKey()+"-",w=this.createElement("clipPath").attr({id:e}).add(this.defs);a=this.rect(a,b,d,m,0).add(w);a.id=e;a.clipPath=w;a.count=0;return a},text:function(a,b,d,m){var e={};if(m&&
-(this.allowHTML||!this.forExport))return this.html(a,b,d);e.x=Math.round(b||0);d&&(e.y=Math.round(d));G(a)&&(e.text=a);a=this.createElement("text").attr(e);m||(a.xSetter=function(a,b,d){var m=d.getElementsByTagName("tspan"),e=d.getAttribute(b),w;for(w=0;w<m.length;w++){var k=m[w];k.getAttribute(b)===e&&k.setAttribute(b,a)}d.setAttribute(b,a)});return a},fontMetrics:function(a,b){a=!this.styledMode&&/px/.test(a)||!Q.getComputedStyle?a||b&&b.style&&b.style.fontSize||this.style&&this.style.fontSize:
-b&&O.prototype.getStyle.call(b,"font-size");a=/px/.test(a)?q(a):12;b=24>a?a+3:Math.round(1.2*a);return{h:b,b:Math.round(.8*b),f:a}},rotCorr:function(a,b,d){var m=a;b&&d&&(m=Math.max(m*Math.cos(b*E),4));return{x:-a/3*Math.sin(b*E),y:m}},label:function(a,b,d,e,w,k,l,g,r){var c=this,x=c.styledMode,J=c.g("button"!==r&&"label"),p=J.text=c.text("",0,0,l).attr({zIndex:1}),K,h,D=0,u=3,L=0,n,N,E,U,f,q={},T,S,v=/^url\((.*?)\)$/.test(e),Q=x||v,y=function(){return x?K.strokeWidth()%2/2:(T?parseInt(T,10):0)%2/
-2};r&&J.addClass("highcharts-"+r);var R=function(){var a=p.element.style,b={};h=(void 0===n||void 0===N||f)&&G(p.textStr)&&p.getBBox();J.width=(n||h.width||0)+2*u+L;J.height=(N||h.height||0)+2*u;S=u+Math.min(c.fontMetrics(a&&a.fontSize,p).b,h?h.height:Infinity);Q&&(K||(J.box=K=c.symbols[e]||v?c.symbol(e):c.rect(),K.addClass(("button"===r?"":"highcharts-label-box")+(r?" highcharts-"+r+"-box":"")),K.add(J),a=y(),b.x=a,b.y=(g?-S:0)+a),b.width=Math.round(J.width),b.height=Math.round(J.height),K.attr(t(b,
-q)),q={})};var B=function(){var a=L+u;var b=g?0:S;G(n)&&h&&("center"===f||"right"===f)&&(a+={center:.5,right:1}[f]*(n-h.width));if(a!==p.x||b!==p.y)p.attr("x",a),p.hasBoxWidthChanged&&(h=p.getBBox(!0),R()),void 0!==b&&p.attr("y",b);p.x=a;p.y=b};var V=function(a,b){K?K.attr(a,b):q[a]=b};J.onAdd=function(){p.add(J);J.attr({text:a||0===a?a:"",x:b,y:d});K&&G(w)&&J.attr({anchorX:w,anchorY:k})};J.widthSetter=function(a){n=C(a)?a:null};J.heightSetter=function(a){N=a};J["text-alignSetter"]=function(a){f=
-a};J.paddingSetter=function(a){G(a)&&a!==u&&(u=J.padding=a,B())};J.paddingLeftSetter=function(a){G(a)&&a!==L&&(L=a,B())};J.alignSetter=function(a){a={left:0,center:.5,right:1}[a];a!==D&&(D=a,h&&J.attr({x:E}))};J.textSetter=function(a){void 0!==a&&p.attr({text:a});R();B()};J["stroke-widthSetter"]=function(a,b){a&&(Q=!0);T=this["stroke-width"]=a;V(b,a)};x?J.rSetter=function(a,b){V(b,a)}:J.strokeSetter=J.fillSetter=J.rSetter=function(a,b){"r"!==b&&("fill"===b&&a&&(Q=!0),J[b]=a);V(b,a)};J.anchorXSetter=
-function(a,b){w=J.anchorX=a;V(b,Math.round(a)-y()-E)};J.anchorYSetter=function(a,b){k=J.anchorY=a;V(b,a-U)};J.xSetter=function(a){J.x=a;D&&(a-=D*((n||h.width)+2*u),J["forceAnimate:x"]=!0);E=Math.round(a);J.attr("translateX",E)};J.ySetter=function(a){U=J.y=Math.round(a);J.attr("translateY",U)};var H=J.css;l={css:function(a){if(a){var b={};a=A(a);J.textProps.forEach(function(d){void 0!==a[d]&&(b[d]=a[d],delete a[d])});p.css(b);"width"in b&&R();"fontSize"in b&&(R(),B())}return H.call(J,a)},getBBox:function(){return{width:h.width+
-2*u,height:h.height+2*u,x:h.x-u,y:h.y-u}},destroy:function(){m(J.element,"mouseenter");m(J.element,"mouseleave");p&&(p=p.destroy());K&&(K=K.destroy());O.prototype.destroy.call(J);J=c=R=B=V=null}};x||(l.shadow=function(a){a&&(R(),K&&K.shadow(a));return J});return t(J,l)}});c.Renderer=f});M(I,"parts/Html.js",[I["parts/Globals.js"],I["parts/Utilities.js"]],function(c,f){var F=f.attr,G=f.defined,z=f.extend,B=f.pick,t=f.pInt,v=c.createElement,C=c.css,H=c.isFirefox,y=c.isMS,h=c.isWebKit,n=c.SVGElement;
-f=c.SVGRenderer;var q=c.win;z(n.prototype,{htmlCss:function(g){var b="SPAN"===this.element.tagName&&g&&"width"in g,a=B(b&&g.width,void 0);if(b){delete g.width;this.textWidth=a;var d=!0}g&&"ellipsis"===g.textOverflow&&(g.whiteSpace="nowrap",g.overflow="hidden");this.styles=z(this.styles,g);C(this.element,g);d&&this.htmlUpdateTransform();return this},htmlGetBBox:function(){var g=this.element;return{x:g.offsetLeft,y:g.offsetTop,width:g.offsetWidth,height:g.offsetHeight}},htmlUpdateTransform:function(){if(this.added){var g=
-this.renderer,b=this.element,a=this.translateX||0,d=this.translateY||0,e=this.x||0,l=this.y||0,c=this.textAlign||"left",h={left:0,center:.5,right:1}[c],p=this.styles,u=p&&p.whiteSpace;C(b,{marginLeft:a,marginTop:d});!g.styledMode&&this.shadows&&this.shadows.forEach(function(b){C(b,{marginLeft:a+1,marginTop:d+1})});this.inverted&&[].forEach.call(b.childNodes,function(a){g.invertChild(a,b)});if("SPAN"===b.tagName){p=this.rotation;var k=this.textWidth&&t(this.textWidth),r=[p,c,b.innerHTML,this.textWidth,
-this.textAlign].join(),x;(x=k!==this.oldTextWidth)&&!(x=k>this.oldTextWidth)&&((x=this.textPxLength)||(C(b,{width:"",whiteSpace:u||"nowrap"}),x=b.offsetWidth),x=x>k);x&&(/[ \-]/.test(b.textContent||b.innerText)||"ellipsis"===b.style.textOverflow)?(C(b,{width:k+"px",display:"block",whiteSpace:u||"normal"}),this.oldTextWidth=k,this.hasBoxWidthChanged=!0):this.hasBoxWidthChanged=!1;r!==this.cTT&&(u=g.fontMetrics(b.style.fontSize,b).b,!G(p)||p===(this.oldRotation||0)&&c===this.oldAlign||this.setSpanRotation(p,
-h,u),this.getSpanCorrection(!G(p)&&this.textPxLength||b.offsetWidth,u,h,p,c));C(b,{left:e+(this.xCorr||0)+"px",top:l+(this.yCorr||0)+"px"});this.cTT=r;this.oldRotation=p;this.oldAlign=c}}else this.alignOnAdd=!0},setSpanRotation:function(g,b,a){var d={},e=this.renderer.getTransformKey();d[e]=d.transform="rotate("+g+"deg)";d[e+(H?"Origin":"-origin")]=d.transformOrigin=100*b+"% "+a+"px";C(this.element,d)},getSpanCorrection:function(g,b,a){this.xCorr=-g*a;this.yCorr=-b}});z(f.prototype,{getTransformKey:function(){return y&&
-!/Edge/.test(q.navigator.userAgent)?"-ms-transform":h?"-webkit-transform":H?"MozTransform":q.opera?"-o-transform":""},html:function(g,b,a){var d=this.createElement("span"),e=d.element,l=d.renderer,c=l.isSVG,h=function(a,b){["opacity","visibility"].forEach(function(d){a[d+"Setter"]=function(e,k,l){var w=a.div?a.div.style:b;n.prototype[d+"Setter"].call(this,e,k,l);w&&(w[k]=e)}});a.addedSetters=!0};d.textSetter=function(a){a!==e.innerHTML&&(delete this.bBox,delete this.oldTextWidth);this.textStr=a;e.innerHTML=
-B(a,"");d.doTransform=!0};c&&h(d,d.element.style);d.xSetter=d.ySetter=d.alignSetter=d.rotationSetter=function(a,b){"align"===b&&(b="textAlign");d[b]=a;d.doTransform=!0};d.afterSetters=function(){this.doTransform&&(this.htmlUpdateTransform(),this.doTransform=!1)};d.attr({text:g,x:Math.round(b),y:Math.round(a)}).css({position:"absolute"});l.styledMode||d.css({fontFamily:this.style.fontFamily,fontSize:this.style.fontSize});e.style.whiteSpace="nowrap";d.css=d.htmlCss;c&&(d.add=function(a){var b=l.box.parentNode,
-k=[];if(this.parentGroup=a){var g=a.div;if(!g){for(;a;)k.push(a),a=a.parentGroup;k.reverse().forEach(function(a){function e(b,d){a[d]=b;"translateX"===d?m.left=b+"px":m.top=b+"px";a.doTransform=!0}var w=F(a.element,"class");g=a.div=a.div||v("div",w?{className:w}:void 0,{position:"absolute",left:(a.translateX||0)+"px",top:(a.translateY||0)+"px",display:a.display,opacity:a.opacity,pointerEvents:a.styles&&a.styles.pointerEvents},g||b);var m=g.style;z(a,{classSetter:function(a){return function(b){this.element.setAttribute("class",
-b);a.className=b}}(g),on:function(){k[0].div&&d.on.apply({element:k[0].div},arguments);return a},translateXSetter:e,translateYSetter:e});a.addedSetters||h(a)})}}else g=b;g.appendChild(e);d.added=!0;d.alignOnAdd&&d.htmlUpdateTransform();return d});return d}})});M(I,"parts/Time.js",[I["parts/Globals.js"],I["parts/Utilities.js"]],function(c,f){var F=f.defined,G=f.extend,z=f.isObject,B=f.objectEach,t=f.pick,v=f.splat,C=c.merge,H=c.timeUnits,y=c.win;c.Time=function(c){this.update(c,!1)};c.Time.prototype=
-{defaultOptions:{Date:void 0,getTimezoneOffset:void 0,timezone:void 0,timezoneOffset:0,useUTC:!0},update:function(c){var h=t(c&&c.useUTC,!0),f=this;this.options=c=C(!0,this.options||{},c);this.Date=c.Date||y.Date||Date;this.timezoneOffset=(this.useUTC=h)&&c.timezoneOffset;this.getTimezoneOffset=this.timezoneOffsetFunction();(this.variableTimezone=!(h&&!c.getTimezoneOffset&&!c.timezone))||this.timezoneOffset?(this.get=function(g,b){var a=b.getTime(),d=a-f.getTimezoneOffset(b);b.setTime(d);g=b["getUTC"+
-g]();b.setTime(a);return g},this.set=function(g,b,a){if("Milliseconds"===g||"Seconds"===g||"Minutes"===g&&0===b.getTimezoneOffset()%60)b["set"+g](a);else{var d=f.getTimezoneOffset(b);d=b.getTime()-d;b.setTime(d);b["setUTC"+g](a);g=f.getTimezoneOffset(b);d=b.getTime()+g;b.setTime(d)}}):h?(this.get=function(g,b){return b["getUTC"+g]()},this.set=function(g,b,a){return b["setUTC"+g](a)}):(this.get=function(g,b){return b["get"+g]()},this.set=function(g,b,a){return b["set"+g](a)})},makeTime:function(h,
-n,f,g,b,a){if(this.useUTC){var d=this.Date.UTC.apply(0,arguments);var e=this.getTimezoneOffset(d);d+=e;var l=this.getTimezoneOffset(d);e!==l?d+=l-e:e-36E5!==this.getTimezoneOffset(d-36E5)||c.isSafari||(d-=36E5)}else d=(new this.Date(h,n,t(f,1),t(g,0),t(b,0),t(a,0))).getTime();return d},timezoneOffsetFunction:function(){var h=this,n=this.options,f=y.moment;if(!this.useUTC)return function(g){return 6E4*(new Date(g)).getTimezoneOffset()};if(n.timezone){if(f)return function(g){return 6E4*-f.tz(g,n.timezone).utcOffset()};
-c.error(25)}return this.useUTC&&n.getTimezoneOffset?function(g){return 6E4*n.getTimezoneOffset(g)}:function(){return 6E4*(h.timezoneOffset||0)}},dateFormat:function(h,n,f){if(!F(n)||isNaN(n))return c.defaultOptions.lang.invalidDate||"";h=t(h,"%Y-%m-%d %H:%M:%S");var g=this,b=new this.Date(n),a=this.get("Hours",b),d=this.get("Day",b),e=this.get("Date",b),l=this.get("Month",b),L=this.get("FullYear",b),E=c.defaultOptions.lang,p=E.weekdays,u=E.shortWeekdays,k=c.pad;b=G({a:u?u[d]:p[d].substr(0,3),A:p[d],
-d:k(e),e:k(e,2," "),w:d,b:E.shortMonths[l],B:E.months[l],m:k(l+1),o:l+1,y:L.toString().substr(2,2),Y:L,H:k(a),k:a,I:k(a%12||12),l:a%12||12,M:k(g.get("Minutes",b)),p:12>a?"AM":"PM",P:12>a?"am":"pm",S:k(b.getSeconds()),L:k(Math.floor(n%1E3),3)},c.dateFormats);B(b,function(a,b){for(;-1!==h.indexOf("%"+b);)h=h.replace("%"+b,"function"===typeof a?a.call(g,n):a)});return f?h.substr(0,1).toUpperCase()+h.substr(1):h},resolveDTLFormat:function(c){return z(c,!0)?c:(c=v(c),{main:c[0],from:c[1],to:c[2]})},getTimeTicks:function(c,
-n,f,g){var b=this,a=[],d={};var e=new b.Date(n);var l=c.unitRange,h=c.count||1,E;g=t(g,1);if(F(n)){b.set("Milliseconds",e,l>=H.second?0:h*Math.floor(b.get("Milliseconds",e)/h));l>=H.second&&b.set("Seconds",e,l>=H.minute?0:h*Math.floor(b.get("Seconds",e)/h));l>=H.minute&&b.set("Minutes",e,l>=H.hour?0:h*Math.floor(b.get("Minutes",e)/h));l>=H.hour&&b.set("Hours",e,l>=H.day?0:h*Math.floor(b.get("Hours",e)/h));l>=H.day&&b.set("Date",e,l>=H.month?1:Math.max(1,h*Math.floor(b.get("Date",e)/h)));if(l>=H.month){b.set("Month",
-e,l>=H.year?0:h*Math.floor(b.get("Month",e)/h));var p=b.get("FullYear",e)}l>=H.year&&b.set("FullYear",e,p-p%h);l===H.week&&(p=b.get("Day",e),b.set("Date",e,b.get("Date",e)-p+g+(p<g?-7:0)));p=b.get("FullYear",e);g=b.get("Month",e);var u=b.get("Date",e),k=b.get("Hours",e);n=e.getTime();b.variableTimezone&&(E=f-n>4*H.month||b.getTimezoneOffset(n)!==b.getTimezoneOffset(f));n=e.getTime();for(e=1;n<f;)a.push(n),n=l===H.year?b.makeTime(p+e*h,0):l===H.month?b.makeTime(p,g+e*h):!E||l!==H.day&&l!==H.week?E&&
-l===H.hour&&1<h?b.makeTime(p,g,u,k+e*h):n+l*h:b.makeTime(p,g,u+e*h*(l===H.day?1:7)),e++;a.push(n);l<=H.hour&&1E4>a.length&&a.forEach(function(a){0===a%18E5&&"000000000"===b.dateFormat("%H%M%S%L",a)&&(d[a]="day")})}a.info=G(c,{higherRanks:d,totalRange:l*h});return a}}});M(I,"parts/Options.js",[I["parts/Globals.js"]],function(c){var f=c.color,F=c.merge;c.defaultOptions={colors:"#7cb5ec #434348 #90ed7d #f7a35c #8085e9 #f15c80 #e4d354 #2b908f #f45b5b #91e8e1".split(" "),symbols:["circle","diamond","square",
-"triangle","triangle-down"],lang:{loading:"Loading...",months:"January February March April May June July August September October November December".split(" "),shortMonths:"Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec".split(" "),weekdays:"Sunday Monday Tuesday Wednesday Thursday Friday Saturday".split(" "),decimalPoint:".",numericSymbols:"kMGTPE".split(""),resetZoom:"Reset zoom",resetZoomTitle:"Reset zoom level 1:1",thousandsSep:" "},global:{},time:c.Time.prototype.defaultOptions,chart:{styledMode:!1,
-borderRadius:0,colorCount:10,defaultSeriesType:"line",ignoreHiddenSeries:!0,spacing:[10,10,15,10],resetZoomButton:{theme:{zIndex:6},position:{align:"right",x:-10,y:10}},width:null,height:null,borderColor:"#335cad",backgroundColor:"#ffffff",plotBorderColor:"#cccccc"},title:{text:"Chart title",align:"center",margin:15,widthAdjust:-44},subtitle:{text:"",align:"center",widthAdjust:-44},caption:{margin:15,text:"",align:"left",verticalAlign:"bottom"},plotOptions:{},labels:{style:{position:"absolute",color:"#333333"}},
-legend:{enabled:!0,align:"center",alignColumns:!0,layout:"horizontal",labelFormatter:function(){return this.name},borderColor:"#999999",borderRadius:0,navigation:{activeColor:"#003399",inactiveColor:"#cccccc"},itemStyle:{color:"#333333",cursor:"pointer",fontSize:"12px",fontWeight:"bold",textOverflow:"ellipsis"},itemHoverStyle:{color:"#000000"},itemHiddenStyle:{color:"#cccccc"},shadow:!1,itemCheckboxStyle:{position:"absolute",width:"13px",height:"13px"},squareSymbol:!0,symbolPadding:5,verticalAlign:"bottom",
-x:0,y:0,title:{style:{fontWeight:"bold"}}},loading:{labelStyle:{fontWeight:"bold",position:"relative",top:"45%"},style:{position:"absolute",backgroundColor:"#ffffff",opacity:.5,textAlign:"center"}},tooltip:{enabled:!0,animation:c.svg,borderRadius:3,dateTimeLabelFormats:{millisecond:"%A, %b %e, %H:%M:%S.%L",second:"%A, %b %e, %H:%M:%S",minute:"%A, %b %e, %H:%M",hour:"%A, %b %e, %H:%M",day:"%A, %b %e, %Y",week:"Week from %A, %b %e, %Y",month:"%B %Y",year:"%Y"},footerFormat:"",padding:8,snap:c.isTouchDevice?
-25:10,headerFormat:'<span style="font-size: 10px">{point.key}</span><br/>',pointFormat:'<span style="color:{point.color}">\u25cf</span> {series.name}: <b>{point.y}</b><br/>',backgroundColor:f("#f7f7f7").setOpacity(.85).get(),borderWidth:1,shadow:!0,style:{color:"#333333",cursor:"default",fontSize:"12px",pointerEvents:"none",whiteSpace:"nowrap"}},credits:{enabled:!0,href:"https://www.highcharts.com?credits",position:{align:"right",x:-10,verticalAlign:"bottom",y:-5},style:{cursor:"pointer",color:"#999999",
-fontSize:"9px"},text:"Highcharts.com"}};c.setOptions=function(f){c.defaultOptions=F(!0,c.defaultOptions,f);(f.time||f.global)&&c.time.update(F(c.defaultOptions.global,c.defaultOptions.time,f.global,f.time));return c.defaultOptions};c.getOptions=function(){return c.defaultOptions};c.defaultPlotOptions=c.defaultOptions.plotOptions;c.time=new c.Time(F(c.defaultOptions.global,c.defaultOptions.time));c.dateFormat=function(f,z,B){return c.time.dateFormat(f,z,B)};""});M(I,"parts/Tick.js",[I["parts/Globals.js"],
-I["parts/Utilities.js"]],function(c,f){var F=f.defined,G=f.destroyObjectProperties,z=f.extend,B=f.isNumber,t=f.pick,v=c.correctFloat,C=c.fireEvent,H=c.merge,y=c.deg2rad;c.Tick=function(c,n,f,g,b){this.axis=c;this.pos=n;this.type=f||"";this.isNewLabel=this.isNew=!0;this.parameters=b||{};this.tickmarkOffset=this.parameters.tickmarkOffset;this.options=this.parameters.options;f||g||this.addLabel()};c.Tick.prototype={addLabel:function(){var c=this,n=c.axis,f=n.options,g=n.chart,b=n.categories,a=n.names,
-d=c.pos,e=t(c.options&&c.options.labels,f.labels),l=n.tickPositions,L=d===l[0],E=d===l[l.length-1];b=this.parameters.category||(b?t(b[d],a[d],d):d);var p=c.label;l=l.info;var u,k;if(n.isDatetimeAxis&&l){var r=g.time.resolveDTLFormat(f.dateTimeLabelFormats[!f.grid&&l.higherRanks[d]||l.unitName]);var x=r.main}c.isFirst=L;c.isLast=E;c.formatCtx={axis:n,chart:g,isFirst:L,isLast:E,dateTimeLabelFormat:x,tickPositionInfo:l,value:n.isLog?v(n.lin2log(b)):b,pos:d};f=n.labelFormatter.call(c.formatCtx,this.formatCtx);
-if(k=r&&r.list)c.shortenLabel=function(){for(u=0;u<k.length;u++)if(p.attr({text:n.labelFormatter.call(z(c.formatCtx,{dateTimeLabelFormat:k[u]}))}),p.getBBox().width<n.getSlotWidth(c)-2*t(e.padding,5))return;p.attr({text:""})};if(F(p))p&&p.textStr!==f&&(!p.textWidth||e.style&&e.style.width||p.styles.width||p.css({width:null}),p.attr({text:f}),p.textPxLength=p.getBBox().width);else{if(c.label=p=F(f)&&e.enabled?g.renderer.text(f,0,0,e.useHTML).add(n.labelGroup):null)g.styledMode||p.css(H(e.style)),p.textPxLength=
-p.getBBox().width;c.rotation=0}},getLabelSize:function(){return this.label?this.label.getBBox()[this.axis.horiz?"height":"width"]:0},handleOverflow:function(c){var h=this.axis,f=h.options.labels,g=c.x,b=h.chart.chartWidth,a=h.chart.spacing,d=t(h.labelLeft,Math.min(h.pos,a[3]));a=t(h.labelRight,Math.max(h.isRadial?0:h.pos+h.len,b-a[1]));var e=this.label,l=this.rotation,L={left:0,center:.5,right:1}[h.labelAlign||e.attr("align")],E=e.getBBox().width,p=h.getSlotWidth(this),u=p,k=1,r,x={};if(l||"justify"!==
-t(f.overflow,"justify"))0>l&&g-L*E<d?r=Math.round(g/Math.cos(l*y)-d):0<l&&g+L*E>a&&(r=Math.round((b-g)/Math.cos(l*y)));else if(b=g+(1-L)*E,g-L*E<d?u=c.x+u*(1-L)-d:b>a&&(u=a-c.x+u*L,k=-1),u=Math.min(p,u),u<p&&"center"===h.labelAlign&&(c.x+=k*(p-u-L*(p-Math.min(E,u)))),E>u||h.autoRotation&&(e.styles||{}).width)r=u;r&&(this.shortenLabel?this.shortenLabel():(x.width=Math.floor(r),(f.style||{}).textOverflow||(x.textOverflow="ellipsis"),e.css(x)))},getPosition:function(h,n,f,g){var b=this.axis,a=b.chart,
-d=g&&a.oldChartHeight||a.chartHeight;h={x:h?c.correctFloat(b.translate(n+f,null,null,g)+b.transB):b.left+b.offset+(b.opposite?(g&&a.oldChartWidth||a.chartWidth)-b.right-b.left:0),y:h?d-b.bottom+b.offset-(b.opposite?b.height:0):c.correctFloat(d-b.translate(n+f,null,null,g)-b.transB)};h.y=Math.max(Math.min(h.y,1E5),-1E5);C(this,"afterGetPosition",{pos:h});return h},getLabelPosition:function(c,n,f,g,b,a,d,e){var l=this.axis,h=l.transA,E=l.isLinked&&l.linkedParent?l.linkedParent.reversed:l.reversed,p=
-l.staggerLines,u=l.tickRotCorr||{x:0,y:0},k=b.y,r=g||l.reserveSpaceDefault?0:-l.labelOffset*("center"===l.labelAlign?.5:1),x={};F(k)||(k=0===l.side?f.rotation?-8:-f.getBBox().height:2===l.side?u.y+8:Math.cos(f.rotation*y)*(u.y-f.getBBox(!1,0).height/2));c=c+b.x+r+u.x-(a&&g?a*h*(E?-1:1):0);n=n+k-(a&&!g?a*h*(E?1:-1):0);p&&(f=d/(e||1)%p,l.opposite&&(f=p-f-1),n+=l.labelOffset/p*f);x.x=c;x.y=Math.round(n);C(this,"afterGetLabelPosition",{pos:x,tickmarkOffset:a,index:d});return x},getMarkPath:function(c,
-n,f,g,b,a){return a.crispLine(["M",c,n,"L",c+(b?0:-f),n+(b?f:0)],g)},renderGridLine:function(c,n,f){var g=this.axis,b=g.options,a=this.gridLine,d={},e=this.pos,l=this.type,h=t(this.tickmarkOffset,g.tickmarkOffset),E=g.chart.renderer,p=l?l+"Grid":"grid",u=b[p+"LineWidth"],k=b[p+"LineColor"];b=b[p+"LineDashStyle"];a||(g.chart.styledMode||(d.stroke=k,d["stroke-width"]=u,b&&(d.dashstyle=b)),l||(d.zIndex=1),c&&(n=0),this.gridLine=a=E.path().attr(d).addClass("highcharts-"+(l?l+"-":"")+"grid-line").add(g.gridGroup));
-if(a&&(f=g.getPlotLinePath({value:e+h,lineWidth:a.strokeWidth()*f,force:"pass",old:c})))a[c||this.isNew?"attr":"animate"]({d:f,opacity:n})},renderMark:function(c,n,f){var g=this.axis,b=g.options,a=g.chart.renderer,d=this.type,e=d?d+"Tick":"tick",l=g.tickSize(e),h=this.mark,E=!h,p=c.x;c=c.y;var u=t(b[e+"Width"],!d&&g.isXAxis?1:0);b=b[e+"Color"];l&&(g.opposite&&(l[0]=-l[0]),E&&(this.mark=h=a.path().addClass("highcharts-"+(d?d+"-":"")+"tick").add(g.axisGroup),g.chart.styledMode||h.attr({stroke:b,"stroke-width":u})),
-h[E?"attr":"animate"]({d:this.getMarkPath(p,c,l[0],h.strokeWidth()*f,g.horiz,a),opacity:n}))},renderLabel:function(c,n,f,g){var b=this.axis,a=b.horiz,d=b.options,e=this.label,l=d.labels,h=l.step;b=t(this.tickmarkOffset,b.tickmarkOffset);var E=!0,p=c.x;c=c.y;e&&B(p)&&(e.xy=c=this.getLabelPosition(p,c,e,a,l,b,g,h),this.isFirst&&!this.isLast&&!t(d.showFirstLabel,1)||this.isLast&&!this.isFirst&&!t(d.showLastLabel,1)?E=!1:!a||l.step||l.rotation||n||0===f||this.handleOverflow(c),h&&g%h&&(E=!1),E&&B(c.y)?
-(c.opacity=f,e[this.isNewLabel?"attr":"animate"](c),this.isNewLabel=!1):(e.attr("y",-9999),this.isNewLabel=!0))},render:function(h,n,f){var g=this.axis,b=g.horiz,a=this.pos,d=t(this.tickmarkOffset,g.tickmarkOffset);a=this.getPosition(b,a,d,n);d=a.x;var e=a.y;g=b&&d===g.pos+g.len||!b&&e===g.pos?-1:1;f=t(f,1);this.isActive=!0;this.renderGridLine(n,f,g);this.renderMark(a,f,g);this.renderLabel(a,n,f,h);this.isNew=!1;c.fireEvent(this,"afterRender")},destroy:function(){G(this,this.axis)}}});M(I,"parts/Axis.js",
-[I["parts/Globals.js"],I["parts/Utilities.js"]],function(c,f){var F=f.arrayMax,G=f.arrayMin,z=f.defined,B=f.destroyObjectProperties,t=f.extend,v=f.isArray,C=f.isNumber,H=f.isString,y=f.objectEach,h=f.pick,n=f.splat,q=f.syncTimeout,g=c.addEvent,b=c.animObject,a=c.color,d=c.correctFloat,e=c.defaultOptions,l=c.deg2rad,L=c.fireEvent,E=c.format,p=c.getMagnitude,u=c.merge,k=c.normalizeTickInterval,r=c.removeEvent,x=c.seriesTypes,A=c.Tick;f=function(){this.init.apply(this,arguments)};t(f.prototype,{defaultOptions:{dateTimeLabelFormats:{millisecond:{main:"%H:%M:%S.%L",
-range:!1},second:{main:"%H:%M:%S",range:!1},minute:{main:"%H:%M",range:!1},hour:{main:"%H:%M",range:!1},day:{main:"%e. %b"},week:{main:"%e. %b"},month:{main:"%b '%y"},year:{main:"%Y"}},endOnTick:!1,labels:{enabled:!0,indentation:10,x:0,style:{color:"#666666",cursor:"default",fontSize:"11px"}},maxPadding:.01,minorTickLength:2,minorTickPosition:"outside",minPadding:.01,showEmpty:!0,startOfWeek:1,startOnTick:!1,tickLength:10,tickPixelInterval:100,tickmarkPlacement:"between",tickPosition:"outside",title:{align:"middle",
-style:{color:"#666666"}},type:"linear",minorGridLineColor:"#f2f2f2",minorGridLineWidth:1,minorTickColor:"#999999",lineColor:"#ccd6eb",lineWidth:1,gridLineColor:"#e6e6e6",tickColor:"#ccd6eb"},defaultYAxisOptions:{endOnTick:!0,maxPadding:.05,minPadding:.05,tickPixelInterval:72,showLastLabel:!0,labels:{x:-8},startOnTick:!0,title:{rotation:270,text:"Values"},stackLabels:{allowOverlap:!1,enabled:!1,crop:!0,overflow:"justify",formatter:function(){return c.numberFormat(this.total,-1)},style:{color:"#000000",
-fontSize:"11px",fontWeight:"bold",textOutline:"1px contrast"}},gridLineWidth:1,lineWidth:0},defaultLeftAxisOptions:{labels:{x:-15},title:{rotation:270}},defaultRightAxisOptions:{labels:{x:15},title:{rotation:90}},defaultBottomAxisOptions:{labels:{autoRotation:[-45],x:0},margin:15,title:{rotation:0}},defaultTopAxisOptions:{labels:{autoRotation:[-45],x:0},margin:15,title:{rotation:0}},init:function(a,b){var d=b.isX,m=this;m.chart=a;m.horiz=a.inverted&&!m.isZAxis?!d:d;m.isXAxis=d;m.coll=m.coll||(d?"xAxis":
-"yAxis");L(this,"init",{userOptions:b});m.opposite=b.opposite;m.side=b.side||(m.horiz?m.opposite?0:2:m.opposite?1:3);m.setOptions(b);var e=this.options,w=e.type;m.labelFormatter=e.labels.formatter||m.defaultLabelFormatter;m.userOptions=b;m.minPixelPadding=0;m.reversed=e.reversed;m.visible=!1!==e.visible;m.zoomEnabled=!1!==e.zoomEnabled;m.hasNames="category"===w||!0===e.categories;m.categories=e.categories||m.hasNames;m.names||(m.names=[],m.names.keys={});m.plotLinesAndBandsGroups={};m.isLog="logarithmic"===
-w;m.isDatetimeAxis="datetime"===w;m.positiveValuesOnly=m.isLog&&!m.allowNegativeLog;m.isLinked=z(e.linkedTo);m.ticks={};m.labelEdge=[];m.minorTicks={};m.plotLinesAndBands=[];m.alternateBands={};m.len=0;m.minRange=m.userMinRange=e.minRange||e.maxZoom;m.range=e.range;m.offset=e.offset||0;m.stacks={};m.oldStacks={};m.stacksTouched=0;m.max=null;m.min=null;m.crosshair=h(e.crosshair,n(a.options.tooltip.crosshairs)[d?0:1],!1);b=m.options.events;-1===a.axes.indexOf(m)&&(d?a.axes.splice(a.xAxis.length,0,m):
-a.axes.push(m),a[m.coll].push(m));m.series=m.series||[];a.inverted&&!m.isZAxis&&d&&void 0===m.reversed&&(m.reversed=!0);y(b,function(a,b){c.isFunction(a)&&g(m,b,a)});m.lin2log=e.linearToLogConverter||m.lin2log;m.isLog&&(m.val2lin=m.log2lin,m.lin2val=m.lin2log);L(this,"afterInit")},setOptions:function(a){this.options=u(this.defaultOptions,"yAxis"===this.coll&&this.defaultYAxisOptions,[this.defaultTopAxisOptions,this.defaultRightAxisOptions,this.defaultBottomAxisOptions,this.defaultLeftAxisOptions][this.side],
-u(e[this.coll],a));L(this,"afterSetOptions",{userOptions:a})},defaultLabelFormatter:function(){var a=this.axis,b=this.value,d=a.chart.time,k=a.categories,l=this.dateTimeLabelFormat,g=e.lang,r=g.numericSymbols;g=g.numericSymbolMagnitude||1E3;var x=r&&r.length,p=a.options.labels.format;a=a.isLog?Math.abs(b):a.tickInterval;if(p)var h=E(p,this,d);else if(k)h=b;else if(l)h=d.dateFormat(l,b);else if(x&&1E3<=a)for(;x--&&void 0===h;)d=Math.pow(g,x+1),a>=d&&0===10*b%d&&null!==r[x]&&0!==b&&(h=c.numberFormat(b/
-d,-1)+r[x]);void 0===h&&(h=1E4<=Math.abs(b)?c.numberFormat(b,-1):c.numberFormat(b,-1,void 0,""));return h},getSeriesExtremes:function(){var a=this,b=a.chart,d;L(this,"getSeriesExtremes",null,function(){a.hasVisibleSeries=!1;a.dataMin=a.dataMax=a.threshold=null;a.softThreshold=!a.isXAxis;a.buildStacks&&a.buildStacks();a.series.forEach(function(m){if(m.visible||!b.options.chart.ignoreHiddenSeries){var e=m.options,w=e.threshold;a.hasVisibleSeries=!0;a.positiveValuesOnly&&0>=w&&(w=null);if(a.isXAxis){if(e=
-m.xData,e.length){d=m.getXExtremes(e);var k=d.min;var c=d.max;C(k)||k instanceof Date||(e=e.filter(C),d=m.getXExtremes(e),k=d.min,c=d.max);e.length&&(a.dataMin=Math.min(h(a.dataMin,k),k),a.dataMax=Math.max(h(a.dataMax,c),c))}}else if(m.getExtremes(),c=m.dataMax,k=m.dataMin,z(k)&&z(c)&&(a.dataMin=Math.min(h(a.dataMin,k),k),a.dataMax=Math.max(h(a.dataMax,c),c)),z(w)&&(a.threshold=w),!e.softThreshold||a.positiveValuesOnly)a.softThreshold=!1}})});L(this,"afterGetSeriesExtremes")},translate:function(a,
-b,d,e,k,c){var m=this.linkedParent||this,w=1,l=0,g=e?m.oldTransA:m.transA;e=e?m.oldMin:m.min;var r=m.minPixelPadding;k=(m.isOrdinal||m.isBroken||m.isLog&&k)&&m.lin2val;g||(g=m.transA);d&&(w*=-1,l=m.len);m.reversed&&(w*=-1,l-=w*(m.sector||m.len));b?(a=(a*w+l-r)/g+e,k&&(a=m.lin2val(a))):(k&&(a=m.val2lin(a)),a=C(e)?w*(a-e)*g+l+w*r+(C(c)?g*c:0):void 0);return a},toPixels:function(a,b){return this.translate(a,!1,!this.horiz,null,!0)+(b?0:this.pos)},toValue:function(a,b){return this.translate(a-(b?0:this.pos),
-!0,!this.horiz,null,!0)},getPlotLinePath:function(a){var b=this,d=b.chart,e=b.left,w=b.top,k=a.old,c=a.value,l=a.translatedValue,g=a.lineWidth,r=a.force,x,p,A,u,f=k&&d.oldChartHeight||d.chartHeight,n=k&&d.oldChartWidth||d.chartWidth,E,q=b.transB,v=function(a,b,d){if("pass"!==r&&a<b||a>d)r?a=Math.min(Math.max(b,a),d):E=!0;return a};a={value:c,lineWidth:g,old:k,force:r,acrossPanes:a.acrossPanes,translatedValue:l};L(this,"getPlotLinePath",a,function(a){l=h(l,b.translate(c,null,null,k));l=Math.min(Math.max(-1E5,
-l),1E5);x=A=Math.round(l+q);p=u=Math.round(f-l-q);C(l)?b.horiz?(p=w,u=f-b.bottom,x=A=v(x,e,e+b.width)):(x=e,A=n-b.right,p=u=v(p,w,w+b.height)):(E=!0,r=!1);a.path=E&&!r?null:d.renderer.crispLine(["M",x,p,"L",A,u],g||1)});return a.path},getLinearTickPositions:function(a,b,e){var m=d(Math.floor(b/a)*a);e=d(Math.ceil(e/a)*a);var w=[],k;d(m+a)===m&&(k=20);if(this.single)return[b];for(b=m;b<=e;){w.push(b);b=d(b+a,k);if(b===c)break;var c=b}return w},getMinorTickInterval:function(){var a=this.options;return!0===
-a.minorTicks?h(a.minorTickInterval,"auto"):!1===a.minorTicks?null:a.minorTickInterval},getMinorTickPositions:function(){var a=this,b=a.options,d=a.tickPositions,e=a.minorTickInterval,k=[],c=a.pointRangePadding||0,l=a.min-c;c=a.max+c;var g=c-l;if(g&&g/e<a.len/3)if(a.isLog)this.paddedTicks.forEach(function(b,d,m){d&&k.push.apply(k,a.getLogTickPositions(e,m[d-1],m[d],!0))});else if(a.isDatetimeAxis&&"auto"===this.getMinorTickInterval())k=k.concat(a.getTimeTicks(a.normalizeTimeTickInterval(e),l,c,b.startOfWeek));
-else for(b=l+(d[0]-l)%e;b<=c&&b!==k[0];b+=e)k.push(b);0!==k.length&&a.trimTicks(k);return k},adjustForMinRange:function(){var a=this.options,b=this.min,d=this.max,e,k,c,l,g;this.isXAxis&&void 0===this.minRange&&!this.isLog&&(z(a.min)||z(a.max)?this.minRange=null:(this.series.forEach(function(a){l=a.xData;for(k=g=a.xIncrement?1:l.length-1;0<k;k--)if(c=l[k]-l[k-1],void 0===e||c<e)e=c}),this.minRange=Math.min(5*e,this.dataMax-this.dataMin)));if(d-b<this.minRange){var r=this.dataMax-this.dataMin>=this.minRange;
-var x=this.minRange;var p=(x-d+b)/2;p=[b-p,h(a.min,b-p)];r&&(p[2]=this.isLog?this.log2lin(this.dataMin):this.dataMin);b=F(p);d=[b+x,h(a.max,b+x)];r&&(d[2]=this.isLog?this.log2lin(this.dataMax):this.dataMax);d=G(d);d-b<x&&(p[0]=d-x,p[1]=h(a.min,d-x),b=F(p))}this.min=b;this.max=d},getClosest:function(){var a;this.categories?a=1:this.series.forEach(function(b){var d=b.closestPointRange,m=b.visible||!b.chart.options.chart.ignoreHiddenSeries;!b.noSharedTooltip&&z(d)&&m&&(a=z(a)?Math.min(a,d):d)});return a},
-nameToX:function(a){var b=v(this.categories),d=b?this.categories:this.names,e=a.options.x;a.series.requireSorting=!1;z(e)||(e=!1===this.options.uniqueNames?a.series.autoIncrement():b?d.indexOf(a.name):h(d.keys[a.name],-1));if(-1===e){if(!b)var k=d.length}else k=e;void 0!==k&&(this.names[k]=a.name,this.names.keys[a.name]=k);return k},updateNames:function(){var a=this,b=this.names;0<b.length&&(Object.keys(b.keys).forEach(function(a){delete b.keys[a]}),b.length=0,this.minRange=this.userMinRange,(this.series||
-[]).forEach(function(b){b.xIncrement=null;if(!b.points||b.isDirtyData)a.max=Math.max(a.max,b.xData.length-1),b.processData(),b.generatePoints();b.data.forEach(function(d,e){if(d&&d.options&&void 0!==d.name){var m=a.nameToX(d);void 0!==m&&m!==d.x&&(d.x=m,b.xData[e]=m)}})}))},setAxisTranslation:function(a){var b=this,d=b.max-b.min,e=b.axisPointRange||0,k=0,w=0,c=b.linkedParent,l=!!b.categories,g=b.transA,r=b.isXAxis;if(r||l||e){var p=b.getClosest();c?(k=c.minPointOffset,w=c.pointRangePadding):b.series.forEach(function(a){var d=
-l?1:r?h(a.options.pointRange,p,0):b.axisPointRange||0,m=a.options.pointPlacement;e=Math.max(e,d);if(!b.single||l)a=x.xrange&&a instanceof x.xrange?!r:r,k=Math.max(k,a&&H(m)?0:d/2),w=Math.max(w,a&&"on"===m?0:d)});c=b.ordinalSlope&&p?b.ordinalSlope/p:1;b.minPointOffset=k*=c;b.pointRangePadding=w*=c;b.pointRange=Math.min(e,b.single&&l?1:d);r&&(b.closestPointRange=p)}a&&(b.oldTransA=g);b.translationSlope=b.transA=g=b.staticScale||b.len/(d+w||1);b.transB=b.horiz?b.left:b.bottom;b.minPixelPadding=g*k;L(this,
-"afterSetAxisTranslation")},minFromRange:function(){return this.max-this.range},setTickInterval:function(a){var b=this,e=b.chart,w=b.options,l=b.isLog,g=b.isDatetimeAxis,r=b.isXAxis,x=b.isLinked,A=w.maxPadding,u=w.minPadding,f=w.tickInterval,n=w.tickPixelInterval,E=b.categories,q=C(b.threshold)?b.threshold:null,v=b.softThreshold;g||E||x||this.getTickAmount();var t=h(b.userMin,w.min);var y=h(b.userMax,w.max);if(x){b.linkedParent=e[b.coll][w.linkedTo];var B=b.linkedParent.getExtremes();b.min=h(B.min,
-B.dataMin);b.max=h(B.max,B.dataMax);w.type!==b.linkedParent.options.type&&c.error(11,1,e)}else{if(!v&&z(q))if(b.dataMin>=q)B=q,u=0;else if(b.dataMax<=q){var H=q;A=0}b.min=h(t,B,b.dataMin);b.max=h(y,H,b.dataMax)}l&&(b.positiveValuesOnly&&!a&&0>=Math.min(b.min,h(b.dataMin,b.min))&&c.error(10,1,e),b.min=d(b.log2lin(b.min),16),b.max=d(b.log2lin(b.max),16));b.range&&z(b.max)&&(b.userMin=b.min=t=Math.max(b.dataMin,b.minFromRange()),b.userMax=y=b.max,b.range=null);L(b,"foundExtremes");b.beforePadding&&b.beforePadding();
-b.adjustForMinRange();!(E||b.axisPointRange||b.usePercentage||x)&&z(b.min)&&z(b.max)&&(e=b.max-b.min)&&(!z(t)&&u&&(b.min-=e*u),!z(y)&&A&&(b.max+=e*A));C(w.softMin)&&!C(b.userMin)&&w.softMin<b.min&&(b.min=t=w.softMin);C(w.softMax)&&!C(b.userMax)&&w.softMax>b.max&&(b.max=y=w.softMax);C(w.floor)&&(b.min=Math.min(Math.max(b.min,w.floor),Number.MAX_VALUE));C(w.ceiling)&&(b.max=Math.max(Math.min(b.max,w.ceiling),h(b.userMax,-Number.MAX_VALUE)));v&&z(b.dataMin)&&(q=q||0,!z(t)&&b.min<q&&b.dataMin>=q?b.min=
-b.options.minRange?Math.min(q,b.max-b.minRange):q:!z(y)&&b.max>q&&b.dataMax<=q&&(b.max=b.options.minRange?Math.max(q,b.min+b.minRange):q));b.tickInterval=b.min===b.max||void 0===b.min||void 0===b.max?1:x&&!f&&n===b.linkedParent.options.tickPixelInterval?f=b.linkedParent.tickInterval:h(f,this.tickAmount?(b.max-b.min)/Math.max(this.tickAmount-1,1):void 0,E?1:(b.max-b.min)*n/Math.max(b.len,n));r&&!a&&b.series.forEach(function(a){a.processData(b.min!==b.oldMin||b.max!==b.oldMax)});b.setAxisTranslation(!0);
-b.beforeSetTickPositions&&b.beforeSetTickPositions();b.postProcessTickInterval&&(b.tickInterval=b.postProcessTickInterval(b.tickInterval));b.pointRange&&!f&&(b.tickInterval=Math.max(b.pointRange,b.tickInterval));a=h(w.minTickInterval,b.isDatetimeAxis&&b.closestPointRange);!f&&b.tickInterval<a&&(b.tickInterval=a);g||l||f||(b.tickInterval=k(b.tickInterval,null,p(b.tickInterval),h(w.allowDecimals,!(.5<b.tickInterval&&5>b.tickInterval&&1E3<b.max&&9999>b.max)),!!this.tickAmount));this.tickAmount||(b.tickInterval=
-b.unsquish());this.setTickPositions()},setTickPositions:function(){var a=this.options,b=a.tickPositions;var d=this.getMinorTickInterval();var e=a.tickPositioner,k=a.startOnTick,l=a.endOnTick;this.tickmarkOffset=this.categories&&"between"===a.tickmarkPlacement&&1===this.tickInterval?.5:0;this.minorTickInterval="auto"===d&&this.tickInterval?this.tickInterval/5:d;this.single=this.min===this.max&&z(this.min)&&!this.tickAmount&&(parseInt(this.min,10)===this.min||!1!==a.allowDecimals);this.tickPositions=
-d=b&&b.slice();!d&&(!this.ordinalPositions&&(this.max-this.min)/this.tickInterval>Math.max(2*this.len,200)?(d=[this.min,this.max],c.error(19,!1,this.chart)):d=this.isDatetimeAxis?this.getTimeTicks(this.normalizeTimeTickInterval(this.tickInterval,a.units),this.min,this.max,a.startOfWeek,this.ordinalPositions,this.closestPointRange,!0):this.isLog?this.getLogTickPositions(this.tickInterval,this.min,this.max):this.getLinearTickPositions(this.tickInterval,this.min,this.max),d.length>this.len&&(d=[d[0],
-d.pop()],d[0]===d[1]&&(d.length=1)),this.tickPositions=d,e&&(e=e.apply(this,[this.min,this.max])))&&(this.tickPositions=d=e);this.paddedTicks=d.slice(0);this.trimTicks(d,k,l);this.isLinked||(this.single&&2>d.length&&!this.categories&&(this.min-=.5,this.max+=.5),b||e||this.adjustTickAmount());L(this,"afterSetTickPositions")},trimTicks:function(a,b,d){var e=a[0],m=a[a.length-1],k=this.minPointOffset||0;L(this,"trimTicks");if(!this.isLinked){if(b&&-Infinity!==e)this.min=e;else for(;this.min-k>a[0];)a.shift();
-if(d)this.max=m;else for(;this.max+k<a[a.length-1];)a.pop();0===a.length&&z(e)&&!this.options.tickPositions&&a.push((m+e)/2)}},alignToOthers:function(){var a={},b,d=this.options;!1===this.chart.options.chart.alignTicks||!1===d.alignTicks||!1===d.startOnTick||!1===d.endOnTick||this.isLog||this.chart[this.coll].forEach(function(d){var e=d.options;e=[d.horiz?e.left:e.top,e.width,e.height,e.pane].join();d.series.length&&(a[e]?b=!0:a[e]=1)});return b},getTickAmount:function(){var a=this.options,b=a.tickAmount,
-d=a.tickPixelInterval;!z(a.tickInterval)&&this.len<d&&!this.isRadial&&!this.isLog&&a.startOnTick&&a.endOnTick&&(b=2);!b&&this.alignToOthers()&&(b=Math.ceil(this.len/d)+1);4>b&&(this.finalTickAmt=b,b=5);this.tickAmount=b},adjustTickAmount:function(){var a=this.options,b=this.tickInterval,e=this.tickPositions,k=this.tickAmount,c=this.finalTickAmt,l=e&&e.length,g=h(this.threshold,this.softThreshold?0:null),r;if(this.hasData()){if(l<k){for(r=this.min;e.length<k;)e.length%2||r===g?e.push(d(e[e.length-
-1]+b)):e.unshift(d(e[0]-b));this.transA*=(l-1)/(k-1);this.min=a.startOnTick?e[0]:Math.min(this.min,e[0]);this.max=a.endOnTick?e[e.length-1]:Math.max(this.max,e[e.length-1])}else l>k&&(this.tickInterval*=2,this.setTickPositions());if(z(c)){for(b=a=e.length;b--;)(3===c&&1===b%2||2>=c&&0<b&&b<a-1)&&e.splice(b,1);this.finalTickAmt=void 0}}},setScale:function(){var a=this.series.some(function(a){return a.isDirtyData||a.isDirty||a.xAxis&&a.xAxis.isDirty}),b;this.oldMin=this.min;this.oldMax=this.max;this.oldAxisLength=
-this.len;this.setAxisSize();(b=this.len!==this.oldAxisLength)||a||this.isLinked||this.forceRedraw||this.userMin!==this.oldUserMin||this.userMax!==this.oldUserMax||this.alignToOthers()?(this.resetStacks&&this.resetStacks(),this.forceRedraw=!1,this.getSeriesExtremes(),this.setTickInterval(),this.oldUserMin=this.userMin,this.oldUserMax=this.userMax,this.isDirty||(this.isDirty=b||this.min!==this.oldMin||this.max!==this.oldMax)):this.cleanStacks&&this.cleanStacks();L(this,"afterSetScale")},setExtremes:function(a,
-b,d,e,k){var m=this,w=m.chart;d=h(d,!0);m.series.forEach(function(a){delete a.kdTree});k=t(k,{min:a,max:b});L(m,"setExtremes",k,function(){m.userMin=a;m.userMax=b;m.eventArgs=k;d&&w.redraw(e)})},zoom:function(a,b){var d=this.dataMin,e=this.dataMax,m=this.options,k=Math.min(d,h(m.min,d)),w=Math.max(e,h(m.max,e));a={newMin:a,newMax:b};L(this,"zoom",a,function(a){var b=a.newMin,m=a.newMax;if(b!==this.min||m!==this.max)this.allowZoomOutside||(z(d)&&(b<k&&(b=k),b>w&&(b=w)),z(e)&&(m<k&&(m=k),m>w&&(m=w))),
-this.displayBtn=void 0!==b||void 0!==m,this.setExtremes(b,m,!1,void 0,{trigger:"zoom"});a.zoomed=!0});return a.zoomed},setAxisSize:function(){var a=this.chart,b=this.options,d=b.offsets||[0,0,0,0],e=this.horiz,k=this.width=Math.round(c.relativeLength(h(b.width,a.plotWidth-d[3]+d[1]),a.plotWidth)),l=this.height=Math.round(c.relativeLength(h(b.height,a.plotHeight-d[0]+d[2]),a.plotHeight)),g=this.top=Math.round(c.relativeLength(h(b.top,a.plotTop+d[0]),a.plotHeight,a.plotTop));b=this.left=Math.round(c.relativeLength(h(b.left,
-a.plotLeft+d[3]),a.plotWidth,a.plotLeft));this.bottom=a.chartHeight-l-g;this.right=a.chartWidth-k-b;this.len=Math.max(e?k:l,0);this.pos=e?b:g},getExtremes:function(){var a=this.isLog;return{min:a?d(this.lin2log(this.min)):this.min,max:a?d(this.lin2log(this.max)):this.max,dataMin:this.dataMin,dataMax:this.dataMax,userMin:this.userMin,userMax:this.userMax}},getThreshold:function(a){var b=this.isLog,d=b?this.lin2log(this.min):this.min;b=b?this.lin2log(this.max):this.max;null===a||-Infinity===a?a=d:Infinity===
-a?a=b:d>a?a=d:b<a&&(a=b);return this.translate(a,0,1,0,1)},autoLabelAlign:function(a){var b=(h(a,0)-90*this.side+720)%360;a={align:"center"};L(this,"autoLabelAlign",a,function(a){15<b&&165>b?a.align="right":195<b&&345>b&&(a.align="left")});return a.align},tickSize:function(a){var b=this.options,d=b[a+"Length"],e=h(b[a+"Width"],"tick"===a&&this.isXAxis&&!this.categories?1:0);if(e&&d){"inside"===b[a+"Position"]&&(d=-d);var k=[d,e]}a={tickSize:k};L(this,"afterTickSize",a);return a.tickSize},labelMetrics:function(){var a=
-this.tickPositions&&this.tickPositions[0]||0;return this.chart.renderer.fontMetrics(this.options.labels.style&&this.options.labels.style.fontSize,this.ticks[a]&&this.ticks[a].label)},unsquish:function(){var a=this.options.labels,b=this.horiz,e=this.tickInterval,k=e,c=this.len/(((this.categories?1:0)+this.max-this.min)/e),g,r=a.rotation,x=this.labelMetrics(),p,A=Number.MAX_VALUE,u,f=this.max-this.min,n=function(a){var b=a/(c||1);b=1<b?Math.ceil(b):1;b*e>f&&Infinity!==a&&Infinity!==c&&f&&(b=Math.ceil(f/
-e));return d(b*e)};b?(u=!a.staggerLines&&!a.step&&(z(r)?[r]:c<h(a.autoRotationLimit,80)&&a.autoRotation))&&u.forEach(function(a){if(a===r||a&&-90<=a&&90>=a){p=n(Math.abs(x.h/Math.sin(l*a)));var b=p+Math.abs(a/360);b<A&&(A=b,g=a,k=p)}}):a.step||(k=n(x.h));this.autoRotation=u;this.labelRotation=h(g,r);return k},getSlotWidth:function(a){var b=this.chart,d=this.horiz,e=this.options.labels,k=Math.max(this.tickPositions.length-(this.categories?0:1),1),c=b.margin[3];return a&&a.slotWidth||d&&2>(e.step||
-0)&&!e.rotation&&(this.staggerLines||1)*this.len/k||!d&&(e.style&&parseInt(e.style.width,10)||c&&c-b.spacing[3]||.33*b.chartWidth)},renderUnsquish:function(){var a=this.chart,b=a.renderer,d=this.tickPositions,e=this.ticks,k=this.options.labels,c=k&&k.style||{},l=this.horiz,g=this.getSlotWidth(),r=Math.max(1,Math.round(g-2*(k.padding||5))),x={},p=this.labelMetrics(),h=k.style&&k.style.textOverflow,A=0;H(k.rotation)||(x.rotation=k.rotation||0);d.forEach(function(a){(a=e[a])&&a.label&&a.label.textPxLength>
-A&&(A=a.label.textPxLength)});this.maxLabelLength=A;if(this.autoRotation)A>r&&A>p.h?x.rotation=this.labelRotation:this.labelRotation=0;else if(g){var u=r;if(!h){var f="clip";for(r=d.length;!l&&r--;){var n=d[r];if(n=e[n].label)n.styles&&"ellipsis"===n.styles.textOverflow?n.css({textOverflow:"clip"}):n.textPxLength>g&&n.css({width:g+"px"}),n.getBBox().height>this.len/d.length-(p.h-p.f)&&(n.specificTextOverflow="ellipsis")}}}x.rotation&&(u=A>.5*a.chartHeight?.33*a.chartHeight:A,h||(f="ellipsis"));if(this.labelAlign=
-k.align||this.autoLabelAlign(this.labelRotation))x.align=this.labelAlign;d.forEach(function(a){var b=(a=e[a])&&a.label,d=c.width,k={};b&&(b.attr(x),a.shortenLabel?a.shortenLabel():u&&!d&&"nowrap"!==c.whiteSpace&&(u<b.textPxLength||"SPAN"===b.element.tagName)?(k.width=u,h||(k.textOverflow=b.specificTextOverflow||f),b.css(k)):b.styles&&b.styles.width&&!k.width&&!d&&b.css({width:null}),delete b.specificTextOverflow,a.rotation=x.rotation)},this);this.tickRotCorr=b.rotCorr(p.b,this.labelRotation||0,0!==
-this.side)},hasData:function(){return this.series.some(function(a){return a.hasData()})||this.options.showEmpty&&z(this.min)&&z(this.max)},addTitle:function(a){var b=this.chart.renderer,d=this.horiz,e=this.opposite,k=this.options.title,c,l=this.chart.styledMode;this.axisTitle||((c=k.textAlign)||(c=(d?{low:"left",middle:"center",high:"right"}:{low:e?"right":"left",middle:"center",high:e?"left":"right"})[k.align]),this.axisTitle=b.text(k.text,0,0,k.useHTML).attr({zIndex:7,rotation:k.rotation||0,align:c}).addClass("highcharts-axis-title"),
-l||this.axisTitle.css(u(k.style)),this.axisTitle.add(this.axisGroup),this.axisTitle.isNew=!0);l||k.style.width||this.isRadial||this.axisTitle.css({width:this.len});this.axisTitle[a?"show":"hide"](a)},generateTick:function(a){var b=this.ticks;b[a]?b[a].addLabel():b[a]=new A(this,a)},getOffset:function(){var a=this,b=a.chart,d=b.renderer,e=a.options,k=a.tickPositions,c=a.ticks,l=a.horiz,g=a.side,r=b.inverted&&!a.isZAxis?[1,0,3,2][g]:g,x,p=0,A=0,u=e.title,n=e.labels,f=0,E=b.axisOffset;b=b.clipOffset;
-var q=[-1,1,1,-1][g],v=e.className,t=a.axisParent;var C=a.hasData();a.showAxis=x=C||h(e.showEmpty,!0);a.staggerLines=a.horiz&&n.staggerLines;a.axisGroup||(a.gridGroup=d.g("grid").attr({zIndex:e.gridZIndex||1}).addClass("highcharts-"+this.coll.toLowerCase()+"-grid "+(v||"")).add(t),a.axisGroup=d.g("axis").attr({zIndex:e.zIndex||2}).addClass("highcharts-"+this.coll.toLowerCase()+" "+(v||"")).add(t),a.labelGroup=d.g("axis-labels").attr({zIndex:n.zIndex||7}).addClass("highcharts-"+a.coll.toLowerCase()+
-"-labels "+(v||"")).add(t));C||a.isLinked?(k.forEach(function(b,d){a.generateTick(b,d)}),a.renderUnsquish(),a.reserveSpaceDefault=0===g||2===g||{1:"left",3:"right"}[g]===a.labelAlign,h(n.reserveSpace,"center"===a.labelAlign?!0:null,a.reserveSpaceDefault)&&k.forEach(function(a){f=Math.max(c[a].getLabelSize(),f)}),a.staggerLines&&(f*=a.staggerLines),a.labelOffset=f*(a.opposite?-1:1)):y(c,function(a,b){a.destroy();delete c[b]});if(u&&u.text&&!1!==u.enabled&&(a.addTitle(x),x&&!1!==u.reserveSpace)){a.titleOffset=
-p=a.axisTitle.getBBox()[l?"height":"width"];var B=u.offset;A=z(B)?0:h(u.margin,l?5:10)}a.renderLine();a.offset=q*h(e.offset,E[g]?E[g]+(e.margin||0):0);a.tickRotCorr=a.tickRotCorr||{x:0,y:0};d=0===g?-a.labelMetrics().h:2===g?a.tickRotCorr.y:0;A=Math.abs(f)+A;f&&(A=A-d+q*(l?h(n.y,a.tickRotCorr.y+8*q):n.x));a.axisTitleMargin=h(B,A);a.getMaxLabelDimensions&&(a.maxLabelDimensions=a.getMaxLabelDimensions(c,k));l=this.tickSize("tick");E[g]=Math.max(E[g],a.axisTitleMargin+p+q*a.offset,A,k&&k.length&&l?l[0]+
-q*a.offset:0);e=e.offset?0:2*Math.floor(a.axisLine.strokeWidth()/2);b[r]=Math.max(b[r],e);L(this,"afterGetOffset")},getLinePath:function(a){var b=this.chart,d=this.opposite,e=this.offset,k=this.horiz,c=this.left+(d?this.width:0)+e;e=b.chartHeight-this.bottom-(d?this.height:0)+e;d&&(a*=-1);return b.renderer.crispLine(["M",k?this.left:c,k?e:this.top,"L",k?b.chartWidth-this.right:c,k?e:b.chartHeight-this.bottom],a)},renderLine:function(){this.axisLine||(this.axisLine=this.chart.renderer.path().addClass("highcharts-axis-line").add(this.axisGroup),
-this.chart.styledMode||this.axisLine.attr({stroke:this.options.lineColor,"stroke-width":this.options.lineWidth,zIndex:7}))},getTitlePosition:function(){var a=this.horiz,b=this.left,d=this.top,e=this.len,k=this.options.title,c=a?b:d,l=this.opposite,g=this.offset,r=k.x||0,x=k.y||0,p=this.axisTitle,A=this.chart.renderer.fontMetrics(k.style&&k.style.fontSize,p);p=Math.max(p.getBBox(null,0).height-A.h-1,0);e={low:c+(a?0:e),middle:c+e/2,high:c+(a?e:0)}[k.align];b=(a?d+this.height:b)+(a?1:-1)*(l?-1:1)*this.axisTitleMargin+
-[-p,p,A.f,-p][this.side];a={x:a?e+r:b+(l?this.width:0)+g+r,y:a?b+x-(l?this.height:0)+g:e+x};L(this,"afterGetTitlePosition",{titlePosition:a});return a},renderMinorTick:function(a){var b=this.chart.hasRendered&&C(this.oldMin),d=this.minorTicks;d[a]||(d[a]=new A(this,a,"minor"));b&&d[a].isNew&&d[a].render(null,!0);d[a].render(null,!1,1)},renderTick:function(a,b){var d=this.isLinked,e=this.ticks,k=this.chart.hasRendered&&C(this.oldMin);if(!d||a>=this.min&&a<=this.max)e[a]||(e[a]=new A(this,a)),k&&e[a].isNew&&
-e[a].render(b,!0,-1),e[a].render(b)},render:function(){var a=this,d=a.chart,e=a.options,k=a.isLog,l=a.isLinked,g=a.tickPositions,r=a.axisTitle,x=a.ticks,p=a.minorTicks,h=a.alternateBands,u=e.stackLabels,f=e.alternateGridColor,n=a.tickmarkOffset,E=a.axisLine,v=a.showAxis,t=b(d.renderer.globalAnimation),B,H;a.labelEdge.length=0;a.overlap=!1;[x,p,h].forEach(function(a){y(a,function(a){a.isActive=!1})});if(a.hasData()||l)a.minorTickInterval&&!a.categories&&a.getMinorTickPositions().forEach(function(b){a.renderMinorTick(b)}),
-g.length&&(g.forEach(function(b,d){a.renderTick(b,d)}),n&&(0===a.min||a.single)&&(x[-1]||(x[-1]=new A(a,-1,null,!0)),x[-1].render(-1))),f&&g.forEach(function(b,e){H=void 0!==g[e+1]?g[e+1]+n:a.max-n;0===e%2&&b<a.max&&H<=a.max+(d.polar?-n:n)&&(h[b]||(h[b]=new c.PlotLineOrBand(a)),B=b+n,h[b].options={from:k?a.lin2log(B):B,to:k?a.lin2log(H):H,color:f},h[b].render(),h[b].isActive=!0)}),a._addedPlotLB||((e.plotLines||[]).concat(e.plotBands||[]).forEach(function(b){a.addPlotBandOrLine(b)}),a._addedPlotLB=
-!0);[x,p,h].forEach(function(a){var b,e=[],k=t.duration;y(a,function(a,b){a.isActive||(a.render(b,!1,0),a.isActive=!1,e.push(b))});q(function(){for(b=e.length;b--;)a[e[b]]&&!a[e[b]].isActive&&(a[e[b]].destroy(),delete a[e[b]])},a!==h&&d.hasRendered&&k?k:0)});E&&(E[E.isPlaced?"animate":"attr"]({d:this.getLinePath(E.strokeWidth())}),E.isPlaced=!0,E[v?"show":"hide"](v));r&&v&&(e=a.getTitlePosition(),C(e.y)?(r[r.isNew?"attr":"animate"](e),r.isNew=!1):(r.attr("y",-9999),r.isNew=!0));u&&u.enabled&&a.renderStackTotals();
-a.isDirty=!1;L(this,"afterRender")},redraw:function(){this.visible&&(this.render(),this.plotLinesAndBands.forEach(function(a){a.render()}));this.series.forEach(function(a){a.isDirty=!0})},keepProps:"extKey hcEvents names series userMax userMin".split(" "),destroy:function(a){var b=this,d=b.stacks,e=b.plotLinesAndBands,k;L(this,"destroy",{keepEvents:a});a||r(b);y(d,function(a,b){B(a);d[b]=null});[b.ticks,b.minorTicks,b.alternateBands].forEach(function(a){B(a)});if(e)for(a=e.length;a--;)e[a].destroy();
-"stackTotalGroup axisLine axisTitle axisGroup gridGroup labelGroup cross scrollbar".split(" ").forEach(function(a){b[a]&&(b[a]=b[a].destroy())});for(k in b.plotLinesAndBandsGroups)b.plotLinesAndBandsGroups[k]=b.plotLinesAndBandsGroups[k].destroy();y(b,function(a,d){-1===b.keepProps.indexOf(d)&&delete b[d]})},drawCrosshair:function(b,d){var e,k=this.crosshair,c=h(k.snap,!0),l,g=this.cross;L(this,"drawCrosshair",{e:b,point:d});b||(b=this.cross&&this.cross.e);if(this.crosshair&&!1!==(z(d)||!c)){c?z(d)&&
-(l=h("colorAxis"!==this.coll?d.crosshairPos:null,this.isXAxis?d.plotX:this.len-d.plotY)):l=b&&(this.horiz?b.chartX-this.pos:this.len-b.chartY+this.pos);z(l)&&(e=this.getPlotLinePath({value:d&&(this.isXAxis?d.x:h(d.stackY,d.y)),translatedValue:l})||null);if(!z(e)){this.hideCrosshair();return}c=this.categories&&!this.isRadial;g||(this.cross=g=this.chart.renderer.path().addClass("highcharts-crosshair highcharts-crosshair-"+(c?"category ":"thin ")+k.className).attr({zIndex:h(k.zIndex,2)}).add(),this.chart.styledMode||
-(g.attr({stroke:k.color||(c?a("#ccd6eb").setOpacity(.25).get():"#cccccc"),"stroke-width":h(k.width,1)}).css({"pointer-events":"none"}),k.dashStyle&&g.attr({dashstyle:k.dashStyle})));g.show().attr({d:e});c&&!k.width&&g.attr({"stroke-width":this.transA});this.cross.e=b}else this.hideCrosshair();L(this,"afterDrawCrosshair",{e:b,point:d})},hideCrosshair:function(){this.cross&&this.cross.hide();L(this,"afterHideCrosshair")}});return c.Axis=f});M(I,"parts/DateTimeAxis.js",[I["parts/Globals.js"]],function(c){var f=
-c.Axis,F=c.getMagnitude,G=c.normalizeTickInterval,z=c.timeUnits;f.prototype.getTimeTicks=function(){return this.chart.time.getTimeTicks.apply(this.chart.time,arguments)};f.prototype.normalizeTimeTickInterval=function(c,f){var v=f||[["millisecond",[1,2,5,10,20,25,50,100,200,500]],["second",[1,2,5,10,15,30]],["minute",[1,2,5,10,15,30]],["hour",[1,2,3,4,6,8,12]],["day",[1,2]],["week",[1,2]],["month",[1,2,3,4,6]],["year",null]];f=v[v.length-1];var t=z[f[0]],B=f[1],y;for(y=0;y<v.length&&!(f=v[y],t=z[f[0]],
-B=f[1],v[y+1]&&c<=(t*B[B.length-1]+z[v[y+1][0]])/2);y++);t===z.year&&c<5*t&&(B=[1,2,5]);c=G(c/t,B,"year"===f[0]?Math.max(F(c/t),1):1);return{unitRange:t,count:c,unitName:f[0]}}});M(I,"parts/LogarithmicAxis.js",[I["parts/Globals.js"],I["parts/Utilities.js"]],function(c,f){var F=f.pick;f=c.Axis;var G=c.getMagnitude,z=c.normalizeTickInterval;f.prototype.getLogTickPositions=function(c,f,v,C){var t=this.options,y=this.len,h=[];C||(this._minorAutoInterval=null);if(.5<=c)c=Math.round(c),h=this.getLinearTickPositions(c,
-f,v);else if(.08<=c){y=Math.floor(f);var n,q;for(t=.3<c?[1,2,4]:.15<c?[1,2,4,6,8]:[1,2,3,4,5,6,7,8,9];y<v+1&&!q;y++){var g=t.length;for(n=0;n<g&&!q;n++){var b=this.log2lin(this.lin2log(y)*t[n]);b>f&&(!C||a<=v)&&void 0!==a&&h.push(a);a>v&&(q=!0);var a=b}}}else f=this.lin2log(f),v=this.lin2log(v),c=C?this.getMinorTickInterval():t.tickInterval,c=F("auto"===c?null:c,this._minorAutoInterval,t.tickPixelInterval/(C?5:1)*(v-f)/((C?y/this.tickPositions.length:y)||1)),c=z(c,null,G(c)),h=this.getLinearTickPositions(c,
-f,v).map(this.log2lin),C||(this._minorAutoInterval=c/5);C||(this.tickInterval=c);return h};f.prototype.log2lin=function(c){return Math.log(c)/Math.LN10};f.prototype.lin2log=function(c){return Math.pow(10,c)}});M(I,"parts/PlotLineOrBand.js",[I["parts/Globals.js"],I["parts/Axis.js"],I["parts/Utilities.js"]],function(c,f,F){var G=F.arrayMax,z=F.arrayMin,B=F.defined,t=F.destroyObjectProperties,v=F.erase,C=F.extend,H=F.objectEach,y=F.pick,h=c.merge;c.PlotLineOrBand=function(c,h){this.axis=c;h&&(this.options=
-h,this.id=h.id)};c.PlotLineOrBand.prototype={render:function(){c.fireEvent(this,"render");var f=this,q=f.axis,g=q.horiz,b=f.options,a=b.label,d=f.label,e=b.to,l=b.from,L=b.value,E=B(l)&&B(e),p=B(L),u=f.svgElem,k=!u,r=[],x=b.color,A=y(b.zIndex,0),w=b.events;r={"class":"highcharts-plot-"+(E?"band ":"line ")+(b.className||"")};var m={},K=q.chart.renderer,J=E?"bands":"lines";q.isLog&&(l=q.log2lin(l),e=q.log2lin(e),L=q.log2lin(L));q.chart.styledMode||(p?(r.stroke=x||"#999999",r["stroke-width"]=y(b.width,
-1),b.dashStyle&&(r.dashstyle=b.dashStyle)):E&&(r.fill=x||"#e6ebf5",b.borderWidth&&(r.stroke=b.borderColor,r["stroke-width"]=b.borderWidth)));m.zIndex=A;J+="-"+A;(x=q.plotLinesAndBandsGroups[J])||(q.plotLinesAndBandsGroups[J]=x=K.g("plot-"+J).attr(m).add());k&&(f.svgElem=u=K.path().attr(r).add(x));if(p)r=q.getPlotLinePath({value:L,lineWidth:u.strokeWidth(),acrossPanes:b.acrossPanes});else if(E)r=q.getPlotBandPath(l,e,b);else return;(k||!u.d)&&r&&r.length?(u.attr({d:r}),w&&H(w,function(a,b){u.on(b,
-function(a){w[b].apply(f,[a])})})):u&&(r?(u.show(!0),u.animate({d:r})):u.d&&(u.hide(),d&&(f.label=d=d.destroy())));a&&(B(a.text)||B(a.formatter))&&r&&r.length&&0<q.width&&0<q.height&&!r.isFlat?(a=h({align:g&&E&&"center",x:g?!E&&4:10,verticalAlign:!g&&E&&"middle",y:g?E?16:10:E?6:-4,rotation:g&&!E&&90},a),this.renderLabel(a,r,E,A)):d&&d.hide();return f},renderLabel:function(c,h,g,b){var a=this.label,d=this.axis.chart.renderer;a||(a={align:c.textAlign||c.align,rotation:c.rotation,"class":"highcharts-plot-"+
-(g?"band":"line")+"-label "+(c.className||"")},a.zIndex=b,b=this.getLabelText(c),this.label=a=d.text(b,0,0,c.useHTML).attr(a).add(),this.axis.chart.styledMode||a.css(c.style));d=h.xBounds||[h[1],h[4],g?h[6]:h[1]];h=h.yBounds||[h[2],h[5],g?h[7]:h[2]];g=z(d);b=z(h);a.align(c,!1,{x:g,y:b,width:G(d)-g,height:G(h)-b});a.show(!0)},getLabelText:function(c){return B(c.formatter)?c.formatter.call(this):c.text},destroy:function(){v(this.axis.plotLinesAndBands,this);delete this.axis;t(this)}};C(f.prototype,
-{getPlotBandPath:function(c,h){var g=this.getPlotLinePath({value:h,force:!0,acrossPanes:this.options.acrossPanes}),b=this.getPlotLinePath({value:c,force:!0,acrossPanes:this.options.acrossPanes}),a=[],d=this.horiz,e=1;c=c<this.min&&h<this.min||c>this.max&&h>this.max;if(b&&g){if(c){var l=b.toString()===g.toString();e=0}for(c=0;c<b.length;c+=6)d&&g[c+1]===b[c+1]?(g[c+1]+=e,g[c+4]+=e):d||g[c+2]!==b[c+2]||(g[c+2]+=e,g[c+5]+=e),a.push("M",b[c+1],b[c+2],"L",b[c+4],b[c+5],g[c+4],g[c+5],g[c+1],g[c+2],"z"),
-a.isFlat=l}return a},addPlotBand:function(c){return this.addPlotBandOrLine(c,"plotBands")},addPlotLine:function(c){return this.addPlotBandOrLine(c,"plotLines")},addPlotBandOrLine:function(h,f){var g=(new c.PlotLineOrBand(this,h)).render(),b=this.userOptions;if(g){if(f){var a=b[f]||[];a.push(h);b[f]=a}this.plotLinesAndBands.push(g)}return g},removePlotBandOrLine:function(c){for(var h=this.plotLinesAndBands,g=this.options,b=this.userOptions,a=h.length;a--;)h[a].id===c&&h[a].destroy();[g.plotLines||
-[],b.plotLines||[],g.plotBands||[],b.plotBands||[]].forEach(function(b){for(a=b.length;a--;)b[a].id===c&&v(b,b[a])})},removePlotBand:function(c){this.removePlotBandOrLine(c)},removePlotLine:function(c){this.removePlotBandOrLine(c)}})});M(I,"parts/Tooltip.js",[I["parts/Globals.js"],I["parts/Utilities.js"]],function(c,f){var F=f.defined,G=f.discardElement,z=f.extend,B=f.isNumber,t=f.isString,v=f.pick,C=f.splat,H=f.syncTimeout;"";var y=c.doc,h=c.format,n=c.merge,q=c.timeUnits;c.Tooltip=function(){this.init.apply(this,
-arguments)};c.Tooltip.prototype={init:function(c,b){this.chart=c;this.options=b;this.crosshairs=[];this.now={x:0,y:0};this.isHidden=!0;this.split=b.split&&!c.inverted;this.shared=b.shared||this.split;this.outside=v(b.outside,!(!c.scrollablePixelsX&&!c.scrollablePixelsY))},cleanSplit:function(c){this.chart.series.forEach(function(b){var a=b&&b.tt;a&&(!a.isActive||c?b.tt=a.destroy():a.isActive=!1)})},applyFilter:function(){var c=this.chart;c.renderer.definition({tagName:"filter",id:"drop-shadow-"+c.index,
-opacity:.5,children:[{tagName:"feGaussianBlur","in":"SourceAlpha",stdDeviation:1},{tagName:"feOffset",dx:1,dy:1},{tagName:"feComponentTransfer",children:[{tagName:"feFuncA",type:"linear",slope:.3}]},{tagName:"feMerge",children:[{tagName:"feMergeNode"},{tagName:"feMergeNode","in":"SourceGraphic"}]}]});c.renderer.definition({tagName:"style",textContent:".highcharts-tooltip-"+c.index+"{filter:url(#drop-shadow-"+c.index+")}"})},getLabel:function(){var g=this,b=this.chart.renderer,a=this.chart.styledMode,
-d=this.options,e="tooltip"+(F(d.className)?" "+d.className:""),l;if(!this.label){this.outside&&(this.container=l=c.doc.createElement("div"),l.className="highcharts-tooltip-container",c.css(l,{position:"absolute",top:"1px",pointerEvents:d.style&&d.style.pointerEvents,zIndex:3}),c.doc.body.appendChild(l),this.renderer=b=new c.Renderer(l,0,0,{},void 0,void 0,b.styledMode));this.split?this.label=b.g(e):(this.label=b.label("",0,0,d.shape||"callout",null,null,d.useHTML,null,e).attr({padding:d.padding,r:d.borderRadius}),
-a||this.label.attr({fill:d.backgroundColor,"stroke-width":d.borderWidth}).css(d.style).shadow(d.shadow));a&&(this.applyFilter(),this.label.addClass("highcharts-tooltip-"+this.chart.index));if(g.outside&&!g.split){var h={x:this.label.xSetter,y:this.label.ySetter};this.label.xSetter=function(a,b){h[b].call(this.label,g.distance);l.style.left=a+"px"};this.label.ySetter=function(a,b){h[b].call(this.label,g.distance);l.style.top=a+"px"}}this.label.attr({zIndex:8}).add()}return this.label},update:function(c){this.destroy();
-n(!0,this.chart.options.tooltip.userOptions,c);this.init(this.chart,n(!0,this.options,c))},destroy:function(){this.label&&(this.label=this.label.destroy());this.split&&this.tt&&(this.cleanSplit(this.chart,!0),this.tt=this.tt.destroy());this.renderer&&(this.renderer=this.renderer.destroy(),G(this.container));c.clearTimeout(this.hideTimer);c.clearTimeout(this.tooltipTimeout)},move:function(g,b,a,d){var e=this,l=e.now,h=!1!==e.options.animation&&!e.isHidden&&(1<Math.abs(g-l.x)||1<Math.abs(b-l.y)),f=
-e.followPointer||1<e.len;z(l,{x:h?(2*l.x+g)/3:g,y:h?(l.y+b)/2:b,anchorX:f?void 0:h?(2*l.anchorX+a)/3:a,anchorY:f?void 0:h?(l.anchorY+d)/2:d});e.getLabel().attr(l);h&&(c.clearTimeout(this.tooltipTimeout),this.tooltipTimeout=setTimeout(function(){e&&e.move(g,b,a,d)},32))},hide:function(g){var b=this;c.clearTimeout(this.hideTimer);g=v(g,this.options.hideDelay,500);this.isHidden||(this.hideTimer=H(function(){b.getLabel()[g?"fadeOut":"hide"]();b.isHidden=!0},g))},getAnchor:function(c,b){var a=this.chart,
-d=a.pointer,e=a.inverted,l=a.plotTop,g=a.plotLeft,h=0,p=0,f,k;c=C(c);this.followPointer&&b?(void 0===b.chartX&&(b=d.normalize(b)),c=[b.chartX-a.plotLeft,b.chartY-l]):c[0].tooltipPos?c=c[0].tooltipPos:(c.forEach(function(a){f=a.series.yAxis;k=a.series.xAxis;h+=a.plotX+(!e&&k?k.left-g:0);p+=(a.plotLow?(a.plotLow+a.plotHigh)/2:a.plotY)+(!e&&f?f.top-l:0)}),h/=c.length,p/=c.length,c=[e?a.plotWidth-p:h,this.shared&&!e&&1<c.length&&b?b.chartY-l:e?a.plotHeight-h:p]);return c.map(Math.round)},getPosition:function(c,
-b,a){var d=this.chart,e=this.distance,l={},g=d.inverted&&a.h||0,h,p=this.outside,f=p?y.documentElement.clientWidth-2*e:d.chartWidth,k=p?Math.max(y.body.scrollHeight,y.documentElement.scrollHeight,y.body.offsetHeight,y.documentElement.offsetHeight,y.documentElement.clientHeight):d.chartHeight,r=d.pointer.getChartPosition(),x=d.containerScaling,A=function(a){return x?a*x.scaleX:a},w=function(a){return x?a*x.scaleY:a},m=function(l){var m="x"===l;return[l,m?f:k,m?c:b].concat(p?[m?A(c):w(b),m?r.left-e+
-A(a.plotX+d.plotLeft):r.top-e+w(a.plotY+d.plotTop),0,m?f:k]:[m?c:b,m?a.plotX+d.plotLeft:a.plotY+d.plotTop,m?d.plotLeft:d.plotTop,m?d.plotLeft+d.plotWidth:d.plotTop+d.plotHeight])},n=m("y"),J=m("x"),q=!this.followPointer&&v(a.ttBelow,!d.inverted===!!a.negative),t=function(a,b,d,c,k,m,r){var x="y"===a?w(e):A(e),p=(d-c)/2,h=c<k-e,f=k+e+c<b,u=k-x-d+p;k=k+x-p;if(q&&f)l[a]=k;else if(!q&&h)l[a]=u;else if(h)l[a]=Math.min(r-c,0>u-g?u:u-g);else if(f)l[a]=Math.max(m,k+g+d>b?k:k+g);else return!1},C=function(a,
-b,d,k,c){var m;c<e||c>b-e?m=!1:l[a]=c<d/2?1:c>b-k/2?b-k-2:c-d/2;return m},O=function(a){var b=n;n=J;J=b;h=a},D=function(){!1!==t.apply(0,n)?!1!==C.apply(0,J)||h||(O(!0),D()):h?l.x=l.y=0:(O(!0),D())};(d.inverted||1<this.len)&&O();D();return l},defaultFormatter:function(c){var b=this.points||C(this);var a=[c.tooltipFooterHeaderFormatter(b[0])];a=a.concat(c.bodyFormatter(b));a.push(c.tooltipFooterHeaderFormatter(b[0],!0));return a},refresh:function(g,b){var a=this.chart,d=this.options,e=g,l={},h=[],
-f=d.formatter||this.defaultFormatter;l=this.shared;var p=a.styledMode;if(d.enabled){c.clearTimeout(this.hideTimer);this.followPointer=C(e)[0].series.tooltipOptions.followPointer;var u=this.getAnchor(e,b);b=u[0];var k=u[1];!l||e.series&&e.series.noSharedTooltip?l=e.getLabelConfig():(a.pointer.applyInactiveState(e),e.forEach(function(a){a.setState("hover");h.push(a.getLabelConfig())}),l={x:e[0].category,y:e[0].y},l.points=h,e=e[0]);this.len=h.length;a=f.call(l,this);f=e.series;this.distance=v(f.tooltipOptions.distance,
-16);!1===a?this.hide():(this.split?this.renderSplit(a,C(g)):(g=this.getLabel(),d.style.width&&!p||g.css({width:this.chart.spacingBox.width}),g.attr({text:a&&a.join?a.join(""):a}),g.removeClass(/highcharts-color-[\d]+/g).addClass("highcharts-color-"+v(e.colorIndex,f.colorIndex)),p||g.attr({stroke:d.borderColor||e.color||f.color||"#666666"}),this.updatePosition({plotX:b,plotY:k,negative:e.negative,ttBelow:e.ttBelow,h:u[2]||0})),this.isHidden&&this.label&&this.label.attr({opacity:1}).show(),this.isHidden=
-!1);c.fireEvent(this,"refresh")}},renderSplit:function(g,b){var a=this,d=[],e=this.chart,l=e.renderer,h=!0,f=this.options,p=0,u,k=this.getLabel(),r=e.plotTop;t(g)&&(g=[!1,g]);g.slice(0,b.length+1).forEach(function(c,m){if(!1!==c&&""!==c){m=b[m-1]||{isHeader:!0,plotX:b[0].plotX,plotY:e.plotHeight};var g=m.series||a,x=g.tt,w=m.series||{},A="highcharts-color-"+v(m.colorIndex,w.colorIndex,"none");x||(x={padding:f.padding,r:f.borderRadius},e.styledMode||(x.fill=f.backgroundColor,x["stroke-width"]=f.borderWidth),
-g.tt=x=l.label(null,null,null,(m.isHeader?f.headerShape:f.shape)||"callout",null,null,f.useHTML).addClass(m.isHeader?"highcharts-tooltip-header ":"highcharts-tooltip-box "+A).attr(x).add(k));x.isActive=!0;x.attr({text:c});e.styledMode||x.css(f.style).shadow(f.shadow).attr({stroke:f.borderColor||m.color||w.color||"#333333"});c=x.getBBox();A=c.width+x.strokeWidth();m.isHeader?(p=c.height,e.xAxis[0].opposite&&(u=!0,r-=p),c=Math.max(0,Math.min(m.plotX+e.plotLeft-A/2,e.chartWidth+(e.scrollablePixelsX?
-e.scrollablePixelsX-e.marginRight:0)-A))):c=m.plotX+e.plotLeft-v(f.distance,16)-A;0>c&&(h=!1);m.isHeader?w=u?-p:e.plotHeight+p:(w=w.yAxis,w=w.pos-r+Math.max(0,Math.min(m.plotY||0,w.len)));d.push({target:w,rank:m.isHeader?1:0,size:g.tt.getBBox().height+1,point:m,x:c,tt:x})}});this.cleanSplit();f.positioner&&d.forEach(function(b){var d=f.positioner.call(a,b.tt.getBBox().width,b.size,b.point);b.x=d.x;b.align=0;b.target=d.y;b.rank=v(d.rank,b.rank)});c.distribute(d,e.plotHeight+p);d.forEach(function(b){var d=
-b.point,c=d.series,k=c&&c.yAxis;b.tt.attr({visibility:void 0===b.pos?"hidden":"inherit",x:h||d.isHeader||f.positioner?b.x:d.plotX+e.plotLeft+a.distance,y:b.pos+r,anchorX:d.isHeader?d.plotX+e.plotLeft:d.plotX+c.xAxis.pos,anchorY:d.isHeader?e.plotTop+e.plotHeight/2:k.pos+Math.max(0,Math.min(d.plotY,k.len))})});var x=a.container;g=a.renderer;if(a.outside&&x&&g){var A=e.pointer.getChartPosition();x.style.left=A.left+"px";x.style.top=A.top+"px";x=k.getBBox();g.setSize(x.width+x.x,x.height+x.y,!1)}},updatePosition:function(g){var b=
-this.chart,a=b.pointer,d=this.getLabel(),e=g.plotX+b.plotLeft,l=g.plotY+b.plotTop;a=a.getChartPosition();g=(this.options.positioner||this.getPosition).call(this,d.width,d.height,g);if(this.outside){var h=(this.options.borderWidth||0)+2*this.distance;this.renderer.setSize(d.width+h,d.height+h,!1);if(b=b.containerScaling)c.css(this.container,{transform:"scale("+b.scaleX+", "+b.scaleY+")"}),e*=b.scaleX,l*=b.scaleY;e+=a.left-g.x;l+=a.top-g.y}this.move(Math.round(g.x),Math.round(g.y||0),e,l)},getDateFormat:function(c,
-b,a,d){var e=this.chart.time,l=e.dateFormat("%m-%d %H:%M:%S.%L",b),g={millisecond:15,second:12,minute:9,hour:6,day:3},h="millisecond";for(p in q){if(c===q.week&&+e.dateFormat("%w",b)===a&&"00:00:00.000"===l.substr(6)){var p="week";break}if(q[p]>c){p=h;break}if(g[p]&&l.substr(g[p])!=="01-01 00:00:00.000".substr(g[p]))break;"week"!==p&&(h=p)}if(p)var f=e.resolveDTLFormat(d[p]).main;return f},getXDateFormat:function(c,b,a){b=b.dateTimeLabelFormats;var d=a&&a.closestPointRange;return(d?this.getDateFormat(d,
-c.x,a.options.startOfWeek,b):b.day)||b.year},tooltipFooterHeaderFormatter:function(g,b){var a=b?"footer":"header",d=g.series,e=d.tooltipOptions,l=e.xDateFormat,f=d.xAxis,n=f&&"datetime"===f.options.type&&B(g.key),p=e[a+"Format"];b={isFooter:b,labelConfig:g};c.fireEvent(this,"headerFormatter",b,function(a){n&&!l&&(l=this.getXDateFormat(g,e,f));n&&l&&(g.point&&g.point.tooltipDateKeys||["key"]).forEach(function(a){p=p.replace("{point."+a+"}","{point."+a+":"+l+"}")});d.chart.styledMode&&(p=this.styledModeFormat(p));
-a.text=h(p,{point:g,series:d},this.chart.time)});return b.text},bodyFormatter:function(c){return c.map(function(b){var a=b.series.tooltipOptions;return(a[(b.point.formatPrefix||"point")+"Formatter"]||b.point.tooltipFormatter).call(b.point,a[(b.point.formatPrefix||"point")+"Format"]||"")})},styledModeFormat:function(c){return c.replace('style="font-size: 10px"','class="highcharts-header"').replace(/style="color:{(point|series)\.color}"/g,'class="highcharts-color-{$1.colorIndex}"')}}});M(I,"parts/Pointer.js",
-[I["parts/Globals.js"],I["parts/Utilities.js"]],function(c,f){var F=f.attr,G=f.defined,z=f.extend,B=f.isNumber,t=f.isObject,v=f.objectEach,C=f.pick,H=f.splat,y=c.addEvent,h=c.charts,n=c.color,q=c.css,g=c.find,b=c.fireEvent,a=c.offset,d=c.Tooltip;c.Pointer=function(a,b){this.init(a,b)};c.Pointer.prototype={init:function(a,b){this.options=b;this.chart=a;this.runChartClick=b.chart.events&&!!b.chart.events.click;this.pinchDown=[];this.lastValidTouch={};d&&(a.tooltip=new d(a,b.tooltip),this.followTouchMove=
-C(b.tooltip.followTouchMove,!0));this.setDOMEvents()},zoomOption:function(a){var b=this.chart,d=b.options.chart,e=d.zoomType||"";b=b.inverted;/touch/.test(a.type)&&(e=C(d.pinchType,e));this.zoomX=a=/x/.test(e);this.zoomY=e=/y/.test(e);this.zoomHor=a&&!b||e&&b;this.zoomVert=e&&!b||a&&b;this.hasZoom=a||e},getChartPosition:function(){return this.chartPosition||(this.chartPosition=a(this.chart.container))},normalize:function(a,b){var d=a.touches?a.touches.length?a.touches.item(0):a.changedTouches[0]:
-a;b||(b=this.getChartPosition());var e=d.pageX-b.left;b=d.pageY-b.top;if(d=this.chart.containerScaling)e/=d.scaleX,b/=d.scaleY;return z(a,{chartX:Math.round(e),chartY:Math.round(b)})},getCoordinates:function(a){var b={xAxis:[],yAxis:[]};this.chart.axes.forEach(function(d){b[d.isXAxis?"xAxis":"yAxis"].push({axis:d,value:d.toValue(a[d.horiz?"chartX":"chartY"])})});return b},findNearestKDPoint:function(a,b,d){var e;a.forEach(function(a){var c=!(a.noSharedTooltip&&b)&&0>a.options.findNearestPointBy.indexOf("y");
-a=a.searchPoint(d,c);if((c=t(a,!0))&&!(c=!t(e,!0))){c=e.distX-a.distX;var k=e.dist-a.dist,l=(a.series.group&&a.series.group.zIndex)-(e.series.group&&e.series.group.zIndex);c=0<(0!==c&&b?c:0!==k?k:0!==l?l:e.series.index>a.series.index?-1:1)}c&&(e=a)});return e},getPointFromEvent:function(a){a=a.target;for(var b;a&&!b;)b=a.point,a=a.parentNode;return b},getChartCoordinatesFromPoint:function(a,b){var d=a.series,e=d.xAxis;d=d.yAxis;var c=C(a.clientX,a.plotX),l=a.shapeArgs;if(e&&d)return b?{chartX:e.len+
-e.pos-c,chartY:d.len+d.pos-a.plotY}:{chartX:c+e.pos,chartY:a.plotY+d.pos};if(l&&l.x&&l.y)return{chartX:l.x,chartY:l.y}},getHoverData:function(a,b,d,c,h,f){var e,l=[];c=!(!c||!a);var x=b&&!b.stickyTracking?[b]:d.filter(function(a){return a.visible&&!(!h&&a.directTouch)&&C(a.options.enableMouseTracking,!0)&&a.stickyTracking});b=(e=c||!f?a:this.findNearestKDPoint(x,h,f))&&e.series;e&&(h&&!b.noSharedTooltip?(x=d.filter(function(a){return a.visible&&!(!h&&a.directTouch)&&C(a.options.enableMouseTracking,
-!0)&&!a.noSharedTooltip}),x.forEach(function(a){var b=g(a.points,function(a){return a.x===e.x&&!a.isNull});t(b)&&(a.chart.isBoosting&&(b=a.getPoint(b)),l.push(b))})):l.push(e));return{hoverPoint:e,hoverSeries:b,hoverPoints:l}},runPointActions:function(a,b){var d=this.chart,e=d.tooltip&&d.tooltip.options.enabled?d.tooltip:void 0,l=e?e.shared:!1,g=b||d.hoverPoint,k=g&&g.series||d.hoverSeries;k=this.getHoverData(g,k,d.series,(!a||"touchmove"!==a.type)&&(!!b||k&&k.directTouch&&this.isDirectTouch),l,a);
-g=k.hoverPoint;var r=k.hoverPoints;b=(k=k.hoverSeries)&&k.tooltipOptions.followPointer;l=l&&k&&!k.noSharedTooltip;if(g&&(g!==d.hoverPoint||e&&e.isHidden)){(d.hoverPoints||[]).forEach(function(a){-1===r.indexOf(a)&&a.setState()});if(d.hoverSeries!==k)k.onMouseOver();this.applyInactiveState(r);(r||[]).forEach(function(a){a.setState("hover")});d.hoverPoint&&d.hoverPoint.firePointEvent("mouseOut");if(!g.series)return;g.firePointEvent("mouseOver");d.hoverPoints=r;d.hoverPoint=g;e&&e.refresh(l?r:g,a)}else b&&
-e&&!e.isHidden&&(g=e.getAnchor([{}],a),e.updatePosition({plotX:g[0],plotY:g[1]}));this.unDocMouseMove||(this.unDocMouseMove=y(d.container.ownerDocument,"mousemove",function(a){var b=h[c.hoverChartIndex];if(b)b.pointer.onDocumentMouseMove(a)}));d.axes.forEach(function(b){var d=C(b.crosshair.snap,!0),e=d?c.find(r,function(a){return a.series[b.coll]===b}):void 0;e||!d?b.drawCrosshair(a,e):b.hideCrosshair()})},applyInactiveState:function(a){var b=[],d;(a||[]).forEach(function(a){d=a.series;b.push(d);
-d.linkedParent&&b.push(d.linkedParent);d.linkedSeries&&(b=b.concat(d.linkedSeries));d.navigatorSeries&&b.push(d.navigatorSeries)});this.chart.series.forEach(function(a){-1===b.indexOf(a)?a.setState("inactive",!0):a.options.inactiveOtherPoints&&a.setAllPointsToState("inactive")})},reset:function(a,b){var d=this.chart,e=d.hoverSeries,c=d.hoverPoint,g=d.hoverPoints,k=d.tooltip,l=k&&k.shared?g:c;a&&l&&H(l).forEach(function(b){b.series.isCartesian&&void 0===b.plotX&&(a=!1)});if(a)k&&l&&H(l).length&&(k.refresh(l),
-k.shared&&g?g.forEach(function(a){a.setState(a.state,!0);a.series.isCartesian&&(a.series.xAxis.crosshair&&a.series.xAxis.drawCrosshair(null,a),a.series.yAxis.crosshair&&a.series.yAxis.drawCrosshair(null,a))}):c&&(c.setState(c.state,!0),d.axes.forEach(function(a){a.crosshair&&a.drawCrosshair(null,c)})));else{if(c)c.onMouseOut();g&&g.forEach(function(a){a.setState()});if(e)e.onMouseOut();k&&k.hide(b);this.unDocMouseMove&&(this.unDocMouseMove=this.unDocMouseMove());d.axes.forEach(function(a){a.hideCrosshair()});
-this.hoverX=d.hoverPoints=d.hoverPoint=null}},scaleGroups:function(a,b){var d=this.chart,e;d.series.forEach(function(c){e=a||c.getPlotBox();c.xAxis&&c.xAxis.zoomEnabled&&c.group&&(c.group.attr(e),c.markerGroup&&(c.markerGroup.attr(e),c.markerGroup.clip(b?d.clipRect:null)),c.dataLabelsGroup&&c.dataLabelsGroup.attr(e))});d.clipRect.attr(b||d.clipBox)},dragStart:function(a){var b=this.chart;b.mouseIsDown=a.type;b.cancelClick=!1;b.mouseDownX=this.mouseDownX=a.chartX;b.mouseDownY=this.mouseDownY=a.chartY},
-drag:function(a){var b=this.chart,d=b.options.chart,e=a.chartX,c=a.chartY,g=this.zoomHor,k=this.zoomVert,r=b.plotLeft,h=b.plotTop,A=b.plotWidth,w=b.plotHeight,m=this.selectionMarker,f=this.mouseDownX,J=this.mouseDownY,v=d.panKey&&a[d.panKey+"Key"];if(!m||!m.touch)if(e<r?e=r:e>r+A&&(e=r+A),c<h?c=h:c>h+w&&(c=h+w),this.hasDragged=Math.sqrt(Math.pow(f-e,2)+Math.pow(J-c,2)),10<this.hasDragged){var q=b.isInsidePlot(f-r,J-h);b.hasCartesianSeries&&(this.zoomX||this.zoomY)&&q&&!v&&!m&&(this.selectionMarker=
-m=b.renderer.rect(r,h,g?1:A,k?1:w,0).attr({"class":"highcharts-selection-marker",zIndex:7}).add(),b.styledMode||m.attr({fill:d.selectionMarkerFill||n("#335cad").setOpacity(.25).get()}));m&&g&&(e-=f,m.attr({width:Math.abs(e),x:(0<e?0:e)+f}));m&&k&&(e=c-J,m.attr({height:Math.abs(e),y:(0<e?0:e)+J}));q&&!m&&d.panning&&b.pan(a,d.panning)}},drop:function(a){var d=this,e=this.chart,c=this.hasPinched;if(this.selectionMarker){var g={originalEvent:a,xAxis:[],yAxis:[]},h=this.selectionMarker,k=h.attr?h.attr("x"):
-h.x,r=h.attr?h.attr("y"):h.y,x=h.attr?h.attr("width"):h.width,A=h.attr?h.attr("height"):h.height,w;if(this.hasDragged||c)e.axes.forEach(function(b){if(b.zoomEnabled&&G(b.min)&&(c||d[{xAxis:"zoomX",yAxis:"zoomY"}[b.coll]])){var e=b.horiz,m="touchend"===a.type?b.minPixelPadding:0,l=b.toValue((e?k:r)+m);e=b.toValue((e?k+x:r+A)-m);g[b.coll].push({axis:b,min:Math.min(l,e),max:Math.max(l,e)});w=!0}}),w&&b(e,"selection",g,function(a){e.zoom(z(a,c?{animation:!1}:null))});B(e.index)&&(this.selectionMarker=
-this.selectionMarker.destroy());c&&this.scaleGroups()}e&&B(e.index)&&(q(e.container,{cursor:e._cursor}),e.cancelClick=10<this.hasDragged,e.mouseIsDown=this.hasDragged=this.hasPinched=!1,this.pinchDown=[])},onContainerMouseDown:function(a){a=this.normalize(a);2!==a.button&&(this.zoomOption(a),a.preventDefault&&a.preventDefault(),this.dragStart(a))},onDocumentMouseUp:function(a){h[c.hoverChartIndex]&&h[c.hoverChartIndex].pointer.drop(a)},onDocumentMouseMove:function(a){var b=this.chart,d=this.chartPosition;
-a=this.normalize(a,d);!d||this.inClass(a.target,"highcharts-tracker")||b.isInsidePlot(a.chartX-b.plotLeft,a.chartY-b.plotTop)||this.reset()},onContainerMouseLeave:function(a){var b=h[c.hoverChartIndex];b&&(a.relatedTarget||a.toElement)&&(b.pointer.reset(),b.pointer.chartPosition=void 0)},onContainerMouseMove:function(a){var b=this.chart;G(c.hoverChartIndex)&&h[c.hoverChartIndex]&&h[c.hoverChartIndex].mouseIsDown||(c.hoverChartIndex=b.index);a=this.normalize(a);a.preventDefault||(a.returnValue=!1);
-"mousedown"===b.mouseIsDown&&this.drag(a);!this.inClass(a.target,"highcharts-tracker")&&!b.isInsidePlot(a.chartX-b.plotLeft,a.chartY-b.plotTop)||b.openMenu||this.runPointActions(a)},inClass:function(a,b){for(var d;a;){if(d=F(a,"class")){if(-1!==d.indexOf(b))return!0;if(-1!==d.indexOf("highcharts-container"))return!1}a=a.parentNode}},onTrackerMouseOut:function(a){var b=this.chart.hoverSeries;a=a.relatedTarget||a.toElement;this.isDirectTouch=!1;if(!(!b||!a||b.stickyTracking||this.inClass(a,"highcharts-tooltip")||
-this.inClass(a,"highcharts-series-"+b.index)&&this.inClass(a,"highcharts-tracker")))b.onMouseOut()},onContainerClick:function(a){var d=this.chart,e=d.hoverPoint,c=d.plotLeft,g=d.plotTop;a=this.normalize(a);d.cancelClick||(e&&this.inClass(a.target,"highcharts-tracker")?(b(e.series,"click",z(a,{point:e})),d.hoverPoint&&e.firePointEvent("click",a)):(z(a,this.getCoordinates(a)),d.isInsidePlot(a.chartX-c,a.chartY-g)&&b(d,"click",a)))},setDOMEvents:function(){var a=this,b=a.chart.container,d=b.ownerDocument;
-b.onmousedown=function(b){a.onContainerMouseDown(b)};b.onmousemove=function(b){a.onContainerMouseMove(b)};b.onclick=function(b){a.onContainerClick(b)};this.unbindContainerMouseLeave=y(b,"mouseleave",a.onContainerMouseLeave);c.unbindDocumentMouseUp||(c.unbindDocumentMouseUp=y(d,"mouseup",a.onDocumentMouseUp));c.hasTouch&&(y(b,"touchstart",function(b){a.onContainerTouchStart(b)}),y(b,"touchmove",function(b){a.onContainerTouchMove(b)}),c.unbindDocumentTouchEnd||(c.unbindDocumentTouchEnd=y(d,"touchend",
-a.onDocumentTouchEnd)))},destroy:function(){var a=this;a.unDocMouseMove&&a.unDocMouseMove();this.unbindContainerMouseLeave();c.chartCount||(c.unbindDocumentMouseUp&&(c.unbindDocumentMouseUp=c.unbindDocumentMouseUp()),c.unbindDocumentTouchEnd&&(c.unbindDocumentTouchEnd=c.unbindDocumentTouchEnd()));clearInterval(a.tooltipTimeout);v(a,function(b,d){a[d]=null})}}});M(I,"parts/TouchPointer.js",[I["parts/Globals.js"],I["parts/Utilities.js"]],function(c,f){var F=f.extend,G=f.pick,z=c.charts,B=c.noop;F(c.Pointer.prototype,
-{pinchTranslate:function(c,f,C,B,y,h){this.zoomHor&&this.pinchTranslateDirection(!0,c,f,C,B,y,h);this.zoomVert&&this.pinchTranslateDirection(!1,c,f,C,B,y,h)},pinchTranslateDirection:function(c,f,C,B,y,h,n,q){var g=this.chart,b=c?"x":"y",a=c?"X":"Y",d="chart"+a,e=c?"width":"height",l=g["plot"+(c?"Left":"Top")],v,t,p=q||1,u=g.inverted,k=g.bounds[c?"h":"v"],r=1===f.length,x=f[0][d],A=C[0][d],w=!r&&f[1][d],m=!r&&C[1][d];C=function(){!r&&20<Math.abs(x-w)&&(p=q||Math.abs(A-m)/Math.abs(x-w));t=(l-A)/p+x;
-v=g["plot"+(c?"Width":"Height")]/p};C();f=t;if(f<k.min){f=k.min;var K=!0}else f+v>k.max&&(f=k.max-v,K=!0);K?(A-=.8*(A-n[b][0]),r||(m-=.8*(m-n[b][1])),C()):n[b]=[A,m];u||(h[b]=t-l,h[e]=v);h=u?1/p:p;y[e]=v;y[b]=f;B[u?c?"scaleY":"scaleX":"scale"+a]=p;B["translate"+a]=h*l+(A-h*x)},pinch:function(c){var f=this,t=f.chart,z=f.pinchDown,y=c.touches,h=y.length,n=f.lastValidTouch,q=f.hasZoom,g=f.selectionMarker,b={},a=1===h&&(f.inClass(c.target,"highcharts-tracker")&&t.runTrackerClick||f.runChartClick),d={};
-1<h&&(f.initiated=!0);q&&f.initiated&&!a&&c.preventDefault();[].map.call(y,function(a){return f.normalize(a)});"touchstart"===c.type?([].forEach.call(y,function(a,b){z[b]={chartX:a.chartX,chartY:a.chartY}}),n.x=[z[0].chartX,z[1]&&z[1].chartX],n.y=[z[0].chartY,z[1]&&z[1].chartY],t.axes.forEach(function(a){if(a.zoomEnabled){var b=t.bounds[a.horiz?"h":"v"],d=a.minPixelPadding,e=a.toPixels(Math.min(G(a.options.min,a.dataMin),a.dataMin)),c=a.toPixels(Math.max(G(a.options.max,a.dataMax),a.dataMax)),g=Math.max(e,
-c);b.min=Math.min(a.pos,Math.min(e,c)-d);b.max=Math.max(a.pos+a.len,g+d)}}),f.res=!0):f.followTouchMove&&1===h?this.runPointActions(f.normalize(c)):z.length&&(g||(f.selectionMarker=g=F({destroy:B,touch:!0},t.plotBox)),f.pinchTranslate(z,y,b,g,d,n),f.hasPinched=q,f.scaleGroups(b,d),f.res&&(f.res=!1,this.reset(!1,0)))},touch:function(f,v){var t=this.chart,z;if(t.index!==c.hoverChartIndex)this.onContainerMouseLeave({relatedTarget:!0});c.hoverChartIndex=t.index;if(1===f.touches.length)if(f=this.normalize(f),
-(z=t.isInsidePlot(f.chartX-t.plotLeft,f.chartY-t.plotTop))&&!t.openMenu){v&&this.runPointActions(f);if("touchmove"===f.type){v=this.pinchDown;var y=v[0]?4<=Math.sqrt(Math.pow(v[0].chartX-f.chartX,2)+Math.pow(v[0].chartY-f.chartY,2)):!1}G(y,!0)&&this.pinch(f)}else v&&this.reset();else 2===f.touches.length&&this.pinch(f)},onContainerTouchStart:function(c){this.zoomOption(c);this.touch(c,!0)},onContainerTouchMove:function(c){this.touch(c)},onDocumentTouchEnd:function(f){z[c.hoverChartIndex]&&z[c.hoverChartIndex].pointer.drop(f)}})});
-M(I,"parts/MSPointer.js",[I["parts/Globals.js"],I["parts/Utilities.js"]],function(c,f){var F=f.extend,G=f.objectEach,z=c.addEvent,B=c.charts,t=c.css,v=c.doc,C=c.noop;f=c.Pointer;var H=c.removeEvent,y=c.win,h=c.wrap;if(!c.hasTouch&&(y.PointerEvent||y.MSPointerEvent)){var n={},q=!!y.PointerEvent,g=function(){var a=[];a.item=function(a){return this[a]};G(n,function(b){a.push({pageX:b.pageX,pageY:b.pageY,target:b.target})});return a},b=function(a,b,e,l){"touch"!==a.pointerType&&a.pointerType!==a.MSPOINTER_TYPE_TOUCH||
-!B[c.hoverChartIndex]||(l(a),l=B[c.hoverChartIndex].pointer,l[b]({type:e,target:a.currentTarget,preventDefault:C,touches:g()}))};F(f.prototype,{onContainerPointerDown:function(a){b(a,"onContainerTouchStart","touchstart",function(a){n[a.pointerId]={pageX:a.pageX,pageY:a.pageY,target:a.currentTarget}})},onContainerPointerMove:function(a){b(a,"onContainerTouchMove","touchmove",function(a){n[a.pointerId]={pageX:a.pageX,pageY:a.pageY};n[a.pointerId].target||(n[a.pointerId].target=a.currentTarget)})},onDocumentPointerUp:function(a){b(a,
-"onDocumentTouchEnd","touchend",function(a){delete n[a.pointerId]})},batchMSEvents:function(a){a(this.chart.container,q?"pointerdown":"MSPointerDown",this.onContainerPointerDown);a(this.chart.container,q?"pointermove":"MSPointerMove",this.onContainerPointerMove);a(v,q?"pointerup":"MSPointerUp",this.onDocumentPointerUp)}});h(f.prototype,"init",function(a,b,e){a.call(this,b,e);this.hasZoom&&t(b.container,{"-ms-touch-action":"none","touch-action":"none"})});h(f.prototype,"setDOMEvents",function(a){a.apply(this);
-(this.hasZoom||this.followTouchMove)&&this.batchMSEvents(z)});h(f.prototype,"destroy",function(a){this.batchMSEvents(H);a.call(this)})}});M(I,"parts/Legend.js",[I["parts/Globals.js"],I["parts/Utilities.js"]],function(c,f){var F=f.defined,G=f.discardElement,z=f.isNumber,B=f.pick,t=f.setAnimation,v=c.addEvent,C=c.css,H=c.fireEvent;f=c.isFirefox;var y=c.marginNames,h=c.merge,n=c.stableSort,q=c.win,g=c.wrap;c.Legend=function(b,a){this.init(b,a)};c.Legend.prototype={init:function(b,a){this.chart=b;this.setOptions(a);
-a.enabled&&(this.render(),v(this.chart,"endResize",function(){this.legend.positionCheckboxes()}),this.proximate?this.unchartrender=v(this.chart,"render",function(){this.legend.proximatePositions();this.legend.positionItems()}):this.unchartrender&&this.unchartrender())},setOptions:function(b){var a=B(b.padding,8);this.options=b;this.chart.styledMode||(this.itemStyle=b.itemStyle,this.itemHiddenStyle=h(this.itemStyle,b.itemHiddenStyle));this.itemMarginTop=b.itemMarginTop||0;this.itemMarginBottom=b.itemMarginBottom||
-0;this.padding=a;this.initialItemY=a-5;this.symbolWidth=B(b.symbolWidth,16);this.pages=[];this.proximate="proximate"===b.layout&&!this.chart.inverted},update:function(b,a){var d=this.chart;this.setOptions(h(!0,this.options,b));this.destroy();d.isDirtyLegend=d.isDirtyBox=!0;B(a,!0)&&d.redraw();H(this,"afterUpdate")},colorizeItem:function(b,a){b.legendGroup[a?"removeClass":"addClass"]("highcharts-legend-item-hidden");if(!this.chart.styledMode){var d=this.options,e=b.legendItem,c=b.legendLine,g=b.legendSymbol,
-h=this.itemHiddenStyle.color;d=a?d.itemStyle.color:h;var f=a?b.color||h:h,u=b.options&&b.options.marker,k={fill:f};e&&e.css({fill:d,color:d});c&&c.attr({stroke:f});g&&(u&&g.isMarker&&(k=b.pointAttribs(),a||(k.stroke=k.fill=h)),g.attr(k))}H(this,"afterColorizeItem",{item:b,visible:a})},positionItems:function(){this.allItems.forEach(this.positionItem,this);this.chart.isResizing||this.positionCheckboxes()},positionItem:function(b){var a=this.options,d=a.symbolPadding;a=!a.rtl;var e=b._legendItemPos,
-c=e[0];e=e[1];var g=b.checkbox;if((b=b.legendGroup)&&b.element)b[F(b.translateY)?"animate":"attr"]({translateX:a?c:this.legendWidth-c-2*d-4,translateY:e});g&&(g.x=c,g.y=e)},destroyItem:function(b){var a=b.checkbox;["legendItem","legendLine","legendSymbol","legendGroup"].forEach(function(a){b[a]&&(b[a]=b[a].destroy())});a&&G(b.checkbox)},destroy:function(){function b(a){this[a]&&(this[a]=this[a].destroy())}this.getAllItems().forEach(function(a){["legendItem","legendGroup"].forEach(b,a)});"clipRect up down pager nav box title group".split(" ").forEach(b,
-this);this.display=null},positionCheckboxes:function(){var b=this.group&&this.group.alignAttr,a=this.clipHeight||this.legendHeight,d=this.titleHeight;if(b){var e=b.translateY;this.allItems.forEach(function(c){var g=c.checkbox;if(g){var l=e+d+g.y+(this.scrollOffset||0)+3;C(g,{left:b.translateX+c.checkboxOffset+g.x-20+"px",top:l+"px",display:this.proximate||l>e-6&&l<e+a-6?"":"none"})}},this)}},renderTitle:function(){var b=this.options,a=this.padding,d=b.title,e=0;d.text&&(this.title||(this.title=this.chart.renderer.label(d.text,
-a-3,a-4,null,null,null,b.useHTML,null,"legend-title").attr({zIndex:1}),this.chart.styledMode||this.title.css(d.style),this.title.add(this.group)),d.width||this.title.css({width:this.maxLegendWidth+"px"}),b=this.title.getBBox(),e=b.height,this.offsetWidth=b.width,this.contentGroup.attr({translateY:e}));this.titleHeight=e},setText:function(b){var a=this.options;b.legendItem.attr({text:a.labelFormat?c.format(a.labelFormat,b,this.chart.time):a.labelFormatter.call(b)})},renderItem:function(b){var a=this.chart,
-d=a.renderer,e=this.options,c=this.symbolWidth,g=e.symbolPadding,f=this.itemStyle,p=this.itemHiddenStyle,u="horizontal"===e.layout?B(e.itemDistance,20):0,k=!e.rtl,r=b.legendItem,x=!b.series,A=!x&&b.series.drawLegendSymbol?b.series:b,w=A.options;w=this.createCheckboxForItem&&w&&w.showCheckbox;u=c+g+u+(w?20:0);var m=e.useHTML,n=b.options.className;r||(b.legendGroup=d.g("legend-item").addClass("highcharts-"+A.type+"-series highcharts-color-"+b.colorIndex+(n?" "+n:"")+(x?" highcharts-series-"+b.index:
-"")).attr({zIndex:1}).add(this.scrollGroup),b.legendItem=r=d.text("",k?c+g:-g,this.baseline||0,m),a.styledMode||r.css(h(b.visible?f:p)),r.attr({align:k?"left":"right",zIndex:2}).add(b.legendGroup),this.baseline||(this.fontMetrics=d.fontMetrics(a.styledMode?12:f.fontSize,r),this.baseline=this.fontMetrics.f+3+this.itemMarginTop,r.attr("y",this.baseline)),this.symbolHeight=e.symbolHeight||this.fontMetrics.f,A.drawLegendSymbol(this,b),this.setItemEvents&&this.setItemEvents(b,r,m));w&&!b.checkbox&&this.createCheckboxForItem(b);
-this.colorizeItem(b,b.visible);!a.styledMode&&f.width||r.css({width:(e.itemWidth||this.widthOption||a.spacingBox.width)-u});this.setText(b);a=r.getBBox();b.itemWidth=b.checkboxOffset=e.itemWidth||b.legendItemWidth||a.width+u;this.maxItemWidth=Math.max(this.maxItemWidth,b.itemWidth);this.totalItemWidth+=b.itemWidth;this.itemHeight=b.itemHeight=Math.round(b.legendItemHeight||a.height||this.symbolHeight)},layoutItem:function(b){var a=this.options,d=this.padding,e="horizontal"===a.layout,c=b.itemHeight,
-g=this.itemMarginBottom,h=this.itemMarginTop,f=e?B(a.itemDistance,20):0,u=this.maxLegendWidth;a=a.alignColumns&&this.totalItemWidth>u?this.maxItemWidth:b.itemWidth;e&&this.itemX-d+a>u&&(this.itemX=d,this.lastLineHeight&&(this.itemY+=h+this.lastLineHeight+g),this.lastLineHeight=0);this.lastItemY=h+this.itemY+g;this.lastLineHeight=Math.max(c,this.lastLineHeight);b._legendItemPos=[this.itemX,this.itemY];e?this.itemX+=a:(this.itemY+=h+c+g,this.lastLineHeight=c);this.offsetWidth=this.widthOption||Math.max((e?
-this.itemX-d-(b.checkbox?0:f):a)+d,this.offsetWidth)},getAllItems:function(){var b=[];this.chart.series.forEach(function(a){var d=a&&a.options;a&&B(d.showInLegend,F(d.linkedTo)?!1:void 0,!0)&&(b=b.concat(a.legendItems||("point"===d.legendType?a.data:a)))});H(this,"afterGetAllItems",{allItems:b});return b},getAlignment:function(){var b=this.options;return this.proximate?b.align.charAt(0)+"tv":b.floating?"":b.align.charAt(0)+b.verticalAlign.charAt(0)+b.layout.charAt(0)},adjustMargins:function(b,a){var d=
-this.chart,e=this.options,c=this.getAlignment();c&&[/(lth|ct|rth)/,/(rtv|rm|rbv)/,/(rbh|cb|lbh)/,/(lbv|lm|ltv)/].forEach(function(g,l){g.test(c)&&!F(b[l])&&(d[y[l]]=Math.max(d[y[l]],d.legend[(l+1)%2?"legendHeight":"legendWidth"]+[1,-1,-1,1][l]*e[l%2?"x":"y"]+B(e.margin,12)+a[l]+(d.titleOffset[l]||0)))})},proximatePositions:function(){var b=this.chart,a=[],d="left"===this.options.align;this.allItems.forEach(function(e){var g=d;if(e.yAxis&&e.points){e.xAxis.options.reversed&&(g=!g);var h=c.find(g?e.points:
-e.points.slice(0).reverse(),function(a){return z(a.plotY)});g=this.itemMarginTop+e.legendItem.getBBox().height+this.itemMarginBottom;var f=e.yAxis.top-b.plotTop;e.visible?(h=h?h.plotY:e.yAxis.height,h+=f-.3*g):h=f+e.yAxis.height;a.push({target:h,size:g,item:e})}},this);c.distribute(a,b.plotHeight);a.forEach(function(a){a.item._legendItemPos[1]=b.plotTop-b.spacing[0]+a.pos})},render:function(){var b=this.chart,a=b.renderer,d=this.group,e,g=this.box,f=this.options,q=this.padding;this.itemX=q;this.itemY=
-this.initialItemY;this.lastItemY=this.offsetWidth=0;this.widthOption=c.relativeLength(f.width,b.spacingBox.width-q);var p=b.spacingBox.width-2*q-f.x;-1<["rm","lm"].indexOf(this.getAlignment().substring(0,2))&&(p/=2);this.maxLegendWidth=this.widthOption||p;d||(this.group=d=a.g("legend").attr({zIndex:7}).add(),this.contentGroup=a.g().attr({zIndex:1}).add(d),this.scrollGroup=a.g().add(this.contentGroup));this.renderTitle();p=this.getAllItems();n(p,function(a,b){return(a.options&&a.options.legendIndex||
-0)-(b.options&&b.options.legendIndex||0)});f.reversed&&p.reverse();this.allItems=p;this.display=e=!!p.length;this.itemHeight=this.totalItemWidth=this.maxItemWidth=this.lastLineHeight=0;p.forEach(this.renderItem,this);p.forEach(this.layoutItem,this);p=(this.widthOption||this.offsetWidth)+q;var u=this.lastItemY+this.lastLineHeight+this.titleHeight;u=this.handleOverflow(u);u+=q;g||(this.box=g=a.rect().addClass("highcharts-legend-box").attr({r:f.borderRadius}).add(d),g.isNew=!0);b.styledMode||g.attr({stroke:f.borderColor,
-"stroke-width":f.borderWidth||0,fill:f.backgroundColor||"none"}).shadow(f.shadow);0<p&&0<u&&(g[g.isNew?"attr":"animate"](g.crisp.call({},{x:0,y:0,width:p,height:u},g.strokeWidth())),g.isNew=!1);g[e?"show":"hide"]();b.styledMode&&"none"===d.getStyle("display")&&(p=u=0);this.legendWidth=p;this.legendHeight=u;e&&(a=b.spacingBox,g=a.y,/(lth|ct|rth)/.test(this.getAlignment())&&0<b.titleOffset[0]?g+=b.titleOffset[0]:/(lbh|cb|rbh)/.test(this.getAlignment())&&0<b.titleOffset[2]&&(g-=b.titleOffset[2]),g!==
-a.y&&(a=h(a,{y:g})),d.align(h(f,{width:p,height:u,verticalAlign:this.proximate?"top":f.verticalAlign}),!0,a));this.proximate||this.positionItems();H(this,"afterRender")},handleOverflow:function(b){var a=this,d=this.chart,e=d.renderer,c=this.options,g=c.y,h=this.padding;g=d.spacingBox.height+("top"===c.verticalAlign?-g:g)-h;var f=c.maxHeight,u,k=this.clipRect,r=c.navigation,x=B(r.animation,!0),A=r.arrowSize||12,w=this.nav,m=this.pages,n,J=this.allItems,q=function(b){"number"===typeof b?k.attr({height:b}):
-k&&(a.clipRect=k.destroy(),a.contentGroup.clip());a.contentGroup.div&&(a.contentGroup.div.style.clip=b?"rect("+h+"px,9999px,"+(h+b)+"px,0)":"auto")},v=function(b){a[b]=e.circle(0,0,1.3*A).translate(A/2,A/2).add(w);d.styledMode||a[b].attr("fill","rgba(0,0,0,0.0001)");return a[b]};"horizontal"!==c.layout||"middle"===c.verticalAlign||c.floating||(g/=2);f&&(g=Math.min(g,f));m.length=0;b>g&&!1!==r.enabled?(this.clipHeight=u=Math.max(g-20-this.titleHeight-h,0),this.currentPage=B(this.currentPage,1),this.fullHeight=
-b,J.forEach(function(a,b){var d=a._legendItemPos[1],e=Math.round(a.legendItem.getBBox().height),c=m.length;if(!c||d-m[c-1]>u&&(n||d)!==m[c-1])m.push(n||d),c++;a.pageIx=c-1;n&&(J[b-1].pageIx=c-1);b===J.length-1&&d+e-m[c-1]>u&&d!==n&&(m.push(d),a.pageIx=c);d!==n&&(n=d)}),k||(k=a.clipRect=e.clipRect(0,h,9999,0),a.contentGroup.clip(k)),q(u),w||(this.nav=w=e.g().attr({zIndex:1}).add(this.group),this.up=e.symbol("triangle",0,0,A,A).add(w),v("upTracker").on("click",function(){a.scroll(-1,x)}),this.pager=
-e.text("",15,10).addClass("highcharts-legend-navigation"),d.styledMode||this.pager.css(r.style),this.pager.add(w),this.down=e.symbol("triangle-down",0,0,A,A).add(w),v("downTracker").on("click",function(){a.scroll(1,x)})),a.scroll(0),b=g):w&&(q(),this.nav=w.destroy(),this.scrollGroup.attr({translateY:1}),this.clipHeight=0);return b},scroll:function(b,a){var d=this.pages,e=d.length,c=this.currentPage+b;b=this.clipHeight;var g=this.options.navigation,h=this.pager,f=this.padding;c>e&&(c=e);0<c&&(void 0!==
-a&&t(a,this.chart),this.nav.attr({translateX:f,translateY:b+this.padding+7+this.titleHeight,visibility:"visible"}),[this.up,this.upTracker].forEach(function(a){a.attr({"class":1===c?"highcharts-legend-nav-inactive":"highcharts-legend-nav-active"})}),h.attr({text:c+"/"+e}),[this.down,this.downTracker].forEach(function(a){a.attr({x:18+this.pager.getBBox().width,"class":c===e?"highcharts-legend-nav-inactive":"highcharts-legend-nav-active"})},this),this.chart.styledMode||(this.up.attr({fill:1===c?g.inactiveColor:
-g.activeColor}),this.upTracker.css({cursor:1===c?"default":"pointer"}),this.down.attr({fill:c===e?g.inactiveColor:g.activeColor}),this.downTracker.css({cursor:c===e?"default":"pointer"})),this.scrollOffset=-d[c-1]+this.initialItemY,this.scrollGroup.animate({translateY:this.scrollOffset}),this.currentPage=c,this.positionCheckboxes())}};c.LegendSymbolMixin={drawRectangle:function(b,a){var d=b.symbolHeight,e=b.options.squareSymbol;a.legendSymbol=this.chart.renderer.rect(e?(b.symbolWidth-d)/2:0,b.baseline-
-d+1,e?d:b.symbolWidth,d,B(b.options.symbolRadius,d/2)).addClass("highcharts-point").attr({zIndex:3}).add(a.legendGroup)},drawLineMarker:function(b){var a=this.options,d=a.marker,e=b.symbolWidth,c=b.symbolHeight,g=c/2,f=this.chart.renderer,p=this.legendGroup;b=b.baseline-Math.round(.3*b.fontMetrics.b);var u={};this.chart.styledMode||(u={"stroke-width":a.lineWidth||0},a.dashStyle&&(u.dashstyle=a.dashStyle));this.legendLine=f.path(["M",0,b,"L",e,b]).addClass("highcharts-graph").attr(u).add(p);d&&!1!==
-d.enabled&&e&&(a=Math.min(B(d.radius,g),g),0===this.symbol.indexOf("url")&&(d=h(d,{width:c,height:c}),a=0),this.legendSymbol=d=f.symbol(this.symbol,e/2-a,b-a,2*a,2*a,d).addClass("highcharts-point").add(p),d.isMarker=!0)}};(/Trident\/7\.0/.test(q.navigator&&q.navigator.userAgent)||f)&&g(c.Legend.prototype,"positionItem",function(b,a){var d=this,e=function(){a._legendItemPos&&b.call(d,a)};e();d.bubbleLegend||setTimeout(e)})});M(I,"parts/Chart.js",[I["parts/Globals.js"],I["parts/Utilities.js"]],function(c,
-f){var F=f.attr,G=f.defined,z=f.discardElement,B=f.erase,t=f.extend,v=f.isArray,C=f.isNumber,H=f.isObject,y=f.isString,h=f.objectEach,n=f.pick,q=f.pInt,g=f.setAnimation,b=f.splat,a=f.syncTimeout,d=c.addEvent,e=c.animate,l=c.animObject,L=c.doc,E=c.Axis,p=c.createElement,u=c.defaultOptions,k=c.charts,r=c.css,x=c.find,A=c.fireEvent,w=c.Legend,m=c.marginNames,K=c.merge,J=c.Pointer,U=c.removeEvent,S=c.seriesTypes,Q=c.win,O=c.Chart=function(){this.getArgs.apply(this,arguments)};c.chart=function(a,b,d){return new O(a,
-b,d)};t(O.prototype,{callbacks:[],getArgs:function(){var a=[].slice.call(arguments);if(y(a[0])||a[0].nodeName)this.renderTo=a.shift();this.init(a[0],a[1])},init:function(a,b){var e,g=a.series,m=a.plotOptions||{};A(this,"init",{args:arguments},function(){a.series=null;e=K(u,a);h(e.plotOptions,function(a,b){H(a)&&(a.tooltip=m[b]&&K(m[b].tooltip)||void 0)});e.tooltip.userOptions=a.chart&&a.chart.forExport&&a.tooltip.userOptions||a.tooltip;e.series=a.series=g;this.userOptions=a;var r=e.chart,l=r.events;
-this.margin=[];this.spacing=[];this.bounds={h:{},v:{}};this.labelCollectors=[];this.callback=b;this.isResizing=0;this.options=e;this.axes=[];this.series=[];this.time=a.time&&Object.keys(a.time).length?new c.Time(a.time):c.time;this.styledMode=r.styledMode;this.hasCartesianSeries=r.showAxes;var f=this;f.index=k.length;k.push(f);c.chartCount++;l&&h(l,function(a,b){c.isFunction(a)&&d(f,b,a)});f.xAxis=[];f.yAxis=[];f.pointCount=f.colorCounter=f.symbolCounter=0;A(f,"afterInit");f.firstRender()})},initSeries:function(a){var b=
-this.options.chart;b=a.type||b.type||b.defaultSeriesType;var d=S[b];d||c.error(17,!0,this,{missingModuleFor:b});b=new d;b.init(this,a);return b},orderSeries:function(a){var b=this.series;for(a=a||0;a<b.length;a++)b[a]&&(b[a].index=a,b[a].name=b[a].getName())},isInsidePlot:function(a,b,d){var e=d?b:a;a=d?a:b;return 0<=e&&e<=this.plotWidth&&0<=a&&a<=this.plotHeight},redraw:function(a){A(this,"beforeRedraw");var b=this.axes,d=this.series,e=this.pointer,c=this.legend,k=this.userOptions.legend,m=this.isDirtyLegend,
-r=this.hasCartesianSeries,h=this.isDirtyBox,l=this.renderer,f=l.isHidden(),x=[];this.setResponsive&&this.setResponsive(!1);g(a,this);f&&this.temporaryDisplay();this.layOutTitles();for(a=d.length;a--;){var w=d[a];if(w.options.stacking){var p=!0;if(w.isDirty){var u=!0;break}}}if(u)for(a=d.length;a--;)w=d[a],w.options.stacking&&(w.isDirty=!0);d.forEach(function(a){a.isDirty&&("point"===a.options.legendType?(a.updateTotals&&a.updateTotals(),m=!0):k&&(k.labelFormatter||k.labelFormat)&&(m=!0));a.isDirtyData&&
-A(a,"updatedData")});m&&c&&c.options.enabled&&(c.render(),this.isDirtyLegend=!1);p&&this.getStacks();r&&b.forEach(function(a){a.updateNames();a.setScale()});this.getMargins();r&&(b.forEach(function(a){a.isDirty&&(h=!0)}),b.forEach(function(a){var b=a.min+","+a.max;a.extKey!==b&&(a.extKey=b,x.push(function(){A(a,"afterSetExtremes",t(a.eventArgs,a.getExtremes()));delete a.eventArgs}));(h||p)&&a.redraw()}));h&&this.drawChartBox();A(this,"predraw");d.forEach(function(a){(h||a.isDirty)&&a.visible&&a.redraw();
-a.isDirtyData=!1});e&&e.reset(!0);l.draw();A(this,"redraw");A(this,"render");f&&this.temporaryDisplay(!0);x.forEach(function(a){a.call()})},get:function(a){function b(b){return b.id===a||b.options&&b.options.id===a}var d=this.series,e;var c=x(this.axes,b)||x(this.series,b);for(e=0;!c&&e<d.length;e++)c=x(d[e].points||[],b);return c},getAxes:function(){var a=this,d=this.options,e=d.xAxis=b(d.xAxis||{});d=d.yAxis=b(d.yAxis||{});A(this,"getAxes");e.forEach(function(a,b){a.index=b;a.isX=!0});d.forEach(function(a,
-b){a.index=b});e.concat(d).forEach(function(b){new E(a,b)});A(this,"afterGetAxes")},getSelectedPoints:function(){var a=[];this.series.forEach(function(b){a=a.concat((b[b.hasGroupedData?"points":"data"]||[]).filter(function(a){return n(a.selectedStaging,a.selected)}))});return a},getSelectedSeries:function(){return this.series.filter(function(a){return a.selected})},setTitle:function(a,b,d){this.applyDescription("title",a);this.applyDescription("subtitle",b);this.applyDescription("caption",void 0);
-this.layOutTitles(d)},applyDescription:function(a,b){var d=this,e="title"===a?{color:"#333333",fontSize:this.options.isStock?"16px":"18px"}:{color:"#666666"};e=this.options[a]=K(!this.styledMode&&{style:e},this.options[a],b);var c=this[a];c&&b&&(this[a]=c=c.destroy());e&&!c&&(c=this.renderer.text(e.text,0,0,e.useHTML).attr({align:e.align,"class":"highcharts-"+a,zIndex:e.zIndex||4}).add(),c.update=function(b){d[{title:"setTitle",subtitle:"setSubtitle",caption:"setCaption"}[a]](b)},this.styledMode||
-c.css(e.style),this[a]=c)},layOutTitles:function(a){var b=[0,0,0],d=this.renderer,e=this.spacingBox;["title","subtitle","caption"].forEach(function(a){var c=this[a],k=this.options[a],g=k.verticalAlign||"top";a="title"===a?-3:"top"===g?b[0]+2:0;if(c){if(!this.styledMode)var m=k.style.fontSize;m=d.fontMetrics(m,c).b;c.css({width:(k.width||e.width+(k.widthAdjust||0))+"px"});var r=Math.round(c.getBBox(k.useHTML).height);c.align(t({y:"bottom"===g?m:a+m,height:r},k),!1,"spacingBox");k.floating||("top"===
-g?b[0]=Math.ceil(b[0]+r):"bottom"===g&&(b[2]=Math.ceil(b[2]+r)))}},this);b[0]&&"top"===(this.options.title.verticalAlign||"top")&&(b[0]+=this.options.title.margin);b[2]&&"bottom"===this.options.caption.verticalAlign&&(b[2]+=this.options.caption.margin);var c=!this.titleOffset||this.titleOffset.join(",")!==b.join(",");this.titleOffset=b;A(this,"afterLayOutTitles");!this.isDirtyBox&&c&&(this.isDirtyBox=this.isDirtyLegend=c,this.hasRendered&&n(a,!0)&&this.isDirtyBox&&this.redraw())},getChartSize:function(){var a=
-this.options.chart,b=a.width;a=a.height;var d=this.renderTo;G(b)||(this.containerWidth=c.getStyle(d,"width"));G(a)||(this.containerHeight=c.getStyle(d,"height"));this.chartWidth=Math.max(0,b||this.containerWidth||600);this.chartHeight=Math.max(0,c.relativeLength(a,this.chartWidth)||(1<this.containerHeight?this.containerHeight:400))},temporaryDisplay:function(a){var b=this.renderTo;if(a)for(;b&&b.style;)b.hcOrigStyle&&(c.css(b,b.hcOrigStyle),delete b.hcOrigStyle),b.hcOrigDetached&&(L.body.removeChild(b),
-b.hcOrigDetached=!1),b=b.parentNode;else for(;b&&b.style;){L.body.contains(b)||b.parentNode||(b.hcOrigDetached=!0,L.body.appendChild(b));if("none"===c.getStyle(b,"display",!1)||b.hcOricDetached)b.hcOrigStyle={display:b.style.display,height:b.style.height,overflow:b.style.overflow},a={display:"block",overflow:"hidden"},b!==this.renderTo&&(a.height=0),c.css(b,a),b.offsetWidth||b.style.setProperty("display","block","important");b=b.parentNode;if(b===L.body)break}},setClassName:function(a){this.container.className=
-"highcharts-container "+(a||"")},getContainer:function(){var a=this.options,b=a.chart;var d=this.renderTo;var e=c.uniqueKey(),g,m;d||(this.renderTo=d=b.renderTo);y(d)&&(this.renderTo=d=L.getElementById(d));d||c.error(13,!0,this);var h=q(F(d,"data-highcharts-chart"));C(h)&&k[h]&&k[h].hasRendered&&k[h].destroy();F(d,"data-highcharts-chart",this.index);d.innerHTML="";b.skipClone||d.offsetWidth||this.temporaryDisplay();this.getChartSize();h=this.chartWidth;var l=this.chartHeight;r(d,{overflow:"hidden"});
-this.styledMode||(g=t({position:"relative",overflow:"hidden",width:h+"px",height:l+"px",textAlign:"left",lineHeight:"normal",zIndex:0,"-webkit-tap-highlight-color":"rgba(0,0,0,0)"},b.style));this.container=d=p("div",{id:e},g,d);this._cursor=d.style.cursor;this.renderer=new (c[b.renderer]||c.Renderer)(d,h,l,null,b.forExport,a.exporting&&a.exporting.allowHTML,this.styledMode);this.setClassName(b.className);if(this.styledMode)for(m in a.defs)this.renderer.definition(a.defs[m]);else this.renderer.setStyle(b.style);
-this.renderer.chartIndex=this.index;A(this,"afterGetContainer")},getMargins:function(a){var b=this.spacing,d=this.margin,e=this.titleOffset;this.resetMargins();e[0]&&!G(d[0])&&(this.plotTop=Math.max(this.plotTop,e[0]+b[0]));e[2]&&!G(d[2])&&(this.marginBottom=Math.max(this.marginBottom,e[2]+b[2]));this.legend&&this.legend.display&&this.legend.adjustMargins(d,b);A(this,"getMargins");a||this.getAxisMargins()},getAxisMargins:function(){var a=this,b=a.axisOffset=[0,0,0,0],d=a.colorAxis,e=a.margin,c=function(a){a.forEach(function(a){a.visible&&
-a.getOffset()})};a.hasCartesianSeries?c(a.axes):d&&d.length&&c(d);m.forEach(function(d,c){G(e[c])||(a[d]+=b[c])});a.setChartSize()},reflow:function(b){var d=this,e=d.options.chart,k=d.renderTo,g=G(e.width)&&G(e.height),m=e.width||c.getStyle(k,"width");e=e.height||c.getStyle(k,"height");k=b?b.target:Q;if(!g&&!d.isPrinting&&m&&e&&(k===Q||k===L)){if(m!==d.containerWidth||e!==d.containerHeight)c.clearTimeout(d.reflowTimeout),d.reflowTimeout=a(function(){d.container&&d.setSize(void 0,void 0,!1)},b?100:
-0);d.containerWidth=m;d.containerHeight=e}},setReflow:function(a){var b=this;!1===a||this.unbindReflow?!1===a&&this.unbindReflow&&(this.unbindReflow=this.unbindReflow()):(this.unbindReflow=d(Q,"resize",function(a){b.options&&b.reflow(a)}),d(this,"destroy",this.unbindReflow))},setSize:function(b,d,c){var k=this,m=k.renderer;k.isResizing+=1;g(c,k);k.oldChartHeight=k.chartHeight;k.oldChartWidth=k.chartWidth;void 0!==b&&(k.options.chart.width=b);void 0!==d&&(k.options.chart.height=d);k.getChartSize();
-if(!k.styledMode){var h=m.globalAnimation;(h?e:r)(k.container,{width:k.chartWidth+"px",height:k.chartHeight+"px"},h)}k.setChartSize(!0);m.setSize(k.chartWidth,k.chartHeight,c);k.axes.forEach(function(a){a.isDirty=!0;a.setScale()});k.isDirtyLegend=!0;k.isDirtyBox=!0;k.layOutTitles();k.getMargins();k.redraw(c);k.oldChartHeight=null;A(k,"resize");a(function(){k&&A(k,"endResize",null,function(){--k.isResizing})},l(h).duration||0)},setChartSize:function(a){var b=this.inverted,d=this.renderer,e=this.chartWidth,
-c=this.chartHeight,k=this.options.chart,g=this.spacing,m=this.clipOffset,r,h,l,f;this.plotLeft=r=Math.round(this.plotLeft);this.plotTop=h=Math.round(this.plotTop);this.plotWidth=l=Math.max(0,Math.round(e-r-this.marginRight));this.plotHeight=f=Math.max(0,Math.round(c-h-this.marginBottom));this.plotSizeX=b?f:l;this.plotSizeY=b?l:f;this.plotBorderWidth=k.plotBorderWidth||0;this.spacingBox=d.spacingBox={x:g[3],y:g[0],width:e-g[3]-g[1],height:c-g[0]-g[2]};this.plotBox=d.plotBox={x:r,y:h,width:l,height:f};
-e=2*Math.floor(this.plotBorderWidth/2);b=Math.ceil(Math.max(e,m[3])/2);d=Math.ceil(Math.max(e,m[0])/2);this.clipBox={x:b,y:d,width:Math.floor(this.plotSizeX-Math.max(e,m[1])/2-b),height:Math.max(0,Math.floor(this.plotSizeY-Math.max(e,m[2])/2-d))};a||this.axes.forEach(function(a){a.setAxisSize();a.setAxisTranslation()});A(this,"afterSetChartSize",{skipAxes:a})},resetMargins:function(){A(this,"resetMargins");var a=this,b=a.options.chart;["margin","spacing"].forEach(function(d){var e=b[d],c=H(e)?e:[e,
-e,e,e];["Top","Right","Bottom","Left"].forEach(function(e,k){a[d][k]=n(b[d+e],c[k])})});m.forEach(function(b,d){a[b]=n(a.margin[d],a.spacing[d])});a.axisOffset=[0,0,0,0];a.clipOffset=[0,0,0,0]},drawChartBox:function(){var a=this.options.chart,b=this.renderer,d=this.chartWidth,e=this.chartHeight,c=this.chartBackground,k=this.plotBackground,g=this.plotBorder,m=this.styledMode,r=this.plotBGImage,h=a.backgroundColor,l=a.plotBackgroundColor,f=a.plotBackgroundImage,x,w=this.plotLeft,p=this.plotTop,u=this.plotWidth,
-n=this.plotHeight,J=this.plotBox,K=this.clipRect,q=this.clipBox,v="animate";c||(this.chartBackground=c=b.rect().addClass("highcharts-background").add(),v="attr");if(m)var y=x=c.strokeWidth();else{y=a.borderWidth||0;x=y+(a.shadow?8:0);h={fill:h||"none"};if(y||c["stroke-width"])h.stroke=a.borderColor,h["stroke-width"]=y;c.attr(h).shadow(a.shadow)}c[v]({x:x/2,y:x/2,width:d-x-y%2,height:e-x-y%2,r:a.borderRadius});v="animate";k||(v="attr",this.plotBackground=k=b.rect().addClass("highcharts-plot-background").add());
-k[v](J);m||(k.attr({fill:l||"none"}).shadow(a.plotShadow),f&&(r?r.animate(J):this.plotBGImage=b.image(f,w,p,u,n).add()));K?K.animate({width:q.width,height:q.height}):this.clipRect=b.clipRect(q);v="animate";g||(v="attr",this.plotBorder=g=b.rect().addClass("highcharts-plot-border").attr({zIndex:1}).add());m||g.attr({stroke:a.plotBorderColor,"stroke-width":a.plotBorderWidth||0,fill:"none"});g[v](g.crisp({x:w,y:p,width:u,height:n},-g.strokeWidth()));this.isDirtyBox=!1;A(this,"afterDrawChartBox")},propFromSeries:function(){var a=
-this,b=a.options.chart,d,e=a.options.series,c,k;["inverted","angular","polar"].forEach(function(g){d=S[b.type||b.defaultSeriesType];k=b[g]||d&&d.prototype[g];for(c=e&&e.length;!k&&c--;)(d=S[e[c].type])&&d.prototype[g]&&(k=!0);a[g]=k})},linkSeries:function(){var a=this,b=a.series;b.forEach(function(a){a.linkedSeries.length=0});b.forEach(function(b){var d=b.options.linkedTo;y(d)&&(d=":previous"===d?a.series[b.index-1]:a.get(d))&&d.linkedParent!==b&&(d.linkedSeries.push(b),b.linkedParent=d,b.visible=
-n(b.options.visible,d.options.visible,b.visible))});A(this,"afterLinkSeries")},renderSeries:function(){this.series.forEach(function(a){a.translate();a.render()})},renderLabels:function(){var a=this,b=a.options.labels;b.items&&b.items.forEach(function(d){var e=t(b.style,d.style),c=q(e.left)+a.plotLeft,k=q(e.top)+a.plotTop+12;delete e.left;delete e.top;a.renderer.text(d.html,c,k).attr({zIndex:2}).css(e).add()})},render:function(){var a=this.axes,b=this.colorAxis,d=this.renderer,e=this.options,c=0,k=
-function(a){a.forEach(function(a){a.visible&&a.render()})};this.setTitle();this.legend=new w(this,e.legend);this.getStacks&&this.getStacks();this.getMargins(!0);this.setChartSize();e=this.plotWidth;a.some(function(a){if(a.horiz&&a.visible&&a.options.labels.enabled&&a.series.length)return c=21,!0});var g=this.plotHeight=Math.max(this.plotHeight-c,0);a.forEach(function(a){a.setScale()});this.getAxisMargins();var m=1.1<e/this.plotWidth;var r=1.05<g/this.plotHeight;if(m||r)a.forEach(function(a){(a.horiz&&
-m||!a.horiz&&r)&&a.setTickInterval(!0)}),this.getMargins();this.drawChartBox();this.hasCartesianSeries?k(a):b&&b.length&&k(b);this.seriesGroup||(this.seriesGroup=d.g("series-group").attr({zIndex:3}).add());this.renderSeries();this.renderLabels();this.addCredits();this.setResponsive&&this.setResponsive();this.updateContainerScaling();this.hasRendered=!0},addCredits:function(a){var b=this;a=K(!0,this.options.credits,a);a.enabled&&!this.credits&&(this.credits=this.renderer.text(a.text+(this.mapCredits||
-""),0,0).addClass("highcharts-credits").on("click",function(){a.href&&(Q.location.href=a.href)}).attr({align:a.position.align,zIndex:8}),b.styledMode||this.credits.css(a.style),this.credits.add().align(a.position),this.credits.update=function(a){b.credits=b.credits.destroy();b.addCredits(a)})},updateContainerScaling:function(){var a=this.container;if(a.offsetWidth&&a.offsetHeight&&a.getBoundingClientRect){var b=a.getBoundingClientRect(),d=b.width/a.offsetWidth;a=b.height/a.offsetHeight;1!==d||1!==
-a?this.containerScaling={scaleX:d,scaleY:a}:delete this.containerScaling}},destroy:function(){var a=this,b=a.axes,d=a.series,e=a.container,g,m=e&&e.parentNode;A(a,"destroy");a.renderer.forExport?B(k,a):k[a.index]=void 0;c.chartCount--;a.renderTo.removeAttribute("data-highcharts-chart");U(a);for(g=b.length;g--;)b[g]=b[g].destroy();this.scroller&&this.scroller.destroy&&this.scroller.destroy();for(g=d.length;g--;)d[g]=d[g].destroy();"title subtitle chartBackground plotBackground plotBGImage plotBorder seriesGroup clipRect credits pointer rangeSelector legend resetZoomButton tooltip renderer".split(" ").forEach(function(b){var d=
-a[b];d&&d.destroy&&(a[b]=d.destroy())});e&&(e.innerHTML="",U(e),m&&z(e));h(a,function(b,d){delete a[d]})},firstRender:function(){var a=this,b=a.options;if(!a.isReadyToRender||a.isReadyToRender()){a.getContainer();a.resetMargins();a.setChartSize();a.propFromSeries();a.getAxes();(v(b.series)?b.series:[]).forEach(function(b){a.initSeries(b)});a.linkSeries();A(a,"beforeRender");J&&(a.pointer=new J(a,b));a.render();if(!a.renderer.imgCount&&a.onload)a.onload();a.temporaryDisplay(!0)}},onload:function(){this.callbacks.concat([this.callback]).forEach(function(a){a&&
-void 0!==this.index&&a.apply(this,[this])},this);A(this,"load");A(this,"render");G(this.index)&&this.setReflow(this.options.chart.reflow);this.onload=null}})});M(I,"parts/ScrollablePlotArea.js",[I["parts/Globals.js"],I["parts/Utilities.js"]],function(c,f){var F=f.pick,G=c.addEvent;f=c.Chart;"";G(f,"afterSetChartSize",function(f){var z=this.options.chart.scrollablePlotArea,t=z&&z.minWidth;z=z&&z.minHeight;if(!this.renderer.forExport){if(t){if(this.scrollablePixelsX=t=Math.max(0,t-this.chartWidth)){this.plotWidth+=
-t;this.inverted?(this.clipBox.height+=t,this.plotBox.height+=t):(this.clipBox.width+=t,this.plotBox.width+=t);var v={1:{name:"right",value:t}}}}else z&&(this.scrollablePixelsY=t=Math.max(0,z-this.chartHeight))&&(this.plotHeight+=t,this.inverted?(this.clipBox.width+=t,this.plotBox.width+=t):(this.clipBox.height+=t,this.plotBox.height+=t),v={2:{name:"bottom",value:t}});v&&!f.skipAxes&&this.axes.forEach(function(f){v[f.side]?f.getPlotLinePath=function(){var t=v[f.side].name,y=this[t];this[t]=y-v[f.side].value;
-var h=c.Axis.prototype.getPlotLinePath.apply(this,arguments);this[t]=y;return h}:(f.setAxisSize(),f.setAxisTranslation())})}});G(f,"render",function(){this.scrollablePixelsX||this.scrollablePixelsY?(this.setUpScrolling&&this.setUpScrolling(),this.applyFixed()):this.fixedDiv&&this.applyFixed()});f.prototype.setUpScrolling=function(){var f={WebkitOverflowScrolling:"touch",overflowX:"hidden",overflowY:"hidden"};this.scrollablePixelsX&&(f.overflowX="auto");this.scrollablePixelsY&&(f.overflowY="auto");
-this.scrollingContainer=c.createElement("div",{className:"highcharts-scrolling"},f,this.renderTo);this.innerContainer=c.createElement("div",{className:"highcharts-inner-container"},null,this.scrollingContainer);this.innerContainer.appendChild(this.container);this.setUpScrolling=null};f.prototype.moveFixedElements=function(){var c=this.container,f=this.fixedRenderer,t=".highcharts-contextbutton .highcharts-credits .highcharts-legend .highcharts-legend-checkbox .highcharts-navigator-series .highcharts-navigator-xaxis .highcharts-navigator-yaxis .highcharts-navigator .highcharts-reset-zoom .highcharts-scrollbar .highcharts-subtitle .highcharts-title".split(" "),
-v;this.scrollablePixelsX&&!this.inverted?v=".highcharts-yaxis":this.scrollablePixelsX&&this.inverted?v=".highcharts-xaxis":this.scrollablePixelsY&&!this.inverted?v=".highcharts-xaxis":this.scrollablePixelsY&&this.inverted&&(v=".highcharts-yaxis");t.push(v,v+"-labels");t.forEach(function(v){[].forEach.call(c.querySelectorAll(v),function(c){(c.namespaceURI===f.SVG_NS?f.box:f.box.parentNode).appendChild(c);c.style.pointerEvents="auto"})})};f.prototype.applyFixed=function(){var f,B=!this.fixedDiv,t=this.options.chart.scrollablePlotArea;
-B?(this.fixedDiv=c.createElement("div",{className:"highcharts-fixed"},{position:"absolute",overflow:"hidden",pointerEvents:"none",zIndex:2},null,!0),this.renderTo.insertBefore(this.fixedDiv,this.renderTo.firstChild),this.renderTo.style.overflow="visible",this.fixedRenderer=f=new c.Renderer(this.fixedDiv,this.chartWidth,this.chartHeight),this.scrollableMask=f.path().attr({fill:c.color(this.options.chart.backgroundColor||"#fff").setOpacity(F(t.opacity,.85)).get(),zIndex:-1}).addClass("highcharts-scrollable-mask").add(),
-this.moveFixedElements(),G(this,"afterShowResetZoom",this.moveFixedElements),G(this,"afterLayOutTitles",this.moveFixedElements)):this.fixedRenderer.setSize(this.chartWidth,this.chartHeight);f=this.chartWidth+(this.scrollablePixelsX||0);var v=this.chartHeight+(this.scrollablePixelsY||0);c.stop(this.container);this.container.style.width=f+"px";this.container.style.height=v+"px";this.renderer.boxWrapper.attr({width:f,height:v,viewBox:[0,0,f,v].join(" ")});this.chartBackground.attr({width:f,height:v});
-this.scrollablePixelsY&&(this.scrollingContainer.style.height=this.chartHeight+"px");B&&(t.scrollPositionX&&(this.scrollingContainer.scrollLeft=this.scrollablePixelsX*t.scrollPositionX),t.scrollPositionY&&(this.scrollingContainer.scrollTop=this.scrollablePixelsY*t.scrollPositionY));v=this.axisOffset;B=this.plotTop-v[0]-1;t=this.plotLeft-v[3]-1;f=this.plotTop+this.plotHeight+v[2]+1;v=this.plotLeft+this.plotWidth+v[1]+1;var C=this.plotLeft+this.plotWidth-(this.scrollablePixelsX||0),H=this.plotTop+this.plotHeight-
-(this.scrollablePixelsY||0);B=this.scrollablePixelsX?["M",0,B,"L",this.plotLeft-1,B,"L",this.plotLeft-1,f,"L",0,f,"Z","M",C,B,"L",this.chartWidth,B,"L",this.chartWidth,f,"L",C,f,"Z"]:this.scrollablePixelsY?["M",t,0,"L",t,this.plotTop-1,"L",v,this.plotTop-1,"L",v,0,"Z","M",t,H,"L",t,this.chartHeight,"L",v,this.chartHeight,"L",v,H,"Z"]:["M",0,0];"adjustHeight"!==this.redrawTrigger&&this.scrollableMask.attr({d:B})}});M(I,"parts/Point.js",[I["parts/Globals.js"],I["parts/Utilities.js"]],function(c,f){var F=
-f.defined,G=f.erase,z=f.extend,B=f.isArray,t=f.isNumber,v=f.isObject,C=f.pick,H,y=c.fireEvent,h=c.format,n=c.uniqueKey,q=c.removeEvent;c.Point=H=function(){};c.Point.prototype={init:function(c,b,a){this.series=c;this.applyOptions(b,a);this.id=F(this.id)?this.id:n();this.resolveColor();c.chart.pointCount++;y(this,"afterInit");return this},resolveColor:function(){var c=this.series;var b=c.chart.options.chart.colorCount;var a=c.chart.styledMode;a||this.options.color||(this.color=c.color);c.options.colorByPoint?
-(a||(b=c.options.colors||c.chart.options.colors,this.color=this.color||b[c.colorCounter],b=b.length),a=c.colorCounter,c.colorCounter++,c.colorCounter===b&&(c.colorCounter=0)):a=c.colorIndex;this.colorIndex=C(this.colorIndex,a)},applyOptions:function(c,b){var a=this.series,d=a.options.pointValKey||a.pointValKey;c=H.prototype.optionsToObject.call(this,c);z(this,c);this.options=this.options?z(this.options,c):c;c.group&&delete this.group;c.dataLabels&&delete this.dataLabels;d&&(this.y=this[d]);this.formatPrefix=
-(this.isNull=C(this.isValid&&!this.isValid(),null===this.x||!t(this.y)))?"null":"point";this.selected&&(this.state="select");"name"in this&&void 0===b&&a.xAxis&&a.xAxis.hasNames&&(this.x=a.xAxis.nameToX(this));void 0===this.x&&a&&(this.x=void 0===b?a.autoIncrement(this):b);return this},setNestedProperty:function(c,b,a){a.split(".").reduce(function(a,e,c,g){a[e]=g.length-1===c?b:v(a[e],!0)?a[e]:{};return a[e]},c);return c},optionsToObject:function(g){var b={},a=this.series,d=a.options.keys,e=d||a.pointArrayMap||
-["y"],h=e.length,f=0,n=0;if(t(g)||null===g)b[e[0]]=g;else if(B(g))for(!d&&g.length>h&&(a=typeof g[0],"string"===a?b.name=g[0]:"number"===a&&(b.x=g[0]),f++);n<h;)d&&void 0===g[f]||(0<e[n].indexOf(".")?c.Point.prototype.setNestedProperty(b,g[f],e[n]):b[e[n]]=g[f]),f++,n++;else"object"===typeof g&&(b=g,g.dataLabels&&(a._hasPointLabels=!0),g.marker&&(a._hasPointMarkers=!0));return b},getClassName:function(){return"highcharts-point"+(this.selected?" highcharts-point-select":"")+(this.negative?" highcharts-negative":
-"")+(this.isNull?" highcharts-null-point":"")+(void 0!==this.colorIndex?" highcharts-color-"+this.colorIndex:"")+(this.options.className?" "+this.options.className:"")+(this.zone&&this.zone.className?" "+this.zone.className.replace("highcharts-negative",""):"")},getZone:function(){var c=this.series,b=c.zones;c=c.zoneAxis||"y";var a=0,d;for(d=b[a];this[c]>=d.value;)d=b[++a];this.nonZonedColor||(this.nonZonedColor=this.color);this.color=d&&d.color&&!this.options.color?d.color:this.nonZonedColor;return d},
-hasNewShapeType:function(){return this.graphic&&this.graphic.element.nodeName!==this.shapeType},destroy:function(){var c=this.series.chart,b=c.hoverPoints,a;c.pointCount--;b&&(this.setState(),G(b,this),b.length||(c.hoverPoints=null));if(this===c.hoverPoint)this.onMouseOut();if(this.graphic||this.dataLabel||this.dataLabels)q(this),this.destroyElements();this.legendItem&&c.legend.destroyItem(this);for(a in this)this[a]=null},destroyElements:function(c){var b=this,a=[],d;c=c||{graphic:1,dataLabel:1};
-c.graphic&&a.push("graphic","shadowGroup");c.dataLabel&&a.push("dataLabel","dataLabelUpper","connector");for(d=a.length;d--;){var e=a[d];b[e]&&(b[e]=b[e].destroy())}["dataLabel","connector"].forEach(function(a){var d=a+"s";c[a]&&b[d]&&(b[d].forEach(function(a){a.element&&a.destroy()}),delete b[d])})},getLabelConfig:function(){return{x:this.category,y:this.y,color:this.color,colorIndex:this.colorIndex,key:this.name||this.category,series:this.series,point:this,percentage:this.percentage,total:this.total||
-this.stackTotal}},tooltipFormatter:function(c){var b=this.series,a=b.tooltipOptions,d=C(a.valueDecimals,""),e=a.valuePrefix||"",g=a.valueSuffix||"";b.chart.styledMode&&(c=b.chart.tooltip.styledModeFormat(c));(b.pointArrayMap||["y"]).forEach(function(a){a="{point."+a;if(e||g)c=c.replace(RegExp(a+"}","g"),e+a+"}"+g);c=c.replace(RegExp(a+"}","g"),a+":,."+d+"f}")});return h(c,{point:this,series:this.series},b.chart.time)},firePointEvent:function(c,b,a){var d=this,e=this.series.options;(e.point.events[c]||
-d.options&&d.options.events&&d.options.events[c])&&this.importEvents();"click"===c&&e.allowPointSelect&&(a=function(a){d.select&&d.select(null,a.ctrlKey||a.metaKey||a.shiftKey)});y(this,c,b,a)},visible:!0}});M(I,"parts/Series.js",[I["parts/Globals.js"],I["parts/Utilities.js"]],function(c,f){var F=f.arrayMax,G=f.arrayMin,z=f.defined,B=f.erase,t=f.extend,v=f.isArray,C=f.isNumber,H=f.isString,y=f.objectEach,h=f.pick,n=f.splat,q=f.syncTimeout,g=c.addEvent,b=c.animObject,a=c.correctFloat,d=c.defaultOptions,
-e=c.defaultPlotOptions,l=c.fireEvent,L=c.merge,E=c.removeEvent,p=c.SVGElement,u=c.win;c.Series=c.seriesType("line",null,{lineWidth:2,allowPointSelect:!1,showCheckbox:!1,animation:{duration:1E3},events:{},marker:{lineWidth:0,lineColor:"#ffffff",enabledThreshold:2,radius:4,states:{normal:{animation:!0},hover:{animation:{duration:50},enabled:!0,radiusPlus:2,lineWidthPlus:1},select:{fillColor:"#cccccc",lineColor:"#000000",lineWidth:2}}},point:{events:{}},dataLabels:{align:"center",formatter:function(){return null===
-this.y?"":c.numberFormat(this.y,-1)},padding:5,style:{fontSize:"11px",fontWeight:"bold",color:"contrast",textOutline:"1px contrast"},verticalAlign:"bottom",x:0,y:0},cropThreshold:300,opacity:1,pointRange:0,softThreshold:!0,states:{normal:{animation:!0},hover:{animation:{duration:50},lineWidthPlus:1,marker:{},halo:{size:10,opacity:.25}},select:{animation:{duration:0}},inactive:{animation:{duration:50},opacity:.2}},stickyTracking:!0,turboThreshold:1E3,findNearestPointBy:"x"},{axisTypes:["xAxis","yAxis"],
-coll:"series",colorCounter:0,cropShoulder:1,directTouch:!1,isCartesian:!0,parallelArrays:["x","y"],pointClass:c.Point,requireSorting:!0,sorted:!0,init:function(a,b){l(this,"init",{options:b});var d=this,e=a.series,k;this.eventOptions=this.eventOptions||{};d.chart=a;d.options=b=d.setOptions(b);d.linkedSeries=[];d.bindAxes();t(d,{name:b.name,state:"",visible:!1!==b.visible,selected:!0===b.selected});var m=b.events;y(m,function(a,b){c.isFunction(a)&&d.eventOptions[b]!==a&&(c.isFunction(d.eventOptions[b])&&
-E(d,b,d.eventOptions[b]),d.eventOptions[b]=a,g(d,b,a))});if(m&&m.click||b.point&&b.point.events&&b.point.events.click||b.allowPointSelect)a.runTrackerClick=!0;d.getColor();d.getSymbol();d.parallelArrays.forEach(function(a){d[a+"Data"]||(d[a+"Data"]=[])});d.points||d.data||d.setData(b.data,!1);d.isCartesian&&(a.hasCartesianSeries=!0);e.length&&(k=e[e.length-1]);d._i=h(k&&k._i,-1)+1;a.orderSeries(this.insert(e));l(this,"afterInit")},insert:function(a){var b=this.options.index,d;if(C(b)){for(d=a.length;d--;)if(b>=
-h(a[d].options.index,a[d]._i)){a.splice(d+1,0,this);break}-1===d&&a.unshift(this);d+=1}else a.push(this);return h(d,a.length-1)},bindAxes:function(){var a=this,b=a.options,d=a.chart,e;l(this,"bindAxes",null,function(){(a.axisTypes||[]).forEach(function(k){d[k].forEach(function(d){e=d.options;if(b[k]===e.index||void 0!==b[k]&&b[k]===e.id||void 0===b[k]&&0===e.index)a.insert(d.series),a[k]=d,d.isDirty=!0});a[k]||a.optionalAxis===k||c.error(18,!0,d)})})},updateParallelArrays:function(a,b){var d=a.series,
-c=arguments,e=C(b)?function(c){var e="y"===c&&d.toYData?d.toYData(a):a[c];d[c+"Data"][b]=e}:function(a){Array.prototype[b].apply(d[a+"Data"],Array.prototype.slice.call(c,2))};d.parallelArrays.forEach(e)},hasData:function(){return this.visible&&void 0!==this.dataMax&&void 0!==this.dataMin||this.visible&&this.yData&&0<this.yData.length},autoIncrement:function(){var a=this.options,b=this.xIncrement,d,c=a.pointIntervalUnit,e=this.chart.time;b=h(b,a.pointStart,0);this.pointInterval=d=h(this.pointInterval,
-a.pointInterval,1);c&&(a=new e.Date(b),"day"===c?e.set("Date",a,e.get("Date",a)+d):"month"===c?e.set("Month",a,e.get("Month",a)+d):"year"===c&&e.set("FullYear",a,e.get("FullYear",a)+d),d=a.getTime()-b);this.xIncrement=b+d;return b},setOptions:function(a){var b=this.chart,c=b.options,e=c.plotOptions,k=b.userOptions||{};a=L(a);b=b.styledMode;var g={plotOptions:e,userOptions:a};l(this,"setOptions",g);var f=g.plotOptions[this.type],p=k.plotOptions||{};this.userOptions=g.userOptions;k=L(f,e.series,k.plotOptions&&
-k.plotOptions[this.type],a);this.tooltipOptions=L(d.tooltip,d.plotOptions.series&&d.plotOptions.series.tooltip,d.plotOptions[this.type].tooltip,c.tooltip.userOptions,e.series&&e.series.tooltip,e[this.type].tooltip,a.tooltip);this.stickyTracking=h(a.stickyTracking,p[this.type]&&p[this.type].stickyTracking,p.series&&p.series.stickyTracking,this.tooltipOptions.shared&&!this.noSharedTooltip?!0:k.stickyTracking);null===f.marker&&delete k.marker;this.zoneAxis=k.zoneAxis;c=this.zones=(k.zones||[]).slice();
-!k.negativeColor&&!k.negativeFillColor||k.zones||(e={value:k[this.zoneAxis+"Threshold"]||k.threshold||0,className:"highcharts-negative"},b||(e.color=k.negativeColor,e.fillColor=k.negativeFillColor),c.push(e));c.length&&z(c[c.length-1].value)&&c.push(b?{}:{color:this.color,fillColor:this.fillColor});l(this,"afterSetOptions",{options:k});return k},getName:function(){return h(this.options.name,"Series "+(this.index+1))},getCyclic:function(a,b,d){var c=this.chart,e=this.userOptions,k=a+"Index",g=a+"Counter",
-f=d?d.length:h(c.options.chart[a+"Count"],c[a+"Count"]);if(!b){var r=h(e[k],e["_"+k]);z(r)||(c.series.length||(c[g]=0),e["_"+k]=r=c[g]%f,c[g]+=1);d&&(b=d[r])}void 0!==r&&(this[k]=r);this[a]=b},getColor:function(){this.chart.styledMode?this.getCyclic("color"):this.options.colorByPoint?this.options.color=null:this.getCyclic("color",this.options.color||e[this.type].color,this.chart.options.colors)},getSymbol:function(){this.getCyclic("symbol",this.options.marker.symbol,this.chart.options.symbols)},findPointIndex:function(a,
-b){var d=a.id;a=a.x;var c=this.points,e;if(d){var k=(d=this.chart.get(d))&&d.index;void 0!==k&&(e=!0)}void 0===k&&C(a)&&(k=this.xData.indexOf(a,b));-1!==k&&void 0!==k&&this.cropped&&(k=k>=this.cropStart?k-this.cropStart:k);!e&&c[k]&&c[k].touched&&(k=void 0);return k},drawLegendSymbol:c.LegendSymbolMixin.drawLineMarker,updateData:function(a){var b=this.options,d=this.points,c=[],e,k,g,h=this.requireSorting,f=a.length===d.length,l=!0;this.xIncrement=null;a.forEach(function(a,k){var m=z(a)&&this.pointClass.prototype.optionsToObject.call({series:this},
-a)||{};var r=m.x;if(m.id||C(r))if(r=this.findPointIndex(m,g),-1===r||void 0===r?c.push(a):d[r]&&a!==b.data[r]?(d[r].update(a,!1,null,!1),d[r].touched=!0,h&&(g=r+1)):d[r]&&(d[r].touched=!0),!f||k!==r||this.hasDerivedData)e=!0},this);if(e)for(a=d.length;a--;)(k=d[a])&&!k.touched&&k.remove(!1);else f?a.forEach(function(a,b){d[b].update&&a!==d[b].y&&d[b].update(a,!1,null,!1)}):l=!1;d.forEach(function(a){a&&(a.touched=!1)});if(!l)return!1;c.forEach(function(a){this.addPoint(a,!1,null,null,!1)},this);return!0},
-setData:function(a,b,d,e){var k=this,g=k.points,f=g&&g.length||0,r,l=k.options,p=k.chart,x=null,A=k.xAxis;x=l.turboThreshold;var u=this.xData,n=this.yData,q=(r=k.pointArrayMap)&&r.length,y=l.keys,t=0,E=1,L;a=a||[];r=a.length;b=h(b,!0);!1!==e&&r&&f&&!k.cropped&&!k.hasGroupedData&&k.visible&&!k.isSeriesBoosting&&(L=this.updateData(a));if(!L){k.xIncrement=null;k.colorCounter=0;this.parallelArrays.forEach(function(a){k[a+"Data"].length=0});if(x&&r>x)if(x=k.getFirstValidPoint(a),C(x))for(d=0;d<r;d++)u[d]=
-this.autoIncrement(),n[d]=a[d];else if(v(x))if(q)for(d=0;d<r;d++)e=a[d],u[d]=e[0],n[d]=e.slice(1,q+1);else for(y&&(t=y.indexOf("x"),E=y.indexOf("y"),t=0<=t?t:0,E=0<=E?E:1),d=0;d<r;d++)e=a[d],u[d]=e[t],n[d]=e[E];else c.error(12,!1,p);else for(d=0;d<r;d++)void 0!==a[d]&&(e={series:k},k.pointClass.prototype.applyOptions.apply(e,[a[d]]),k.updateParallelArrays(e,d));n&&H(n[0])&&c.error(14,!0,p);k.data=[];k.options.data=k.userOptions.data=a;for(d=f;d--;)g[d]&&g[d].destroy&&g[d].destroy();A&&(A.minRange=
-A.userMinRange);k.isDirty=p.isDirtyBox=!0;k.isDirtyData=!!g;d=!1}"point"===l.legendType&&(this.processData(),this.generatePoints());b&&p.redraw(d)},processData:function(a){var b=this.xData,d=this.yData,e=b.length;var k=0;var g=this.xAxis,h=this.options;var f=h.cropThreshold;var l=this.getExtremesFromAll||h.getExtremesFromAll,p=this.isCartesian;h=g&&g.val2lin;var u=g&&g.isLog,n=this.requireSorting;if(p&&!this.isDirty&&!g.isDirty&&!this.yAxis.isDirty&&!a)return!1;if(g){a=g.getExtremes();var q=a.min;
-var v=a.max}if(p&&this.sorted&&!l&&(!f||e>f||this.forceCrop))if(b[e-1]<q||b[0]>v)b=[],d=[];else if(this.yData&&(b[0]<q||b[e-1]>v)){k=this.cropData(this.xData,this.yData,q,v);b=k.xData;d=k.yData;k=k.start;var y=!0}for(f=b.length||1;--f;)if(e=u?h(b[f])-h(b[f-1]):b[f]-b[f-1],0<e&&(void 0===t||e<t))var t=e;else 0>e&&n&&(c.error(15,!1,this.chart),n=!1);this.cropped=y;this.cropStart=k;this.processedXData=b;this.processedYData=d;this.closestPointRange=this.basePointRange=t},cropData:function(a,b,d,e,c){var k=
-a.length,g=0,f=k,r;c=h(c,this.cropShoulder);for(r=0;r<k;r++)if(a[r]>=d){g=Math.max(0,r-c);break}for(d=r;d<k;d++)if(a[d]>e){f=d+c;break}return{xData:a.slice(g,f),yData:b.slice(g,f),start:g,end:f}},generatePoints:function(){var a=this.options,b=a.data,d=this.data,e,c=this.processedXData,g=this.processedYData,f=this.pointClass,h=c.length,p=this.cropStart||0,u=this.hasGroupedData;a=a.keys;var q=[],v;d||u||(d=[],d.length=b.length,d=this.data=d);a&&u&&(this.options.keys=!1);for(v=0;v<h;v++){var y=p+v;if(u){var E=
-(new f).init(this,[c[v]].concat(n(g[v])));E.dataGroup=this.groupMap[v];E.dataGroup.options&&(E.options=E.dataGroup.options,t(E,E.dataGroup.options),delete E.dataLabels)}else(E=d[y])||void 0===b[y]||(d[y]=E=(new f).init(this,b[y],c[v]));E&&(E.index=y,q[v]=E)}this.options.keys=a;if(d&&(h!==(e=d.length)||u))for(v=0;v<e;v++)v!==p||u||(v+=h),d[v]&&(d[v].destroyElements(),d[v].plotX=void 0);this.data=d;this.points=q;l(this,"afterGeneratePoints")},getXExtremes:function(a){return{min:G(a),max:F(a)}},getExtremes:function(a){var b=
-this.xAxis,d=this.yAxis,e=this.processedXData||this.xData,c=[],k=0,g=0;var f=0;var h=this.requireSorting?this.cropShoulder:0,p=d?d.positiveValuesOnly:!1,u;a=a||this.stackedYData||this.processedYData||[];d=a.length;b&&(f=b.getExtremes(),g=f.min,f=f.max);for(u=0;u<d;u++){var n=e[u];var q=a[u];var y=(C(q)||v(q))&&(q.length||0<q||!p);n=this.getExtremesFromAll||this.options.getExtremesFromAll||this.cropped||!b||(e[u+h]||n)>=g&&(e[u-h]||n)<=f;if(y&&n)if(y=q.length)for(;y--;)C(q[y])&&(c[k++]=q[y]);else c[k++]=
-q}this.dataMin=G(c);this.dataMax=F(c);l(this,"afterGetExtremes")},getFirstValidPoint:function(a){for(var b=null,d=a.length,e=0;null===b&&e<d;)b=a[e],e++;return b},translate:function(){this.processedXData||this.processData();this.generatePoints();var b=this.options,d=b.stacking,e=this.xAxis,c=e.categories,g=this.yAxis,m=this.points,f=m.length,p=!!this.modifyValue,u,n=this.pointPlacementToXValue(),q=C(n),y=b.threshold,t=b.startFromThreshold?y:0,E,L=this.zoneAxis||"y",B=Number.MAX_VALUE;for(u=0;u<f;u++){var H=
-m[u],G=H.x;var F=H.y;var I=H.low,M=d&&g.stacks[(this.negStacks&&F<(t?0:y)?"-":"")+this.stackKey];g.positiveValuesOnly&&null!==F&&0>=F&&(H.isNull=!0);H.plotX=E=a(Math.min(Math.max(-1E5,e.translate(G,0,0,0,1,n,"flags"===this.type)),1E5));if(d&&this.visible&&M&&M[G]){var X=this.getStackIndicator(X,G,this.index);if(!H.isNull){var P=M[G];var Y=P.points[X.key]}}v(Y)&&(I=Y[0],F=Y[1],I===t&&X.key===M[G].base&&(I=h(C(y)&&y,g.min)),g.positiveValuesOnly&&0>=I&&(I=null),H.total=H.stackTotal=P.total,H.percentage=
-P.total&&H.y/P.total*100,H.stackY=F,this.irregularWidths||P.setOffset(this.pointXOffset||0,this.barW||0));H.yBottom=z(I)?Math.min(Math.max(-1E5,g.translate(I,0,1,0,1)),1E5):null;p&&(F=this.modifyValue(F,H));H.plotY=F="number"===typeof F&&Infinity!==F?Math.min(Math.max(-1E5,g.translate(F,0,1,0,1)),1E5):void 0;H.isInside=void 0!==F&&0<=F&&F<=g.len&&0<=E&&E<=e.len;H.clientX=q?a(e.translate(G,0,0,0,1,n)):E;H.negative=H[L]<(b[L+"Threshold"]||y||0);H.category=c&&void 0!==c[H.x]?c[H.x]:H.x;if(!H.isNull){void 0!==
-Z&&(B=Math.min(B,Math.abs(E-Z)));var Z=E}H.zone=this.zones.length&&H.getZone()}this.closestPointRangePx=B;l(this,"afterTranslate")},getValidPoints:function(a,b,d){var e=this.chart;return(a||this.points||[]).filter(function(a){return b&&!e.isInsidePlot(a.plotX,a.plotY,e.inverted)?!1:d||!a.isNull})},getClipBox:function(a,b){var d=this.options,e=this.chart,c=e.inverted,k=this.xAxis,g=k&&this.yAxis;a&&!1===d.clip&&g?a=c?{y:-e.chartWidth+g.len+g.pos,height:e.chartWidth,width:e.chartHeight,x:-e.chartHeight+
-k.len+k.pos}:{y:-g.pos,height:e.chartHeight,width:e.chartWidth,x:-k.pos}:(a=this.clipBox||e.clipBox,b&&(a.width=e.plotSizeX,a.x=0));return b?{width:a.width,x:a.x}:a},setClip:function(a){var b=this.chart,d=this.options,e=b.renderer,c=b.inverted,k=this.clipBox,g=this.getClipBox(a),f=this.sharedClipKey||["_sharedClip",a&&a.duration,a&&a.easing,g.height,d.xAxis,d.yAxis].join(),h=b[f],l=b[f+"m"];h||(a&&(g.width=0,c&&(g.x=b.plotSizeX+(!1!==d.clip?0:b.plotTop)),b[f+"m"]=l=e.clipRect(c?b.plotSizeX+99:-99,
-c?-b.plotLeft:-b.plotTop,99,c?b.chartWidth:b.chartHeight)),b[f]=h=e.clipRect(g),h.count={length:0});a&&!h.count[this.index]&&(h.count[this.index]=!0,h.count.length+=1);if(!1!==d.clip||a)this.group.clip(a||k?h:b.clipRect),this.markerGroup.clip(l),this.sharedClipKey=f;a||(h.count[this.index]&&(delete h.count[this.index],--h.count.length),0===h.count.length&&f&&b[f]&&(k||(b[f]=b[f].destroy()),b[f+"m"]&&(b[f+"m"]=b[f+"m"].destroy())))},animate:function(a){var d=this.chart,e=b(this.options.animation);
-if(a)this.setClip(e);else{var c=this.sharedClipKey;a=d[c];var k=this.getClipBox(e,!0);a&&a.animate(k,e);d[c+"m"]&&d[c+"m"].animate({width:k.width+99,x:k.x-(d.inverted?0:99)},e);this.animate=null}},afterAnimate:function(){this.setClip();l(this,"afterAnimate");this.finishedAnimating=!0},drawPoints:function(){var a=this.points,b=this.chart,d,e=this.options.marker,c=this[this.specialGroup]||this.markerGroup;var g=this.xAxis;var f=h(e.enabled,!g||g.isRadial?!0:null,this.closestPointRangePx>=e.enabledThreshold*
-e.radius);if(!1!==e.enabled||this._hasPointMarkers)for(g=0;g<a.length;g++){var l=a[g];var p=(d=l.graphic)?"animate":"attr";var u=l.marker||{};var n=!!l.marker;var q=f&&void 0===u.enabled||u.enabled;var v=!1!==l.isInside;if(q&&!l.isNull){var y=h(u.symbol,this.symbol);q=this.markerAttribs(l,l.selected&&"select");d?d[v?"show":"hide"](v).animate(q):v&&(0<q.width||l.hasImage)&&(l.graphic=d=b.renderer.symbol(y,q.x,q.y,q.width,q.height,n?u:e).add(c));if(d&&!b.styledMode)d[p](this.pointAttribs(l,l.selected&&
-"select"));d&&d.addClass(l.getClassName(),!0)}else d&&(l.graphic=d.destroy())}},markerAttribs:function(a,b){var d=this.options.marker,e=a.marker||{},c=e.symbol||d.symbol,k=h(e.radius,d.radius);b&&(d=d.states[b],b=e.states&&e.states[b],k=h(b&&b.radius,d&&d.radius,k+(d&&d.radiusPlus||0)));a.hasImage=c&&0===c.indexOf("url");a.hasImage&&(k=0);a={x:Math.floor(a.plotX)-k,y:a.plotY-k};k&&(a.width=a.height=2*k);return a},pointAttribs:function(a,b){var d=this.options.marker,e=a&&a.options,c=e&&e.marker||{},
-k=this.color,g=e&&e.color,f=a&&a.color;e=h(c.lineWidth,d.lineWidth);var l=a&&a.zone&&a.zone.color;a=1;k=g||l||f||k;g=c.fillColor||d.fillColor||k;k=c.lineColor||d.lineColor||k;b=b||"normal";d=d.states[b];b=c.states&&c.states[b]||{};e=h(b.lineWidth,d.lineWidth,e+h(b.lineWidthPlus,d.lineWidthPlus,0));g=b.fillColor||d.fillColor||g;k=b.lineColor||d.lineColor||k;a=h(b.opacity,d.opacity,a);return{stroke:k,"stroke-width":e,fill:g,opacity:a}},destroy:function(a){var b=this,d=b.chart,e=/AppleWebKit\/533/.test(u.navigator.userAgent),
-k,g,f=b.data||[],h,n;l(b,"destroy");a||E(b);(b.axisTypes||[]).forEach(function(a){(n=b[a])&&n.series&&(B(n.series,b),n.isDirty=n.forceRedraw=!0)});b.legendItem&&b.chart.legend.destroyItem(b);for(g=f.length;g--;)(h=f[g])&&h.destroy&&h.destroy();b.points=null;c.clearTimeout(b.animationTimeout);y(b,function(a,b){a instanceof p&&!a.survive&&(k=e&&"group"===b?"hide":"destroy",a[k]())});d.hoverSeries===b&&(d.hoverSeries=null);B(d.series,b);d.orderSeries();y(b,function(d,e){a&&"hcEvents"===e||delete b[e]})},
-getGraphPath:function(a,b,d){var e=this,c=e.options,k=c.step,g,f=[],h=[],l;a=a||e.points;(g=a.reversed)&&a.reverse();(k={right:1,center:2}[k]||k&&3)&&g&&(k=4-k);!c.connectNulls||b||d||(a=this.getValidPoints(a));a.forEach(function(g,m){var r=g.plotX,p=g.plotY,u=a[m-1];(g.leftCliff||u&&u.rightCliff)&&!d&&(l=!0);g.isNull&&!z(b)&&0<m?l=!c.connectNulls:g.isNull&&!b?l=!0:(0===m||l?m=["M",g.plotX,g.plotY]:e.getPointSpline?m=e.getPointSpline(a,g,m):k?(m=1===k?["L",u.plotX,p]:2===k?["L",(u.plotX+r)/2,u.plotY,
-"L",(u.plotX+r)/2,p]:["L",r,u.plotY],m.push("L",r,p)):m=["L",r,p],h.push(g.x),k&&(h.push(g.x),2===k&&h.push(g.x)),f.push.apply(f,m),l=!1)});f.xMap=h;return e.graphPath=f},drawGraph:function(){var a=this,b=this.options,d=(this.gappedPath||this.getGraphPath).call(this),e=this.chart.styledMode,c=[["graph","highcharts-graph"]];e||c[0].push(b.lineColor||this.color||"#cccccc",b.dashStyle);c=a.getZonesGraphs(c);c.forEach(function(c,k){var g=c[0],f=a[g],h=f?"animate":"attr";f?(f.endX=a.preventGraphAnimation?
-null:d.xMap,f.animate({d:d})):d.length&&(a[g]=f=a.chart.renderer.path(d).addClass(c[1]).attr({zIndex:1}).add(a.group));f&&!e&&(g={stroke:c[2],"stroke-width":b.lineWidth,fill:a.fillGraph&&a.color||"none"},c[3]?g.dashstyle=c[3]:"square"!==b.linecap&&(g["stroke-linecap"]=g["stroke-linejoin"]="round"),f[h](g).shadow(2>k&&b.shadow));f&&(f.startX=d.xMap,f.isArea=d.isArea)})},getZonesGraphs:function(a){this.zones.forEach(function(b,d){d=["zone-graph-"+d,"highcharts-graph highcharts-zone-graph-"+d+" "+(b.className||
-"")];this.chart.styledMode||d.push(b.color||this.color,b.dashStyle||this.options.dashStyle);a.push(d)},this);return a},applyZones:function(){var a=this,b=this.chart,d=b.renderer,e=this.zones,c,g,f=this.clips||[],l,p=this.graph,u=this.area,n=Math.max(b.chartWidth,b.chartHeight),q=this[(this.zoneAxis||"y")+"Axis"],v=b.inverted,y,t,E,C=!1;if(e.length&&(p||u)&&q&&void 0!==q.min){var L=q.reversed;var z=q.horiz;p&&!this.showLine&&p.hide();u&&u.hide();var B=q.getExtremes();e.forEach(function(e,k){c=L?z?
-b.plotWidth:0:z?0:q.toPixels(B.min)||0;c=Math.min(Math.max(h(g,c),0),n);g=Math.min(Math.max(Math.round(q.toPixels(h(e.value,B.max),!0)||0),0),n);C&&(c=g=q.toPixels(B.max));y=Math.abs(c-g);t=Math.min(c,g);E=Math.max(c,g);q.isXAxis?(l={x:v?E:t,y:0,width:y,height:n},z||(l.x=b.plotHeight-l.x)):(l={x:0,y:v?E:t,width:n,height:y},z&&(l.y=b.plotWidth-l.y));v&&d.isVML&&(l=q.isXAxis?{x:0,y:L?t:E,height:l.width,width:b.chartWidth}:{x:l.y-b.plotLeft-b.spacingBox.x,y:0,width:l.height,height:b.chartHeight});f[k]?
-f[k].animate(l):f[k]=d.clipRect(l);p&&a["zone-graph-"+k].clip(f[k]);u&&a["zone-area-"+k].clip(f[k]);C=e.value>B.max;a.resetZones&&0===g&&(g=void 0)});this.clips=f}else a.visible&&(p&&p.show(!0),u&&u.show(!0))},invertGroups:function(a){function b(){["group","markerGroup"].forEach(function(b){d[b]&&(e.renderer.isVML&&d[b].attr({width:d.yAxis.len,height:d.xAxis.len}),d[b].width=d.yAxis.len,d[b].height=d.xAxis.len,d[b].invert(a))})}var d=this,e=d.chart;if(d.xAxis){var c=g(e,"resize",b);g(d,"destroy",
-c);b(a);d.invertGroups=b}},plotGroup:function(a,b,d,e,c){var k=this[a],g=!k;g&&(this[a]=k=this.chart.renderer.g().attr({zIndex:e||.1}).add(c));k.addClass("highcharts-"+b+" highcharts-series-"+this.index+" highcharts-"+this.type+"-series "+(z(this.colorIndex)?"highcharts-color-"+this.colorIndex+" ":"")+(this.options.className||"")+(k.hasClass("highcharts-tracker")?" highcharts-tracker":""),!0);k.attr({visibility:d})[g?"attr":"animate"](this.getPlotBox());return k},getPlotBox:function(){var a=this.chart,
-b=this.xAxis,d=this.yAxis;a.inverted&&(b=d,d=this.xAxis);return{translateX:b?b.left:a.plotLeft,translateY:d?d.top:a.plotTop,scaleX:1,scaleY:1}},render:function(){var a=this,d=a.chart,e=a.options,c=!!a.animate&&d.renderer.isSVG&&b(e.animation).duration,g=a.visible?"inherit":"hidden",f=e.zIndex,h=a.hasRendered,p=d.seriesGroup,u=d.inverted;l(this,"render");var n=a.plotGroup("group","series",g,f,p);a.markerGroup=a.plotGroup("markerGroup","markers",g,f,p);c&&a.animate(!0);n.inverted=a.isCartesian||a.invertable?
-u:!1;a.drawGraph&&(a.drawGraph(),a.applyZones());a.visible&&a.drawPoints();a.drawDataLabels&&a.drawDataLabels();a.redrawPoints&&a.redrawPoints();a.drawTracker&&!1!==a.options.enableMouseTracking&&a.drawTracker();a.invertGroups(u);!1===e.clip||a.sharedClipKey||h||n.clip(d.clipRect);c&&a.animate();h||(a.animationTimeout=q(function(){a.afterAnimate()},c||0));a.isDirty=!1;a.hasRendered=!0;l(a,"afterRender")},redraw:function(){var a=this.chart,b=this.isDirty||this.isDirtyData,d=this.group,e=this.xAxis,
-c=this.yAxis;d&&(a.inverted&&d.attr({width:a.plotWidth,height:a.plotHeight}),d.animate({translateX:h(e&&e.left,a.plotLeft),translateY:h(c&&c.top,a.plotTop)}));this.translate();this.render();b&&delete this.kdTree},kdAxisArray:["clientX","plotY"],searchPoint:function(a,b){var d=this.xAxis,e=this.yAxis,c=this.chart.inverted;return this.searchKDTree({clientX:c?d.len-a.chartY+d.pos:a.chartX-d.pos,plotY:c?e.len-a.chartX+e.pos:a.chartY-e.pos},b,a)},buildKDTree:function(a){function b(a,e,c){var g;if(g=a&&
-a.length){var k=d.kdAxisArray[e%c];a.sort(function(a,b){return a[k]-b[k]});g=Math.floor(g/2);return{point:a[g],left:b(a.slice(0,g),e+1,c),right:b(a.slice(g+1),e+1,c)}}}this.buildingKdTree=!0;var d=this,e=-1<d.options.findNearestPointBy.indexOf("y")?2:1;delete d.kdTree;q(function(){d.kdTree=b(d.getValidPoints(null,!d.directTouch),e,e);d.buildingKdTree=!1},d.options.kdNow||a&&"touchstart"===a.type?0:1)},searchKDTree:function(a,b,d){function e(a,b,d,h){var l=b.point,m=c.kdAxisArray[d%h],p=l;var r=z(a[g])&&
-z(l[g])?Math.pow(a[g]-l[g],2):null;var u=z(a[k])&&z(l[k])?Math.pow(a[k]-l[k],2):null;u=(r||0)+(u||0);l.dist=z(u)?Math.sqrt(u):Number.MAX_VALUE;l.distX=z(r)?Math.sqrt(r):Number.MAX_VALUE;m=a[m]-l[m];u=0>m?"left":"right";r=0>m?"right":"left";b[u]&&(u=e(a,b[u],d+1,h),p=u[f]<p[f]?u:l);b[r]&&Math.sqrt(m*m)<p[f]&&(a=e(a,b[r],d+1,h),p=a[f]<p[f]?a:p);return p}var c=this,g=this.kdAxisArray[0],k=this.kdAxisArray[1],f=b?"distX":"dist";b=-1<c.options.findNearestPointBy.indexOf("y")?2:1;this.kdTree||this.buildingKdTree||
-this.buildKDTree(d);if(this.kdTree)return e(a,this.kdTree,b,b)},pointPlacementToXValue:function(){var a=this.xAxis,b=this.options.pointPlacement;"between"===b&&(b=a.reversed?-.5:.5);C(b)&&(b*=h(this.options.pointRange||a.pointRange));return b}});""});M(I,"parts/Stacking.js",[I["parts/Globals.js"],I["parts/Utilities.js"]],function(c,f){var F=f.defined,G=f.destroyObjectProperties,z=f.objectEach,B=f.pick;f=c.Axis;var t=c.Chart,v=c.correctFloat,C=c.format,H=c.Series;c.StackItem=function(c,f,n,q,g){var b=
-c.chart.inverted;this.axis=c;this.isNegative=n;this.options=f=f||{};this.x=q;this.total=null;this.points={};this.stack=g;this.rightCliff=this.leftCliff=0;this.alignOptions={align:f.align||(b?n?"left":"right":"center"),verticalAlign:f.verticalAlign||(b?"middle":n?"bottom":"top"),y:f.y,x:f.x};this.textAlign=f.textAlign||(b?n?"right":"left":"center")};c.StackItem.prototype={destroy:function(){G(this,this.axis)},render:function(c){var f=this.axis.chart,n=this.options,q=n.format;q=q?C(q,this,f.time):n.formatter.call(this);
-this.label?this.label.attr({text:q,visibility:"hidden"}):(this.label=f.renderer.label(q,null,null,n.shape,null,null,n.useHTML,!1,"stack-labels"),q={text:q,align:this.textAlign,rotation:n.rotation,padding:B(n.padding,0),visibility:"hidden"},this.label.attr(q),f.styledMode||this.label.css(n.style),this.label.added||this.label.add(c));this.label.labelrank=f.plotHeight},setOffset:function(c,f,n,q,g){var b=this.axis,a=b.chart;q=b.translate(b.usePercentage?100:q?q:this.total,0,0,0,1);n=b.translate(n?n:
-0);n=F(q)&&Math.abs(q-n);c=B(g,a.xAxis[0].translate(this.x))+c;b=F(q)&&this.getStackBox(a,this,c,q,f,n,b);f=this.label;c=this.isNegative;g="justify"===B(this.options.overflow,"justify");if(f&&b){n=f.getBBox();var d=a.inverted?c?n.width:0:n.width/2,e=a.inverted?n.height/2:c?-4:n.height+4;this.alignOptions.x=B(this.options.x,0);f.align(this.alignOptions,null,b);q=f.alignAttr;f.show();q.y-=e;g&&(q.x-=d,H.prototype.justifyDataLabel.call(this.axis,f,this.alignOptions,q,n,b),q.x+=d);q.x=f.alignAttr.x;f.attr({x:q.x,
-y:q.y});B(!g&&this.options.crop,!0)&&((a=a.isInsidePlot(f.x+(a.inverted?0:-n.width/2),f.y)&&a.isInsidePlot(f.x+(a.inverted?c?-n.width:n.width:n.width/2),f.y+n.height))||f.hide())}},getStackBox:function(c,f,n,q,g,b,a){var d=f.axis.reversed,e=c.inverted;c=a.height+a.pos-(e?c.plotLeft:c.plotTop);f=f.isNegative&&!d||!f.isNegative&&d;return{x:e?f?q:q-b:n,y:e?c-n-g:f?c-q-b:c-q,width:e?b:g,height:e?g:b}}};t.prototype.getStacks=function(){var c=this,f=c.inverted;c.yAxis.forEach(function(c){c.stacks&&c.hasVisibleSeries&&
-(c.oldStacks=c.stacks)});c.series.forEach(function(h){var n=h.xAxis&&h.xAxis.options||{};!h.options.stacking||!0!==h.visible&&!1!==c.options.chart.ignoreHiddenSeries||(h.stackKey=[h.type,B(h.options.stack,""),f?n.top:n.left,f?n.height:n.width].join())})};f.prototype.buildStacks=function(){var c=this.series,f=B(this.options.reversedStacks,!0),n=c.length,q;if(!this.isXAxis){this.usePercentage=!1;for(q=n;q--;)c[f?q:n-q-1].setStackedPoints();for(q=0;q<n;q++)c[q].modifyStacks()}};f.prototype.renderStackTotals=
-function(){var c=this.chart,f=c.renderer,n=this.stacks,q=this.stackTotalGroup;q||(this.stackTotalGroup=q=f.g("stack-labels").attr({visibility:"visible",zIndex:6}).add());q.translate(c.plotLeft,c.plotTop);z(n,function(c){z(c,function(b){b.render(q)})})};f.prototype.resetStacks=function(){var c=this,f=c.stacks;c.isXAxis||z(f,function(f){z(f,function(h,g){h.touched<c.stacksTouched?(h.destroy(),delete f[g]):(h.total=null,h.cumulative=null)})})};f.prototype.cleanStacks=function(){if(!this.isXAxis){if(this.oldStacks)var c=
-this.stacks=this.oldStacks;z(c,function(c){z(c,function(c){c.cumulative=c.total})})}};H.prototype.setStackedPoints=function(){if(this.options.stacking&&(!0===this.visible||!1===this.chart.options.chart.ignoreHiddenSeries)){var f=this.processedXData,h=this.processedYData,n=[],q=h.length,g=this.options,b=g.threshold,a=B(g.startFromThreshold&&b,0),d=g.stack;g=g.stacking;var e=this.stackKey,l="-"+e,t=this.negStacks,E=this.yAxis,p=E.stacks,u=E.oldStacks,k,r;E.stacksTouched+=1;for(r=0;r<q;r++){var x=f[r];
-var A=h[r];var w=this.getStackIndicator(w,x,this.index);var m=w.key;var K=(k=t&&A<(a?0:b))?l:e;p[K]||(p[K]={});p[K][x]||(u[K]&&u[K][x]?(p[K][x]=u[K][x],p[K][x].total=null):p[K][x]=new c.StackItem(E,E.options.stackLabels,k,x,d));K=p[K][x];null!==A?(K.points[m]=K.points[this.index]=[B(K.cumulative,a)],F(K.cumulative)||(K.base=m),K.touched=E.stacksTouched,0<w.index&&!1===this.singleStacks&&(K.points[m][0]=K.points[this.index+","+x+",0"][0])):K.points[m]=K.points[this.index]=null;"percent"===g?(k=k?e:
-l,t&&p[k]&&p[k][x]?(k=p[k][x],K.total=k.total=Math.max(k.total,K.total)+Math.abs(A)||0):K.total=v(K.total+(Math.abs(A)||0))):K.total=v(K.total+(A||0));K.cumulative=B(K.cumulative,a)+(A||0);null!==A&&(K.points[m].push(K.cumulative),n[r]=K.cumulative)}"percent"===g&&(E.usePercentage=!0);this.stackedYData=n;E.oldStacks={}}};H.prototype.modifyStacks=function(){var c=this,f=c.stackKey,n=c.yAxis.stacks,q=c.processedXData,g,b=c.options.stacking;c[b+"Stacker"]&&[f,"-"+f].forEach(function(a){for(var d=q.length,
-e,f;d--;)if(e=q[d],g=c.getStackIndicator(g,e,c.index,a),f=(e=n[a]&&n[a][e])&&e.points[g.key])c[b+"Stacker"](f,e,d)})};H.prototype.percentStacker=function(c,f,n){f=f.total?100/f.total:0;c[0]=v(c[0]*f);c[1]=v(c[1]*f);this.stackedYData[n]=c[1]};H.prototype.getStackIndicator=function(c,f,n,q){!F(c)||c.x!==f||q&&c.key!==q?c={x:f,index:0,key:q}:c.index++;c.key=[n,f,c.index].join();return c}});M(I,"parts/Dynamics.js",[I["parts/Globals.js"],I["parts/Utilities.js"]],function(c,f){var F=f.defined,G=f.erase,
-z=f.extend,B=f.isArray,t=f.isNumber,v=f.isObject,C=f.isString,H=f.objectEach,y=f.pick,h=f.setAnimation,n=f.splat,q=c.addEvent,g=c.animate,b=c.Axis;f=c.Chart;var a=c.createElement,d=c.css,e=c.fireEvent,l=c.merge,L=c.Point,E=c.Series,p=c.seriesTypes;c.cleanRecursively=function(a,b){var d={};H(a,function(e,g){if(v(a[g],!0)&&!a.nodeType&&b[g])e=c.cleanRecursively(a[g],b[g]),Object.keys(e).length&&(d[g]=e);else if(v(a[g])||a[g]!==b[g])d[g]=a[g]});return d};z(f.prototype,{addSeries:function(a,b,d){var c,
-g=this;a&&(b=y(b,!0),e(g,"addSeries",{options:a},function(){c=g.initSeries(a);g.isDirtyLegend=!0;g.linkSeries();e(g,"afterAddSeries",{series:c});b&&g.redraw(d)}));return c},addAxis:function(a,b,d,c){return this.createAxis(b?"xAxis":"yAxis",{axis:a,redraw:d,animation:c})},addColorAxis:function(a,b,d){return this.createAxis("colorAxis",{axis:a,redraw:b,animation:d})},createAxis:function(a,d){var e=this.options,g="colorAxis"===a,k=d.redraw,f=d.animation;d=l(d.axis,{index:this[a].length,isX:"xAxis"===
-a});var h=g?new c.ColorAxis(this,d):new b(this,d);e[a]=n(e[a]||{});e[a].push(d);g&&(this.isDirtyLegend=!0,this.axes.forEach(function(a){a.series=[]}),this.series.forEach(function(a){a.bindAxes();a.isDirtyData=!0}));y(k,!0)&&this.redraw(f);return h},showLoading:function(b){var c=this,e=c.options,f=c.loadingDiv,h=e.loading,l=function(){f&&d(f,{left:c.plotLeft+"px",top:c.plotTop+"px",width:c.plotWidth+"px",height:c.plotHeight+"px"})};f||(c.loadingDiv=f=a("div",{className:"highcharts-loading highcharts-loading-hidden"},
-null,c.container),c.loadingSpan=a("span",{className:"highcharts-loading-inner"},null,f),q(c,"redraw",l));f.className="highcharts-loading";c.loadingSpan.innerHTML=y(b,e.lang.loading,"");c.styledMode||(d(f,z(h.style,{zIndex:10})),d(c.loadingSpan,h.labelStyle),c.loadingShown||(d(f,{opacity:0,display:""}),g(f,{opacity:h.style.opacity||.5},{duration:h.showDuration||0})));c.loadingShown=!0;l()},hideLoading:function(){var a=this.options,b=this.loadingDiv;b&&(b.className="highcharts-loading highcharts-loading-hidden",
-this.styledMode||g(b,{opacity:0},{duration:a.loading.hideDuration||100,complete:function(){d(b,{display:"none"})}}));this.loadingShown=!1},propsRequireDirtyBox:"backgroundColor borderColor borderWidth borderRadius plotBackgroundColor plotBackgroundImage plotBorderColor plotBorderWidth plotShadow shadow".split(" "),propsRequireReflow:"margin marginTop marginRight marginBottom marginLeft spacing spacingTop spacingRight spacingBottom spacingLeft".split(" "),propsRequireUpdateSeries:"chart.inverted chart.polar chart.ignoreHiddenSeries chart.type colors plotOptions time tooltip".split(" "),
-collectionsWithUpdate:"xAxis yAxis zAxis colorAxis series pane".split(" "),update:function(a,b,d,g){var k=this,f={credits:"addCredits",title:"setTitle",subtitle:"setSubtitle",caption:"setCaption"},h,p,r,u=a.isResponsiveOptions,q=[];e(k,"update",{options:a});u||k.setResponsive(!1,!0);a=c.cleanRecursively(a,k.options);l(!0,k.userOptions,a);if(h=a.chart){l(!0,k.options.chart,h);"className"in h&&k.setClassName(h.className);"reflow"in h&&k.setReflow(h.reflow);if("inverted"in h||"polar"in h||"type"in h){k.propFromSeries();
-var x=!0}"alignTicks"in h&&(x=!0);H(h,function(a,b){-1!==k.propsRequireUpdateSeries.indexOf("chart."+b)&&(p=!0);-1!==k.propsRequireDirtyBox.indexOf(b)&&(k.isDirtyBox=!0);u||-1===k.propsRequireReflow.indexOf(b)||(r=!0)});!k.styledMode&&"style"in h&&k.renderer.setStyle(h.style)}!k.styledMode&&a.colors&&(this.options.colors=a.colors);a.plotOptions&&l(!0,this.options.plotOptions,a.plotOptions);a.time&&this.time===c.time&&(this.time=new c.Time(a.time));H(a,function(a,b){if(k[b]&&"function"===typeof k[b].update)k[b].update(a,
-!1);else if("function"===typeof k[f[b]])k[f[b]](a);"chart"!==b&&-1!==k.propsRequireUpdateSeries.indexOf(b)&&(p=!0)});this.collectionsWithUpdate.forEach(function(b){if(a[b]){if("series"===b){var c=[];k[b].forEach(function(a,b){a.options.isInternal||c.push(y(a.options.index,b))})}n(a[b]).forEach(function(a,e){(e=F(a.id)&&k.get(a.id)||k[b][c?c[e]:e])&&e.coll===b&&(e.update(a,!1),d&&(e.touched=!0));!e&&d&&k.collectionsWithInit[b]&&(k.collectionsWithInit[b][0].apply(k,[a].concat(k.collectionsWithInit[b][1]||
-[]).concat([!1])).touched=!0)});d&&k[b].forEach(function(a){a.touched||a.options.isInternal?delete a.touched:q.push(a)})}});q.forEach(function(a){a.remove&&a.remove(!1)});x&&k.axes.forEach(function(a){a.update({},!1)});p&&k.series.forEach(function(a){a.update({},!1)});a.loading&&l(!0,k.options.loading,a.loading);x=h&&h.width;h=h&&h.height;C(h)&&(h=c.relativeLength(h,x||k.chartWidth));r||t(x)&&x!==k.chartWidth||t(h)&&h!==k.chartHeight?k.setSize(x,h,g):y(b,!0)&&k.redraw(g);e(k,"afterUpdate",{options:a,
-redraw:b,animation:g})},setSubtitle:function(a,b){this.applyDescription("subtitle",a);this.layOutTitles(b)},setCaption:function(a,b){this.applyDescription("caption",a);this.layOutTitles(b)}});f.prototype.collectionsWithInit={xAxis:[f.prototype.addAxis,[!0]],yAxis:[f.prototype.addAxis,[!1]],colorAxis:[f.prototype.addColorAxis,[!1]],series:[f.prototype.addSeries]};z(L.prototype,{update:function(a,b,d,c){function e(){g.applyOptions(a);null===g.y&&f&&(g.graphic=f.destroy());v(a,!0)&&(f&&f.element&&a&&
-a.marker&&void 0!==a.marker.symbol&&(g.graphic=f.destroy()),a&&a.dataLabels&&g.dataLabel&&(g.dataLabel=g.dataLabel.destroy()),g.connector&&(g.connector=g.connector.destroy()));h=g.index;k.updateParallelArrays(g,h);p.data[h]=v(p.data[h],!0)||v(a,!0)?g.options:y(a,p.data[h]);k.isDirty=k.isDirtyData=!0;!k.fixedBox&&k.hasCartesianSeries&&(l.isDirtyBox=!0);"point"===p.legendType&&(l.isDirtyLegend=!0);b&&l.redraw(d)}var g=this,k=g.series,f=g.graphic,h,l=k.chart,p=k.options;b=y(b,!0);!1===c?e():g.firePointEvent("update",
-{options:a},e)},remove:function(a,b){this.series.removePoint(this.series.data.indexOf(this),a,b)}});z(E.prototype,{addPoint:function(a,b,d,c,g){var k=this.options,f=this.data,h=this.chart,l=this.xAxis;l=l&&l.hasNames&&l.names;var p=k.data,r=this.xData,n;b=y(b,!0);var u={series:this};this.pointClass.prototype.applyOptions.apply(u,[a]);var q=u.x;var x=r.length;if(this.requireSorting&&q<r[x-1])for(n=!0;x&&r[x-1]>q;)x--;this.updateParallelArrays(u,"splice",x,0,0);this.updateParallelArrays(u,x);l&&u.name&&
-(l[q]=u.name);p.splice(x,0,a);n&&(this.data.splice(x,0,null),this.processData());"point"===k.legendType&&this.generatePoints();d&&(f[0]&&f[0].remove?f[0].remove(!1):(f.shift(),this.updateParallelArrays(u,"shift"),p.shift()));!1!==g&&e(this,"addPoint",{point:u});this.isDirtyData=this.isDirty=!0;b&&h.redraw(c)},removePoint:function(a,b,d){var c=this,e=c.data,g=e[a],k=c.points,f=c.chart,l=function(){k&&k.length===e.length&&k.splice(a,1);e.splice(a,1);c.options.data.splice(a,1);c.updateParallelArrays(g||
-{series:c},"splice",a,1);g&&g.destroy();c.isDirty=!0;c.isDirtyData=!0;b&&f.redraw()};h(d,f);b=y(b,!0);g?g.firePointEvent("remove",null,l):l()},remove:function(a,b,d,c){function g(){k.destroy(c);k.remove=null;f.isDirtyLegend=f.isDirtyBox=!0;f.linkSeries();y(a,!0)&&f.redraw(b)}var k=this,f=k.chart;!1!==d?e(k,"remove",null,g):g()},update:function(a,b){a=c.cleanRecursively(a,this.userOptions);e(this,"update",{options:a});var d=this,g=d.chart,k=d.userOptions,f=d.initialType||d.type,h=a.type||k.type||g.options.chart.type,
-n=!(this.hasDerivedData||a.dataGrouping||h&&h!==this.type||void 0!==a.pointStart||a.pointInterval||a.pointIntervalUnit||a.keys),u=p[f].prototype,q,v=["group","markerGroup","dataLabelsGroup","transformGroup"],t=["eventOptions","navigatorSeries","baseSeries"],E=d.finishedAnimating&&{animation:!1},C={};n&&(t.push("data","isDirtyData","points","processedXData","processedYData","xIncrement","_hasPointMarkers","_hasPointLabels","mapMap","mapData","minY","maxY","minX","maxX"),!1!==a.visible&&t.push("area",
-"graph"),d.parallelArrays.forEach(function(a){t.push(a+"Data")}),a.data&&this.setData(a.data,!1));a=l(k,E,{index:void 0===k.index?d.index:k.index,pointStart:y(k.pointStart,d.xData[0])},!n&&{data:d.options.data},a);n&&a.data&&(a.data=d.options.data);t=v.concat(t);t.forEach(function(a){t[a]=d[a];delete d[a]});d.remove(!1,null,!1,!0);for(q in u)d[q]=void 0;p[h||f]?z(d,p[h||f].prototype):c.error(17,!0,g,{missingModuleFor:h||f});t.forEach(function(a){d[a]=t[a]});d.init(g,a);if(n&&this.points){var L=d.options;
-!1===L.visible?(C.graphic=1,C.dataLabel=1):d._hasPointLabels||(h=L.marker,u=L.dataLabels,h&&(!1===h.enabled||"symbol"in h)&&(C.graphic=1),u&&!1===u.enabled&&(C.dataLabel=1));this.points.forEach(function(a){a&&a.series&&(a.resolveColor(),Object.keys(C).length&&a.destroyElements(C),!1===L.showInLegend&&a.legendItem&&g.legend.destroyItem(a))},this)}a.zIndex!==k.zIndex&&v.forEach(function(b){d[b]&&d[b].attr({zIndex:a.zIndex})});d.initialType=f;g.linkSeries();e(this,"afterUpdate");y(b,!0)&&g.redraw(n?
-void 0:!1)},setName:function(a){this.name=this.options.name=this.userOptions.name=a;this.chart.isDirtyLegend=!0}});z(b.prototype,{update:function(a,b){var d=this.chart,c=a&&a.events||{};a=l(this.userOptions,a);d.options[this.coll].indexOf&&(d.options[this.coll][d.options[this.coll].indexOf(this.userOptions)]=a);H(d.options[this.coll].events,function(a,b){"undefined"===typeof c[b]&&(c[b]=void 0)});this.destroy(!0);this.init(d,z(a,{events:c}));d.isDirtyBox=!0;y(b,!0)&&d.redraw()},remove:function(a){for(var b=
-this.chart,d=this.coll,c=this.series,e=c.length;e--;)c[e]&&c[e].remove(!1);G(b.axes,this);G(b[d],this);B(b.options[d])?b.options[d].splice(this.options.index,1):delete b.options[d];b[d].forEach(function(a,b){a.options.index=a.userOptions.index=b});this.destroy();b.isDirtyBox=!0;y(a,!0)&&b.redraw()},setTitle:function(a,b){this.update({title:a},b)},setCategories:function(a,b){this.update({categories:a},b)}})});M(I,"parts/AreaSeries.js",[I["parts/Globals.js"],I["parts/Utilities.js"]],function(c,f){var F=
-f.objectEach,G=f.pick,z=c.color,B=c.Series;f=c.seriesType;f("area","line",{softThreshold:!1,threshold:0},{singleStacks:!1,getStackPoints:function(c){var f=[],t=[],z=this.xAxis,y=this.yAxis,h=y.stacks[this.stackKey],n={},q=this.index,g=y.series,b=g.length,a=G(y.options.reversedStacks,!0)?1:-1,d;c=c||this.points;if(this.options.stacking){for(d=0;d<c.length;d++)c[d].leftNull=c[d].rightNull=void 0,n[c[d].x]=c[d];F(h,function(a,b){null!==a.total&&t.push(b)});t.sort(function(a,b){return a-b});var e=g.map(function(a){return a.visible});
-t.forEach(function(c,g){var l=0,p,u;if(n[c]&&!n[c].isNull)f.push(n[c]),[-1,1].forEach(function(k){var f=1===k?"rightNull":"leftNull",l=0,v=h[t[g+k]];if(v)for(d=q;0<=d&&d<b;)p=v.points[d],p||(d===q?n[c][f]=!0:e[d]&&(u=h[c].points[d])&&(l-=u[1]-u[0])),d+=a;n[c][1===k?"rightCliff":"leftCliff"]=l});else{for(d=q;0<=d&&d<b;){if(p=h[c].points[d]){l=p[1];break}d+=a}l=y.translate(l,0,1,0,1);f.push({isNull:!0,plotX:z.translate(c,0,0,0,1),x:c,plotY:l,yBottom:l})}})}return f},getGraphPath:function(c){var f=B.prototype.getGraphPath,
-t=this.options,z=t.stacking,y=this.yAxis,h,n=[],q=[],g=this.index,b=y.stacks[this.stackKey],a=t.threshold,d=Math.round(y.getThreshold(t.threshold));t=G(t.connectNulls,"percent"===z);var e=function(e,f,k){var h=c[e];e=z&&b[h.x].points[g];var l=h[k+"Null"]||0;k=h[k+"Cliff"]||0;h=!0;if(k||l){var p=(l?e[0]:e[1])+k;var u=e[0]+k;h=!!l}else!z&&c[f]&&c[f].isNull&&(p=u=a);void 0!==p&&(q.push({plotX:L,plotY:null===p?d:y.getThreshold(p),isNull:h,isCliff:!0}),n.push({plotX:L,plotY:null===u?d:y.getThreshold(u),
-doCurve:!1}))};c=c||this.points;z&&(c=this.getStackPoints(c));for(h=0;h<c.length;h++){z||(c[h].leftCliff=c[h].rightCliff=c[h].leftNull=c[h].rightNull=void 0);var l=c[h].isNull;var L=G(c[h].rectPlotX,c[h].plotX);var E=G(c[h].yBottom,d);if(!l||t)t||e(h,h-1,"left"),l&&!z&&t||(q.push(c[h]),n.push({x:h,plotX:L,plotY:E})),t||e(h,h+1,"right")}h=f.call(this,q,!0,!0);n.reversed=!0;l=f.call(this,n,!0,!0);l.length&&(l[0]="L");l=h.concat(l);f=f.call(this,q,!1,t);l.xMap=h.xMap;this.areaPath=l;return f},drawGraph:function(){this.areaPath=
-[];B.prototype.drawGraph.apply(this);var c=this,f=this.areaPath,C=this.options,H=[["area","highcharts-area",this.color,C.fillColor]];this.zones.forEach(function(f,h){H.push(["zone-area-"+h,"highcharts-area highcharts-zone-area-"+h+" "+f.className,f.color||c.color,f.fillColor||C.fillColor])});H.forEach(function(v){var h=v[0],n=c[h],q=n?"animate":"attr",g={};n?(n.endX=c.preventGraphAnimation?null:f.xMap,n.animate({d:f})):(g.zIndex=0,n=c[h]=c.chart.renderer.path(f).addClass(v[1]).add(c.group),n.isArea=
-!0);c.chart.styledMode||(g.fill=G(v[3],z(v[2]).setOpacity(G(C.fillOpacity,.75)).get()));n[q](g);n.startX=f.xMap;n.shiftUnit=C.step?2:1})},drawLegendSymbol:c.LegendSymbolMixin.drawRectangle});""});M(I,"parts/SplineSeries.js",[I["parts/Globals.js"],I["parts/Utilities.js"]],function(c,f){var F=f.pick;c=c.seriesType;c("spline","line",{},{getPointSpline:function(c,f,B){var t=f.plotX,v=f.plotY,C=c[B-1];B=c[B+1];if(C&&!C.isNull&&!1!==C.doCurve&&!f.isCliff&&B&&!B.isNull&&!1!==B.doCurve&&!f.isCliff){c=C.plotY;
-var z=B.plotX;B=B.plotY;var y=0;var h=(1.5*t+C.plotX)/2.5;var n=(1.5*v+c)/2.5;z=(1.5*t+z)/2.5;var q=(1.5*v+B)/2.5;z!==h&&(y=(q-n)*(z-t)/(z-h)+v-q);n+=y;q+=y;n>c&&n>v?(n=Math.max(c,v),q=2*v-n):n<c&&n<v&&(n=Math.min(c,v),q=2*v-n);q>B&&q>v?(q=Math.max(B,v),n=2*v-q):q<B&&q<v&&(q=Math.min(B,v),n=2*v-q);f.rightContX=z;f.rightContY=q}f=["C",F(C.rightContX,C.plotX),F(C.rightContY,C.plotY),F(h,t),F(n,v),t,v];C.rightContX=C.rightContY=null;return f}});""});M(I,"parts/AreaSplineSeries.js",[I["parts/Globals.js"]],
-function(c){var f=c.seriesTypes.area.prototype,F=c.seriesType;F("areaspline","spline",c.defaultPlotOptions.area,{getStackPoints:f.getStackPoints,getGraphPath:f.getGraphPath,drawGraph:f.drawGraph,drawLegendSymbol:c.LegendSymbolMixin.drawRectangle});""});M(I,"parts/ColumnSeries.js",[I["parts/Globals.js"],I["parts/Utilities.js"]],function(c,f){var F=f.defined,G=f.extend,z=f.isNumber,B=f.pick,t=c.animObject,v=c.color,C=c.merge,H=c.Series;f=c.seriesType;var y=c.svg;f("column","line",{borderRadius:0,crisp:!0,
-groupPadding:.2,marker:null,pointPadding:.1,minPointLength:0,cropThreshold:50,pointRange:null,states:{hover:{halo:!1,brightness:.1},select:{color:"#cccccc",borderColor:"#000000"}},dataLabels:{align:null,verticalAlign:null,y:null},softThreshold:!1,startFromThreshold:!0,stickyTracking:!1,tooltip:{distance:6},threshold:0,borderColor:"#ffffff"},{cropShoulder:0,directTouch:!0,trackerGroups:["group","dataLabelsGroup"],negStacks:!0,init:function(){H.prototype.init.apply(this,arguments);var c=this,f=c.chart;
-f.hasRendered&&f.series.forEach(function(f){f.type===c.type&&(f.isDirty=!0)})},getColumnMetrics:function(){var c=this,f=c.options,q=c.xAxis,g=c.yAxis,b=q.options.reversedStacks;b=q.reversed&&!b||!q.reversed&&b;var a,d={},e=0;!1===f.grouping?e=1:c.chart.series.forEach(function(b){var f=b.yAxis,k=b.options;if(b.type===c.type&&(b.visible||!c.chart.options.chart.ignoreHiddenSeries)&&g.len===f.len&&g.pos===f.pos){if(k.stacking){a=b.stackKey;void 0===d[a]&&(d[a]=e++);var h=d[a]}else!1!==k.grouping&&(h=
-e++);b.columnIndex=h}});var l=Math.min(Math.abs(q.transA)*(q.ordinalSlope||f.pointRange||q.closestPointRange||q.tickInterval||1),q.len),v=l*f.groupPadding,t=(l-2*v)/(e||1);f=Math.min(f.maxPointWidth||q.len,B(f.pointWidth,t*(1-2*f.pointPadding)));c.columnMetrics={width:f,offset:(t-f)/2+(v+((c.columnIndex||0)+(b?1:0))*t-l/2)*(b?-1:1)};return c.columnMetrics},crispCol:function(c,f,q,g){var b=this.chart,a=this.borderWidth,d=-(a%2?.5:0);a=a%2?.5:1;b.inverted&&b.renderer.isVML&&(a+=1);this.options.crisp&&
-(q=Math.round(c+q)+d,c=Math.round(c)+d,q-=c);g=Math.round(f+g)+a;d=.5>=Math.abs(f)&&.5<g;f=Math.round(f)+a;g-=f;d&&g&&(--f,g+=1);return{x:c,y:f,width:q,height:g}},translate:function(){var c=this,f=c.chart,q=c.options,g=c.dense=2>c.closestPointRange*c.xAxis.transA;g=c.borderWidth=B(q.borderWidth,g?0:1);var b=c.yAxis,a=q.threshold,d=c.translatedThreshold=b.getThreshold(a),e=B(q.minPointLength,5),l=c.getColumnMetrics(),v=l.width,t=c.barW=Math.max(v,1+2*g),p=c.pointXOffset=l.offset,u=c.dataMin,k=c.dataMax;
-f.inverted&&(d-=.5);q.pointPadding&&(t=Math.ceil(t));H.prototype.translate.apply(c);c.points.forEach(function(g){var h=B(g.yBottom,d),l=999+Math.abs(h),r=v;l=Math.min(Math.max(-l,g.plotY),b.len+l);var m=g.plotX+p,n=t,q=Math.min(l,h),y=Math.max(l,h)-q;if(e&&Math.abs(y)<e){y=e;var E=!b.reversed&&!g.negative||b.reversed&&g.negative;g.y===a&&c.dataMax<=a&&b.min<a&&u!==k&&(E=!E);q=Math.abs(q-d)>e?h-e:d-(E?e:0)}F(g.options.pointWidth)&&(r=n=Math.ceil(g.options.pointWidth),m-=Math.round((r-v)/2));g.barX=
-m;g.pointWidth=r;g.tooltipPos=f.inverted?[b.len+b.pos-f.plotLeft-l,c.xAxis.len-m-n/2,y]:[m+n/2,l+b.pos-f.plotTop,y];g.shapeType=c.pointClass.prototype.shapeType||"rect";g.shapeArgs=c.crispCol.apply(c,g.isNull?[m,d,n,0]:[m,q,n,y])})},getSymbol:c.noop,drawLegendSymbol:c.LegendSymbolMixin.drawRectangle,drawGraph:function(){this.group[this.dense?"addClass":"removeClass"]("highcharts-dense-data")},pointAttribs:function(c,f){var h=this.options,g=this.pointAttrToOptions||{};var b=g.stroke||"borderColor";
-var a=g["stroke-width"]||"borderWidth",d=c&&c.color||this.color,e=c&&c[b]||h[b]||this.color||d,l=c&&c[a]||h[a]||this[a]||0;g=c&&c.options.dashStyle||h.dashStyle;var n=B(h.opacity,1);if(c&&this.zones.length){var t=c.getZone();d=c.options.color||t&&(t.color||c.nonZonedColor)||this.color;t&&(e=t.borderColor||e,g=t.dashStyle||g,l=t.borderWidth||l)}f&&(c=C(h.states[f],c.options.states&&c.options.states[f]||{}),f=c.brightness,d=c.color||void 0!==f&&v(d).brighten(c.brightness).get()||d,e=c[b]||e,l=c[a]||
-l,g=c.dashStyle||g,n=B(c.opacity,n));b={fill:d,stroke:e,"stroke-width":l,opacity:n};g&&(b.dashstyle=g);return b},drawPoints:function(){var c=this,f=this.chart,q=c.options,g=f.renderer,b=q.animationLimit||250,a;c.points.forEach(function(d){var e=d.graphic,l=e&&f.pointCount<b?"animate":"attr";if(z(d.plotY)&&null!==d.y){a=d.shapeArgs;e&&d.hasNewShapeType()&&(e=e.destroy());if(e)e[l](C(a));else d.graphic=e=g[d.shapeType](a).add(d.group||c.group);if(q.borderRadius)e[l]({r:q.borderRadius});f.styledMode||
-e[l](c.pointAttribs(d,d.selected&&"select")).shadow(!1!==d.allowShadow&&q.shadow,null,q.stacking&&!q.borderRadius);e.addClass(d.getClassName(),!0)}else e&&(d.graphic=e.destroy())})},animate:function(c){var f=this,h=this.yAxis,g=f.options,b=this.chart.inverted,a={},d=b?"translateX":"translateY";if(y)if(c)a.scaleY=.001,c=Math.min(h.pos+h.len,Math.max(h.pos,h.toPixels(g.threshold))),b?a.translateX=c-h.len:a.translateY=c,f.clipBox&&f.setClip(),f.group.attr(a);else{var e=f.group.attr(d);f.group.animate({scaleY:1},
-G(t(f.options.animation),{step:function(b,c){a[d]=e+c.pos*(h.pos-e);f.group.attr(a)}}));f.animate=null}},remove:function(){var c=this,f=c.chart;f.hasRendered&&f.series.forEach(function(f){f.type===c.type&&(f.isDirty=!0)});H.prototype.remove.apply(c,arguments)}});""});M(I,"parts/BarSeries.js",[I["parts/Globals.js"]],function(c){c=c.seriesType;c("bar","column",null,{inverted:!0});""});M(I,"parts/ScatterSeries.js",[I["parts/Globals.js"]],function(c){var f=c.Series,F=c.seriesType;F("scatter","line",{lineWidth:0,
-findNearestPointBy:"xy",jitter:{x:0,y:0},marker:{enabled:!0},tooltip:{headerFormat:'<span style="color:{point.color}">\u25cf</span> <span style="font-size: 10px"> {series.name}</span><br/>',pointFormat:"x: <b>{point.x}</b><br/>y: <b>{point.y}</b><br/>"}},{sorted:!1,requireSorting:!1,noSharedTooltip:!0,trackerGroups:["group","markerGroup","dataLabelsGroup"],takeOrdinalPosition:!1,drawGraph:function(){this.options.lineWidth&&f.prototype.drawGraph.call(this)},applyJitter:function(){var c=this,f=this.options.jitter,
-B=this.points.length;f&&this.points.forEach(function(t,v){["x","y"].forEach(function(C,z){var y="plot"+C.toUpperCase();if(f[C]&&!t.isNull){var h=c[C+"Axis"];var n=f[C]*h.transA;if(h&&!h.isLog){var q=Math.max(0,t[y]-n);h=Math.min(h.len,t[y]+n);z=1E4*Math.sin(v+z*B);t[y]=q+(h-q)*(z-Math.floor(z));"x"===C&&(t.clientX=t.plotX)}}})})}});c.addEvent(f,"afterTranslate",function(){this.applyJitter&&this.applyJitter()});""});M(I,"mixins/centered-series.js",[I["parts/Globals.js"],I["parts/Utilities.js"]],function(c,
-f){var F=f.isNumber,G=f.pick,z=c.deg2rad,B=c.relativeLength;c.CenteredSeriesMixin={getCenter:function(){var c=this.options,f=this.chart,C=2*(c.slicedOffset||0),z=f.plotWidth-2*C;f=f.plotHeight-2*C;var y=c.center;y=[G(y[0],"50%"),G(y[1],"50%"),c.size||"100%",c.innerSize||0];var h=Math.min(z,f),n;for(n=0;4>n;++n){var q=y[n];c=2>n||2===n&&/%$/.test(q);y[n]=B(q,[z,f,h,y[2]][n])+(c?C:0)}y[3]>y[2]&&(y[3]=y[2]);return y},getStartAndEndRadians:function(c,f){c=F(c)?c:0;f=F(f)&&f>c&&360>f-c?f:c+360;return{start:z*
-(c+-90),end:z*(f+-90)}}}});M(I,"parts/PieSeries.js",[I["parts/Globals.js"],I["parts/Utilities.js"]],function(c,f){var F=f.defined,G=f.isNumber,z=f.pick,B=f.setAnimation,t=c.addEvent;f=c.CenteredSeriesMixin;var v=f.getStartAndEndRadians,C=c.merge,H=c.noop,y=c.Point,h=c.Series,n=c.seriesType,q=c.fireEvent;n("pie","line",{center:[null,null],clip:!1,colorByPoint:!0,dataLabels:{allowOverlap:!0,connectorPadding:5,distance:30,enabled:!0,formatter:function(){return this.point.isNull?void 0:this.point.name},
-softConnector:!0,x:0,connectorShape:"fixedOffset",crookDistance:"70%"},fillColor:void 0,ignoreHiddenPoint:!0,inactiveOtherPoints:!0,legendType:"point",marker:null,size:null,showInLegend:!1,slicedOffset:10,stickyTracking:!1,tooltip:{followPointer:!0},borderColor:"#ffffff",borderWidth:1,lineWidth:void 0,states:{hover:{brightness:.1}}},{isCartesian:!1,requireSorting:!1,directTouch:!0,noSharedTooltip:!0,trackerGroups:["group","dataLabelsGroup"],axisTypes:[],pointAttribs:c.seriesTypes.column.prototype.pointAttribs,
-animate:function(c){var b=this,a=b.points,d=b.startAngleRad;c||(a.forEach(function(a){var c=a.graphic,e=a.shapeArgs;c&&(c.attr({r:a.startR||b.center[3]/2,start:d,end:d}),c.animate({r:e.r,start:e.start,end:e.end},b.options.animation))}),b.animate=null)},hasData:function(){return!!this.processedXData.length},updateTotals:function(){var c,b=0,a=this.points,d=a.length,e=this.options.ignoreHiddenPoint;for(c=0;c<d;c++){var f=a[c];b+=e&&!f.visible?0:f.isNull?0:f.y}this.total=b;for(c=0;c<d;c++)f=a[c],f.percentage=
-0<b&&(f.visible||!e)?f.y/b*100:0,f.total=b},generatePoints:function(){h.prototype.generatePoints.call(this);this.updateTotals()},getX:function(c,b,a){var d=this.center,e=this.radii?this.radii[a.index]:d[2]/2;return d[0]+(b?-1:1)*Math.cos(Math.asin(Math.max(Math.min((c-d[1])/(e+a.labelDistance),1),-1)))*(e+a.labelDistance)+(0<a.labelDistance?(b?-1:1)*this.options.dataLabels.padding:0)},translate:function(g){this.generatePoints();var b=0,a=this.options,d=a.slicedOffset,e=d+(a.borderWidth||0),f=v(a.startAngle,
-a.endAngle),h=this.startAngleRad=f.start;f=(this.endAngleRad=f.end)-h;var n=this.points,p=a.dataLabels.distance;a=a.ignoreHiddenPoint;var u,k=n.length;g||(this.center=g=this.getCenter());for(u=0;u<k;u++){var r=n[u];var x=h+b*f;if(!a||r.visible)b+=r.percentage/100;var A=h+b*f;r.shapeType="arc";r.shapeArgs={x:g[0],y:g[1],r:g[2]/2,innerR:g[3]/2,start:Math.round(1E3*x)/1E3,end:Math.round(1E3*A)/1E3};r.labelDistance=z(r.options.dataLabels&&r.options.dataLabels.distance,p);r.labelDistance=c.relativeLength(r.labelDistance,
-r.shapeArgs.r);this.maxLabelDistance=Math.max(this.maxLabelDistance||0,r.labelDistance);A=(A+x)/2;A>1.5*Math.PI?A-=2*Math.PI:A<-Math.PI/2&&(A+=2*Math.PI);r.slicedTranslation={translateX:Math.round(Math.cos(A)*d),translateY:Math.round(Math.sin(A)*d)};var w=Math.cos(A)*g[2]/2;var m=Math.sin(A)*g[2]/2;r.tooltipPos=[g[0]+.7*w,g[1]+.7*m];r.half=A<-Math.PI/2||A>Math.PI/2?1:0;r.angle=A;x=Math.min(e,r.labelDistance/5);r.labelPosition={natural:{x:g[0]+w+Math.cos(A)*r.labelDistance,y:g[1]+m+Math.sin(A)*r.labelDistance},
-"final":{},alignment:0>r.labelDistance?"center":r.half?"right":"left",connectorPosition:{breakAt:{x:g[0]+w+Math.cos(A)*x,y:g[1]+m+Math.sin(A)*x},touchingSliceAt:{x:g[0]+w,y:g[1]+m}}}}q(this,"afterTranslate")},drawEmpty:function(){var c=this.options;if(0===this.total){var b=this.center[0];var a=this.center[1];this.graph||(this.graph=this.chart.renderer.circle(b,a,0).addClass("highcharts-graph").add(this.group));this.graph.animate({"stroke-width":c.borderWidth,cx:b,cy:a,r:this.center[2]/2,fill:c.fillColor||
-"none",stroke:c.color||"#cccccc"})}else this.graph&&(this.graph=this.graph.destroy())},redrawPoints:function(){var c=this,b=c.chart,a=b.renderer,d,e,f,h,n=c.options.shadow;this.drawEmpty();!n||c.shadowGroup||b.styledMode||(c.shadowGroup=a.g("shadow").attr({zIndex:-1}).add(c.group));c.points.forEach(function(g){var l={};e=g.graphic;if(!g.isNull&&e){h=g.shapeArgs;d=g.getTranslate();if(!b.styledMode){var k=g.shadowGroup;n&&!k&&(k=g.shadowGroup=a.g("shadow").add(c.shadowGroup));k&&k.attr(d);f=c.pointAttribs(g,
-g.selected&&"select")}g.delayedRendering?(e.setRadialReference(c.center).attr(h).attr(d),b.styledMode||e.attr(f).attr({"stroke-linejoin":"round"}).shadow(n,k),g.delayedRendering=!1):(e.setRadialReference(c.center),b.styledMode||C(!0,l,f),C(!0,l,h,d),e.animate(l));e.attr({visibility:g.visible?"inherit":"hidden"});e.addClass(g.getClassName())}else e&&(g.graphic=e.destroy())})},drawPoints:function(){var c=this.chart.renderer;this.points.forEach(function(b){b.graphic||(b.graphic=c[b.shapeType](b.shapeArgs).add(b.series.group),
-b.delayedRendering=!0)})},searchPoint:H,sortByAngle:function(c,b){c.sort(function(a,d){return void 0!==a.angle&&(d.angle-a.angle)*b})},drawLegendSymbol:c.LegendSymbolMixin.drawRectangle,getCenter:f.getCenter,getSymbol:H,drawGraph:null},{init:function(){y.prototype.init.apply(this,arguments);var c=this;c.name=z(c.name,"Slice");var b=function(a){c.slice("select"===a.type)};t(c,"select",b);t(c,"unselect",b);return c},isValid:function(){return G(this.y)&&0<=this.y},setVisible:function(c,b){var a=this,
-d=a.series,e=d.chart,f=d.options.ignoreHiddenPoint;b=z(b,f);c!==a.visible&&(a.visible=a.options.visible=c=void 0===c?!a.visible:c,d.options.data[d.data.indexOf(a)]=a.options,["graphic","dataLabel","connector","shadowGroup"].forEach(function(b){if(a[b])a[b][c?"show":"hide"](!0)}),a.legendItem&&e.legend.colorizeItem(a,c),c||"hover"!==a.state||a.setState(""),f&&(d.isDirty=!0),b&&e.redraw())},slice:function(c,b,a){var d=this.series;B(a,d.chart);z(b,!0);this.sliced=this.options.sliced=F(c)?c:!this.sliced;
-d.options.data[d.data.indexOf(this)]=this.options;this.graphic.animate(this.getTranslate());this.shadowGroup&&this.shadowGroup.animate(this.getTranslate())},getTranslate:function(){return this.sliced?this.slicedTranslation:{translateX:0,translateY:0}},haloPath:function(c){var b=this.shapeArgs;return this.sliced||!this.visible?[]:this.series.chart.renderer.symbols.arc(b.x,b.y,b.r+c,b.r+c,{innerR:b.r-1,start:b.start,end:b.end})},connectorShapes:{fixedOffset:function(c,b,a){var d=b.breakAt;b=b.touchingSliceAt;
-return["M",c.x,c.y].concat(a.softConnector?["C",c.x+("left"===c.alignment?-5:5),c.y,2*d.x-b.x,2*d.y-b.y,d.x,d.y]:["L",d.x,d.y]).concat(["L",b.x,b.y])},straight:function(c,b){b=b.touchingSliceAt;return["M",c.x,c.y,"L",b.x,b.y]},crookedLine:function(f,b,a){b=b.touchingSliceAt;var d=this.series,e=d.center[0],g=d.chart.plotWidth,h=d.chart.plotLeft;d=f.alignment;var n=this.shapeArgs.r;a=c.relativeLength(a.crookDistance,1);a="left"===d?e+n+(g+h-e-n)*(1-a):h+(e-n)*a;e=["L",a,f.y];if("left"===d?a>f.x||a<
-b.x:a<f.x||a>b.x)e=[];return["M",f.x,f.y].concat(e).concat(["L",b.x,b.y])}},getConnectorPath:function(){var c=this.labelPosition,b=this.series.options.dataLabels,a=b.connectorShape,d=this.connectorShapes;d[a]&&(a=d[a]);return a.call(this,{x:c.final.x,y:c.final.y,alignment:c.alignment},c.connectorPosition,b)}});""});M(I,"parts/DataLabels.js",[I["parts/Globals.js"],I["parts/Utilities.js"]],function(c,f){var F=f.arrayMax,G=f.defined,z=f.extend,B=f.isArray,t=f.objectEach,v=f.pick,C=f.splat,H=c.format,
-y=c.merge;f=c.noop;var h=c.relativeLength,n=c.Series,q=c.seriesTypes,g=c.stableSort;c.distribute=function(b,a,d){function e(a,b){return a.target-b.target}var f,h=!0,n=b,p=[];var u=0;var k=n.reducedLen||a;for(f=b.length;f--;)u+=b[f].size;if(u>k){g(b,function(a,b){return(b.rank||0)-(a.rank||0)});for(u=f=0;u<=k;)u+=b[f].size,f++;p=b.splice(f-1,b.length)}g(b,e);for(b=b.map(function(a){return{size:a.size,targets:[a.target],align:v(a.align,.5)}});h;){for(f=b.length;f--;)h=b[f],u=(Math.min.apply(0,h.targets)+
-Math.max.apply(0,h.targets))/2,h.pos=Math.min(Math.max(0,u-h.size*h.align),a-h.size);f=b.length;for(h=!1;f--;)0<f&&b[f-1].pos+b[f-1].size>b[f].pos&&(b[f-1].size+=b[f].size,b[f-1].targets=b[f-1].targets.concat(b[f].targets),b[f-1].align=.5,b[f-1].pos+b[f-1].size>a&&(b[f-1].pos=a-b[f-1].size),b.splice(f,1),h=!0)}n.push.apply(n,p);f=0;b.some(function(b){var e=0;if(b.targets.some(function(){n[f].pos=b.pos+e;if(Math.abs(n[f].pos-n[f].target)>d)return n.slice(0,f+1).forEach(function(a){delete a.pos}),n.reducedLen=
-(n.reducedLen||a)-.1*a,n.reducedLen>.1*a&&c.distribute(n,a,d),!0;e+=n[f].size;f++}))return!0});g(n,e)};n.prototype.drawDataLabels=function(){function b(a,b){var d=b.filter;return d?(b=d.operator,a=a[d.property],d=d.value,">"===b&&a>d||"<"===b&&a<d||">="===b&&a>=d||"<="===b&&a<=d||"=="===b&&a==d||"==="===b&&a===d?!0:!1):!0}function a(a,b){var d=[],c;if(B(a)&&!B(b))d=a.map(function(a){return y(a,b)});else if(B(b)&&!B(a))d=b.map(function(b){return y(a,b)});else if(B(a)||B(b))for(c=Math.max(a.length,
-b.length);c--;)d[c]=y(a[c],b[c]);else d=y(a,b);return d}var d=this,e=d.chart,f=d.options,g=f.dataLabels,h=d.points,p,n=d.hasRendered||0,k=c.animObject(f.animation).duration,r=Math.min(k,200),q=!e.renderer.forExport&&v(g.defer,0<r),A=e.renderer;g=a(a(e.options.plotOptions&&e.options.plotOptions.series&&e.options.plotOptions.series.dataLabels,e.options.plotOptions&&e.options.plotOptions[d.type]&&e.options.plotOptions[d.type].dataLabels),g);c.fireEvent(this,"drawDataLabels");if(B(g)||g.enabled||d._hasPointLabels){var w=
-d.plotGroup("dataLabelsGroup","data-labels",q&&!n?"hidden":"inherit",g.zIndex||6);q&&(w.attr({opacity:+n}),n||setTimeout(function(){var a=d.dataLabelsGroup;a&&(d.visible&&w.show(!0),a[f.animation?"animate":"attr"]({opacity:1},{duration:r}))},k-r));h.forEach(function(c){p=C(a(g,c.dlOptions||c.options&&c.options.dataLabels));p.forEach(function(a,g){var k=a.enabled&&(!c.isNull||c.dataLabelOnNull)&&b(c,a),h=c.dataLabels?c.dataLabels[g]:c.dataLabel,l=c.connectors?c.connectors[g]:c.connector,p=v(a.distance,
-c.labelDistance),m=!h;if(k){var n=c.getLabelConfig();var r=v(a[c.formatPrefix+"Format"],a.format);n=G(r)?H(r,n,e.time):(a[c.formatPrefix+"Formatter"]||a.formatter).call(n,a);r=a.style;var u=a.rotation;e.styledMode||(r.color=v(a.color,r.color,d.color,"#000000"),"contrast"===r.color&&(c.contrastColor=A.getContrast(c.color||d.color),r.color=!G(p)&&a.inside||0>p||f.stacking?c.contrastColor:"#000000"),f.cursor&&(r.cursor=f.cursor));var q={r:a.borderRadius||0,rotation:u,padding:a.padding,zIndex:1};e.styledMode||
-(q.fill=a.backgroundColor,q.stroke=a.borderColor,q["stroke-width"]=a.borderWidth);t(q,function(a,b){void 0===a&&delete q[b]})}!h||k&&G(n)?k&&G(n)&&(h?q.text=n:(c.dataLabels=c.dataLabels||[],h=c.dataLabels[g]=u?A.text(n,0,-9999).addClass("highcharts-data-label"):A.label(n,0,-9999,a.shape,null,null,a.useHTML,null,"data-label"),g||(c.dataLabel=h),h.addClass(" highcharts-data-label-color-"+c.colorIndex+" "+(a.className||"")+(a.useHTML?" highcharts-tracker":""))),h.options=a,h.attr(q),e.styledMode||h.css(r).shadow(a.shadow),
-h.added||h.add(w),a.textPath&&!a.useHTML&&h.setTextPath(c.getDataLabelPath&&c.getDataLabelPath(h)||c.graphic,a.textPath),d.alignDataLabel(c,h,a,null,m)):(c.dataLabel=c.dataLabel&&c.dataLabel.destroy(),c.dataLabels&&(1===c.dataLabels.length?delete c.dataLabels:delete c.dataLabels[g]),g||delete c.dataLabel,l&&(c.connector=c.connector.destroy(),c.connectors&&(1===c.connectors.length?delete c.connectors:delete c.connectors[g])))})})}c.fireEvent(this,"afterDrawDataLabels")};n.prototype.alignDataLabel=
-function(b,a,d,c,f){var e=this.chart,g=this.isCartesian&&e.inverted,h=v(b.dlBox&&b.dlBox.centerX,b.plotX,-9999),l=v(b.plotY,-9999),k=a.getBBox(),n=d.rotation,q=d.align,A=this.visible&&(b.series.forceDL||e.isInsidePlot(h,Math.round(l),g)||c&&e.isInsidePlot(h,g?c.x+1:c.y+c.height-1,g)),w="justify"===v(d.overflow,"justify");if(A){var m=e.renderer.fontMetrics(e.styledMode?void 0:d.style.fontSize,a).b;c=z({x:g?this.yAxis.len-l:h,y:Math.round(g?this.xAxis.len-h:l),width:0,height:0},c);z(d,{width:k.width,
-height:k.height});n?(w=!1,h=e.renderer.rotCorr(m,n),h={x:c.x+d.x+c.width/2+h.x,y:c.y+d.y+{top:0,middle:.5,bottom:1}[d.verticalAlign]*c.height},a[f?"attr":"animate"](h).attr({align:q}),l=(n+720)%360,l=180<l&&360>l,"left"===q?h.y-=l?k.height:0:"center"===q?(h.x-=k.width/2,h.y-=k.height/2):"right"===q&&(h.x-=k.width,h.y-=l?0:k.height),a.placed=!0,a.alignAttr=h):(a.align(d,null,c),h=a.alignAttr);w&&0<=c.height?this.justifyDataLabel(a,d,h,k,c,f):v(d.crop,!0)&&(A=e.isInsidePlot(h.x,h.y)&&e.isInsidePlot(h.x+
-k.width,h.y+k.height));if(d.shape&&!n)a[f?"attr":"animate"]({anchorX:g?e.plotWidth-b.plotY:b.plotX,anchorY:g?e.plotHeight-b.plotX:b.plotY})}A||(a.hide(!0),a.placed=!1)};n.prototype.justifyDataLabel=function(b,a,d,c,f,g){var e=this.chart,h=a.align,l=a.verticalAlign,k=b.box?0:b.padding||0;var n=d.x+k;if(0>n){"right"===h?(a.align="left",a.inside=!0):a.x=-n;var q=!0}n=d.x+c.width-k;n>e.plotWidth&&("left"===h?(a.align="right",a.inside=!0):a.x=e.plotWidth-n,q=!0);n=d.y+k;0>n&&("bottom"===l?(a.verticalAlign=
-"top",a.inside=!0):a.y=-n,q=!0);n=d.y+c.height-k;n>e.plotHeight&&("top"===l?(a.verticalAlign="bottom",a.inside=!0):a.y=e.plotHeight-n,q=!0);q&&(b.placed=!g,b.align(a,null,f));return q};q.pie&&(q.pie.prototype.dataLabelPositioners={radialDistributionY:function(b){return b.top+b.distributeBox.pos},radialDistributionX:function(b,a,d,c){return b.getX(d<a.top+2||d>a.bottom-2?c:d,a.half,a)},justify:function(b,a,d){return d[0]+(b.half?-1:1)*(a+b.labelDistance)},alignToPlotEdges:function(b,a,d,c){b=b.getBBox().width;
-return a?b+c:d-b-c},alignToConnectors:function(b,a,d,c){var e=0,f;b.forEach(function(a){f=a.dataLabel.getBBox().width;f>e&&(e=f)});return a?e+c:d-e-c}},q.pie.prototype.drawDataLabels=function(){var b=this,a=b.data,d,e=b.chart,f=b.options.dataLabels,g=f.connectorPadding,h,p=e.plotWidth,u=e.plotHeight,k=e.plotLeft,r=Math.round(e.chartWidth/3),q,A=b.center,w=A[2]/2,m=A[1],t,z,C,B,H=[[],[]],I,D,N,M,R=[0,0,0,0],P=b.dataLabelPositioners,W;b.visible&&(f.enabled||b._hasPointLabels)&&(a.forEach(function(a){a.dataLabel&&
-a.visible&&a.dataLabel.shortened&&(a.dataLabel.attr({width:"auto"}).css({width:"auto",textOverflow:"clip"}),a.dataLabel.shortened=!1)}),n.prototype.drawDataLabels.apply(b),a.forEach(function(a){a.dataLabel&&(a.visible?(H[a.half].push(a),a.dataLabel._pos=null,!G(f.style.width)&&!G(a.options.dataLabels&&a.options.dataLabels.style&&a.options.dataLabels.style.width)&&a.dataLabel.getBBox().width>r&&(a.dataLabel.css({width:.7*r}),a.dataLabel.shortened=!0)):(a.dataLabel=a.dataLabel.destroy(),a.dataLabels&&
-1===a.dataLabels.length&&delete a.dataLabels))}),H.forEach(function(a,h){var l=a.length,n=[],r;if(l){b.sortByAngle(a,h-.5);if(0<b.maxLabelDistance){var q=Math.max(0,m-w-b.maxLabelDistance);var x=Math.min(m+w+b.maxLabelDistance,e.plotHeight);a.forEach(function(a){0<a.labelDistance&&a.dataLabel&&(a.top=Math.max(0,m-w-a.labelDistance),a.bottom=Math.min(m+w+a.labelDistance,e.plotHeight),r=a.dataLabel.getBBox().height||21,a.distributeBox={target:a.labelPosition.natural.y-a.top+r/2,size:r,rank:a.y},n.push(a.distributeBox))});
-q=x+r-q;c.distribute(n,q,q/5)}for(M=0;M<l;M++){d=a[M];C=d.labelPosition;t=d.dataLabel;N=!1===d.visible?"hidden":"inherit";D=q=C.natural.y;n&&G(d.distributeBox)&&(void 0===d.distributeBox.pos?N="hidden":(B=d.distributeBox.size,D=P.radialDistributionY(d)));delete d.positionIndex;if(f.justify)I=P.justify(d,w,A);else switch(f.alignTo){case "connectors":I=P.alignToConnectors(a,h,p,k);break;case "plotEdges":I=P.alignToPlotEdges(t,h,p,k);break;default:I=P.radialDistributionX(b,d,D,q)}t._attr={visibility:N,
-align:C.alignment};t._pos={x:I+f.x+({left:g,right:-g}[C.alignment]||0),y:D+f.y-10};C.final.x=I;C.final.y=D;v(f.crop,!0)&&(z=t.getBBox().width,q=null,I-z<g&&1===h?(q=Math.round(z-I+g),R[3]=Math.max(q,R[3])):I+z>p-g&&0===h&&(q=Math.round(I+z-p+g),R[1]=Math.max(q,R[1])),0>D-B/2?R[0]=Math.max(Math.round(-D+B/2),R[0]):D+B/2>u&&(R[2]=Math.max(Math.round(D+B/2-u),R[2])),t.sideOverflow=q)}}}),0===F(R)||this.verifyDataLabelOverflow(R))&&(this.placeDataLabels(),this.points.forEach(function(a){W=y(f,a.options.dataLabels);
-if(h=v(W.connectorWidth,1)){var d;q=a.connector;if((t=a.dataLabel)&&t._pos&&a.visible&&0<a.labelDistance){N=t._attr.visibility;if(d=!q)a.connector=q=e.renderer.path().addClass("highcharts-data-label-connector  highcharts-color-"+a.colorIndex+(a.className?" "+a.className:"")).add(b.dataLabelsGroup),e.styledMode||q.attr({"stroke-width":h,stroke:W.connectorColor||a.color||"#666666"});q[d?"attr":"animate"]({d:a.getConnectorPath()});q.attr("visibility",N)}else q&&(a.connector=q.destroy())}}))},q.pie.prototype.placeDataLabels=
-function(){this.points.forEach(function(b){var a=b.dataLabel,d;a&&b.visible&&((d=a._pos)?(a.sideOverflow&&(a._attr.width=Math.max(a.getBBox().width-a.sideOverflow,0),a.css({width:a._attr.width+"px",textOverflow:(this.options.dataLabels.style||{}).textOverflow||"ellipsis"}),a.shortened=!0),a.attr(a._attr),a[a.moved?"animate":"attr"](d),a.moved=!0):a&&a.attr({y:-9999}));delete b.distributeBox},this)},q.pie.prototype.alignDataLabel=f,q.pie.prototype.verifyDataLabelOverflow=function(b){var a=this.center,
-d=this.options,c=d.center,f=d.minSize||80,g=null!==d.size;if(!g){if(null!==c[0])var n=Math.max(a[2]-Math.max(b[1],b[3]),f);else n=Math.max(a[2]-b[1]-b[3],f),a[0]+=(b[3]-b[1])/2;null!==c[1]?n=Math.max(Math.min(n,a[2]-Math.max(b[0],b[2])),f):(n=Math.max(Math.min(n,a[2]-b[0]-b[2]),f),a[1]+=(b[0]-b[2])/2);n<a[2]?(a[2]=n,a[3]=Math.min(h(d.innerSize||0,n),n),this.translate(a),this.drawDataLabels&&this.drawDataLabels()):g=!0}return g});q.column&&(q.column.prototype.alignDataLabel=function(b,a,d,c,f){var e=
-this.chart.inverted,g=b.series,h=b.dlBox||b.shapeArgs,l=v(b.below,b.plotY>v(this.translatedThreshold,g.yAxis.len)),k=v(d.inside,!!this.options.stacking);h&&(c=y(h),0>c.y&&(c.height+=c.y,c.y=0),h=c.y+c.height-g.yAxis.len,0<h&&(c.height-=h),e&&(c={x:g.yAxis.len-c.y-c.height,y:g.xAxis.len-c.x-c.width,width:c.height,height:c.width}),k||(e?(c.x+=l?0:c.width,c.width=0):(c.y+=l?c.height:0,c.height=0)));d.align=v(d.align,!e||k?"center":l?"right":"left");d.verticalAlign=v(d.verticalAlign,e||k?"middle":l?"top":
-"bottom");n.prototype.alignDataLabel.call(this,b,a,d,c,f);d.inside&&b.contrastColor&&a.css({color:b.contrastColor})})});M(I,"modules/overlapping-datalabels.src.js",[I["parts/Globals.js"],I["parts/Utilities.js"]],function(c,f){var F=f.isArray,G=f.objectEach,z=f.pick;f=c.Chart;var B=c.addEvent,t=c.fireEvent;B(f,"render",function(){var c=[];(this.labelCollectors||[]).forEach(function(f){c=c.concat(f())});(this.yAxis||[]).forEach(function(f){f.options.stackLabels&&!f.options.stackLabels.allowOverlap&&
-G(f.stacks,function(f){G(f,function(f){c.push(f.label)})})});(this.series||[]).forEach(function(f){var v=f.options.dataLabels;f.visible&&(!1!==v.enabled||f._hasPointLabels)&&f.points.forEach(function(f){f.visible&&(F(f.dataLabels)?f.dataLabels:f.dataLabel?[f.dataLabel]:[]).forEach(function(h){var n=h.options;h.labelrank=z(n.labelrank,f.labelrank,f.shapeArgs&&f.shapeArgs.height);n.allowOverlap||c.push(h)})})});this.hideOverlappingLabels(c)});f.prototype.hideOverlappingLabels=function(c){var f=this,
-v=c.length,y=f.renderer,h,n,q;var g=function(a){var b=a.box?0:a.padding||0;var d=0;if(a&&(!a.alignAttr||a.placed)){var c=a.attr("x");var f=a.attr("y");c="number"===typeof c&&"number"===typeof f?{x:c,y:f}:a.alignAttr;f=a.parentGroup;a.width||(d=a.getBBox(),a.width=d.width,a.height=d.height,d=y.fontMetrics(null,a.element).h);return{x:c.x+(f.translateX||0)+b,y:c.y+(f.translateY||0)+b-d,width:a.width-2*b,height:a.height-2*b}}};for(n=0;n<v;n++)if(h=c[n])h.oldOpacity=h.opacity,h.newOpacity=1,h.absoluteBox=
-g(h);c.sort(function(a,b){return(b.labelrank||0)-(a.labelrank||0)});for(n=0;n<v;n++){var b=(g=c[n])&&g.absoluteBox;for(h=n+1;h<v;++h){var a=(q=c[h])&&q.absoluteBox;!b||!a||g===q||0===g.newOpacity||0===q.newOpacity||a.x>b.x+b.width||a.x+a.width<b.x||a.y>b.y+b.height||a.y+a.height<b.y||((g.labelrank<q.labelrank?g:q).newOpacity=0)}}c.forEach(function(a){var b;if(a){var d=a.newOpacity;a.oldOpacity!==d&&(a.alignAttr&&a.placed?(d?a.show(!0):b=function(){a.hide(!0);a.placed=!1},a.alignAttr.opacity=d,a[a.isOld?
-"animate":"attr"](a.alignAttr,null,b),t(f,"afterHideOverlappingLabels")):a.attr({opacity:d}));a.isOld=!0}})}});M(I,"parts/Interaction.js",[I["parts/Globals.js"],I["parts/Utilities.js"]],function(c,f){var F=f.defined,G=f.extend,z=f.isArray,B=f.isObject,t=f.objectEach,v=f.pick,C=c.addEvent;f=c.Chart;var H=c.createElement,y=c.css,h=c.defaultOptions,n=c.defaultPlotOptions,q=c.fireEvent,g=c.hasTouch,b=c.Legend,a=c.merge,d=c.Point,e=c.Series,l=c.seriesTypes,I=c.svg;var E=c.TrackerMixin={drawTrackerPoint:function(){var a=
-this,b=a.chart,d=b.pointer,c=function(a){var b=d.getPointFromEvent(a);void 0!==b&&(d.isDirectTouch=!0,b.onMouseOver(a))},e;a.points.forEach(function(a){e=z(a.dataLabels)?a.dataLabels:a.dataLabel?[a.dataLabel]:[];a.graphic&&(a.graphic.element.point=a);e.forEach(function(b){b.div?b.div.point=a:b.element.point=a})});a._hasTracking||(a.trackerGroups.forEach(function(e){if(a[e]){a[e].addClass("highcharts-tracker").on("mouseover",c).on("mouseout",function(a){d.onTrackerMouseOut(a)});if(g)a[e].on("touchstart",
-c);!b.styledMode&&a.options.cursor&&a[e].css(y).css({cursor:a.options.cursor})}}),a._hasTracking=!0);q(this,"afterDrawTracker")},drawTrackerGraph:function(){var a=this,b=a.options,d=b.trackByArea,c=[].concat(d?a.areaPath:a.graphPath),e=c.length,f=a.chart,h=f.pointer,l=f.renderer,n=f.options.tooltip.snap,v=a.tracker,t,y=function(){if(f.hoverSeries!==a)a.onMouseOver()},z="rgba(192,192,192,"+(I?.0001:.002)+")";if(e&&!d)for(t=e+1;t--;)"M"===c[t]&&c.splice(t+1,0,c[t+1]-n,c[t+2],"L"),(t&&"M"===c[t]||t===
-e)&&c.splice(t,0,"L",c[t-2]+n,c[t-1]);v?v.attr({d:c}):a.graph&&(a.tracker=l.path(c).attr({visibility:a.visible?"visible":"hidden",zIndex:2}).addClass(d?"highcharts-tracker-area":"highcharts-tracker-line").add(a.group),f.styledMode||a.tracker.attr({"stroke-linejoin":"round",stroke:z,fill:d?z:"none","stroke-width":a.graph.strokeWidth()+(d?0:2*n)}),[a.tracker,a.markerGroup].forEach(function(a){a.addClass("highcharts-tracker").on("mouseover",y).on("mouseout",function(a){h.onTrackerMouseOut(a)});b.cursor&&
-!f.styledMode&&a.css({cursor:b.cursor});if(g)a.on("touchstart",y)}));q(this,"afterDrawTracker")}};l.column&&(l.column.prototype.drawTracker=E.drawTrackerPoint);l.pie&&(l.pie.prototype.drawTracker=E.drawTrackerPoint);l.scatter&&(l.scatter.prototype.drawTracker=E.drawTrackerPoint);G(b.prototype,{setItemEvents:function(b,c,e){var f=this,g=f.chart.renderer.boxWrapper,k=b instanceof d,h="highcharts-legend-"+(k?"point":"series")+"-active",l=f.chart.styledMode;(e?c:b.legendGroup).on("mouseover",function(){b.visible&&
-f.allItems.forEach(function(a){b!==a&&a.setState("inactive",!k)});b.setState("hover");b.visible&&g.addClass(h);l||c.css(f.options.itemHoverStyle)}).on("mouseout",function(){f.chart.styledMode||c.css(a(b.visible?f.itemStyle:f.itemHiddenStyle));f.allItems.forEach(function(a){b!==a&&a.setState("",!k)});g.removeClass(h);b.setState()}).on("click",function(a){var c=function(){b.setVisible&&b.setVisible();f.allItems.forEach(function(a){b!==a&&a.setState(b.visible?"inactive":"",!k)})};g.removeClass(h);a=
-{browserEvent:a};b.firePointEvent?b.firePointEvent("legendItemClick",a,c):q(b,"legendItemClick",a,c)})},createCheckboxForItem:function(a){a.checkbox=H("input",{type:"checkbox",className:"highcharts-legend-checkbox",checked:a.selected,defaultChecked:a.selected},this.options.itemCheckboxStyle,this.chart.container);C(a.checkbox,"click",function(b){q(a.series||a,"checkboxClick",{checked:b.target.checked,item:a},function(){a.select()})})}});G(f.prototype,{showResetZoom:function(){function a(){b.zoomOut()}
-var b=this,c=h.lang,d=b.options.chart.resetZoomButton,e=d.theme,f=e.states,g="chart"===d.relativeTo||"spaceBox"===d.relativeTo?null:"plotBox";q(this,"beforeShowResetZoom",null,function(){b.resetZoomButton=b.renderer.button(c.resetZoom,null,null,a,e,f&&f.hover).attr({align:d.position.align,title:c.resetZoomTitle}).addClass("highcharts-reset-zoom").add().align(d.position,!1,g)});q(this,"afterShowResetZoom")},zoomOut:function(){q(this,"selection",{resetSelection:!0},this.zoom)},zoom:function(a){var b=
-this,c,d=b.pointer,e=!1,f=b.inverted?d.mouseDownX:d.mouseDownY;!a||a.resetSelection?(b.axes.forEach(function(a){c=a.zoom()}),d.initiated=!1):a.xAxis.concat(a.yAxis).forEach(function(a){var g=a.axis,k=b.inverted?g.left:g.top,h=b.inverted?k+g.width:k+g.height,l=g.isXAxis,m=!1;if(!l&&f>=k&&f<=h||l||!F(f))m=!0;d[l?"zoomX":"zoomY"]&&m&&(c=g.zoom(a.min,a.max),g.displayBtn&&(e=!0))});var g=b.resetZoomButton;e&&!g?b.showResetZoom():!e&&B(g)&&(b.resetZoomButton=g.destroy());c&&b.redraw(v(b.options.chart.animation,
-a&&a.animation,100>b.pointCount))},pan:function(a,b){var c=this,d=c.hoverPoints,e;q(this,"pan",{originalEvent:a},function(){d&&d.forEach(function(a){a.setState()});("xy"===b?[1,0]:[1]).forEach(function(b){b=c[b?"xAxis":"yAxis"][0];var d=b.horiz,f=a[d?"chartX":"chartY"];d=d?"mouseDownX":"mouseDownY";var g=c[d],k=(b.pointRange||0)/2,h=b.reversed&&!c.inverted||!b.reversed&&c.inverted?-1:1,l=b.getExtremes(),n=b.toValue(g-f,!0)+k*h;h=b.toValue(g+b.len-f,!0)-k*h;var p=h<n;g=p?h:n;n=p?n:h;h=Math.min(l.dataMin,
-k?l.min:b.toValue(b.toPixels(l.min)-b.minPixelPadding));k=Math.max(l.dataMax,k?l.max:b.toValue(b.toPixels(l.max)+b.minPixelPadding));p=h-g;0<p&&(n+=p,g=h);p=n-k;0<p&&(n=k,g-=p);b.series.length&&g!==l.min&&n!==l.max&&(b.setExtremes(g,n,!1,!1,{trigger:"pan"}),e=!0);c[d]=f});e&&c.redraw(!1);y(c.container,{cursor:"move"})})}});G(d.prototype,{select:function(a,b){var c=this,d=c.series,e=d.chart;this.selectedStaging=a=v(a,!c.selected);c.firePointEvent(a?"select":"unselect",{accumulate:b},function(){c.selected=
-c.options.selected=a;d.options.data[d.data.indexOf(c)]=c.options;c.setState(a&&"select");b||e.getSelectedPoints().forEach(function(a){var b=a.series;a.selected&&a!==c&&(a.selected=a.options.selected=!1,b.options.data[b.data.indexOf(a)]=a.options,a.setState(e.hoverPoints&&b.options.inactiveOtherPoints?"inactive":""),a.firePointEvent("unselect"))})});delete this.selectedStaging},onMouseOver:function(a){var b=this.series.chart,c=b.pointer;a=a?c.normalize(a):c.getChartCoordinatesFromPoint(this,b.inverted);
-c.runPointActions(a,this)},onMouseOut:function(){var a=this.series.chart;this.firePointEvent("mouseOut");this.series.options.inactiveOtherPoints||(a.hoverPoints||[]).forEach(function(a){a.setState()});a.hoverPoints=a.hoverPoint=null},importEvents:function(){if(!this.hasImportedEvents){var b=this,d=a(b.series.options.point,b.options).events;b.events=d;t(d,function(a,d){c.isFunction(a)&&C(b,d,a)});this.hasImportedEvents=!0}},setState:function(a,b){var c=this.series,d=this.state,e=c.options.states[a||
-"normal"]||{},f=n[c.type].marker&&c.options.marker,g=f&&!1===f.enabled,h=f&&f.states&&f.states[a||"normal"]||{},l=!1===h.enabled,p=c.stateMarkerGraphic,u=this.marker||{},t=c.chart,y=c.halo,z,B=f&&c.markerAttribs;a=a||"";if(!(a===this.state&&!b||this.selected&&"select"!==a||!1===e.enabled||a&&(l||g&&!1===h.enabled)||a&&u.states&&u.states[a]&&!1===u.states[a].enabled)){this.state=a;B&&(z=c.markerAttribs(this,a));if(this.graphic){d&&this.graphic.removeClass("highcharts-point-"+d);a&&this.graphic.addClass("highcharts-point-"+
-a);if(!t.styledMode){var C=c.pointAttribs(this,a);var H=v(t.options.chart.animation,e.animation);c.options.inactiveOtherPoints&&((this.dataLabels||[]).forEach(function(a){a&&a.animate({opacity:C.opacity},H)}),this.connector&&this.connector.animate({opacity:C.opacity},H));this.graphic.animate(C,H)}z&&this.graphic.animate(z,v(t.options.chart.animation,h.animation,f.animation));p&&p.hide()}else{if(a&&h){d=u.symbol||c.symbol;p&&p.currentSymbol!==d&&(p=p.destroy());if(z)if(p)p[b?"animate":"attr"]({x:z.x,
-y:z.y});else d&&(c.stateMarkerGraphic=p=t.renderer.symbol(d,z.x,z.y,z.width,z.height).add(c.markerGroup),p.currentSymbol=d);!t.styledMode&&p&&p.attr(c.pointAttribs(this,a))}p&&(p[a&&this.isInside?"show":"hide"](),p.element.point=this)}a=e.halo;e=(p=this.graphic||p)&&p.visibility||"inherit";a&&a.size&&p&&"hidden"!==e?(y||(c.halo=y=t.renderer.path().add(p.parentGroup)),y.show()[b?"animate":"attr"]({d:this.haloPath(a.size)}),y.attr({"class":"highcharts-halo highcharts-color-"+v(this.colorIndex,c.colorIndex)+
-(this.className?" "+this.className:""),visibility:e,zIndex:-1}),y.point=this,t.styledMode||y.attr(G({fill:this.color||c.color,"fill-opacity":a.opacity},a.attributes))):y&&y.point&&y.point.haloPath&&y.animate({d:y.point.haloPath(0)},null,y.hide);q(this,"afterSetState")}},haloPath:function(a){return this.series.chart.renderer.symbols.circle(Math.floor(this.plotX)-a,this.plotY-a,2*a,2*a)}});G(e.prototype,{onMouseOver:function(){var a=this.chart,b=a.hoverSeries;if(b&&b!==this)b.onMouseOut();this.options.events.mouseOver&&
-q(this,"mouseOver");this.setState("hover");a.hoverSeries=this},onMouseOut:function(){var a=this.options,b=this.chart,c=b.tooltip,d=b.hoverPoint;b.hoverSeries=null;if(d)d.onMouseOut();this&&a.events.mouseOut&&q(this,"mouseOut");!c||this.stickyTracking||c.shared&&!this.noSharedTooltip||c.hide();b.series.forEach(function(a){a.setState("",!0)})},setState:function(a,b){var c=this,d=c.options,e=c.graph,f=d.inactiveOtherPoints,g=d.states,h=d.lineWidth,l=d.opacity,n=v(g[a||"normal"]&&g[a||"normal"].animation,
-c.chart.options.chart.animation);d=0;a=a||"";if(c.state!==a&&([c.group,c.markerGroup,c.dataLabelsGroup].forEach(function(b){b&&(c.state&&b.removeClass("highcharts-series-"+c.state),a&&b.addClass("highcharts-series-"+a))}),c.state=a,!c.chart.styledMode)){if(g[a]&&!1===g[a].enabled)return;a&&(h=g[a].lineWidth||h+(g[a].lineWidthPlus||0),l=v(g[a].opacity,l));if(e&&!e.dashstyle)for(g={"stroke-width":h},e.animate(g,n);c["zone-graph-"+d];)c["zone-graph-"+d].attr(g),d+=1;f||[c.group,c.markerGroup,c.dataLabelsGroup,
-c.labelBySeries].forEach(function(a){a&&a.animate({opacity:l},n)})}b&&f&&c.points&&c.setAllPointsToState(a)},setAllPointsToState:function(a){this.points.forEach(function(b){b.setState&&b.setState(a)})},setVisible:function(a,b){var c=this,d=c.chart,e=c.legendItem,f=d.options.chart.ignoreHiddenSeries,g=c.visible;var h=(c.visible=a=c.options.visible=c.userOptions.visible=void 0===a?!g:a)?"show":"hide";["group","dataLabelsGroup","markerGroup","tracker","tt"].forEach(function(a){if(c[a])c[a][h]()});if(d.hoverSeries===
-c||(d.hoverPoint&&d.hoverPoint.series)===c)c.onMouseOut();e&&d.legend.colorizeItem(c,a);c.isDirty=!0;c.options.stacking&&d.series.forEach(function(a){a.options.stacking&&a.visible&&(a.isDirty=!0)});c.linkedSeries.forEach(function(b){b.setVisible(a,!1)});f&&(d.isDirtyBox=!0);q(c,h);!1!==b&&d.redraw()},show:function(){this.setVisible(!0)},hide:function(){this.setVisible(!1)},select:function(a){this.selected=a=this.options.selected=void 0===a?!this.selected:a;this.checkbox&&(this.checkbox.checked=a);
-q(this,a?"select":"unselect")},drawTracker:E.drawTrackerGraph})});M(I,"parts/Responsive.js",[I["parts/Globals.js"],I["parts/Utilities.js"]],function(c,f){var F=f.isArray,G=f.isObject,z=f.objectEach,B=f.pick,t=f.splat;f=c.Chart;f.prototype.setResponsive=function(f,t){var v=this.options.responsive,y=[],h=this.currentResponsive;!t&&v&&v.rules&&v.rules.forEach(function(f){void 0===f._id&&(f._id=c.uniqueKey());this.matchResponsiveRule(f,y)},this);t=c.merge.apply(0,y.map(function(f){return c.find(v.rules,
-function(c){return c._id===f}).chartOptions}));t.isResponsiveOptions=!0;y=y.toString()||void 0;y!==(h&&h.ruleIds)&&(h&&this.update(h.undoOptions,f,!0),y?(h=this.currentOptions(t),h.isResponsiveOptions=!0,this.currentResponsive={ruleIds:y,mergedOptions:t,undoOptions:h},this.update(t,f,!0)):this.currentResponsive=void 0)};f.prototype.matchResponsiveRule=function(c,f){var t=c.condition;(t.callback||function(){return this.chartWidth<=B(t.maxWidth,Number.MAX_VALUE)&&this.chartHeight<=B(t.maxHeight,Number.MAX_VALUE)&&
-this.chartWidth>=B(t.minWidth,0)&&this.chartHeight>=B(t.minHeight,0)}).call(this)&&f.push(c._id)};f.prototype.currentOptions=function(c){function f(c,n,q,g){var b;z(c,function(a,c){if(!g&&-1<v.collectionsWithUpdate.indexOf(c))for(a=t(a),q[c]=[],b=0;b<a.length;b++)n[c][b]&&(q[c][b]={},f(a[b],n[c][b],q[c][b],g+1));else G(a)?(q[c]=F(a)?[]:{},f(a,n[c]||{},q[c],g+1)):q[c]=void 0===n[c]?null:n[c]})}var v=this,y={};f(c,this.options,y,0);return y}});M(I,"masters/highcharts.src.js",[I["parts/Globals.js"],
-I["parts/Utilities.js"]],function(c,f){var F=f.extend;F(c,{arrayMax:f.arrayMax,arrayMin:f.arrayMin,attr:f.attr,defined:f.defined,erase:f.erase,extend:f.extend,isArray:f.isArray,isClass:f.isClass,isDOMElement:f.isDOMElement,isNumber:f.isNumber,isObject:f.isObject,isString:f.isString,objectEach:f.objectEach,pick:f.pick,pInt:f.pInt,setAnimation:f.setAnimation,splat:f.splat,syncTimeout:f.syncTimeout});return c});I["masters/highcharts.src.js"]._modules=I;return I["masters/highcharts.src.js"]});
-//# sourceMappingURL=highcharts.js.map
+
+/* Inline dependency:
+ * jQuery resize event - v1.1 - 3/14/2010
+ * http://benalman.com/projects/jquery-resize-plugin/
+ *
+ * Copyright (c) 2010 "Cowboy" Ben Alman
+ * Dual licensed under the MIT and GPL licenses.
+ * http://benalman.com/about/license/
+ */
+(function($,e,t){"$:nomunge";var i=[],n=$.resize=$.extend($.resize,{}),a,r=false,s="setTimeout",u="resize",m=u+"-special-event",o="pendingDelay",l="activeDelay",f="throttleWindow";n[o]=200;n[l]=20;n[f]=true;$.event.special[u]={setup:function(){if(!n[f]&&this[s]){return false}var e=$(this);i.push(this);e.data(m,{w:e.width(),h:e.height()});if(i.length===1){a=t;h()}},teardown:function(){if(!n[f]&&this[s]){return false}var e=$(this);for(var t=i.length-1;t>=0;t--){if(i[t]==this){i.splice(t,1);break}}e.removeData(m);if(!i.length){if(r){cancelAnimationFrame(a)}else{clearTimeout(a)}a=null}},add:function(e){if(!n[f]&&this[s]){return false}var i;function a(e,n,a){var r=$(this),s=r.data(m)||{};s.w=n!==t?n:r.width();s.h=a!==t?a:r.height();i.apply(this,arguments)}if($.isFunction(e)){i=e;return a}else{i=e.handler;e.handler=a}}};function h(t){if(r===true){r=t||1}for(var s=i.length-1;s>=0;s--){var l=$(i[s]);if(l[0]==e||l.is(":visible")){var f=l.width(),c=l.height(),d=l.data(m);if(d&&(f!==d.w||c!==d.h)){l.trigger(u,[d.w=f,d.h=c]);r=t||true}}else{d=l.data(m);d.w=0;d.h=0}}if(a!==null){if(r&&(t==null||t-r<1e3)){a=e.requestAnimationFrame(h)}else{a=setTimeout(h,n[o]);r=false}}}if(!e.requestAnimationFrame){e.requestAnimationFrame=function(){return e.webkitRequestAnimationFrame||e.mozRequestAnimationFrame||e.oRequestAnimationFrame||e.msRequestAnimationFrame||function(t,i){return e.setTimeout(function(){t((new Date).getTime())},n[l])}}()}if(!e.cancelAnimationFrame){e.cancelAnimationFrame=function(){return e.webkitCancelRequestAnimationFrame||e.mozCancelRequestAnimationFrame||e.oCancelRequestAnimationFrame||e.msCancelRequestAnimationFrame||clearTimeout}()}})(jQuery,window);
+
+(function ($) {
+    var options = { }; // no options
+
+    function init(plot) {
+        function onResize() {
+            var placeholder = plot.getPlaceholder();
+
+            // somebody might have hidden us and we can't plot
+            // when we don't have the dimensions
+            if (placeholder.width() == 0 || placeholder.height() == 0)
+                return;
+
+            plot.resize();
+            plot.setupGrid();
+            plot.draw();
+        }
+
+        function bindEvents(plot, eventHolder) {
+            plot.getPlaceholder().resize(onResize);
+        }
+
+        function shutdown(plot, eventHolder) {
+            plot.getPlaceholder().unbind("resize", onResize);
+        }
+
+        plot.hooks.bindEvents.push(bindEvents);
+        plot.hooks.shutdown.push(shutdown);
+    }
+
+    $.plot.plugins.push({
+        init: init,
+        options: options,
+        name: 'resize',
+        version: '1.0'
+    });
+})(jQuery);
+
+
+/***/ }),
+
+/***/ "./node_modules/react-flot/flot/jquery.flot.min.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/react-flot/flot/jquery.flot.min.js ***!
+  \*********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+/* Javascript plotting library for jQuery, version 0.8.3.
+
+Copyright (c) 2007-2014 IOLA and Ole Laursen.
+Licensed under the MIT license.
+
+*/
+(function($){$.color={};$.color.make=function(r,g,b,a){var o={};o.r=r||0;o.g=g||0;o.b=b||0;o.a=a!=null?a:1;o.add=function(c,d){for(var i=0;i<c.length;++i)o[c.charAt(i)]+=d;return o.normalize()};o.scale=function(c,f){for(var i=0;i<c.length;++i)o[c.charAt(i)]*=f;return o.normalize()};o.toString=function(){if(o.a>=1){return"rgb("+[o.r,o.g,o.b].join(",")+")"}else{return"rgba("+[o.r,o.g,o.b,o.a].join(",")+")"}};o.normalize=function(){function clamp(min,value,max){return value<min?min:value>max?max:value}o.r=clamp(0,parseInt(o.r),255);o.g=clamp(0,parseInt(o.g),255);o.b=clamp(0,parseInt(o.b),255);o.a=clamp(0,o.a,1);return o};o.clone=function(){return $.color.make(o.r,o.b,o.g,o.a)};return o.normalize()};$.color.extract=function(elem,css){var c;do{c=elem.css(css).toLowerCase();if(c!=""&&c!="transparent")break;elem=elem.parent()}while(elem.length&&!$.nodeName(elem.get(0),"body"));if(c=="rgba(0, 0, 0, 0)")c="transparent";return $.color.parse(c)};$.color.parse=function(str){var res,m=$.color.make;if(res=/rgb\(\s*([0-9]{1,3})\s*,\s*([0-9]{1,3})\s*,\s*([0-9]{1,3})\s*\)/.exec(str))return m(parseInt(res[1],10),parseInt(res[2],10),parseInt(res[3],10));if(res=/rgba\(\s*([0-9]{1,3})\s*,\s*([0-9]{1,3})\s*,\s*([0-9]{1,3})\s*,\s*([0-9]+(?:\.[0-9]+)?)\s*\)/.exec(str))return m(parseInt(res[1],10),parseInt(res[2],10),parseInt(res[3],10),parseFloat(res[4]));if(res=/rgb\(\s*([0-9]+(?:\.[0-9]+)?)\%\s*,\s*([0-9]+(?:\.[0-9]+)?)\%\s*,\s*([0-9]+(?:\.[0-9]+)?)\%\s*\)/.exec(str))return m(parseFloat(res[1])*2.55,parseFloat(res[2])*2.55,parseFloat(res[3])*2.55);if(res=/rgba\(\s*([0-9]+(?:\.[0-9]+)?)\%\s*,\s*([0-9]+(?:\.[0-9]+)?)\%\s*,\s*([0-9]+(?:\.[0-9]+)?)\%\s*,\s*([0-9]+(?:\.[0-9]+)?)\s*\)/.exec(str))return m(parseFloat(res[1])*2.55,parseFloat(res[2])*2.55,parseFloat(res[3])*2.55,parseFloat(res[4]));if(res=/#([a-fA-F0-9]{2})([a-fA-F0-9]{2})([a-fA-F0-9]{2})/.exec(str))return m(parseInt(res[1],16),parseInt(res[2],16),parseInt(res[3],16));if(res=/#([a-fA-F0-9])([a-fA-F0-9])([a-fA-F0-9])/.exec(str))return m(parseInt(res[1]+res[1],16),parseInt(res[2]+res[2],16),parseInt(res[3]+res[3],16));var name=$.trim(str).toLowerCase();if(name=="transparent")return m(255,255,255,0);else{res=lookupColors[name]||[0,0,0];return m(res[0],res[1],res[2])}};var lookupColors={aqua:[0,255,255],azure:[240,255,255],beige:[245,245,220],black:[0,0,0],blue:[0,0,255],brown:[165,42,42],cyan:[0,255,255],darkblue:[0,0,139],darkcyan:[0,139,139],darkgrey:[169,169,169],darkgreen:[0,100,0],darkkhaki:[189,183,107],darkmagenta:[139,0,139],darkolivegreen:[85,107,47],darkorange:[255,140,0],darkorchid:[153,50,204],darkred:[139,0,0],darksalmon:[233,150,122],darkviolet:[148,0,211],fuchsia:[255,0,255],gold:[255,215,0],green:[0,128,0],indigo:[75,0,130],khaki:[240,230,140],lightblue:[173,216,230],lightcyan:[224,255,255],lightgreen:[144,238,144],lightgrey:[211,211,211],lightpink:[255,182,193],lightyellow:[255,255,224],lime:[0,255,0],magenta:[255,0,255],maroon:[128,0,0],navy:[0,0,128],olive:[128,128,0],orange:[255,165,0],pink:[255,192,203],purple:[128,0,128],violet:[128,0,128],red:[255,0,0],silver:[192,192,192],white:[255,255,255],yellow:[255,255,0]}})(jQuery);(function($){var hasOwnProperty=Object.prototype.hasOwnProperty;if(!$.fn.detach){$.fn.detach=function(){return this.each(function(){if(this.parentNode){this.parentNode.removeChild(this)}})}}function Canvas(cls,container){var element=container.children("."+cls)[0];if(element==null){element=document.createElement("canvas");element.className=cls;$(element).css({direction:"ltr",position:"absolute",left:0,top:0}).appendTo(container);if(!element.getContext){if(window.G_vmlCanvasManager){element=window.G_vmlCanvasManager.initElement(element)}else{throw new Error("Canvas is not available. If you're using IE with a fall-back such as Excanvas, then there's either a mistake in your conditional include, or the page has no DOCTYPE and is rendering in Quirks Mode.")}}}this.element=element;var context=this.context=element.getContext("2d");var devicePixelRatio=window.devicePixelRatio||1,backingStoreRatio=context.webkitBackingStorePixelRatio||context.mozBackingStorePixelRatio||context.msBackingStorePixelRatio||context.oBackingStorePixelRatio||context.backingStorePixelRatio||1;this.pixelRatio=devicePixelRatio/backingStoreRatio;this.resize(container.width(),container.height());this.textContainer=null;this.text={};this._textCache={}}Canvas.prototype.resize=function(width,height){if(width<=0||height<=0){throw new Error("Invalid dimensions for plot, width = "+width+", height = "+height)}var element=this.element,context=this.context,pixelRatio=this.pixelRatio;if(this.width!=width){element.width=width*pixelRatio;element.style.width=width+"px";this.width=width}if(this.height!=height){element.height=height*pixelRatio;element.style.height=height+"px";this.height=height}context.restore();context.save();context.scale(pixelRatio,pixelRatio)};Canvas.prototype.clear=function(){this.context.clearRect(0,0,this.width,this.height)};Canvas.prototype.render=function(){var cache=this._textCache;for(var layerKey in cache){if(hasOwnProperty.call(cache,layerKey)){var layer=this.getTextLayer(layerKey),layerCache=cache[layerKey];layer.hide();for(var styleKey in layerCache){if(hasOwnProperty.call(layerCache,styleKey)){var styleCache=layerCache[styleKey];for(var key in styleCache){if(hasOwnProperty.call(styleCache,key)){var positions=styleCache[key].positions;for(var i=0,position;position=positions[i];i++){if(position.active){if(!position.rendered){layer.append(position.element);position.rendered=true}}else{positions.splice(i--,1);if(position.rendered){position.element.detach()}}}if(positions.length==0){delete styleCache[key]}}}}}layer.show()}}};Canvas.prototype.getTextLayer=function(classes){var layer=this.text[classes];if(layer==null){if(this.textContainer==null){this.textContainer=$("<div class='flot-text'></div>").css({position:"absolute",top:0,left:0,bottom:0,right:0,"font-size":"smaller",color:"#545454"}).insertAfter(this.element)}layer=this.text[classes]=$("<div></div>").addClass(classes).css({position:"absolute",top:0,left:0,bottom:0,right:0}).appendTo(this.textContainer)}return layer};Canvas.prototype.getTextInfo=function(layer,text,font,angle,width){var textStyle,layerCache,styleCache,info;text=""+text;if(typeof font==="object"){textStyle=font.style+" "+font.variant+" "+font.weight+" "+font.size+"px/"+font.lineHeight+"px "+font.family}else{textStyle=font}layerCache=this._textCache[layer];if(layerCache==null){layerCache=this._textCache[layer]={}}styleCache=layerCache[textStyle];if(styleCache==null){styleCache=layerCache[textStyle]={}}info=styleCache[text];if(info==null){var element=$("<div></div>").html(text).css({position:"absolute","max-width":width,top:-9999}).appendTo(this.getTextLayer(layer));if(typeof font==="object"){element.css({font:textStyle,color:font.color})}else if(typeof font==="string"){element.addClass(font)}info=styleCache[text]={width:element.outerWidth(true),height:element.outerHeight(true),element:element,positions:[]};element.detach()}return info};Canvas.prototype.addText=function(layer,x,y,text,font,angle,width,halign,valign){var info=this.getTextInfo(layer,text,font,angle,width),positions=info.positions;if(halign=="center"){x-=info.width/2}else if(halign=="right"){x-=info.width}if(valign=="middle"){y-=info.height/2}else if(valign=="bottom"){y-=info.height}for(var i=0,position;position=positions[i];i++){if(position.x==x&&position.y==y){position.active=true;return}}position={active:true,rendered:false,element:positions.length?info.element.clone():info.element,x:x,y:y};positions.push(position);position.element.css({top:Math.round(y),left:Math.round(x),"text-align":halign})};Canvas.prototype.removeText=function(layer,x,y,text,font,angle){if(text==null){var layerCache=this._textCache[layer];if(layerCache!=null){for(var styleKey in layerCache){if(hasOwnProperty.call(layerCache,styleKey)){var styleCache=layerCache[styleKey];for(var key in styleCache){if(hasOwnProperty.call(styleCache,key)){var positions=styleCache[key].positions;for(var i=0,position;position=positions[i];i++){position.active=false}}}}}}}else{var positions=this.getTextInfo(layer,text,font,angle).positions;for(var i=0,position;position=positions[i];i++){if(position.x==x&&position.y==y){position.active=false}}}};function Plot(placeholder,data_,options_,plugins){var series=[],options={colors:["#edc240","#afd8f8","#cb4b4b","#4da74d","#9440ed"],legend:{show:true,noColumns:1,labelFormatter:null,labelBoxBorderColor:"#ccc",container:null,position:"ne",margin:5,backgroundColor:null,backgroundOpacity:.85,sorted:null},xaxis:{show:null,position:"bottom",mode:null,font:null,color:null,tickColor:null,transform:null,inverseTransform:null,min:null,max:null,autoscaleMargin:null,ticks:null,tickFormatter:null,labelWidth:null,labelHeight:null,reserveSpace:null,tickLength:null,alignTicksWithAxis:null,tickDecimals:null,tickSize:null,minTickSize:null},yaxis:{autoscaleMargin:.02,position:"left"},xaxes:[],yaxes:[],series:{points:{show:false,radius:3,lineWidth:2,fill:true,fillColor:"#ffffff",symbol:"circle"},lines:{lineWidth:2,fill:false,fillColor:null,steps:false},bars:{show:false,lineWidth:2,barWidth:1,fill:true,fillColor:null,align:"left",horizontal:false,zero:true},shadowSize:3,highlightColor:null},grid:{show:true,aboveData:false,color:"#545454",backgroundColor:null,borderColor:null,tickColor:null,margin:0,labelMargin:5,axisMargin:8,borderWidth:2,minBorderMargin:null,markings:null,markingsColor:"#f4f4f4",markingsLineWidth:2,clickable:false,hoverable:false,autoHighlight:true,mouseActiveRadius:10},interaction:{redrawOverlayInterval:1e3/60},hooks:{}},surface=null,overlay=null,eventHolder=null,ctx=null,octx=null,xaxes=[],yaxes=[],plotOffset={left:0,right:0,top:0,bottom:0},plotWidth=0,plotHeight=0,hooks={processOptions:[],processRawData:[],processDatapoints:[],processOffset:[],drawBackground:[],drawSeries:[],draw:[],bindEvents:[],drawOverlay:[],shutdown:[]},plot=this;plot.setData=setData;plot.setupGrid=setupGrid;plot.draw=draw;plot.getPlaceholder=function(){return placeholder};plot.getCanvas=function(){return surface.element};plot.getPlotOffset=function(){return plotOffset};plot.width=function(){return plotWidth};plot.height=function(){return plotHeight};plot.offset=function(){var o=eventHolder.offset();o.left+=plotOffset.left;o.top+=plotOffset.top;return o};plot.getData=function(){return series};plot.getAxes=function(){var res={},i;$.each(xaxes.concat(yaxes),function(_,axis){if(axis)res[axis.direction+(axis.n!=1?axis.n:"")+"axis"]=axis});return res};plot.getXAxes=function(){return xaxes};plot.getYAxes=function(){return yaxes};plot.c2p=canvasToAxisCoords;plot.p2c=axisToCanvasCoords;plot.getOptions=function(){return options};plot.highlight=highlight;plot.unhighlight=unhighlight;plot.triggerRedrawOverlay=triggerRedrawOverlay;plot.pointOffset=function(point){return{left:parseInt(xaxes[axisNumber(point,"x")-1].p2c(+point.x)+plotOffset.left,10),top:parseInt(yaxes[axisNumber(point,"y")-1].p2c(+point.y)+plotOffset.top,10)}};plot.shutdown=shutdown;plot.destroy=function(){shutdown();placeholder.removeData("plot").empty();series=[];options=null;surface=null;overlay=null;eventHolder=null;ctx=null;octx=null;xaxes=[];yaxes=[];hooks=null;highlights=[];plot=null};plot.resize=function(){var width=placeholder.width(),height=placeholder.height();surface.resize(width,height);overlay.resize(width,height)};plot.hooks=hooks;initPlugins(plot);parseOptions(options_);setupCanvases();setData(data_);setupGrid();draw();bindEvents();function executeHooks(hook,args){args=[plot].concat(args);for(var i=0;i<hook.length;++i)hook[i].apply(this,args)}function initPlugins(){var classes={Canvas:Canvas};for(var i=0;i<plugins.length;++i){var p=plugins[i];p.init(plot,classes);if(p.options)$.extend(true,options,p.options)}}function parseOptions(opts){$.extend(true,options,opts);if(opts&&opts.colors){options.colors=opts.colors}if(options.xaxis.color==null)options.xaxis.color=$.color.parse(options.grid.color).scale("a",.22).toString();if(options.yaxis.color==null)options.yaxis.color=$.color.parse(options.grid.color).scale("a",.22).toString();if(options.xaxis.tickColor==null)options.xaxis.tickColor=options.grid.tickColor||options.xaxis.color;if(options.yaxis.tickColor==null)options.yaxis.tickColor=options.grid.tickColor||options.yaxis.color;if(options.grid.borderColor==null)options.grid.borderColor=options.grid.color;if(options.grid.tickColor==null)options.grid.tickColor=$.color.parse(options.grid.color).scale("a",.22).toString();var i,axisOptions,axisCount,fontSize=placeholder.css("font-size"),fontSizeDefault=fontSize?+fontSize.replace("px",""):13,fontDefaults={style:placeholder.css("font-style"),size:Math.round(.8*fontSizeDefault),variant:placeholder.css("font-variant"),weight:placeholder.css("font-weight"),family:placeholder.css("font-family")};axisCount=options.xaxes.length||1;for(i=0;i<axisCount;++i){axisOptions=options.xaxes[i];if(axisOptions&&!axisOptions.tickColor){axisOptions.tickColor=axisOptions.color}axisOptions=$.extend(true,{},options.xaxis,axisOptions);options.xaxes[i]=axisOptions;if(axisOptions.font){axisOptions.font=$.extend({},fontDefaults,axisOptions.font);if(!axisOptions.font.color){axisOptions.font.color=axisOptions.color}if(!axisOptions.font.lineHeight){axisOptions.font.lineHeight=Math.round(axisOptions.font.size*1.15)}}}axisCount=options.yaxes.length||1;for(i=0;i<axisCount;++i){axisOptions=options.yaxes[i];if(axisOptions&&!axisOptions.tickColor){axisOptions.tickColor=axisOptions.color}axisOptions=$.extend(true,{},options.yaxis,axisOptions);options.yaxes[i]=axisOptions;if(axisOptions.font){axisOptions.font=$.extend({},fontDefaults,axisOptions.font);if(!axisOptions.font.color){axisOptions.font.color=axisOptions.color}if(!axisOptions.font.lineHeight){axisOptions.font.lineHeight=Math.round(axisOptions.font.size*1.15)}}}if(options.xaxis.noTicks&&options.xaxis.ticks==null)options.xaxis.ticks=options.xaxis.noTicks;if(options.yaxis.noTicks&&options.yaxis.ticks==null)options.yaxis.ticks=options.yaxis.noTicks;if(options.x2axis){options.xaxes[1]=$.extend(true,{},options.xaxis,options.x2axis);options.xaxes[1].position="top";if(options.x2axis.min==null){options.xaxes[1].min=null}if(options.x2axis.max==null){options.xaxes[1].max=null}}if(options.y2axis){options.yaxes[1]=$.extend(true,{},options.yaxis,options.y2axis);options.yaxes[1].position="right";if(options.y2axis.min==null){options.yaxes[1].min=null}if(options.y2axis.max==null){options.yaxes[1].max=null}}if(options.grid.coloredAreas)options.grid.markings=options.grid.coloredAreas;if(options.grid.coloredAreasColor)options.grid.markingsColor=options.grid.coloredAreasColor;if(options.lines)$.extend(true,options.series.lines,options.lines);if(options.points)$.extend(true,options.series.points,options.points);if(options.bars)$.extend(true,options.series.bars,options.bars);if(options.shadowSize!=null)options.series.shadowSize=options.shadowSize;if(options.highlightColor!=null)options.series.highlightColor=options.highlightColor;for(i=0;i<options.xaxes.length;++i)getOrCreateAxis(xaxes,i+1).options=options.xaxes[i];for(i=0;i<options.yaxes.length;++i)getOrCreateAxis(yaxes,i+1).options=options.yaxes[i];for(var n in hooks)if(options.hooks[n]&&options.hooks[n].length)hooks[n]=hooks[n].concat(options.hooks[n]);executeHooks(hooks.processOptions,[options])}function setData(d){series=parseData(d);fillInSeriesOptions();processData()}function parseData(d){var res=[];for(var i=0;i<d.length;++i){var s=$.extend(true,{},options.series);if(d[i].data!=null){s.data=d[i].data;delete d[i].data;$.extend(true,s,d[i]);d[i].data=s.data}else s.data=d[i];res.push(s)}return res}function axisNumber(obj,coord){var a=obj[coord+"axis"];if(typeof a=="object")a=a.n;if(typeof a!="number")a=1;return a}function allAxes(){return $.grep(xaxes.concat(yaxes),function(a){return a})}function canvasToAxisCoords(pos){var res={},i,axis;for(i=0;i<xaxes.length;++i){axis=xaxes[i];if(axis&&axis.used)res["x"+axis.n]=axis.c2p(pos.left)}for(i=0;i<yaxes.length;++i){axis=yaxes[i];if(axis&&axis.used)res["y"+axis.n]=axis.c2p(pos.top)}if(res.x1!==undefined)res.x=res.x1;if(res.y1!==undefined)res.y=res.y1;return res}function axisToCanvasCoords(pos){var res={},i,axis,key;for(i=0;i<xaxes.length;++i){axis=xaxes[i];if(axis&&axis.used){key="x"+axis.n;if(pos[key]==null&&axis.n==1)key="x";if(pos[key]!=null){res.left=axis.p2c(pos[key]);break}}}for(i=0;i<yaxes.length;++i){axis=yaxes[i];if(axis&&axis.used){key="y"+axis.n;if(pos[key]==null&&axis.n==1)key="y";if(pos[key]!=null){res.top=axis.p2c(pos[key]);break}}}return res}function getOrCreateAxis(axes,number){if(!axes[number-1])axes[number-1]={n:number,direction:axes==xaxes?"x":"y",options:$.extend(true,{},axes==xaxes?options.xaxis:options.yaxis)};return axes[number-1]}function fillInSeriesOptions(){var neededColors=series.length,maxIndex=-1,i;for(i=0;i<series.length;++i){var sc=series[i].color;if(sc!=null){neededColors--;if(typeof sc=="number"&&sc>maxIndex){maxIndex=sc}}}if(neededColors<=maxIndex){neededColors=maxIndex+1}var c,colors=[],colorPool=options.colors,colorPoolSize=colorPool.length,variation=0;for(i=0;i<neededColors;i++){c=$.color.parse(colorPool[i%colorPoolSize]||"#666");if(i%colorPoolSize==0&&i){if(variation>=0){if(variation<.5){variation=-variation-.2}else variation=0}else variation=-variation}colors[i]=c.scale("rgb",1+variation)}var colori=0,s;for(i=0;i<series.length;++i){s=series[i];if(s.color==null){s.color=colors[colori].toString();++colori}else if(typeof s.color=="number")s.color=colors[s.color].toString();if(s.lines.show==null){var v,show=true;for(v in s)if(s[v]&&s[v].show){show=false;break}if(show)s.lines.show=true}if(s.lines.zero==null){s.lines.zero=!!s.lines.fill}s.xaxis=getOrCreateAxis(xaxes,axisNumber(s,"x"));s.yaxis=getOrCreateAxis(yaxes,axisNumber(s,"y"))}}function processData(){var topSentry=Number.POSITIVE_INFINITY,bottomSentry=Number.NEGATIVE_INFINITY,fakeInfinity=Number.MAX_VALUE,i,j,k,m,length,s,points,ps,x,y,axis,val,f,p,data,format;function updateAxis(axis,min,max){if(min<axis.datamin&&min!=-fakeInfinity)axis.datamin=min;if(max>axis.datamax&&max!=fakeInfinity)axis.datamax=max}$.each(allAxes(),function(_,axis){axis.datamin=topSentry;axis.datamax=bottomSentry;axis.used=false});for(i=0;i<series.length;++i){s=series[i];s.datapoints={points:[]};executeHooks(hooks.processRawData,[s,s.data,s.datapoints])}for(i=0;i<series.length;++i){s=series[i];data=s.data;format=s.datapoints.format;if(!format){format=[];format.push({x:true,number:true,required:true});format.push({y:true,number:true,required:true});if(s.bars.show||s.lines.show&&s.lines.fill){var autoscale=!!(s.bars.show&&s.bars.zero||s.lines.show&&s.lines.zero);format.push({y:true,number:true,required:false,defaultValue:0,autoscale:autoscale});if(s.bars.horizontal){delete format[format.length-1].y;format[format.length-1].x=true}}s.datapoints.format=format}if(s.datapoints.pointsize!=null)continue;s.datapoints.pointsize=format.length;ps=s.datapoints.pointsize;points=s.datapoints.points;var insertSteps=s.lines.show&&s.lines.steps;s.xaxis.used=s.yaxis.used=true;for(j=k=0;j<data.length;++j,k+=ps){p=data[j];var nullify=p==null;if(!nullify){for(m=0;m<ps;++m){val=p[m];f=format[m];if(f){if(f.number&&val!=null){val=+val;if(isNaN(val))val=null;else if(val==Infinity)val=fakeInfinity;else if(val==-Infinity)val=-fakeInfinity}if(val==null){if(f.required)nullify=true;if(f.defaultValue!=null)val=f.defaultValue}}points[k+m]=val}}if(nullify){for(m=0;m<ps;++m){val=points[k+m];if(val!=null){f=format[m];if(f.autoscale!==false){if(f.x){updateAxis(s.xaxis,val,val)}if(f.y){updateAxis(s.yaxis,val,val)}}}points[k+m]=null}}else{if(insertSteps&&k>0&&points[k-ps]!=null&&points[k-ps]!=points[k]&&points[k-ps+1]!=points[k+1]){for(m=0;m<ps;++m)points[k+ps+m]=points[k+m];points[k+1]=points[k-ps+1];k+=ps}}}}for(i=0;i<series.length;++i){s=series[i];executeHooks(hooks.processDatapoints,[s,s.datapoints])}for(i=0;i<series.length;++i){s=series[i];points=s.datapoints.points;ps=s.datapoints.pointsize;format=s.datapoints.format;var xmin=topSentry,ymin=topSentry,xmax=bottomSentry,ymax=bottomSentry;for(j=0;j<points.length;j+=ps){if(points[j]==null)continue;for(m=0;m<ps;++m){val=points[j+m];f=format[m];if(!f||f.autoscale===false||val==fakeInfinity||val==-fakeInfinity)continue;if(f.x){if(val<xmin)xmin=val;if(val>xmax)xmax=val}if(f.y){if(val<ymin)ymin=val;if(val>ymax)ymax=val}}}if(s.bars.show){var delta;switch(s.bars.align){case"left":delta=0;break;case"right":delta=-s.bars.barWidth;break;default:delta=-s.bars.barWidth/2}if(s.bars.horizontal){ymin+=delta;ymax+=delta+s.bars.barWidth}else{xmin+=delta;xmax+=delta+s.bars.barWidth}}updateAxis(s.xaxis,xmin,xmax);updateAxis(s.yaxis,ymin,ymax)}$.each(allAxes(),function(_,axis){if(axis.datamin==topSentry)axis.datamin=null;if(axis.datamax==bottomSentry)axis.datamax=null})}function setupCanvases(){placeholder.css("padding",0).children().filter(function(){return!$(this).hasClass("flot-overlay")&&!$(this).hasClass("flot-base")}).remove();if(placeholder.css("position")=="static")placeholder.css("position","relative");surface=new Canvas("flot-base",placeholder);overlay=new Canvas("flot-overlay",placeholder);ctx=surface.context;octx=overlay.context;eventHolder=$(overlay.element).unbind();var existing=placeholder.data("plot");if(existing){existing.shutdown();overlay.clear()}placeholder.data("plot",plot)}function bindEvents(){if(options.grid.hoverable){eventHolder.mousemove(onMouseMove);eventHolder.bind("mouseleave",onMouseLeave)}if(options.grid.clickable)eventHolder.click(onClick);executeHooks(hooks.bindEvents,[eventHolder])}function shutdown(){if(redrawTimeout)clearTimeout(redrawTimeout);eventHolder.unbind("mousemove",onMouseMove);eventHolder.unbind("mouseleave",onMouseLeave);eventHolder.unbind("click",onClick);executeHooks(hooks.shutdown,[eventHolder])}function setTransformationHelpers(axis){function identity(x){return x}var s,m,t=axis.options.transform||identity,it=axis.options.inverseTransform;if(axis.direction=="x"){s=axis.scale=plotWidth/Math.abs(t(axis.max)-t(axis.min));m=Math.min(t(axis.max),t(axis.min))}else{s=axis.scale=plotHeight/Math.abs(t(axis.max)-t(axis.min));s=-s;m=Math.max(t(axis.max),t(axis.min))}if(t==identity)axis.p2c=function(p){return(p-m)*s};else axis.p2c=function(p){return(t(p)-m)*s};if(!it)axis.c2p=function(c){return m+c/s};else axis.c2p=function(c){return it(m+c/s)}}function measureTickLabels(axis){var opts=axis.options,ticks=axis.ticks||[],labelWidth=opts.labelWidth||0,labelHeight=opts.labelHeight||0,maxWidth=labelWidth||(axis.direction=="x"?Math.floor(surface.width/(ticks.length||1)):null),legacyStyles=axis.direction+"Axis "+axis.direction+axis.n+"Axis",layer="flot-"+axis.direction+"-axis flot-"+axis.direction+axis.n+"-axis "+legacyStyles,font=opts.font||"flot-tick-label tickLabel";for(var i=0;i<ticks.length;++i){var t=ticks[i];if(!t.label)continue;var info=surface.getTextInfo(layer,t.label,font,null,maxWidth);labelWidth=Math.max(labelWidth,info.width);labelHeight=Math.max(labelHeight,info.height)}axis.labelWidth=opts.labelWidth||labelWidth;axis.labelHeight=opts.labelHeight||labelHeight}function allocateAxisBoxFirstPhase(axis){var lw=axis.labelWidth,lh=axis.labelHeight,pos=axis.options.position,isXAxis=axis.direction==="x",tickLength=axis.options.tickLength,axisMargin=options.grid.axisMargin,padding=options.grid.labelMargin,innermost=true,outermost=true,first=true,found=false;$.each(isXAxis?xaxes:yaxes,function(i,a){if(a&&(a.show||a.reserveSpace)){if(a===axis){found=true}else if(a.options.position===pos){if(found){outermost=false}else{innermost=false}}if(!found){first=false}}});if(outermost){axisMargin=0}if(tickLength==null){tickLength=first?"full":5}if(!isNaN(+tickLength))padding+=+tickLength;if(isXAxis){lh+=padding;if(pos=="bottom"){plotOffset.bottom+=lh+axisMargin;axis.box={top:surface.height-plotOffset.bottom,height:lh}}else{axis.box={top:plotOffset.top+axisMargin,height:lh};plotOffset.top+=lh+axisMargin}}else{lw+=padding;if(pos=="left"){axis.box={left:plotOffset.left+axisMargin,width:lw};plotOffset.left+=lw+axisMargin}else{plotOffset.right+=lw+axisMargin;axis.box={left:surface.width-plotOffset.right,width:lw}}}axis.position=pos;axis.tickLength=tickLength;axis.box.padding=padding;axis.innermost=innermost}function allocateAxisBoxSecondPhase(axis){if(axis.direction=="x"){axis.box.left=plotOffset.left-axis.labelWidth/2;axis.box.width=surface.width-plotOffset.left-plotOffset.right+axis.labelWidth}else{axis.box.top=plotOffset.top-axis.labelHeight/2;axis.box.height=surface.height-plotOffset.bottom-plotOffset.top+axis.labelHeight}}function adjustLayoutForThingsStickingOut(){var minMargin=options.grid.minBorderMargin,axis,i;if(minMargin==null){minMargin=0;for(i=0;i<series.length;++i)minMargin=Math.max(minMargin,2*(series[i].points.radius+series[i].points.lineWidth/2))}var margins={left:minMargin,right:minMargin,top:minMargin,bottom:minMargin};$.each(allAxes(),function(_,axis){if(axis.reserveSpace&&axis.ticks&&axis.ticks.length){if(axis.direction==="x"){margins.left=Math.max(margins.left,axis.labelWidth/2);margins.right=Math.max(margins.right,axis.labelWidth/2)}else{margins.bottom=Math.max(margins.bottom,axis.labelHeight/2);margins.top=Math.max(margins.top,axis.labelHeight/2)}}});plotOffset.left=Math.ceil(Math.max(margins.left,plotOffset.left));plotOffset.right=Math.ceil(Math.max(margins.right,plotOffset.right));plotOffset.top=Math.ceil(Math.max(margins.top,plotOffset.top));plotOffset.bottom=Math.ceil(Math.max(margins.bottom,plotOffset.bottom))}function setupGrid(){var i,axes=allAxes(),showGrid=options.grid.show;for(var a in plotOffset){var margin=options.grid.margin||0;plotOffset[a]=typeof margin=="number"?margin:margin[a]||0}executeHooks(hooks.processOffset,[plotOffset]);for(var a in plotOffset){if(typeof options.grid.borderWidth=="object"){plotOffset[a]+=showGrid?options.grid.borderWidth[a]:0}else{plotOffset[a]+=showGrid?options.grid.borderWidth:0}}$.each(axes,function(_,axis){var axisOpts=axis.options;axis.show=axisOpts.show==null?axis.used:axisOpts.show;axis.reserveSpace=axisOpts.reserveSpace==null?axis.show:axisOpts.reserveSpace;setRange(axis)});if(showGrid){var allocatedAxes=$.grep(axes,function(axis){return axis.show||axis.reserveSpace});$.each(allocatedAxes,function(_,axis){setupTickGeneration(axis);setTicks(axis);snapRangeToTicks(axis,axis.ticks);measureTickLabels(axis)});for(i=allocatedAxes.length-1;i>=0;--i)allocateAxisBoxFirstPhase(allocatedAxes[i]);adjustLayoutForThingsStickingOut();$.each(allocatedAxes,function(_,axis){allocateAxisBoxSecondPhase(axis)})}plotWidth=surface.width-plotOffset.left-plotOffset.right;plotHeight=surface.height-plotOffset.bottom-plotOffset.top;$.each(axes,function(_,axis){setTransformationHelpers(axis)});if(showGrid){drawAxisLabels()}insertLegend()}function setRange(axis){var opts=axis.options,min=+(opts.min!=null?opts.min:axis.datamin),max=+(opts.max!=null?opts.max:axis.datamax),delta=max-min;if(delta==0){var widen=max==0?1:.01;if(opts.min==null)min-=widen;if(opts.max==null||opts.min!=null)max+=widen}else{var margin=opts.autoscaleMargin;if(margin!=null){if(opts.min==null){min-=delta*margin;if(min<0&&axis.datamin!=null&&axis.datamin>=0)min=0}if(opts.max==null){max+=delta*margin;if(max>0&&axis.datamax!=null&&axis.datamax<=0)max=0}}}axis.min=min;axis.max=max}function setupTickGeneration(axis){var opts=axis.options;var noTicks;if(typeof opts.ticks=="number"&&opts.ticks>0)noTicks=opts.ticks;else noTicks=.3*Math.sqrt(axis.direction=="x"?surface.width:surface.height);var delta=(axis.max-axis.min)/noTicks,dec=-Math.floor(Math.log(delta)/Math.LN10),maxDec=opts.tickDecimals;if(maxDec!=null&&dec>maxDec){dec=maxDec}var magn=Math.pow(10,-dec),norm=delta/magn,size;if(norm<1.5){size=1}else if(norm<3){size=2;if(norm>2.25&&(maxDec==null||dec+1<=maxDec)){size=2.5;++dec}}else if(norm<7.5){size=5}else{size=10}size*=magn;if(opts.minTickSize!=null&&size<opts.minTickSize){size=opts.minTickSize}axis.delta=delta;axis.tickDecimals=Math.max(0,maxDec!=null?maxDec:dec);axis.tickSize=opts.tickSize||size;if(opts.mode=="time"&&!axis.tickGenerator){throw new Error("Time mode requires the flot.time plugin.")}if(!axis.tickGenerator){axis.tickGenerator=function(axis){var ticks=[],start=floorInBase(axis.min,axis.tickSize),i=0,v=Number.NaN,prev;do{prev=v;v=start+i*axis.tickSize;ticks.push(v);++i}while(v<axis.max&&v!=prev);return ticks};axis.tickFormatter=function(value,axis){var factor=axis.tickDecimals?Math.pow(10,axis.tickDecimals):1;var formatted=""+Math.round(value*factor)/factor;if(axis.tickDecimals!=null){var decimal=formatted.indexOf(".");var precision=decimal==-1?0:formatted.length-decimal-1;if(precision<axis.tickDecimals){return(precision?formatted:formatted+".")+(""+factor).substr(1,axis.tickDecimals-precision)}}return formatted}}if($.isFunction(opts.tickFormatter))axis.tickFormatter=function(v,axis){return""+opts.tickFormatter(v,axis)};if(opts.alignTicksWithAxis!=null){var otherAxis=(axis.direction=="x"?xaxes:yaxes)[opts.alignTicksWithAxis-1];if(otherAxis&&otherAxis.used&&otherAxis!=axis){var niceTicks=axis.tickGenerator(axis);if(niceTicks.length>0){if(opts.min==null)axis.min=Math.min(axis.min,niceTicks[0]);if(opts.max==null&&niceTicks.length>1)axis.max=Math.max(axis.max,niceTicks[niceTicks.length-1])}axis.tickGenerator=function(axis){var ticks=[],v,i;for(i=0;i<otherAxis.ticks.length;++i){v=(otherAxis.ticks[i].v-otherAxis.min)/(otherAxis.max-otherAxis.min);v=axis.min+v*(axis.max-axis.min);ticks.push(v)}return ticks};if(!axis.mode&&opts.tickDecimals==null){var extraDec=Math.max(0,-Math.floor(Math.log(axis.delta)/Math.LN10)+1),ts=axis.tickGenerator(axis);if(!(ts.length>1&&/\..*0$/.test((ts[1]-ts[0]).toFixed(extraDec))))axis.tickDecimals=extraDec}}}}function setTicks(axis){var oticks=axis.options.ticks,ticks=[];if(oticks==null||typeof oticks=="number"&&oticks>0)ticks=axis.tickGenerator(axis);else if(oticks){if($.isFunction(oticks))ticks=oticks(axis);else ticks=oticks}var i,v;axis.ticks=[];for(i=0;i<ticks.length;++i){var label=null;var t=ticks[i];if(typeof t=="object"){v=+t[0];if(t.length>1)label=t[1]}else v=+t;if(label==null)label=axis.tickFormatter(v,axis);if(!isNaN(v))axis.ticks.push({v:v,label:label})}}function snapRangeToTicks(axis,ticks){if(axis.options.autoscaleMargin&&ticks.length>0){if(axis.options.min==null)axis.min=Math.min(axis.min,ticks[0].v);if(axis.options.max==null&&ticks.length>1)axis.max=Math.max(axis.max,ticks[ticks.length-1].v)}}function draw(){surface.clear();executeHooks(hooks.drawBackground,[ctx]);var grid=options.grid;if(grid.show&&grid.backgroundColor)drawBackground();if(grid.show&&!grid.aboveData){drawGrid()}for(var i=0;i<series.length;++i){executeHooks(hooks.drawSeries,[ctx,series[i]]);drawSeries(series[i])}executeHooks(hooks.draw,[ctx]);if(grid.show&&grid.aboveData){drawGrid()}surface.render();triggerRedrawOverlay()}function extractRange(ranges,coord){var axis,from,to,key,axes=allAxes();for(var i=0;i<axes.length;++i){axis=axes[i];if(axis.direction==coord){key=coord+axis.n+"axis";if(!ranges[key]&&axis.n==1)key=coord+"axis";if(ranges[key]){from=ranges[key].from;to=ranges[key].to;break}}}if(!ranges[key]){axis=coord=="x"?xaxes[0]:yaxes[0];from=ranges[coord+"1"];to=ranges[coord+"2"]}if(from!=null&&to!=null&&from>to){var tmp=from;from=to;to=tmp}return{from:from,to:to,axis:axis}}function drawBackground(){ctx.save();ctx.translate(plotOffset.left,plotOffset.top);ctx.fillStyle=getColorOrGradient(options.grid.backgroundColor,plotHeight,0,"rgba(255, 255, 255, 0)");ctx.fillRect(0,0,plotWidth,plotHeight);ctx.restore()}function drawGrid(){var i,axes,bw,bc;ctx.save();ctx.translate(plotOffset.left,plotOffset.top);var markings=options.grid.markings;if(markings){if($.isFunction(markings)){axes=plot.getAxes();axes.xmin=axes.xaxis.min;axes.xmax=axes.xaxis.max;axes.ymin=axes.yaxis.min;axes.ymax=axes.yaxis.max;markings=markings(axes)}for(i=0;i<markings.length;++i){var m=markings[i],xrange=extractRange(m,"x"),yrange=extractRange(m,"y");if(xrange.from==null)xrange.from=xrange.axis.min;if(xrange.to==null)xrange.to=xrange.axis.max;
+if(yrange.from==null)yrange.from=yrange.axis.min;if(yrange.to==null)yrange.to=yrange.axis.max;if(xrange.to<xrange.axis.min||xrange.from>xrange.axis.max||yrange.to<yrange.axis.min||yrange.from>yrange.axis.max)continue;xrange.from=Math.max(xrange.from,xrange.axis.min);xrange.to=Math.min(xrange.to,xrange.axis.max);yrange.from=Math.max(yrange.from,yrange.axis.min);yrange.to=Math.min(yrange.to,yrange.axis.max);var xequal=xrange.from===xrange.to,yequal=yrange.from===yrange.to;if(xequal&&yequal){continue}xrange.from=Math.floor(xrange.axis.p2c(xrange.from));xrange.to=Math.floor(xrange.axis.p2c(xrange.to));yrange.from=Math.floor(yrange.axis.p2c(yrange.from));yrange.to=Math.floor(yrange.axis.p2c(yrange.to));if(xequal||yequal){var lineWidth=m.lineWidth||options.grid.markingsLineWidth,subPixel=lineWidth%2?.5:0;ctx.beginPath();ctx.strokeStyle=m.color||options.grid.markingsColor;ctx.lineWidth=lineWidth;if(xequal){ctx.moveTo(xrange.to+subPixel,yrange.from);ctx.lineTo(xrange.to+subPixel,yrange.to)}else{ctx.moveTo(xrange.from,yrange.to+subPixel);ctx.lineTo(xrange.to,yrange.to+subPixel)}ctx.stroke()}else{ctx.fillStyle=m.color||options.grid.markingsColor;ctx.fillRect(xrange.from,yrange.to,xrange.to-xrange.from,yrange.from-yrange.to)}}}axes=allAxes();bw=options.grid.borderWidth;for(var j=0;j<axes.length;++j){var axis=axes[j],box=axis.box,t=axis.tickLength,x,y,xoff,yoff;if(!axis.show||axis.ticks.length==0)continue;ctx.lineWidth=1;if(axis.direction=="x"){x=0;if(t=="full")y=axis.position=="top"?0:plotHeight;else y=box.top-plotOffset.top+(axis.position=="top"?box.height:0)}else{y=0;if(t=="full")x=axis.position=="left"?0:plotWidth;else x=box.left-plotOffset.left+(axis.position=="left"?box.width:0)}if(!axis.innermost){ctx.strokeStyle=axis.options.color;ctx.beginPath();xoff=yoff=0;if(axis.direction=="x")xoff=plotWidth+1;else yoff=plotHeight+1;if(ctx.lineWidth==1){if(axis.direction=="x"){y=Math.floor(y)+.5}else{x=Math.floor(x)+.5}}ctx.moveTo(x,y);ctx.lineTo(x+xoff,y+yoff);ctx.stroke()}ctx.strokeStyle=axis.options.tickColor;ctx.beginPath();for(i=0;i<axis.ticks.length;++i){var v=axis.ticks[i].v;xoff=yoff=0;if(isNaN(v)||v<axis.min||v>axis.max||t=="full"&&(typeof bw=="object"&&bw[axis.position]>0||bw>0)&&(v==axis.min||v==axis.max))continue;if(axis.direction=="x"){x=axis.p2c(v);yoff=t=="full"?-plotHeight:t;if(axis.position=="top")yoff=-yoff}else{y=axis.p2c(v);xoff=t=="full"?-plotWidth:t;if(axis.position=="left")xoff=-xoff}if(ctx.lineWidth==1){if(axis.direction=="x")x=Math.floor(x)+.5;else y=Math.floor(y)+.5}ctx.moveTo(x,y);ctx.lineTo(x+xoff,y+yoff)}ctx.stroke()}if(bw){bc=options.grid.borderColor;if(typeof bw=="object"||typeof bc=="object"){if(typeof bw!=="object"){bw={top:bw,right:bw,bottom:bw,left:bw}}if(typeof bc!=="object"){bc={top:bc,right:bc,bottom:bc,left:bc}}if(bw.top>0){ctx.strokeStyle=bc.top;ctx.lineWidth=bw.top;ctx.beginPath();ctx.moveTo(0-bw.left,0-bw.top/2);ctx.lineTo(plotWidth,0-bw.top/2);ctx.stroke()}if(bw.right>0){ctx.strokeStyle=bc.right;ctx.lineWidth=bw.right;ctx.beginPath();ctx.moveTo(plotWidth+bw.right/2,0-bw.top);ctx.lineTo(plotWidth+bw.right/2,plotHeight);ctx.stroke()}if(bw.bottom>0){ctx.strokeStyle=bc.bottom;ctx.lineWidth=bw.bottom;ctx.beginPath();ctx.moveTo(plotWidth+bw.right,plotHeight+bw.bottom/2);ctx.lineTo(0,plotHeight+bw.bottom/2);ctx.stroke()}if(bw.left>0){ctx.strokeStyle=bc.left;ctx.lineWidth=bw.left;ctx.beginPath();ctx.moveTo(0-bw.left/2,plotHeight+bw.bottom);ctx.lineTo(0-bw.left/2,0);ctx.stroke()}}else{ctx.lineWidth=bw;ctx.strokeStyle=options.grid.borderColor;ctx.strokeRect(-bw/2,-bw/2,plotWidth+bw,plotHeight+bw)}}ctx.restore()}function drawAxisLabels(){$.each(allAxes(),function(_,axis){var box=axis.box,legacyStyles=axis.direction+"Axis "+axis.direction+axis.n+"Axis",layer="flot-"+axis.direction+"-axis flot-"+axis.direction+axis.n+"-axis "+legacyStyles,font=axis.options.font||"flot-tick-label tickLabel",tick,x,y,halign,valign;surface.removeText(layer);if(!axis.show||axis.ticks.length==0)return;for(var i=0;i<axis.ticks.length;++i){tick=axis.ticks[i];if(!tick.label||tick.v<axis.min||tick.v>axis.max)continue;if(axis.direction=="x"){halign="center";x=plotOffset.left+axis.p2c(tick.v);if(axis.position=="bottom"){y=box.top+box.padding}else{y=box.top+box.height-box.padding;valign="bottom"}}else{valign="middle";y=plotOffset.top+axis.p2c(tick.v);if(axis.position=="left"){x=box.left+box.width-box.padding;halign="right"}else{x=box.left+box.padding}}surface.addText(layer,x,y,tick.label,font,null,null,halign,valign)}})}function drawSeries(series){if(series.lines.show)drawSeriesLines(series);if(series.bars.show)drawSeriesBars(series);if(series.points.show)drawSeriesPoints(series)}function drawSeriesLines(series){function plotLine(datapoints,xoffset,yoffset,axisx,axisy){var points=datapoints.points,ps=datapoints.pointsize,prevx=null,prevy=null;ctx.beginPath();for(var i=ps;i<points.length;i+=ps){var x1=points[i-ps],y1=points[i-ps+1],x2=points[i],y2=points[i+1];if(x1==null||x2==null)continue;if(y1<=y2&&y1<axisy.min){if(y2<axisy.min)continue;x1=(axisy.min-y1)/(y2-y1)*(x2-x1)+x1;y1=axisy.min}else if(y2<=y1&&y2<axisy.min){if(y1<axisy.min)continue;x2=(axisy.min-y1)/(y2-y1)*(x2-x1)+x1;y2=axisy.min}if(y1>=y2&&y1>axisy.max){if(y2>axisy.max)continue;x1=(axisy.max-y1)/(y2-y1)*(x2-x1)+x1;y1=axisy.max}else if(y2>=y1&&y2>axisy.max){if(y1>axisy.max)continue;x2=(axisy.max-y1)/(y2-y1)*(x2-x1)+x1;y2=axisy.max}if(x1<=x2&&x1<axisx.min){if(x2<axisx.min)continue;y1=(axisx.min-x1)/(x2-x1)*(y2-y1)+y1;x1=axisx.min}else if(x2<=x1&&x2<axisx.min){if(x1<axisx.min)continue;y2=(axisx.min-x1)/(x2-x1)*(y2-y1)+y1;x2=axisx.min}if(x1>=x2&&x1>axisx.max){if(x2>axisx.max)continue;y1=(axisx.max-x1)/(x2-x1)*(y2-y1)+y1;x1=axisx.max}else if(x2>=x1&&x2>axisx.max){if(x1>axisx.max)continue;y2=(axisx.max-x1)/(x2-x1)*(y2-y1)+y1;x2=axisx.max}if(x1!=prevx||y1!=prevy)ctx.moveTo(axisx.p2c(x1)+xoffset,axisy.p2c(y1)+yoffset);prevx=x2;prevy=y2;ctx.lineTo(axisx.p2c(x2)+xoffset,axisy.p2c(y2)+yoffset)}ctx.stroke()}function plotLineArea(datapoints,axisx,axisy){var points=datapoints.points,ps=datapoints.pointsize,bottom=Math.min(Math.max(0,axisy.min),axisy.max),i=0,top,areaOpen=false,ypos=1,segmentStart=0,segmentEnd=0;while(true){if(ps>0&&i>points.length+ps)break;i+=ps;var x1=points[i-ps],y1=points[i-ps+ypos],x2=points[i],y2=points[i+ypos];if(areaOpen){if(ps>0&&x1!=null&&x2==null){segmentEnd=i;ps=-ps;ypos=2;continue}if(ps<0&&i==segmentStart+ps){ctx.fill();areaOpen=false;ps=-ps;ypos=1;i=segmentStart=segmentEnd+ps;continue}}if(x1==null||x2==null)continue;if(x1<=x2&&x1<axisx.min){if(x2<axisx.min)continue;y1=(axisx.min-x1)/(x2-x1)*(y2-y1)+y1;x1=axisx.min}else if(x2<=x1&&x2<axisx.min){if(x1<axisx.min)continue;y2=(axisx.min-x1)/(x2-x1)*(y2-y1)+y1;x2=axisx.min}if(x1>=x2&&x1>axisx.max){if(x2>axisx.max)continue;y1=(axisx.max-x1)/(x2-x1)*(y2-y1)+y1;x1=axisx.max}else if(x2>=x1&&x2>axisx.max){if(x1>axisx.max)continue;y2=(axisx.max-x1)/(x2-x1)*(y2-y1)+y1;x2=axisx.max}if(!areaOpen){ctx.beginPath();ctx.moveTo(axisx.p2c(x1),axisy.p2c(bottom));areaOpen=true}if(y1>=axisy.max&&y2>=axisy.max){ctx.lineTo(axisx.p2c(x1),axisy.p2c(axisy.max));ctx.lineTo(axisx.p2c(x2),axisy.p2c(axisy.max));continue}else if(y1<=axisy.min&&y2<=axisy.min){ctx.lineTo(axisx.p2c(x1),axisy.p2c(axisy.min));ctx.lineTo(axisx.p2c(x2),axisy.p2c(axisy.min));continue}var x1old=x1,x2old=x2;if(y1<=y2&&y1<axisy.min&&y2>=axisy.min){x1=(axisy.min-y1)/(y2-y1)*(x2-x1)+x1;y1=axisy.min}else if(y2<=y1&&y2<axisy.min&&y1>=axisy.min){x2=(axisy.min-y1)/(y2-y1)*(x2-x1)+x1;y2=axisy.min}if(y1>=y2&&y1>axisy.max&&y2<=axisy.max){x1=(axisy.max-y1)/(y2-y1)*(x2-x1)+x1;y1=axisy.max}else if(y2>=y1&&y2>axisy.max&&y1<=axisy.max){x2=(axisy.max-y1)/(y2-y1)*(x2-x1)+x1;y2=axisy.max}if(x1!=x1old){ctx.lineTo(axisx.p2c(x1old),axisy.p2c(y1))}ctx.lineTo(axisx.p2c(x1),axisy.p2c(y1));ctx.lineTo(axisx.p2c(x2),axisy.p2c(y2));if(x2!=x2old){ctx.lineTo(axisx.p2c(x2),axisy.p2c(y2));ctx.lineTo(axisx.p2c(x2old),axisy.p2c(y2))}}}ctx.save();ctx.translate(plotOffset.left,plotOffset.top);ctx.lineJoin="round";var lw=series.lines.lineWidth,sw=series.shadowSize;if(lw>0&&sw>0){ctx.lineWidth=sw;ctx.strokeStyle="rgba(0,0,0,0.1)";var angle=Math.PI/18;plotLine(series.datapoints,Math.sin(angle)*(lw/2+sw/2),Math.cos(angle)*(lw/2+sw/2),series.xaxis,series.yaxis);ctx.lineWidth=sw/2;plotLine(series.datapoints,Math.sin(angle)*(lw/2+sw/4),Math.cos(angle)*(lw/2+sw/4),series.xaxis,series.yaxis)}ctx.lineWidth=lw;ctx.strokeStyle=series.color;var fillStyle=getFillStyle(series.lines,series.color,0,plotHeight);if(fillStyle){ctx.fillStyle=fillStyle;plotLineArea(series.datapoints,series.xaxis,series.yaxis)}if(lw>0)plotLine(series.datapoints,0,0,series.xaxis,series.yaxis);ctx.restore()}function drawSeriesPoints(series){function plotPoints(datapoints,radius,fillStyle,offset,shadow,axisx,axisy,symbol){var points=datapoints.points,ps=datapoints.pointsize;for(var i=0;i<points.length;i+=ps){var x=points[i],y=points[i+1];if(x==null||x<axisx.min||x>axisx.max||y<axisy.min||y>axisy.max)continue;ctx.beginPath();x=axisx.p2c(x);y=axisy.p2c(y)+offset;if(symbol=="circle")ctx.arc(x,y,radius,0,shadow?Math.PI:Math.PI*2,false);else symbol(ctx,x,y,radius,shadow);ctx.closePath();if(fillStyle){ctx.fillStyle=fillStyle;ctx.fill()}ctx.stroke()}}ctx.save();ctx.translate(plotOffset.left,plotOffset.top);var lw=series.points.lineWidth,sw=series.shadowSize,radius=series.points.radius,symbol=series.points.symbol;if(lw==0)lw=1e-4;if(lw>0&&sw>0){var w=sw/2;ctx.lineWidth=w;ctx.strokeStyle="rgba(0,0,0,0.1)";plotPoints(series.datapoints,radius,null,w+w/2,true,series.xaxis,series.yaxis,symbol);ctx.strokeStyle="rgba(0,0,0,0.2)";plotPoints(series.datapoints,radius,null,w/2,true,series.xaxis,series.yaxis,symbol)}ctx.lineWidth=lw;ctx.strokeStyle=series.color;plotPoints(series.datapoints,radius,getFillStyle(series.points,series.color),0,false,series.xaxis,series.yaxis,symbol);ctx.restore()}function drawBar(x,y,b,barLeft,barRight,fillStyleCallback,axisx,axisy,c,horizontal,lineWidth){var left,right,bottom,top,drawLeft,drawRight,drawTop,drawBottom,tmp;if(horizontal){drawBottom=drawRight=drawTop=true;drawLeft=false;left=b;right=x;top=y+barLeft;bottom=y+barRight;if(right<left){tmp=right;right=left;left=tmp;drawLeft=true;drawRight=false}}else{drawLeft=drawRight=drawTop=true;drawBottom=false;left=x+barLeft;right=x+barRight;bottom=b;top=y;if(top<bottom){tmp=top;top=bottom;bottom=tmp;drawBottom=true;drawTop=false}}if(right<axisx.min||left>axisx.max||top<axisy.min||bottom>axisy.max)return;if(left<axisx.min){left=axisx.min;drawLeft=false}if(right>axisx.max){right=axisx.max;drawRight=false}if(bottom<axisy.min){bottom=axisy.min;drawBottom=false}if(top>axisy.max){top=axisy.max;drawTop=false}left=axisx.p2c(left);bottom=axisy.p2c(bottom);right=axisx.p2c(right);top=axisy.p2c(top);if(fillStyleCallback){c.fillStyle=fillStyleCallback(bottom,top);c.fillRect(left,top,right-left,bottom-top)}if(lineWidth>0&&(drawLeft||drawRight||drawTop||drawBottom)){c.beginPath();c.moveTo(left,bottom);if(drawLeft)c.lineTo(left,top);else c.moveTo(left,top);if(drawTop)c.lineTo(right,top);else c.moveTo(right,top);if(drawRight)c.lineTo(right,bottom);else c.moveTo(right,bottom);if(drawBottom)c.lineTo(left,bottom);else c.moveTo(left,bottom);c.stroke()}}function drawSeriesBars(series){function plotBars(datapoints,barLeft,barRight,fillStyleCallback,axisx,axisy){var points=datapoints.points,ps=datapoints.pointsize;for(var i=0;i<points.length;i+=ps){if(points[i]==null)continue;drawBar(points[i],points[i+1],points[i+2],barLeft,barRight,fillStyleCallback,axisx,axisy,ctx,series.bars.horizontal,series.bars.lineWidth)}}ctx.save();ctx.translate(plotOffset.left,plotOffset.top);ctx.lineWidth=series.bars.lineWidth;ctx.strokeStyle=series.color;var barLeft;switch(series.bars.align){case"left":barLeft=0;break;case"right":barLeft=-series.bars.barWidth;break;default:barLeft=-series.bars.barWidth/2}var fillStyleCallback=series.bars.fill?function(bottom,top){return getFillStyle(series.bars,series.color,bottom,top)}:null;plotBars(series.datapoints,barLeft,barLeft+series.bars.barWidth,fillStyleCallback,series.xaxis,series.yaxis);ctx.restore()}function getFillStyle(filloptions,seriesColor,bottom,top){var fill=filloptions.fill;if(!fill)return null;if(filloptions.fillColor)return getColorOrGradient(filloptions.fillColor,bottom,top,seriesColor);var c=$.color.parse(seriesColor);c.a=typeof fill=="number"?fill:.4;c.normalize();return c.toString()}function insertLegend(){if(options.legend.container!=null){$(options.legend.container).html("")}else{placeholder.find(".legend").remove()}if(!options.legend.show){return}var fragments=[],entries=[],rowStarted=false,lf=options.legend.labelFormatter,s,label;for(var i=0;i<series.length;++i){s=series[i];if(s.label){label=lf?lf(s.label,s):s.label;if(label){entries.push({label:label,color:s.color})}}}if(options.legend.sorted){if($.isFunction(options.legend.sorted)){entries.sort(options.legend.sorted)}else if(options.legend.sorted=="reverse"){entries.reverse()}else{var ascending=options.legend.sorted!="descending";entries.sort(function(a,b){return a.label==b.label?0:a.label<b.label!=ascending?1:-1})}}for(var i=0;i<entries.length;++i){var entry=entries[i];if(i%options.legend.noColumns==0){if(rowStarted)fragments.push("</tr>");fragments.push("<tr>");rowStarted=true}fragments.push('<td class="legendColorBox"><div style="border:1px solid '+options.legend.labelBoxBorderColor+';padding:1px"><div style="width:4px;height:0;border:5px solid '+entry.color+';overflow:hidden"></div></div></td>'+'<td class="legendLabel">'+entry.label+"</td>")}if(rowStarted)fragments.push("</tr>");if(fragments.length==0)return;var table='<table style="font-size:smaller;color:'+options.grid.color+'">'+fragments.join("")+"</table>";if(options.legend.container!=null)$(options.legend.container).html(table);else{var pos="",p=options.legend.position,m=options.legend.margin;if(m[0]==null)m=[m,m];if(p.charAt(0)=="n")pos+="top:"+(m[1]+plotOffset.top)+"px;";else if(p.charAt(0)=="s")pos+="bottom:"+(m[1]+plotOffset.bottom)+"px;";if(p.charAt(1)=="e")pos+="right:"+(m[0]+plotOffset.right)+"px;";else if(p.charAt(1)=="w")pos+="left:"+(m[0]+plotOffset.left)+"px;";var legend=$('<div class="legend">'+table.replace('style="','style="position:absolute;'+pos+";")+"</div>").appendTo(placeholder);if(options.legend.backgroundOpacity!=0){var c=options.legend.backgroundColor;if(c==null){c=options.grid.backgroundColor;if(c&&typeof c=="string")c=$.color.parse(c);else c=$.color.extract(legend,"background-color");c.a=1;c=c.toString()}var div=legend.children();$('<div style="position:absolute;width:'+div.width()+"px;height:"+div.height()+"px;"+pos+"background-color:"+c+';"> </div>').prependTo(legend).css("opacity",options.legend.backgroundOpacity)}}}var highlights=[],redrawTimeout=null;function findNearbyItem(mouseX,mouseY,seriesFilter){var maxDistance=options.grid.mouseActiveRadius,smallestDistance=maxDistance*maxDistance+1,item=null,foundPoint=false,i,j,ps;for(i=series.length-1;i>=0;--i){if(!seriesFilter(series[i]))continue;var s=series[i],axisx=s.xaxis,axisy=s.yaxis,points=s.datapoints.points,mx=axisx.c2p(mouseX),my=axisy.c2p(mouseY),maxx=maxDistance/axisx.scale,maxy=maxDistance/axisy.scale;ps=s.datapoints.pointsize;if(axisx.options.inverseTransform)maxx=Number.MAX_VALUE;if(axisy.options.inverseTransform)maxy=Number.MAX_VALUE;if(s.lines.show||s.points.show){for(j=0;j<points.length;j+=ps){var x=points[j],y=points[j+1];if(x==null)continue;if(x-mx>maxx||x-mx<-maxx||y-my>maxy||y-my<-maxy)continue;var dx=Math.abs(axisx.p2c(x)-mouseX),dy=Math.abs(axisy.p2c(y)-mouseY),dist=dx*dx+dy*dy;if(dist<smallestDistance){smallestDistance=dist;item=[i,j/ps]}}}if(s.bars.show&&!item){var barLeft,barRight;switch(s.bars.align){case"left":barLeft=0;break;case"right":barLeft=-s.bars.barWidth;break;default:barLeft=-s.bars.barWidth/2}barRight=barLeft+s.bars.barWidth;for(j=0;j<points.length;j+=ps){var x=points[j],y=points[j+1],b=points[j+2];if(x==null)continue;if(series[i].bars.horizontal?mx<=Math.max(b,x)&&mx>=Math.min(b,x)&&my>=y+barLeft&&my<=y+barRight:mx>=x+barLeft&&mx<=x+barRight&&my>=Math.min(b,y)&&my<=Math.max(b,y))item=[i,j/ps]}}}if(item){i=item[0];j=item[1];ps=series[i].datapoints.pointsize;return{datapoint:series[i].datapoints.points.slice(j*ps,(j+1)*ps),dataIndex:j,series:series[i],seriesIndex:i}}return null}function onMouseMove(e){if(options.grid.hoverable)triggerClickHoverEvent("plothover",e,function(s){return s["hoverable"]!=false})}function onMouseLeave(e){if(options.grid.hoverable)triggerClickHoverEvent("plothover",e,function(s){return false})}function onClick(e){triggerClickHoverEvent("plotclick",e,function(s){return s["clickable"]!=false})}function triggerClickHoverEvent(eventname,event,seriesFilter){var offset=eventHolder.offset(),canvasX=event.pageX-offset.left-plotOffset.left,canvasY=event.pageY-offset.top-plotOffset.top,pos=canvasToAxisCoords({left:canvasX,top:canvasY});pos.pageX=event.pageX;pos.pageY=event.pageY;var item=findNearbyItem(canvasX,canvasY,seriesFilter);if(item){item.pageX=parseInt(item.series.xaxis.p2c(item.datapoint[0])+offset.left+plotOffset.left,10);item.pageY=parseInt(item.series.yaxis.p2c(item.datapoint[1])+offset.top+plotOffset.top,10)}if(options.grid.autoHighlight){for(var i=0;i<highlights.length;++i){var h=highlights[i];if(h.auto==eventname&&!(item&&h.series==item.series&&h.point[0]==item.datapoint[0]&&h.point[1]==item.datapoint[1]))unhighlight(h.series,h.point)}if(item)highlight(item.series,item.datapoint,eventname)}placeholder.trigger(eventname,[pos,item])}function triggerRedrawOverlay(){var t=options.interaction.redrawOverlayInterval;if(t==-1){drawOverlay();return}if(!redrawTimeout)redrawTimeout=setTimeout(drawOverlay,t)}function drawOverlay(){redrawTimeout=null;octx.save();overlay.clear();octx.translate(plotOffset.left,plotOffset.top);var i,hi;for(i=0;i<highlights.length;++i){hi=highlights[i];if(hi.series.bars.show)drawBarHighlight(hi.series,hi.point);else drawPointHighlight(hi.series,hi.point)}octx.restore();executeHooks(hooks.drawOverlay,[octx])}function highlight(s,point,auto){if(typeof s=="number")s=series[s];if(typeof point=="number"){var ps=s.datapoints.pointsize;point=s.datapoints.points.slice(ps*point,ps*(point+1))}var i=indexOfHighlight(s,point);if(i==-1){highlights.push({series:s,point:point,auto:auto});triggerRedrawOverlay()}else if(!auto)highlights[i].auto=false}function unhighlight(s,point){if(s==null&&point==null){highlights=[];triggerRedrawOverlay();return}if(typeof s=="number")s=series[s];if(typeof point=="number"){var ps=s.datapoints.pointsize;point=s.datapoints.points.slice(ps*point,ps*(point+1))}var i=indexOfHighlight(s,point);if(i!=-1){highlights.splice(i,1);triggerRedrawOverlay()}}function indexOfHighlight(s,p){for(var i=0;i<highlights.length;++i){var h=highlights[i];if(h.series==s&&h.point[0]==p[0]&&h.point[1]==p[1])return i}return-1}function drawPointHighlight(series,point){var x=point[0],y=point[1],axisx=series.xaxis,axisy=series.yaxis,highlightColor=typeof series.highlightColor==="string"?series.highlightColor:$.color.parse(series.color).scale("a",.5).toString();if(x<axisx.min||x>axisx.max||y<axisy.min||y>axisy.max)return;var pointRadius=series.points.radius+series.points.lineWidth/2;octx.lineWidth=pointRadius;octx.strokeStyle=highlightColor;var radius=1.5*pointRadius;x=axisx.p2c(x);y=axisy.p2c(y);octx.beginPath();if(series.points.symbol=="circle")octx.arc(x,y,radius,0,2*Math.PI,false);else series.points.symbol(octx,x,y,radius,false);octx.closePath();octx.stroke()}function drawBarHighlight(series,point){var highlightColor=typeof series.highlightColor==="string"?series.highlightColor:$.color.parse(series.color).scale("a",.5).toString(),fillStyle=highlightColor,barLeft;switch(series.bars.align){case"left":barLeft=0;break;case"right":barLeft=-series.bars.barWidth;break;default:barLeft=-series.bars.barWidth/2}octx.lineWidth=series.bars.lineWidth;octx.strokeStyle=highlightColor;drawBar(point[0],point[1],point[2]||0,barLeft,barLeft+series.bars.barWidth,function(){return fillStyle},series.xaxis,series.yaxis,octx,series.bars.horizontal,series.bars.lineWidth)}function getColorOrGradient(spec,bottom,top,defaultColor){if(typeof spec=="string")return spec;else{var gradient=ctx.createLinearGradient(0,top,0,bottom);for(var i=0,l=spec.colors.length;i<l;++i){var c=spec.colors[i];if(typeof c!="string"){var co=$.color.parse(defaultColor);if(c.brightness!=null)co=co.scale("rgb",c.brightness);if(c.opacity!=null)co.a*=c.opacity;c=co.toString()}gradient.addColorStop(i/(l-1),c)}return gradient}}}$.plot=function(placeholder,data,options){var plot=new Plot($(placeholder),data,options,$.plot.plugins);return plot};$.plot.version="0.8.3";$.plot.plugins=[];$.fn.plot=function(data,options){return this.each(function(){$.plot(this,data,options)})};function floorInBase(n,base){return base*Math.floor(n/base)}})(jQuery);
+
+/***/ }),
+
+/***/ "./node_modules/react-flot/flot/jquery.flot.pie.min.js":
+/*!*************************************************************!*\
+  !*** ./node_modules/react-flot/flot/jquery.flot.pie.min.js ***!
+  \*************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+/* Javascript plotting library for jQuery, version 0.8.3.
+
+Copyright (c) 2007-2014 IOLA and Ole Laursen.
+Licensed under the MIT license.
+
+*/
+(function($){var REDRAW_ATTEMPTS=10;var REDRAW_SHRINK=.95;function init(plot){var canvas=null,target=null,options=null,maxRadius=null,centerLeft=null,centerTop=null,processed=false,ctx=null;var highlights=[];plot.hooks.processOptions.push(function(plot,options){if(options.series.pie.show){options.grid.show=false;if(options.series.pie.label.show=="auto"){if(options.legend.show){options.series.pie.label.show=false}else{options.series.pie.label.show=true}}if(options.series.pie.radius=="auto"){if(options.series.pie.label.show){options.series.pie.radius=3/4}else{options.series.pie.radius=1}}if(options.series.pie.tilt>1){options.series.pie.tilt=1}else if(options.series.pie.tilt<0){options.series.pie.tilt=0}}});plot.hooks.bindEvents.push(function(plot,eventHolder){var options=plot.getOptions();if(options.series.pie.show){if(options.grid.hoverable){eventHolder.unbind("mousemove").mousemove(onMouseMove)}if(options.grid.clickable){eventHolder.unbind("click").click(onClick)}}});plot.hooks.processDatapoints.push(function(plot,series,data,datapoints){var options=plot.getOptions();if(options.series.pie.show){processDatapoints(plot,series,data,datapoints)}});plot.hooks.drawOverlay.push(function(plot,octx){var options=plot.getOptions();if(options.series.pie.show){drawOverlay(plot,octx)}});plot.hooks.draw.push(function(plot,newCtx){var options=plot.getOptions();if(options.series.pie.show){draw(plot,newCtx)}});function processDatapoints(plot,series,datapoints){if(!processed){processed=true;canvas=plot.getCanvas();target=$(canvas).parent();options=plot.getOptions();plot.setData(combine(plot.getData()))}}function combine(data){var total=0,combined=0,numCombined=0,color=options.series.pie.combine.color,newdata=[];for(var i=0;i<data.length;++i){var value=data[i].data;if($.isArray(value)&&value.length==1){value=value[0]}if($.isArray(value)){if(!isNaN(parseFloat(value[1]))&&isFinite(value[1])){value[1]=+value[1]}else{value[1]=0}}else if(!isNaN(parseFloat(value))&&isFinite(value)){value=[1,+value]}else{value=[1,0]}data[i].data=[value]}for(var i=0;i<data.length;++i){total+=data[i].data[0][1]}for(var i=0;i<data.length;++i){var value=data[i].data[0][1];if(value/total<=options.series.pie.combine.threshold){combined+=value;numCombined++;if(!color){color=data[i].color}}}for(var i=0;i<data.length;++i){var value=data[i].data[0][1];if(numCombined<2||value/total>options.series.pie.combine.threshold){newdata.push($.extend(data[i],{data:[[1,value]],color:data[i].color,label:data[i].label,angle:value*Math.PI*2/total,percent:value/(total/100)}))}}if(numCombined>1){newdata.push({data:[[1,combined]],color:color,label:options.series.pie.combine.label,angle:combined*Math.PI*2/total,percent:combined/(total/100)})}return newdata}function draw(plot,newCtx){if(!target){return}var canvasWidth=plot.getPlaceholder().width(),canvasHeight=plot.getPlaceholder().height(),legendWidth=target.children().filter(".legend").children().width()||0;ctx=newCtx;processed=false;maxRadius=Math.min(canvasWidth,canvasHeight/options.series.pie.tilt)/2;centerTop=canvasHeight/2+options.series.pie.offset.top;centerLeft=canvasWidth/2;if(options.series.pie.offset.left=="auto"){if(options.legend.position.match("w")){centerLeft+=legendWidth/2}else{centerLeft-=legendWidth/2}if(centerLeft<maxRadius){centerLeft=maxRadius}else if(centerLeft>canvasWidth-maxRadius){centerLeft=canvasWidth-maxRadius}}else{centerLeft+=options.series.pie.offset.left}var slices=plot.getData(),attempts=0;do{if(attempts>0){maxRadius*=REDRAW_SHRINK}attempts+=1;clear();if(options.series.pie.tilt<=.8){drawShadow()}}while(!drawPie()&&attempts<REDRAW_ATTEMPTS);if(attempts>=REDRAW_ATTEMPTS){clear();target.prepend("<div class='error'>Could not draw pie with labels contained inside canvas</div>")}if(plot.setSeries&&plot.insertLegend){plot.setSeries(slices);plot.insertLegend()}function clear(){ctx.clearRect(0,0,canvasWidth,canvasHeight);target.children().filter(".pieLabel, .pieLabelBackground").remove()}function drawShadow(){var shadowLeft=options.series.pie.shadow.left;var shadowTop=options.series.pie.shadow.top;var edge=10;var alpha=options.series.pie.shadow.alpha;var radius=options.series.pie.radius>1?options.series.pie.radius:maxRadius*options.series.pie.radius;if(radius>=canvasWidth/2-shadowLeft||radius*options.series.pie.tilt>=canvasHeight/2-shadowTop||radius<=edge){return}ctx.save();ctx.translate(shadowLeft,shadowTop);ctx.globalAlpha=alpha;ctx.fillStyle="#000";ctx.translate(centerLeft,centerTop);ctx.scale(1,options.series.pie.tilt);for(var i=1;i<=edge;i++){ctx.beginPath();ctx.arc(0,0,radius,0,Math.PI*2,false);ctx.fill();radius-=i}ctx.restore()}function drawPie(){var startAngle=Math.PI*options.series.pie.startAngle;var radius=options.series.pie.radius>1?options.series.pie.radius:maxRadius*options.series.pie.radius;ctx.save();ctx.translate(centerLeft,centerTop);ctx.scale(1,options.series.pie.tilt);ctx.save();var currentAngle=startAngle;for(var i=0;i<slices.length;++i){slices[i].startAngle=currentAngle;drawSlice(slices[i].angle,slices[i].color,true)}ctx.restore();if(options.series.pie.stroke.width>0){ctx.save();ctx.lineWidth=options.series.pie.stroke.width;currentAngle=startAngle;for(var i=0;i<slices.length;++i){drawSlice(slices[i].angle,options.series.pie.stroke.color,false)}ctx.restore()}drawDonutHole(ctx);ctx.restore();if(options.series.pie.label.show){return drawLabels()}else return true;function drawSlice(angle,color,fill){if(angle<=0||isNaN(angle)){return}if(fill){ctx.fillStyle=color}else{ctx.strokeStyle=color;ctx.lineJoin="round"}ctx.beginPath();if(Math.abs(angle-Math.PI*2)>1e-9){ctx.moveTo(0,0)}ctx.arc(0,0,radius,currentAngle,currentAngle+angle/2,false);ctx.arc(0,0,radius,currentAngle+angle/2,currentAngle+angle,false);ctx.closePath();currentAngle+=angle;if(fill){ctx.fill()}else{ctx.stroke()}}function drawLabels(){var currentAngle=startAngle;var radius=options.series.pie.label.radius>1?options.series.pie.label.radius:maxRadius*options.series.pie.label.radius;for(var i=0;i<slices.length;++i){if(slices[i].percent>=options.series.pie.label.threshold*100){if(!drawLabel(slices[i],currentAngle,i)){return false}}currentAngle+=slices[i].angle}return true;function drawLabel(slice,startAngle,index){if(slice.data[0][1]==0){return true}var lf=options.legend.labelFormatter,text,plf=options.series.pie.label.formatter;if(lf){text=lf(slice.label,slice)}else{text=slice.label}if(plf){text=plf(text,slice)}var halfAngle=(startAngle+slice.angle+startAngle)/2;var x=centerLeft+Math.round(Math.cos(halfAngle)*radius);var y=centerTop+Math.round(Math.sin(halfAngle)*radius)*options.series.pie.tilt;var html="<span class='pieLabel' id='pieLabel"+index+"' style='position:absolute;top:"+y+"px;left:"+x+"px;'>"+text+"</span>";target.append(html);var label=target.children("#pieLabel"+index);var labelTop=y-label.height()/2;var labelLeft=x-label.width()/2;label.css("top",labelTop);label.css("left",labelLeft);if(0-labelTop>0||0-labelLeft>0||canvasHeight-(labelTop+label.height())<0||canvasWidth-(labelLeft+label.width())<0){return false}if(options.series.pie.label.background.opacity!=0){var c=options.series.pie.label.background.color;if(c==null){c=slice.color}var pos="top:"+labelTop+"px;left:"+labelLeft+"px;";$("<div class='pieLabelBackground' style='position:absolute;width:"+label.width()+"px;height:"+label.height()+"px;"+pos+"background-color:"+c+";'></div>").css("opacity",options.series.pie.label.background.opacity).insertBefore(label)}return true}}}}function drawDonutHole(layer){if(options.series.pie.innerRadius>0){layer.save();var innerRadius=options.series.pie.innerRadius>1?options.series.pie.innerRadius:maxRadius*options.series.pie.innerRadius;layer.globalCompositeOperation="destination-out";layer.beginPath();layer.fillStyle=options.series.pie.stroke.color;layer.arc(0,0,innerRadius,0,Math.PI*2,false);layer.fill();layer.closePath();layer.restore();layer.save();layer.beginPath();layer.strokeStyle=options.series.pie.stroke.color;layer.arc(0,0,innerRadius,0,Math.PI*2,false);layer.stroke();layer.closePath();layer.restore()}}function isPointInPoly(poly,pt){for(var c=false,i=-1,l=poly.length,j=l-1;++i<l;j=i)(poly[i][1]<=pt[1]&&pt[1]<poly[j][1]||poly[j][1]<=pt[1]&&pt[1]<poly[i][1])&&pt[0]<(poly[j][0]-poly[i][0])*(pt[1]-poly[i][1])/(poly[j][1]-poly[i][1])+poly[i][0]&&(c=!c);return c}function findNearbySlice(mouseX,mouseY){var slices=plot.getData(),options=plot.getOptions(),radius=options.series.pie.radius>1?options.series.pie.radius:maxRadius*options.series.pie.radius,x,y;for(var i=0;i<slices.length;++i){var s=slices[i];if(s.pie.show){ctx.save();ctx.beginPath();ctx.moveTo(0,0);ctx.arc(0,0,radius,s.startAngle,s.startAngle+s.angle/2,false);ctx.arc(0,0,radius,s.startAngle+s.angle/2,s.startAngle+s.angle,false);ctx.closePath();x=mouseX-centerLeft;y=mouseY-centerTop;if(ctx.isPointInPath){if(ctx.isPointInPath(mouseX-centerLeft,mouseY-centerTop)){ctx.restore();return{datapoint:[s.percent,s.data],dataIndex:0,series:s,seriesIndex:i}}}else{var p1X=radius*Math.cos(s.startAngle),p1Y=radius*Math.sin(s.startAngle),p2X=radius*Math.cos(s.startAngle+s.angle/4),p2Y=radius*Math.sin(s.startAngle+s.angle/4),p3X=radius*Math.cos(s.startAngle+s.angle/2),p3Y=radius*Math.sin(s.startAngle+s.angle/2),p4X=radius*Math.cos(s.startAngle+s.angle/1.5),p4Y=radius*Math.sin(s.startAngle+s.angle/1.5),p5X=radius*Math.cos(s.startAngle+s.angle),p5Y=radius*Math.sin(s.startAngle+s.angle),arrPoly=[[0,0],[p1X,p1Y],[p2X,p2Y],[p3X,p3Y],[p4X,p4Y],[p5X,p5Y]],arrPoint=[x,y];if(isPointInPoly(arrPoly,arrPoint)){ctx.restore();return{datapoint:[s.percent,s.data],dataIndex:0,series:s,seriesIndex:i}}}ctx.restore()}}return null}function onMouseMove(e){triggerClickHoverEvent("plothover",e)}function onClick(e){triggerClickHoverEvent("plotclick",e)}function triggerClickHoverEvent(eventname,e){var offset=plot.offset();var canvasX=parseInt(e.pageX-offset.left);var canvasY=parseInt(e.pageY-offset.top);var item=findNearbySlice(canvasX,canvasY);if(options.grid.autoHighlight){for(var i=0;i<highlights.length;++i){var h=highlights[i];if(h.auto==eventname&&!(item&&h.series==item.series)){unhighlight(h.series)}}}if(item){highlight(item.series,eventname)}var pos={pageX:e.pageX,pageY:e.pageY};target.trigger(eventname,[pos,item])}function highlight(s,auto){var i=indexOfHighlight(s);if(i==-1){highlights.push({series:s,auto:auto});plot.triggerRedrawOverlay()}else if(!auto){highlights[i].auto=false}}function unhighlight(s){if(s==null){highlights=[];plot.triggerRedrawOverlay()}var i=indexOfHighlight(s);if(i!=-1){highlights.splice(i,1);plot.triggerRedrawOverlay()}}function indexOfHighlight(s){for(var i=0;i<highlights.length;++i){var h=highlights[i];if(h.series==s)return i}return-1}function drawOverlay(plot,octx){var options=plot.getOptions();var radius=options.series.pie.radius>1?options.series.pie.radius:maxRadius*options.series.pie.radius;octx.save();octx.translate(centerLeft,centerTop);octx.scale(1,options.series.pie.tilt);for(var i=0;i<highlights.length;++i){drawHighlight(highlights[i].series)}drawDonutHole(octx);octx.restore();function drawHighlight(series){if(series.angle<=0||isNaN(series.angle)){return}octx.fillStyle="rgba(255, 255, 255, "+options.series.pie.highlight.opacity+")";octx.beginPath();if(Math.abs(series.angle-Math.PI*2)>1e-9){octx.moveTo(0,0)}octx.arc(0,0,radius,series.startAngle,series.startAngle+series.angle/2,false);octx.arc(0,0,radius,series.startAngle+series.angle/2,series.startAngle+series.angle,false);octx.closePath();octx.fill()}}}var options={series:{pie:{show:false,radius:"auto",innerRadius:0,startAngle:3/2,tilt:1,shadow:{left:5,top:15,alpha:.02},offset:{top:0,left:"auto"},stroke:{color:"#fff",width:1},label:{show:"auto",formatter:function(label,slice){return"<div style='font-size:x-small;text-align:center;padding:2px;color:"+slice.color+";'>"+label+"<br/>"+Math.round(slice.percent)+"%</div>"},radius:1,background:{color:null,opacity:0},threshold:0},combine:{threshold:-1,color:null,label:"Other"},highlight:{opacity:.5}}}};$.plot.plugins.push({init:init,options:options,name:"pie",version:"1.1"})})(jQuery);
+
+/***/ }),
+
+/***/ "./node_modules/react-flot/flot/jquery.flot.tooltip.min.js":
+/*!*****************************************************************!*\
+  !*** ./node_modules/react-flot/flot/jquery.flot.tooltip.min.js ***!
+  \*****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+/*
+ * jquery.flot.tooltip
+ * 
+ * description: easy-to-use tooltips for Flot charts
+ * version: 0.9.0
+ * authors: Krzysztof Urbas @krzysu [myviews.pl],Evan Steinkerchner @Roundaround
+ * website: https://github.com/krzysu/flot.tooltip
+ * 
+ * build on 2016-07-26
+ * released under MIT License, 2012
+*/ 
+!function(a){var b={tooltip:{show:!1,cssClass:"flotTip",content:"%s | X: %x | Y: %y",xDateFormat:null,yDateFormat:null,monthNames:null,dayNames:null,shifts:{x:10,y:20},defaultTheme:!0,snap:!0,lines:!1,clickTips:!1,onHover:function(a,b){},$compat:!1}};b.tooltipOpts=b.tooltip;var c=function(a){this.tipPosition={x:0,y:0},this.init(a)};c.prototype.init=function(b){function c(a){var c={};c.x=a.pageX,c.y=a.pageY,b.setTooltipPosition(c)}function d(c,d,g){f.clickmode?(a(b.getPlaceholder()).bind("plothover",e),b.hideTooltip(),f.clickmode=!1):(e(c,d,g),f.getDomElement().is(":visible")&&(a(b.getPlaceholder()).unbind("plothover",e),f.clickmode=!0))}function e(c,d,e){var g=function(a,b,c,d){return Math.sqrt((c-a)*(c-a)+(d-b)*(d-b))},h=function(a,b,c,d,e,f,h){if(!h||(h=function(a,b,c,d,e,f){if("undefined"!=typeof c)return{x:c,y:b};if("undefined"!=typeof d)return{x:a,y:d};var g,h=-1/((f-d)/(e-c));return{x:g=(e*(a*h-b+d)+c*(a*-h+b-f))/(h*(e-c)+d-f),y:h*g-h*a+b}}(a,b,c,d,e,f),h.x>=Math.min(c,e)&&h.x<=Math.max(c,e)&&h.y>=Math.min(d,f)&&h.y<=Math.max(d,f))){var i=d-f,j=e-c,k=c*f-d*e;return Math.abs(i*a+j*b+k)/Math.sqrt(i*i+j*j)}var l=g(a,b,c,d),m=g(a,b,e,f);return l>m?m:l};if(e)b.showTooltip(e,f.tooltipOptions.snap?e:d);else if(f.plotOptions.series.lines.show&&f.tooltipOptions.lines===!0){var i=f.plotOptions.grid.mouseActiveRadius,j={distance:i+1},k=d;a.each(b.getData(),function(a,c){for(var e=0,i=-1,l=1;l<c.data.length;l++)c.data[l-1][0]<=d.x&&c.data[l][0]>=d.x&&(e=l-1,i=l);if(-1===i)return void b.hideTooltip();var m={x:c.data[e][0],y:c.data[e][1]},n={x:c.data[i][0],y:c.data[i][1]},o=h(c.xaxis.p2c(d.x),c.yaxis.p2c(d.y),c.xaxis.p2c(m.x),c.yaxis.p2c(m.y),c.xaxis.p2c(n.x),c.yaxis.p2c(n.y),!1);if(o<j.distance){var p=g(m.x,m.y,d.x,d.y)<g(d.x,d.y,n.x,n.y)?e:i,q=(c.datapoints.pointsize,[d.x,m.y+(n.y-m.y)*((d.x-m.x)/(n.x-m.x))]),r={datapoint:q,dataIndex:p,series:c,seriesIndex:a};j={distance:o,item:r},f.tooltipOptions.snap&&(k={pageX:c.xaxis.p2c(q[0]),pageY:c.yaxis.p2c(q[1])})}}),j.distance<i+1?b.showTooltip(j.item,k):b.hideTooltip()}else b.hideTooltip()}var f=this,g=a.plot.plugins.length;if(this.plotPlugins=[],g)for(var h=0;g>h;h++)this.plotPlugins.push(a.plot.plugins[h].name);b.hooks.bindEvents.push(function(b,g){if(f.plotOptions=b.getOptions(),"boolean"==typeof f.plotOptions.tooltip&&(f.plotOptions.tooltipOpts.show=f.plotOptions.tooltip,f.plotOptions.tooltip=f.plotOptions.tooltipOpts,delete f.plotOptions.tooltipOpts),f.plotOptions.tooltip.show!==!1&&"undefined"!=typeof f.plotOptions.tooltip.show){f.tooltipOptions=f.plotOptions.tooltip,f.tooltipOptions.$compat?(f.wfunc="width",f.hfunc="height"):(f.wfunc="innerWidth",f.hfunc="innerHeight");f.getDomElement();a(b.getPlaceholder()).bind("plothover",e),f.tooltipOptions.clickTips&&a(b.getPlaceholder()).bind("plotclick",d),f.clickmode=!1,a(g).bind("mousemove",c)}}),b.hooks.shutdown.push(function(b,f){a(b.getPlaceholder()).unbind("plothover",e),a(b.getPlaceholder()).unbind("plotclick",d),b.removeTooltip(),a(f).unbind("mousemove",c)}),b.setTooltipPosition=function(b){var c=f.getDomElement(),d=c.outerWidth()+f.tooltipOptions.shifts.x,e=c.outerHeight()+f.tooltipOptions.shifts.y;b.x-a(window).scrollLeft()>a(window)[f.wfunc]()-d&&(b.x-=d,b.x=Math.max(b.x,0)),b.y-a(window).scrollTop()>a(window)[f.hfunc]()-e&&(b.y-=e),isNaN(b.x)?f.tipPosition.x=f.tipPosition.xPrev:(f.tipPosition.x=b.x,f.tipPosition.xPrev=b.x),isNaN(b.y)?f.tipPosition.y=f.tipPosition.yPrev:(f.tipPosition.y=b.y,f.tipPosition.yPrev=b.y)},b.showTooltip=function(a,c,d){var e=f.getDomElement(),g=f.stringFormat(f.tooltipOptions.content,a);""!==g&&(e.html(g),b.setTooltipPosition({x:f.tipPosition.x,y:f.tipPosition.y}),e.css({left:f.tipPosition.x+f.tooltipOptions.shifts.x,top:f.tipPosition.y+f.tooltipOptions.shifts.y}).show(),"function"==typeof f.tooltipOptions.onHover&&f.tooltipOptions.onHover(a,e))},b.hideTooltip=function(){f.getDomElement().hide().html("")},b.removeTooltip=function(){f.getDomElement().remove()}},c.prototype.getDomElement=function(){var b=a("<div>");return this.tooltipOptions&&this.tooltipOptions.cssClass&&(b=a("."+this.tooltipOptions.cssClass),0===b.length&&(b=a("<div />").addClass(this.tooltipOptions.cssClass),b.appendTo("body").hide().css({position:"absolute"}),this.tooltipOptions.defaultTheme&&b.css({background:"#fff","z-index":"1040",padding:"0.4em 0.6em","border-radius":"0.5em","font-size":"0.8em",border:"1px solid #111",display:"none","white-space":"nowrap"}))),b},c.prototype.stringFormat=function(a,b){var c,d,e,f,g,h=/%p\.{0,1}(\d{0,})/,i=/%s/,j=/%c/,k=/%lx/,l=/%ly/,m=/%x\.{0,1}(\d{0,})/,n=/%y\.{0,1}(\d{0,})/,o="%x",p="%y",q="%ct",r="%n";if("undefined"!=typeof b.series.threshold?(c=b.datapoint[0],d=b.datapoint[1],e=b.datapoint[2]):"undefined"!=typeof b.series.curvedLines?(c=b.datapoint[0],d=b.datapoint[1]):"undefined"!=typeof b.series.lines&&b.series.lines.steps?(c=b.series.datapoints.points[2*b.dataIndex],d=b.series.datapoints.points[2*b.dataIndex+1],e=""):(c=b.series.data[b.dataIndex][0],d=b.series.data[b.dataIndex][1],e=b.series.data[b.dataIndex][2]),null===b.series.label&&b.series.originSeries&&(b.series.label=b.series.originSeries.label),"function"==typeof a&&(a=a(b.series.label,c,d,b)),"boolean"==typeof a&&!a)return"";if(e&&(a=a.replace(q,e)),"undefined"!=typeof b.series.percent?f=b.series.percent:"undefined"!=typeof b.series.percents&&(f=b.series.percents[b.dataIndex]),"number"==typeof f&&(a=this.adjustValPrecision(h,a,f)),b.series.hasOwnProperty("pie")&&"undefined"!=typeof b.series.data[0][1]&&(g=b.series.data[0][1]),"number"==typeof g&&(a=a.replace(r,g)),a="undefined"!=typeof b.series.label?a.replace(i,b.series.label):a.replace(i,""),a="undefined"!=typeof b.series.color?a.replace(j,b.series.color):a.replace(j,""),a=this.hasAxisLabel("xaxis",b)?a.replace(k,b.series.xaxis.options.axisLabel):a.replace(k,""),a=this.hasAxisLabel("yaxis",b)?a.replace(l,b.series.yaxis.options.axisLabel):a.replace(l,""),this.isTimeMode("xaxis",b)&&this.isXDateFormat(b)&&(a=a.replace(m,this.timestampToDate(c,this.tooltipOptions.xDateFormat,b.series.xaxis.options))),this.isTimeMode("yaxis",b)&&this.isYDateFormat(b)&&(a=a.replace(n,this.timestampToDate(d,this.tooltipOptions.yDateFormat,b.series.yaxis.options))),"number"==typeof c&&(a=this.adjustValPrecision(m,a,c)),"number"==typeof d&&(a=this.adjustValPrecision(n,a,d)),"undefined"!=typeof b.series.xaxis.ticks){var s;s=this.hasRotatedXAxisTicks(b)?"rotatedTicks":"ticks";var t=b.dataIndex+b.seriesIndex;for(var u in b.series.xaxis[s])if(b.series.xaxis[s].hasOwnProperty(t)&&!this.isTimeMode("xaxis",b)){var v=this.isCategoriesMode("xaxis",b)?b.series.xaxis[s][t].label:b.series.xaxis[s][t].v;v===c&&(a=a.replace(m,b.series.xaxis[s][t].label.replace(/\$/g,"$$$$")))}}if("undefined"!=typeof b.series.yaxis.ticks)for(var w in b.series.yaxis.ticks)if(b.series.yaxis.ticks.hasOwnProperty(w)){var x=this.isCategoriesMode("yaxis",b)?b.series.yaxis.ticks[w].label:b.series.yaxis.ticks[w].v;x===d&&(a=a.replace(n,b.series.yaxis.ticks[w].label.replace(/\$/g,"$$$$")))}return"undefined"!=typeof b.series.xaxis.tickFormatter&&(a=a.replace(o,b.series.xaxis.tickFormatter(c,b.series.xaxis).replace(/\$/g,"$$"))),"undefined"!=typeof b.series.yaxis.tickFormatter&&(a=a.replace(p,b.series.yaxis.tickFormatter(d,b.series.yaxis).replace(/\$/g,"$$"))),a},c.prototype.isTimeMode=function(a,b){return"undefined"!=typeof b.series[a].options.mode&&"time"===b.series[a].options.mode},c.prototype.isXDateFormat=function(a){return"undefined"!=typeof this.tooltipOptions.xDateFormat&&null!==this.tooltipOptions.xDateFormat},c.prototype.isYDateFormat=function(a){return"undefined"!=typeof this.tooltipOptions.yDateFormat&&null!==this.tooltipOptions.yDateFormat},c.prototype.isCategoriesMode=function(a,b){return"undefined"!=typeof b.series[a].options.mode&&"categories"===b.series[a].options.mode},c.prototype.timestampToDate=function(b,c,d){var e=a.plot.dateGenerator(b,d);return a.plot.formatDate(e,c,this.tooltipOptions.monthNames,this.tooltipOptions.dayNames)},c.prototype.adjustValPrecision=function(a,b,c){var d,e=b.match(a);return null!==e&&""!==RegExp.$1&&(d=RegExp.$1,c=c.toFixed(d),b=b.replace(a,c)),b},c.prototype.hasAxisLabel=function(b,c){return-1!==a.inArray("axisLabels",this.plotPlugins)&&"undefined"!=typeof c.series[b].options.axisLabel&&c.series[b].options.axisLabel.length>0},c.prototype.hasRotatedXAxisTicks=function(b){return-1!==a.inArray("tickRotor",this.plotPlugins)&&"undefined"!=typeof b.series.xaxis.rotatedTicks};var d=function(a){new c(a)};a.plot.plugins.push({init:d,options:b,name:"tooltip",version:"0.8.5"})}(jQuery);
+
+/***/ }),
+
+/***/ "./node_modules/react-flot/index.js":
+/*!******************************************!*\
+  !*** ./node_modules/react-flot/index.js ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var ReactFlot = __webpack_require__(/*! ./lib/ReactFlot */ "./node_modules/react-flot/lib/ReactFlot.js").default;
+module.exports = ReactFlot;
+
+
+/***/ }),
+
+/***/ "./node_modules/react-flot/lib/ReactFlot.js":
+/*!**************************************************!*\
+  !*** ./node_modules/react-flot/lib/ReactFlot.js ***!
+  \**************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _jquery = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+
+var _jquery2 = _interopRequireDefault(_jquery);
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _deepEqual = __webpack_require__(/*! deep-equal */ "./node_modules/deep-equal/index.js");
+
+var _deepEqual2 = _interopRequireDefault(_deepEqual);
+
+var _addLabels = __webpack_require__(/*! ./add-labels */ "./node_modules/react-flot/lib/add-labels.js");
+
+var _addLabels2 = _interopRequireDefault(_addLabels);
+
+__webpack_require__(/*! ../flot/jquery.flot.min */ "./node_modules/react-flot/flot/jquery.flot.min.js");
+
+__webpack_require__(/*! ../flot/jquery.flot.tooltip.min */ "./node_modules/react-flot/flot/jquery.flot.tooltip.min.js");
+
+__webpack_require__(/*! ../flot/jquery.flot.pie.min */ "./node_modules/react-flot/flot/jquery.flot.pie.min.js");
+
+__webpack_require__(/*! ../flot-override/jquery.flot.resize */ "./node_modules/react-flot/flot-override/jquery.flot.resize.js");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var ReactFlot = function (_Component) {
+  _inherits(ReactFlot, _Component);
+
+  function ReactFlot() {
+    _classCallCheck(this, ReactFlot);
+
+    return _possibleConstructorReturn(this, (ReactFlot.__proto__ || Object.getPrototypeOf(ReactFlot)).apply(this, arguments));
+  }
+
+  _createClass(ReactFlot, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      this.draw();
+    }
+  }, {
+    key: 'componentWillReceiveProps',
+    value: function componentWillReceiveProps(nextProps) {
+      if (!(0, _deepEqual2.default)(nextProps.data, this.props.data) || !(0, _deepEqual2.default)(nextProps.options, this.props.options)) {
+        this.draw(null, nextProps);
+      }
+    }
+  }, {
+    key: 'draw',
+    value: function draw(event, nextProps) {
+      var data = nextProps && nextProps.data || this.props.data;
+      var options = nextProps && nextProps.options || this.props.options;
+      var chart = _jquery2.default.plot((0, _jquery2.default)('#' + this.props.id), data, options);
+      (0, _addLabels2.default)(chart, options);
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var style = {
+        height: this.props.height || '400px',
+        width: this.props.width || '100%'
+      };
+
+      return _react2.default.createElement('div', { id: this.props.id, style: style });
+    }
+  }]);
+
+  return ReactFlot;
+}(_react.Component);
+
+ReactFlot.propTypes = {
+  id: _propTypes2.default.string.isRequired,
+  data: _propTypes2.default.array.isRequired, // eslint-disable-line
+  options: _propTypes2.default.object.isRequired, //eslint-disable-line
+  height: _propTypes2.default.string,
+  width: _propTypes2.default.string
+};
+exports.default = ReactFlot;
+
+/***/ }),
+
+/***/ "./node_modules/react-flot/lib/add-labels.js":
+/*!***************************************************!*\
+  !*** ./node_modules/react-flot/lib/add-labels.js ***!
+  \***************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = addLabels;
+function buildFont(_ref) {
+  var family = _ref.family,
+      size = _ref.size,
+      style = _ref.style,
+      variant = _ref.variant,
+      weight = _ref.weight;
+
+  return style + ' ' + variant + ' ' + weight + ' ' + size + ' \'' + family + '\'';
+}
+
+function addLabels(chart, options) {
+  if (!options.yaxis || !options.yaxis.toRight) {
+    return;
+  }
+
+  var chartCanvas = chart.getCanvas();
+  var chartWidth = chartCanvas.width;
+  var ctx = chartCanvas.getContext('2d'); // get the context
+  var allSeries = chart.getData(); // get your series data
+  var xaxis = chart.getXAxes()[0]; // xAxis
+  var yaxis = chart.getYAxes()[0]; // yAxis
+  var offset = chart.getPlotOffset(); // plots offset
+  ctx.font = buildFont(options.yaxis.font);
+  ctx.fillStyle = options.yaxis.font.color;
+
+  allSeries.forEach(function (series, index) {
+    var dataPoint = series.datapoints.points; // one point per series
+    var x = dataPoint[0];
+    var y = dataPoint[1];
+    var text = series.yaxis.options.ticks[index][1];
+    var metrics = ctx.measureText(text);
+
+    var overlap = chartWidth < xaxis.p2c(x) + metrics.width;
+    var xPos = overlap ? xaxis.p2c(x) + offset.left - metrics.width - 10 : // place at end of bar
+    xaxis.p2c(x) + offset.left + 10; // place after the bar
+    var yPos = yaxis.p2c(y) + offset.top + options.yaxis.labelPadding;
+    ctx.fillText(text, xPos, yPos);
+  });
+}
+
+/***/ }),
+
+/***/ "./node_modules/regexp.prototype.flags/implementation.js":
+/*!***************************************************************!*\
+  !*** ./node_modules/regexp.prototype.flags/implementation.js ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var $Object = Object;
+var $TypeError = TypeError;
+
+module.exports = function flags() {
+	if (this != null && this !== $Object(this)) {
+		throw new $TypeError('RegExp.prototype.flags getter called on non-object');
+	}
+	var result = '';
+	if (this.global) {
+		result += 'g';
+	}
+	if (this.ignoreCase) {
+		result += 'i';
+	}
+	if (this.multiline) {
+		result += 'm';
+	}
+	if (this.dotAll) {
+		result += 's';
+	}
+	if (this.unicode) {
+		result += 'u';
+	}
+	if (this.sticky) {
+		result += 'y';
+	}
+	return result;
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/regexp.prototype.flags/index.js":
+/*!******************************************************!*\
+  !*** ./node_modules/regexp.prototype.flags/index.js ***!
+  \******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var define = __webpack_require__(/*! define-properties */ "./node_modules/define-properties/index.js");
+var callBind = __webpack_require__(/*! call-bind */ "./node_modules/call-bind/index.js");
+
+var implementation = __webpack_require__(/*! ./implementation */ "./node_modules/regexp.prototype.flags/implementation.js");
+var getPolyfill = __webpack_require__(/*! ./polyfill */ "./node_modules/regexp.prototype.flags/polyfill.js");
+var shim = __webpack_require__(/*! ./shim */ "./node_modules/regexp.prototype.flags/shim.js");
+
+var flagsBound = callBind(implementation);
+
+define(flagsBound, {
+	getPolyfill: getPolyfill,
+	implementation: implementation,
+	shim: shim
+});
+
+module.exports = flagsBound;
+
+
+/***/ }),
+
+/***/ "./node_modules/regexp.prototype.flags/polyfill.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/regexp.prototype.flags/polyfill.js ***!
+  \*********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var implementation = __webpack_require__(/*! ./implementation */ "./node_modules/regexp.prototype.flags/implementation.js");
+
+var supportsDescriptors = __webpack_require__(/*! define-properties */ "./node_modules/define-properties/index.js").supportsDescriptors;
+var $gOPD = Object.getOwnPropertyDescriptor;
+var $TypeError = TypeError;
+
+module.exports = function getPolyfill() {
+	if (!supportsDescriptors) {
+		throw new $TypeError('RegExp.prototype.flags requires a true ES5 environment that supports property descriptors');
+	}
+	if ((/a/mig).flags === 'gim') {
+		var descriptor = $gOPD(RegExp.prototype, 'flags');
+		if (descriptor && typeof descriptor.get === 'function' && typeof (/a/).dotAll === 'boolean') {
+			return descriptor.get;
+		}
+	}
+	return implementation;
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/regexp.prototype.flags/shim.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/regexp.prototype.flags/shim.js ***!
+  \*****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var supportsDescriptors = __webpack_require__(/*! define-properties */ "./node_modules/define-properties/index.js").supportsDescriptors;
+var getPolyfill = __webpack_require__(/*! ./polyfill */ "./node_modules/regexp.prototype.flags/polyfill.js");
+var gOPD = Object.getOwnPropertyDescriptor;
+var defineProperty = Object.defineProperty;
+var TypeErr = TypeError;
+var getProto = Object.getPrototypeOf;
+var regex = /a/;
+
+module.exports = function shimFlags() {
+	if (!supportsDescriptors || !getProto) {
+		throw new TypeErr('RegExp.prototype.flags requires a true ES5 environment that supports property descriptors');
+	}
+	var polyfill = getPolyfill();
+	var proto = getProto(regex);
+	var descriptor = gOPD(proto, 'flags');
+	if (!descriptor || descriptor.get !== polyfill) {
+		defineProperty(proto, 'flags', {
+			configurable: true,
+			enumerable: false,
+			get: polyfill
+		});
+	}
+	return polyfill;
+};
+
 
 /***/ })
 

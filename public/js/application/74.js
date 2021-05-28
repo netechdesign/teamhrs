@@ -1,8 +1,8 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[74],{
 
-/***/ "./resources/js/front-end/thankstosubmit.js":
+/***/ "./resources/js/front-end/documentUpload.js":
 /*!**************************************************!*\
-  !*** ./resources/js/front-end/thankstosubmit.js ***!
+  !*** ./resources/js/front-end/documentUpload.js ***!
   \**************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -99,18 +99,18 @@ global.jQuery = jquery__WEBPACK_IMPORTED_MODULE_2___default.a;
 
 var baseurl = window.location.origin;
 
-var Thankstosubmit = /*#__PURE__*/function (_React$Component) {
-  _inherits(Thankstosubmit, _React$Component);
+var DocumentUpload = /*#__PURE__*/function (_React$Component) {
+  _inherits(DocumentUpload, _React$Component);
 
-  var _super = _createSuper(Thankstosubmit);
+  var _super = _createSuper(DocumentUpload);
 
-  function Thankstosubmit() {
-    _classCallCheck(this, Thankstosubmit);
+  function DocumentUpload() {
+    _classCallCheck(this, DocumentUpload);
 
     return _super.apply(this, arguments);
   }
 
-  _createClass(Thankstosubmit, [{
+  _createClass(DocumentUpload, [{
     key: "componentDidMount",
     value: function componentDidMount() {}
   }, {
@@ -176,16 +176,14 @@ var Thankstosubmit = /*#__PURE__*/function (_React$Component) {
       }, "Thank you ", capitalize(this.props.location.state.user_name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "wow fadeInUp",
         "data-wow-delay": "0.2s"
-      }, "We are still in the process of reviewing applications and anticipate beginning the interview process shortly.", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", {
-        className: "hidden-xs"
-      }), " If you are selected to move forward with the interview process, you will hear from our HR department."))))))))));
+      }, "Documents sent successfully"))))))))));
     }
   }]);
 
-  return Thankstosubmit;
+  return DocumentUpload;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (Thankstosubmit);
+/* harmony default export */ __webpack_exports__["default"] = (DocumentUpload);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../node_modules/webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js")))
 
 /***/ })
