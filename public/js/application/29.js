@@ -422,7 +422,7 @@ var Holiday = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(fun
   return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(2), __webpack_require__.e(5), __webpack_require__.e(12), __webpack_require__.e(11), __webpack_require__.e(13), __webpack_require__.e(42)]).then(__webpack_require__.bind(null, /*! ./Tab/Holiday */ "./resources/js/Back-Office/Employee/Tab/Holiday.js"));
 });
 var HolidayCalendar = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(25), __webpack_require__.e(68)]).then(__webpack_require__.bind(null, /*! ./Tab/HolidayCalendar */ "./resources/js/Back-Office/Employee/Tab/HolidayCalendar.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(19), __webpack_require__.e(68)]).then(__webpack_require__.bind(null, /*! ./Tab/HolidayCalendar */ "./resources/js/Back-Office/Employee/Tab/HolidayCalendar.js"));
 });
 var id = '';
 var data = [];
