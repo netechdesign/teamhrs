@@ -233,6 +233,12 @@
                         <td align="left">
                             <table   border="0" width="97%" align="center" cellpadding="0" cellspacing="0"
                                 class="container590">
+                                
+                                <tr>
+                                    <td align="left" style=" font-size: 16px; font-family: 'Work Sans', Calibri, sans-serif; line-height: 35px;">
+                                       <b>Name: </b> {{$data->fullname}}
+                                    </td>
+                                </tr>
                                 <tr>
                                     <td align="left" style=" font-size: 16px; font-family: 'Work Sans', Calibri, sans-serif; line-height: 35px;">
                                        <b>Date: </b> {{$data->from_date_text}} <b>To</b> {{$data->to_date_text}}

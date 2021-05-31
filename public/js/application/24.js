@@ -2610,7 +2610,7 @@ var NavContent = /*#__PURE__*/function (_Component) {
                 };
                 holidayList = {
                   id: 'Holiday-list',
-                  title: 'Holiday',
+                  title: 'Holiday Overview',
                   type: 'item',
                   url: '/Holiday',
                   icon: 'fa fa-plane'

@@ -170,7 +170,7 @@ if(permissions){
                 }
                 holidayList= {
                     id: 'Holiday-list',
-                    title: 'Holiday',
+                    title: 'Holiday Overview',
                     type: 'item',
                     url: '/Holiday',
                     icon: 'fa fa-plane'

@@ -102,10 +102,12 @@ class HolidayController extends Controller
                 //$request->request->add(['user_id'=> $request->user_id]);
                 $request->request->add(['created_by'=> $request->user_id]);
                 $request->request->add(['user_id'=> $request->user_id]);
+                $user_data = User::find($request->user_id);
+                $request->request->add(['fullname'=> $user_data->name.' '.$user_data->lastName]);
             }else{
                 $request->request->add(['created_by'=> $user->id]);
                 $request->request->add(['user_id'=> $user->id]);
-                 
+                $request->request->add(['fullname'=> $user->name.' '.$user->lastName]);
             }
             if($request->from_date){
                 
@@ -122,6 +124,7 @@ class HolidayController extends Controller
             $Holidays->save();
             $form_id = $Holidays->id;
             $request->request->add(['form_id'=> $form_id]);
+            
             if($request->dates){
                 
                 foreach($request->dates as $k =>$vl)
