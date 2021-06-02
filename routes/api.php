@@ -47,10 +47,15 @@ Route::group(['middleware' => ['jwt.auth','api-header']], function () {
         Route::resource('documents', 'DocumentsController');
         Route::resource('leaves', 'User_leavesController');
         Route::resource('holiday', 'HolidayController');
+        Route::resource('mandatory_documents', 'Mandatory_documentsController');
         
         Route::get('address_history/{id}', 'Employee_detailsController@Address_history');
         Route::get('job_history/{id}', 'Employee_detailsController@job_history');
         Route::post('holiday_calendar', 'HolidayController@Holiday_calendar');
+        Route::get('checked_mandatory_document/{id}', 'Mandatory_documentsController@checked_mandatory_document');
+        Route::get('add_mandatory_document_to_user/{id}', 'Mandatory_documentsController@add_mandatory_document_to_user');
+        Route::get('checked_mandatory_document_list/{id}', 'Mandatory_documentsController@checked_mandatory_document_list');
+        Route::get('read_mandatory_document/{id}', 'Mandatory_documentsController@read_mandatory_document');
         
 
         Route::get('newapplicationcount', 'Application_formsController@newapplicationcount');

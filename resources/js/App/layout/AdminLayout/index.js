@@ -11,8 +11,9 @@ import Loader from "../Loader";
 import routes from "../../../routes";
 import Aux from "../../../hoc/_Aux";
 import * as actionTypes from "../../../store/actions";
-
 import './app.scss';
+import axios from 'axios'
+const baseurl= window.location.origin;
 
 class AdminLayout extends Component {
     state = {
@@ -23,7 +24,48 @@ class AdminLayout extends Component {
             this.props.onFullScreenExit();
         }
     };
-    
+    checkedMandatoryDocument= () =>{
+        const {id,auth_token} = localStorage.getItem('userData')? JSON.parse(localStorage.getItem('userData')).user : 'Null';
+        
+        if(id){
+                axios.get(
+                    baseurl+'/api/checked_mandatory_document/'+id,
+                    {headers:{'Accept':'application/json','Authorization':'Bearer '+auth_token}} 
+                ).then(res =>{
+                                if(res.data.success){
+                                    if(res.data.note_read>0){
+                                          
+                                        this.props.history.push('/Employee/Mandatory-Document-List');
+                                    }
+                                 }else{}
+                            }
+                ).catch(err =>{})
+                
+                }
+    }
+    addMandatoryDocumenttoUser  = () =>{
+        const {id,auth_token,roles} = localStorage.getItem('userData')? JSON.parse(localStorage.getItem('userData')).user : 'Null';
+        if(this.props.history.location.pathname!='/Employee/Mandatory-Document-List'){
+        if(roles!=1){
+                axios.get(
+                    baseurl+'/api/add_mandatory_document_to_user/'+id,
+                    {headers:{'Accept':'application/json','Authorization':'Bearer '+auth_token}} 
+                ).then(res =>{
+                                if(res.data.success){
+                                    this.checkedMandatoryDocument();
+                                 }else{}
+                            }
+                ).catch(err =>{})
+                
+                }
+            }
+    }
+    componentWillReceiveProps = () => {
+        this.addMandatoryDocumenttoUser();
+        
+        
+    };
+
     componentWillMount() {
         const {roles} = localStorage.getItem('userData')? JSON.parse(localStorage.getItem('userData')).user : 'Null';
         const application_forms_id = localStorage.getItem('userData')? JSON.parse(localStorage.getItem('userData')).application_forms_id : 'Null';
@@ -41,6 +83,7 @@ class AdminLayout extends Component {
            }else
            {
             if(roles!=1){
+                
                 this.setState({defaultPath:'/services-starter'});
                 }
            }

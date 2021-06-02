@@ -74,6 +74,7 @@ let checklist="";
 let employeeDetails='';
 let employeeHoliday="";
 let holidayList='';
+let MandatoryDocument ="";
 let permissions = this.props.permissions;
 if(permissions){
     
@@ -168,12 +169,19 @@ if(permissions){
                     url: '/employee',
                     icon: 'feather icon-users'
                 }
-                holidayList= {
+                holidayList = {
                     id: 'Holiday-list',
                     title: 'Holiday Overview',
                     type: 'item',
                     url: '/Holiday',
                     icon: 'fa fa-plane'
+                }
+                MandatoryDocument = {
+                    id: 'Mandatory-Document',
+                    title: 'Mandatory Document',
+                    type: 'item',
+                    url: '/Mandatory-Documents',
+                    icon: 'feather icon-file-text'
                 }
             }
         }
@@ -198,7 +206,7 @@ if(permissions){
                         url: '/dashboard',
                         icon: 'feather icon-home'
                     },
-                    RoleUser,employeeForm,employeeList,checklist,employeeDetails,employeeHoliday,holidayList
+                    RoleUser,employeeForm,employeeList,checklist,employeeDetails,employeeHoliday,holidayList,MandatoryDocument
                     ]
             }]
             

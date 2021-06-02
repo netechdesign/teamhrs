@@ -1,9 +1,9 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[72],{
 
-/***/ "./resources/js/Back-Office/Pages/Holiday/HolidayCalendar.js":
-/*!*******************************************************************!*\
-  !*** ./resources/js/Back-Office/Pages/Holiday/HolidayCalendar.js ***!
-  \*******************************************************************/
+/***/ "./resources/js/Back-Office/Employee/Tab/HolidayCalendar.js":
+/*!******************************************************************!*\
+  !*** ./resources/js/Back-Office/Employee/Tab/HolidayCalendar.js ***!
+  \******************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -74,7 +74,7 @@ var HolidayCalendar = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this, props);
 
-    _defineProperty(_assertThisInitialized(_this), "getData", function () {
+    _defineProperty(_assertThisInitialized(_this), "getData", function (userId) {
       _this.setState({
         formSubmitting: true
       });
@@ -96,7 +96,7 @@ var HolidayCalendar = /*#__PURE__*/function (_React$Component) {
 
 
       axios__WEBPACK_IMPORTED_MODULE_6___default.a.post(baseurl + '/api/holiday_calendar', {
-        c: ''
+        user_id: userId
       }, {
         headers: {
           'Accept': 'application/json',
@@ -163,7 +163,12 @@ var HolidayCalendar = /*#__PURE__*/function (_React$Component) {
   _createClass(HolidayCalendar, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      this.getData();
+      if (this.props.location.state) {
+        this.setState({
+          user_id: this.props.location.state.userId
+        });
+        this.getData(this.props.location.state.userId);
+      }
     }
   }, {
     key: "render",

@@ -12,6 +12,7 @@ export const baseurl= window.location.origin;
  * Login api request
  * @param {*} user for send Credentials
  */
+
     export const  CheckPermission = (page,page_name,history,redirect=true) => {
 
         

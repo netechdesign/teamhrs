@@ -2527,6 +2527,7 @@ var NavContent = /*#__PURE__*/function (_Component) {
       var employeeDetails = '';
       var employeeHoliday = "";
       var holidayList = '';
+      var MandatoryDocument = "";
       var permissions = this.props.permissions;
 
       if (permissions) {
@@ -2615,6 +2616,13 @@ var NavContent = /*#__PURE__*/function (_Component) {
                   url: '/Holiday',
                   icon: 'fa fa-plane'
                 };
+                MandatoryDocument = {
+                  id: 'Mandatory-Document',
+                  title: 'Mandatory Document',
+                  type: 'item',
+                  url: '/Mandatory-Documents',
+                  icon: 'feather icon-file-text'
+                };
               }
             }
           });
@@ -2633,7 +2641,7 @@ var NavContent = /*#__PURE__*/function (_Component) {
           classes: 'nav-item',
           url: '/dashboard',
           icon: 'feather icon-home'
-        }, RoleUser, employeeForm, employeeList, checklist, employeeDetails, employeeHoliday, holidayList]
+        }, RoleUser, employeeForm, employeeList, checklist, employeeDetails, employeeHoliday, holidayList, MandatoryDocument]
       }];
       var navItems = navigation.map(function (item) {
         switch (item.type) {
@@ -3258,6 +3266,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _store_actions__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../../store/actions */ "./resources/js/store/actions.js");
 /* harmony import */ var _app_scss__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./app.scss */ "./resources/js/App/layout/AdminLayout/app.scss");
 /* harmony import */ var _app_scss__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(_app_scss__WEBPACK_IMPORTED_MODULE_12__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_13__);
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -3296,6 +3306,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
+var baseurl = window.location.origin;
+
 var AdminLayout = /*#__PURE__*/function (_Component) {
   _inherits(AdminLayout, _Component);
 
@@ -3322,14 +3334,61 @@ var AdminLayout = /*#__PURE__*/function (_Component) {
       }
     });
 
+    _defineProperty(_assertThisInitialized(_this), "checkedMandatoryDocument", function () {
+      var _ref = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
+          id = _ref.id,
+          auth_token = _ref.auth_token;
+
+      if (id) {
+        axios__WEBPACK_IMPORTED_MODULE_13___default.a.get(baseurl + '/api/checked_mandatory_document/' + id, {
+          headers: {
+            'Accept': 'application/json',
+            'Authorization': 'Bearer ' + auth_token
+          }
+        }).then(function (res) {
+          if (res.data.success) {
+            if (res.data.note_read > 0) {
+              _this.props.history.push('/Employee/Mandatory-Document-List');
+            }
+          } else {}
+        })["catch"](function (err) {});
+      }
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "addMandatoryDocumenttoUser", function () {
+      var _ref2 = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
+          id = _ref2.id,
+          auth_token = _ref2.auth_token,
+          roles = _ref2.roles;
+
+      if (_this.props.history.location.pathname != '/Employee/Mandatory-Document-List') {
+        if (roles != 1) {
+          axios__WEBPACK_IMPORTED_MODULE_13___default.a.get(baseurl + '/api/add_mandatory_document_to_user/' + id, {
+            headers: {
+              'Accept': 'application/json',
+              'Authorization': 'Bearer ' + auth_token
+            }
+          }).then(function (res) {
+            if (res.data.success) {
+              _this.checkedMandatoryDocument();
+            } else {}
+          })["catch"](function (err) {});
+        }
+      }
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "componentWillReceiveProps", function () {
+      _this.addMandatoryDocumenttoUser();
+    });
+
     return _this;
   }
 
   _createClass(AdminLayout, [{
     key: "componentWillMount",
     value: function componentWillMount() {
-      var _ref = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
-          roles = _ref.roles;
+      var _ref3 = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
+          roles = _ref3.roles;
 
       var application_forms_id = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).application_forms_id : 'Null';
       var lyout = 'vertical';
@@ -3756,77 +3815,86 @@ window.jQuery = jquery__WEBPACK_IMPORTED_MODULE_1___default.a;
 window.$ = jquery__WEBPACK_IMPORTED_MODULE_1___default.a;
 global.jQuery = jquery__WEBPACK_IMPORTED_MODULE_1___default.a;
 var DashboardDefault = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(4), __webpack_require__.e(16), __webpack_require__.e(60), __webpack_require__.e(53)]).then(__webpack_require__.bind(null, /*! ./Back-office/Pages/Dashboard */ "./resources/js/Back-office/Pages/Dashboard.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(15), __webpack_require__.e(16), __webpack_require__.e(60), __webpack_require__.e(53)]).then(__webpack_require__.bind(null, /*! ./Back-office/Pages/Dashboard */ "./resources/js/Back-office/Pages/Dashboard.js"));
 });
 var RoleList = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(3), __webpack_require__.e(12), __webpack_require__.e(11), __webpack_require__.e(13), __webpack_require__.e(51)]).then(__webpack_require__.bind(null, /*! ./Back-Office/Role */ "./resources/js/Back-Office/Role/index.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(22), __webpack_require__.e(17), __webpack_require__.e(11), __webpack_require__.e(13), __webpack_require__.e(51)]).then(__webpack_require__.bind(null, /*! ./Back-Office/Role */ "./resources/js/Back-Office/Role/index.js"));
 });
 var RoleAdd = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(2), __webpack_require__.e(3), __webpack_require__.e(18), __webpack_require__.e(38)]).then(__webpack_require__.bind(null, /*! ./Back-Office/Role/add */ "./resources/js/Back-Office/Role/add.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(3), __webpack_require__.e(2), __webpack_require__.e(18), __webpack_require__.e(22), __webpack_require__.e(55), __webpack_require__.e(101)]).then(__webpack_require__.bind(null, /*! ./Back-Office/Role/add */ "./resources/js/Back-Office/Role/add.js"));
 });
 var RoleEdit = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(2), __webpack_require__.e(3), __webpack_require__.e(18), __webpack_require__.e(39)]).then(__webpack_require__.bind(null, /*! ./Back-Office/Role/edit */ "./resources/js/Back-Office/Role/edit.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(3), __webpack_require__.e(2), __webpack_require__.e(18), __webpack_require__.e(22), __webpack_require__.e(55), __webpack_require__.e(102)]).then(__webpack_require__.bind(null, /*! ./Back-Office/Role/edit */ "./resources/js/Back-Office/Role/edit.js"));
 });
 var UserList = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(3), __webpack_require__.e(12), __webpack_require__.e(11), __webpack_require__.e(13), __webpack_require__.e(52)]).then(__webpack_require__.bind(null, /*! ./Back-Office/User */ "./resources/js/Back-Office/User/index.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(22), __webpack_require__.e(17), __webpack_require__.e(11), __webpack_require__.e(13), __webpack_require__.e(52)]).then(__webpack_require__.bind(null, /*! ./Back-Office/User */ "./resources/js/Back-Office/User/index.js"));
 });
 var UserAdd = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(2), __webpack_require__.e(3), __webpack_require__.e(18), __webpack_require__.e(20), __webpack_require__.e(40)]).then(__webpack_require__.bind(null, /*! ./Back-Office/User/add */ "./resources/js/Back-Office/User/add.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(3), __webpack_require__.e(2), __webpack_require__.e(18), __webpack_require__.e(22), __webpack_require__.e(55), __webpack_require__.e(40), __webpack_require__.e(103)]).then(__webpack_require__.bind(null, /*! ./Back-Office/User/add */ "./resources/js/Back-Office/User/add.js"));
 });
 var UserEdit = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(2), __webpack_require__.e(3), __webpack_require__.e(18), __webpack_require__.e(20), __webpack_require__.e(41)]).then(__webpack_require__.bind(null, /*! ./Back-Office/User/edit */ "./resources/js/Back-Office/User/edit.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(3), __webpack_require__.e(2), __webpack_require__.e(18), __webpack_require__.e(22), __webpack_require__.e(55), __webpack_require__.e(40), __webpack_require__.e(104)]).then(__webpack_require__.bind(null, /*! ./Back-Office/User/edit */ "./resources/js/Back-Office/User/edit.js"));
 });
 var CheckListAdd = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(2), __webpack_require__.e(3), __webpack_require__.e(4), __webpack_require__.e(5), __webpack_require__.e(6), __webpack_require__.e(7), __webpack_require__.e(10), __webpack_require__.e(44)]).then(__webpack_require__.bind(null, /*! ./Back-Office/Tools/CheckList */ "./resources/js/Back-Office/Tools/CheckList.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(3), __webpack_require__.e(2), __webpack_require__.e(18), __webpack_require__.e(22), __webpack_require__.e(15), __webpack_require__.e(6), __webpack_require__.e(7), __webpack_require__.e(10), __webpack_require__.e(44), __webpack_require__.e(81)]).then(__webpack_require__.bind(null, /*! ./Back-Office/Tools/CheckList */ "./resources/js/Back-Office/Tools/CheckList.js"));
 });
 var CheckList = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(2), __webpack_require__.e(3), __webpack_require__.e(4), __webpack_require__.e(5), __webpack_require__.e(6), __webpack_require__.e(7), __webpack_require__.e(12), __webpack_require__.e(11), __webpack_require__.e(10), __webpack_require__.e(13), __webpack_require__.e(45)]).then(__webpack_require__.bind(null, /*! ./Back-Office/Tools/List */ "./resources/js/Back-Office/Tools/List.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(3), __webpack_require__.e(2), __webpack_require__.e(18), __webpack_require__.e(22), __webpack_require__.e(15), __webpack_require__.e(6), __webpack_require__.e(7), __webpack_require__.e(10), __webpack_require__.e(44), __webpack_require__.e(17), __webpack_require__.e(11), __webpack_require__.e(13), __webpack_require__.e(91)]).then(__webpack_require__.bind(null, /*! ./Back-Office/Tools/List */ "./resources/js/Back-Office/Tools/List.js"));
 });
 var Services_starter_one = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
   return __webpack_require__.e(/*! import() */ 37).then(__webpack_require__.bind(null, /*! ./employee/Services_starter_form/Services_starter_one */ "./resources/js/employee/Services_starter_form/Services_starter_one.js"));
 });
 var ApplicationForm = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(2), __webpack_require__.e(3), __webpack_require__.e(4), __webpack_require__.e(5), __webpack_require__.e(6), __webpack_require__.e(7), __webpack_require__.e(10), __webpack_require__.e(32)]).then(__webpack_require__.bind(null, /*! ./employee/ApplicationForm */ "./resources/js/employee/ApplicationForm/index.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(3), __webpack_require__.e(2), __webpack_require__.e(18), __webpack_require__.e(22), __webpack_require__.e(15), __webpack_require__.e(6), __webpack_require__.e(7), __webpack_require__.e(10), __webpack_require__.e(44), __webpack_require__.e(86), __webpack_require__.e(109)]).then(__webpack_require__.bind(null, /*! ./employee/ApplicationForm */ "./resources/js/employee/ApplicationForm/index.js"));
 });
 var List = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(2), __webpack_require__.e(3), __webpack_require__.e(4), __webpack_require__.e(5), __webpack_require__.e(6), __webpack_require__.e(7), __webpack_require__.e(12), __webpack_require__.e(11), __webpack_require__.e(10), __webpack_require__.e(13), __webpack_require__.e(47)]).then(__webpack_require__.bind(null, /*! ./employee/ApplicationForm/List */ "./resources/js/employee/ApplicationForm/List.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(3), __webpack_require__.e(2), __webpack_require__.e(18), __webpack_require__.e(22), __webpack_require__.e(15), __webpack_require__.e(6), __webpack_require__.e(7), __webpack_require__.e(10), __webpack_require__.e(44), __webpack_require__.e(17), __webpack_require__.e(11), __webpack_require__.e(13), __webpack_require__.e(92)]).then(__webpack_require__.bind(null, /*! ./employee/ApplicationForm/List */ "./resources/js/employee/ApplicationForm/List.js"));
 });
 var EmployeeList = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(2), __webpack_require__.e(3), __webpack_require__.e(4), __webpack_require__.e(5), __webpack_require__.e(6), __webpack_require__.e(7), __webpack_require__.e(12), __webpack_require__.e(10), __webpack_require__.e(30)]).then(__webpack_require__.bind(null, /*! ./Back-Office/Employee */ "./resources/js/Back-Office/Employee/index.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(3), __webpack_require__.e(2), __webpack_require__.e(18), __webpack_require__.e(22), __webpack_require__.e(15), __webpack_require__.e(6), __webpack_require__.e(7), __webpack_require__.e(10), __webpack_require__.e(44), __webpack_require__.e(17), __webpack_require__.e(78)]).then(__webpack_require__.bind(null, /*! ./Back-Office/Employee */ "./resources/js/Back-Office/Employee/index.js"));
 });
 var EmployeeDetails = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(3), __webpack_require__.e(4), __webpack_require__.e(6), __webpack_require__.e(29)]).then(__webpack_require__.bind(null, /*! ./Back-Office/Employee/EmployeeDetails */ "./resources/js/Back-Office/Employee/EmployeeDetails.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(22), __webpack_require__.e(15), __webpack_require__.e(7), __webpack_require__.e(29)]).then(__webpack_require__.bind(null, /*! ./Back-Office/Employee/EmployeeDetails */ "./resources/js/Back-Office/Employee/EmployeeDetails.js"));
 });
 var Holiday = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(2), __webpack_require__.e(3), __webpack_require__.e(4), __webpack_require__.e(5), __webpack_require__.e(6), __webpack_require__.e(12), __webpack_require__.e(11), __webpack_require__.e(13), __webpack_require__.e(33)]).then(__webpack_require__.bind(null, /*! ./Back-Office/Pages/Holiday */ "./resources/js/Back-Office/Pages/Holiday/index.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(3), __webpack_require__.e(2), __webpack_require__.e(18), __webpack_require__.e(22), __webpack_require__.e(15), __webpack_require__.e(6), __webpack_require__.e(7), __webpack_require__.e(17), __webpack_require__.e(11), __webpack_require__.e(13), __webpack_require__.e(97)]).then(__webpack_require__.bind(null, /*! ./Back-Office/Pages/Holiday */ "./resources/js/Back-Office/Pages/Holiday/index.js"));
 });
 var HolidayCalendar = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(3), __webpack_require__.e(4), __webpack_require__.e(19), __webpack_require__.e(72)]).then(__webpack_require__.bind(null, /*! ./Back-Office/Pages/Holiday/HolidayCalendar */ "./resources/js/Back-Office/Pages/Holiday/HolidayCalendar.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(3), __webpack_require__.e(22), __webpack_require__.e(15), __webpack_require__.e(83), __webpack_require__.e(126)]).then(__webpack_require__.bind(null, /*! ./Back-Office/Pages/Holiday/HolidayCalendar */ "./resources/js/Back-Office/Pages/Holiday/HolidayCalendar.js"));
 });
 var HolidayEdit = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(3), __webpack_require__.e(4), __webpack_require__.e(6), __webpack_require__.e(17), __webpack_require__.e(50)]).then(__webpack_require__.bind(null, /*! ./Back-Office/Pages/Holiday/AddHoliday */ "./resources/js/Back-Office/Pages/Holiday/AddHoliday.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(3), __webpack_require__.e(2), __webpack_require__.e(22), __webpack_require__.e(15), __webpack_require__.e(7), __webpack_require__.e(50), __webpack_require__.e(108)]).then(__webpack_require__.bind(null, /*! ./Back-Office/Pages/Holiday/AddHoliday */ "./resources/js/Back-Office/Pages/Holiday/AddHoliday.js"));
 });
 var EmployeeHoliday = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(3), __webpack_require__.e(4), __webpack_require__.e(6), __webpack_require__.e(31)]).then(__webpack_require__.bind(null, /*! ./employee/Holiday */ "./resources/js/employee/Holiday/index.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(22), __webpack_require__.e(15), __webpack_require__.e(7), __webpack_require__.e(31)]).then(__webpack_require__.bind(null, /*! ./employee/Holiday */ "./resources/js/employee/Holiday/index.js"));
+});
+var MandatoryDocumentList = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(22), __webpack_require__.e(15), __webpack_require__.e(7), __webpack_require__.e(44), __webpack_require__.e(93)]).then(__webpack_require__.bind(null, /*! ./employee/Page/Mandatory_document */ "./resources/js/employee/Page/Mandatory_document.js"));
 }); //For demo Examples
 
 var FormsSelect = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(20), __webpack_require__.e(25), __webpack_require__.e(27)]).then(__webpack_require__.bind(null, /*! ./Demo/Forms/FormsSelect */ "./resources/js/Demo/Forms/FormsSelect.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(40), __webpack_require__.e(25), __webpack_require__.e(27)]).then(__webpack_require__.bind(null, /*! ./Demo/Forms/FormsSelect */ "./resources/js/Demo/Forms/FormsSelect.js"));
 });
 var DashboardEcommerce = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(4), __webpack_require__.e(16), __webpack_require__.e(36)]).then(__webpack_require__.bind(null, /*! ./Demo/Dashboard/Ecommerce */ "./resources/js/Demo/Dashboard/Ecommerce.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(15), __webpack_require__.e(16), __webpack_require__.e(36)]).then(__webpack_require__.bind(null, /*! ./Demo/Dashboard/Ecommerce */ "./resources/js/Demo/Dashboard/Ecommerce.js"));
 });
 var DashboardCrm = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(4), __webpack_require__.e(16), __webpack_require__.e(21), __webpack_require__.e(34)]).then(__webpack_require__.bind(null, /*! ./Demo/Dashboard/Crm */ "./resources/js/Demo/Dashboard/Crm.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(15), __webpack_require__.e(16), __webpack_require__.e(21), __webpack_require__.e(34)]).then(__webpack_require__.bind(null, /*! ./Demo/Dashboard/Crm */ "./resources/js/Demo/Dashboard/Crm.js"));
 });
 var DashboardAnalytics = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(4), __webpack_require__.e(16), __webpack_require__.e(21), __webpack_require__.e(28)]).then(__webpack_require__.bind(null, /*! ./Demo/Dashboard/Analytics */ "./resources/js/Demo/Dashboard/Analytics.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(15), __webpack_require__.e(16), __webpack_require__.e(21), __webpack_require__.e(28)]).then(__webpack_require__.bind(null, /*! ./Demo/Dashboard/Analytics */ "./resources/js/Demo/Dashboard/Analytics.js"));
 });
 var DashboardCrypto = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(4), __webpack_require__.e(16), __webpack_require__.e(23), __webpack_require__.e(35)]).then(__webpack_require__.bind(null, /*! ./Demo/Dashboard/Crypto */ "./resources/js/Demo/Dashboard/Crypto.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(15), __webpack_require__.e(16), __webpack_require__.e(23), __webpack_require__.e(35)]).then(__webpack_require__.bind(null, /*! ./Demo/Dashboard/Crypto */ "./resources/js/Demo/Dashboard/Crypto.js"));
 });
 var DashboardProject = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(4), __webpack_require__.e(16), __webpack_require__.e(59), __webpack_require__.e(46)]).then(__webpack_require__.bind(null, /*! ./Demo/Dashboard/Project */ "./resources/js/Demo/Dashboard/Project.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(15), __webpack_require__.e(16), __webpack_require__.e(59), __webpack_require__.e(46)]).then(__webpack_require__.bind(null, /*! ./Demo/Dashboard/Project */ "./resources/js/Demo/Dashboard/Project.js"));
+});
+var MandatoryDocumentsAdd = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(3), __webpack_require__.e(18), __webpack_require__.e(22), __webpack_require__.e(6), __webpack_require__.e(10), __webpack_require__.e(44), __webpack_require__.e(98)]).then(__webpack_require__.bind(null, /*! ./Back-Office/Pages/Mandatory_documents/add */ "./resources/js/Back-Office/Pages/Mandatory_documents/add.js"));
+});
+var MandatoryDocuments = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(3), __webpack_require__.e(2), __webpack_require__.e(18), __webpack_require__.e(22), __webpack_require__.e(15), __webpack_require__.e(6), __webpack_require__.e(7), __webpack_require__.e(10), __webpack_require__.e(44), __webpack_require__.e(17), __webpack_require__.e(11), __webpack_require__.e(13), __webpack_require__.e(79)]).then(__webpack_require__.bind(null, /*! ./Back-Office/Pages/Mandatory_documents */ "./resources/js/Back-Office/Pages/Mandatory_documents/index.js"));
 });
 var routes = [{
   path: '/role',
@@ -3983,6 +4051,16 @@ var routes = [{
   exact: true,
   name: 'Oneform',
   component: EmployeeDetails
+}, {
+  path: '/Mandatory-Documents/Add',
+  exact: true,
+  name: 'Oneform',
+  component: MandatoryDocumentsAdd
+}, {
+  path: '/Mandatory-Documents',
+  exact: true,
+  name: 'Oneform',
+  component: MandatoryDocuments
 }, //all user holiday
 {
   path: '/Holiday',
@@ -4019,6 +4097,11 @@ var routes = [{
   exact: true,
   name: 'Oneform',
   component: EmployeeHoliday
+}, {
+  path: '/Employee/Mandatory-Document-List',
+  exact: true,
+  name: 'Oneform',
+  component: MandatoryDocumentList
 }, // for demo Examples.
 {
   path: '/forms/form-select',

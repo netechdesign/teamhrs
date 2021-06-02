@@ -26,6 +26,7 @@ const HolidayCalendar = React.lazy(()=>import("./Back-Office/Pages/Holiday/Holid
 
 const HolidayEdit = React.lazy(() => import("./Back-Office/Pages/Holiday/AddHoliday"));
 const EmployeeHoliday = React.lazy(() => import("./employee/Holiday"));
+const MandatoryDocumentList = React.lazy(() => import("./employee/Page/Mandatory_document"));
 //For demo Examples
 const FormsSelect = React.lazy(() => import('./Demo/Forms/FormsSelect'));
 const DashboardEcommerce = React.lazy(() => import('./Demo/Dashboard/Ecommerce'));
@@ -33,7 +34,8 @@ const DashboardCrm = React.lazy(() => import('./Demo/Dashboard/Crm'));
 const DashboardAnalytics = React.lazy(() => import('./Demo/Dashboard/Analytics'));
 const DashboardCrypto = React.lazy(() => import('./Demo/Dashboard/Crypto'));
 const DashboardProject = React.lazy(() => import('./Demo/Dashboard/Project'));
-
+const MandatoryDocumentsAdd = React.lazy(()=>import('./Back-Office/Pages/Mandatory_documents/add'))
+const MandatoryDocuments = React.lazy(()=>import('./Back-Office/Pages/Mandatory_documents'))
 const routes = [
     
     { path:'/role', exact:true, name:'role',component:RoleList},
@@ -67,6 +69,8 @@ const routes = [
     { path:'/employee-Detail/Holiday', exact:true, name:'Oneform',component:EmployeeDetails},
     { path:'/employee-Detail/Holiday/Edit/:id', exact:true, name:'Oneform',component:EmployeeDetails},
     { path:'/employee-Detail/Holiday/Calendar', exact:true, name:'Oneform',component:EmployeeDetails},
+    {path:'/Mandatory-Documents/Add', exact:true, name:'Oneform',component:MandatoryDocumentsAdd},
+    {path:'/Mandatory-Documents', exact:true, name:'Oneform',component:MandatoryDocuments},
     //all user holiday
     { path:'/Holiday', exact:true, name:'Oneform',component:Holiday},
     { path:'/Holiday/Edit/:id', exact:true, name:'Oneform',component:HolidayEdit},
@@ -75,6 +79,8 @@ const routes = [
     { path:'/Employee/Holiday-Add', exact:true, name:'Oneform',component:EmployeeHoliday},
     { path:'/Employee/Holiday-Edit/:id', exact:true, name:'Oneform',component:EmployeeHoliday},
     { path:'/Employee/Holiday-Calendar', exact:true, name:'Oneform',component:EmployeeHoliday},
+    { path:'/Employee/Mandatory-Document-List', exact:true, name:'Oneform',component:MandatoryDocumentList},
+    
     // for demo Examples.
     { path: '/forms/form-select', exact: true, name: 'Forms Select', component: FormsSelect },
     { path: '/dashboard', exact: true, name: 'Default', component: DashboardDefault },
