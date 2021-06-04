@@ -9,7 +9,8 @@ import $ from 'jquery';
 import axios from 'axios'
 import avatar from '../../assets/images/user/avatar-6.png';
 
-
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
 
 import { Table, Thead, Tbody, Tr, Th, Td } from 'react-super-responsive-table';
 import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css';
@@ -77,19 +78,32 @@ alreadyAdded =() =>{
     
   }
     handleChange = (e) =>{
-                        let id = e.target.name;
+        const MySwal = withReactContent(Swal);
+        let id = e.target.name;
+        let dtvalue =e.target.value;
+        MySwal.fire({
+            title: 'Are you sure?',
+           // text: 'Once deleted, you will not be able to recover this data!',
+            type: 'warning',
+            showCloseButton: true,
+            showCancelButton: true
+        }).then((willDelete) => {
+
+            if (willDelete.value) {
+                
+                
                         id = id.match(/\d+/)[0] 
                         let changelist = this.state.document_list[id]
                       
-                        changelist['is_read']=e.target.value;
+                        changelist['is_read']= dtvalue;
                         this.setState({document_list:this.state.document_list});
                         const {auth_token} = localStorage.getItem('userData')? JSON.parse(localStorage.getItem('userData')).user : 'Null';
                         axios.get(
                             baseurl+'/api/read_mandatory_document/'+changelist['checked_mandatory_documents_id'],
-                            {params: {'is_read': e.target.value},headers:{'Accept':'application/json','Authorization':'Bearer '+auth_token}} 
+                            {params: {'is_read': dtvalue},headers:{'Accept':'application/json','Authorization':'Bearer '+auth_token}} 
                         ).then(res =>{
                                           if(res.data.success){
-                                            
+                                            return MySwal.fire('', 'read status has been sent successfully', 'success');
                                             this.setState({apiload:false});
                                              }else{
                                               let errorMassage = '';
@@ -104,6 +118,12 @@ alreadyAdded =() =>{
                                           }
                                      }
                           )
+                        
+            } else {
+               // return MySwal.fire('', 'Your imaginary file is safe!', 'error');
+            }
+        });
+        
                         
                        }
     handleSubmit = (e) => {}
@@ -121,6 +141,7 @@ render(){
                      (item.is_read==0?<div className="custom-controls-stacked radio">
                                                             <Radio.RadioGroup 
                                                                 name={'is_read'+index}
+                                                                
                                                                 required
                                                                 inline={true}
                                                                 onChange={this.handleChange}>
@@ -129,7 +150,7 @@ render(){
                                                                 
                                                             </Radio.RadioGroup>
                                                         </div>
-                     :'Yes'
+                     :'yes'
                     ) 
                     }                               
                     </Td>
@@ -161,7 +182,7 @@ return (
                                                     <Thead>
                                                     <Tr>
                                                         <Th width='60%'>Document Name</Th>
-                                                        <Th width='20%'>have you confirmed to read?</Th>
+                                                        <Th width='20%'>Please confirm if you have read the document.</Th>
                                                         <Th width='20%'></Th>
                                                         
                                                         

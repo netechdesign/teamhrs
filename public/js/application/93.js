@@ -696,6 +696,7 @@ var Mandatory_document = /*#__PURE__*/function (_React$Component) {
           className: "custom-controls-stacked radio"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["Radio"].RadioGroup, {
           name: 'is_read' + index,
+          valueSelected: "0",
           required: true,
           inline: true,
           onChange: _this2.handleChange
@@ -707,7 +708,23 @@ var Mandatory_document = /*#__PURE__*/function (_React$Component) {
           id: 'radio5' + item.mandatory_documents_id,
           label: "no",
           value: "0"
-        }))) : 'Yes'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_10__["Td"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        }))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "custom-controls-stacked radio"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["Radio"].RadioGroup, {
+          name: 'is_read' + index,
+          valueSelected: "1",
+          required: true,
+          inline: true,
+          onChange: _this2.handleChange
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["Radio"].RadioItem, {
+          id: 'radio4' + item.mandatory_documents_id,
+          label: "yes",
+          value: "1"
+        }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["Radio"].RadioItem, {
+          id: 'radio5' + item.mandatory_documents_id,
+          label: "no",
+          value: "0"
+        })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_10__["Td"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
           type: "button",
           target: "_blank",
           href: window.location.origin + '/uploaded/' + item.document_path,
@@ -729,7 +746,7 @@ var Mandatory_document = /*#__PURE__*/function (_React$Component) {
         width: "60%"
       }, "Document Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_10__["Th"], {
         width: "20%"
-      }, "have you confirmed to read?"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_10__["Th"], {
+      }, "Please confirm if you have read the document."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_10__["Th"], {
         width: "20%"
       }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_10__["Tbody"], null, document_list))))))))));
     }

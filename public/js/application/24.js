@@ -3875,7 +3875,7 @@ var EmployeeHoliday = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.
   return Promise.all(/*! import() */[__webpack_require__.e(22), __webpack_require__.e(2), __webpack_require__.e(7), __webpack_require__.e(31)]).then(__webpack_require__.bind(null, /*! ./employee/Holiday */ "./resources/js/employee/Holiday/index.js"));
 });
 var MandatoryDocumentList = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(22), __webpack_require__.e(2), __webpack_require__.e(7), __webpack_require__.e(44), __webpack_require__.e(93)]).then(__webpack_require__.bind(null, /*! ./employee/Page/Mandatory_document */ "./resources/js/employee/Page/Mandatory_document.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(22), __webpack_require__.e(2), __webpack_require__.e(6), __webpack_require__.e(7), __webpack_require__.e(44), __webpack_require__.e(4)]).then(__webpack_require__.bind(null, /*! ./employee/Page/Mandatory_document */ "./resources/js/employee/Page/Mandatory_document.js"));
 }); //For demo Examples
 
 var FormsSelect = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
