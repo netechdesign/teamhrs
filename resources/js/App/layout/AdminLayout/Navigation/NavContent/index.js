@@ -75,6 +75,7 @@ let employeeDetails='';
 let employeeHoliday="";
 let holidayList='';
 let MandatoryDocument ="";
+let employeeMandatoryDocument ="";
 let permissions = this.props.permissions;
 if(permissions){
     
@@ -125,6 +126,13 @@ if(permissions){
                             type: 'item',
                             url: '/Employee/Holiday',
                             icon: 'fa fa-plane'
+                        }
+                        employeeMandatoryDocument = {
+                            id: 'employeeMandatoryDocument',
+                            title: 'Mandatory Document',
+                            type: 'item',
+                            url: '/Employee/Mandatory-Document-List',
+                            icon: 'feather icon-file-text'
                         }
                 
             }
@@ -206,7 +214,7 @@ if(permissions){
                         url: '/dashboard',
                         icon: 'feather icon-home'
                     },
-                    RoleUser,employeeForm,employeeList,checklist,employeeDetails,employeeHoliday,holidayList,MandatoryDocument
+                    RoleUser,employeeForm,employeeList,checklist,employeeDetails,employeeHoliday,holidayList,MandatoryDocument,employeeMandatoryDocument
                     ]
             }]
             

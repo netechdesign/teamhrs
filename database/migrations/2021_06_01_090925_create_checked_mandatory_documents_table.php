@@ -19,11 +19,12 @@ class CreateCheckedMandatoryDocumentsTable extends Migration
             $table->integer('mandatory_documents_id')->nullable(); 
             $table->integer('is_view')->default(0); 
             $table->integer('is_read')->default(0); 
+            $table->dateTime('read_at')->nullable();
             $table->integer('created_by')->nullable();
             $table->foreign('users_id')->references('id')->on('users')->onUpdate('RESTRICT')->onDelete('CASCADE');
             $table->foreign('mandatory_documents_id')->references('id')->on('mandatory_documents')->onUpdate('RESTRICT')->onDelete('CASCADE');
             $table->softDeletes();
-            $table->timestamps();
+             $table->timestamps();
         });
     }
 

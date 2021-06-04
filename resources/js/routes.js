@@ -69,6 +69,7 @@ const routes = [
     { path:'/employee-Detail/Holiday', exact:true, name:'Oneform',component:EmployeeDetails},
     { path:'/employee-Detail/Holiday/Edit/:id', exact:true, name:'Oneform',component:EmployeeDetails},
     { path:'/employee-Detail/Holiday/Calendar', exact:true, name:'Oneform',component:EmployeeDetails},
+    { path:'/employee-Detail/Mandatory-document', exact:true, name:'Oneform',component:EmployeeDetails},
     {path:'/Mandatory-Documents/Add', exact:true, name:'Oneform',component:MandatoryDocumentsAdd},
     {path:'/Mandatory-Documents', exact:true, name:'Oneform',component:MandatoryDocuments},
     //all user holiday

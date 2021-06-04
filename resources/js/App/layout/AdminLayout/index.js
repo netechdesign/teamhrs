@@ -46,7 +46,7 @@ class AdminLayout extends Component {
     addMandatoryDocumenttoUser  = () =>{
         const {id,auth_token,roles} = localStorage.getItem('userData')? JSON.parse(localStorage.getItem('userData')).user : 'Null';
         if(this.props.history.location.pathname!='/Employee/Mandatory-Document-List'){
-        if(roles!=1){
+        
                 axios.get(
                     baseurl+'/api/add_mandatory_document_to_user/'+id,
                     {headers:{'Accept':'application/json','Authorization':'Bearer '+auth_token}} 
@@ -57,7 +57,7 @@ class AdminLayout extends Component {
                             }
                 ).catch(err =>{})
                 
-                }
+                
             }
     }
     componentWillReceiveProps = () => {

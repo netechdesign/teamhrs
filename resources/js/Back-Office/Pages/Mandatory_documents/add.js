@@ -9,6 +9,7 @@ import Aux from "../../../hoc/_Aux";
 
 
 import { ValidationForm, TextInput, BaseFormControl, SelectGroup, FileInput, Checkbox, Radio } from 'react-bootstrap4-form-validation';
+import Select from 'react-select';
 import Loki from 'react-loki';
 import Loadable from 'react-loadable';
 import validator from 'validator';
@@ -55,6 +56,8 @@ class submitCertification extends React.Component {
         this.state = {
             id:'',
             other_documents:[{document_name:''}],
+            role_list:[],
+            selected_role:null,
             chkBasic: false,
             chkCustom: false,
             checkMeSwitch: false,
@@ -68,7 +71,33 @@ class submitCertification extends React.Component {
     }
 
     
-
+    RoleList = (e) =>{
+        const id = this.state.id;
+          
+          //document.getElementById("requestLoder").innerHTML = '<img style="width:2%"  src="'+baseurl+'/images/ajax_loader_gray_512.gif"></img>';
+          const {auth_token} = localStorage.getItem('userData')? JSON.parse(localStorage.getItem('userData')).user : 'Null';
+          
+            axios.get(
+              baseurl+'/api/roledropdown',{headers:{'Accept':'application/json','Authorization':'Bearer '+auth_token}} 
+          ).then(res =>{
+                          if(res.data.success){
+                              
+                           
+                             this.setState({role_list:res.data.data})
+                          
+                            // document.getElementById("requestLoder").innerHTML = '';
+                             
+                          }else{
+                             
+                          }
+                     }
+          )
+          .catch(err =>{
+                          console.log(err);
+                      }
+          )
+         
+      }
     handleCheckboxChange = (e, value) => {
         this.setState({
             [e.target.name]: value
@@ -94,6 +123,7 @@ class submitCertification extends React.Component {
        
         const data = new FormData($('#documentUpload')[0]);
         data.append('id', this.props.match.params.id);
+        data.append('selected_role', JSON.stringify(this.state.selected_role));
         
        // let formdata = this.state;
        // data.append('user_cv', this.state.user_cv);
@@ -167,7 +197,7 @@ class submitCertification extends React.Component {
     
       
     componentDidMount() {
-        
+        this.RoleList();
         console.log(this.props.match.params.id);
         
     }
@@ -191,7 +221,7 @@ class submitCertification extends React.Component {
   let file = event.target.files[0];
   let size = 30000000;
   let err = '';
-  console.log(file.size);
+  
   if (file.size > size) {
       
    err = file.type+'is too large, please pick a smaller file\n';
@@ -231,6 +261,11 @@ toggleHandler = () => {
     
     this.setState(prevState => { return {eusr_card_not_issued: !prevState.eusr_card_not_issued}})
 };
+RoleHandleChange = selectedOption => {
+   // this.setState({ selectedOption });
+   this.setState({selected_role:selectedOption})
+   // console.log(`Option selected:`, selectedOption);
+  };
     render() {
         const { match, location, history } = this.props
         const other_documents = this.state.other_documents.map((item, index) => {
@@ -294,8 +329,20 @@ toggleHandler = () => {
                                         
                                         <Button variant='secondary' style={{marginLeft:'10px'}}  onClick={this.addOtherdocuments}  size='sm'>+ Add Documents</Button>
                                         </Form.Group>
-                            </Form.Row>     
-                                
+                            </Form.Row> 
+                            <Form.Row>       
+                                    <Form.Group as={Col} md="4">
+                                    <Form.Label htmlFor="firstName">Role</Form.Label>
+                                    <Select isMulti  onChange={this.RoleHandleChange}
+                                            className="basic-single"
+                                            classNamePrefix="select"
+                                            name="role_id"
+                                            options={this.state.role_list}
+                                            value={this.state.selected_role}
+                                            placeholder="Select Role"
+                                        />
+                                        </Form.Group>
+                                </Form.Row> 
                                         <Form.Row>   
                                         <Form.Group as={Col} sm={12}  style={{textAlign:'center'}} className="mt-3">
                                         <Button disabled={this.state.formSubmitting}  type="submit"> {this.state.buttonName}</Button>

@@ -641,7 +641,7 @@ var Mandatory_document = /*#__PURE__*/function (_React$Component) {
       var _ref2 = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
           auth_token = _ref2.auth_token;
 
-      axios__WEBPACK_IMPORTED_MODULE_8___default.a.get(baseurl + '/api/read_mandatory_document/' + changelist['mandatory_documents_id'], {
+      axios__WEBPACK_IMPORTED_MODULE_8___default.a.get(baseurl + '/api/read_mandatory_document/' + changelist['checked_mandatory_documents_id'], {
         params: {
           'is_read': e.target.value
         },
@@ -729,7 +729,7 @@ var Mandatory_document = /*#__PURE__*/function (_React$Component) {
         width: "60%"
       }, "Document Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_10__["Th"], {
         width: "20%"
-      }, "Is read?"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_10__["Th"], {
+      }, "have you confirmed to read?"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_10__["Th"], {
         width: "20%"
       }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_10__["Tbody"], null, document_list))))))))));
     }

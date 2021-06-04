@@ -16,7 +16,8 @@ class CreateMandatoryDocumentsTable extends Migration
         Schema::create('mandatory_documents', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('document_name')->nullable(); 
-            $table->text('document_path')->nullable(); 
+            $table->text('document_path')->nullable();
+            $table->text('role_can_read')->nullable();
             $table->integer('created_by')->nullable();
             $table->softDeletes();
             $table->timestamps();

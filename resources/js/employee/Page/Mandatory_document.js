@@ -85,7 +85,7 @@ alreadyAdded =() =>{
                         this.setState({document_list:this.state.document_list});
                         const {auth_token} = localStorage.getItem('userData')? JSON.parse(localStorage.getItem('userData')).user : 'Null';
                         axios.get(
-                            baseurl+'/api/read_mandatory_document/'+changelist['mandatory_documents_id'],
+                            baseurl+'/api/read_mandatory_document/'+changelist['checked_mandatory_documents_id'],
                             {params: {'is_read': e.target.value},headers:{'Accept':'application/json','Authorization':'Bearer '+auth_token}} 
                         ).then(res =>{
                                           if(res.data.success){
@@ -161,7 +161,7 @@ return (
                                                     <Thead>
                                                     <Tr>
                                                         <Th width='60%'>Document Name</Th>
-                                                        <Th width='20%'>Is read?</Th>
+                                                        <Th width='20%'>have you confirmed to read?</Th>
                                                         <Th width='20%'></Th>
                                                         
                                                         
