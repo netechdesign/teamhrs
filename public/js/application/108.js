@@ -458,6 +458,10 @@ var AddHoliday = /*#__PURE__*/function (_React$Component) {
             _this.setState({
               buttonName: 'Edit'
             });
+
+            _this.props.history.push({
+              pathname: '/Holiday'
+            });
           } else {
             successDesktopPNotify();
 

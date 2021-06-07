@@ -11,6 +11,7 @@ use App\Models\Holidays_dates;
 use Illuminate\Support\Facades\Storage;
 use App\User;
 use Mail;
+use App\Models\User_leaves;
 
 class HolidayController extends Controller
 {
@@ -238,7 +239,13 @@ class HolidayController extends Controller
             }
             $Holidays->time_off = $request->time_off;
             $Holidays->notes = $request->notes;
+            $allotted_year	= date('Y',strtotime($Holidays->from_date));
+            $used_live =User_leaves::where('allotted_year',$allotted_year)->where('allotted_leave_limit','!=',0)->first();
+            if(!$used_live){
 
+               return response()->json(array('success' => false,'message'=> 'allotted leave limit not available'));
+            }
+            
             if($Holidays->save()){
               
                 if($request->dates){
@@ -256,6 +263,12 @@ class HolidayController extends Controller
                             $holiday_date->notes = $vl['notes'];
                             $holiday_date->approved_by=$user->id;
                         }else{
+                            $used_live =User_leaves::where('allotted_year',$allotted_year)->first();
+                            if($used_live){
+                                $used_live->used_leave = $used_live->used_leave +1;
+                                $used_live->allotted_leave_limit = $used_live->allotted_leave_limit-1;
+                                $used_live->save();
+                            }
                             $holiday_date->approved_by=$user->id;
                         }
                             

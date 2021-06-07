@@ -153,6 +153,13 @@ var AddHoliday = /*#__PURE__*/function (_React$Component) {
           if (res.data.updated) {
             successDesktopPNotify('edit');
 
+            _this.props.history.push({
+              pathname: '/employee-Detail/Holiday',
+              state: {
+                userId: id
+              }
+            });
+
             _this.setState({
               buttonName: 'Edit'
             });
@@ -229,8 +236,6 @@ var AddHoliday = /*#__PURE__*/function (_React$Component) {
       }).then(function (res) {
         if (res.data.success) {
           _this.setState(res.data.Holidays);
-
-          console.log(res.data.Holidays_dates);
 
           _this.setState({
             dates: res.data.Holidays_dates

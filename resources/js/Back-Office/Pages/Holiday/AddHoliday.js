@@ -81,6 +81,7 @@ class AddHoliday extends React.Component{
                         if(res.data.updated){
                             successDesktopPNotify('edit');
                             this.setState({buttonName:'Edit'});
+                            this.props.history.push({pathname:'/Holiday'}); 
                         }else{
                               successDesktopPNotify();
                               this.props.history.push({pathname:'/employee-Detail/Holiday',state:{userId:id}}); 

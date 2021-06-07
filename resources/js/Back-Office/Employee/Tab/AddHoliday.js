@@ -80,6 +80,8 @@ class AddHoliday extends React.Component{
                         
                         if(res.data.updated){
                             successDesktopPNotify('edit');
+                            
+                            this.props.history.push({pathname:'/employee-Detail/Holiday',state:{userId:id}}); 
                             this.setState({buttonName:'Edit'});
                         }else{
                               successDesktopPNotify();
@@ -138,7 +140,7 @@ class AddHoliday extends React.Component{
         ).then(res =>{
                           if(res.data.success){
                               this.setState(res.data.Holidays);
-                              console.log(res.data.Holidays_dates);
+                              
                               this.setState({dates:res.data.Holidays_dates});
                               
                               this.setState({apiload:false});
