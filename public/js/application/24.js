@@ -3856,6 +3856,9 @@ var ApplicationForm = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.
 var List = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
   return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(3), __webpack_require__.e(18), __webpack_require__.e(15), __webpack_require__.e(22), __webpack_require__.e(2), __webpack_require__.e(6), __webpack_require__.e(7), __webpack_require__.e(1), __webpack_require__.e(44), __webpack_require__.e(17), __webpack_require__.e(11), __webpack_require__.e(13), __webpack_require__.e(92)]).then(__webpack_require__.bind(null, /*! ./employee/ApplicationForm/List */ "./resources/js/employee/ApplicationForm/List.js"));
 });
+var applicationsEdit = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(3), __webpack_require__.e(18), __webpack_require__.e(15), __webpack_require__.e(22), __webpack_require__.e(2), __webpack_require__.e(6), __webpack_require__.e(7), __webpack_require__.e(1), __webpack_require__.e(44), __webpack_require__.e(14)]).then(__webpack_require__.bind(null, /*! ./employee/ApplicationForm/edit */ "./resources/js/employee/ApplicationForm/edit.js"));
+});
 var EmployeeList = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
   return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(3), __webpack_require__.e(18), __webpack_require__.e(15), __webpack_require__.e(22), __webpack_require__.e(2), __webpack_require__.e(6), __webpack_require__.e(7), __webpack_require__.e(1), __webpack_require__.e(44), __webpack_require__.e(17), __webpack_require__.e(78)]).then(__webpack_require__.bind(null, /*! ./Back-Office/Employee */ "./resources/js/Back-Office/Employee/index.js"));
 });
@@ -3982,6 +3985,11 @@ var routes = [{
   exact: true,
   name: 'Employee',
   component: List
+}, {
+  path: '/applications/edit/:id',
+  exact: true,
+  name: 'Employee',
+  component: applicationsEdit
 }, {
   path: '/employee',
   exact: true,

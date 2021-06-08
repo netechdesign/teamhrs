@@ -19,6 +19,7 @@ const CheckList = React.lazy(() => import("./Back-Office/Tools/List"));
 const Services_starter_one = React.lazy(() => import("./employee/Services_starter_form/Services_starter_one"));
 const ApplicationForm = React.lazy(() => import("./employee/ApplicationForm"));
 const List = React.lazy(()=>import("./employee/ApplicationForm/List") )
+const applicationsEdit = React.lazy(()=>import("./employee/ApplicationForm/edit") )
 const EmployeeList = React.lazy(() => import("./Back-Office/Employee"));
 const EmployeeDetails = React.lazy(() => import("./Back-Office/Employee/EmployeeDetails"));
 const Holiday = React.lazy(()=>import("./Back-Office/Pages/Holiday"));
@@ -54,6 +55,7 @@ const routes = [
     { path:'/services-starter/Proof-of-Identification',exact:true,name:'Services_starter_one',component:Services_starter_one},
     { path:'/application-form',exact:true,name:'ApplicationForm',component:ApplicationForm},
     {path:'/applications',exact:true,name:'Employee',component:List},
+    {path:'/applications/edit/:id',exact:true,name:'Employee',component:applicationsEdit},
     {path:'/employee',exact:true,name:'Employee',component:EmployeeList},
     {path:'/employee-Detail',exact:true,name:'Employee',component:EmployeeDetails},
     {path:'/employee-Detail/Official',exact:true,name:'Employee',component:EmployeeDetails},

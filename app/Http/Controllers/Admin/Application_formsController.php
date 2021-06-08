@@ -549,6 +549,7 @@ class Application_formsController extends Controller
         if($documents){
             $results['documents']= $documents;
         }
+        
         return response()->json(array('success' => true,'application_data'=> $results));
          } catch (\Exception $e) 
            {
@@ -601,7 +602,92 @@ class Application_formsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        try {
+            
+            // $user = JWTAuth::toUser($request->input('token'));
+           //  $request->request->add(['created_by'=> $user->id]);
+          //$request->request->add(['user_id'=> $user->id]);
+         // $request->request->add(['user_id'=> 0]);
+          $user_cv_file =  '';
+          
+          
+         
+
+         $data= $request->except('token','next');
+         $Application_Forms = Application_Forms::find($id);
+         $Application_Forms->position_applied_for = $request->position_applied_for;
+         $Application_Forms->title = $request->title;
+         $Application_Forms->fore_name = $request->fore_name;
+         $Application_Forms->surname = $request->surname;
+         $Application_Forms->email = $request->email;
+         $Application_Forms->telephone_number = $request->telephone_number;
+         $Application_Forms->address = $request->address;
+         $Application_Forms->getaddress_id = $request->getaddress_id;
+         $Application_Forms->postcode = $request->postcode;
+
+
+         if(isset($request->user_cv) && $request->user_cv!="null")
+          {
+           $user_cv_file =  $request->user_cv;
+          $cv_path = $request->user_cv->store(
+             'documents', 'public' //public is drive name from config/filesystem.php
+         );
+         
+         if($cv_path){
+            $Application_Forms->cv_path = $cv_path;
+            $Application_Forms->is_cv_attached = 1;	
+         }
+         }
+         $Application_Forms->save();
+         $form_id = $Application_Forms->id;
+         /*
+         $employment_history= $request->only('employment_history');
+         $employment_history_array = (array) json_decode($employment_history['employment_history']);
+         foreach($employment_history_array as $vl){ 
+               $data_array=[];
+               $data_array['name']=$vl->name;
+               $data_array['position']=$vl->position;
+               $data_array['reason_for_leaving']= $vl->reason_for_leaving;
+               $data_array['application_forms_id']  = $form_id;
+                $Employment_historys = new Employment_historys($data_array);
+                 $Employment_historys->save();
+                 
+            }
+           
+            $employment_references= $request->only('employment_references');
+            $employment_references_array = (array) json_decode($employment_references['employment_references']);
+            foreach($employment_references_array as $vl){ 
+             $data_array=[];
+             $data_array["company_name"]=$vl->company_name;
+             $data_array["name"]=$vl->name;
+             $data_array["position"]=$vl->position;
+             $data_array["telephone_no"]=$vl->telephone_no;
+             $data_array["email"]=$vl->email;
+             $data_array['application_forms_id']  = $form_id;
+                  $Employment_references = new Employment_references($data_array);
+                    $Employment_references->save();
+                    
+               }
+               */
+               if($form_id){
+                 return response()->json(array('success' => true,'message' => 'Data updated successfully','form_id' => $form_id), 200);
+               }
+                  
+         
+               
+        }catch (\Exception $e) 
+        {
+            
+             $message = $e->getMessage();
+            if($e->getPrevious()){
+              if($e->getPrevious()->errorInfo[2]){
+                 $message = $e->getPrevious()->errorInfo[2];
+              }
+            } 
+             $text = strstr($message, ':', true);
+         
+             return response()->json(array('success' => false,'message'=> $message));
+        }
     }
 
     /**
