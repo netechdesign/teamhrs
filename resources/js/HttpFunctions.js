@@ -36,7 +36,11 @@ export const baseurl= window.location.origin;
     
             if(Ischeck.length==0){
                 if(redirect){
-                history.goBack();
+                    
+               let notget = history.goBack();
+                if(!notget){
+                    history.push({pathname:'/'}); 
+                }
                 }
                 PNotify.error({
                     title: "Permission Error",
@@ -45,6 +49,7 @@ export const baseurl= window.location.origin;
                 return 1;
             }
        }else{
+           
     history.goBack(); 
 }
 

@@ -9,6 +9,7 @@ import PNotify from "pnotify/dist/es/PNotify";
 import Datetime from 'react-datetime';
 import Aux from "../../../hoc/_Aux";
 import { formatSingle } from 'highcharts';
+import {CheckPermission} from '../../../HttpFunctions'
 let id='';
 const baseurl= window.location.origin;
 function successDesktopPNotify(edit='') {
@@ -112,7 +113,8 @@ class AddHoliday extends React.Component{
         )
     }
     componentDidMount(){
-        
+        const { match, location, history } = this.props;
+        CheckPermission('user','add',history);
         if(this.props.location.state){
             this.setState({user_id:this.props.location.state.userId});
             

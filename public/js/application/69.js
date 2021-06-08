@@ -272,7 +272,13 @@ var CheckPermission = function CheckPermission(page, page_name, history) {
 
     if (Ischeck.length == 0) {
       if (redirect) {
-        history.goBack();
+        var notget = history.goBack();
+
+        if (!notget) {
+          history.push({
+            pathname: '/'
+          });
+        }
       }
 
       pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_2__["default"].error({
