@@ -65,7 +65,7 @@ class NavContent extends Component {
                           console.log(err);
                         }
           )    
-        }, 10000);
+        }, 100000);
           
         let RoleUser='';
 let employeeForm='';

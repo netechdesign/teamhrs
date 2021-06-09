@@ -2519,7 +2519,7 @@ var NavContent = /*#__PURE__*/function (_Component) {
         })["catch"](function (err) {
           console.log(err);
         });
-      }, 10000);
+      }, 100000);
       var RoleUser = '';
       var employeeForm = '';
       var employeeList = '';
