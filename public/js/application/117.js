@@ -326,13 +326,27 @@ var AddHoliday = /*#__PURE__*/function (_React$Component) {
       });
 
       var theDate = new Date(_this.state.from_date);
+      var dys = 0;
 
       while (theDate <= e) {
-        var array_v = {
-          dates: _this.getDate(new Date(theDate)),
-          times: ''
-        };
-        dates = [].concat(_toConsumableArray(dates), [array_v]);
+        var dt = new Date(theDate);
+        var dy = dt.getDay();
+
+        if (dy == 0 || dy == 6) {
+          dys = dys + 1;
+
+          var getdt = _this.getDate(theDate);
+
+          console.log(getdt);
+        } else {
+          // sunday 0  saturday 6 
+          var array_v = {
+            dates: _this.getDate(new Date(theDate)),
+            times: ''
+          };
+          dates = [].concat(_toConsumableArray(dates), [array_v]);
+        }
+
         theDate.setDate(theDate.getDate() + 1);
       }
 
@@ -343,6 +357,7 @@ var AddHoliday = /*#__PURE__*/function (_React$Component) {
           day = hour * 24,
           week = day * 7;
       var totalDays = Math.floor(timediff / day) + 1;
+      totalDays = totalDays - dys;
 
       _this.setState({
         dates: dates,

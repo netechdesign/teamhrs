@@ -46,7 +46,8 @@ class AddHoliday extends React.Component{
             time_off:'',
             notes:'',
             dateChangedCheck:0,
-            formShow:false
+            formShow:false,
+            day_off:[],
         }
         if(this.props.location.state){
             id = this.props.location.state.userId;
@@ -201,17 +202,25 @@ class AddHoliday extends React.Component{
             //to avoid modifying the original date
             this.setState({to_date:e});
             const theDate = new Date(this.state.from_date)
-            
+            let dys =0;
             while (theDate <= e) {
+                let dt = new Date(theDate);
+                let dy = dt.getDay();
+                if(dy==0 || dy==6){
+                    dys = dys + 1;
+                    let getdt= this.getDate(theDate);
+                    console.log(getdt);
+                }else{ // sunday 0  saturday 6 
                 let array_v={dates:this.getDate(new Date(theDate)),times:''}
-              dates = [...dates, array_v]
+                 dates = [...dates, array_v]
+                }
               theDate.setDate(theDate.getDate() + 1)
             }
             var timediff = e - this.state.from_date;
             var second=1000, minute=second*60, hour=minute*60, day=hour*24, week=day*7;
 
             let totalDays = Math.floor(timediff / day)+1; 
-                        
+            totalDays = totalDays - dys;
             this.setState({dates:dates,time_off:totalDays});
             var today = new Date(e);
             var dd = today.getDate(); 
