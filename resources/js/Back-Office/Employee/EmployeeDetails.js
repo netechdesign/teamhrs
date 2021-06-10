@@ -65,8 +65,9 @@ componentDidMount(){
 componentWillMount(){
     
 }
+
 alreadyAdded =(id) =>{
-        
+    this.setState({employee_details:[]});
     this.setState({buttonName:<span><span className="spinner-grow spinner-grow-sm mr-1" role="status" />Loading</span>});
     const {auth_token} = localStorage.getItem('userData')? JSON.parse(localStorage.getItem('userData')).user : 'Null';
    
