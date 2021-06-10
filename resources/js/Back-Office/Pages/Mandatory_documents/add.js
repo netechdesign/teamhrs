@@ -332,14 +332,14 @@ RoleHandleChange = selectedOption => {
                             </Form.Row> 
                             <Form.Row>       
                                     <Form.Group as={Col} md="4">
-                                    <Form.Label htmlFor="firstName">Role</Form.Label>
+                                    <Form.Label htmlFor="firstName">Department</Form.Label>
                                     <Select isMulti  onChange={this.RoleHandleChange}
                                             className="basic-single"
                                             classNamePrefix="select"
                                             name="role_id"
                                             options={this.state.role_list}
                                             value={this.state.selected_role}
-                                            placeholder="Select Role"
+                                            placeholder="Select Department"
                                         />
                                         </Form.Group>
                                 </Form.Row> 

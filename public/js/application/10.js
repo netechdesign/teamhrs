@@ -774,7 +774,7 @@ var submitCertification = /*#__PURE__*/function (_React$Component) {
         md: "4"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
         htmlFor: "firstName"
-      }, "Role"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_select__WEBPACK_IMPORTED_MODULE_5__["default"], {
+      }, "Department"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_select__WEBPACK_IMPORTED_MODULE_5__["default"], {
         isMulti: true,
         onChange: this.RoleHandleChange,
         className: "basic-single",
@@ -782,7 +782,7 @@ var submitCertification = /*#__PURE__*/function (_React$Component) {
         name: "role_id",
         options: this.state.role_list,
         value: this.state.selected_role,
-        placeholder: "Select Role"
+        placeholder: "Select Department"
       }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Row, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
         as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
         sm: 12,
