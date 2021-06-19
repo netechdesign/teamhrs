@@ -20,6 +20,7 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    
     public function index(Request $request)
     {
         
@@ -395,6 +396,28 @@ class UserController extends Controller
             Mail::to([$userDetail->email])->send(new UserSendMail($userDetail));
         } catch (Exception $ex) {
             dd($ex);
+        }
+    }
+
+    public function usersbyrole($role_id){
+        try{
+        $User = User::where('roles',$role_id)->get();
+        if($User){
+            foreach($User as $vl){
+                $vl->value = $vl->id;
+                $vl->label = $vl->name.' '.$vl->lastName;
+                unset($vl->id);
+                unset($vl->name);
+            }     
+            return response()->json(array('success' => true,'data' => $User), 200);
+        }
+        else{
+            return response()->json(array('success' => false,'message'=> 'not update')); 
+        }
+        }catch(Exception $ex){
+            $message = $e->getMessage();
+           
+            return response()->json(array('success' => false,'message'=> $message));
         }
     }
 }

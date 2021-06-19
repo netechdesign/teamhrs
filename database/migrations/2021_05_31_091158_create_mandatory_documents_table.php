@@ -18,6 +18,7 @@ class CreateMandatoryDocumentsTable extends Migration
             $table->string('document_name')->nullable(); 
             $table->text('document_path')->nullable();
             $table->text('role_can_read')->nullable();
+            $table->text('user_can_read')->nullable();
             $table->integer('created_by')->nullable();
             $table->softDeletes();
             $table->timestamps();

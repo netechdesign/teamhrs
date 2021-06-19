@@ -96,15 +96,26 @@ class Mandatory_documentsController extends Controller
         //
         try{
             $roles = array();
+            $users = array();
+            /*
             if($request->selected_role){
             $selected_role =json_decode($request->selected_role);
-            
                 foreach($selected_role as $vl){
                     array_push($roles,$vl->value);                  
                 }
-            
+                
              }
-            
+             */
+            array_push($roles,$request->role_id); 
+
+             if($request->selected_user){
+                $selected_user =json_decode($request->selected_user);
+                
+                    foreach($selected_user as $vl){
+                        array_push($users,$vl->value);                  
+                    }
+                
+                 }
                 if(isset($request->othersfile))
                 {
                     if($request->hasfile('othersfile'))
@@ -116,6 +127,8 @@ class Mandatory_documentsController extends Controller
                                 $vl['document_name'] = $request->document_name[$i];
                                 $vl['document_path'] = $cma_1;
                                 $vl['role_can_read'] = json_encode($roles);
+                                $vl['user_can_read'] = json_encode($users);
+                                
                                 $Documents = new Mandatory_documents($vl);
                                 $Documents->save();
                         }
@@ -180,10 +193,39 @@ class Mandatory_documentsController extends Controller
     public function add_mandatory_document_to_user(Request $request,$id)
     {
         //
+        //$Mandatory_documents = Mandatory_documents::get();
+        $user = JWTAuth::toUser($request->input('token'));
+
+        $Mandatory_documents = Mandatory_documents::whereRaw('json_contains(user_can_read, \'[' . $id . ']\')')->get();
+      
+
+        foreach($Mandatory_documents as $vl){
+           
+            
+                $Checked_mandatory_documents = Checked_mandatory_documents::where('users_id',$id)->where('mandatory_documents_id',$vl->id)->first();
+                if(!$Checked_mandatory_documents)
+                {
+                    $data['users_id'] = $id;
+                    $data['mandatory_documents_id'] = $vl->id;
+                    $Checked_mandatory_documents = new Checked_mandatory_documents($data);
+                    $Checked_mandatory_documents->save();
+                }
+            
+  
+            
+
+        }
+        return response()->json(array('success' => true,'message' => 'Mandatory_documents inserted successfully'), 200); 
+        
+    }
+    
+    public function add_mandatory_document_to_user_by_role(Request $request,$id)
+    {
+        //
         $Mandatory_documents = Mandatory_documents::get();
         $user = JWTAuth::toUser($request->input('token'));
-        //dd($user->roles);
         foreach($Mandatory_documents as $vl){
+           
             $role_can_read =json_decode($vl->role_can_read);
             if (in_array($user->roles, $role_can_read))
             {

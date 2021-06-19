@@ -496,7 +496,8 @@ var submitCertification = /*#__PURE__*/function (_React$Component) {
 
       var data = new FormData(jquery__WEBPACK_IMPORTED_MODULE_2___default()('#documentUpload')[0]);
       data.append('id', _this.props.match.params.id);
-      data.append('selected_role', JSON.stringify(_this.state.selected_role)); // let formdata = this.state;
+      data.append('selected_role', JSON.stringify(_this.state.selected_role));
+      data.append('selected_user', JSON.stringify(_this.state.selected_user)); // let formdata = this.state;
       // data.append('user_cv', this.state.user_cv);
 
       var urlid = '';
@@ -656,9 +657,54 @@ var submitCertification = /*#__PURE__*/function (_React$Component) {
     _defineProperty(_assertThisInitialized(_this), "RoleHandleChange", function (selectedOption) {
       // this.setState({ selectedOption });
       _this.setState({
-        selected_role: selectedOption
-      }); // console.log(`Option selected:`, selectedOption);
+        users_list: []
+      });
 
+      var id = selectedOption.value;
+
+      _this.setState({
+        selected_role: selectedOption
+      });
+
+      var _ref3 = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
+          auth_token = _ref3.auth_token;
+
+      axios__WEBPACK_IMPORTED_MODULE_9___default.a.get(baseurl + '/api/usersbyrole/' + id, {
+        headers: {
+          'Accept': 'application/json',
+          'Authorization': 'Bearer ' + auth_token
+        }
+      }).then(function (res) {
+        if (res.data.success) {
+          _this.setState({
+            users_list: res.data.data,
+            selected_user: null
+          });
+        }
+      })["catch"](function (err) {
+        pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_10__["default"].error({
+          title: "System Error",
+          text: err
+        });
+
+        _this.setState({
+          formSubmitting: false
+        });
+
+        _this.setState({
+          buttonName: 'Add'
+        });
+
+        _this.setState({
+          selectedFile: null
+        });
+      }); // console.log(`Option selected:`, selectedOption);
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "UserHandleChange", function (selectedOption) {
+      _this.setState({
+        selected_user: selectedOption
+      });
     });
 
     _this.state = {
@@ -667,6 +713,8 @@ var submitCertification = /*#__PURE__*/function (_React$Component) {
         document_name: ''
       }],
       role_list: [],
+      users_list: [],
+      selected_user: null,
       selected_role: null,
       chkBasic: false,
       chkCustom: false,
@@ -775,7 +823,6 @@ var submitCertification = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
         htmlFor: "firstName"
       }, "Department"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_select__WEBPACK_IMPORTED_MODULE_5__["default"], {
-        isMulti: true,
         onChange: this.RoleHandleChange,
         className: "basic-single",
         classNamePrefix: "select",
@@ -783,6 +830,20 @@ var submitCertification = /*#__PURE__*/function (_React$Component) {
         options: this.state.role_list,
         value: this.state.selected_role,
         placeholder: "Select Department"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
+        md: "4"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
+        htmlFor: "firstName"
+      }, "Users"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_select__WEBPACK_IMPORTED_MODULE_5__["default"], {
+        isMulti: true,
+        onChange: this.UserHandleChange,
+        className: "basic-single",
+        classNamePrefix: "select",
+        name: "user_id",
+        options: this.state.users_list,
+        value: this.state.selected_user,
+        placeholder: "Select User"
       }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Row, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
         as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
         sm: 12,

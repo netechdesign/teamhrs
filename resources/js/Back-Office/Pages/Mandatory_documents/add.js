@@ -57,6 +57,8 @@ class submitCertification extends React.Component {
             id:'',
             other_documents:[{document_name:''}],
             role_list:[],
+            users_list:[],
+            selected_user:null,
             selected_role:null,
             chkBasic: false,
             chkCustom: false,
@@ -124,6 +126,7 @@ class submitCertification extends React.Component {
         const data = new FormData($('#documentUpload')[0]);
         data.append('id', this.props.match.params.id);
         data.append('selected_role', JSON.stringify(this.state.selected_role));
+        data.append('selected_user',JSON.stringify(this.state.selected_user));
         
        // let formdata = this.state;
        // data.append('user_cv', this.state.user_cv);
@@ -263,9 +266,34 @@ toggleHandler = () => {
 };
 RoleHandleChange = selectedOption => {
    // this.setState({ selectedOption });
+   this.setState({users_list:[]});
+   let id =selectedOption.value;
    this.setState({selected_role:selectedOption})
+   const {auth_token} = localStorage.getItem('userData')? JSON.parse(localStorage.getItem('userData')).user : 'Null';
+   axios.get(
+       baseurl+'/api/usersbyrole/'+id,
+       {headers:{'Accept':'application/json','Authorization':'Bearer '+auth_token}}
+   ).then(res =>{
+    if(res.data.success){
+        this.setState({users_list:res.data.data,selected_user:null});
+    }
+   }).catch(err =>{
+    PNotify.error({
+        title: "System Error",
+        text:err,
+    });
+    this.setState({formSubmitting:false});
+    this.setState({buttonName:'Add'});
+    this.setState({selectedFile:null});
+          
+      });
    // console.log(`Option selected:`, selectedOption);
   };
+UserHandleChange = selectedOption =>{
+    
+    this.setState({selected_user:selectedOption})
+
+} 
     render() {
         const { match, location, history } = this.props
         const other_documents = this.state.other_documents.map((item, index) => {
@@ -333,13 +361,24 @@ RoleHandleChange = selectedOption => {
                             <Form.Row>       
                                     <Form.Group as={Col} md="4">
                                     <Form.Label htmlFor="firstName">Department</Form.Label>
-                                    <Select isMulti  onChange={this.RoleHandleChange}
+                                    <Select  onChange={this.RoleHandleChange}
                                             className="basic-single"
                                             classNamePrefix="select"
                                             name="role_id"
                                             options={this.state.role_list}
                                             value={this.state.selected_role}
                                             placeholder="Select Department"
+                                        />
+                                        </Form.Group>
+                                        <Form.Group as={Col} md="4">
+                                    <Form.Label htmlFor="firstName">Users</Form.Label>
+                                    <Select isMulti  onChange={this.UserHandleChange}
+                                            className="basic-single"
+                                            classNamePrefix="select"
+                                            name="user_id"
+                                            options={this.state.users_list}
+                                            value={this.state.selected_user}
+                                            placeholder="Select User"
                                         />
                                         </Form.Group>
                                 </Form.Row> 
