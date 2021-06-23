@@ -1022,7 +1022,8 @@ var List = /*#__PURE__*/function (_React$Component) {
         key: 'home',
         application_status: '',
         application_status_comments: '',
-        applicationStatusList: []
+        applicationStatusList: [],
+        certificationButton: false
       });
 
       var _ref3 = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
@@ -1036,7 +1037,8 @@ var List = /*#__PURE__*/function (_React$Component) {
       }).then(function (res) {
         if (res.data.success) {
           _this.setState({
-            application_Forms: res.data.application_data
+            application_Forms: res.data.application_data,
+            certificationButton: false
           });
 
           _this.resetForm();
@@ -1260,6 +1262,10 @@ var List = /*#__PURE__*/function (_React$Component) {
             });
           }
         }
+      } else {
+        _this.setState({
+          certificationButton: false
+        });
       }
     });
 

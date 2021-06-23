@@ -434,12 +434,12 @@ other_documentDelete =(element) =>{
 
   
   statusShow =(application_id) =>{
-    this.setState({status_view:true,application_Forms:[],key :'home',application_status:'',application_status_comments:'',applicationStatusList:[]});
+    this.setState({status_view:true,application_Forms:[],key :'home',application_status:'',application_status_comments:'',applicationStatusList:[],certificationButton:false});
     const {auth_token} = localStorage.getItem('userData')? JSON.parse(localStorage.getItem('userData')).user : 'Null';
     axios.get(baseurl+'/api/application_form/'+application_id,{headers:{'Accept':'application/json','Authorization':'Bearer '+auth_token}}
               ).then(res =>{
                             if(res.data.success){
-                                  this.setState({application_Forms:res.data.application_data});
+                                  this.setState({application_Forms:res.data.application_data,certificationButton:false});
                                   this.resetForm();
                                 }else{
                                   let errorMassage = '';
@@ -620,6 +620,9 @@ other_documentDelete =(element) =>{
                   }
                   }
         
+    }else{
+      this.setState({certificationButton:false});
+      
     }
   }
   telephoneQuestionsSubmit = (e, formData, inputs) => {
