@@ -1,13 +1,218 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[87],{
 
-/***/ "./resources/js/employee/Page/Mandatory_document.js":
-/*!**********************************************************!*\
-  !*** ./resources/js/employee/Page/Mandatory_document.js ***!
-  \**********************************************************/
+/***/ "./resources/js/employee/Holiday/Tab/HolidayCalendar.js":
+/*!**************************************************************!*\
+  !*** ./resources/js/employee/Holiday/Tab/HolidayCalendar.js ***!
+  \**************************************************************/
 /*! exports provided: default */
-/***/ (function(module, exports) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: D:\\wamp21\\www\\hr_system\\resources\\js\\employee\\Page\\Mandatory_document.js: Identifier 'id' has already been declared (86:31)\n\n\u001b[0m \u001b[90m 84 |\u001b[39m                         changelist[\u001b[32m'is_read'\u001b[39m]\u001b[33m=\u001b[39me\u001b[33m.\u001b[39mtarget\u001b[33m.\u001b[39mvalue\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 85 |\u001b[39m                         \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39msetState({document_list\u001b[33m:\u001b[39m\u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mstate\u001b[33m.\u001b[39mdocument_list})\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 86 |\u001b[39m                         \u001b[36mconst\u001b[39m {id\u001b[33m,\u001b[39mauth_token} \u001b[33m=\u001b[39m localStorage\u001b[33m.\u001b[39mgetItem(\u001b[32m'userData'\u001b[39m)\u001b[33m?\u001b[39m \u001b[33mJSON\u001b[39m\u001b[33m.\u001b[39mparse(localStorage\u001b[33m.\u001b[39mgetItem(\u001b[32m'userData'\u001b[39m))\u001b[33m.\u001b[39muser \u001b[33m:\u001b[39m \u001b[32m'Null'\u001b[39m\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m    |\u001b[39m                                \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 87 |\u001b[39m                         axios\u001b[33m.\u001b[39m\u001b[36mget\u001b[39m(\u001b[0m\n\u001b[0m \u001b[90m 88 |\u001b[39m                             baseurl\u001b[33m+\u001b[39m\u001b[32m'/api/read_mandatory_document/'\u001b[39m\u001b[33m+\u001b[39mchangelist[\u001b[32m'mandatory_documents_id'\u001b[39m]\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 89 |\u001b[39m                             {params\u001b[33m:\u001b[39m {\u001b[32m'is_read'\u001b[39m\u001b[33m:\u001b[39m e\u001b[33m.\u001b[39mtarget\u001b[33m.\u001b[39mvalue}\u001b[33m,\u001b[39mheaders\u001b[33m:\u001b[39m{\u001b[32m'Accept'\u001b[39m\u001b[33m:\u001b[39m\u001b[32m'application/json'\u001b[39m\u001b[33m,\u001b[39m\u001b[32m'Authorization'\u001b[39m\u001b[33m:\u001b[39m\u001b[32m'Bearer '\u001b[39m\u001b[33m+\u001b[39mauth_token}} \u001b[0m\n    at Object._raise (D:\\wamp21\\www\\hr_system\\node_modules\\@babel\\parser\\lib\\index.js:776:17)\n    at Object.raiseWithData (D:\\wamp21\\www\\hr_system\\node_modules\\@babel\\parser\\lib\\index.js:769:17)\n    at Object.raise (D:\\wamp21\\www\\hr_system\\node_modules\\@babel\\parser\\lib\\index.js:737:17)\n    at ScopeHandler.checkRedeclarationInScope (D:\\wamp21\\www\\hr_system\\node_modules\\@babel\\parser\\lib\\index.js:1453:12)\n    at ScopeHandler.declareName (D:\\wamp21\\www\\hr_system\\node_modules\\@babel\\parser\\lib\\index.js:1419:12)\n    at Object.checkLVal (D:\\wamp21\\www\\hr_system\\node_modules\\@babel\\parser\\lib\\index.js:10202:24)\n    at Object.checkLVal (D:\\wamp21\\www\\hr_system\\node_modules\\@babel\\parser\\lib\\index.js:10219:16)\n    at Object.parseVarId (D:\\wamp21\\www\\hr_system\\node_modules\\@babel\\parser\\lib\\index.js:12880:10)\n    at Object.parseVar (D:\\wamp21\\www\\hr_system\\node_modules\\@babel\\parser\\lib\\index.js:12855:12)\n    at Object.parseVarStatement (D:\\wamp21\\www\\hr_system\\node_modules\\@babel\\parser\\lib\\index.js:12670:10)\n    at Object.parseStatementContent (D:\\wamp21\\www\\hr_system\\node_modules\\@babel\\parser\\lib\\index.js:12262:21)\n    at Object.parseStatement (D:\\wamp21\\www\\hr_system\\node_modules\\@babel\\parser\\lib\\index.js:12195:17)\n    at Object.parseBlockOrModuleBlockBody (D:\\wamp21\\www\\hr_system\\node_modules\\@babel\\parser\\lib\\index.js:12777:25)\n    at Object.parseBlockBody (D:\\wamp21\\www\\hr_system\\node_modules\\@babel\\parser\\lib\\index.js:12768:10)\n    at Object.parseBlock (D:\\wamp21\\www\\hr_system\\node_modules\\@babel\\parser\\lib\\index.js:12752:10)\n    at Object.parseFunctionBody (D:\\wamp21\\www\\hr_system\\node_modules\\@babel\\parser\\lib\\index.js:11715:24)\n    at Object.parseArrowExpression (D:\\wamp21\\www\\hr_system\\node_modules\\@babel\\parser\\lib\\index.js:11687:10)\n    at Object.parseParenAndDistinguishExpression (D:\\wamp21\\www\\hr_system\\node_modules\\@babel\\parser\\lib\\index.js:11260:12)\n    at Object.parseExprAtom (D:\\wamp21\\www\\hr_system\\node_modules\\@babel\\parser\\lib\\index.js:10964:21)\n    at Object.parseExprAtom (D:\\wamp21\\www\\hr_system\\node_modules\\@babel\\parser\\lib\\index.js:5177:20)\n    at Object.parseExprSubscripts (D:\\wamp21\\www\\hr_system\\node_modules\\@babel\\parser\\lib\\index.js:10644:23)\n    at Object.parseUpdate (D:\\wamp21\\www\\hr_system\\node_modules\\@babel\\parser\\lib\\index.js:10624:21)\n    at Object.parseMaybeUnary (D:\\wamp21\\www\\hr_system\\node_modules\\@babel\\parser\\lib\\index.js:10602:23)\n    at Object.parseExprOps (D:\\wamp21\\www\\hr_system\\node_modules\\@babel\\parser\\lib\\index.js:10463:23)\n    at Object.parseMaybeConditional (D:\\wamp21\\www\\hr_system\\node_modules\\@babel\\parser\\lib\\index.js:10437:23)\n    at Object.parseMaybeAssign (D:\\wamp21\\www\\hr_system\\node_modules\\@babel\\parser\\lib\\index.js:10400:21)\n    at D:\\wamp21\\www\\hr_system\\node_modules\\@babel\\parser\\lib\\index.js:10367:39\n    at Object.allowInAnd (D:\\wamp21\\www\\hr_system\\node_modules\\@babel\\parser\\lib\\index.js:12037:16)\n    at Object.parseMaybeAssignAllowIn (D:\\wamp21\\www\\hr_system\\node_modules\\@babel\\parser\\lib\\index.js:10367:17)\n    at Object.parseInitializer (D:\\wamp21\\www\\hr_system\\node_modules\\@babel\\parser\\lib\\index.js:13251:44)\n    at Object.parseClassProperty (D:\\wamp21\\www\\hr_system\\node_modules\\@babel\\parser\\lib\\index.js:13242:10)\n    at Object.pushClassProperty (D:\\wamp21\\www\\hr_system\\node_modules\\@babel\\parser\\lib\\index.js:13207:30)\n    at Object.parseClassMemberWithIsStatic (D:\\wamp21\\www\\hr_system\\node_modules\\@babel\\parser\\lib\\index.js:13114:14)\n    at Object.parseClassMember (D:\\wamp21\\www\\hr_system\\node_modules\\@babel\\parser\\lib\\index.js:13051:10)\n    at D:\\wamp21\\www\\hr_system\\node_modules\\@babel\\parser\\lib\\index.js:12996:14\n    at Object.withTopicForbiddingContext (D:\\wamp21\\www\\hr_system\\node_modules\\@babel\\parser\\lib\\index.js:12012:14)");
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var fullcalendar_reactwrapper__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! fullcalendar-reactwrapper */ "./node_modules/fullcalendar-reactwrapper/lib/index.js");
+/* harmony import */ var fullcalendar_reactwrapper__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(fullcalendar_reactwrapper__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _hoc_Aux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../hoc/_Aux */ "./resources/js/hoc/_Aux/index.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/index.js");
+/* harmony import */ var react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-bootstrap4-form-validation */ "./node_modules/react-bootstrap4-form-validation/lib/index.js");
+/* harmony import */ var react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var validator__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! validator */ "./node_modules/validator/index.js");
+/* harmony import */ var validator__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(validator__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! pnotify/dist/es/PNotify */ "./node_modules/pnotify/dist/es/PNotify.js");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
+
+
+
+
+
+var baseurl = window.location.origin;
+var today = new Date();
+var dd = String(today.getDate()).padStart(2, '0');
+var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+
+var yyyy = today.getFullYear();
+var todaydate = yyyy + '-' + mm + '-' + dd;
+
+var HolidayCalendar = /*#__PURE__*/function (_React$Component) {
+  _inherits(HolidayCalendar, _React$Component);
+
+  var _super = _createSuper(HolidayCalendar);
+
+  function HolidayCalendar(props) {
+    var _this;
+
+    _classCallCheck(this, HolidayCalendar);
+
+    _this = _super.call(this, props);
+
+    _defineProperty(_assertThisInitialized(_this), "getData", function (userId) {
+      _this.setState({
+        formSubmitting: true
+      });
+
+      _this.setState({
+        apiload: true
+      });
+
+      _this.setState({
+        buttonName: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          className: "spinner-grow spinner-grow-sm mr-1",
+          role: "status"
+        }), "Loading")
+      });
+
+      var _ref = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
+          auth_token = _ref.auth_token; //const data = new FormData()
+      //data.append('name', this.state.name);
+
+
+      axios__WEBPACK_IMPORTED_MODULE_6___default.a.post(baseurl + '/api/holiday_calendar', {
+        user_id: userId
+      }, {
+        headers: {
+          'Accept': 'application/json',
+          'Authorization': 'Bearer ' + auth_token
+        }
+      }).then(function (res) {
+        if (res.data.success) {
+          _this.setState({
+            events: res.data.result
+          });
+
+          _this.setState({
+            apiload: false
+          });
+
+          _this.setState({
+            formSubmitting: false
+          });
+        } else {
+          var errorMassage = '';
+
+          if (res.data.errors) {
+            errorMassage = res.data.errors.name;
+          } else {
+            errorMassage = res.data.email;
+          }
+
+          _this.setState({
+            formSubmitting: false
+          });
+
+          _this.setState({
+            buttonName: 'Save'
+          });
+        }
+      })["catch"](function (err) {
+        pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_7__["default"].error({
+          title: "System Error",
+          text: err
+        });
+
+        _this.setState({
+          formSubmitting: false
+        });
+
+        _this.setState({
+          buttonName: 'Add'
+        });
+
+        _this.setState({
+          selectedFile: null
+        });
+      });
+    });
+
+    _this.state = {
+      user_id: '',
+      today: todaydate,
+      events: []
+    };
+    return _this;
+  }
+
+  _createClass(HolidayCalendar, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _ref2 = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
+          id = _ref2.id,
+          name = _ref2.name,
+          email = _ref2.email;
+
+      if (id) {
+        this.setState({
+          user_id: id
+        });
+        this.getData(id);
+      }
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_hoc_Aux__WEBPACK_IMPORTED_MODULE_2__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        style: {
+          position: 'absolute',
+          zIndex: '99999',
+          background: 'rgba(255, 255, 255, 0.57)',
+          top: '25%',
+          left: '50%',
+          display: this.state.apiload ? 'block' : 'none'
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "loader"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(fullcalendar_reactwrapper__WEBPACK_IMPORTED_MODULE_1___default.a, {
+        id: "datta-calendar",
+        className: "calendar",
+        header: {
+          left: 'prev,next today',
+          center: 'title',
+          right: 'month,basicWeek,basicDay'
+        },
+        defaultDate: this.state.today,
+        navLinks: true,
+        editable: false,
+        eventLimit: true,
+        events: this.state.events,
+        eventClick: function eventClick(calEvent, jsEvent, view, resourceObj) {
+          console.log(calEvent);
+        }
+      }));
+    }
+  }]);
+
+  return HolidayCalendar;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (HolidayCalendar);
 
 /***/ })
 

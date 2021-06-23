@@ -49,6 +49,7 @@ class CreateApplicationFormsTable extends Migration
                     $table->integer('is_document_request')->default(1)->comment('1= not request');
                     $table->integer('is_document_get')->default(1)->comment('1= not get');
                     $table->string('driving_licence_code_text')->nullable();
+                    $table->string('status')->default('TO BE REVIEWED');
                     $table->integer('created_by')->nullable();
                     $table->integer('updated_by')->nullable();
                     $table->index(['user_id', 'created_at']);

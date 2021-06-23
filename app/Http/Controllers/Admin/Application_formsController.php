@@ -17,6 +17,7 @@ use App\Mail\UserSendMail;
 use App\Models\Job_positions;
 use App\Models\Offerletters;
 use App\Models\Roles;
+use App\Models\Application_status;
 
 class Application_formsController extends Controller
 {
@@ -57,6 +58,7 @@ class Application_formsController extends Controller
                     $query->orWhere('email', 'LIKE', "%{$search}%");
                     $query->orWhere('position_applied_for', 'LIKE', "%{$search}%");
                     $query->orWhere('telephone_number', 'LIKE', "%{$search}%");
+                    $query->orWhere('status', 'LIKE', "%{$search}%");
                     
                     
                    } 
@@ -1093,4 +1095,54 @@ $data = json_decode($data,true);
                             return response()->json(array('success' => false,'message'=> $message));
                         }
      }
+
+     public function application_status(Request $request){
+   
+        try{
+            $user = JWTAuth::toUser($request->input('token'));
+            
+            $Application_status = new Application_status();
+            $Application_status->status_id= $request->application_status;
+            $Application_status->status_name =$request->application_status_name;;
+            $Application_status->status_comments= $request->application_status_comments;
+            $Application_status->application_forms_id= $request->application_forms_id;
+            $Application_status->created_by= $user->id;
+            if($Application_status->save()){
+                $Application_Forms = Application_Forms::find($request->application_forms_id);
+                $Application_Forms['status'] = $request->application_status_name;
+                $Application_Forms->save();
+                                  return response()->json(array('success' => true,'form_id'=> $Application_status->id));
+            }
+        }catch(\Exception $e){
+            $message = $e->getMessage();
+            $text = strstr($message, ':', true);
+         return response()->json(array('success' => false,'message'=> $message));
+        }
+     }
+     
+     public function application_status_list($id){
+
+        
+        try { 
+            $application_status_list = DB::table('application_statuses')
+            ->Join('users', 'users.id', '=', 'application_statuses.created_by')
+            ->where('application_statuses.application_forms_id', '=', $id)
+            ->select('application_statuses.*',DB::raw('CONCAT(users.name," ",users.lastName) AS created_by_name'),DB::raw('DATE_FORMAT(application_statuses.created_at,"%d/%m/%Y %H:%i") as created_at_date'))->orderBy('application_statuses.created_at','desc')
+            ->get();
+            
+            if($application_status_list){
+            return response()->json(array('success' => true,'application_status_list'=> $application_status_list));
+            }
+            return response()->json(array('success' => false,'message'=> 'not get'));
+             } catch (\Exception $e) 
+               {
+                    $message = $e->getMessage();
+                    
+                    $text = strstr($message, ':', true);
+                
+                    return response()->json(array('success' => false,'message'=> $message));
+               }
+        
+     }
+
 }

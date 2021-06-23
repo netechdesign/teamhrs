@@ -1,9 +1,9 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[85],{
 
-/***/ "./resources/js/employee/Holiday/Tab/HolidayCalendar.js":
-/*!**************************************************************!*\
-  !*** ./resources/js/employee/Holiday/Tab/HolidayCalendar.js ***!
-  \**************************************************************/
+/***/ "./resources/js/Back-Office/Pages/Holiday/HolidayCalendar.js":
+/*!*******************************************************************!*\
+  !*** ./resources/js/Back-Office/Pages/Holiday/HolidayCalendar.js ***!
+  \*******************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -74,7 +74,7 @@ var HolidayCalendar = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this, props);
 
-    _defineProperty(_assertThisInitialized(_this), "getData", function (userId) {
+    _defineProperty(_assertThisInitialized(_this), "getData", function () {
       _this.setState({
         formSubmitting: true
       });
@@ -96,7 +96,7 @@ var HolidayCalendar = /*#__PURE__*/function (_React$Component) {
 
 
       axios__WEBPACK_IMPORTED_MODULE_6___default.a.post(baseurl + '/api/holiday_calendar', {
-        user_id: userId
+        c: ''
       }, {
         headers: {
           'Accept': 'application/json',
@@ -163,22 +163,16 @@ var HolidayCalendar = /*#__PURE__*/function (_React$Component) {
   _createClass(HolidayCalendar, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      var _ref2 = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
-          id = _ref2.id,
-          name = _ref2.name,
-          email = _ref2.email;
-
-      if (id) {
-        this.setState({
-          user_id: id
-        });
-        this.getData(id);
-      }
+      this.getData();
     }
   }, {
     key: "render",
     value: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_hoc_Aux__WEBPACK_IMPORTED_MODULE_2__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_hoc_Aux__WEBPACK_IMPORTED_MODULE_2__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Col"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Card"].Header, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Card"].Title, {
+        as: "h5"
+      }, "Holiday Calendar")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Card"].Body, {
+        className: "calendar"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         style: {
           position: 'absolute',
           zIndex: '99999',
@@ -205,7 +199,7 @@ var HolidayCalendar = /*#__PURE__*/function (_React$Component) {
         eventClick: function eventClick(calEvent, jsEvent, view, resourceObj) {
           console.log(calEvent);
         }
-      }));
+      }))))));
     }
   }]);
 

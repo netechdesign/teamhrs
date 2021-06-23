@@ -67,7 +67,9 @@ Route::group(['middleware' => ['jwt.auth','api-header']], function () {
         Route::get('getofferletter/{id}', 'Application_formsController@getofferletter');
         Route::post('resendOfferLetter', 'Application_formsController@resendOfferLetter');
         Route::post('approvedOfferLetter', 'Application_formsController@approvedOfferLetter');
-       
+        Route::post('application_status', 'Application_formsController@application_status');
+        Route::get('application_status_list/{id}', 'Application_formsController@application_status_list');
+        
         Route::get('usersbyrole/{id}', 'UserController@usersbyrole');
         
         //telephone questions

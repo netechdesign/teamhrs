@@ -168,7 +168,7 @@ return (
         <Row>
             <Col>
                 <Alert  variant="danger">
-                    can you please read following doduments
+                    can you please read following documents
                 </Alert>
                 <Card>
                     <Card.Header>

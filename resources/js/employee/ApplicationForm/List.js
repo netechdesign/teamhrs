@@ -61,6 +61,21 @@ function telephoneQuestionsAlert(id) {
    });
 }
 
+function statusChangeAlert(id) {
+  let message = "Status has been changed successfully";
+   
+   PNotify.success({
+       title: 'Success',
+       text:message,
+       modules: {
+           Desktop: {
+               desktop: true
+           }
+       }
+   }).on('click', function(e) {
+       
+   });
+}
 function request_certificationAlert(id) {
   let message = "Certificate request send successfully";
    
@@ -152,6 +167,7 @@ oTable = $(tableResponsive).DataTable({
          {"data": "email"},
          {"data": "telephone_number"},
          {"data":"postcode"},
+         {"data":"status"},
          {"data": "id"}
     ],
     responsive: {
@@ -216,7 +232,22 @@ oTable = $(tableResponsive).DataTable({
             "targets": $('#data-table-responsive th#action').index(),
             "orderable": false,
             "searchable": false
-        }, 
+        },
+        {
+          "render": function (data, type, row) {
+            
+              var str_buttons = '<a href="javascript:;" class="badge badge-secondary status_edit" data-id="'+row.id+'" style="font-size: 10px;padding:9px;">'+data.toUpperCase()+'</a>';
+              
+              
+              return [
+                  str_buttons,
+              ].join('');
+             
+          },
+          "targets": $('#data-table-responsive th#status').index(),
+          "orderable": true,
+          "searchable": false
+      }, 
         {
             "targets": 0,
             "orderable": false
@@ -232,6 +263,7 @@ let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
 let yyyy = today.getFullYear();
 
 const todaydate = dd + '/' + mm + '/' + yyyy;
+const application_status_namelist =[{id:1,value:'To be reviewed'},{id:2,value:'On hold'},{id:3,value:'In talks'},{id:4,value:'Verbal offer made'},{id:5,value:'No – Their decision'},{id:6,value:'No – Our decision'},{id:7,value:'Yes – Verbal offer made'},{id:8,value:'Yes – Offer sent'}];
 class List extends React.Component {
 
    
@@ -241,6 +273,7 @@ class List extends React.Component {
 
         this.state={
                      isLarge: false,
+                     status_view:false,
                      apiload:false,
                      application_Forms:[],
                      telephone_questions:[],
@@ -272,7 +305,11 @@ class List extends React.Component {
                       offerletterslist:[],
                       immediate:true,
                       setFocusOnError:true,
-                      clearInputOnReset:false
+                      clearInputOnReset:false,
+                      application_status_name:'',
+                      application_status:'',
+                      application_status_comments:'',
+                      applicationStatusList:[]
                     }
     }
     handleErrorSubmit = (e,formData, errorInputs) => {
@@ -396,6 +433,81 @@ other_documentDelete =(element) =>{
   }
 
   
+  statusShow =(application_id) =>{
+    this.setState({status_view:true,application_Forms:[],key :'home',application_status:'',application_status_comments:'',applicationStatusList:[]});
+    const {auth_token} = localStorage.getItem('userData')? JSON.parse(localStorage.getItem('userData')).user : 'Null';
+    axios.get(baseurl+'/api/application_form/'+application_id,{headers:{'Accept':'application/json','Authorization':'Bearer '+auth_token}}
+              ).then(res =>{
+                            if(res.data.success){
+                                  this.setState({application_Forms:res.data.application_data});
+                                  this.resetForm();
+                                }else{
+                                  let errorMassage = '';
+                                if(res.data.errors){
+                                    errorMassage = res.data.errors.name;
+                                }else{
+                                    errorMassage = res.data.email;
+                                    
+                                }
+                                
+                              }
+              }).catch(err =>{
+                    console.log(err);
+                          
+                      }
+                      )    
+  }
+
+  applicationStatusForm = (e, formData, inputs) => {
+    
+    e.preventDefault();
+    this.setState({certificationButton:true,apiload:true});
+        if(this.state.application_Forms){formData.application_forms_id =this.state.application_Forms.id;}
+         if(this.state.application_status_name){formData.application_status_name = this.state.application_status_name;}
+        const {auth_token} = localStorage.getItem('userData')? JSON.parse(localStorage.getItem('userData')).user : 'Null';
+               axios.post(
+               baseurl+'/api/application_status',formData,
+               {headers:{'Accept':'application/json','Authorization':'Bearer '+auth_token}} 
+               ).then(res =>{
+               if(res.data.success){
+               //this.setState({ key :'home'});
+               this.resetForm();
+               this.setState({status_view:false,application_Forms:[]});
+               statusChangeAlert();
+               oTable.ajax.reload();
+               this.setState({certificationButton:false,apiload:false});
+               this.setState({buttonName:'Save'});
+               }else{
+               let errorMassage = '';
+               if(res.data.errors){
+               errorMassage = res.data.errors.name;
+               }else{
+               errorMassage = res.data.email;
+
+               }
+               PNotify.error({
+               title: "System Error",
+               text:errorMassage,
+               });
+               this.setState({formSubmitting:false});
+               this.setState({buttonName:'Save'});
+
+               }
+               }
+               )
+               .catch(err =>{
+               PNotify.error({
+               title: "System Error",
+               text:err,
+               });
+               this.setState({formSubmitting:false});
+               this.setState({buttonName:'Add'});
+               this.setState({selectedFile:null});
+
+               }
+               )
+
+  }
     componentDidMount() {  
       
       /* test */
@@ -411,13 +523,28 @@ other_documentDelete =(element) =>{
            // history.push('/application/edit/'+id);
           
         })
+        //status_edit
+        $('#data-table-responsive tbody').on('click', '.status_edit', function () {
+          var id =  $(this).attr('data-id');
+          self.statusShow(id);
+          
+         // history.push('/application/edit/'+id);
+        
+      })
+
     }
+    
     handleChange = (e) => {
       
       this.setState({
           [e.target.name]: e.target.value
       })
-
+         if(e.target.name=='application_status'){
+          var application_status =application_status_namelist.filter(function(vl,indx){
+            return e.target.value==vl.id;
+          });
+          this.setState({application_status_name:application_status[0].value});
+         }
   };
   emailChange = (e) =>{
     let application_Forms = this.state.application_Forms;
@@ -471,7 +598,30 @@ other_documentDelete =(element) =>{
         
     }
   }
-
+  tabStatusSelect =(key) =>{
+    this.setState({ key : key })
+    
+    if(key === 'list'){
+        
+        if(this.state.application_Forms.id){
+          {
+            this.setState({apiload:true});
+        axios.get(baseurl+'/api/application_status_list/'+this.state.application_Forms.id,{headers:{'Accept':'application/json','Authorization':'Bearer '+auth_token}}
+        ).then(res =>{
+          if(res.data.success){
+           this.setState({applicationStatusList:res.data.application_status_list,apiload:false}) 
+           }
+         
+        }).catch(err =>{
+                 console.log(err);
+                       
+                   }
+       )
+                  }
+                  }
+        
+    }
+  }
   telephoneQuestionsSubmit = (e, formData, inputs) => {
     
                            e.preventDefault();
@@ -1399,7 +1549,87 @@ OfferlettersApproved = (id) =>{
 
                                     </Modal.Body>
                                 </Modal>
-                      <Card>
+                    
+                    <Modal size="xl" show={this.state.status_view} onHide={() => this.setState({ status_view: false })}>
+                      <Modal.Header closeButton>
+                          <Modal.Title as="h5">{this.state.application_Forms.fore_name} {(this.state.application_Forms.surname!=''?this.state.application_Forms.surname:'')}</Modal.Title>
+                      </Modal.Header>
+                      <Modal.Body >
+                      <div class="text-center" style={{display:(this.state.apiload?'block':'none')}}>
+                                          <div class="spinner-border" role="status">
+                                              <span class="sr-only">Loading...</span>
+                                          </div>
+                                        </div>
+                                       
+                      <Tabs defaultActiveKey="home" activeKey={this.state.key} onSelect={this.tabStatusSelect}>
+                                      <Tab eventKey="home" title="Add">
+                                      
+                                      <ValidationForm onSubmit={this.applicationStatusForm} id="application_status_form" onErrorSubmit={this.handleErrorSubmit} ref={this.formRef}
+                                      immediate={this.state.immediate}
+                                      setFocusOnError={this.state.setFocusOnError}
+                                      defaultErrorMessage={{ required: "Please enter something."}}>
+
+                                      <Form.Group as={Row} controlId="formHorizontalEmail">
+                                      <Form.Label column sm={3}>
+                                        Status:
+                                      </Form.Label>
+                                      <Col sm={4}>
+                                      <SelectGroup
+                                      name="application_status"
+                                      id="application_status"
+                                      value={this.state.application_status}
+                                      required="required"
+                                      errorMessage="Please select status"
+                                      onChange={this.handleChange}>
+                                      <option value="">Please select status</option>
+                                      <option value='1'>To be reviewed</option>
+                                      <option value='2'>On hold</option>
+                                      <option value='3'>In talks</option>
+                                      <option value='4'>Verbal offer made</option>           
+                                      <option value='5'>No – Their decision</option>
+                                      <option value='6'>No – Our decision</option>
+                                      <option value='7'>Yes – Verbal offer made</option>
+                                      <option value='8'>Yes – Offer sent</option>
+                                      
+                                      </SelectGroup>
+
+                                      </Col>
+                                      </Form.Group>
+                                      <Form.Group as={Row}>
+                                                        <Form.Label column sm={3} >Comments:</Form.Label>
+                                                        <Col sm={4}>
+                                                          <TextInput
+                                                              name="application_status_comments"
+                                                              id="application_status_comments"
+                                                              placeholder="Comments"
+                                                              value={this.state.application_status_comments}
+                                                              multiline
+                                                              required
+                                                              onChange={this.handleChange}
+                                                              rows="3"
+                                                              autoComplete="off"
+                                                          />
+                                                        </Col>
+                                              </Form.Group>
+                                        <Form.Row>   
+                                            <Form.Group as={Col} sm={12} className="mt-3">
+                                              <Button disabled={this.state.certificationButton} type="submit">Send</Button>
+                                            </Form.Group>
+                                        </Form.Row>
+                                      </ValidationForm>
+
+                                      </Tab>
+                                      <Tab eventKey="list" title="List">
+                       {(this.state.applicationStatusList.length>0?<ApplicationStatuslist list={this.state.applicationStatusList} />:'Data not found')}   
+                                      </Tab>
+                        
+                      
+                        </Tabs>
+
+                      </Modal.Body>
+                    </Modal>  
+                    
+                    <Card>
                             <Card.Header>
                                 <Card.Title as="h5">Applications</Card.Title>
                             </Card.Header>
@@ -1414,7 +1644,7 @@ OfferlettersApproved = (id) =>{
                                         <th id="email">Email</th>
                                         <th id="telephone_number">Telephone Number</th>
                                         <th id="postcode">Postcode</th>
-                                        
+                                        <th id="status">Status</th>
                                         <th id="action">Action</th>
                                         
                                       </tr>
@@ -1427,6 +1657,7 @@ OfferlettersApproved = (id) =>{
                                         <th id="email">Email</th>
                                         <th id="telephone_number">Telephone Number</th>
                                         <th id="postcode">Postcode</th>
+                                        <th id="status">Status</th>
                                         <th id="action">Action</th>
                                     </tr>
                                     </tfoot>
@@ -1740,6 +1971,50 @@ class Offerletterslist extends React.Component{
           </Tr>
         </Thead>
         <Tbody>{offer_letters_list}</Tbody>
+      </Tbl>
+      
+      </Aux>
+    )
+  }
+}
+
+class ApplicationStatuslist extends React.Component{
+  
+
+  render(){
+   const status_list = this.props.list.map((item,index) =>{
+                return(
+                      <Tr key={index} style={{borderBottom:'1px solid rgba(0, 0, 0, 0.125)',borderTop:'1px solid rgba(0, 0, 0, 0.125)'}}>
+                            <Td style={{padding:'5px'}}>
+                                  {item.status_name}
+                            </Td>
+                            <Td style={{padding:'5px'}}>
+                                  {item.status_comments}
+                            </Td>
+                            <Td style={{padding:'5px'}}>
+                                {item.created_by_name}
+                            </Td>
+                            <Td style={{padding:'5px'}}>
+                                {item.created_at_date}
+                                
+                            </Td>
+                            
+                        </Tr>
+                      )
+    });
+    return(
+      <Aux>
+      <Tbl style={{marginBottom:'10px'}}>
+        <Thead>
+          <Tr style={{lineHeight:2.5}}>
+          <Th width='20%'>Status</Th>
+          <Th width='30%'>Comments</Th>
+          <Th width='20%'>Created by</Th>
+          <Th width='20%'>Created at</Th>
+          
+          </Tr>
+        </Thead>
+        <Tbody>{status_list}</Tbody>
       </Tbl>
       
       </Aux>

@@ -578,7 +578,8 @@ function atable() {
     jquery__WEBPACK_IMPORTED_MODULE_6___default()(window).trigger('resize');
   }), _defineProperty(_$$DataTable, "columnDefs", [{
     "render": function render(data, type, row) {
-      var str_buttons = '<a type="button" target="_blank" href="' + window.location.origin + '/uploaded/' + row.document_path + '" class="document_view btn btn-success btn-sm" data-id="' + row.id + '" ><i style="margin:0px !important;" class="feather icon-eye"></i></a><button type="button" class="edit btn btn-info btn-sm" data-id="' + row.id + '" ><i style="margin:0px !important;" class="feather icon-edit"></i></button>';
+      var str_buttons = '<a type="button" target="_blank" href="' + window.location.origin + '/uploaded/' + row.document_path + '" class="document_view btn btn-success btn-sm" data-id="' + row.id + '" ><i style="margin:0px !important;" class="feather icon-eye"></i></a>'; //  str_buttons +='<button type="button" class="edit btn btn-info btn-sm" data-id="'+row.id+'" ><i style="margin:0px !important;" class="feather icon-edit"></i></button>';
+
       return [str_buttons].join('');
     },
     "targets": jquery__WEBPACK_IMPORTED_MODULE_6___default()('#data-table-responsive th#action').index(),
@@ -736,7 +737,13 @@ var CheckPermission = function CheckPermission(page, page_name, history) {
 
     if (Ischeck.length == 0) {
       if (redirect) {
-        history.goBack();
+        var notget = history.goBack();
+
+        if (!notget) {
+          history.push({
+            pathname: '/'
+          });
+        }
       }
 
       pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_2__["default"].error({
