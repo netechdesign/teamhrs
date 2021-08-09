@@ -344,6 +344,7 @@ class Home extends React.Component {
         let emailaddress = email;
         this.setState({first_name:name,confirm_employee_name:name,information_provided_name:name});
        // this.setState({email:emailaddress});
+       console.log('apply');
         
     }
     employment_historyChange =(element)=>{

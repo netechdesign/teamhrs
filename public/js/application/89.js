@@ -659,6 +659,8 @@ var Home = /*#__PURE__*/function (_React$Component) {
         confirm_employee_name: name,
         information_provided_name: name
       }); // this.setState({email:emailaddress});
+
+      console.log('apply');
     }
   }, {
     key: "render",
