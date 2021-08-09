@@ -658,10 +658,7 @@ var Home = /*#__PURE__*/function (_React$Component) {
         first_name: name,
         confirm_employee_name: name,
         information_provided_name: name
-      });
-      this.setState({
-        email: emailaddress
-      });
+      }); // this.setState({email:emailaddress});
     }
   }, {
     key: "render",

@@ -343,7 +343,7 @@ class Home extends React.Component {
         const {name,email} = localStorage.getItem('userData')? JSON.parse(localStorage.getItem('userData')).user : 'Null';
         let emailaddress = email;
         this.setState({first_name:name,confirm_employee_name:name,information_provided_name:name});
-        this.setState({email:emailaddress});
+       // this.setState({email:emailaddress});
         
     }
     employment_historyChange =(element)=>{
