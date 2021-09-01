@@ -27,7 +27,7 @@ global.jQuery = $;
 
 const baseurl= window.location.origin;
 function checklistAlert(id) {
-    let message = "Added successfully";
+    let message = "Checklist Added successfully";
      
      PNotify.success({
          title: 'Success',
@@ -42,9 +42,11 @@ function checklistAlert(id) {
      });
   }
   
-class CheckList extends React.Component {
+class Edit extends React.Component {
 
     state = {
+        back_office:'1',
+        _method: 'PUT',
         Engineer:[],
         Engineers:[],
         issued_engineer_id:'',
@@ -54,8 +56,8 @@ class CheckList extends React.Component {
         visible : true,
         formSubmitting: false,
         buttonName:'Save',
-        signature:'',
-        signature_show:''
+       // signature:'',
+       // signature_show:''
         };
         Engineerchange =(e)=>{
             this.setState({issued_engineer_id:e.value,issued_engineer_name:e.label,Engineer:e});
@@ -63,42 +65,17 @@ class CheckList extends React.Component {
             //setTimeout(function(){  self.setState({Engineer:e});}, 500);
            
         } 
-    toolsList = () =>{
-        
-          
-          document.getElementById("requestLoder").innerHTML = '<img style="width:2%"  src="'+baseurl+'/images/ajax_loader_gray_512.gif"></img>';
-          
-          const {auth_token} = localStorage.getItem('userData')? JSON.parse(localStorage.getItem('userData')).user : 'Null';
-      
-        axios.get(
-          baseurl+'/api/checklist',{headers:{'Accept':'application/json','Authorization':'Bearer '+auth_token}} 
-      ).then(res =>{
-                      if(res.data.success){
-                        
-                           if(res.data.data){
-                            document.getElementById("requestLoder").innerHTML = '';
-                               this.setState({tools_list:res.data.data}) 
-                          }
-                             
-                      }else{
-                         
-                      }
-                 }
-      )
-      .catch(err =>{
-                      console.log(err);
-                  }
-      )
-      }
+    
     componentDidMount(){
         const { match, location, history } = this.props;
         CheckPermission('user','add',history);
-       this.toolsList();
+       
+
        const {id,auth_token} = localStorage.getItem('userData')? JSON.parse(localStorage.getItem('userData')).user : 'Null';
        axios.get(baseurl+'/api/engineer_list',{headers:{'Accept':'application/json','Authorization':'Bearer '+auth_token}}).then(res =>{
-            
-        this.setState({Engineers:res.data}); 
-        }); 
+            this.setState({Engineers:res.data}); 
+        });
+        this.update();
     }
     handleSubmit  = (e, formData, inputs) => {
     
@@ -117,9 +94,10 @@ class CheckList extends React.Component {
         
         //const data = new FormData()
         //data.append('name', this.state.name);
-       
+        const { match, location, history } = this.props;
+         
         axios.post(
-            baseurl+'/api/check_list',this.state,
+            baseurl+'/api/check_list/'+match.params.id,this.state,
             {headers:{'Accept':'application/json','Authorization':'Bearer '+auth_token}} 
         ).then(res =>{
                           if(res.data.success){
@@ -200,10 +178,61 @@ confirm_employee_trim = () => {
     this.confirm_employee.clear()
   }
 
+  update =() =>{
+    const { match, location, history } = this.props;
+    const id = match.params.id;
+    
+    document.getElementById("requestLoder").innerHTML = '<img style="width:2%"  src="'+baseurl+'/images/ajax_loader_gray_512.gif"></img>';
+const {auth_token} = localStorage.getItem('userData')? JSON.parse(localStorage.getItem('userData')).user : 'Null';
+
+axios.get(
+    baseurl+'/api/check_list/'+id+'/edit',
+    {headers:{'Authorization':'Bearer '+auth_token}} 
+).then(res =>{
+                if(res.data.success){
+                    this.setState({Engineer:{label:res.data.check_lists.issued_engineer_name,value:res.data.check_lists.issued_engineer_id},tools_list:res.data.check_list_items,issued_engineer_id:res.data.check_lists.issued_engineer_id,issued_engineer_name: res.data.check_lists.issued_engineer_name,issued_date:res.data.check_lists.issued_date});
+                    
+                    
+                  //  issued_date:'',
+                                        document.getElementById("requestLoder").innerHTML = '';                         
+                  
+                }else{
+                   
+                }
+           }
+)
+.catch(err =>{
+                console.log(err);
+            }
+)
+}
+dublicateList = (index)=>{
+    console.log(index);
+       let tools_list = this.state.tools_list;
+       tools_list.splice(index, 1);
+       this.setState({tools_list:tools_list});
+    }
     render(){
         const { match, location, history } = this.props
+
         const tools_list = this.state.tools_list.map((item, index) => {
-            
+             if(item.id){
+                
+                    let item_id = item.id;
+                    let self= this;
+                    var uniqueArray = this.state.tools_list.filter(function(vl){
+                        
+                       if(vl.tool_categories_id === item_id){
+                        self.dublicateList(self.state.tools_list.indexOf(item));
+                        return vl;
+                       };
+                    });
+                    
+                    if(uniqueArray.length>0){
+                        return;
+                    }
+                    
+             }
             return(
                 <Tr key={index}>
                 <Td style={{padding:'5px'}}>
@@ -246,7 +275,7 @@ confirm_employee_trim = () => {
                 <Col>
                     <Card>
                         <Card.Header>
-                            <Card.Title as="h5">Add Tools issued</Card.Title>
+                            <Card.Title as="h5">Edit Tools issued</Card.Title>
                             <Button className="btn-sm" style={{'float':'right'}} onClick={()=>{history.goBack()}} ><i  class="feather icon-chevron-left"></i>Back</Button>
                         </Card.Header>
                         <Card.Body>
@@ -321,4 +350,4 @@ confirm_employee_trim = () => {
     }
 }
 
-export default CheckList;
+export default Edit;

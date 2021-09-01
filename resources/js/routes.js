@@ -15,6 +15,7 @@ const UserList = React.lazy(() => import("./Back-Office/User"));
 const UserAdd = React.lazy(() => import("./Back-Office/User/add"));
 const UserEdit = React.lazy(() => import("./Back-Office/User/edit"));
 const CheckListAdd = React.lazy(() => import("./Back-Office/Tools/CheckList"));
+const CheckListEdit = React.lazy(() => import("./Back-Office/Tools/Edit"));
 const CheckList = React.lazy(() => import("./Back-Office/Tools/List"));
 const Services_starter_one = React.lazy(() => import("./employee/Services_starter_form/Services_starter_one"));
 const ApplicationForm = React.lazy(() => import("./employee/ApplicationForm"));
@@ -46,6 +47,7 @@ const routes = [
     { path:'/user/add', exact:true, name:'useradd',component:UserAdd},
     { path:'/user/edit/:id', exact:true, name:'useredit',component:UserEdit},
     { path:'/check-list/add',exact:true,name:'CheckListAdd',component:CheckListAdd},
+    { path:'/check-list/edit/:id',exact:true,name:'CheckListEdit',component:CheckListEdit},
     { path:'/check-list',exact:true,name:'CheckList',component:CheckList},
     { path:'/services-starter',exact:true,name:'Services_starter_one',component:Services_starter_one},
     { path:'/services-starter/Employee-Details',exact:true,name:'Services_starter_one',component:Services_starter_one},

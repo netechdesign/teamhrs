@@ -164,7 +164,7 @@ oTable = $(tableResponsive).DataTable({
         {
             "render": function (data, type, row) {
               
-                var str_buttons = '<button type="button" class="edit btn btn-info btn-sm" data-id="'+row.id+'" ><i style="margin:0px !important;" class="feather icon-edit"></i></button>';
+                var str_buttons = '<button type="button" class="view btn btn-info btn-sm" data-id="'+row.id+'" ><i style="margin:0px !important;" class="feather icon-eye"></i></button><button type="button" class="edit btn btn-info btn-sm" data-id="'+row.id+'" ><i style="margin:0px !important;" class="feather icon-edit"></i></button>';
                 if(row.is_viewed==1){
                       str_buttons+='<span class="label label-danger is_viewed'+row.id+'" style="font-size: 8px;">NEW</span>';
                 }
@@ -248,12 +248,17 @@ class List extends React.Component {
         atable()
         
         const self= this;
-        $('#data-table-responsive tbody').on('click', '.edit', function () {
+        $('#data-table-responsive tbody').on('click', '.view', function () {
             var id =  $(this).attr('data-id');
             self.applicationShow(id);
             $('.is_viewed'+id).hide();
            // history.push('/application/edit/'+id);
           
+        });
+        $('#data-table-responsive tbody').on('click', '.edit', function () {
+            var id =  $(this).attr('data-id');
+            history.push('/check-list/edit/'+id);
+        
         })
     }
    

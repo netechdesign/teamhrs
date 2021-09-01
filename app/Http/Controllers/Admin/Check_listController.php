@@ -8,8 +8,9 @@ use JWTAuth;
 use DB;
 use App\Models\Check_lists;
 use App\Models\Check_list_items;
+use App\Models\Application_Forms;
 use Illuminate\Support\Facades\Storage;
-
+use Illuminate\Support\Facades\Validator;
 class Check_listController extends Controller
 {
     /**
@@ -92,9 +93,19 @@ class Check_listController extends Controller
     {
         
         try {
-            
+           
+            $v = Validator::make($request->all(), [
+                'issued_engineer_id' => ['required','unique:check_lists'],
+            ]);
+        
+            if ($v->fails())
+            {
+                return response()->json($v->errors(), 201);
+            }
+
             $user = JWTAuth::toUser($request->input('token'));
             $request->request->add(['created_by'=> $user->id]);
+            
             
             if(isset($request->issued_date) && $request->issued_date!='')
                 {
@@ -173,7 +184,30 @@ class Check_listController extends Controller
      */
     public function edit($id)
     {
-        //
+        try {
+                
+            $results = Check_lists::select("*",DB::raw('DATE_FORMAT(issued_date,"%d/%m/%Y") as issued_date'))->find($id);
+            
+            if($results){
+                $check_list_items = DB::table('check_list_items')->select('tool_categories_id',DB::raw('check_list_items.id as check_list_items_id'),DB::raw('check_list_items.tool_categories_name as name'),'check_list_items.serial_number','check_list_items.is_received')->where('check_list_items.check_lists_id',$id)->get();
+                $tool_categories = DB::table('tool_categories')->select('id','name',DB::raw('created_by as is_received'),DB::raw('created_by as serial_number'))->where('is_delete',0)->get();
+                $check_list_items = $check_list_items->concat($tool_categories);
+
+                
+                $results->_method = 'PUT';
+                return response()->json(array('success' => true,'check_lists'=>$results,'check_list_items'=>$check_list_items));
+            }else{
+                return response()->json(array('success' => false,'message'=> 'Data not found')); 
+            }
+            
+             } catch (\Exception $e) 
+               {
+                    $message = $e->getMessage();
+                    
+                    $text = strstr($message, ':', true);
+                
+                    return response()->json(array('success' => false,'message'=> $message));
+               }
     }
 
     /**
@@ -186,6 +220,69 @@ class Check_listController extends Controller
     public function update(Request $request, $id)
     {
         //
+        try {
+           
+
+            $user = JWTAuth::toUser($request->input('token'));
+            $request->request->add(['created_by'=> $user->id]);
+            
+            
+            if(isset($request->issued_date) && $request->issued_date!='')
+                {
+                  $request['issued_date'] =date('Y-m-d', strtotime(str_replace('/', '-',$request->issued_date)));
+                }
+
+            if(isset($request->signature) && $request->signature!='')
+                {
+                    $confirm_employee_signature = $request->signature;
+                    $encoded_image = explode(",", $confirm_employee_signature)[1];
+                    $decoded_image = base64_decode($encoded_image);                  
+                    $confirm_employee_signature = 'signatures/'.$user->id.'_confirm_'.time().'.png';
+                    Storage::disk('public')->put($confirm_employee_signature, $decoded_image);
+                    $request['signature'] = $confirm_employee_signature;
+                }
+                    $data= $request->except('token','next');
+                    if(isset($request->back_office)){
+                        $Check_lists = Check_lists::find($id);
+                        $Check_lists->issued_engineer_id = $request->issued_engineer_id;
+                        $Check_lists->issued_engineer_name = $request->issued_engineer_name;	
+                        if(isset($request->issued_date) && $request->issued_date!='')
+                            {
+                                $Check_lists->issued_date = $request->issued_date;
+                            }
+                    }
+                    $Check_lists->save();
+                    $form_id = $Check_lists->id;
+                    $employment_history= $request->only('tools_list');
+                    
+                    foreach($employment_history['tools_list'] as $vl){ 
+                        
+                            if(isset($vl['check_list_items_id'])){
+                                $Check_list_items =  Check_list_items::find($vl['check_list_items_id']);
+                                $Check_list_items->updated_by = $user->id;
+                                $Check_list_items->serial_number = $vl['serial_number'];
+                                $Check_list_items->is_received = $vl['is_received'];
+                                $Check_list_items->save();
+                            }else{
+                                $vl['created_by'] = $user->id;
+                                $vl['check_lists_id']  = $form_id;
+                                $vl['tool_categories_id']= $vl['id'];
+                                $vl['tool_categories_name'] = $vl['name'];
+                                $Check_list_items = new Check_list_items($vl);
+                                $Check_list_items->save();
+                            }
+                            
+                    }
+                    return response()->json(array('success' => true,'message' => 'Data inserted successfully','form_id' => $form_id), 200);        
+        } 
+        catch (\Exception $e) 
+           {
+                $message = $e->getMessage();
+                
+                $text = strstr($message, ':', true);
+            
+                return response()->json(array('success' => false,'message'=> $message));
+           }
     }
 
     /**
@@ -198,4 +295,23 @@ class Check_listController extends Controller
     {
         //
     }
+
+    public function engineer_list()
+    {
+        try {
+            
+            $response = Application_Forms::select(DB::raw('users.id as value'),DB::raw('CONCAT(users.name," ",users.lastName) as label'))
+                        ->join('users','users.id','=','application_forms.user_id')
+                        ->where('application_forms.user_id','!=',0)->get();
+
+            return response()->json($response, 201);
+        }
+        catch (exception $e) {
+            return response()->json([
+                'response' => 'error',
+                'message' => $e,
+            ]);
+        }
+    }
+
 }

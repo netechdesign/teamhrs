@@ -578,7 +578,7 @@ function atable() {
     jquery__WEBPACK_IMPORTED_MODULE_6___default()(window).trigger('resize');
   }), _defineProperty(_$$DataTable, "columnDefs", [{
     "render": function render(data, type, row) {
-      var str_buttons = '<button type="button" class="edit btn btn-info btn-sm" data-id="' + row.id + '" ><i style="margin:0px !important;" class="feather icon-edit"></i></button>';
+      var str_buttons = '<button type="button" class="view btn btn-info btn-sm" data-id="' + row.id + '" ><i style="margin:0px !important;" class="feather icon-eye"></i></button><button type="button" class="edit btn btn-info btn-sm" data-id="' + row.id + '" ><i style="margin:0px !important;" class="feather icon-edit"></i></button>';
 
       if (row.is_viewed == 1) {
         str_buttons += '<span class="label label-danger is_viewed' + row.id + '" style="font-size: 8px;">NEW</span>';
@@ -688,10 +688,14 @@ var List = /*#__PURE__*/function (_React$Component) {
       Object(_HttpFunctions__WEBPACK_IMPORTED_MODULE_4__["CheckPermission"])('application_form', 'show', history);
       atable();
       var self = this;
-      jquery__WEBPACK_IMPORTED_MODULE_6___default()('#data-table-responsive tbody').on('click', '.edit', function () {
+      jquery__WEBPACK_IMPORTED_MODULE_6___default()('#data-table-responsive tbody').on('click', '.view', function () {
         var id = jquery__WEBPACK_IMPORTED_MODULE_6___default()(this).attr('data-id');
         self.applicationShow(id);
         jquery__WEBPACK_IMPORTED_MODULE_6___default()('.is_viewed' + id).hide(); // history.push('/application/edit/'+id);
+      });
+      jquery__WEBPACK_IMPORTED_MODULE_6___default()('#data-table-responsive tbody').on('click', '.edit', function () {
+        var id = jquery__WEBPACK_IMPORTED_MODULE_6___default()(this).attr('data-id');
+        history.push('/check-list/edit/' + id);
       });
     }
   }, {

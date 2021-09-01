@@ -3842,7 +3842,10 @@ var UserEdit = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(fu
   return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(2), __webpack_require__.e(3), __webpack_require__.e(4), __webpack_require__.e(18), __webpack_require__.e(20), __webpack_require__.e(55)]).then(__webpack_require__.bind(null, /*! ./Back-Office/User/edit */ "./resources/js/Back-Office/User/edit.js"));
 });
 var CheckListAdd = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(2), __webpack_require__.e(3), __webpack_require__.e(4), __webpack_require__.e(5), __webpack_require__.e(6), __webpack_require__.e(7), __webpack_require__.e(8), __webpack_require__.e(9), __webpack_require__.e(33)]).then(__webpack_require__.bind(null, /*! ./Back-Office/Tools/CheckList */ "./resources/js/Back-Office/Tools/CheckList.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(2), __webpack_require__.e(3), __webpack_require__.e(4), __webpack_require__.e(5), __webpack_require__.e(6), __webpack_require__.e(7), __webpack_require__.e(8), __webpack_require__.e(9), __webpack_require__.e(18), __webpack_require__.e(33)]).then(__webpack_require__.bind(null, /*! ./Back-Office/Tools/CheckList */ "./resources/js/Back-Office/Tools/CheckList.js"));
+});
+var CheckListEdit = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(2), __webpack_require__.e(3), __webpack_require__.e(4), __webpack_require__.e(5), __webpack_require__.e(6), __webpack_require__.e(7), __webpack_require__.e(8), __webpack_require__.e(9), __webpack_require__.e(18), __webpack_require__.e(92)]).then(__webpack_require__.bind(null, /*! ./Back-Office/Tools/Edit */ "./resources/js/Back-Office/Tools/Edit.js"));
 });
 var CheckList = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
   return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(2), __webpack_require__.e(3), __webpack_require__.e(4), __webpack_require__.e(5), __webpack_require__.e(6), __webpack_require__.e(7), __webpack_require__.e(8), __webpack_require__.e(9), __webpack_require__.e(12), __webpack_require__.e(11), __webpack_require__.e(14), __webpack_require__.e(34)]).then(__webpack_require__.bind(null, /*! ./Back-Office/Tools/List */ "./resources/js/Back-Office/Tools/List.js"));
@@ -3940,6 +3943,11 @@ var routes = [{
   exact: true,
   name: 'CheckListAdd',
   component: CheckListAdd
+}, {
+  path: '/check-list/edit/:id',
+  exact: true,
+  name: 'CheckListEdit',
+  component: CheckListEdit
 }, {
   path: '/check-list',
   exact: true,
