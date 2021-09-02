@@ -374,7 +374,9 @@ li:before {
                     Your normal working hours will be 40 hours per week between 08.00 and 18.00 Monday to Friday. You are, however, expected to work without additional pay for additional hours according to the requirements of the Company.
                  @elseif($hours_of_work==3)
                     Manually
-                @endif
+                 @elseif($hours_of_work==4)
+                    40 hours per week, between Monday to Sunday to be worked between the hours of 8am and 10pm. You may be required as part of your role to attend out of hours and emergency callouts as requested by the Employer.
+                 @endif
                 </p>
                 <table border='1'>
                 <tr>
