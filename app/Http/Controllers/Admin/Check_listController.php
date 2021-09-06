@@ -37,10 +37,13 @@ class Check_listController extends Controller
                 $page_length = $request->input('iDisplayLength');
                 
                 $request['page'] = ($start/$page_length)+1;
-                $jobsrow = Check_lists::select("*",DB::raw('DATE_FORMAT(issued_date,"%d/%m/%Y") as issued_date'))->where(function($query) use ($request){
+                $jobsrow = Check_lists::select("*",DB::raw('DATE_FORMAT(issued_date,"%d/%m/%Y") as issued_date'),DB::raw('DATE_FORMAT(completed_date,"%d/%m/%Y") as completed_date'))->where(function($query) use ($request){
                     $search = $request->input('sSearch');
-                  if($request->input('sheets_id')!=''){
-                  //  $query->where('sheets_id','=',$request->input('sheets_id'));
+                  if(isset($request->is_completed))
+                   {
+                       if($request->is_completed!='all'){
+                             $query->where('is_completed','=',$request->input('is_completed'));
+                            }
                    }
                    if($search!=''){
                        
@@ -182,17 +185,24 @@ class Check_listController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request,$id)
     {
         try {
-                
+            $user = JWTAuth::toUser($request->input('token'));
+            $user = $user->id;
+            if($id!=0){
             $results = Check_lists::select("*",DB::raw('DATE_FORMAT(issued_date,"%d/%m/%Y") as issued_date'))->find($id);
-            
+            }else{
+                $results = Check_lists::select("*",DB::raw('DATE_FORMAT(issued_date,"%d/%m/%Y") as issued_date'))->where('issued_engineer_id',$user)->first();
+            }
             if($results){
+                if($id!=0){
                 $check_list_items = DB::table('check_list_items')->select('tool_categories_id',DB::raw('check_list_items.id as check_list_items_id'),DB::raw('check_list_items.tool_categories_name as name'),'check_list_items.serial_number','check_list_items.is_received')->where('check_list_items.check_lists_id',$id)->get();
                 $tool_categories = DB::table('tool_categories')->select('id','name',DB::raw('created_by as is_received'),DB::raw('created_by as serial_number'))->where('is_delete',0)->get();
                 $check_list_items = $check_list_items->concat($tool_categories);
-
+                }else{
+                    $check_list_items = DB::table('check_list_items')->select('tool_categories_id',DB::raw('check_list_items.id as check_list_items_id'),DB::raw('check_list_items.tool_categories_name as name'),'check_list_items.serial_number','check_list_items.is_received')->where('check_list_items.check_lists_id',$results->id)->get();
+                }
                 
                 $results->_method = 'PUT';
                 return response()->json(array('success' => true,'check_lists'=>$results,'check_list_items'=>$check_list_items));
@@ -231,7 +241,7 @@ class Check_listController extends Controller
                 {
                   $request['issued_date'] =date('Y-m-d', strtotime(str_replace('/', '-',$request->issued_date)));
                 }
-
+                
             if(isset($request->signature) && $request->signature!='')
                 {
                     $confirm_employee_signature = $request->signature;
@@ -241,6 +251,7 @@ class Check_listController extends Controller
                     Storage::disk('public')->put($confirm_employee_signature, $decoded_image);
                     $request['signature'] = $confirm_employee_signature;
                 }
+                
                     $data= $request->except('token','next');
                     if(isset($request->back_office)){
                         $Check_lists = Check_lists::find($id);
@@ -249,9 +260,21 @@ class Check_listController extends Controller
                         if(isset($request->issued_date) && $request->issued_date!='')
                             {
                                 $Check_lists->issued_date = $request->issued_date;
+                              //  $Check_lists->signature = $request->issued_engineer_id;
                             }
+                    }else{
+                        
+                        $Check_lists = Check_lists::where('issued_engineer_id',$user->id)->first();  
+                        
+                        if(isset($request->signature) && $request->signature!='')
+                        {
+                            $Check_lists->signature = $request->signature;
+                        }
+                        $Check_lists->is_completed = 1;
+                        $Check_lists->completed_date = date('Y-m-d');
                     }
                     $Check_lists->save();
+                    
                     $form_id = $Check_lists->id;
                     $employment_history= $request->only('tools_list');
                     

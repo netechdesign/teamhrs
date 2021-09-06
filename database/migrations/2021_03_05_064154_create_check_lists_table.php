@@ -20,6 +20,8 @@ class CreateCheckListsTable extends Migration
             $table->date('issued_date')->nullable();
             $table->text('signature')->nullable();
             $table->integer('is_delete')->default(0);
+            $table->integer('is_completed')->default(0);
+            $table->date('completed_date')->nullable();
             $table->integer('created_by')->nullable();
             $table->integer('updated_by')->nullable();
             $table->timestamps();

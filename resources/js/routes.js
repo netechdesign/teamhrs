@@ -14,9 +14,14 @@ const RoleEdit = React.lazy(() => import("./Back-Office/Role/edit"));
 const UserList = React.lazy(() => import("./Back-Office/User"));
 const UserAdd = React.lazy(() => import("./Back-Office/User/add"));
 const UserEdit = React.lazy(() => import("./Back-Office/User/edit"));
-const CheckListAdd = React.lazy(() => import("./Back-Office/Tools/CheckList"));
-const CheckListEdit = React.lazy(() => import("./Back-Office/Tools/Edit"));
-const CheckList = React.lazy(() => import("./Back-Office/Tools/List"));
+
+const ToolList = React.lazy(() => import("./Back-Office/Tool"));
+const ToolAdd = React.lazy(() => import("./Back-Office/Tool/add"));
+const ToolEdit = React.lazy(() => import("./Back-Office/Tool/edit"));
+const CheckListAdd = React.lazy(() => import("./Back-Office/Checklist/CheckList"));
+const CheckListEdit = React.lazy(() => import("./Back-Office/Checklist/Edit"));
+const CheckList = React.lazy(() => import("./Back-Office/Checklist/List"));
+
 const Services_starter_one = React.lazy(() => import("./employee/Services_starter_form/Services_starter_one"));
 const ApplicationForm = React.lazy(() => import("./employee/ApplicationForm"));
 const List = React.lazy(()=>import("./employee/ApplicationForm/List") )
@@ -25,6 +30,7 @@ const EmployeeList = React.lazy(() => import("./Back-Office/Employee"));
 const EmployeeDetails = React.lazy(() => import("./Back-Office/Employee/EmployeeDetails"));
 const Holiday = React.lazy(()=>import("./Back-Office/Pages/Holiday"));
 const HolidayCalendar = React.lazy(()=>import("./Back-Office/Pages/Holiday/HolidayCalendar"));
+const EmployeeCheckList = React.lazy(() => import("./Back-Office/Employee/CheckList"));
 
 const HolidayEdit = React.lazy(() => import("./Back-Office/Pages/Holiday/AddHoliday"));
 const EmployeeHoliday = React.lazy(() => import("./employee/Holiday"));
@@ -43,6 +49,9 @@ const routes = [
     { path:'/role', exact:true, name:'role',component:RoleList},
     { path:'/role/add', exact:true, name:'roleadd',component:RoleAdd},
     { path:'/role/edit/:id', exact:true, name:'roleedit',component:RoleEdit},
+    { path:'/tool', exact:true, name:'role',component:ToolList},
+    { path:'/tool/add', exact:true, name:'roleadd',component:ToolAdd},
+    { path:'/tool/edit/:id', exact:true, name:'roleedit',component:ToolEdit},
     { path:'/user', exact:true, name:'user',component:UserList},
     { path:'/user/add', exact:true, name:'useradd',component:UserAdd},
     { path:'/user/edit/:id', exact:true, name:'useredit',component:UserEdit},
@@ -88,7 +97,7 @@ const routes = [
     
     // for demo Examples.
     { path: '/forms/form-select', exact: true, name: 'Forms Select', component: FormsSelect },
-    { path: '/dashboard', exact: true, name: 'Default', component: DashboardDefault },
+    { path: '/dashboard', exact: true, name: 'Default', component: EmployeeCheckList },
     { path: '/dashboard/e-commerce', exact: true, name: 'Ecommerce', component: DashboardEcommerce },
     { path: '/dashboard/crm', exact: true, name: 'CRM', component: DashboardCrm },
     { path: '/dashboard/analytics', exact: true, name: 'Analytics', component: DashboardAnalytics },

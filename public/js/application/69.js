@@ -302,10 +302,10 @@ webpackContext.id = "./node_modules/moment/locale sync recursive ^\\.\\/.*$";
 
 /***/ }),
 
-/***/ "./resources/js/employee/Services_starter_form/forms/ProofOfIdentification.js":
-/*!************************************************************************************!*\
-  !*** ./resources/js/employee/Services_starter_form/forms/ProofOfIdentification.js ***!
-  \************************************************************************************/
+/***/ "./resources/js/employee/Services_starter_form/forms/ConsentStatement.js":
+/*!*******************************************************************************!*\
+  !*** ./resources/js/employee/Services_starter_form/forms/ConsentStatement.js ***!
+  \*******************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -333,8 +333,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_signature_canvas__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(react_signature_canvas__WEBPACK_IMPORTED_MODULE_12__);
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -355,6 +353,8 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -372,10 +372,10 @@ var baseurl = window.location.origin;
 var ajaxabort;
 
 function successDesktopPNotify(id) {
-  var message = "Proof Of Identification added successfully";
+  var message = "Consent Statement added successfully";
 
   if (id != '') {
-    message = "Proof Of Identification updated successfully";
+    message = "Consent Statement updated successfully";
   }
 
   pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_7__["default"].success({
@@ -389,120 +389,37 @@ function successDesktopPNotify(id) {
   }).on('click', function (e) {});
 }
 
-var Passport_birth = /*#__PURE__*/function (_React$Component) {
-  _inherits(Passport_birth, _React$Component);
+var ConsentStatement = /*#__PURE__*/function (_React$Component) {
+  _inherits(ConsentStatement, _React$Component);
 
-  var _super = _createSuper(Passport_birth);
+  var _super = _createSuper(ConsentStatement);
 
-  function Passport_birth() {
-    _classCallCheck(this, Passport_birth);
-
-    return _super.apply(this, arguments);
-  }
-
-  _createClass(Passport_birth, [{
-    key: "render",
-    value: function render() {
-      var _React$createElement, _React$createElement2, _React$createElement3;
-
-      var contents = this.props.passport_birth == 1 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, (_React$createElement = {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "4",
-        xs: 12
-      }, _defineProperty(_React$createElement, "xs", 12), _defineProperty(_React$createElement, "sm", 12), _React$createElement), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
-        htmlFor: "upload_avatar"
-      }, "Passport Inside "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "custom-file"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["FileInput"], {
-        style: {
-          margin: '0px'
-        },
-        name: "passport_inside",
-        id: "passport_inside",
-        required: true,
-        fileType: ["pdf", "docx", "jpeg", "jpg"] // maxFileSize="10000 kb"
-        ,
-        errorMessage: {
-          required: "Please upload Passport Inside",
-          fileType: "Only jpeg, pdf and word file is allowed" // maxFileSize: "Max file size is 10000 kb"
-
-        },
-        onChange: this.onUploadCv
-      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, (_React$createElement2 = {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "4",
-        xs: 12
-      }, _defineProperty(_React$createElement2, "xs", 12), _defineProperty(_React$createElement2, "sm", 12), _React$createElement2), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
-        htmlFor: "upload_avatar"
-      }, "Passport Outside"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "custom-file"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["FileInput"], {
-        style: {
-          margin: '0px'
-        },
-        name: "passport_outside",
-        id: "passport_outside",
-        required: true,
-        fileType: ["pdf", "docx", "jpeg", "jpg", "png"] // maxFileSize="10000 kb"
-        ,
-        errorMessage: {
-          required: "Please upload Passport Inside",
-          fileType: "Only jpeg, pdf and word file is allowed" // maxFileSize: "Max file size is 10000 kb"
-
-        },
-        onChange: this.onUploadCv
-      })))) : this.props.passport_birth == 2 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, (_React$createElement3 = {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "4",
-        xs: 12
-      }, _defineProperty(_React$createElement3, "xs", 12), _defineProperty(_React$createElement3, "sm", 12), _React$createElement3), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
-        htmlFor: "upload_avatar"
-      }, "Birth Certificate"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "custom-file"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["FileInput"], {
-        style: {
-          margin: '0px'
-        },
-        name: "birth_certificate",
-        id: "birth_certificate",
-        required: true,
-        fileType: ["pdf", "docx", "jpeg", "jpg", "png"] // maxFileSize="10000 kb"
-        ,
-        errorMessage: {
-          required: "Please upload Birth Certificate",
-          fileType: "Only jpeg, pdf and word file is allowed" // maxFileSize: "Max file size is 10000 kb"
-
-        },
-        onChange: this.onUploadCv
-      }))) : '';
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, contents);
-    }
-  }]);
-
-  return Passport_birth;
-}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
-
-var ProofOfIdentification = /*#__PURE__*/function (_React$Component2) {
-  _inherits(ProofOfIdentification, _React$Component2);
-
-  var _super2 = _createSuper(ProofOfIdentification);
-
-  function ProofOfIdentification() {
+  function ConsentStatement() {
     var _this;
 
-    _classCallCheck(this, ProofOfIdentification);
+    _classCallCheck(this, ConsentStatement);
 
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
 
-    _this = _super2.call.apply(_super2, [this].concat(args));
+    _this = _super.call.apply(_super, [this].concat(args));
 
     _defineProperty(_assertThisInitialized(_this), "state", {
       _method: '',
       id: "",
-      passport_birth: '',
-      p45_available: '',
+      recruitment_employee_name: '',
+      recruitment_employee_signature: null,
+      recruitment_employee_signature_show: null,
+      recruitment_Date: new Date(),
+      screening_employee_name: '',
+      screening_employee_signature: null,
+      screening_employee_signature_show: null,
+      screening_Date: new Date(),
+      confirm_employee_name: '',
+      confirm_employee_signature: null,
+      confirm_employee_signature_show: null,
+      confirm_Date: new Date(),
       showModal: false,
       visible: true,
       i_confirm: false,
@@ -536,26 +453,21 @@ var ProofOfIdentification = /*#__PURE__*/function (_React$Component2) {
 
       var _ref = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
           id = _ref.id,
-          auth_token = _ref.auth_token,
-          application_forms_id = _ref.application_forms_id,
-          name = _ref.name;
+          auth_token = _ref.auth_token; //const data = new FormData()
+      //data.append('name', this.state.name);
 
-      var data = new FormData($('#ProofofIdentification')[0]);
-      data.append('passport_birth', _this.state.passport_birth);
-      data.append('p45_available', _this.state.p45_available);
-      data.append('application_forms_id', application_forms_id);
-      data.append('fore_name', name);
+
+      var formdata = _this.state;
       var urlid = '';
 
       if (_this.state.id != '') {
         urlid = '/' + _this.state.id;
       }
 
-      axios__WEBPACK_IMPORTED_MODULE_6___default.a.post(baseurl + '/api/proof_of_identification' + urlid, data, {
+      axios__WEBPACK_IMPORTED_MODULE_6___default.a.post(baseurl + '/api/consent_statement' + urlid, _this.state, {
         headers: {
           'Accept': 'application/json',
-          'Authorization': 'Bearer ' + auth_token,
-          'content-type': 'multipart/form-data'
+          'Authorization': 'Bearer ' + auth_token
         }
       }).then(function (res) {
         if (res.data.success) {
@@ -715,270 +627,380 @@ var ProofOfIdentification = /*#__PURE__*/function (_React$Component2) {
       });
     });
 
+    _defineProperty(_assertThisInitialized(_this), "recruitment_employee", {});
+
+    _defineProperty(_assertThisInitialized(_this), "recruitment_employee_trim", function () {
+      _this.setState({
+        recruitment_employee_signature: _this.recruitment_employee.getTrimmedCanvas().toDataURL('image/png')
+      });
+
+      _this.setState({
+        recruitment_employee_signature_show: _this.state.recruitment_employee_signature
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "recruitment_employee_clear", function () {
+      _this.recruitment_employee.clear();
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "recruitmentChange", function (e) {
+      var today = new Date(e);
+      var dd = today.getDate();
+      var mm = today.getMonth() + 1;
+      var yyyy = today.getFullYear();
+
+      if (dd < 10) {
+        dd = '0' + dd;
+      }
+
+      if (mm < 10) {
+        mm = '0' + mm;
+      }
+
+      var today = dd + '/' + mm + '/' + yyyy;
+
+      _this.setState({
+        recruitment_Date: today
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "screening_employee", {});
+
+    _defineProperty(_assertThisInitialized(_this), "screening_employee_trim", function () {
+      _this.setState({
+        screening_employee_signature: _this.screening_employee.getTrimmedCanvas().toDataURL('image/png')
+      });
+
+      _this.setState({
+        screening_employee_signature_show: _this.state.screening_employee_signature
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "screening_employee_clear", function () {
+      _this.screening_employee.clear();
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "screeningChange", function (e) {
+      var today = new Date(e);
+      var dd = today.getDate();
+      var mm = today.getMonth() + 1;
+      var yyyy = today.getFullYear();
+
+      if (dd < 10) {
+        dd = '0' + dd;
+      }
+
+      if (mm < 10) {
+        mm = '0' + mm;
+      }
+
+      var today = dd + '/' + mm + '/' + yyyy;
+
+      _this.setState({
+        screening_Date: today
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "confirm_employee", {});
+
+    _defineProperty(_assertThisInitialized(_this), "confirm_employee_trim", function () {
+      _this.setState({
+        confirm_employee_signature: _this.confirm_employee.getTrimmedCanvas().toDataURL('image/png')
+      });
+
+      _this.setState({
+        confirm_employee_signature_show: _this.state.confirm_employee_signature
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "confirm_employee_clear", function () {
+      _this.confirm_employee.clear();
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "confirmChange", function (e) {
+      var today = new Date(e);
+      var dd = today.getDate();
+      var mm = today.getMonth() + 1;
+      var yyyy = today.getFullYear();
+
+      if (dd < 10) {
+        dd = '0' + dd;
+      }
+
+      if (mm < 10) {
+        mm = '0' + mm;
+      }
+
+      var today = dd + '/' + mm + '/' + yyyy;
+
+      _this.setState({
+        confirm_Date: today
+      });
+    });
+
     return _this;
   }
 
-  _createClass(ProofOfIdentification, [{
+  _createClass(ConsentStatement, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      // this.alreadyAdded();
+      this.alreadyAdded();
+
       var _ref3 = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
           name = _ref3.name,
           email = _ref3.email;
+
+      var emailaddress = email;
+      this.setState({
+        recruitment_employee_name: name,
+        screening_employee_name: name,
+        confirm_employee_name: name
+      });
     }
   }, {
     key: "render",
     value: function render() {
-      var _React$createElement4, _React$createElement5, _React$createElement6, _React$createElement7, _React$createElement8, _React$createElement9, _React$createElement10, _React$createElement11, _React$createElement12, _React$createElement13;
+      var _this2 = this;
 
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_hoc_Aux__WEBPACK_IMPORTED_MODULE_11__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["ValidationForm"], {
         autoComplete: "off",
-        id: "ProofofIdentification",
+        id: "formid",
         onSubmit: this.handleSubmit,
         onErrorSubmit: this.handleErrorSubmit
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Row, {
         style: style.rowline
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, (_React$createElement4 = {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
         as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "4",
-        xs: 12
-      }, _defineProperty(_React$createElement4, "xs", 12), _defineProperty(_React$createElement4, "sm", 12), _React$createElement4), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
-        htmlFor: "gender"
-      }, "\xA0"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "custom-controls-stacked radio"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["Radio"].RadioGroup, {
-        name: "passport_birth",
-        required: true,
-        valueSelected: this.state.passport_birth,
-        inline: true,
-        onChange: this.handleChange
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["Radio"].RadioItem, {
-        id: "radio4",
-        label: "Passport",
-        value: "1"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["Radio"].RadioItem, {
-        id: "radio5",
-        label: "Birth Certificate",
-        value: "2"
-      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Passport_birth, {
-        passport_birth: this.state.passport_birth
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Row, {
+        md: "12"
+      }, "Should your role require a DBS check the Company will apply through a third-party intermediary for a basic disclosure. If you have any unspent convictions they should have been disclosed on the application form you completed. Company policy requires any unspent convictions to be reviewed and a risk assessment to be complete. A basic disclosure will contain information about any unspent convictions in your name. By ticking the below boxes and signing this statement you are consenting to some or all the statements."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
+        md: "12"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "I understand and give my consent to Bespoke Metering Solutions Limited:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Submitting an online application to Staffvetting.com for me to complete;"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Reviewing the application process;"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Being advised by email from Staffvetting.com should my disclosure certificate contain information regarding unspent convictions;")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Row, {
         style: style.rowline
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, (_React$createElement5 = {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
         as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "4",
-        xs: 12
-      }, _defineProperty(_React$createElement5, "xs", 12), _defineProperty(_React$createElement5, "sm", 12), _React$createElement5), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
-        htmlFor: "upload_avatar"
-      }, "Proof of Address (Dated within 3 months)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "custom-file"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["FileInput"], {
-        style: {
-          margin: '0px'
-        },
-        name: "proof_of_address",
-        id: "proof_of_address",
+        md: "12"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "checkbox"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["Checkbox"], {
+        name: "is_produce_my_certificate",
+        label: "I also hereby agree to produce my certificate if requested to do so during the recruitment process.",
+        id: "is_produce_my_certificate",
+        value: this.state.is_produce_my_certificate,
         required: true,
-        fileType: ["pdf", "docx", "jpeg", "jpg", "png"] // maxFileSize="10000 kb"
-        ,
-        errorMessage: {
-          required: "Please upload Proof of Address",
-          fileType: "Only jpeg, pdf and word file is allowed" // maxFileSize: "Max file size is 10000 kb"
-
-        },
-        onChange: this.onUploadCv
-      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, (_React$createElement6 = {
+        onChange: this.handleCheckboxChange
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
         as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "4",
-        xs: 12
-      }, _defineProperty(_React$createElement6, "xs", 12), _defineProperty(_React$createElement6, "sm", 12), _React$createElement6), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
-        htmlFor: "upload_avatar"
-      }, "Proof of National Insurance number"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "custom-file"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["FileInput"], {
-        style: {
-          margin: '0px'
-        },
-        name: "national_insurance_number",
-        id: "national_insurance_number",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
+        htmlFor: "recruitment_employee_name"
+      }, "Employee Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["TextInput"], {
+        name: "recruitment_employee_name",
+        id: "recruitment_employee_name",
+        placeholder: "Employee Name",
         required: true,
-        fileType: ["pdf", "docx", "jpeg", "jpg", "png"] // maxFileSize="10000 kb"
-        ,
-        errorMessage: {
-          required: "Please upload National Insurance Number",
-          fileType: "Only jpeg, pdf and word file is allowed" // maxFileSize: "Max file size is 10000 kb"
-
-        },
-        onChange: this.onUploadCv
-      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, (_React$createElement7 = {
+        value: this.state.recruitment_employee_name,
+        onChange: this.handleChange,
+        autoComplete: "off"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
         as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "4",
-        xs: 12
-      }, _defineProperty(_React$createElement7, "xs", 12), _defineProperty(_React$createElement7, "sm", 12), _React$createElement7), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
-        htmlFor: "upload_avatar"
-      }, "Proof of right to work (if required)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "custom-file"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["FileInput"], {
+        md: "4"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_signature_canvas__WEBPACK_IMPORTED_MODULE_12___default.a, {
+        penColor: "black",
+        dotSize: function dotSize() {
+          return (_this2.minWidth + _this2.maxWidth) / 5;
+        },
+        canvasProps: {
+          width: 300,
+          height: 100,
+          className: 'sigCanvas'
+        },
+        ref: function ref(_ref4) {
+          _this2.recruitment_employee = _ref4;
+        },
+        onEnd: this.recruitment_employee_trim
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "button",
         style: {
-          margin: '0px'
+          position: 'absolute',
+          bottom: '6px'
         },
-        name: "right_to_work",
-        id: "right_to_work",
-        fileType: ["pdf", "docx", "jpeg", "jpg", "png"] // maxFileSize="10000 kb"
-        ,
-        errorMessage: {
-          fileType: "Only jpeg, pdf and word file is allowed" // maxFileSize: "Max file size is 10000 kb"
-
-        },
-        onChange: this.onUploadCv
-      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Row, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, (_React$createElement8 = {
+        onClick: this.recruitment_employee_clear
+      }, "Clear")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
         as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "4",
-        xs: 12
-      }, _defineProperty(_React$createElement8, "xs", 12), _defineProperty(_React$createElement8, "sm", 12), _React$createElement8), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
-        htmlFor: "upload_avatar"
-      }, "Driving Licence (Front)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "custom-file"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["FileInput"], {
-        style: {
-          margin: '0px'
-        },
-        name: "driving_licence_front",
-        id: "driving_licence_front",
+        md: "2"
+      }, this.state.recruitment_employee_signature_show ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: this.state.recruitment_employee_signature_show
+      }) : null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
+        md: "2"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
+        htmlFor: "region"
+      }, "Signature Date"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_datetime__WEBPACK_IMPORTED_MODULE_2___default.a, {
+        closeOnSelect: true,
+        onChange: this.recruitmentChange,
+        value: this.state.recruitment_Date,
+        dateFormat: "D/M/Y",
+        timeFormat: false,
+        maxDate: new Date(),
+        inputProps: {
+          required: 'required',
+          name: "recruitment_Date",
+          placeholder: 'Select Date',
+          autoComplete: 'off'
+        }
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Row, {
+        style: style.rowline
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
+        md: "12"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "checkbox"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["Checkbox"], {
+        name: "is_drug_and_alcohol",
+        label: "Should your role require drug and alcohol screening tests you understand and consent to such screening tests for the detection of drugs and alcohol from a sample of saliva.",
+        id: "is_drug_and_alcohol",
+        value: this.state.is_drug_and_alcohol,
         required: true,
-        fileType: ["pdf", "docx", "jpeg", "jpg", "png"] // maxFileSize="10000 kb"
-        ,
-        errorMessage: {
-          required: "Please upload Driving Licence Front",
-          fileType: "Only jpeg, pdf and word file is allowed" // maxFileSize: "Max file size is 10000 kb"
-
-        },
-        onChange: this.onUploadCv
-      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, (_React$createElement9 = {
+        onChange: this.handleCheckboxChange
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
         as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "4",
-        xs: 12
-      }, _defineProperty(_React$createElement9, "xs", 12), _defineProperty(_React$createElement9, "sm", 12), _React$createElement9), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
-        htmlFor: "upload_avatar"
-      }, "Driving Licence (Back)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "custom-file"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["FileInput"], {
-        style: {
-          margin: '0px'
-        },
-        name: "driving_licence_back",
-        id: "driving_licence_back",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
+        htmlFor: "screening_employee_name"
+      }, "Employee Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["TextInput"], {
+        name: "screening_employee_name",
+        id: "screening_employee_name",
+        placeholder: "Employee Name",
         required: true,
-        fileType: ["pdf", "docx", "jpeg", "jpg", "png"] // maxFileSize="10000 kb"
-        ,
-        errorMessage: {
-          required: "Please upload Driving Licence Back",
-          fileType: "Only jpeg, pdf and word file is allowed" // maxFileSize: "Max file size is 10000 kb"
-
-        },
-        onChange: this.onUploadCv
-      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Row, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, (_React$createElement10 = {
+        value: this.state.screening_employee_name,
+        onChange: this.handleChange,
+        autoComplete: "off"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
         as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "4",
-        xs: 12
-      }, _defineProperty(_React$createElement10, "xs", 12), _defineProperty(_React$createElement10, "sm", 12), _React$createElement10), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
-        htmlFor: "upload_avatar"
-      }, "Passport style photograph (On white background)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "custom-file"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["FileInput"], {
+        md: "4"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_signature_canvas__WEBPACK_IMPORTED_MODULE_12___default.a, {
+        penColor: "black",
+        dotSize: function dotSize() {
+          return (_this2.minWidth + _this2.maxWidth) / 5;
+        },
+        canvasProps: {
+          width: 300,
+          height: 100,
+          className: 'sigCanvas'
+        },
+        ref: function ref(_ref5) {
+          _this2.screening_employee = _ref5;
+        },
+        onEnd: this.screening_employee_trim
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "button",
         style: {
-          margin: '0px'
+          position: 'absolute',
+          bottom: '6px'
         },
-        name: "passport_style_photograph",
-        id: "passport_style_photograph",
-        required: true,
-        fileType: ["pdf", "docx", "jpeg", "jpg", "png"] // maxFileSize="10000 kb"
-        ,
-        errorMessage: {
-          required: "Please upload Passport style photograph",
-          fileType: "Only jpeg, pdf and word file is allowed" // maxFileSize: "Max file size is 10000 kb"
-
-        },
-        onChange: this.onUploadCv
-      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, (_React$createElement11 = {
+        onClick: this.screening_employee_clear
+      }, "Clear")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
         as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "4",
-        xs: 12
-      }, _defineProperty(_React$createElement11, "xs", 12), _defineProperty(_React$createElement11, "sm", 12), _React$createElement11), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
-        htmlFor: "gender"
-      }, "is P45 available?"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "custom-controls-stacked radio"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["Radio"].RadioGroup, {
-        name: "p45_available",
-        required: true,
-        valueSelected: this.state.p45_available,
-        inline: true,
-        onChange: this.handleChange
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["Radio"].RadioItem, {
-        id: "p45_available4",
-        label: "Yes",
-        value: "Yes"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["Radio"].RadioItem, {
-        id: "p45_available5",
-        label: "No",
-        value: "No"
-      })))), this.state.p45_available == 'Yes' ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, (_React$createElement12 = {
+        md: "2"
+      }, this.state.screening_employee_signature_show ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: this.state.screening_employee_signature_show
+      }) : null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
         as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "4",
-        xs: 12
-      }, _defineProperty(_React$createElement12, "xs", 12), _defineProperty(_React$createElement12, "sm", 12), _React$createElement12), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
-        htmlFor: "upload_avatar"
-      }, "P45"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "custom-file"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["FileInput"], {
-        style: {
-          margin: '0px'
-        },
-        name: "p45form",
-        id: "p45",
-        required: true,
-        fileType: ["pdf", "docx", "jpeg", "jpg", "png"] // maxFileSize="10000 kb"
-        ,
-        errorMessage: {
-          required: "Please upload P45",
-          fileType: "Only jpeg, pdf and word file is allowed" // maxFileSize: "Max file size is 10000 kb"
-
-        },
-        onChange: this.onUploadCv
-      }))) : this.state.p45_available == 'No' ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, (_React$createElement13 = {
+        md: "2"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
+        htmlFor: "region"
+      }, "Signature Date"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_datetime__WEBPACK_IMPORTED_MODULE_2___default.a, {
+        closeOnSelect: true,
+        onChange: this.screeningChange,
+        value: this.state.screening_Date,
+        dateFormat: "D/M/Y",
+        timeFormat: false,
+        maxDate: new Date(),
+        inputProps: {
+          required: 'required',
+          name: "screening_Date",
+          placeholder: 'Select Date',
+          autoComplete: 'off'
+        }
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Row, {
+        style: style.rowline
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
         as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "4",
-        xs: 12
-      }, _defineProperty(_React$createElement13, "xs", 12), _defineProperty(_React$createElement13, "sm", 12), _React$createElement13), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
-        htmlFor: "upload_avatar"
-      }, "HMRC Starter Checklist"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "custom-file"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["FileInput"], {
-        style: {
-          margin: '0px'
-        },
-        name: "hmrc_starter_checklist",
-        id: "hmrc_starter_checklist",
+        md: "12"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "checkbox"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["Checkbox"], {
+        name: "i_confirm",
+        label: "I confirm that the information given in this form is true, complete and accurate.",
+        id: "i_confirm",
+        value: this.state.i_confirm,
         required: true,
-        fileType: ["pdf", "docx", "jpeg", "jpg", "png"] // maxFileSize="10000 kb"
-        ,
-        errorMessage: {
-          required: "Please upload HMRC Starter Checklist",
-          fileType: "Only jpeg, pdf and word file is allowed" // maxFileSize: "Max file size is 10000 kb"
-
+        onChange: this.handleCheckboxChange
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
+        htmlFor: "confirm_employee_name"
+      }, "Employee Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["TextInput"], {
+        name: "confirm_employee_name",
+        id: "confirm_employee_name",
+        placeholder: "Employee Name",
+        required: true,
+        value: this.state.confirm_employee_name,
+        onChange: this.handleChange,
+        autoComplete: "off"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
+        md: "4"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_signature_canvas__WEBPACK_IMPORTED_MODULE_12___default.a, {
+        penColor: "black",
+        dotSize: function dotSize() {
+          return (_this2.minWidth + _this2.maxWidth) / 5;
         },
-        onChange: this.onUploadCv
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        canvasProps: {
+          width: 300,
+          height: 100,
+          className: 'sigCanvas'
+        },
+        ref: function ref(_ref6) {
+          _this2.confirm_employee = _ref6;
+        },
+        onEnd: this.confirm_employee_trim
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "button",
         style: {
-          display: 'block',
-          color: 'black',
-          marginTop: '15px'
+          position: 'absolute',
+          bottom: '6px'
         },
-        "class": "invalid-feedback"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: baseurl + '/uploaded/HMRC_STARTER_CHECKLIST.pdf',
-        target: "_blank"
-      }, "Please click here to download  HMRC STARTER CHECKLIST."), " ")) : ''), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Row, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
+        onClick: this.confirm_employee_clear
+      }, "Clear")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
+        md: "2"
+      }, this.state.confirm_employee_signature_show ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: this.state.confirm_employee_signature_show
+      }) : null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
+        md: "2"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
+        htmlFor: "region"
+      }, "Signature Date"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_datetime__WEBPACK_IMPORTED_MODULE_2___default.a, {
+        closeOnSelect: true,
+        onChange: this.confirmChange,
+        value: this.state.confirm_Date,
+        dateFormat: "D/M/Y",
+        timeFormat: false,
+        maxDate: new Date(),
+        inputProps: {
+          required: 'required',
+          name: "confirm_Date",
+          placeholder: 'Select Date',
+          autoComplete: 'off'
+        }
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
+        md: "12"
+      }, "All information provided on these forms will be handled with the utmost sensitivity and confidentiality")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Row, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
         as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
         sm: 12,
         className: "mt-3"
@@ -989,7 +1011,7 @@ var ProofOfIdentification = /*#__PURE__*/function (_React$Component2) {
     }
   }]);
 
-  return ProofOfIdentification;
+  return ConsentStatement;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 var style = {
@@ -998,7 +1020,7 @@ var style = {
     marginBottom: '15px'
   }
 };
-/* harmony default export */ __webpack_exports__["default"] = (ProofOfIdentification);
+/* harmony default export */ __webpack_exports__["default"] = (ConsentStatement);
 
 /***/ })
 

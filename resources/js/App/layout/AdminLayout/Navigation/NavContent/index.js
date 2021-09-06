@@ -159,12 +159,27 @@ if(permissions){
         if(pg.name=='application_form.show'){
             if(pg.Ischeck){
                 checklist ={
-                    id: 'check-list',
-                    title: 'Check list',
-                    type: 'item',
-                    url: '/check-list',
-                    icon: 'feather icon-file-text'
-                }
+                    id: 'tools',
+                    title: 'Tools & Check list',
+                    type: 'collapse',
+                    icon: 'feather icon-menu',
+                    children: [
+                        {
+                            id: 'v-fixed',
+                            title: 'Tools',
+                            type: 'item',
+                            url: '/tool',
+                            icon: 'feather icon-file-text'  
+                        },
+                        {
+                            id: 'check-list',
+                            title: 'Check list',
+                            type: 'item',
+                            url: '/check-list',
+                            icon: 'feather feather icon-check-circle'  
+                        }
+                    ]
+                };
             }
         }
         
@@ -214,7 +229,7 @@ if(permissions){
                         url: '/dashboard',
                         icon: 'feather icon-home'
                     },
-                    RoleUser,employeeForm,employeeList,checklist,employeeDetails,employeeHoliday,holidayList,MandatoryDocument,employeeMandatoryDocument
+                    RoleUser,employeeForm,employeeList,employeeDetails,employeeHoliday,holidayList,MandatoryDocument,employeeMandatoryDocument,checklist
                     ]
             }]
             

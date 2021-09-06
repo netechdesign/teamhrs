@@ -146,7 +146,7 @@ class HolidayController extends Controller
             {
                 //$message->to('admin@teamhrs.co.uk')->subject('New application submitted');
                 //,'hr@bespokemeteringsolutions.co.uk','recruitment@bespokemeteringsolutions.co.uk'
-                $message->to(['sandeep@itsupportpeople.co.uk','prakash@itsupportpeople.co.uk'])->subject('Holiday Request');
+                $message->to(['sandeep@itsupportpeople.co.uk','prakash@itsupportpeople.co.uk','hr@bespokemeteringsolutions.co.uk'])->subject('Holiday Request');
                 
 
              });          
