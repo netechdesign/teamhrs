@@ -262,6 +262,7 @@ class Check_listController extends Controller
                                 $Check_lists->issued_date = $request->issued_date;
                               //  $Check_lists->signature = $request->issued_engineer_id;
                             }
+                            $Check_lists->is_changed = 1;
                     }else{
                         
                         $Check_lists = Check_lists::where('issued_engineer_id',$user->id)->first();  
@@ -271,6 +272,8 @@ class Check_listController extends Controller
                             $Check_lists->signature = $request->signature;
                         }
                         $Check_lists->is_completed = 1;
+                        
+                        $Check_lists->is_changed = 0;
                         $Check_lists->completed_date = date('Y-m-d');
                     }
                     $Check_lists->save();

@@ -57,7 +57,8 @@ class Edit extends React.Component {
         buttonName:'Save',
         signature:'',
         signature_show:'',
-        no_check_list:false
+        no_check_list:false,
+        is_changed:''
         };
         Engineerchange =(e)=>{
             this.setState({issued_engineer_id:e.value,issued_engineer_name:e.label,Engineer:e});
@@ -106,7 +107,7 @@ class Edit extends React.Component {
                            
                              // console.log(res.data.data);
                              this.setState({formSubmitting:false,apiload:false,certification:false});
-                             this.setState({buttonName:'Save'});
+                             this.setState({buttonName:'Save',is_changed:0});
                            //  this.props.history.push('/check-list'); 
                           }else{
                               let errorMassage = '';
@@ -190,7 +191,7 @@ axios.get(
     {headers:{'Authorization':'Bearer '+auth_token}} 
 ).then(res =>{
                 if(res.data.success){
-                    this.setState({Engineer:{label:res.data.check_lists.issued_engineer_name,value:res.data.check_lists.issued_engineer_id},tools_list:res.data.check_list_items,issued_engineer_id:res.data.check_lists.issued_engineer_id,issued_engineer_name: res.data.check_lists.issued_engineer_name,issued_date:res.data.check_lists.issued_date,no_check_list:false});
+                    this.setState({Engineer:{label:res.data.check_lists.issued_engineer_name,value:res.data.check_lists.issued_engineer_id},tools_list:res.data.check_list_items,issued_engineer_id:res.data.check_lists.issued_engineer_id,issued_engineer_name: res.data.check_lists.issued_engineer_name,issued_date:res.data.check_lists.issued_date,no_check_list:false,is_changed:res.data.check_lists.is_changed});
                     
                     
                   //  issued_date:'',
@@ -243,7 +244,7 @@ dublicateList = (index)=>{
                 {item.serial_number}
                 </Td>
                 <Td style={{padding:'5px'}}>
-                <div  className="custom-controls-stacked radio">
+                {(this.state.is_changed==1?<div  className="custom-controls-stacked radio">
                                                 <Radio.RadioGroup
                                                     name={'name_'+index}
                                                     
@@ -256,7 +257,9 @@ dublicateList = (index)=>{
                                                     <Radio.RadioItem id={index+'_no'} data-id={index} label="No" value="No" />
                                                     
                                                 </Radio.RadioGroup>
-                                            </div>
+                                            </div>:
+                                            item.is_received
+                )}
                                             
                 </Td>
             </Tr>
@@ -268,7 +271,7 @@ dublicateList = (index)=>{
                 <Col>
                     <Card>
                         <Card.Header>
-                            <Card.Title as="h5">Edit Tools issued</Card.Title>
+                            <Card.Title as="h5">Tools issued</Card.Title>
                             <Button className="btn-sm" style={{'float':'right'}} onClick={()=>{history.goBack()}} ><i  class="feather icon-chevron-left"></i>Back</Button>
                         </Card.Header>
                         <Card.Body>
@@ -293,7 +296,7 @@ dublicateList = (index)=>{
                                         </Tbl> 
                                     </Form.Group>
                                     
-                                     <Form.Group as={Col} md="4">
+                                    {(this.state.is_changed==1? <Form.Group as={Col} md="4">
                                          <label>Signed:</label>
                                                           <SignatureCanvas penColor='black' dotSize={() => (this.minWidth + this.maxWidth) / 5}  
                                                                         canvasProps={{width: 300, height: 100, className: 'sigCanvas'}} ref={(ref) => { this.confirm_employee = ref }} onEnd={this.confirm_employee_trim}  />
@@ -301,15 +304,18 @@ dublicateList = (index)=>{
                                                                             Clear
                                                                             </button>
                                      </Form.Group>
+                                     :'')}
                                      
                                     <Form.Group as={Col} md="12" id="requestLoder" style={{textalign:'center'}}>   
                                     </Form.Group>
                                 </Form.Row>                     
 
                                  <Form.Row>
-                                    <Form.Group as={Col} sm={12} className="mt-3">
+                                   {(this.state.is_changed==1?<Form.Group as={Col} sm={12} className="mt-3">
                                         <Button disabled={this.state.formSubmitting}  type="submit"> {this.state.buttonName}</Button>
-                                    </Form.Group>
+                                    </Form.Group>:'')
+                                    }  
+                                    
                                  
                                 </Form.Row>
                             </ValidationForm>

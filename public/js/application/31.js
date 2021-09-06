@@ -484,7 +484,8 @@ var Edit = /*#__PURE__*/function (_React$Component) {
       buttonName: 'Save',
       signature: '',
       signature_show: '',
-      no_check_list: false
+      no_check_list: false,
+      is_changed: ''
     });
 
     _defineProperty(_assertThisInitialized(_this), "Engineerchange", function (e) {
@@ -550,7 +551,8 @@ var Edit = /*#__PURE__*/function (_React$Component) {
           });
 
           _this.setState({
-            buttonName: 'Save'
+            buttonName: 'Save',
+            is_changed: 0
           }); //  this.props.history.push('/check-list'); 
 
         } else {
@@ -664,7 +666,8 @@ var Edit = /*#__PURE__*/function (_React$Component) {
             issued_engineer_id: res.data.check_lists.issued_engineer_id,
             issued_engineer_name: res.data.check_lists.issued_engineer_name,
             issued_date: res.data.check_lists.issued_date,
-            no_check_list: false
+            no_check_list: false,
+            is_changed: res.data.check_lists.is_changed
           }); //  issued_date:'',
 
 
@@ -762,7 +765,7 @@ var Edit = /*#__PURE__*/function (_React$Component) {
           style: {
             padding: '5px'
           }
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        }, _this3.state.is_changed == 1 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "custom-controls-stacked radio"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_9__["Radio"].RadioGroup, {
           name: 'name_' + index,
@@ -782,11 +785,11 @@ var Edit = /*#__PURE__*/function (_React$Component) {
           "data-id": index,
           label: "No",
           value: "No"
-        })))));
+        }))) : item.is_received));
       });
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_hoc_Aux__WEBPACK_IMPORTED_MODULE_3__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"].Header, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"].Title, {
         as: "h5"
-      }, "Edit Tools issued"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Button"], {
+      }, "Tools issued"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Button"], {
         className: "btn-sm",
         style: {
           'float': 'right'
@@ -820,7 +823,7 @@ var Edit = /*#__PURE__*/function (_React$Component) {
           color: 'red'
         },
         colspan: "3"
-      }, "No Tools issued") : ''))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
+      }, "No Tools issued") : ''))), this.state.is_changed == 1 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
         as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
         md: "4"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Signed:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_signature_canvas__WEBPACK_IMPORTED_MODULE_8___default.a, {
@@ -844,21 +847,21 @@ var Edit = /*#__PURE__*/function (_React$Component) {
           bottom: '6px'
         },
         onClick: this.confirm_employee_clear
-      }, "Clear")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
+      }, "Clear")) : '', /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
         as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
         md: "12",
         id: "requestLoder",
         style: {
           textalign: 'center'
         }
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Row, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Row, null, this.state.is_changed == 1 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
         as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
         sm: 12,
         className: "mt-3"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Button"], {
         disabled: this.state.formSubmitting,
         type: "submit"
-      }, " ", this.state.buttonName)))))))));
+      }, " ", this.state.buttonName)) : '')))))));
     }
   }]);
 

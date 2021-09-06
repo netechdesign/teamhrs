@@ -246,7 +246,7 @@ confirm_employee_trim = () => {
                 <Col>
                     <Card>
                         <Card.Header>
-                            <Card.Title as="h5">Add Tools issued</Card.Title>
+                            <Card.Title as="h5">Tools issued</Card.Title>
                             <Button className="btn-sm" style={{'float':'right'}} onClick={()=>{history.goBack()}} ><i  class="feather icon-chevron-left"></i>Back</Button>
                         </Card.Header>
                         <Card.Body>
