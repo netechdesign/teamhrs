@@ -23,6 +23,7 @@ const BankDetails = React.lazy(() => import("./forms/BankDetails"));
 const UniformOrder = React.lazy(() => import("./forms/UniformOrder"));
 const ConsentStatement = React.lazy(() => import("./forms/ConsentStatement"));
 const ProofOfIdentification = React.lazy(() => import("./forms/ProofOfIdentification"));
+const DriversDeclaration = React.lazy(() => import("./forms/DriversDeclaration"));
 
 const routes = [
     { path:'/services-starter/Employee-Details', exact:true, name:'Oneform',component:Oneform},
@@ -30,6 +31,8 @@ const routes = [
     { path:'/services-starter/Uniform-Order',exact:true,name:'Services_starter_one',component:UniformOrder},
     { path:'/services-starter/Consent-Statement',exact:true,name:'Services_starter_one',component:ConsentStatement},
     { path:'/services-starter/Proof-of-Identification',exact:true,name:'ProofOfIdentification',component:ProofOfIdentification},
+    { path:'/services-starter/Drivers-Declaration',exact:true,name:'DriversDeclaration',component:DriversDeclaration},
+    
     ];
 
 class Services_starter_one extends Component {
@@ -80,6 +83,10 @@ class Services_starter_one extends Component {
                                 </li>
                                 <li class="nav-item">
                                 <NavLink  to='/services-starter/Proof-of-Identification' className="nav-link link" style={{borderRight: 'solid 1px #04a9f5'}} >Proof of Identification</NavLink>
+                                
+                                </li>
+                                <li class="nav-item">
+                                <NavLink  to='/services-starter/Drivers-Declaration' className="nav-link link" style={{borderRight: 'solid 1px #04a9f5'}} >Drivers Declaration</NavLink>
                                 </li>
                                 
                                 </ul>

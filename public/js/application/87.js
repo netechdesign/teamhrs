@@ -1,9 +1,9 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[87],{
 
-/***/ "./resources/js/Back-Office/Pages/Holiday/HolidayCalendar.js":
-/*!*******************************************************************!*\
-  !*** ./resources/js/Back-Office/Pages/Holiday/HolidayCalendar.js ***!
-  \*******************************************************************/
+/***/ "./resources/js/Back-Office/Employee/Tab/JobHistory.js":
+/*!*************************************************************!*\
+  !*** ./resources/js/Back-Office/Employee/Tab/JobHistory.js ***!
+  \*************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -11,17 +11,28 @@
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var fullcalendar_reactwrapper__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! fullcalendar-reactwrapper */ "./node_modules/fullcalendar-reactwrapper/lib/index.js");
-/* harmony import */ var fullcalendar_reactwrapper__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(fullcalendar_reactwrapper__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _hoc_Aux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../hoc/_Aux */ "./resources/js/hoc/_Aux/index.js");
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/index.js");
-/* harmony import */ var react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-bootstrap4-form-validation */ "./node_modules/react-bootstrap4-form-validation/lib/index.js");
-/* harmony import */ var react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/index.js");
+/* harmony import */ var react_datetime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-datetime */ "./node_modules/react-datetime/DateTime.js");
+/* harmony import */ var react_datetime__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_datetime__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-bootstrap4-form-validation */ "./node_modules/react-bootstrap4-form-validation/lib/index.js");
+/* harmony import */ var react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var react_text_mask__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-text-mask */ "./node_modules/react-text-mask/dist/reactTextMask.js");
+/* harmony import */ var react_text_mask__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_text_mask__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var validator__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! validator */ "./node_modules/validator/index.js");
 /* harmony import */ var validator__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(validator__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_6__);
 /* harmony import */ var pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! pnotify/dist/es/PNotify */ "./node_modules/pnotify/dist/es/PNotify.js");
+/* harmony import */ var pnotify_dist_es_PNotifyButtons__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! pnotify/dist/es/PNotifyButtons */ "./node_modules/pnotify/dist/es/PNotifyButtons.js");
+/* harmony import */ var pnotify_dist_es_PNotifyConfirm__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! pnotify/dist/es/PNotifyConfirm */ "./node_modules/pnotify/dist/es/PNotifyConfirm.js");
+/* harmony import */ var pnotify_dist_es_PNotifyCallbacks__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! pnotify/dist/es/PNotifyCallbacks */ "./node_modules/pnotify/dist/es/PNotifyCallbacks.js");
+/* harmony import */ var _hoc_Aux__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../../hoc/_Aux */ "./resources/js/hoc/_Aux/index.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_12__);
+/* harmony import */ var sweetalert2_react_content__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! sweetalert2-react-content */ "./node_modules/sweetalert2-react-content/dist/sweetalert2-react-content.umd.js");
+/* harmony import */ var sweetalert2_react_content__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(sweetalert2_react_content__WEBPACK_IMPORTED_MODULE_13__);
+/* harmony import */ var _employee_css__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../employee.css */ "./resources/js/Back-Office/Employee/employee.css");
+/* harmony import */ var _employee_css__WEBPACK_IMPORTED_MODULE_14___default = /*#__PURE__*/__webpack_require__.n(_employee_css__WEBPACK_IMPORTED_MODULE_14__);
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -54,35 +65,38 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
+
+
+
+
+
+
+
 var baseurl = window.location.origin;
-var today = new Date();
-var dd = String(today.getDate()).padStart(2, '0');
-var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+var ajaxabort;
 
-var yyyy = today.getFullYear();
-var todaydate = yyyy + '-' + mm + '-' + dd;
+var JobHistory = /*#__PURE__*/function (_React$Component) {
+  _inherits(JobHistory, _React$Component);
 
-var HolidayCalendar = /*#__PURE__*/function (_React$Component) {
-  _inherits(HolidayCalendar, _React$Component);
+  var _super = _createSuper(JobHistory);
 
-  var _super = _createSuper(HolidayCalendar);
-
-  function HolidayCalendar(props) {
+  function JobHistory() {
     var _this;
 
-    _classCallCheck(this, HolidayCalendar);
+    _classCallCheck(this, JobHistory);
 
-    _this = _super.call(this, props);
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
 
-    _defineProperty(_assertThisInitialized(_this), "getData", function () {
-      _this.setState({
-        formSubmitting: true
-      });
+    _this = _super.call.apply(_super, [this].concat(args));
 
-      _this.setState({
-        apiload: true
-      });
+    _defineProperty(_assertThisInitialized(_this), "state", {
+      apiload: true,
+      job_history: []
+    });
 
+    _defineProperty(_assertThisInitialized(_this), "alreadyAdded", function (id) {
       _this.setState({
         buttonName: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
           className: "spinner-grow spinner-grow-sm mr-1",
@@ -91,38 +105,34 @@ var HolidayCalendar = /*#__PURE__*/function (_React$Component) {
       });
 
       var _ref = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
-          auth_token = _ref.auth_token; //const data = new FormData()
-      //data.append('name', this.state.name);
+          auth_token = _ref.auth_token;
 
-
-      axios__WEBPACK_IMPORTED_MODULE_6___default.a.post(baseurl + '/api/holiday_calendar', {
-        c: ''
-      }, {
+      axios__WEBPACK_IMPORTED_MODULE_6___default.a.get(baseurl + '/api/job_history/' + id, {
         headers: {
           'Accept': 'application/json',
           'Authorization': 'Bearer ' + auth_token
         }
       }).then(function (res) {
         if (res.data.success) {
-          _this.setState({
-            events: res.data.result
-          });
+          if (res.data.Employment_historys) {
+            _this.setState({
+              job_history: res.data.Employment_historys
+            });
+          }
 
           _this.setState({
             apiload: false
           });
-
-          _this.setState({
-            formSubmitting: false
-          });
         } else {
-          var errorMassage = '';
+          _this.setState({
+            apiload: false
+          });
 
-          if (res.data.errors) {
-            errorMassage = res.data.errors.name;
-          } else {
-            errorMassage = res.data.email;
-          }
+          var errorMassage = '';
+          pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_7__["default"].error({
+            title: "Alert",
+            text: res.data.message
+          });
 
           _this.setState({
             formSubmitting: false
@@ -152,61 +162,92 @@ var HolidayCalendar = /*#__PURE__*/function (_React$Component) {
       });
     });
 
-    _this.state = {
-      user_id: '',
-      today: todaydate,
-      events: []
-    };
     return _this;
   }
 
-  _createClass(HolidayCalendar, [{
+  _createClass(JobHistory, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      this.getData();
+      var _ref2 = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
+          name = _ref2.name,
+          email = _ref2.email;
+
+      if (this.props.location.state) {
+        this.alreadyAdded(this.props.location.state.userId);
+      }
     }
   }, {
     key: "render",
     value: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_hoc_Aux__WEBPACK_IMPORTED_MODULE_2__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Col"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Card"].Header, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Card"].Title, {
-        as: "h5"
-      }, "Holiday Calendar")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Card"].Body, {
-        className: "calendar"
+      var title = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "feather icon-more-vertical"
+      });
+      var job_history = this.state.job_history.length > 0 ? this.state.job_history.map(function (item, inx) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, item.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, item.position), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, item.reason_for_leaving));
+      }) : '';
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_hoc_Aux__WEBPACK_IMPORTED_MODULE_11__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], {
+        style: {
+          padding: '0px 10px',
+          borderLeft: 'solid 2px #04a9f5'
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        md: 10,
+        xl: 10,
+        style: {
+          paddingTop: '15px'
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, "Job History")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        md: 2,
+        xl: 2,
+        style: {
+          padding: '0px'
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["DropdownButton"], {
+        alignRight: true,
+        style: {
+          "float": 'right',
+          border: 'none'
+        },
+        title: title,
+        variant: 'outline-secondary',
+        id: "dropdown-variants-secondary",
+        key: 'secondary',
+        className: "drp-icon"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Dropdown"].Item, {
+        eventKey: "1"
+      }, "Edit")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        "class": "details-tab",
+        style: {
+          borderTop: 'solid 1px #ebeff1',
+          padding: '10px 20px'
+        }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         style: {
           position: 'absolute',
           zIndex: '99999',
           background: 'rgba(255, 255, 255, 0.57)',
-          top: '25%',
+          top: '15%',
           left: '50%',
           display: this.state.apiload ? 'block' : 'none'
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "loader"
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(fullcalendar_reactwrapper__WEBPACK_IMPORTED_MODULE_1___default.a, {
-        id: "datta-calendar",
-        className: "calendar",
-        header: {
-          left: 'prev,next today',
-          center: 'title',
-          right: 'month,basicWeek,basicDay'
-        },
-        defaultDate: this.state.today,
-        navLinks: true,
-        editable: false,
-        eventLimit: true,
-        events: this.state.events,
-        eventClick: function eventClick(calEvent, jsEvent, view, resourceObj) {
-          console.log(calEvent);
-        }
-      }))))));
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Table"], {
+        responsive: true
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Company Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Position"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Reason for leaving"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, job_history))));
     }
   }]);
 
-  return HolidayCalendar;
+  return JobHistory;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (HolidayCalendar);
+var style = {
+  rowline: {
+    borderBottom: 'solid 1px #d4d6dc',
+    marginBottom: '15px'
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = (JobHistory);
 
 /***/ })
 

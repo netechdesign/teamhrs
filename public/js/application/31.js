@@ -350,10 +350,10 @@ if(false) {}
 
 /***/ }),
 
-/***/ "./resources/js/Back-Office/Employee/CheckList.js":
-/*!********************************************************!*\
-  !*** ./resources/js/Back-Office/Employee/CheckList.js ***!
-  \********************************************************/
+/***/ "./resources/js/Back-Office/Checklist/CheckList.js":
+/*!*********************************************************!*\
+  !*** ./resources/js/Back-Office/Checklist/CheckList.js ***!
+  \*********************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -443,7 +443,7 @@ global.jQuery = jquery__WEBPACK_IMPORTED_MODULE_6___default.a;
 var baseurl = window.location.origin;
 
 function checklistAlert(id) {
-  var message = "Checklist Edited successfully";
+  var message = "Added successfully";
   pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_15__["default"].success({
     title: 'Success',
     text: message,
@@ -455,15 +455,15 @@ function checklistAlert(id) {
   }).on('click', function (e) {});
 }
 
-var Edit = /*#__PURE__*/function (_React$Component) {
-  _inherits(Edit, _React$Component);
+var CheckList = /*#__PURE__*/function (_React$Component) {
+  _inherits(CheckList, _React$Component);
 
-  var _super = _createSuper(Edit);
+  var _super = _createSuper(CheckList);
 
-  function Edit() {
+  function CheckList() {
     var _this;
 
-    _classCallCheck(this, Edit);
+    _classCallCheck(this, CheckList);
 
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
@@ -472,7 +472,6 @@ var Edit = /*#__PURE__*/function (_React$Component) {
     _this = _super.call.apply(_super, [this].concat(args));
 
     _defineProperty(_assertThisInitialized(_this), "state", {
-      _method: 'PUT',
       Engineer: [],
       Engineers: [],
       issued_engineer_id: '',
@@ -483,9 +482,7 @@ var Edit = /*#__PURE__*/function (_React$Component) {
       formSubmitting: false,
       buttonName: 'Save',
       signature: '',
-      signature_show: '',
-      no_check_list: false,
-      is_changed: ''
+      signature_show: ''
     });
 
     _defineProperty(_assertThisInitialized(_this), "Engineerchange", function (e) {
@@ -497,6 +494,32 @@ var Edit = /*#__PURE__*/function (_React$Component) {
 
       var self = _assertThisInitialized(_this); //setTimeout(function(){  self.setState({Engineer:e});}, 500);
 
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "toolsList", function () {
+      document.getElementById("requestLoder").innerHTML = '<img style="width:2%"  src="' + baseurl + '/images/ajax_loader_gray_512.gif"></img>';
+
+      var _ref = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
+          auth_token = _ref.auth_token;
+
+      axios__WEBPACK_IMPORTED_MODULE_14___default.a.get(baseurl + '/api/checklist', {
+        headers: {
+          'Accept': 'application/json',
+          'Authorization': 'Bearer ' + auth_token
+        }
+      }).then(function (res) {
+        if (res.data.success) {
+          if (res.data.data) {
+            document.getElementById("requestLoder").innerHTML = '';
+
+            _this.setState({
+              tools_list: res.data.data
+            });
+          }
+        } else {}
+      })["catch"](function (err) {
+        console.log(err);
+      });
     });
 
     _defineProperty(_assertThisInitialized(_this), "handleSubmit", function (e, formData, inputs) {
@@ -525,17 +548,13 @@ var Edit = /*#__PURE__*/function (_React$Component) {
         }), "Loading")
       });
 
-      var _ref = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
-          id = _ref.id,
-          auth_token = _ref.auth_token; //const data = new FormData()
+      var _ref2 = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
+          id = _ref2.id,
+          auth_token = _ref2.auth_token; //const data = new FormData()
       //data.append('name', this.state.name);
 
 
-      var _this$props = _this.props,
-          match = _this$props.match,
-          location = _this$props.location,
-          history = _this$props.history;
-      axios__WEBPACK_IMPORTED_MODULE_14___default.a.post(baseurl + '/api/check_list/0', _this.state, {
+      axios__WEBPACK_IMPORTED_MODULE_14___default.a.post(baseurl + '/api/check_list', _this.state, {
         headers: {
           'Accept': 'application/json',
           'Authorization': 'Bearer ' + auth_token
@@ -551,10 +570,10 @@ var Edit = /*#__PURE__*/function (_React$Component) {
           });
 
           _this.setState({
-            buttonName: 'Save',
-            is_changed: 0
-          }); //  this.props.history.push('/check-list'); 
+            buttonName: 'Save'
+          });
 
+          _this.props.history.push('/check-list');
         } else {
           var errorMassage = '';
 
@@ -641,71 +660,20 @@ var Edit = /*#__PURE__*/function (_React$Component) {
       _this.confirm_employee.clear();
     });
 
-    _defineProperty(_assertThisInitialized(_this), "update", function () {
-      var _this$props2 = _this.props,
-          match = _this$props2.match,
-          location = _this$props2.location,
-          history = _this$props2.history;
-      document.getElementById("requestLoder").innerHTML = '<img style="width:2%"  src="' + baseurl + '/images/ajax_loader_gray_512.gif"></img>';
-
-      var _ref2 = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
-          auth_token = _ref2.auth_token;
-
-      axios__WEBPACK_IMPORTED_MODULE_14___default.a.get(baseurl + '/api/check_list/0/edit', {
-        headers: {
-          'Authorization': 'Bearer ' + auth_token
-        }
-      }).then(function (res) {
-        if (res.data.success) {
-          _this.setState({
-            Engineer: {
-              label: res.data.check_lists.issued_engineer_name,
-              value: res.data.check_lists.issued_engineer_id
-            },
-            tools_list: res.data.check_list_items,
-            issued_engineer_id: res.data.check_lists.issued_engineer_id,
-            issued_engineer_name: res.data.check_lists.issued_engineer_name,
-            issued_date: res.data.check_lists.issued_date,
-            no_check_list: false,
-            is_changed: res.data.check_lists.is_changed
-          }); //  issued_date:'',
-
-
-          document.getElementById("requestLoder").innerHTML = '';
-        } else {
-          document.getElementById("requestLoder").innerHTML = '';
-
-          _this.setState({
-            formSubmitting: true,
-            no_check_list: true
-          });
-        }
-      })["catch"](function (err) {
-        console.log(err);
-      });
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "dublicateList", function (index) {
-      var tools_list = _this.state.tools_list;
-      tools_list.splice(index, 1);
-
-      _this.setState({
-        tools_list: tools_list
-      });
-    });
-
     return _this;
   }
 
-  _createClass(Edit, [{
+  _createClass(CheckList, [{
     key: "componentDidMount",
     value: function componentDidMount() {
       var _this2 = this;
 
-      var _this$props3 = this.props,
-          match = _this$props3.match,
-          location = _this$props3.location,
-          history = _this$props3.history;
+      var _this$props = this.props,
+          match = _this$props.match,
+          location = _this$props.location,
+          history = _this$props.history;
+      Object(_HttpFunctions__WEBPACK_IMPORTED_MODULE_4__["CheckPermission"])('user', 'add', history);
+      this.toolsList();
 
       var _ref3 = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
           id = _ref3.id,
@@ -721,35 +689,18 @@ var Edit = /*#__PURE__*/function (_React$Component) {
           Engineers: res.data
         });
       });
-      this.update();
     }
   }, {
     key: "render",
     value: function render() {
       var _this3 = this;
 
-      var _this$props4 = this.props,
-          match = _this$props4.match,
-          location = _this$props4.location,
-          history = _this$props4.history;
+      var _this$props2 = this.props,
+          match = _this$props2.match,
+          location = _this$props2.location,
+          history = _this$props2.history;
       var tools_list = this.state.tools_list.map(function (item, index) {
-        if (item.id) {
-          var item_id = item.id;
-          var self = _this3;
-
-          var uniqueArray = _this3.state.tools_list.filter(function (vl) {
-            if (vl.tool_categories_id === item_id) {
-              self.dublicateList(self.state.tools_list.indexOf(item));
-              return vl;
-            }
-
-            ;
-          });
-
-          if (uniqueArray.length > 0) {
-            return;
-          }
-        }
+        var _React$createElement;
 
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_19__["Tr"], {
           key: index
@@ -761,11 +712,20 @@ var Edit = /*#__PURE__*/function (_React$Component) {
           style: {
             padding: '5px'
           }
-        }, item.serial_number), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_19__["Td"], {
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_9__["TextInput"], (_React$createElement = {
+          required: true,
+          name: "serial_number",
+          id: "serial_number",
+          placeholder: item.name,
+          value: item.serial_number
+        }, _defineProperty(_React$createElement, "id", index), _defineProperty(_React$createElement, "onChange", function onChange(e) {
+          return _this3.tools_listChange(e);
+        }), _defineProperty(_React$createElement, "autoComplete", "off"), _React$createElement))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_19__["Td"], {
           style: {
-            padding: '5px'
+            padding: '5px',
+            display: 'none'
           }
-        }, _this3.state.is_changed == 1 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "custom-controls-stacked radio"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_9__["Radio"].RadioGroup, {
           name: 'name_' + index,
@@ -785,7 +745,7 @@ var Edit = /*#__PURE__*/function (_React$Component) {
           "data-id": index,
           label: "No",
           value: "No"
-        }))) : item.is_received));
+        })))));
       });
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_hoc_Aux__WEBPACK_IMPORTED_MODULE_3__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"].Header, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"].Title, {
         as: "h5"
@@ -804,6 +764,40 @@ var Edit = /*#__PURE__*/function (_React$Component) {
         onErrorSubmit: this.handleErrorSubmit
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Row, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
         as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
+        md: "2"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Label, {
+        htmlFor: "engineers"
+      }, "Engineer"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_select__WEBPACK_IMPORTED_MODULE_7__["default"], {
+        required: true,
+        id: "issued_engineer_name",
+        onChange: this.Engineerchange,
+        name: "issued_engineer_name",
+        value: this.state.Engineer,
+        options: this.state.Engineers,
+        className: "basic-single",
+        classNamePrefix: "select",
+        placeholder: "Select Engineer",
+        isSearchable: true
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
+        md: "2"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Label, {
+        htmlFor: "region"
+      }, "Date"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_datetime__WEBPACK_IMPORTED_MODULE_5___default.a, {
+        closeOnSelect: true,
+        onChange: this.startdateChange,
+        value: this.state.issued_date,
+        dateFormat: "D/M/Y",
+        timeFormat: false,
+        maxDate: new Date(),
+        inputProps: {
+          required: 'required',
+          name: "issued_date",
+          placeholder: 'Select Date',
+          autoComplete: 'off'
+        }
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Row, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
         md: "12"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_19__["Table"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_19__["Thead"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_19__["Tr"], {
         style: {
@@ -816,16 +810,16 @@ var Edit = /*#__PURE__*/function (_React$Component) {
       }, "Tools issued"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_19__["Th"], {
         width: "30%"
       }, "Serial number"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_19__["Th"], {
-        width: "10%"
-      }, "Received"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_19__["Tbody"], null, tools_list, this.state.no_check_list ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_19__["Td"], {
+        width: "10%",
         style: {
-          textAlign: 'center',
-          color: 'red'
-        },
-        colspan: "3"
-      }, "No Tools issued") : ''))), this.state.is_changed == 1 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
+          display: 'none'
+        }
+      }, "Received"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_19__["Tbody"], null, tools_list))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
         as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
-        md: "4"
+        md: "4",
+        style: {
+          display: 'none'
+        }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Signed:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_signature_canvas__WEBPACK_IMPORTED_MODULE_8___default.a, {
         penColor: "black",
         dotSize: function dotSize() {
@@ -847,28 +841,28 @@ var Edit = /*#__PURE__*/function (_React$Component) {
           bottom: '6px'
         },
         onClick: this.confirm_employee_clear
-      }, "Clear")) : '', /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
+      }, "Clear")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
         as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
         md: "12",
         id: "requestLoder",
         style: {
           textalign: 'center'
         }
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Row, null, this.state.is_changed == 1 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Row, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
         as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
         sm: 12,
         className: "mt-3"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Button"], {
         disabled: this.state.formSubmitting,
         type: "submit"
-      }, " ", this.state.buttonName)) : '')))))));
+      }, " ", this.state.buttonName)))))))));
     }
   }]);
 
-  return Edit;
+  return CheckList;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (Edit);
+/* harmony default export */ __webpack_exports__["default"] = (CheckList);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../node_modules/webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js")))
 
 /***/ }),

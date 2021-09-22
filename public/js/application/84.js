@@ -1,9 +1,9 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[84],{
 
-/***/ "./resources/js/Back-Office/Employee/Tab/Mandatory_document.js":
-/*!*********************************************************************!*\
-  !*** ./resources/js/Back-Office/Employee/Tab/Mandatory_document.js ***!
-  \*********************************************************************/
+/***/ "./resources/js/Back-Office/Employee/Tab/BankDetails.js":
+/*!**************************************************************!*\
+  !*** ./resources/js/Back-Office/Employee/Tab/BankDetails.js ***!
+  \**************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -33,8 +33,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var sweetalert2_react_content__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(sweetalert2_react_content__WEBPACK_IMPORTED_MODULE_13__);
 /* harmony import */ var _employee_css__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../employee.css */ "./resources/js/Back-Office/Employee/employee.css");
 /* harmony import */ var _employee_css__WEBPACK_IMPORTED_MODULE_14___default = /*#__PURE__*/__webpack_require__.n(_employee_css__WEBPACK_IMPORTED_MODULE_14__);
-/* harmony import */ var react_super_responsive_table__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! react-super-responsive-table */ "./node_modules/react-super-responsive-table/dist/index.js");
-/* harmony import */ var react_super_responsive_table__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__webpack_require__.n(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_15__);
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -75,18 +73,17 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 var baseurl = window.location.origin;
-
 var ajaxabort;
 
-var Mandatory_document = /*#__PURE__*/function (_React$Component) {
-  _inherits(Mandatory_document, _React$Component);
+var BankDetails = /*#__PURE__*/function (_React$Component) {
+  _inherits(BankDetails, _React$Component);
 
-  var _super = _createSuper(Mandatory_document);
+  var _super = _createSuper(BankDetails);
 
-  function Mandatory_document() {
+  function BankDetails() {
     var _this;
 
-    _classCallCheck(this, Mandatory_document);
+    _classCallCheck(this, BankDetails);
 
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
@@ -96,7 +93,11 @@ var Mandatory_document = /*#__PURE__*/function (_React$Component) {
 
     _defineProperty(_assertThisInitialized(_this), "state", {
       apiload: true,
-      document_list: []
+      bank_name: '',
+      bank_address: '',
+      name_of_account_holder: '',
+      sort_code: '',
+      account_number: ''
     });
 
     _defineProperty(_assertThisInitialized(_this), "alreadyAdded", function (id) {
@@ -110,34 +111,28 @@ var Mandatory_document = /*#__PURE__*/function (_React$Component) {
       var _ref = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
           auth_token = _ref.auth_token;
 
-      axios__WEBPACK_IMPORTED_MODULE_6___default.a.get(baseurl + '/api/checked_mandatory_document_list/' + id, {
-        params: {
-          'employee_details': '1'
-        },
+      axios__WEBPACK_IMPORTED_MODULE_6___default.a.get(baseurl + '/api/bank_details/' + id, {
         headers: {
           'Accept': 'application/json',
           'Authorization': 'Bearer ' + auth_token
         }
       }).then(function (res) {
         if (res.data.success) {
-          // this.getAddress(res.data.Employee_details.getaddress_id);
-          var document_list = res.data.list;
-
-          _this.setState({
-            document_list: document_list
-          });
+          _this.setState(res.data.Bank_details);
 
           _this.setState({
             apiload: false
           });
         } else {
-          var errorMassage = '';
+          _this.setState({
+            apiload: false
+          });
 
-          if (res.data.errors) {
-            errorMassage = res.data.errors.name;
-          } else {
-            errorMassage = res.data.email;
-          }
+          var errorMassage = '';
+          pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_7__["default"].error({
+            title: "Alert",
+            text: res.data.message
+          });
 
           _this.setState({
             formSubmitting: false
@@ -167,55 +162,15 @@ var Mandatory_document = /*#__PURE__*/function (_React$Component) {
       });
     });
 
-    _defineProperty(_assertThisInitialized(_this), "handleChange", function (e) {
-      var id = e.target.name;
-      id = id.match(/\d+/)[0];
-      var changelist = _this.state.document_list[id];
-      changelist['is_read'] = e.target.value;
-
-      _this.setState({
-        document_list: _this.state.document_list
-      });
-
-      var _ref2 = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
-          auth_token = _ref2.auth_token;
-
-      axios__WEBPACK_IMPORTED_MODULE_6___default.a.get(baseurl + '/api/read_mandatory_document/' + changelist['checked_mandatory_documents_id'], {
-        params: {
-          'is_read': e.target.value
-        },
-        headers: {
-          'Accept': 'application/json',
-          'Authorization': 'Bearer ' + auth_token
-        }
-      }).then(function (res) {
-        if (res.data.success) {
-          _this.setState({
-            apiload: false
-          });
-        } else {
-          var errorMassage = '';
-
-          if (res.data.errors) {
-            errorMassage = res.data.errors.name;
-          } else {
-            errorMassage = res.data.email;
-          }
-        }
-      });
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "handleSubmit", function (e) {});
-
     return _this;
   }
 
-  _createClass(Mandatory_document, [{
+  _createClass(BankDetails, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      var _ref3 = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
-          name = _ref3.name,
-          email = _ref3.email;
+      var _ref2 = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
+          name = _ref2.name,
+          email = _ref2.email;
 
       if (this.props.location.state) {
         this.alreadyAdded(this.props.location.state.userId);
@@ -224,17 +179,8 @@ var Mandatory_document = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var document_list = this.state.document_list.map(function (item, index) {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_15__["Tr"], {
-          key: index
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_15__["Td"], null, item.document_name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_15__["Td"], null, item.is_read == 0 ? 'No' : 'Yes'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_15__["Td"], {
-          width: "20%"
-        }, item.read_at), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_15__["Td"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-          type: "button",
-          target: "_blank",
-          href: window.location.origin + '/uploaded/' + item.document_path,
-          "class": "document_view btn btn-success btn-sm"
-        }, "View")));
+      var title = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "feather icon-more-vertical"
       });
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_hoc_Aux__WEBPACK_IMPORTED_MODULE_11__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], {
         style: {
@@ -247,7 +193,26 @@ var Mandatory_document = /*#__PURE__*/function (_React$Component) {
         style: {
           paddingTop: '15px'
         }
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, "Mandatory Document"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, "Bank Detail")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        md: 2,
+        xl: 2,
+        style: {
+          padding: '0px'
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["DropdownButton"], {
+        alignRight: true,
+        style: {
+          "float": 'right',
+          border: 'none'
+        },
+        title: title,
+        variant: 'outline-secondary',
+        id: "dropdown-variants-secondary",
+        key: 'secondary',
+        className: "drp-icon"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Dropdown"].Item, {
+        eventKey: "1"
+      }, "Edit")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         "class": "details-tab",
         style: {
           borderTop: 'solid 1px #ebeff1',
@@ -264,26 +229,43 @@ var Mandatory_document = /*#__PURE__*/function (_React$Component) {
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "loader"
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["ValidationForm"], {
-        autoComplete: "off",
-        onSubmit: this.handleSubmit,
-        onErrorSubmit: this.handleErrorSubmit
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Row, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "12"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_15__["Table"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_15__["Thead"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_15__["Tr"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_15__["Th"], {
-        width: "60%"
-      }, "Document Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_15__["Th"], {
-        width: "20%"
-      }, "Read Document"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_15__["Th"], {
-        width: "20%"
-      }, "Read Time"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_15__["Th"], {
-        width: "20%"
-      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_15__["Tbody"], null, document_list)))))));
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        "class": "row view-basic-card "
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        "class": "col-12 col-md-6 col-lg-3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        "class": "pmd-list-subtitle"
+      }, "Name of Account Holder"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        "class": "pmd-list-title"
+      }, this.state.name_of_account_holder, "\xA0 ")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        "class": "col-12 col-md-6 col-lg-3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        "class": "pmd-list-subtitle"
+      }, "Account Number"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        "class": "pmd-list-title"
+      }, this.state.account_number, "\xA0 ")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        "class": "col-12 col-md-6 col-lg-3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        "class": "pmd-list-subtitle"
+      }, "Sort Code"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        "class": "pmd-list-title"
+      }, this.state.sort_code, "\xA0 ")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        "class": "col-12 col-md-6 col-lg-3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        "class": "pmd-list-subtitle"
+      }, "Bank Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        "class": "pmd-list-title"
+      }, this.state.bank_name, "\xA0 ")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        "class": "col-12 col-md-6 col-lg-3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        "class": "pmd-list-subtitle"
+      }, "Bank Address"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        "class": "pmd-list-title"
+      }, this.state.bank_address, "\xA0 ")))));
     }
   }]);
 
-  return Mandatory_document;
+  return BankDetails;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 var style = {
@@ -292,7 +274,7 @@ var style = {
     marginBottom: '15px'
   }
 };
-/* harmony default export */ __webpack_exports__["default"] = (Mandatory_document);
+/* harmony default export */ __webpack_exports__["default"] = (BankDetails);
 
 /***/ })
 

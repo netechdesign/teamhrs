@@ -1,9 +1,9 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[83],{
 
-/***/ "./resources/js/Back-Office/Employee/Tab/JobHistory.js":
-/*!*************************************************************!*\
-  !*** ./resources/js/Back-Office/Employee/Tab/JobHistory.js ***!
-  \*************************************************************/
+/***/ "./resources/js/Back-Office/Employee/Tab/AddressHistory.js":
+/*!*****************************************************************!*\
+  !*** ./resources/js/Back-Office/Employee/Tab/AddressHistory.js ***!
+  \*****************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -75,15 +75,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 var baseurl = window.location.origin;
 var ajaxabort;
 
-var JobHistory = /*#__PURE__*/function (_React$Component) {
-  _inherits(JobHistory, _React$Component);
+var AddressHistory = /*#__PURE__*/function (_React$Component) {
+  _inherits(AddressHistory, _React$Component);
 
-  var _super = _createSuper(JobHistory);
+  var _super = _createSuper(AddressHistory);
 
-  function JobHistory() {
+  function AddressHistory() {
     var _this;
 
-    _classCallCheck(this, JobHistory);
+    _classCallCheck(this, AddressHistory);
 
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
@@ -93,7 +93,8 @@ var JobHistory = /*#__PURE__*/function (_React$Component) {
 
     _defineProperty(_assertThisInitialized(_this), "state", {
       apiload: true,
-      job_history: []
+      current_address: [],
+      address_histories: []
     });
 
     _defineProperty(_assertThisInitialized(_this), "alreadyAdded", function (id) {
@@ -107,16 +108,20 @@ var JobHistory = /*#__PURE__*/function (_React$Component) {
       var _ref = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
           auth_token = _ref.auth_token;
 
-      axios__WEBPACK_IMPORTED_MODULE_6___default.a.get(baseurl + '/api/job_history/' + id, {
+      axios__WEBPACK_IMPORTED_MODULE_6___default.a.get(baseurl + '/api/address_history/' + id, {
         headers: {
           'Accept': 'application/json',
           'Authorization': 'Bearer ' + auth_token
         }
       }).then(function (res) {
         if (res.data.success) {
-          if (res.data.Employment_historys) {
+          _this.setState({
+            current_address: res.data.current_address
+          });
+
+          if (res.data.Address_histories) {
             _this.setState({
-              job_history: res.data.Employment_historys
+              address_histories: res.data.Address_histories
             });
           }
 
@@ -165,7 +170,7 @@ var JobHistory = /*#__PURE__*/function (_React$Component) {
     return _this;
   }
 
-  _createClass(JobHistory, [{
+  _createClass(AddressHistory, [{
     key: "componentDidMount",
     value: function componentDidMount() {
       var _ref2 = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
@@ -182,8 +187,9 @@ var JobHistory = /*#__PURE__*/function (_React$Component) {
       var title = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "feather icon-more-vertical"
       });
-      var job_history = this.state.job_history.length > 0 ? this.state.job_history.map(function (item, inx) {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, item.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, item.position), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, item.reason_for_leaving));
+      var current_address = this.state.current_address != '' ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.current_address.street), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.current_address.city), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.current_address.county), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.current_address.postcode), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.current_address.time_at_address_year, " ", this.state.current_address.time_at_address_month != '' ? '.' + this.state.current_address.time_at_address_month : '', " Year")) : '';
+      var address_histories = this.state.address_histories.length > 0 ? this.state.address_histories.map(function (item, inx) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, item.street), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, item.city), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, item.county), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, item.postcode), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, item.time_at_address_year, " ", item.time_at_address_month != '' ? '.' + item.time_at_address_month : '', " Year"));
       }) : '';
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_hoc_Aux__WEBPACK_IMPORTED_MODULE_11__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], {
         style: {
@@ -196,7 +202,7 @@ var JobHistory = /*#__PURE__*/function (_React$Component) {
         style: {
           paddingTop: '15px'
         }
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, "Job History")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, "Address History")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
         md: 2,
         xl: 2,
         style: {
@@ -234,11 +240,11 @@ var JobHistory = /*#__PURE__*/function (_React$Component) {
         id: "loader"
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Table"], {
         responsive: true
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Company Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Position"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Reason for leaving"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, job_history))));
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Street"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "City"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "County"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Postcode"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Time at Address"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, current_address, address_histories))));
     }
   }]);
 
-  return JobHistory;
+  return AddressHistory;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 var style = {
@@ -247,7 +253,7 @@ var style = {
     marginBottom: '15px'
   }
 };
-/* harmony default export */ __webpack_exports__["default"] = (JobHistory);
+/* harmony default export */ __webpack_exports__["default"] = (AddressHistory);
 
 /***/ })
 

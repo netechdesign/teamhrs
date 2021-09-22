@@ -1,17 +1,17 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[32],{
 
-/***/ "./node_modules/css-loader/dist/cjs.js?!./node_modules/postcss-loader/src/index.js?!./resources/js/Back-Office/Employee/employee.css":
-/*!****************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js??ref--6-1!./node_modules/postcss-loader/src??ref--6-2!./resources/js/Back-Office/Employee/employee.css ***!
-  \****************************************************************************************************************************************************/
+/***/ "./node_modules/css-loader/dist/cjs.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/react-super-responsive-table/dist/SuperResponsiveTableStyle.css":
+/*!**********************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??ref--6-1!./node_modules/postcss-loader/src??ref--6-2!./node_modules/react-super-responsive-table/dist/SuperResponsiveTableStyle.css ***!
+  \**********************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 // Imports
-var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, ".hovereffect:hover {\r\n    background: #e1f1fd;\r\n}\r\n\r\n.employeedetails .nav-pills .nav-link.active{\r\n    color: #fff;\r\n    background: linear-gradient(-135deg, #1de9b6 0%, #1dc4e9 100%) !important;\r\n    box-shadow: 0 0px 0px 0 rgb(0 0 0 / 20%) !important;\r\n}\r\n.pmd-list-subtitle{\r\n    color: #1dc4e9;\r\n    font-weight: bold;\r\n}\r\n.pmd-list-title{\r\n    color: #222222;\r\n}\r\n.dropdown-toggle{\r\n    border: none !important;\r\n    margin:0px !important;\r\n}\r\n\r\n#loader {\r\n    position: absolute;\r\n    left: 50%;\r\n    top: 50%;\r\n    z-index: 1;\r\n    width: 50px;\r\n    height: 50px;\r\n    margin: -76px 0 0 -76px;\r\n    border: 10px solid #f3f3f3;\r\n    border-radius: 50%;\r\n    border-top: 10px solid #3498db;\r\n    animation: spin 2s linear infinite;\r\n  }\r\n  \r\n ", ""]);
+exports.push([module.i, "/* inspired by: https://css-tricks.com/responsive-data-tables/ */\n.responsiveTable {\n  width: 100%;\n}\n\n.responsiveTable td .tdBefore {\n  display: none;\n}\n\n@media screen and (max-width: 40em) {\n  /*\n    Force table elements to not behave like tables anymore\n    Hide table headers (but not display: none;, for accessibility)\n  */\n\n  .responsiveTable table,\n  .responsiveTable thead,\n  .responsiveTable tbody,\n  .responsiveTable th,\n  .responsiveTable td,\n  .responsiveTable tr {\n    display: block;\n  }\n\n  .responsiveTable thead tr {\n    position: absolute;\n    top: -9999px;\n    left: -9999px;\n    border-bottom: 2px solid #333;\n  }\n\n  .responsiveTable tbody tr {\n    border: 1px solid #000;\n    padding: .25em;\n  }\n\n  .responsiveTable td.pivoted {\n    /* Behave like a \"row\" */\n    border: none !important;\n    position: relative;\n    padding-left: calc(50% + 10px) !important;\n    text-align: left !important;\n    white-space: pre-wrap;\n    overflow-wrap: break-word;\n  }\n\n  .responsiveTable td .tdBefore {\n    /* Now like a table header */\n    position: absolute;\n    display: block;\n\n    /* Top/left values mimic padding */\n    left: 1rem;\n    width: calc(50% - 20px);\n    white-space: pre-wrap;\n    overflow-wrap: break-word;\n    text-align: left !important;\n    font-weight: 600;\n  }\n}\n", ""]);
 // Exports
 module.exports = exports;
 
@@ -320,16 +320,46 @@ webpackContext.id = "./node_modules/moment/locale sync recursive ^\\.\\/.*$";
 
 /***/ }),
 
-/***/ "./resources/js/Back-Office/Employee/EmployeeDetails.js":
-/*!**************************************************************!*\
-  !*** ./resources/js/Back-Office/Employee/EmployeeDetails.js ***!
-  \**************************************************************/
+/***/ "./node_modules/react-super-responsive-table/dist/SuperResponsiveTableStyle.css":
+/*!**************************************************************************************!*\
+  !*** ./node_modules/react-super-responsive-table/dist/SuperResponsiveTableStyle.css ***!
+  \**************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../css-loader/dist/cjs.js??ref--6-1!../../postcss-loader/src??ref--6-2!./SuperResponsiveTableStyle.css */ "./node_modules/css-loader/dist/cjs.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/react-super-responsive-table/dist/SuperResponsiveTableStyle.css");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./resources/js/Back-Office/Checklist/Edit.js":
+/*!****************************************************!*\
+  !*** ./resources/js/Back-Office/Checklist/Edit.js ***!
+  \****************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* WEBPACK VAR INJECTION */(function(global) {/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
 /* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/index.js");
@@ -339,25 +369,30 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_datetime__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react_datetime__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var _assets_images_user_avatar_6_png__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../assets/images/user/avatar-6.png */ "./resources/js/assets/images/user/avatar-6.png");
-/* harmony import */ var _assets_images_user_avatar_6_png__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_assets_images_user_avatar_6_png__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var _employee_css__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./employee.css */ "./resources/js/Back-Office/Employee/employee.css");
-/* harmony import */ var _employee_css__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_employee_css__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var react_select__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-select */ "./node_modules/react-select/dist/react-select.esm.js");
+/* harmony import */ var react_signature_canvas__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-signature-canvas */ "./node_modules/react-signature-canvas/build/index.js");
+/* harmony import */ var react_signature_canvas__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(react_signature_canvas__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-bootstrap4-form-validation */ "./node_modules/react-bootstrap4-form-validation/lib/index.js");
+/* harmony import */ var react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var sweetalert2_react_content__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! sweetalert2-react-content */ "./node_modules/sweetalert2-react-content/dist/sweetalert2-react-content.umd.js");
+/* harmony import */ var sweetalert2_react_content__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(sweetalert2_react_content__WEBPACK_IMPORTED_MODULE_10__);
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_11__);
+/* harmony import */ var react_text_mask__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! react-text-mask */ "./node_modules/react-text-mask/dist/reactTextMask.js");
+/* harmony import */ var react_text_mask__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(react_text_mask__WEBPACK_IMPORTED_MODULE_12__);
+/* harmony import */ var validator__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! validator */ "./node_modules/validator/index.js");
+/* harmony import */ var validator__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(validator__WEBPACK_IMPORTED_MODULE_13__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_14___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_14__);
+/* harmony import */ var pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! pnotify/dist/es/PNotify */ "./node_modules/pnotify/dist/es/PNotify.js");
+/* harmony import */ var pnotify_dist_es_PNotifyButtons__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! pnotify/dist/es/PNotifyButtons */ "./node_modules/pnotify/dist/es/PNotifyButtons.js");
+/* harmony import */ var pnotify_dist_es_PNotifyConfirm__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! pnotify/dist/es/PNotifyConfirm */ "./node_modules/pnotify/dist/es/PNotifyConfirm.js");
+/* harmony import */ var pnotify_dist_es_PNotifyCallbacks__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! pnotify/dist/es/PNotifyCallbacks */ "./node_modules/pnotify/dist/es/PNotifyCallbacks.js");
+/* harmony import */ var react_super_responsive_table__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! react-super-responsive-table */ "./node_modules/react-super-responsive-table/dist/index.js");
+/* harmony import */ var react_super_responsive_table__WEBPACK_IMPORTED_MODULE_19___default = /*#__PURE__*/__webpack_require__.n(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_19__);
+/* harmony import */ var react_super_responsive_table_dist_SuperResponsiveTableStyle_css__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! react-super-responsive-table/dist/SuperResponsiveTableStyle.css */ "./node_modules/react-super-responsive-table/dist/SuperResponsiveTableStyle.css");
+/* harmony import */ var react_super_responsive_table_dist_SuperResponsiveTableStyle_css__WEBPACK_IMPORTED_MODULE_20___default = /*#__PURE__*/__webpack_require__.n(react_super_responsive_table_dist_SuperResponsiveTableStyle_css__WEBPACK_IMPORTED_MODULE_20__);
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
-
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
-
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -391,132 +426,95 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
-var Oneform = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(2), __webpack_require__.e(3), __webpack_require__.e(6), __webpack_require__.e(85)]).then(__webpack_require__.bind(null, /*! ./Tab/Official */ "./resources/js/Back-Office/Employee/Tab/Official.js"));
-});
-var Documents = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(2), __webpack_require__.e(3), __webpack_require__.e(6), __webpack_require__.e(81)]).then(__webpack_require__.bind(null, /*! ./Tab/Documents */ "./resources/js/Back-Office/Employee/Tab/Documents.js"));
-});
-var Leave = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(2), __webpack_require__.e(3), __webpack_require__.e(6), __webpack_require__.e(12), __webpack_require__.e(11), __webpack_require__.e(14), __webpack_require__.e(59)]).then(__webpack_require__.bind(null, /*! ./Tab/Leave */ "./resources/js/Back-Office/Employee/Tab/Leave.js"));
-});
-var AddLeave = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(2), __webpack_require__.e(19), __webpack_require__.e(78)]).then(__webpack_require__.bind(null, /*! ./Tab/AddLeave */ "./resources/js/Back-Office/Employee/Tab/AddLeave.js"));
-});
-var Salary = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(2), __webpack_require__.e(3), __webpack_require__.e(6), __webpack_require__.e(86)]).then(__webpack_require__.bind(null, /*! ./Tab/Salary */ "./resources/js/Back-Office/Employee/Tab/Salary.js"));
-});
-var BankDetails = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(2), __webpack_require__.e(3), __webpack_require__.e(6), __webpack_require__.e(80)]).then(__webpack_require__.bind(null, /*! ./Tab/BankDetails */ "./resources/js/Back-Office/Employee/Tab/BankDetails.js"));
-});
-var AddressHistory = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(2), __webpack_require__.e(3), __webpack_require__.e(6), __webpack_require__.e(79)]).then(__webpack_require__.bind(null, /*! ./Tab/AddressHistory */ "./resources/js/Back-Office/Employee/Tab/AddressHistory.js"));
-});
-var JobHistory = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(2), __webpack_require__.e(3), __webpack_require__.e(6), __webpack_require__.e(83)]).then(__webpack_require__.bind(null, /*! ./Tab/JobHistory */ "./resources/js/Back-Office/Employee/Tab/JobHistory.js"));
-});
-var AddHoliday = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(2), __webpack_require__.e(19), __webpack_require__.e(77)]).then(__webpack_require__.bind(null, /*! ./Tab/AddHoliday */ "./resources/js/Back-Office/Employee/Tab/AddHoliday.js"));
-});
-var Holiday = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(2), __webpack_require__.e(3), __webpack_require__.e(6), __webpack_require__.e(12), __webpack_require__.e(11), __webpack_require__.e(14), __webpack_require__.e(58)]).then(__webpack_require__.bind(null, /*! ./Tab/Holiday */ "./resources/js/Back-Office/Employee/Tab/Holiday.js"));
-});
-var HolidayCalendar = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(21), __webpack_require__.e(82)]).then(__webpack_require__.bind(null, /*! ./Tab/HolidayCalendar */ "./resources/js/Back-Office/Employee/Tab/HolidayCalendar.js"));
-});
-var Mandatory_document = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(2), __webpack_require__.e(3), __webpack_require__.e(6), __webpack_require__.e(9), __webpack_require__.e(84)]).then(__webpack_require__.bind(null, /*! ./Tab/Mandatory_document */ "./resources/js/Back-Office/Employee/Tab/Mandatory_document.js"));
-});
-var id = '';
-var data = [];
-var routes = [{
-  path: '/employee-Detail/Official',
-  exact: true,
-  name: 'Oneform',
-  component: Oneform
-}, {
-  path: '/employee-Detail/Documents',
-  exact: true,
-  name: 'Oneform',
-  component: Documents
-}, {
-  path: '/employee-Detail/Leave',
-  exact: true,
-  name: 'Oneform',
-  component: Leave
-}, {
-  path: '/employee-Detail/Leave/Add',
-  exact: true,
-  name: 'Oneform',
-  component: AddLeave
-}, {
-  path: '/employee-Detail/Leave/Edit/:id',
-  exact: true,
-  name: 'Oneform',
-  component: AddLeave
-}, {
-  path: '/employee-Detail/Salary',
-  exact: true,
-  name: 'Oneform',
-  component: Salary
-}, {
-  path: '/employee-Detail/Bank-Details',
-  exact: true,
-  name: 'Oneform',
-  component: BankDetails
-}, {
-  path: '/employee-Detail/Address-History',
-  exact: true,
-  name: 'Oneform',
-  component: AddressHistory
-}, {
-  path: '/employee-Detail/Job-History',
-  exact: true,
-  name: 'Oneform',
-  component: JobHistory
-}, {
-  path: '/employee-Detail/Holiday/Add',
-  exact: true,
-  name: 'Oneform',
-  component: AddHoliday
-}, {
-  path: '/employee-Detail/Holiday',
-  exact: true,
-  name: 'Oneform',
-  component: Holiday
-}, {
-  path: '/employee-Detail/Holiday/Edit/:id',
-  exact: true,
-  name: 'Oneform',
-  component: AddHoliday
-}, {
-  path: '/employee-Detail/Holiday/Calendar',
-  exact: true,
-  name: 'Oneform',
-  component: HolidayCalendar
-}, {
-  path: '/employee-Detail/Mandatory-document',
-  exact: true,
-  name: 'Oneform',
-  component: Mandatory_document
-}];
+
+
+
+
+
+
+
+
+
+
+
+window.jQuery = jquery__WEBPACK_IMPORTED_MODULE_6___default.a;
+window.$ = jquery__WEBPACK_IMPORTED_MODULE_6___default.a;
+global.jQuery = jquery__WEBPACK_IMPORTED_MODULE_6___default.a;
 var baseurl = window.location.origin;
 
-var EmployeeDetails = /*#__PURE__*/function (_React$Component) {
-  _inherits(EmployeeDetails, _React$Component);
+function checklistAlert(id) {
+  var message = "Checklist Added successfully";
+  pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_15__["default"].success({
+    title: 'Success',
+    text: message,
+    modules: {
+      Desktop: {
+        desktop: true
+      }
+    }
+  }).on('click', function (e) {});
+}
 
-  var _super = _createSuper(EmployeeDetails);
+var Edit = /*#__PURE__*/function (_React$Component) {
+  _inherits(Edit, _React$Component);
 
-  function EmployeeDetails(props) {
+  var _super = _createSuper(Edit);
+
+  function Edit() {
     var _this;
 
-    _classCallCheck(this, EmployeeDetails);
+    _classCallCheck(this, Edit);
 
-    _this = _super.call(this, props);
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
 
-    _defineProperty(_assertThisInitialized(_this), "alreadyAdded", function (id) {
+    _this = _super.call.apply(_super, [this].concat(args));
+
+    _defineProperty(_assertThisInitialized(_this), "state", {
+      back_office: '1',
+      _method: 'PUT',
+      Engineer: [],
+      Engineers: [],
+      issued_engineer_id: '',
+      issued_engineer_name: "",
+      tools_list: [],
+      issued_date: '',
+      visible: true,
+      formSubmitting: false,
+      buttonName: 'Save' // signature:'',
+      // signature_show:''
+
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "Engineerchange", function (e) {
       _this.setState({
-        employee_details: []
+        issued_engineer_id: e.value,
+        issued_engineer_name: e.label,
+        Engineer: e
+      });
+
+      var self = _assertThisInitialized(_this); //setTimeout(function(){  self.setState({Engineer:e});}, 500);
+
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "handleSubmit", function (e, formData, inputs) {
+      e.preventDefault();
+
+      if (_this.state.issued_engineer_id == '') {
+        jquery__WEBPACK_IMPORTED_MODULE_6___default()('#issued_engineer_name .select__control').css({
+          'border': '1px solid #dc3545'
+        });
+        return true;
+      } else {
+        jquery__WEBPACK_IMPORTED_MODULE_6___default()('#issued_engineer_name .select__control').css({
+          'border': '1px solid hsl(0,0%,80%)'
+        });
+      }
+
+      _this.setState({
+        formSubmitting: true,
+        apiload: true
       });
 
       _this.setState({
@@ -527,39 +525,50 @@ var EmployeeDetails = /*#__PURE__*/function (_React$Component) {
       });
 
       var _ref = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
-          auth_token = _ref.auth_token;
+          id = _ref.id,
+          auth_token = _ref.auth_token; //const data = new FormData()
+      //data.append('name', this.state.name);
 
-      axios__WEBPACK_IMPORTED_MODULE_7___default.a.get(baseurl + '/api/employee_details/' + id, {
-        params: {
-          'employee_details': '1'
-        },
+
+      var _this$props = _this.props,
+          match = _this$props.match,
+          location = _this$props.location,
+          history = _this$props.history;
+      axios__WEBPACK_IMPORTED_MODULE_14___default.a.post(baseurl + '/api/check_list/' + match.params.id, _this.state, {
         headers: {
           'Accept': 'application/json',
           'Authorization': 'Bearer ' + auth_token
         }
       }).then(function (res) {
         if (res.data.success) {
-          // this.getAddress(res.data.Employee_details.getaddress_id);
-          var employee_details = res.data.Employee_details;
-          data = employee_details;
+          checklistAlert(); // console.log(res.data.data);
 
-          _this.setState(function (previousState) {
-            return {
-              employee_details: [].concat(_toConsumableArray(previousState.employee_details), [employee_details])
-            };
+          _this.setState({
+            formSubmitting: false,
+            apiload: false,
+            certification: false
           });
 
           _this.setState({
-            apiload: false
+            buttonName: 'Save'
           });
+
+          _this.props.history.push('/check-list');
         } else {
           var errorMassage = '';
 
           if (res.data.errors) {
             errorMassage = res.data.errors.name;
+          } else if (res.data.issued_engineer_id) {
+            errorMassage = res.data.issued_engineer_id;
           } else {
             errorMassage = res.data.email;
           }
+
+          pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_15__["default"].error({
+            title: "System Error",
+            text: errorMassage
+          });
 
           _this.setState({
             formSubmitting: false
@@ -570,7 +579,7 @@ var EmployeeDetails = /*#__PURE__*/function (_React$Component) {
           });
         }
       })["catch"](function (err) {
-        PNotify.error({
+        pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_15__["default"].error({
           title: "System Error",
           text: err
         });
@@ -589,330 +598,312 @@ var EmployeeDetails = /*#__PURE__*/function (_React$Component) {
       });
     });
 
-    _this.state = {
-      id: id,
-      employee_details: []
-    };
+    _defineProperty(_assertThisInitialized(_this), "startdateChange", function (e) {
+      _this.setState({
+        issued_date: e
+      });
+    });
 
-    if (_this.props.location.state) {
-      id = _this.props.location.state.userId;
+    _defineProperty(_assertThisInitialized(_this), "tools_listChange", function (element) {
+      var index = element.target.id;
 
-      _this.alreadyAdded(id);
-    }
+      if (element.target.name == 'serial_number') {
+        _this.state.tools_list[index].serial_number = element.target.value;
+      } else {
+        var _index = element.target.getAttribute("data-id");
+
+        _this.state.tools_list[_index].is_received = element.target.value;
+      }
+
+      _this.setState({
+        tools_list: _this.state.tools_list
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "handleChange", function (e) {
+      _this.setState(_defineProperty({}, e.target.name, e.target.value));
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "confirm_employee", {});
+
+    _defineProperty(_assertThisInitialized(_this), "confirm_employee_trim", function () {
+      _this.setState({
+        signature: _this.confirm_employee.getTrimmedCanvas().toDataURL('image/png')
+      });
+
+      _this.setState({
+        signature_show: _this.state.signature
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "confirm_employee_clear", function () {
+      _this.confirm_employee.clear();
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "update", function () {
+      var _this$props2 = _this.props,
+          match = _this$props2.match,
+          location = _this$props2.location,
+          history = _this$props2.history;
+      var id = match.params.id;
+      document.getElementById("requestLoder").innerHTML = '<img style="width:2%"  src="' + baseurl + '/images/ajax_loader_gray_512.gif"></img>';
+
+      var _ref2 = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
+          auth_token = _ref2.auth_token;
+
+      axios__WEBPACK_IMPORTED_MODULE_14___default.a.get(baseurl + '/api/check_list/' + id + '/edit', {
+        headers: {
+          'Authorization': 'Bearer ' + auth_token
+        }
+      }).then(function (res) {
+        if (res.data.success) {
+          _this.setState({
+            Engineer: {
+              label: res.data.check_lists.issued_engineer_name,
+              value: res.data.check_lists.issued_engineer_id
+            },
+            tools_list: res.data.check_list_items,
+            issued_engineer_id: res.data.check_lists.issued_engineer_id,
+            issued_engineer_name: res.data.check_lists.issued_engineer_name,
+            issued_date: res.data.check_lists.issued_date
+          }); //  issued_date:'',
+
+
+          document.getElementById("requestLoder").innerHTML = '';
+        } else {}
+      })["catch"](function (err) {
+        console.log(err);
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "dublicateList", function (index) {
+      console.log(index);
+      var tools_list = _this.state.tools_list;
+      tools_list.splice(index, 1);
+
+      _this.setState({
+        tools_list: tools_list
+      });
+    });
 
     return _this;
   }
 
-  _createClass(EmployeeDetails, [{
+  _createClass(Edit, [{
     key: "componentDidMount",
-    value: function componentDidMount() {}
-  }, {
-    key: "componentWillMount",
-    value: function componentWillMount() {}
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      var _this$props3 = this.props,
+          match = _this$props3.match,
+          location = _this$props3.location,
+          history = _this$props3.history;
+      Object(_HttpFunctions__WEBPACK_IMPORTED_MODULE_4__["CheckPermission"])('user', 'add', history);
+
+      var _ref3 = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
+          id = _ref3.id,
+          auth_token = _ref3.auth_token;
+
+      axios__WEBPACK_IMPORTED_MODULE_14___default.a.get(baseurl + '/api/engineer_list', {
+        headers: {
+          'Accept': 'application/json',
+          'Authorization': 'Bearer ' + auth_token
+        }
+      }).then(function (res) {
+        _this2.setState({
+          Engineers: res.data
+        });
+      });
+      this.update();
+    }
   }, {
     key: "render",
     value: function render() {
-      var menu = routes.map(function (route, index) {
-        return route.component ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
-          key: index,
-          path: route.path,
-          exact: route.exact,
-          name: route.name,
-          render: function render(props) {
-            return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(route.component, props);
+      var _this3 = this;
+
+      var _this$props4 = this.props,
+          match = _this$props4.match,
+          location = _this$props4.location,
+          history = _this$props4.history;
+      var tools_list = this.state.tools_list.map(function (item, index) {
+        var _React$createElement;
+
+        if (item.id) {
+          var item_id = item.id;
+          var self = _this3;
+
+          var uniqueArray = _this3.state.tools_list.filter(function (vl) {
+            if (vl.tool_categories_id === item_id) {
+              self.dublicateList(self.state.tools_list.indexOf(item));
+              return vl;
+            }
+
+            ;
+          });
+
+          if (uniqueArray.length > 0) {
+            return;
           }
-        }) : null;
+        }
+
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_19__["Tr"], {
+          key: index
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_19__["Td"], {
+          style: {
+            padding: '5px'
+          }
+        }, item.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_19__["Td"], {
+          style: {
+            padding: '5px'
+          }
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_9__["TextInput"], (_React$createElement = {
+          required: true,
+          name: "serial_number",
+          id: "serial_number",
+          placeholder: item.name,
+          value: item.serial_number
+        }, _defineProperty(_React$createElement, "id", index), _defineProperty(_React$createElement, "onChange", function onChange(e) {
+          return _this3.tools_listChange(e);
+        }), _defineProperty(_React$createElement, "autoComplete", "off"), _React$createElement))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_19__["Td"], {
+          style: {
+            padding: '5px'
+          }
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "custom-controls-stacked radio"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_9__["Radio"].RadioGroup, {
+          name: 'name_' + index,
+          valueSelected: item.is_received,
+          id: index,
+          onChange: function onChange(e) {
+            return _this3.tools_listChange(e);
+          },
+          inline: true
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_9__["Radio"].RadioItem, {
+          id: index + '_yes',
+          "data-id": index,
+          label: "Yes",
+          value: "Yes"
+        }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_9__["Radio"].RadioItem, {
+          id: index + '_no',
+          "data-id": index,
+          label: "No",
+          value: "No"
+        })))));
       });
-      var photo = data.passport_style_photograph ? baseurl + '/uploaded/' + data.passport_style_photograph : _assets_images_user_avatar_6_png__WEBPACK_IMPORTED_MODULE_8___default.a;
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_hoc_Aux__WEBPACK_IMPORTED_MODULE_3__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], {
-        md: 12,
-        xl: 12,
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_hoc_Aux__WEBPACK_IMPORTED_MODULE_3__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"].Header, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"].Title, {
+        as: "h5"
+      }, "Edit Tools issued"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Button"], {
+        className: "btn-sm",
         style: {
-          padding: '0px'
-        }
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"], {
-        className: "theme-bg",
-        style: {
-          margin: '0px',
-          marginBottom: '10px'
-        }
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"].Body, {
-        style: {
-          padding: '15px'
-        }
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], {
-        sm: 12,
-        md: 6,
-        xl: 1
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: photo,
-        width: "100%",
-        style: {
-          borderRadius: '10%'
+          'float': 'right'
         },
-        alt: "User-Profile"
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], {
-        sm: 12,
-        md: 6,
-        xl: 9
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        className: "text-white ",
-        style: {
-          margin: '0px'
+        onClick: function onClick() {
+          history.goBack();
         }
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", {
-        style: {
-          marginRight: '2px'
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        "class": "feather icon-chevron-left"
+      }), "Back")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_9__["ValidationForm"], {
+        onSubmit: this.handleSubmit,
+        onErrorSubmit: this.handleErrorSubmit
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Row, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
+        md: "2"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Label, {
+        htmlFor: "engineers"
+      }, "Engineer"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_select__WEBPACK_IMPORTED_MODULE_7__["default"], {
+        required: true,
+        id: "issued_engineer_name",
+        onChange: this.Engineerchange,
+        name: "issued_engineer_name",
+        value: this.state.Engineer,
+        options: this.state.Engineers,
+        className: "basic-single",
+        classNamePrefix: "select",
+        placeholder: "Select Engineer",
+        isSearchable: true
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
+        md: "2"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Label, {
+        htmlFor: "region"
+      }, "Date"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_datetime__WEBPACK_IMPORTED_MODULE_5___default.a, {
+        closeOnSelect: true,
+        onChange: this.startdateChange,
+        value: this.state.issued_date,
+        dateFormat: "D/M/Y",
+        timeFormat: false,
+        maxDate: new Date(),
+        inputProps: {
+          required: 'required',
+          name: "issued_date",
+          placeholder: 'Select Date',
+          autoComplete: 'off'
         }
-      }, "Employee Name "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        "class": ""
-      }, ":", data.title, " ", data.fore_name, " ", data.surname, "\xA0")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        className: "text-white ",
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Row, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
+        md: "12"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_19__["Table"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_19__["Thead"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_19__["Tr"], {
         style: {
-          margin: '0px'
+          lineHeight: 2.5,
+          borderTop: 'solid 1px lightgray',
+          borderBottom: 'solid 1px lightgray'
         }
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_19__["Th"], {
+        width: "60%"
+      }, "Tools issued"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_19__["Th"], {
+        width: "30%"
+      }, "Serial number"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_19__["Th"], {
+        width: "10%"
+      }, "Received"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_19__["Tbody"], null, tools_list))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
+        md: "4",
         style: {
-          marginRight: '62px'
+          display: 'none'
         }
-      }, "Job Title"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, ": ", data.position_applied_for, " ")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        className: "text-white ",
-        style: {
-          margin: '0px'
-        }
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", {
-        style: {
-          marginRight: '64px'
-        }
-      }, "Email Id"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, ": ", data.email)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        className: "text-white ",
-        style: {
-          margin: '0px'
-        }
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", {
-        style: {
-          marginRight: '5px'
-        }
-      }, "Contact Number"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, ": ", data.telephone_number)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        className: "text-white ",
-        style: {
-          margin: '0px'
-        }
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", {
-        style: {
-          marginRight: '63px'
-        }
-      }, "Address"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, ": ", data.address)))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "invoice-lable text-right",
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Signed:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_signature_canvas__WEBPACK_IMPORTED_MODULE_8___default.a, {
+        penColor: "black",
+        dotSize: function dotSize() {
+          return (_this3.minWidth + _this3.maxWidth) / 5;
+        },
+        canvasProps: {
+          width: 300,
+          height: 100,
+          className: 'sigCanvas'
+        },
+        ref: function ref(_ref4) {
+          _this3.confirm_employee = _ref4;
+        },
+        onEnd: this.confirm_employee_trim
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "button",
         style: {
           position: 'absolute',
-          top: '10px',
-          right: '5px'
+          bottom: '6px'
+        },
+        onClick: this.confirm_employee_clear
+      }, "Clear")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
+        md: "12",
+        id: "requestLoder",
+        style: {
+          textalign: 'center'
         }
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Row, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
+        sm: 12,
+        className: "mt-3"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Button"], {
-        className: "shadow-5 btn-sm btn-secondary"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        "class": "fa fa-download"
-      }), "Download"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
-        to: {
-          pathname: '/employee'
-        },
-        className: "shadow-5 btn-sm btn-info"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        "class": "fa fa-mail-reply"
-      }), " BACK"))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Tab"].Container, {
-        defaultActiveKey: "Official"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], {
-        sm: 2,
-        className: "employeedetails"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Nav"], {
-        variant: "pills",
-        className: "flex-column"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Nav"].Item, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
-        to: {
-          pathname: "/employee-Detail/Official",
-          state: {
-            userId: this.state.id
-          }
-        },
-        className: "nav-link"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        "class": "feather icon-user"
-      }), "Official")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Nav"].Item, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
-        to: {
-          pathname: '/employee-Detail/Documents',
-          state: {
-            userId: this.state.id
-          }
-        },
-        className: "nav-link"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        "class": "feather icon-file-text"
-      }), " Documents")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Nav"].Item, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
-        to: {
-          pathname: '/employee-Detail/Bank-Details',
-          state: {
-            userId: this.state.id
-          }
-        },
-        className: "nav-link"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        "class": "fa fa-university"
-      }), " Bank Details")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Nav"].Item, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
-        to: {
-          pathname: '/employee-Detail/Address-History',
-          state: {
-            userId: this.state.id
-          }
-        },
-        className: "nav-link"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        "class": "fa fa-map-marker",
-        "aria-hidden": "true"
-      }), " Address History")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Nav"].Item, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
-        to: {
-          pathname: '/employee-Detail/Leave',
-          state: {
-            userId: this.state.id
-          }
-        },
-        className: "nav-link"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        "class": "fa fa-minus-square",
-        "aria-hidden": "true"
-      }), " Leave")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Nav"].Item, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
-        to: {
-          pathname: '/employee-Detail/Holiday',
-          state: {
-            userId: this.state.id
-          }
-        },
-        className: "nav-link"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        "class": "fa fa-plane",
-        "aria-hidden": "true"
-      }), " Holiday")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Nav"].Item, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
-        to: {
-          pathname: '/employee-Detail/Job-History',
-          state: {
-            userId: this.state.id
-          }
-        },
-        className: "nav-link"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        "class": "fa fa-history",
-        "aria-hidden": "true"
-      }), " Job History"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Nav"].Item, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
-        to: {
-          pathname: '/employee-Detail/Mandatory-document',
-          state: {
-            userId: this.state.id
-          }
-        },
-        className: "nav-link"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        "class": "feather icon-file-text"
-      }), " Mandatory Documents"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Nav"].Item, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Nav"].Link, {
-        eventKey: "Education"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        "class": "fa fa-graduation-cap",
-        "aria-hidden": "true"
-      }), " Education")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Nav"].Item, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
-        to: {
-          pathname: '/employee-Detail/Salary',
-          state: {
-            userId: this.state.id
-          }
-        },
-        className: "nav-link"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        "class": "feather icon-file-text"
-      }), " Salary")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Nav"].Item, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Nav"].Link, {
-        eventKey: "Skills"
-      }, "Skills")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Nav"].Item, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Nav"].Link, {
-        eventKey: "Training_Certification"
-      }, "Training & Certification")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Nav"].Item, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Nav"].Link, {
-        eventKey: "Medical_Claims"
-      }, "Medical Claims")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Nav"].Item, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Nav"].Link, {
-        eventKey: "Disability"
-      }, "Disability")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Nav"].Item, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Nav"].Link, {
-        eventKey: "Dependency"
-      }, "Dependency")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Nav"].Item, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Nav"].Link, {
-        eventKey: "Visa_and_Immigration"
-      }, "Visa and Immigration")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Nav"].Item, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Nav"].Link, {
-        eventKey: "Corporate_Card"
-      }, "Corporate Card")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Nav"].Item, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Nav"].Link, {
-        eventKey: "Work_Eligibility"
-      }, "Work Eligibility")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Nav"].Item, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Nav"].Link, {
-        eventKey: "Additional_Details"
-      }, "Additional Details")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Nav"].Item, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Nav"].Link, {
-        eventKey: "Pay_slips"
-      }, "Pay slips")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Nav"].Item, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Nav"].Link, {
-        eventKey: "Benefits"
-      }, "Benefits")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Nav"].Item, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Nav"].Link, {
-        eventKey: "Remuneration"
-      }, "Remuneration")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Nav"].Item, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Nav"].Link, {
-        eventKey: "Security_Credentials"
-      }, "Security Credentials")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], {
-        sm: 10,
-        style: {
-          padding: '0px',
-          paddingRight: '15px'
-        }
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Tab"].Content, {
-        style: {
-          padding: '0px 15px'
-        }
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0__["Suspense"], {
-        fallback: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "loader-bg"
-        })
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Switch"], null, menu, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Redirect"], {
-        from: "/",
-        to: {
-          pathname: "/employee-Detail/Official",
-          state: {
-            userId: id
-          }
-        }
-      }))))))));
+        disabled: this.state.formSubmitting,
+        type: "submit"
+      }, " ", this.state.buttonName)))))))));
     }
   }]);
 
-  return EmployeeDetails;
+  return Edit;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (EmployeeDetails);
-
-/***/ }),
-
-/***/ "./resources/js/Back-Office/Employee/employee.css":
-/*!********************************************************!*\
-  !*** ./resources/js/Back-Office/Employee/employee.css ***!
-  \********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-var content = __webpack_require__(/*! !../../../../node_modules/css-loader/dist/cjs.js??ref--6-1!../../../../node_modules/postcss-loader/src??ref--6-2!./employee.css */ "./node_modules/css-loader/dist/cjs.js?!./node_modules/postcss-loader/src/index.js?!./resources/js/Back-Office/Employee/employee.css");
-
-if(typeof content === 'string') content = [[module.i, content, '']];
-
-var transform;
-var insertInto;
-
-
-
-var options = {"hmr":true}
-
-options.transform = transform
-options.insertInto = undefined;
-
-var update = __webpack_require__(/*! ../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
-
-if(content.locals) module.exports = content.locals;
-
-if(false) {}
+/* harmony default export */ __webpack_exports__["default"] = (Edit);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../node_modules/webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js")))
 
 /***/ }),
 

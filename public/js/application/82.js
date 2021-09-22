@@ -1,9 +1,9 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[82],{
 
-/***/ "./resources/js/Back-Office/Employee/Tab/HolidayCalendar.js":
-/*!******************************************************************!*\
-  !*** ./resources/js/Back-Office/Employee/Tab/HolidayCalendar.js ***!
-  \******************************************************************/
+/***/ "./resources/js/Back-Office/Employee/Tab/AddLeave.js":
+/*!***********************************************************!*\
+  !*** ./resources/js/Back-Office/Employee/Tab/AddLeave.js ***!
+  \***********************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -11,17 +11,20 @@
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var fullcalendar_reactwrapper__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! fullcalendar-reactwrapper */ "./node_modules/fullcalendar-reactwrapper/lib/index.js");
-/* harmony import */ var fullcalendar_reactwrapper__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(fullcalendar_reactwrapper__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _hoc_Aux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../hoc/_Aux */ "./resources/js/hoc/_Aux/index.js");
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/index.js");
-/* harmony import */ var react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-bootstrap4-form-validation */ "./node_modules/react-bootstrap4-form-validation/lib/index.js");
-/* harmony import */ var react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/index.js");
+/* harmony import */ var react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-bootstrap4-form-validation */ "./node_modules/react-bootstrap4-form-validation/lib/index.js");
+/* harmony import */ var react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var react_text_mask__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-text-mask */ "./node_modules/react-text-mask/dist/reactTextMask.js");
+/* harmony import */ var react_text_mask__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_text_mask__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var validator__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! validator */ "./node_modules/validator/index.js");
 /* harmony import */ var validator__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(validator__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_6__);
 /* harmony import */ var pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! pnotify/dist/es/PNotify */ "./node_modules/pnotify/dist/es/PNotify.js");
+/* harmony import */ var _hoc_Aux__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../hoc/_Aux */ "./resources/js/hoc/_Aux/index.js");
+/* harmony import */ var highcharts__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! highcharts */ "./node_modules/highcharts/highcharts.js");
+/* harmony import */ var highcharts__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(highcharts__WEBPACK_IMPORTED_MODULE_9__);
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -54,27 +57,135 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
+
+
+var id = '';
 var baseurl = window.location.origin;
-var today = new Date();
-var dd = String(today.getDate()).padStart(2, '0');
-var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
 
-var yyyy = today.getFullYear();
-var todaydate = yyyy + '-' + mm + '-' + dd;
+function successDesktopPNotify() {
+  var edit = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+  var message = edit != '' ? "Leave edited successfully" : "Leave added successfully";
+  pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_7__["default"].success({
+    title: 'Success',
+    text: message,
+    modules: {
+      Desktop: {
+        desktop: true
+      }
+    }
+  }).on('click', function (e) {});
+}
 
-var HolidayCalendar = /*#__PURE__*/function (_React$Component) {
-  _inherits(HolidayCalendar, _React$Component);
+var AddLeave = /*#__PURE__*/function (_React$Component) {
+  _inherits(AddLeave, _React$Component);
 
-  var _super = _createSuper(HolidayCalendar);
+  var _super = _createSuper(AddLeave);
 
-  function HolidayCalendar(props) {
+  function AddLeave(props) {
     var _this;
 
-    _classCallCheck(this, HolidayCalendar);
+    _classCallCheck(this, AddLeave);
 
     _this = _super.call(this, props);
 
-    _defineProperty(_assertThisInitialized(_this), "getData", function (userId) {
+    _defineProperty(_assertThisInitialized(_this), "handleChange", function (e) {
+      _this.setState(_defineProperty({}, e.target.name, e.target.value));
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "handleSubmit", function (e) {
+      e.preventDefault();
+
+      _this.setState({
+        apiload: true
+      });
+
+      _this.setState({
+        buttonName: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          className: "spinner-grow spinner-grow-sm mr-1",
+          role: "status"
+        }), "Loading")
+      });
+
+      var _ref = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
+          auth_token = _ref.auth_token;
+
+      var Id = '';
+
+      if (_this.props.match.params.id) {
+        Id = '/' + _this.props.match.params.id;
+      }
+
+      axios__WEBPACK_IMPORTED_MODULE_6___default.a.post(baseurl + '/api/leaves' + Id, _this.state, {
+        headers: {
+          'Accept': 'application/json',
+          'Authorization': 'Bearer ' + auth_token
+        }
+      }).then(function (res) {
+        if (res.data.success) {
+          // console.log(res.data.data);
+          _this.setState({
+            apiload: false
+          });
+
+          _this.setState({
+            formSubmitting: false
+          });
+
+          _this.setState({
+            buttonName: 'Add'
+          });
+
+          if (res.data.updated) {
+            successDesktopPNotify('edit');
+
+            _this.setState({
+              buttonName: 'Edit'
+            });
+          } else {
+            successDesktopPNotify();
+
+            _this.props.history.push({
+              pathname: '/employee-Detail/Leave',
+              state: {
+                userId: id
+              }
+            });
+          }
+        } else {
+          pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_7__["default"].error({
+            title: "Alert",
+            text: res.data.message
+          });
+
+          _this.setState({
+            apiload: false
+          });
+
+          _this.setState({
+            formSubmitting: false
+          });
+
+          _this.setState({
+            buttonName: 'Add'
+          });
+        }
+      })["catch"](function (err) {
+        pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_7__["default"].error({
+          title: "System Error",
+          text: err
+        });
+
+        _this.setState({
+          formSubmitting: false
+        });
+
+        _this.setState({
+          buttonName: 'add'
+        });
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "getData", function (id) {
       _this.setState({
         formSubmitting: true
       });
@@ -90,23 +201,19 @@ var HolidayCalendar = /*#__PURE__*/function (_React$Component) {
         }), "Loading")
       });
 
-      var _ref = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
-          auth_token = _ref.auth_token; //const data = new FormData()
+      var _ref2 = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
+          auth_token = _ref2.auth_token; //const data = new FormData()
       //data.append('name', this.state.name);
 
 
-      axios__WEBPACK_IMPORTED_MODULE_6___default.a.post(baseurl + '/api/holiday_calendar', {
-        user_id: userId
-      }, {
+      axios__WEBPACK_IMPORTED_MODULE_6___default.a.get(baseurl + '/api/leaves/' + id, {
         headers: {
           'Accept': 'application/json',
           'Authorization': 'Bearer ' + auth_token
         }
       }).then(function (res) {
         if (res.data.success) {
-          _this.setState({
-            events: res.data.result
-          });
+          _this.setState(res.data.User_leaves);
 
           _this.setState({
             apiload: false
@@ -114,6 +221,10 @@ var HolidayCalendar = /*#__PURE__*/function (_React$Component) {
 
           _this.setState({
             formSubmitting: false
+          });
+
+          _this.setState({
+            buttonName: 'Edit'
           });
         } else {
           var errorMassage = '';
@@ -153,65 +264,170 @@ var HolidayCalendar = /*#__PURE__*/function (_React$Component) {
     });
 
     _this.state = {
+      _method: '',
       user_id: '',
-      today: todaydate,
-      events: []
+      allotted_year: '',
+      leave_balance: '',
+      used_leave: '',
+      allotted_leave_limit: '',
+      buttonName: 'Add',
+      apiload: false
     };
+
+    if (_this.props.location.state) {
+      id = _this.props.location.state.userId;
+    }
+
     return _this;
   }
 
-  _createClass(HolidayCalendar, [{
+  _createClass(AddLeave, [{
     key: "componentDidMount",
     value: function componentDidMount() {
       if (this.props.location.state) {
         this.setState({
           user_id: this.props.location.state.userId
         });
-        this.getData(this.props.location.state.userId);
+      }
+
+      if (this.props.match.params.id) {
+        this.getData(this.props.match.params.id);
       }
     }
   }, {
     key: "render",
     value: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_hoc_Aux__WEBPACK_IMPORTED_MODULE_2__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Col"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Card"].Header, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Card"].Title, {
-        as: "h5"
-      }, "Holiday Calendar")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Card"].Body, {
-        className: "calendar"
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_hoc_Aux__WEBPACK_IMPORTED_MODULE_8__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Row"], {
+        style: {
+          padding: '0px 10px',
+          borderLeft: 'solid 2px #04a9f5'
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], {
+        md: 12,
+        xl: 12,
+        style: {
+          paddingTop: '15px'
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, this.props.match.params.id ? 'Edit' : 'Add', " Leave"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        "class": "invoice-lable text-right",
+        style: {
+          position: 'absolute',
+          top: '10px',
+          right: '5px'
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
+        to: {
+          pathname: '/employee-Detail/Leave',
+          state: {
+            userId: this.state.user_id
+          }
+        },
+        className: "shadow-5 btn-sm btn-info"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        "class": "fa fa-mail-reply"
+      }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        "class": "details-tab",
+        style: {
+          borderTop: 'solid 1px #ebeff1',
+          padding: '10px 20px'
+        }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         style: {
           position: 'absolute',
           zIndex: '99999',
           background: 'rgba(255, 255, 255, 0.57)',
-          top: '25%',
+          top: '15%',
           left: '50%',
           display: this.state.apiload ? 'block' : 'none'
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "loader"
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(fullcalendar_reactwrapper__WEBPACK_IMPORTED_MODULE_1___default.a, {
-        id: "datta-calendar",
-        className: "calendar",
-        header: {
-          left: 'prev,next today',
-          center: 'title',
-          right: 'month,basicWeek,basicDay'
-        },
-        defaultDate: this.state.today,
-        navLinks: true,
-        editable: false,
-        eventLimit: true,
-        events: this.state.events,
-        eventClick: function eventClick(calEvent, jsEvent, view, resourceObj) {
-          console.log(calEvent);
-        }
-      }))))));
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        "class": "row view-basic-card "
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["ValidationForm"], {
+        autoComplete: "off",
+        id: "formid",
+        onSubmit: this.handleSubmit,
+        onErrorSubmit: this.handleErrorSubmit
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Row, {
+        style: style.rowline
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Label, {
+        htmlFor: "bank_name"
+      }, "Allotted Year"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["TextInput"], {
+        name: "allotted_year",
+        type: "number",
+        id: "allotted_year",
+        placeholder: "Allotted Year",
+        required: true,
+        value: this.state.allotted_year,
+        onChange: this.handleChange,
+        autoComplete: "off"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Label, {
+        htmlFor: "name_of_account_holder"
+      }, "Leave Balance"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["TextInput"], {
+        name: "leave_balance",
+        id: "leave_balance",
+        placeholder: "Leave Balance",
+        type: "number",
+        required: true,
+        value: this.state.leave_balance,
+        onChange: this.handleChange,
+        autoComplete: "off"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Label, {
+        htmlFor: "account_number"
+      }, "Used Leave"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["TextInput"], {
+        name: "used_leave",
+        id: "used_leave",
+        placeholder: "Used leave",
+        type: "number",
+        required: true,
+        value: this.state.used_leave,
+        onChange: this.handleChange,
+        autoComplete: "off"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Label, {
+        htmlFor: "allotted_leave_limit"
+      }, "Allotted leave limit"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["TextInput"], {
+        name: "allotted_leave_limit",
+        id: "allotted_leave_limit",
+        placeholder: "Allotted leave limit",
+        type: "number",
+        required: true,
+        value: this.state.allotted_leave_limit,
+        onChange: this.handleChange,
+        autoComplete: "off"
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Row, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
+        sm: 12,
+        className: "mt-3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Button"], {
+        disabled: this.state.formSubmitting,
+        type: "submit"
+      }, " ", this.state.buttonName)))))));
     }
   }]);
 
-  return HolidayCalendar;
+  return AddLeave;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (HolidayCalendar);
+var style = {
+  rowline: {
+    borderBottom: 'solid 1px #f8f9fa',
+    marginBottom: '15px'
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = (AddLeave);
 
 /***/ })
 

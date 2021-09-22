@@ -49,6 +49,7 @@ Route::group(['middleware' => ['jwt.auth','api-header']], function () {
         Route::resource('holiday', 'HolidayController');
         Route::resource('mandatory_documents', 'Mandatory_documentsController');
         Route::resource('tool', 'ToolController');
+        Route::resource('drivers_declaration', 'Drivers_declarationController');
         
         Route::get('address_history/{id}', 'Employee_detailsController@Address_history');
         Route::get('job_history/{id}', 'Employee_detailsController@job_history');
