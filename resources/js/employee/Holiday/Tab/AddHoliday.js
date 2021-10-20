@@ -1,6 +1,6 @@
 import React, { Component, Suspense } from 'react';
 import {Route, Switch, Redirect,NavLink,Link} from 'react-router-dom';
-import {Row, Col, Card, Table,Button,Modal,Tabs, Tab,Form,Nav} from 'react-bootstrap';
+import {Row, Col, Card,Button,Modal,Table,Tabs, Tab,Form,Nav} from 'react-bootstrap';
 import { ValidationForm, TextInput, BaseFormControl, SelectGroup, FileInput, Checkbox, Radio } from 'react-bootstrap4-form-validation';
 import MaskedInput from 'react-text-mask';
 import validator from 'validator';
@@ -9,6 +9,7 @@ import PNotify from "pnotify/dist/es/PNotify";
 import Datetime from 'react-datetime';
 import Aux from "../../../hoc/_Aux";
 import { formatSingle } from 'highcharts';
+import Outstanding_entitlement from '../Outstanding_entitlement'
 let id='';
 const baseurl= window.location.origin;
 function successDesktopPNotify(edit='') {
@@ -48,6 +49,9 @@ class AddHoliday extends React.Component{
             dateChangedCheck:0,
             formShow:false,
             day_off:[],
+            day_off_start:'',
+            day_off_end:'',
+            outstanding_entitlement:[],
         }
         if(this.props.location.state){
             id = this.props.location.state.userId;
@@ -58,6 +62,46 @@ class AddHoliday extends React.Component{
             [e.target.name]: e.target.value
         })
     };
+    Outstanding_entitlement=(user_id)=>{
+            
+        const {auth_token} = localStorage.getItem('userData')? JSON.parse(localStorage.getItem('userData')).user : 'Null';
+               axios.post(
+            baseurl+'/api/outstanding_entitlement',{user_id:user_id},{headers:{'Accept':'application/json','Authorization':'Bearer '+auth_token}} 
+        ).then(res =>{
+                          if(res.data.success){
+                              
+                             this.setState({outstanding_entitlement:res.data.result});
+                            
+                          }else{
+                              let errorMassage = '';
+                            if(res.data.errors){
+                                errorMassage = res.data.errors.name;
+                            }else{
+                                errorMassage = res.data.email;
+                                
+                            }
+                            
+                            this.setState({formSubmitting:false});
+                            this.setState({buttonName:'Save'});
+                            
+                          }
+                     }
+          )
+          .catch(err =>{
+                    PNotify.error({
+                        title: "System Error",
+                        text:err,
+                    });
+                    this.setState({formSubmitting:false});
+                    this.setState({buttonName:'Add'});
+                    this.setState({selectedFile:null});
+                          
+                      }
+          )
+        
+      
+  }
+  
     handleSubmit =(e) =>{
         e.preventDefault();
         
@@ -121,7 +165,13 @@ class AddHoliday extends React.Component{
             this.getData(this.props.match.params.id);
         }
     }
-    
+    componentWillMount(){
+        
+        const {id,name,email} = localStorage.getItem('userData')? JSON.parse(localStorage.getItem('userData')).user : 'Null';
+        if(id){
+            this.Outstanding_entitlement(id);
+            }
+    }
     getData = (id)=>{
         
         
@@ -141,7 +191,7 @@ class AddHoliday extends React.Component{
         ).then(res =>{
                           if(res.data.success){
                               this.setState(res.data.Holidays);
-                              console.log(res.data.Holidays_dates);
+                              
                               this.setState({dates:res.data.Holidays_dates});
                               
                               this.setState({apiload:false});
@@ -211,7 +261,7 @@ class AddHoliday extends React.Component{
                     let getdt= this.getDate(theDate);
                     console.log(getdt);
                 }else{ // sunday 0  saturday 6 
-                let array_v={dates:this.getDate(new Date(theDate)),times:''}
+                let array_v={dates:this.getDate(new Date(theDate)),times:'Full day'}
                  dates = [...dates, array_v]
                 }
               theDate.setDate(theDate.getDate() + 1)
@@ -316,22 +366,56 @@ class AddHoliday extends React.Component{
                 <Col>
                     <Card>
                         <Card.Body>
+                            <Outstanding_entitlement user_id={this.state.user_id} entitlement={this.state.outstanding_entitlement} />            
+                        </Card.Body>
+                    </Card>        
+                    <Card>
+                        <Card.Body>
                               <ValidationForm autoComplete="off" id='formid' onSubmit={this.handleSubmit} onErrorSubmit={this.handleErrorSubmit}>
                         <Form.Row style={style.rowline} >
-                        <Form.Group as={Col} md="3">
+                        <Form.Group as={Col} xm={12} >
                         <Form.Label htmlFor="region">Date</Form.Label>
 
-                        <Datetime closeOnSelect={true} onChange={this.fromDateChange} value={this.state.from_date}  dateFormat="D/M/Y" timeFormat={false}  maxDate={new Date()} inputProps={{required:'required',name:"from_date",placeholder: 'Select Date',autoComplete:'off'}} />
+                        <Datetime  closeOnSelect={true} onChange={this.fromDateChange} value={this.state.from_date}  dateFormat="D/M/Y" timeFormat={false}  maxDate={new Date()} inputProps={{required:'required',name:"from_date",placeholder: 'Select Date',autoComplete:'off'}} />
+                        <div style={{padding:'0px','marginTop':'10px'}} className="custom-controls-stacked radio">
+                                                            <Radio.RadioGroup 
+                                                                name= "day_off_start"
+                                                                required
+                                                                valueSelected={this.state.day_off_start}
+                                                                inline={true}
+                                                                
+                                                                onChange={this.handleChange}>
+                                                                <Radio.RadioItem  id={'start_full'}  label="Full day" value="Full day" />
+                                                                <Radio.RadioItem id={'start_Morning'}  label="Morning only" value="Morning only" />
+                                                                <Radio.RadioItem id={'start_Afternoon'}  label="Afternoon only" value="Afternoon only" />
+                                                                
 
+                                                            </Radio.RadioGroup>
+                                                        </div>
                         </Form.Group>
-                        <Form.Group as={Col} md="1"  style={{paddingTop:'37px',paddingLeft:'50px'}}>
+                        <Form.Group as={Col} md="1"  style={{paddingTop:'37px',textAlign:'center'}}>
                         <Form.Label htmlFor="region">To</Form.Label>
                         </Form.Group>
-                        <Form.Group as={Col} md="3">
+                        <Form.Group as={Col} xm={12}>
                         <Form.Label htmlFor="region">&nbsp;</Form.Label>
 
-                        <Datetime closeOnSelect={true} onChange={this.toDateChange} value={this.state.to_date}  dateFormat="D/M/Y" timeFormat={false}  maxDate={new Date()} inputProps={{required:'required',name:"to_date",placeholder: 'Select Date',autoComplete:'off'}} />
+                        <Datetime  closeOnSelect={true} onChange={this.toDateChange} value={this.state.to_date}  dateFormat="D/M/Y" timeFormat={false}  maxDate={new Date()} inputProps={{required:'required',name:"to_date",placeholder: 'Select Date',autoComplete:'off'}} />
+                        
+                        <div style={{padding:'0px','marginTop':'10px'}} className="custom-controls-stacked radio">
+                                                            <Radio.RadioGroup 
+                                                                name= "day_off_end"
+                                                                required
+                                                                valueSelected={this.state.day_off_end}
+                                                                inline={true}
+                                                                
+                                                                onChange={this.handleChange}>
+                                                                <Radio.RadioItem  id={'end_full'}  label="Full day" value="Full day" />
+                                                                <Radio.RadioItem id={'end_Morning'}  label="Morning only" value="Morning only" />
+                                                                <Radio.RadioItem id={'end_Afternoon'}  label="Afternoon only" value="Afternoon only" />
+                                                                
 
+                                                            </Radio.RadioGroup>
+                                                        </div>
                         </Form.Group>
                         <Form.Group as={Col} md="2">
                         <Form.Label htmlFor="time_off">Time Off</Form.Label>
@@ -363,10 +447,12 @@ class AddHoliday extends React.Component{
                         />
                         </Form.Group>                  
                         </Form.Row>
-                        <Form.Row>
+                       
+                        <Form.Row style={{display:(this.state.formShow?'block':'none')}} >
+                       
                         <Form.Group as={Col} md="12"><SelectTime noteChange={(e)=>this.noteChange(e)} checkedit={this.state._method} heading={this.state.heading} Changeheading={(e)=>this.Changeheading(e)} handleChange={(e)=>this.holidaytime(e)} handleChangeApproved={(e)=>this.onChangedApproved(e)} fromdate={this.state.dates} /></Form.Group>
                         </Form.Row>
-
+                       
                         <Form.Row>   
                         <Form.Group as={Col} sm={12} className="mt-3">
                         <Button style={{display:(this.state.formShow?'none':'block')}} disabled={this.state.formSubmitting}  type="submit"> {this.state.buttonName}</Button>
@@ -401,53 +487,15 @@ class SelectTime extends React.Component{
                             
                                 if(this.props.checkedit=='PUT'){
                                 is_approved = 'Approve';
-                             approved = <td>
-                                 <div style={{padding:'0px'}} className="custom-controls-stacked radio">
-                                    <Radio.RadioGroup 
-                                        name= {inx+'a'}
-                                        
-                                        valueSelected={item.is_approved}
-                                        inline={true}
-                                        onChange={this.props.handleChangeApproved}
-                                        >
-                                        <Radio.RadioItem  id={inx+'a_yes'}  label="Yes" value="yes" />
-                                        <Radio.RadioItem id={inx+'a_no'}  label="No" value="no" />
-                                    </Radio.RadioGroup>
-                                </div>
-                                 </td>
+                             approved = <td>{item.is_approved}</td>
                                  addNote=<td>
-                                            {(item.add_note==1?<TextInput
-                                            name= {inx+'notes'}
-                                            id="notes"
-                                            placeholder="Notes"
-                                            multiline
-                                            required
-                                            value={item.notes}
-                                            onChange={this.props.noteChange}
-                                            rows="3"
-                                            autoComplete="off"
-                                            />
-                                           :'')}
+                                            {(item.add_note==1?'-':item.notes)}
                                  </td>
                                 } 
         return (<tr key={inx}>
                     <td>{item.dates}</td>
                     <td>
-                    <div style={{padding:'0px'}} className="custom-controls-stacked radio">
-                                                            <Radio.RadioGroup 
-                                                                name= {inx}
-                                                                required
-                                                                valueSelected={item.times}
-                                                                inline={true}
-                                                                
-                                                                onChange={this.props.handleChange}>
-                                                                <Radio.RadioItem  id={inx+'_full'}  label="Full day" value="Full day" />
-                                                                <Radio.RadioItem id={inx+'_Morning'}  label="Morning only" value="Morning only" />
-                                                                <Radio.RadioItem id={inx+'_Afternoon'}  label="Afternoon only" value="Afternoon only" />
-                                                                
-
-                                                            </Radio.RadioGroup>
-                                                        </div>
+                    {item.times}
                     </td>
                     {approved}
                     {addNote}
@@ -459,20 +507,7 @@ class SelectTime extends React.Component{
        return(<Aux><Table style={{display:display}} responsive>
            <thead><th>Date</th>
            <th>
-           <div style={{padding:'0px'}} className="custom-controls-stacked radio">
-                                                            <Radio.RadioGroup 
-                                                                name="date_time"
-                                                                
-                                                                valueSelected={this.props.heading}
-                                                                inline={true}
-                                                                onChange={this.props.Changeheading}>
-                                                                <Radio.RadioItem  id={'heading_1'} label="Full day" value="1" />
-                                                                <Radio.RadioItem id={'heading_2'} label="Morning only" value="2" />
-                                                                <Radio.RadioItem id={'heading_3'} label="Afternoon only" value="3" />
-                                                                
-
-                                                            </Radio.RadioGroup>
-                                                        </div>
+           
            </th>
            <th>{is_approved}</th>
            </thead>
@@ -481,7 +516,7 @@ class SelectTime extends React.Component{
 }
 const style = {
     rowline:{
-             borderBottom:'solid 1px #f8f9fa',marginBottom:'15px'
+             borderBottom:'solid 2px #f8f9fa',marginBottom:'15px'
             }
 }
 export default AddHoliday;

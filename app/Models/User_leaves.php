@@ -12,6 +12,8 @@ class User_leaves extends Model
                             'allotted_year',
                             'leave_balance',
                             'used_leave',
+                            'start_date',
+                            'end_date',
                             'allotted_leave_limit',
                             'created_by',
                             'updated_by'

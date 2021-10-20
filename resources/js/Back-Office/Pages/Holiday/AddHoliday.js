@@ -10,6 +10,7 @@ import Datetime from 'react-datetime';
 import Aux from "../../../hoc/_Aux";
 import { formatSingle } from 'highcharts';
 import {CheckPermission} from '../../../HttpFunctions'
+import Outstanding_entitlement from '../../../employee/Holiday/Outstanding_entitlement'
 let id='';
 const baseurl= window.location.origin;
 function successDesktopPNotify(edit='') {
@@ -47,6 +48,11 @@ class AddHoliday extends React.Component{
             time_off:'',
             notes:'',
             dateChangedCheck:0,
+            day_off_start:'',
+            day_off_end:'',
+            is_approved:'',
+            no_approved_notes:'',
+            outstanding_entitlement:[],
         }
         if(this.props.location.state){
             id = this.props.location.state.userId;
@@ -57,6 +63,46 @@ class AddHoliday extends React.Component{
             [e.target.name]: e.target.value
         })
     };
+    Outstanding_entitlement=(user_id)=>{
+            
+        const {auth_token} = localStorage.getItem('userData')? JSON.parse(localStorage.getItem('userData')).user : 'Null';
+               axios.post(
+            baseurl+'/api/outstanding_entitlement',{user_id:user_id},{headers:{'Accept':'application/json','Authorization':'Bearer '+auth_token}} 
+        ).then(res =>{
+                          if(res.data.success){
+                              
+                             this.setState({outstanding_entitlement:res.data.result});
+                            
+                          }else{
+                              let errorMassage = '';
+                            if(res.data.errors){
+                                errorMassage = res.data.errors.name;
+                            }else{
+                                errorMassage = res.data.email;
+                                
+                            }
+                            
+                            this.setState({formSubmitting:false});
+                            this.setState({buttonName:'Save'});
+                            
+                          }
+                     }
+          )
+          .catch(err =>{
+                    PNotify.error({
+                        title: "System Error",
+                        text:err,
+                    });
+                    this.setState({formSubmitting:false});
+                    this.setState({buttonName:'Add'});
+                    this.setState({selectedFile:null});
+                          
+                      }
+          )
+        
+      
+  }
+  
     handleSubmit =(e) =>{
         e.preventDefault();
         
@@ -112,6 +158,7 @@ class AddHoliday extends React.Component{
                 }
         )
     }
+
     componentDidMount(){
         const { match, location, history } = this.props;
         CheckPermission('user','add',history);
@@ -143,7 +190,7 @@ class AddHoliday extends React.Component{
                               this.setState(res.data.Holidays);
                               console.log(res.data.Holidays_dates);
                               this.setState({dates:res.data.Holidays_dates});
-                              
+                              this.Outstanding_entitlement(res.data.Holidays.user_id);
                               this.setState({apiload:false});
                              this.setState({formSubmitting:false});
                              this.setState({buttonName:'Edit'});
@@ -299,7 +346,20 @@ class AddHoliday extends React.Component{
         this.setState({dates:dates});
         
     } 
-         
+    approvedChange =(e) =>{
+        
+        this.setState({
+            [e.target.name]: e.target.value
+        })
+        const dates = this.state.dates;
+        dates.map((itm,inx)=>{
+            
+            itm.is_approved = e.target.value;      
+        })
+        
+        this.setState({dates:dates,no_approved_notes:''});
+        
+    }      
  render(){
      return(
         <Aux>
@@ -315,22 +375,51 @@ class AddHoliday extends React.Component{
                                 </div>
                                     </Card.Header>
                                     <Card.Body>
+                                    <Outstanding_entitlement user_id={this.state.user_id} entitlement={this.state.outstanding_entitlement} />
                         <ValidationForm autoComplete="off" id='formid' onSubmit={this.handleSubmit} onErrorSubmit={this.handleErrorSubmit}>
                                         <Form.Row style={style.rowline} >
-                                            <Form.Group as={Col} md="3">
+                                            <Form.Group as={Col} xm={12}>
                                                 <Form.Label htmlFor="region">Date</Form.Label>
                                               
                                                 <Datetime closeOnSelect={true} onChange={this.fromDateChange} value={this.state.from_date}  dateFormat="D/M/Y" timeFormat={false}  maxDate={new Date()} inputProps={{required:'required',name:"from_date",placeholder: 'Select Date',autoComplete:'off'}} />
-                                            
+                                                <div style={{padding:'0px','marginTop':'10px'}} className="custom-controls-stacked radio">
+                                                            <Radio.RadioGroup 
+                                                                name= "day_off_start"
+                                                                required
+                                                                valueSelected={this.state.day_off_start}
+                                                                inline={true}
+                                                                
+                                                                onChange={this.handleChange}>
+                                                                <Radio.RadioItem  id={'start_full'}  label="Full day" value="Full day" />
+                                                                <Radio.RadioItem id={'start_Morning'}  label="Morning only" value="Morning only" />
+                                                                <Radio.RadioItem id={'start_Afternoon'}  label="Afternoon only" value="Afternoon only" />
+                                                                
+
+                                                            </Radio.RadioGroup>
+                                                        </div>
                                             </Form.Group>
-                                            <Form.Group as={Col} md="1"  style={{paddingTop:'37px',paddingLeft:'50px'}}>
+                                            <Form.Group as={Col} md="1"  style={{paddingTop:'37px',textAlign:'center'}}>
                                                 <Form.Label htmlFor="region">To</Form.Label>
                                             </Form.Group>
-                                            <Form.Group as={Col} md="3">
+                                            <Form.Group as={Col} xm={12}>
                                                 <Form.Label htmlFor="region">&nbsp;</Form.Label>
                                               
                                                 <Datetime closeOnSelect={true} onChange={this.toDateChange} value={this.state.to_date}  dateFormat="D/M/Y" timeFormat={false}  maxDate={new Date()} inputProps={{required:'required',name:"to_date",placeholder: 'Select Date',autoComplete:'off'}} />
-                                            
+                                                <div style={{padding:'0px','marginTop':'10px'}} className="custom-controls-stacked radio">
+                                                            <Radio.RadioGroup 
+                                                                name= "day_off_end"
+                                                                required
+                                                                valueSelected={this.state.day_off_end}
+                                                                inline={true}
+                                                                
+                                                                onChange={this.handleChange}>
+                                                                <Radio.RadioItem  id={'end_full'}  label="Full day" value="Full day" />
+                                                                <Radio.RadioItem id={'end_Morning'}  label="Morning only" value="Morning only" />
+                                                                <Radio.RadioItem id={'end_Afternoon'}  label="Afternoon only" value="Afternoon only" />
+                                                                
+
+                                                            </Radio.RadioGroup>
+                                                        </div>
                                             </Form.Group>
                                             <Form.Group as={Col} md="2">
                                                               <Form.Label htmlFor="time_off">Time Off</Form.Label>
@@ -362,10 +451,49 @@ class AddHoliday extends React.Component{
                                                         />
                                              </Form.Group>                  
                                         </Form.Row>
+                                        
+                                        <Form.Row>
+                                        <Form.Group as={Col} md="4">
+                                            <div style={{padding:'0px'}} className="custom-controls-stacked radio">
+                                            <label class="form-check-label" for="approved_yes" style={{marginRight: '10px',float:'left'}}>Approved: </label>
+                                                <Radio.RadioGroup 
+                                                name= "is_approved"
+                                                valueSelected={this.state.is_approved}
+                                                inline={true}
+                                                onChange={this.approvedChange}
+                                                >
+                                                <Radio.RadioItem  id="approved_yes"  label="Yes" value="yes" />
+                                                <Radio.RadioItem id="approved_no"  label="No" value="no" />
+                                                </Radio.RadioGroup>
+                                            </div>
+                                        </Form.Group>   
+                                        <Form.Group as={Col} md="8" >
+                                        {
+                                            (this.state.is_approved=='no'?
+                                                        <div><Form.Label htmlFor="first_name">Notes</Form.Label>
+                                                        <TextInput
+                                                            name="no_approved_notes"
+                                                            id="notes"
+                                                            placeholder="Notes"
+                                                            multiline
+                                                            required
+                                                            value={this.state.no_approved_notes}
+                                                            onChange={this.handleChange}
+                                                            rows="3"
+                                                            autoComplete="off"
+                                                        />
+                                                       </div>
+                                            :''
+                                            )
+                                            }  
+                                            &nbsp;   
+                                        </Form.Group>      
+                                </Form.Row>
+                                        {/*
                                         <Form.Row>
                                             <Form.Group as={Col} md="12"><SelectTime noteChange={(e)=>this.noteChange(e)} checkedit={this.state._method} heading={this.state.heading} Changeheading={(e)=>this.Changeheading(e)} handleChange={(e)=>this.holidaytime(e)} handleChangeApproved={(e)=>this.onChangedApproved(e)} fromdate={this.state.dates} /></Form.Group>
                                         </Form.Row>
-                                        
+                                        */}
                                         <Form.Row>   
                                         <Form.Group as={Col} sm={12} className="mt-3">
                                         <Button disabled={this.state.formSubmitting}  type="submit"> {this.state.buttonName}</Button>
@@ -403,6 +531,9 @@ class SelectTime extends React.Component{
                             
                                 if(this.props.checkedit=='PUT'){
                                 is_approved = 'Approve';
+                                if(item.is_approved=='no'){
+                                    item.add_note=1;
+                                }
                              approved = <td>
                                  <div style={{padding:'0px'}} className="custom-controls-stacked radio">
                                     <Radio.RadioGroup 

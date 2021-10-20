@@ -302,10 +302,10 @@ webpackContext.id = "./node_modules/moment/locale sync recursive ^\\.\\/.*$";
 
 /***/ }),
 
-/***/ "./resources/js/employee/Services_starter_form/forms/DriversDeclaration.js":
-/*!*********************************************************************************!*\
-  !*** ./resources/js/employee/Services_starter_form/forms/DriversDeclaration.js ***!
-  \*********************************************************************************/
+/***/ "./resources/js/employee/Services_starter_form/forms/BankDetails.js":
+/*!**************************************************************************!*\
+  !*** ./resources/js/employee/Services_starter_form/forms/BankDetails.js ***!
+  \**************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -329,8 +329,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var pnotify_dist_es_PNotifyConfirm__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! pnotify/dist/es/PNotifyConfirm */ "./node_modules/pnotify/dist/es/PNotifyConfirm.js");
 /* harmony import */ var pnotify_dist_es_PNotifyCallbacks__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! pnotify/dist/es/PNotifyCallbacks */ "./node_modules/pnotify/dist/es/PNotifyCallbacks.js");
 /* harmony import */ var _hoc_Aux__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../../hoc/_Aux */ "./resources/js/hoc/_Aux/index.js");
-/* harmony import */ var react_signature_canvas__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! react-signature-canvas */ "./node_modules/react-signature-canvas/build/index.js");
-/* harmony import */ var react_signature_canvas__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(react_signature_canvas__WEBPACK_IMPORTED_MODULE_12__);
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -367,15 +365,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
-
 var baseurl = window.location.origin;
 var ajaxabort;
 
 function successDesktopPNotify(id) {
-  var message = "Drivers Declaration submitted successfully";
+  var message = "Bank Details added successfully";
 
   if (id != '') {
-    message = "Drivers Declaration updated successfully";
+    message = "Bank Details updated successfully";
   }
 
   pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_7__["default"].success({
@@ -389,15 +386,15 @@ function successDesktopPNotify(id) {
   }).on('click', function (e) {});
 }
 
-var DriversDeclaration = /*#__PURE__*/function (_React$Component) {
-  _inherits(DriversDeclaration, _React$Component);
+var BankDetails = /*#__PURE__*/function (_React$Component) {
+  _inherits(BankDetails, _React$Component);
 
-  var _super = _createSuper(DriversDeclaration);
+  var _super = _createSuper(BankDetails);
 
-  function DriversDeclaration() {
+  function BankDetails() {
     var _this;
 
-    _classCallCheck(this, DriversDeclaration);
+    _classCallCheck(this, BankDetails);
 
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
@@ -408,17 +405,13 @@ var DriversDeclaration = /*#__PURE__*/function (_React$Component) {
     _defineProperty(_assertThisInitialized(_this), "state", {
       _method: '',
       id: "",
-      fullname: "",
-      employee_name: '',
-      employee_signature: null,
-      employee_signature_show: null,
-      employee_date: new Date(),
-      confirm_employee_signature: null,
-      confirm_employee_signature_show: null,
-      confirm_Date: new Date(),
+      bank_name: '',
+      bank_address: '',
+      name_of_account_holder: '',
+      sort_code: '',
+      account_number: '',
       showModal: false,
       visible: true,
-      i_confirm: false,
       formSubmitting: false,
       buttonName: 'Save'
     });
@@ -458,7 +451,7 @@ var DriversDeclaration = /*#__PURE__*/function (_React$Component) {
         urlid = '/' + _this.state.id;
       }
 
-      axios__WEBPACK_IMPORTED_MODULE_6___default.a.post(baseurl + '/api/drivers_declaration' + urlid, _this.state, {
+      axios__WEBPACK_IMPORTED_MODULE_6___default.a.post(baseurl + '/api/bank_details' + urlid, _this.state, {
         headers: {
           'Accept': 'application/json',
           'Authorization': 'Bearer ' + auth_token
@@ -476,7 +469,7 @@ var DriversDeclaration = /*#__PURE__*/function (_React$Component) {
 
           successDesktopPNotify(_this.state.id);
 
-          _this.props.history.push('/services-starter/Employee-Details');
+          _this.props.history.push('/services-starter/Uniform-Order');
         } else {
           var errorMassage = '';
 
@@ -544,179 +537,16 @@ var DriversDeclaration = /*#__PURE__*/function (_React$Component) {
       //data.append('name', this.state.name);
 
 
-      axios__WEBPACK_IMPORTED_MODULE_6___default.a.get(baseurl + '/api/drivers_declaration/' + id, {
+      axios__WEBPACK_IMPORTED_MODULE_6___default.a.get(baseurl + '/api/bank_details/' + id, {
         headers: {
           'Accept': 'application/json',
           'Authorization': 'Bearer ' + auth_token
         }
       }).then(function (res) {
         if (res.data.success) {
-          _this.setState(res.data.Drivers_declaration);
+          console.log(res.data.Bank_details);
 
-          _this.setState({
-            employee_signature_show: _this.state.employee_signature
-          });
-
-          _this.setState({
-            confirm_employee_signature_show: _this.state.confirm_employee_signature
-          });
-
-          _this.setState({
-            formSubmitting: false
-          });
-
-          _this.setState({
-            buttonName: 'Save'
-          });
-        } else {
-          var errorMassage = '';
-
-          if (res.data.errors) {
-            errorMassage = res.data.errors.name;
-          } else {
-            errorMassage = res.data.email;
-          }
-
-          _this.setState({
-            formSubmitting: false
-          });
-
-          _this.setState({
-            buttonName: 'Save'
-          });
-        }
-      })["catch"](function (err) {
-        pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_7__["default"].error({
-          title: "System Error",
-          text: err
-        });
-
-        _this.setState({
-          formSubmitting: false
-        });
-
-        _this.setState({
-          buttonName: 'Add'
-        });
-
-        _this.setState({
-          selectedFile: null
-        });
-      });
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "employee", {});
-
-    _defineProperty(_assertThisInitialized(_this), "employee_trim", function () {
-      _this.setState({
-        employee_signature: _this.employee.getTrimmedCanvas().toDataURL('image/png')
-      });
-
-      _this.setState({
-        employee_signature_show: _this.state.employee_signature
-      });
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "employee_clear", function () {
-      _this.employee.clear();
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "recruitmentChange", function (e) {
-      var today = new Date(e);
-      var dd = today.getDate();
-      var mm = today.getMonth() + 1;
-      var yyyy = today.getFullYear();
-
-      if (dd < 10) {
-        dd = '0' + dd;
-      }
-
-      if (mm < 10) {
-        mm = '0' + mm;
-      }
-
-      var today = dd + '/' + mm + '/' + yyyy;
-
-      _this.setState({
-        employee_date: today
-      });
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "confirm_employee", {});
-
-    _defineProperty(_assertThisInitialized(_this), "confirm_employee_trim", function () {
-      _this.setState({
-        confirm_employee_signature: _this.confirm_employee.getTrimmedCanvas().toDataURL('image/png')
-      });
-
-      _this.setState({
-        confirm_employee_signature_show: _this.state.confirm_employee_signature
-      });
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "confirm_employee_clear", function () {
-      _this.confirm_employee.clear();
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "confirmChange", function (e) {
-      var today = new Date(e);
-      var dd = today.getDate();
-      var mm = today.getMonth() + 1;
-      var yyyy = today.getFullYear();
-
-      if (dd < 10) {
-        dd = '0' + dd;
-      }
-
-      if (mm < 10) {
-        mm = '0' + mm;
-      }
-
-      var today = dd + '/' + mm + '/' + yyyy;
-
-      _this.setState({
-        confirm_Date: today
-      });
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "Employee_details", function () {
-      _this.setState({
-        formSubmitting: true
-      });
-
-      _this.setState({
-        buttonName: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-          className: "spinner-grow spinner-grow-sm mr-1",
-          role: "status"
-        }), "Loading")
-      });
-
-      var _ref3 = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
-          id = _ref3.id,
-          auth_token = _ref3.auth_token; //const data = new FormData()
-      //data.append('name', this.state.name);
-
-
-      axios__WEBPACK_IMPORTED_MODULE_6___default.a.get(baseurl + '/api/employee_details/' + id, {
-        headers: {
-          'Accept': 'application/json',
-          'Authorization': 'Bearer ' + auth_token
-        }
-      }).then(function (res) {
-        if (res.data.success) {
-          var fullname = res.data.Employee_details.first_name + ' ' + res.data.Employee_details.middle_name + ' ' + res.data.Employee_details.last_name;
-
-          _this.setState({
-            fullname: fullname
-          });
-
-          _this.setState({
-            employee_name: fullname
-          });
-
-          _this.setState({
-            confirm_employee_name: fullname
-          });
+          _this.setState(res.data.Bank_details);
 
           _this.setState({
             formSubmitting: false
@@ -765,28 +595,21 @@ var DriversDeclaration = /*#__PURE__*/function (_React$Component) {
     return _this;
   }
 
-  _createClass(DriversDeclaration, [{
+  _createClass(BankDetails, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      this.Employee_details();
       this.alreadyAdded();
 
-      var _ref4 = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
-          name = _ref4.name,
-          email = _ref4.email;
+      var _ref3 = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
+          name = _ref3.name,
+          email = _ref3.email;
 
       var emailaddress = email;
     }
   }, {
     key: "render",
     value: function render() {
-      var _this2 = this;
-
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_hoc_Aux__WEBPACK_IMPORTED_MODULE_11__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, {
-        style: {
-          color: 'black'
-        }
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["ValidationForm"], {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_hoc_Aux__WEBPACK_IMPORTED_MODULE_11__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["ValidationForm"], {
         autoComplete: "off",
         id: "formid",
         onSubmit: this.handleSubmit,
@@ -795,191 +618,81 @@ var DriversDeclaration = /*#__PURE__*/function (_React$Component) {
         style: style.rowline
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
         as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "12",
-        style: {
-          textAlign: 'center',
-          color: 'black'
-        }
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Bespoke Metering Solutions - Drivers Declaration Form")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("u", null, "It is an offence for a person to drive any vehicle on a road otherwise than in accordance with a licence authorising them to drive that vehicle.")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("u", null, "It is also an offence for them to permit another person to drive a company vehicle.")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Row, {
-        style: style.rowline
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "12"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "This is a declaration that I ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        style: {
-          borderBottom: '1px solid #ced4da',
-          paddingBottom: '3px',
-          textTransform: 'capitalize'
-        }
-      }, " ", this.state.fullname, " "), " have produced my latest licence, and that I have no pending convictions, endorsements or disqualifications."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "I have had no change in my health, which could affect my entitlement to drive, in particular, for ALL licences:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Epilepsy"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Fits or blackouts"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Repeated attacks of sudden disabling giddiness (dizziness that prevents you from functioning normally)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Diabetes controlled by insulin "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "An implanted cardiac defibrillator (ICD)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Persistent alcohol abuse or dependency"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Persistent drug abuse or dependency "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Parkinson\u2019s disease"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Narcolepsy or sleep apnoea syndrome "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Stroke, with any symptoms lasting longer than one month, recurrent \u2018mini strokes\u2019 or TIAs (Transiant Ischaemic Attacks) "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Any type of brain surgery, severe head injury involving inpatient treatment, or brain tumour"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Any other chronic (long term) neurological condition "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "A serious problem with memory or episodes of confusion "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Severe learning disability"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Serious psychiatric illness or mental ill-health"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Total loss of sight in one eye "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Any condition affecting both eyes, or the remaining eye only (not including short or long sight or colour blindness)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Any condition affecting your visual field (the surrounding area you can see when looking directly ahead)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Any persistent limb problem for which your driving has to be restricted to certain types of vehicles or those with adapted controls")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Also, for vocational licences:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Angina, other heart conditions or heart operation"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Diabetes controlled by tablets"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Visual problems affecting either eye"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Any form of stroke, including TIAs (Transiant Ischaemic Attacks)")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "If any of the above affects me I will inform my employer as soon as possible. I understand that I must also inform DVLA by writing to the: Drivers Medical Group, DVLA, Swansea SA99 1TU (the appropriate medical questionnaires can be downloaded from www.direct.gov.uk/driverhealth). Failure to do so is a criminal offence punishable by a fine of up to a \xA31,000. I will inform my employer of any road traffic incidents, convictions, endorsements or disqualifications that occur, which could affect my entitlement to drive, as soon as possible.  I understand that the Company carry out driver\u2019s licence checks and I agree to provide the relevant details when requested for these checks to be completed"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Row, {
-        style: {
-          borderBottom: '1px solid rgb(114 116 119)',
-          marginBottom: '15px'
-        }
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
+        htmlFor: "bank_name"
+      }, "Bank Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["TextInput"], {
+        name: "bank_name",
+        id: "bank_name",
+        placeholder: "Bank Name",
+        required: true,
+        value: this.state.bank_name,
+        onChange: this.handleChange,
+        autoComplete: "off"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
         as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
         md: "3"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
-        htmlFor: "employee_name"
-      }, "Employee Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["TextInput"], {
-        name: "employee_name",
-        id: "employee_name",
-        placeholder: "Employee Name",
+        htmlFor: "name_of_account_holder"
+      }, "name of account holder"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["TextInput"], {
+        name: "name_of_account_holder",
+        id: "name_of_account_holder",
+        placeholder: "name of account holder",
         required: true,
-        value: this.state.employee_name,
+        value: this.state.name_of_account_holder,
         onChange: this.handleChange,
         autoComplete: "off"
-      })), this.state.id == '' ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
         as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "4"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_signature_canvas__WEBPACK_IMPORTED_MODULE_12___default.a, {
-        penColor: "black",
-        dotSize: function dotSize() {
-          return (_this2.minWidth + _this2.maxWidth) / 5;
-        },
-        canvasProps: {
-          width: 300,
-          height: 100,
-          className: 'sigCanvas'
-        },
-        ref: function ref(_ref5) {
-          _this2.employee = _ref5;
-        },
-        onEnd: this.employee_trim
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        type: "button",
-        style: {
-          position: 'absolute',
-          bottom: '6px'
-        },
-        onClick: this.employee_clear
-      }, "Clear")) : '', /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "2"
-      }, this.state.id != '' ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        htmlFor: "region"
-      }, "Signature") : '', this.state.employee_signature_show ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: this.state.employee_signature_show
-      }) : null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "2"
+        md: "3"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
-        htmlFor: "region"
-      }, "Signature Date"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_datetime__WEBPACK_IMPORTED_MODULE_2___default.a, {
-        closeOnSelect: true,
-        onChange: this.recruitmentChange,
-        value: this.state.employee_date,
-        dateFormat: "D/M/Y",
-        timeFormat: false,
-        maxDate: new Date(),
-        inputProps: {
-          required: 'required',
-          name: "employee_date",
-          placeholder: 'Select Date',
-          autoComplete: 'off'
-        }
+        htmlFor: "account_number"
+      }, "Account Number"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["TextInput"], {
+        name: "account_number",
+        id: "account_number",
+        placeholder: "account number",
+        required: true,
+        value: this.state.account_number,
+        onChange: this.handleChange,
+        autoComplete: "off"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
+        htmlFor: "sort_code"
+      }, "sort code"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["TextInput"], {
+        name: "sort_code",
+        id: "sort_code",
+        placeholder: "sort code",
+        required: true,
+        value: this.state.sort_code,
+        onChange: this.handleChange,
+        autoComplete: "off"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
+        md: "6"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
+        htmlFor: "bank_address"
+      }, "Bank Address"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["TextInput"], {
+        name: "bank_address",
+        id: "bank_address",
+        placeholder: "Bank Address",
+        required: true,
+        value: this.state.bank_address,
+        onChange: this.handleChange,
+        autoComplete: "off"
       }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Row, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "12",
-        style: {
-          textAlign: 'center',
-          color: 'black'
-        }
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Bespoke Metering Solutions - DVLA License Checks"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "12"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "The Company will perform a check on your driver\u2019s license before you are permitted to drive any company vehicle. These checks will then be carried out annually, in the event of an accident or upon the declaration of a driving offence. To enable the Company to perform these checks you must generate a code from the DVLA, please see below for instructions on how to do this.  ")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "12"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Before you start you will need:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Your driver\u2019s license number"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Your national insurance number"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "The post code on your driver\u2019s license")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Go to ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "https://www.gov.uk/view-driving-licence",
-        target: "_blanck"
-      }, "www.gov.uk/view-driving-licence"), " and follow the instructions."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Once you have generated the code you must provide this along with the last 8 characters of your driver\u2019s license number. The code is valid for 21 days.")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "12"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "checkbox"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["Checkbox"], {
-        name: "i_confirm",
-        label: "I confirm that I give permission for Bespoke Metering Solutions to carry out the necessary checks on my driving licence.",
-        id: "i_confirm",
-        value: this.state.i_confirm,
-        required: true,
-        onChange: this.handleCheckboxChange
-      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "3"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
-        htmlFor: "confirm_employee_name"
-      }, "Employee Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["TextInput"], {
-        name: "confirm_employee_name",
-        id: "confirm_employee_name",
-        placeholder: "Employee Name",
-        required: true,
-        value: this.state.confirm_employee_name,
-        onChange: this.handleChange,
-        autoComplete: "off"
-      })), this.state.id == '' ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "4"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_signature_canvas__WEBPACK_IMPORTED_MODULE_12___default.a, {
-        penColor: "black",
-        dotSize: function dotSize() {
-          return (_this2.minWidth + _this2.maxWidth) / 5;
-        },
-        canvasProps: {
-          width: 300,
-          height: 100,
-          className: 'sigCanvas'
-        },
-        ref: function ref(_ref6) {
-          _this2.confirm_employee = _ref6;
-        },
-        onEnd: this.confirm_employee_trim
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        type: "button",
-        style: {
-          position: 'absolute',
-          bottom: '6px'
-        },
-        onClick: this.confirm_employee_clear
-      }, "Clear")) : '', /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "2"
-      }, this.state.id != '' ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        htmlFor: "region"
-      }, "Signature") : '', this.state.confirm_employee_signature_show ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: this.state.confirm_employee_signature_show
-      }) : null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "2"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
-        htmlFor: "region"
-      }, "Signature Date"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_datetime__WEBPACK_IMPORTED_MODULE_2___default.a, {
-        closeOnSelect: true,
-        onChange: this.confirmChange,
-        value: this.state.confirm_Date,
-        dateFormat: "D/M/Y",
-        timeFormat: false,
-        maxDate: new Date(),
-        inputProps: {
-          required: 'required',
-          name: "confirm_Date",
-          placeholder: 'Select Date',
-          autoComplete: 'off'
-        }
-      }))), this.state.id == '' ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Row, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
         as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
         sm: 12,
         className: "mt-3"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
         disabled: this.state.formSubmitting,
         type: "submit"
-      }, " ", this.state.buttonName))) : ''))))));
+      }, " ", this.state.buttonName)))))))));
     }
   }]);
 
-  return DriversDeclaration;
+  return BankDetails;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 var style = {
@@ -988,7 +701,7 @@ var style = {
     marginBottom: '15px'
   }
 };
-/* harmony default export */ __webpack_exports__["default"] = (DriversDeclaration);
+/* harmony default export */ __webpack_exports__["default"] = (BankDetails);
 
 /***/ })
 

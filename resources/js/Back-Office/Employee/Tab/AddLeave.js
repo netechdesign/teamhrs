@@ -39,7 +39,10 @@ class AddLeave extends React.Component{
             used_leave:'',
             allotted_leave_limit:'',
             buttonName:'Add',
-            apiload:false
+            apiload:false,
+            current_year: new Date(),
+            start_date:'',
+            end_date:''
         }
         if(this.props.location.state){
             id = this.props.location.state.userId;
@@ -50,6 +53,13 @@ class AddLeave extends React.Component{
             [e.target.name]: e.target.value
         })
     };
+    yearChange =(e) =>{
+        console.log(e.target.value);
+        let start_date = e.target.value+'-04-01';
+        let nextYear= parseInt(e.target.value)+1;
+        let end_date = nextYear+'-03-31';
+        this.setState({[e.target.name]: e.target.value,start_date:start_date,end_date:end_date})
+    }
     handleSubmit =(e) =>{
         e.preventDefault();
         
@@ -113,8 +123,20 @@ class AddLeave extends React.Component{
         if(this.props.match.params.id){
             this.getData(this.props.match.params.id);
         }
+        
     }
-    
+    yearOption = () => {
+        let table = []
+        let yar= this.state.current_year.getFullYear();
+        // Outer loop to create parent
+        for (let i = 0; i <= 4; i++) {
+            let yesr= parseInt(yar)+i;
+            let  option=<option value={yesr}>{yesr}</option>;
+            table.push(option);
+            
+        }
+        return table
+      }
     getData = (id)=>{
         
         
@@ -188,17 +210,19 @@ class AddLeave extends React.Component{
                                         <Form.Row style={style.rowline} >
                                         <Form.Group as={Col} md="3">
                                                               <Form.Label htmlFor="bank_name">Allotted Year</Form.Label>
-                                                            
-                                                                    <TextInput
-                                                                    name="allotted_year"
-                                                                    type="number"
-                                                                    id="allotted_year"
-                                                                    placeholder="Allotted Year"
-                                                                    required value={this.state.allotted_year}
-                                                                    onChange={this.handleChange}
-                                                                    autoComplete="off"
-                                                                />
-                                                            
+                                                                <SelectGroup
+                                                                name="allotted_year"
+                                                                id="allotted_year"
+                                                                value={this.state.allotted_yearr}
+                                                                required
+                                                                errorMessage="Please select a year."
+                                                                
+                                                                onChange={(e) => this.yearChange(e) }
+                                                                >
+                                                                    <option value="">select a Year</option>
+                                                                    {this.yearOption()}
+
+                                                                </SelectGroup>
                                                         </Form.Group>
                                                         
                                                         

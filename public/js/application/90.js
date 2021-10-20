@@ -1,9 +1,9 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[90],{
 
-/***/ "./resources/js/Back-Office/Employee/Tab/Salary.js":
-/*!*********************************************************!*\
-  !*** ./resources/js/Back-Office/Employee/Tab/Salary.js ***!
-  \*********************************************************/
+/***/ "./resources/js/Back-Office/Employee/Tab/Official.js":
+/*!***********************************************************!*\
+  !*** ./resources/js/Back-Office/Employee/Tab/Official.js ***!
+  \***********************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -87,15 +87,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 var baseurl = window.location.origin;
 var ajaxabort;
 
-var Salary = /*#__PURE__*/function (_React$Component) {
-  _inherits(Salary, _React$Component);
+var Official = /*#__PURE__*/function (_React$Component) {
+  _inherits(Official, _React$Component);
 
-  var _super = _createSuper(Salary);
+  var _super = _createSuper(Official);
 
-  function Salary() {
+  function Official() {
     var _this;
 
-    _classCallCheck(this, Salary);
+    _classCallCheck(this, Official);
 
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
@@ -175,10 +175,34 @@ var Salary = /*#__PURE__*/function (_React$Component) {
       });
     });
 
+    _defineProperty(_assertThisInitialized(_this), "getMonth", function (m) {
+      if (m != '') {
+        if (m > 1) {
+          return m + ' Months';
+        } else {
+          return m + ' Month';
+        }
+      } else {
+        return '';
+      }
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "getYear", function (m) {
+      if (m != '') {
+        if (m > 1) {
+          return m + ' Years';
+        } else {
+          return m + ' Year';
+        }
+      } else {
+        return '';
+      }
+    });
+
     return _this;
   }
 
-  _createClass(Salary, [{
+  _createClass(Official, [{
     key: "componentDidMount",
     value: function componentDidMount() {
       var _ref2 = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
@@ -254,15 +278,15 @@ var Salary = /*#__PURE__*/function (_React$Component) {
         "class": "col-12 col-md-6 col-lg-3"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         "class": "pmd-list-subtitle"
-      }, "Last Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        "class": "pmd-list-title"
-      }, this.state.employee_details.length > 0 ? this.state.employee_details[0].last_name : ' ')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "col-12 col-md-6 col-lg-3"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        "class": "pmd-list-subtitle"
       }, "Middle Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         "class": "pmd-list-title"
       }, this.state.employee_details.length > 0 ? this.state.employee_details[0].middle_name : ' ')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        "class": "col-12 col-md-6 col-lg-3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        "class": "pmd-list-subtitle"
+      }, "Last Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        "class": "pmd-list-title"
+      }, this.state.employee_details.length > 0 ? this.state.employee_details[0].last_name : ' ')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         "class": "col-12 col-md-6 col-lg-3"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         "class": "pmd-list-subtitle"
@@ -320,13 +344,51 @@ var Salary = /*#__PURE__*/function (_React$Component) {
         "class": "col-12 col-md-6 col-lg-3"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         "class": "pmd-list-subtitle"
+      }, "Town of Birth"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        "class": "pmd-list-title"
+      }, this.state.employee_details.length > 0 ? this.state.employee_details[0].town_of_birth_detail : ' ', " \xA0")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        "class": "col-12 col-md-6 col-lg-3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        "class": "pmd-list-subtitle"
+      }, "Ni Number"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        "class": "pmd-list-title"
+      }, this.state.employee_details.length > 0 ? this.state.employee_details[0].ni_number : ' ', " \xA0")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        "class": "col-12 col-md-6 col-lg-3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        "class": "pmd-list-subtitle"
+      }, "Mothers Maiden"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        "class": "pmd-list-title"
+      }, this.state.employee_details.length > 0 ? this.state.employee_details[0].mothers_maiden : ' ', " \xA0")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        "class": "col-12 col-md-6 col-lg-3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        "class": "pmd-list-subtitle"
+      }, "Relationship"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        "class": "pmd-list-title"
+      }, this.state.employee_details.length > 0 ? this.state.employee_details[0].relationship : ' ', " \xA0")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        "class": "col-12 col-md-6 col-lg-3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        "class": "pmd-list-subtitle"
+      }, "Contact Number"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        "class": "pmd-list-title"
+      }, this.state.employee_details.length > 0 ? this.state.employee_details[0].contact_number : ' ', " \xA0"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        "class": "row view-basic-card "
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        "class": "col-12 col-md-6 col-lg-6"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        "class": "pmd-list-subtitle"
       }, "Address"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         "class": "pmd-list-title"
-      }, this.state.employee_details.length > 0 ? this.state.employee_details[0].street + ', ' + this.state.employee_details[0].city + ', ' + this.state.employee_details[0].county + ', ' + this.state.employee_details[0].postcode : '')))));
+      }, this.state.employee_details.length > 0 ? this.state.employee_details[0].street + ', ' + this.state.employee_details[0].city + ', ' + this.state.employee_details[0].county + ', ' + this.state.employee_details[0].postcode : '')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        "class": "col-12 col-md-6 col-lg-3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        "class": "pmd-list-subtitle"
+      }, "Time at Address"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        "class": "pmd-list-title"
+      }, this.state.employee_details.length > 0 ? this.getYear(this.state.employee_details[0].time_at_address_year) : ' ', " ", this.state.employee_details.length > 0 ? this.getMonth(this.state.employee_details[0].time_at_address_month) : ' ', "\xA0")))));
     }
   }]);
 
-  return Salary;
+  return Official;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 var style = {
@@ -335,7 +397,7 @@ var style = {
     marginBottom: '15px'
   }
 };
-/* harmony default export */ __webpack_exports__["default"] = (Salary);
+/* harmony default export */ __webpack_exports__["default"] = (Official);
 
 /***/ })
 

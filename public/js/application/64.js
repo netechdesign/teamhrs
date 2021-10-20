@@ -48,10 +48,10 @@ if(false) {}
 
 /***/ }),
 
-/***/ "./resources/js/employee/Holiday/Tab/Holiday.js":
-/*!******************************************************!*\
-  !*** ./resources/js/employee/Holiday/Tab/Holiday.js ***!
-  \******************************************************/
+/***/ "./resources/js/Back-Office/Employee/Tab/Holiday.js":
+/*!**********************************************************!*\
+  !*** ./resources/js/Back-Office/Employee/Tab/Holiday.js ***!
+  \**********************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -80,7 +80,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_13__);
 /* harmony import */ var sweetalert2_react_content__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! sweetalert2-react-content */ "./node_modules/sweetalert2-react-content/dist/sweetalert2-react-content.umd.js");
 /* harmony import */ var sweetalert2_react_content__WEBPACK_IMPORTED_MODULE_14___default = /*#__PURE__*/__webpack_require__.n(sweetalert2_react_content__WEBPACK_IMPORTED_MODULE_14__);
-/* harmony import */ var _employee_css__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../employee.css */ "./resources/js/employee/Holiday/employee.css");
+/* harmony import */ var _employee_css__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../employee.css */ "./resources/js/Back-Office/Employee/employee.css");
 /* harmony import */ var _employee_css__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__webpack_require__.n(_employee_css__WEBPACK_IMPORTED_MODULE_15__);
 /* harmony import */ var react_super_responsive_table_dist_SuperResponsiveTableStyle_css__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! react-super-responsive-table/dist/SuperResponsiveTableStyle.css */ "./node_modules/react-super-responsive-table/dist/SuperResponsiveTableStyle.css");
 /* harmony import */ var react_super_responsive_table_dist_SuperResponsiveTableStyle_css__WEBPACK_IMPORTED_MODULE_16___default = /*#__PURE__*/__webpack_require__.n(react_super_responsive_table_dist_SuperResponsiveTableStyle_css__WEBPACK_IMPORTED_MODULE_16__);
@@ -252,7 +252,7 @@ function atable(user_id) {
     $(window).trigger('resize');
   }), _defineProperty(_$$DataTable, "columnDefs", [{
     "render": function render(data, type, row) {
-      var str_buttons = '<button type="button" class="edit btn btn-info btn-sm" data-id="' + row.id + '" ><i style="margin:0px !important;" class="feather icon-edit"></i></button>';
+      var str_buttons = '<button type="button" class="edit btn btn-info btn-sm" data-id="' + row.id + '" ><i style="margin:0px !important;" class="feather icon-edit"></i></button><button type="button" class="deletefile btn btn-danger btn-sm" data-id="' + row.id + '" ><i style="margin:0px !important;" class="feather icon-x"></button>';
       return [str_buttons].join('');
     },
     "targets": $('#data-table-responsive th#action').index(),
@@ -293,14 +293,13 @@ var Holiday = /*#__PURE__*/function (_React$Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       var _ref2 = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
-          id = _ref2.id,
           name = _ref2.name,
           email = _ref2.email;
 
-      if (id) {
-        atable(id);
+      if (this.props.location.state.userId) {
+        atable(this.props.location.state.userId);
         this.setState({
-          userId: id
+          userId: this.props.location.state.userId
         });
       }
 
@@ -311,7 +310,7 @@ var Holiday = /*#__PURE__*/function (_React$Component) {
       var self = this;
       $('#data-table-responsive tbody').on('click', '.edit', function () {
         var id = $(this).attr('data-id');
-        history.push('/Employee/Holiday-edit/' + id);
+        history.push('/employee-Detail/Holiday/edit/' + id);
       }); //Delete
 
       $('#data-table-responsive tbody').on('click', '.deletefile', function () {
@@ -358,7 +357,76 @@ var Holiday = /*#__PURE__*/function (_React$Component) {
       var title = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "feather icon-more-vertical"
       });
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_hoc_Aux__WEBPACK_IMPORTED_MODULE_12__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Table"], {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_hoc_Aux__WEBPACK_IMPORTED_MODULE_12__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], {
+        style: {
+          padding: '0px 10px',
+          borderLeft: 'solid 2px #04a9f5'
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        md: 10,
+        xl: 10,
+        style: {
+          paddingTop: '15px'
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, "Holiday")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        md: 2,
+        xl: 2,
+        style: {
+          padding: '0px'
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["DropdownButton"], {
+        alignRight: true,
+        style: {
+          "float": 'right',
+          border: 'none'
+        },
+        title: title,
+        variant: 'outline-secondary',
+        id: "dropdown-variants-secondary",
+        key: 'secondary',
+        className: "drp-icon"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Dropdown"].Item, {
+        eventKey: "1"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["NavLink"], {
+        to: {
+          pathname: '/employee-Detail/Holiday/Add',
+          state: {
+            userId: this.state.userId
+          }
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        "class": "feather icon-plus"
+      }), " Add")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Dropdown"].Item, {
+        eventKey: "1"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["NavLink"], {
+        to: {
+          pathname: '/employee-Detail/Holiday/Calendar',
+          state: {
+            userId: this.state.userId
+          }
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        "class": "feather icon-calendar"
+      }), " Calendar"))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        "class": "details-tab",
+        style: {
+          borderTop: 'solid 1px #ebeff1',
+          padding: '10px 20px'
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        style: {
+          position: 'absolute',
+          zIndex: '99999',
+          background: 'rgba(255, 255, 255, 0.57)',
+          top: '15%',
+          left: '50%',
+          display: this.state.apiload ? 'block' : 'none'
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "loader"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        "class": "row view-basic-card "
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Table"], {
         ref: "tbl",
         striped: true,
         hover: true,
@@ -371,9 +439,9 @@ var Holiday = /*#__PURE__*/function (_React$Component) {
         id: "to_date"
       }, "To"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         id: "time_off"
-      }, "Time off"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+      }, "time_off"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         id: "notes"
-      }, "Notes"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+      }, "notes"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         id: "action"
       }, "Action"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tfoot", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         id: "from_date"
@@ -383,9 +451,9 @@ var Holiday = /*#__PURE__*/function (_React$Component) {
         id: "time_off"
       }, "Time Off"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         id: "notes"
-      }, "Notes"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+      }, "notes"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         id: "action"
-      }, "Action")))))))));
+      }, "Action")))))));
     }
   }]);
 

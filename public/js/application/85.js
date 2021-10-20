@@ -1,9 +1,9 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[85],{
 
-/***/ "./resources/js/Back-Office/Employee/Tab/Documents.js":
-/*!************************************************************!*\
-  !*** ./resources/js/Back-Office/Employee/Tab/Documents.js ***!
-  \************************************************************/
+/***/ "./resources/js/Back-Office/Employee/Tab/BankDetails.js":
+/*!**************************************************************!*\
+  !*** ./resources/js/Back-Office/Employee/Tab/BankDetails.js ***!
+  \**************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -31,6 +31,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_12__);
 /* harmony import */ var sweetalert2_react_content__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! sweetalert2-react-content */ "./node_modules/sweetalert2-react-content/dist/sweetalert2-react-content.umd.js");
 /* harmony import */ var sweetalert2_react_content__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(sweetalert2_react_content__WEBPACK_IMPORTED_MODULE_13__);
+/* harmony import */ var _employee_css__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../employee.css */ "./resources/js/Back-Office/Employee/employee.css");
+/* harmony import */ var _employee_css__WEBPACK_IMPORTED_MODULE_14___default = /*#__PURE__*/__webpack_require__.n(_employee_css__WEBPACK_IMPORTED_MODULE_14__);
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -69,18 +71,19 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
+
 var baseurl = window.location.origin;
 var ajaxabort;
 
-var Documents = /*#__PURE__*/function (_React$Component) {
-  _inherits(Documents, _React$Component);
+var BankDetails = /*#__PURE__*/function (_React$Component) {
+  _inherits(BankDetails, _React$Component);
 
-  var _super = _createSuper(Documents);
+  var _super = _createSuper(BankDetails);
 
-  function Documents() {
+  function BankDetails() {
     var _this;
 
-    _classCallCheck(this, Documents);
+    _classCallCheck(this, BankDetails);
 
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
@@ -90,8 +93,11 @@ var Documents = /*#__PURE__*/function (_React$Component) {
 
     _defineProperty(_assertThisInitialized(_this), "state", {
       apiload: true,
-      Documents: [],
-      proof_of_identifications: ''
+      bank_name: '',
+      bank_address: '',
+      name_of_account_holder: '',
+      sort_code: '',
+      account_number: ''
     });
 
     _defineProperty(_assertThisInitialized(_this), "alreadyAdded", function (id) {
@@ -105,39 +111,28 @@ var Documents = /*#__PURE__*/function (_React$Component) {
       var _ref = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
           auth_token = _ref.auth_token;
 
-      axios__WEBPACK_IMPORTED_MODULE_6___default.a.get(baseurl + '/api/documents', {
-        params: {
-          user_id: id
-        },
+      axios__WEBPACK_IMPORTED_MODULE_6___default.a.get(baseurl + '/api/bank_details/' + id, {
         headers: {
           'Accept': 'application/json',
           'Authorization': 'Bearer ' + auth_token
         }
       }).then(function (res) {
         if (res.data.success) {
-          // this.getAddress(res.data.Employee_details.getaddress_id);
-          var _Documents2 = res.data.Documents;
-          var proof_of_identifications = res.data.Proof_of_identifications;
-
-          _this.setState({
-            Documents: _Documents2
-          });
-
-          _this.setState({
-            proof_of_identifications: proof_of_identifications
-          });
+          _this.setState(res.data.Bank_details);
 
           _this.setState({
             apiload: false
           });
         } else {
-          var errorMassage = '';
+          _this.setState({
+            apiload: false
+          });
 
-          if (res.data.errors) {
-            errorMassage = res.data.errors.name;
-          } else {
-            errorMassage = res.data.email;
-          }
+          var errorMassage = '';
+          pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_7__["default"].error({
+            title: "Alert",
+            text: res.data.message
+          });
 
           _this.setState({
             formSubmitting: false
@@ -170,7 +165,7 @@ var Documents = /*#__PURE__*/function (_React$Component) {
     return _this;
   }
 
-  _createClass(Documents, [{
+  _createClass(BankDetails, [{
     key: "componentDidMount",
     value: function componentDidMount() {
       var _ref2 = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
@@ -187,50 +182,6 @@ var Documents = /*#__PURE__*/function (_React$Component) {
       var title = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "feather icon-more-vertical"
       });
-      var re = /(?:\.([^.]+))?$/;
-      var document = this.state.Documents.length > 0 ? this.state.Documents.map(function (item, index) {
-        var ext = re.exec(item.document_path)[1];
-
-        if (ext == 'pdf') {
-          ext = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-            "class": "fa fa-file-pdf-o"
-          });
-        } else if (ext == 'jpeg') {
-          ext = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-            "class": "fa fa-file-photo-o"
-          });
-        } else if (ext == 'xlsx') {
-          ext = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-            "class": "fa fa-file-excel-o"
-          });
-        } else if (ext == 'docx') {
-          ext = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-            "class": "fa fa-file-word-o"
-          });
-        } else {
-          ext = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-            "class": "fa fa-file-text-o"
-          });
-        }
-
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
-          key: index
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, ext), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, item.document_name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-          target: "_black",
-          href: baseurl + '/uploaded/' + item.document_path,
-          className: "btn-sm",
-          style: {
-            width: '20%',
-            padding: '5px 0px'
-          },
-          variant: "secondary"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-          style: {
-            marginRight: '0px'
-          },
-          "class": "fa fa-eye"
-        }))));
-      }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Document not found"));
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_hoc_Aux__WEBPACK_IMPORTED_MODULE_11__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], {
         style: {
           padding: '0px 10px',
@@ -242,7 +193,7 @@ var Documents = /*#__PURE__*/function (_React$Component) {
         style: {
           paddingTop: '15px'
         }
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, "Documents")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, "Bank Detail")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
         md: 2,
         xl: 2,
         style: {
@@ -279,23 +230,42 @@ var Documents = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "loader"
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "row view-basic-card"
+        "class": "row view-basic-card "
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "col-12 col-md-12 col-lg-12"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Table"], {
-        ref: "tbl",
-        striped: true,
-        hover: true,
-        responsive: true,
-        className: "table table-condensed",
-        id: "data-table-responsive"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "#"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, document, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Proofofidentification, {
-        data: this.state.proof_of_identifications
-      })))))));
+        "class": "col-12 col-md-6 col-lg-3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        "class": "pmd-list-subtitle"
+      }, "Name of Account Holder"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        "class": "pmd-list-title"
+      }, this.state.name_of_account_holder, "\xA0 ")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        "class": "col-12 col-md-6 col-lg-3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        "class": "pmd-list-subtitle"
+      }, "Account Number"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        "class": "pmd-list-title"
+      }, this.state.account_number, "\xA0 ")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        "class": "col-12 col-md-6 col-lg-3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        "class": "pmd-list-subtitle"
+      }, "Sort Code"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        "class": "pmd-list-title"
+      }, this.state.sort_code, "\xA0 ")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        "class": "col-12 col-md-6 col-lg-3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        "class": "pmd-list-subtitle"
+      }, "Bank Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        "class": "pmd-list-title"
+      }, this.state.bank_name, "\xA0 ")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        "class": "col-12 col-md-6 col-lg-3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        "class": "pmd-list-subtitle"
+      }, "Bank Address"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        "class": "pmd-list-title"
+      }, this.state.bank_address, "\xA0 ")))));
     }
   }]);
 
-  return Documents;
+  return BankDetails;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 var style = {
@@ -304,178 +274,7 @@ var style = {
     marginBottom: '15px'
   }
 };
-
-var Proofofidentification = /*#__PURE__*/function (_React$Component2) {
-  _inherits(Proofofidentification, _React$Component2);
-
-  var _super2 = _createSuper(Proofofidentification);
-
-  function Proofofidentification() {
-    var _this2;
-
-    _classCallCheck(this, Proofofidentification);
-
-    for (var _len2 = arguments.length, args = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
-      args[_key2] = arguments[_key2];
-    }
-
-    _this2 = _super2.call.apply(_super2, [this].concat(args));
-
-    _defineProperty(_assertThisInitialized(_this2), "getExt", function (document_path) {
-      var re = /(?:\.([^.]+))?$/;
-      var ext = re.exec(document_path)[1];
-
-      if (ext == 'pdf') {
-        ext = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-          "class": "fa fa-file-pdf-o"
-        });
-      } else if (ext == 'jpeg') {
-        ext = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-          "class": "fa fa-file-photo-o"
-        });
-      } else if (ext == 'xlsx') {
-        ext = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-          "class": "fa fa-file-excel-o"
-        });
-      } else if (ext == 'docx') {
-        ext = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-          "class": "fa fa-file-word-o"
-        });
-      } else {
-        ext = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-          "class": "fa fa-file-text-o"
-        });
-      }
-
-      return ext;
-    });
-
-    return _this2;
-  }
-
-  _createClass(Proofofidentification, [{
-    key: "render",
-    value: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_hoc_Aux__WEBPACK_IMPORTED_MODULE_11__["default"], null, this.props.data ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, this.getExt(this.props.data.birth_certificate)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Birth Certificate"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        target: "_black",
-        href: baseurl + '/uploaded/' + this.props.data.birth_certificate,
-        className: "btn-sm",
-        style: {
-          width: '20%',
-          padding: '5px 0px'
-        },
-        variant: "secondary"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        style: {
-          marginRight: '0px'
-        },
-        "class": "fa fa-eye"
-      })))) : '', this.props.data ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, this.getExt(this.props.data.driving_licence_front)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Driving Licence"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        target: "_black",
-        href: baseurl + '/uploaded/' + this.props.data.driving_licence_front,
-        className: "btn-sm",
-        style: {
-          width: '20%',
-          padding: '5px 0px'
-        },
-        variant: "secondary"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        style: {
-          marginRight: '0px'
-        },
-        "class": "fa fa-eye"
-      })))) : '', this.props.data ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, this.getExt(this.props.data.national_insurance_number)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "National Insurance Number"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        target: "_black",
-        href: baseurl + '/uploaded/' + this.props.data.national_insurance_number,
-        className: "btn-sm",
-        style: {
-          width: '20%',
-          padding: '5px 0px'
-        },
-        variant: "secondary"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        style: {
-          marginRight: '0px'
-        },
-        "class": "fa fa-eye"
-      })))) : '', this.props.data ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, this.getExt(this.props.data.p45form)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "p45 Form"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        target: "_black",
-        href: baseurl + '/uploaded/' + this.props.data.p45form,
-        className: "btn-sm",
-        style: {
-          width: '20%',
-          padding: '5px 0px'
-        },
-        variant: "secondary"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        style: {
-          marginRight: '0px'
-        },
-        "class": "fa fa-eye"
-      })))) : '', this.props.data ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, this.getExt(this.props.data.passport_style_photograph)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Passport style Photograph"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        target: "_black",
-        href: baseurl + '/uploaded/' + this.props.data.passport_style_photograph,
-        className: "btn-sm",
-        style: {
-          width: '20%',
-          padding: '5px 0px'
-        },
-        variant: "secondary"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        style: {
-          marginRight: '0px'
-        },
-        "class": "fa fa-eye"
-      })))) : '', this.props.data ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, this.getExt(this.props.data.passport_inside)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Passport"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        target: "_black",
-        href: baseurl + '/uploaded/' + this.props.data.passport_inside,
-        className: "btn-sm",
-        style: {
-          width: '20%',
-          padding: '5px 0px'
-        },
-        variant: "secondary"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        style: {
-          marginRight: '0px'
-        },
-        "class": "fa fa-eye"
-      })))) : '', this.props.data ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, this.getExt(this.props.data.proof_of_address)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Proof of Address"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        target: "_black",
-        href: baseurl + '/uploaded/' + this.props.data.proof_of_address,
-        className: "btn-sm",
-        style: {
-          width: '20%',
-          padding: '5px 0px'
-        },
-        variant: "secondary"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        style: {
-          marginRight: '0px'
-        },
-        "class": "fa fa-eye"
-      })))) : '', this.props.data ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, this.getExt(this.props.data.right_to_work)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Right to work"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        target: "_black",
-        href: baseurl + '/uploaded/' + this.props.data.right_to_work,
-        className: "btn-sm",
-        style: {
-          width: '20%',
-          padding: '5px 0px'
-        },
-        variant: "secondary"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        style: {
-          marginRight: '0px'
-        },
-        "class": "fa fa-eye"
-      })))) : '');
-    }
-  }]);
-
-  return Proofofidentification;
-}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
-
-/* harmony default export */ __webpack_exports__["default"] = (Documents);
+/* harmony default export */ __webpack_exports__["default"] = (BankDetails);
 
 /***/ })
 

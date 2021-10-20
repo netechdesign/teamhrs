@@ -17,6 +17,8 @@ class CreateUserLeavesTable extends Migration
             $table->bigIncrements('id');
             $table->integer('user_id')->nullable()->index();
             $table->integer('allotted_year')->nullable();
+            $table->date('start_date')->nullable();
+            $table->date('end_date')->nullable();
             $table->integer('leave_balance')->nullable();
             $table->integer('used_leave')->nullable();
             $table->integer('allotted_leave_limit')->nullable();

@@ -1,9 +1,9 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[55],{
 
-/***/ "./resources/js/App/components/AnimatedModal.js":
-/*!******************************************************!*\
-  !*** ./resources/js/App/components/AnimatedModal.js ***!
-  \******************************************************/
+/***/ "./node_modules/react-loki/es/LokiStep.js":
+/*!************************************************!*\
+  !*** ./node_modules/react-loki/es/LokiStep.js ***!
+  \************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -11,68 +11,308 @@
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_animated_modal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-animated-modal */ "./node_modules/react-animated-modal/build/index.js");
-/* harmony import */ var react_animated_modal__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_animated_modal__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _hoc_Aux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../hoc/_Aux */ "./resources/js/hoc/_Aux/index.js");
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
 
 
 
+var LokiStep = function LokiStep(_ref) {
+  var currentStep = _ref.currentStep,
+      stepsDone = _ref.stepsDone,
+      totalSteps = _ref.totalSteps,
+      step = _ref.step,
+      isLokiComplete = _ref.isLokiComplete,
+      goTo = _ref.goTo;
 
+  var isActive = currentStep === step.index;
+  var isComplete = currentStep > step.index;
+  var isDisabled = !isActive && !isComplete;
 
-var AnimatedModal = /*#__PURE__*/function (_React$Component) {
-  _inherits(AnimatedModal, _React$Component);
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
+    "li",
+    {
+      className: "LokiStep " + (isActive && "LokiStep-Active") + " " + ((isComplete || isLokiComplete) && "LokiStep-Complete")
+    },
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
+      "a",
+      {
+        href: "#",
+        onClick: function onClick(event) {
+          event.preventDefault();
 
-  var _super = _createSuper(AnimatedModal);
+          if (isDisabled) {
+            return;
+          }
 
-  function AnimatedModal() {
-    _classCallCheck(this, AnimatedModal);
+          goTo(step.index);
+        },
+        className: "LokiStep-Link " + (isDisabled && "disabled"),
+        disabled: isDisabled
+      },
+      react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
+        "div",
+        { className: "LokiStep-Icon" },
+        step.icon || step.index
+      )
+    )
+  );
+};
 
-    return _super.apply(this, arguments);
-  }
+LokiStep.propTypes =  true ? {
+  currentStep: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.number.isRequired,
+  totalSteps: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.number.isRequired,
+  step: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.object.isRequired,
+  isLokiComplete: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.bool.isRequired
+} : undefined;
 
-  _createClass(AnimatedModal, [{
-    key: "render",
-    value: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_hoc_Aux__WEBPACK_IMPORTED_MODULE_2__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_animated_modal__WEBPACK_IMPORTED_MODULE_1___default.a, {
-        visible: this.props.showModal,
-        closemodal: this.props.modalClosed,
-        type: this.props.animation
-      }, this.props.children));
-    }
-  }]);
-
-  return AnimatedModal;
-}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
-
-/* harmony default export */ __webpack_exports__["default"] = (AnimatedModal);
+/* harmony default export */ __webpack_exports__["default"] = (LokiStep);
 
 /***/ }),
 
-/***/ "./resources/js/Back-Office/Role/edit.js":
-/*!***********************************************!*\
-  !*** ./resources/js/Back-Office/Role/edit.js ***!
-  \***********************************************/
+/***/ "./node_modules/react-loki/es/LokiStepContainer.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/react-loki/es/LokiStepContainer.js ***!
+  \*********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var LokiStepContainer = function LokiStepContainer(_ref) {
+    var children = _ref.children;
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
+        "ol",
+        { className: "LokiSteps" },
+        children
+    );
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (LokiStepContainer);
+
+/***/ }),
+
+/***/ "./node_modules/react-loki/es/index.js":
+/*!*********************************************!*\
+  !*** ./node_modules/react-loki/es/index.js ***!
+  \*********************************************/
+/*! exports provided: default, LokiStepContainer, LokiStep */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Loki; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _LokiStep__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./LokiStep */ "./node_modules/react-loki/es/LokiStep.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "LokiStep", function() { return _LokiStep__WEBPACK_IMPORTED_MODULE_2__["default"]; });
+
+/* harmony import */ var _LokiStepContainer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./LokiStepContainer */ "./node_modules/react-loki/es/LokiStepContainer.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "LokiStepContainer", function() { return _LokiStepContainer__WEBPACK_IMPORTED_MODULE_3__["default"]; });
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _class, _temp2;
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+
+
+
+
+var Loki = (_temp2 = _class = function (_Component) {
+  _inherits(Loki, _Component);
+
+  function Loki() {
+    var _temp, _this, _ret;
+
+    _classCallCheck(this, Loki);
+
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, _Component.call.apply(_Component, [this].concat(args))), _this), _this.state = {
+      currentStep: 1,
+      stepsDone: [],
+      complete: false
+    }, _temp), _possibleConstructorReturn(_this, _ret);
+  }
+
+  Loki.prototype._back = function _back(data) {
+    this.props.onBack && this.props.onBack(data);
+    this.setState({ currentStep: this.state.currentStep - 1 });
+  };
+
+  Loki.prototype._next = function _next(data) {
+    if (this.state.currentStep === this.props.steps.length) {
+      this.props.onFinish(data);
+      return this.setState({ complete: true });
+    }
+
+    this.props.onNext && this.props.onNext(data);
+    this.setState({
+      currentStep: this.state.currentStep + 1,
+      stepsDone: this.state.stepsDone.concat([this.state.currentStep])
+    });
+  };
+
+  Loki.prototype._lokiData = function _lokiData() {
+    return {
+      currentStep: this.state.currentStep,
+      stepIndex: this.state.currentStep - 1,
+      cantBack: this.state.currentStep === 1,
+      isInFinalStep: this.state.currentStep === this.props.steps.length,
+      backHandler: this._back.bind(this),
+      nextHandler: this._next.bind(this)
+    };
+  };
+
+  Loki.prototype._renderSteps = function _renderSteps() {
+    var _this2 = this;
+
+    if (!this.props.steps) {
+      return;
+    }
+
+    if (this.props.renderSteps) {
+      return this.props.renderSteps(this._lokiData());
+    }
+
+    var steps = this.props.steps.map(function (step, index) {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_LokiStep__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        key: index,
+        stepsDone: _this2.state.stepsDone,
+        currentStep: _this2.state.currentStep,
+        totalSteps: _this2.props.steps.length,
+        step: _extends({}, step, { index: index + 1 }),
+        goTo: function goTo(newStep) {
+          return _this2.setState({ currentStep: newStep });
+        },
+        isLokiComplete: _this2.state.complete
+      });
+    });
+
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
+      _LokiStepContainer__WEBPACK_IMPORTED_MODULE_3__["default"],
+      null,
+      steps
+    );
+  };
+
+  Loki.prototype._renderComponents = function _renderComponents() {
+    if (!this.props.steps) {
+      return;
+    }
+
+    if (this.props.renderComponents) {
+      return this.props.renderComponents(this._lokiData());
+    }
+
+    var _lokiData2 = this._lokiData(),
+        stepIndex = _lokiData2.stepIndex,
+        cantBack = _lokiData2.cantBack,
+        isInFinalStep = _lokiData2.isInFinalStep,
+        backHandler = _lokiData2.backHandler,
+        nextHandler = _lokiData2.nextHandler;
+
+    var component = this.props.steps[stepIndex].component;
+
+    if (this.props.noActions) {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.cloneElement(component, {
+        isComplete: this.state.complete,
+        backLabel: this.props.backLabel,
+        nextLabel: isInFinalStep ? this.props.finishLabel : this.props.nextLabel,
+        cantBack: cantBack,
+        isInFinalStep: isInFinalStep,
+        onBack: backHandler,
+        onNext: nextHandler
+      });
+    }
+
+    return component;
+  };
+
+  Loki.prototype._renderActions = function _renderActions() {
+    // If we don't want the buttons we do not render them
+    if (!this.props.steps || this.props.noActions) {
+      return;
+    }
+
+    var cantBack = this.state.currentStep === 1;
+    var isInFinalStep = this.state.currentStep === this.props.steps.length;
+
+    // If we want custom actions we render them
+    if (this.props.renderActions) {
+      return this.props.renderActions(this._lokiData());
+    }
+
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
+      "div",
+      { className: "Loki-Actions" },
+      react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
+        "button",
+        {
+          type: "button",
+          onClick: this._back.bind(this),
+          disabled: cantBack || this.state.complete
+        },
+        this.props.backLabel
+      ),
+      react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
+        "button",
+        {
+          type: "button",
+          onClick: this._next.bind(this),
+          disabled: this.state.complete
+        },
+        isInFinalStep ? this.props.finishLabel : this.props.nextLabel
+      )
+    );
+  };
+
+  Loki.prototype.render = function render() {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
+      "div",
+      { className: "Loki" },
+      this._renderSteps(),
+      this._renderComponents(),
+      this._renderActions()
+    );
+  };
+
+  return Loki;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]), _class.defaultProps = {
+  backLabel: "Back",
+  nextLabel: "Next",
+  finishLabel: "Finish"
+}, _temp2);
+
+
+Loki.propTypes =  true ? {
+  steps: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.array.isRequired,
+  onFinish: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func.isRequired
+} : undefined;
+
+
+
+/***/ }),
+
+/***/ "./resources/js/employee/Services_starter_form/Services_starter_one.js":
+/*!*****************************************************************************!*\
+  !*** ./resources/js/employee/Services_starter_form/Services_starter_one.js ***!
+  \*****************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -82,34 +322,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
 /* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/index.js");
-/* harmony import */ var react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-bootstrap4-form-validation */ "./node_modules/react-bootstrap4-form-validation/lib/index.js");
-/* harmony import */ var react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var react_text_mask__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-text-mask */ "./node_modules/react-text-mask/dist/reactTextMask.js");
-/* harmony import */ var react_text_mask__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_text_mask__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var validator__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! validator */ "./node_modules/validator/index.js");
-/* harmony import */ var validator__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(validator__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _hoc_Aux__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../hoc/_Aux */ "./resources/js/hoc/_Aux/index.js");
-/* harmony import */ var _App_components_AnimatedModal__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../App/components/AnimatedModal */ "./resources/js/App/components/AnimatedModal.js");
-/* harmony import */ var _HttpFunctions__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../HttpFunctions */ "./resources/js/HttpFunctions.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_9__);
-/* harmony import */ var pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! pnotify/dist/es/PNotify */ "./node_modules/pnotify/dist/es/PNotify.js");
-/* harmony import */ var pnotify_dist_es_PNotifyButtons__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! pnotify/dist/es/PNotifyButtons */ "./node_modules/pnotify/dist/es/PNotifyButtons.js");
-/* harmony import */ var pnotify_dist_es_PNotifyConfirm__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! pnotify/dist/es/PNotifyConfirm */ "./node_modules/pnotify/dist/es/PNotifyConfirm.js");
-/* harmony import */ var pnotify_dist_es_PNotifyCallbacks__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! pnotify/dist/es/PNotifyCallbacks */ "./node_modules/pnotify/dist/es/PNotifyCallbacks.js");
+/* harmony import */ var react_loki__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-loki */ "./node_modules/react-loki/es/index.js");
+/* harmony import */ var react_loadable__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-loadable */ "./node_modules/react-loadable/lib/index.js");
+/* harmony import */ var react_loadable__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_loadable__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _hoc_Aux__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../hoc/_Aux */ "./resources/js/hoc/_Aux/index.js");
+/* harmony import */ var _store_constant__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../store/constant */ "./resources/js/store/constant.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
-
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
-
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -141,57 +359,75 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
-
-
-
-
-
-
-
-
-function successDesktopPNotify() {
-  pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_10__["default"].success({
-    title: 'Success',
-    text: "Role updated successfully",
-    modules: {
-      Desktop: {
-        desktop: true
-      }
-    }
-  }).on('click', function (e) {});
-}
-
-var Trrow = function Trrow(property) {
-  var pageName = property.rows.map(function (value, index) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
-      key: index
-    }, " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["Checkbox"], {
-      name: value.name,
-      label: value.page_name,
-      id: property.index + '_' + value.name,
-      value: value.Ischeck,
-      onChange: property.onchildChange
-    }));
-  });
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["Checkbox"], {
-    name: property.parent,
-    label: property.parent.toUpperCase(),
-    onChange: property.onparentChange,
-    id: property.index
-  })), pageName);
+var loaders = function loaders() {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "loader-bg"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "loader-track"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "loader-fill"
+  })));
 };
 
-var baseurl = window.location.origin;
+var Oneform = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(2), __webpack_require__.e(3), __webpack_require__.e(4), __webpack_require__.e(5), __webpack_require__.e(6), __webpack_require__.e(7), __webpack_require__.e(76)]).then(__webpack_require__.bind(null, /*! ./forms/EmployeeDetails */ "./resources/js/employee/Services_starter_form/forms/EmployeeDetails.js"));
+});
+var BankDetails = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(2), __webpack_require__.e(3), __webpack_require__.e(4), __webpack_require__.e(5), __webpack_require__.e(7), __webpack_require__.e(73)]).then(__webpack_require__.bind(null, /*! ./forms/BankDetails */ "./resources/js/employee/Services_starter_form/forms/BankDetails.js"));
+});
+var UniformOrder = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(2), __webpack_require__.e(3), __webpack_require__.e(4), __webpack_require__.e(5), __webpack_require__.e(7), __webpack_require__.e(78)]).then(__webpack_require__.bind(null, /*! ./forms/UniformOrder */ "./resources/js/employee/Services_starter_form/forms/UniformOrder.js"));
+});
+var ConsentStatement = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(2), __webpack_require__.e(3), __webpack_require__.e(4), __webpack_require__.e(5), __webpack_require__.e(7), __webpack_require__.e(9), __webpack_require__.e(74)]).then(__webpack_require__.bind(null, /*! ./forms/ConsentStatement */ "./resources/js/employee/Services_starter_form/forms/ConsentStatement.js"));
+});
+var ProofOfIdentification = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(2), __webpack_require__.e(3), __webpack_require__.e(4), __webpack_require__.e(5), __webpack_require__.e(7), __webpack_require__.e(9), __webpack_require__.e(77)]).then(__webpack_require__.bind(null, /*! ./forms/ProofOfIdentification */ "./resources/js/employee/Services_starter_form/forms/ProofOfIdentification.js"));
+});
+var DriversDeclaration = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(2), __webpack_require__.e(3), __webpack_require__.e(4), __webpack_require__.e(5), __webpack_require__.e(7), __webpack_require__.e(9), __webpack_require__.e(75)]).then(__webpack_require__.bind(null, /*! ./forms/DriversDeclaration */ "./resources/js/employee/Services_starter_form/forms/DriversDeclaration.js"));
+});
+var routes = [{
+  path: '/services-starter/Employee-Details',
+  exact: true,
+  name: 'Oneform',
+  component: Oneform
+}, {
+  path: '/services-starter/Bank-Details',
+  exact: true,
+  name: 'Services_starter_one',
+  component: BankDetails
+}, {
+  path: '/services-starter/Uniform-Order',
+  exact: true,
+  name: 'Services_starter_one',
+  component: UniformOrder
+}, {
+  path: '/services-starter/Consent-Statement',
+  exact: true,
+  name: 'Services_starter_one',
+  component: ConsentStatement
+}, {
+  path: '/services-starter/Proof-of-Identification',
+  exact: true,
+  name: 'ProofOfIdentification',
+  component: ProofOfIdentification
+}, {
+  path: '/services-starter/Drivers-Declaration',
+  exact: true,
+  name: 'DriversDeclaration',
+  component: DriversDeclaration
+}];
 
-var edit = /*#__PURE__*/function (_React$Component) {
-  _inherits(edit, _React$Component);
+var Services_starter_one = /*#__PURE__*/function (_Component) {
+  _inherits(Services_starter_one, _Component);
 
-  var _super = _createSuper(edit);
+  var _super = _createSuper(Services_starter_one);
 
-  function edit() {
+  function Services_starter_one() {
     var _this;
 
-    _classCallCheck(this, edit);
+    _classCallCheck(this, Services_starter_one);
 
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
@@ -200,437 +436,104 @@ var edit = /*#__PURE__*/function (_React$Component) {
     _this = _super.call.apply(_super, [this].concat(args));
 
     _defineProperty(_assertThisInitialized(_this), "state", {
-      name: "",
-      id: _this.props.match.params.id,
-      chkCustom: false,
-      permission: [],
-      pageArray: [],
-      visible: true,
-      formSubmitting: false,
-      buttonName: 'Save'
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "chageParent", function (e, value) {
-      // e.target.checked=true;
-      var checkValue = e.target.checked;
-      var parentname = e.target.name;
-      var parentIndex = e.target.id;
-
-      var permission = _toConsumableArray(_this.state.permission);
-
-      if (permission[parentIndex][parentname]) {
-        permission[parentIndex][parentname].map(function (vl, ind) {
-          vl.Ischeck = checkValue;
-        });
-      }
-
-      _this.setState({
-        permission: permission
-      });
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "handleCheckboxChange", function (e, value) {
-      var ckname = e.target.name;
-      var parentIndex = e.target.id.split("_")[0];
-      var checkValue = e.target.checked;
-
-      var permission = _toConsumableArray(_this.state.permission);
-
-      var parentname = Object.keys(permission[parentIndex]);
-
-      if (permission[parentIndex][parentname]) {
-        permission[parentIndex][parentname].filter(function (vl, i) {
-          if (vl.name == ckname) {
-            vl.Ischeck = checkValue;
-          }
-        });
-
-        _this.setState({
-          permission: permission
-        });
-      }
-      /*    
-      if(permission[parentIndex][parentname]){
-           permission[parentIndex][parentname].map((vl,ind)=>{
-               vl.Ischeck = checkValue;
-           })
-          }
-          this.setState({permission})
-          */
-
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "handleChange", function (e) {
-      _this.setState(_defineProperty({}, e.target.name, e.target.value));
-
-      var str = e.target.value;
-      str = str.replace(/\s/g, '-');
-
-      _this.setState({
-        slug: str
-      });
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "handleSubmit", function (e, formData, inputs) {
-      e.preventDefault();
-
-      _this.setState({
-        formSubmitting: true
-      });
-
-      _this.setState({
-        buttonName: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-          className: "spinner-grow spinner-grow-sm mr-1",
-          role: "status"
-        }), "Loading")
-      });
-
-      var _ref = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
-          id = _ref.id,
-          auth_token = _ref.auth_token;
-
-      var data = new FormData();
-      data.append('name', _this.state.name);
-      data.append('permission', _this.state.permission);
-      axios__WEBPACK_IMPORTED_MODULE_9___default.a.post(baseurl + '/api/role/' + _this.state.id, {
-        _method: 'PUT',
-        name: _this.state.name,
-        permission: _this.state.permission
-      }, {
-        headers: {
-          'Accept': 'application/json',
-          'Authorization': 'Bearer ' + auth_token
-        }
-      }).then(function (res) {
-        if (res.data.success) {
-          // console.log(res.data.data);
-          successDesktopPNotify();
-          var history = _this.props.history;
-          history.push('/role');
-        } else {
-          if (res.data.errors) {
-            res.data.message = res.data.errors.name;
-          }
-
-          pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_10__["default"].error({
-            title: "System Error",
-            text: res.data.errors.name
-          });
-
-          _this.setState({
-            formSubmitting: false
-          });
-
-          _this.setState({
-            buttonName: 'Edit'
-          });
-        }
-      })["catch"](function (err) {
-        pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_10__["default"].error({
-          title: "System Error",
-          text: err
-        });
-
-        _this.setState({
-          formSubmitting: false
-        });
-
-        _this.setState({
-          buttonName: 'Add'
-        });
-
-        _this.setState({
-          selectedFile: null
-        });
-      }); //  this.props.history.push('/role');
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "handleErrorSubmit", function (e, formData, errorInputs) {//console.log(errorInputs);
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "PemissionGet", function (e) {
-      Object(_HttpFunctions__WEBPACK_IMPORTED_MODULE_8__["Pemissionlist"])().then(function (res) {
-        if (res.data.success) {
-          //console.log(res.data.data);
-          _this.setState({
-            permission: res.data.data
-          });
-
-          document.getElementById("requestLoder").innerHTML = '';
-        } else {}
-      });
-      var id = _this.state.id;
-      document.getElementById("requestLoder").innerHTML = '<img style="width:2%"  src="' + baseurl + '/images/ajax_loader_gray_512.gif"></img>';
-
-      var _ref2 = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
-          auth_token = _ref2.auth_token;
-
-      var data = new FormData();
-      data.append('name', _this.state.name);
-      data.append('permission', _this.state.permission);
-      axios__WEBPACK_IMPORTED_MODULE_9___default.a.get(baseurl + '/api/role/' + id + '/edit', {
-        headers: {
-          'Authorization': 'Bearer ' + auth_token
-        }
-      }).then(function (res) {
-        if (res.data.success) {
-          var parmissions = res.data.data.parmissions;
-
-          _this.state.permission.map(function (vl, ind) {
-            var parentname = Object.keys(vl);
-
-            for (var i = 0, len = parmissions.length; i < len; i++) {
-              if (parmissions[i][parentname]) {
-                _this.state.permission[ind][parentname] = parmissions[i][parentname]; //let merged = {...obj1, ...obj2};
-              }
-            }
-          });
-
-          _this.setState({
-            name: res.data.data.name
-          });
-
-          document.getElementById("requestLoder").innerHTML = '';
-          /*
-          this.state.permission.map((val,index)=>{
-                console.log(val[Object.keys(val)[0]]);
-          })
-          */
-        } else {}
-      })["catch"](function (err) {
-        console.log(err);
-      });
+      isFinished: false
     });
 
     return _this;
   }
 
-  _createClass(edit, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      var _this$props = this.props,
-          match = _this$props.match,
-          location = _this$props.location,
-          history = _this$props.history;
-      Object(_HttpFunctions__WEBPACK_IMPORTED_MODULE_8__["CheckPermission"])('role', 'edit', history);
-      this.PemissionGet();
-    }
-  }, {
+  _createClass(Services_starter_one, [{
     key: "render",
     value: function render() {
-      var _this2 = this;
-
-      var addPage = [];
-      var _this$props2 = this.props,
-          match = _this$props2.match,
-          location = _this$props2.location,
-          history = _this$props2.history;
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_hoc_Aux__WEBPACK_IMPORTED_MODULE_6__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"].Header, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"].Title, {
-        as: "h5"
-      }, "Edit Role"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Button"], {
-        className: "btn-sm",
-        style: {
-          'float': 'right'
-        },
-        onClick: function onClick() {
-          history.goBack();
-        }
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "feather icon-chevron-left"
-      }), "Back")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["ValidationForm"], {
-        onSubmit: this.handleSubmit,
-        onErrorSubmit: this.handleErrorSubmit
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Row, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
-        md: "6"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Label, {
-        htmlFor: "name"
-      }, "Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["TextInput"], {
-        name: "name",
-        id: "name",
-        placeholder: "Name",
-        required: true,
-        value: this.state.name,
-        onChange: this.handleChange,
-        autoComplete: "off"
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
-        md: "12"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, "Permission"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        id: "requestLoder",
-        style: {
-          'textAlign': 'center'
-        }
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Table"], {
-        ref: "tbl",
-        striped: true,
-        hover: true,
-        responsive: true,
-        className: "table table-condensed",
-        id: "data-table-responsive"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", {
-        id: "listdata"
-      }, this.state.permission.map(function (val, index) {
-        //  console.log(val[Object.keys(val)[0]]);
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Trrow, {
+      var menu = routes.map(function (route, index) {
+        return route.component ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
           key: index,
-          index: index,
-          parent: Object.keys(val)[0],
-          onparentChange: _this2.chageParent,
-          rows: val[Object.keys(val)[0]],
-          onchildChange: _this2.handleCheckboxChange
-        });
-      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
-        sm: 12,
-        className: "mt-3"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Button"], {
-        disabled: this.state.formSubmitting,
-        type: "submit"
-      }, " ", this.state.buttonName)))))))));
+          path: route.path,
+          exact: route.exact,
+          name: route.name,
+          render: function render(props) {
+            return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(route.component, props);
+          }
+        }) : null;
+      });
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_hoc_Aux__WEBPACK_IMPORTED_MODULE_5__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"].Header, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"].Title, {
+        as: "h5"
+      }, "EMPLOYEE FORM")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
+        "class": "navbar navbar-expand-lg  navbar-expand-sm  navbar-light bg-light"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        "class": "collapse navbar-collapse",
+        style: {
+          display: 'block'
+        },
+        id: "navbarText"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        "class": "navbar-nav mr-auto formnev"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        "class": "nav-item"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
+        to: "/services-starter/Employee-Details",
+        className: "nav-link link",
+        activeClassName: "active",
+        style: {
+          borderRight: 'solid 1px #04a9f5'
+        }
+      }, "Employee Details")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        "class": "nav-item"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
+        to: "/services-starter/Bank-Details",
+        className: "nav-link link",
+        style: {
+          borderRight: 'solid 1px #04a9f5'
+        }
+      }, "Bank Details")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        "class": "nav-item"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
+        to: "/services-starter/Uniform-Order",
+        className: "nav-link link",
+        style: {
+          borderRight: 'solid 1px #04a9f5'
+        }
+      }, "Uniform Order")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        "class": "nav-item"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
+        to: "/services-starter/Consent-Statement",
+        className: "nav-link link",
+        style: {
+          borderRight: 'solid 1px #04a9f5'
+        }
+      }, "Consent Statement")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        "class": "nav-item"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
+        to: "/services-starter/Proof-of-Identification",
+        className: "nav-link link",
+        style: {
+          borderRight: 'solid 1px #04a9f5'
+        }
+      }, "Proof of Identification")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        "class": "nav-item"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
+        to: "/services-starter/Drivers-Declaration",
+        className: "nav-link link",
+        style: {
+          borderRight: 'solid 1px #04a9f5'
+        }
+      }, "Drivers Declaration"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        "class": "navbar-text"
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "tabs"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0__["Suspense"], {
+        fallback: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("loaders", null)
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Switch"], null, menu, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Redirect"], {
+        from: "/",
+        to: "/services-starter/Employee-Details"
+      })))))))));
     }
   }]);
 
-  return edit;
-}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+  return Services_starter_one;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
-/* harmony default export */ __webpack_exports__["default"] = (edit);
-
-/***/ }),
-
-/***/ "./resources/js/HttpFunctions.js":
-/*!***************************************!*\
-  !*** ./resources/js/HttpFunctions.js ***!
-  \***************************************/
-/*! exports provided: baseurl, CheckPermission, Login, ChangePasswordurl, Pemissionlist, RoleAdd */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "baseurl", function() { return baseurl; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CheckPermission", function() { return CheckPermission; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Login", function() { return Login; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ChangePasswordurl", function() { return ChangePasswordurl; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Pemissionlist", function() { return Pemissionlist; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RoleAdd", function() { return RoleAdd; });
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./config */ "./resources/js/config.js");
-/* harmony import */ var pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! pnotify/dist/es/PNotify */ "./node_modules/pnotify/dist/es/PNotify.js");
-
-
-
-/**
- *  baseurl  get baseurl
- */
-
-var baseurl = window.location.origin;
-/**
- * Login api request
- * @param {*} user for send Credentials
- */
-
-var CheckPermission = function CheckPermission(page, page_name, history) {
-  var redirect = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : true;
-
-  var _ref = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
-      id = _ref.id,
-      parmissions = _ref.parmissions,
-      is_one_time_password = _ref.is_one_time_password;
-
-  if (is_one_time_password == 0) {
-    history.push('/change-password');
-  }
-
-  var pages = parmissions.filter(function (vl, idx) {
-    if (Object.keys(vl)[0] == page) {
-      return vl;
-    }
-  });
-
-  if (pages.length > 0) {
-    var Ischeck = pages[0][page].filter(function (v, i) {
-      if (v['page_name'] == page_name) {
-        if (v['Ischeck']) {
-          return v;
-        }
-      }
-    });
-
-    if (Ischeck.length == 0) {
-      if (redirect) {
-        var notget = history.goBack();
-
-        if (!notget) {
-          history.push({
-            pathname: '/'
-          });
-        }
-      }
-
-      pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_2__["default"].error({
-        title: "Permission Error",
-        text: _config__WEBPACK_IMPORTED_MODULE_1__["default"].AccessDeniedMessage
-      });
-      return 1;
-    }
-  } else {
-    history.goBack();
-  }
-};
-var Login = function Login(user) {
-  return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(baseurl + '/api/user/login', {
-    email: user.email,
-    password: user.password,
-    remember_me: user.remember
-  }, {
-    headers: {
-      'Content-Type': 'application/json'
-    }
-  });
-};
-var ChangePasswordurl = function ChangePasswordurl(user) {
-  var _ref2 = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
-      id = _ref2.id,
-      auth_token = _ref2.auth_token;
-
-  return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(baseurl + '/api/user/changepassword', {
-    user_id: id,
-    new_password: user.new_password,
-    confirm_password: user.confirm_password,
-    current_password: user.current_password
-  }, {
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + auth_token
-    }
-  });
-};
-var Pemissionlist = function Pemissionlist(parameter) {
-  var _ref3 = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
-      id = _ref3.id,
-      auth_token = _ref3.auth_token;
-
-  return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(baseurl + '/api/parmission/list', {
-    'id': id
-  }, {
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + auth_token
-    }
-  });
-};
-var RoleAdd = function RoleAdd(role) {
-  return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(baseurl + '/api/role', {
-    email: role.email,
-    password: role.password,
-    remember_me: role.remember
-  }, {
-    headers: {
-      'Content-Type': 'application/json'
-    }
-  });
-};
+/* harmony default export */ __webpack_exports__["default"] = (Services_starter_one);
 
 /***/ })
 

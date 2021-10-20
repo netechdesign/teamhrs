@@ -112,15 +112,15 @@ return (
                         <div class="collapse navbar-collapse" style={{display:'block'}} id="navbarText">
                         <ul class="navbar-nav mr-auto formnev">
                         <li class="nav-item">
-                        <NavLink  to='/Employee/Holiday' className="nav-link link" activeClassName="active" style={{borderRight: 'solid 1px #04a9f5'}}>Holiday</NavLink>
+                            <NavLink  to='/Employee/Holiday' className="nav-link link" activeClassName="active" style={{borderRight: 'solid 1px #04a9f5'}}>Holiday Summary</NavLink>
                         </li>
                         <li class="nav-item">
-                        <NavLink  to='/Employee/Holiday-Add' className="nav-link link" style={{borderRight: 'solid 1px #04a9f5'}} >Add Holiday</NavLink>
+                            <NavLink  to='/Employee/Holiday-Calendar' className="nav-link link" activeClassName="active" style={{borderRight: 'solid 1px #04a9f5'}}>Calendar</NavLink>
                         </li>
+
                         <li class="nav-item">
-                        <NavLink  to='/Employee/Holiday-Calendar' className="nav-link link" activeClassName="active" style={{borderRight: 'solid 1px #04a9f5'}}>Calendar</NavLink>
+                            <NavLink  to='/Employee/Holiday-Add' className="nav-link link" style={{borderRight: 'solid 1px #04a9f5'}} >Book holiday dates</NavLink>
                         </li>
-                        
                         </ul>
                         <span class="navbar-text">
 

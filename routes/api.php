@@ -58,8 +58,9 @@ Route::group(['middleware' => ['jwt.auth','api-header']], function () {
         Route::get('add_mandatory_document_to_user/{id}', 'Mandatory_documentsController@add_mandatory_document_to_user');
         Route::get('checked_mandatory_document_list/{id}', 'Mandatory_documentsController@checked_mandatory_document_list');
         Route::get('read_mandatory_document/{id}', 'Mandatory_documentsController@read_mandatory_document');
+        Route::post('outstanding_entitlement', 'HolidayController@outstanding_entitlement');
+        Route::post('holiday_withdraw_request/{id}', 'HolidayController@Holiday_withdraw_request');
         
-
         Route::get('newapplicationcount', 'Application_formsController@newapplicationcount');
         Route::post('request_certification', 'Application_formsController@request_certification');
         Route::post('request_other_certification', 'Application_formsController@request_other_certification');

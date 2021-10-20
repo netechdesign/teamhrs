@@ -302,10 +302,10 @@ webpackContext.id = "./node_modules/moment/locale sync recursive ^\\.\\/.*$";
 
 /***/ }),
 
-/***/ "./resources/js/employee/Services_starter_form/forms/ConsentStatement.js":
-/*!*******************************************************************************!*\
-  !*** ./resources/js/employee/Services_starter_form/forms/ConsentStatement.js ***!
-  \*******************************************************************************/
+/***/ "./resources/js/employee/ApplicationForm/index.js":
+/*!********************************************************!*\
+  !*** ./resources/js/employee/ApplicationForm/index.js ***!
+  \********************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -313,25 +313,50 @@ webpackContext.id = "./node_modules/moment/locale sync recursive ^\\.\\/.*$";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/index.js");
-/* harmony import */ var react_datetime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-datetime */ "./node_modules/react-datetime/DateTime.js");
-/* harmony import */ var react_datetime__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_datetime__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-bootstrap4-form-validation */ "./node_modules/react-bootstrap4-form-validation/lib/index.js");
-/* harmony import */ var react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var react_text_mask__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-text-mask */ "./node_modules/react-text-mask/dist/reactTextMask.js");
-/* harmony import */ var react_text_mask__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_text_mask__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var validator__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! validator */ "./node_modules/validator/index.js");
-/* harmony import */ var validator__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(validator__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! pnotify/dist/es/PNotify */ "./node_modules/pnotify/dist/es/PNotify.js");
-/* harmony import */ var pnotify_dist_es_PNotifyButtons__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! pnotify/dist/es/PNotifyButtons */ "./node_modules/pnotify/dist/es/PNotifyButtons.js");
-/* harmony import */ var pnotify_dist_es_PNotifyConfirm__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! pnotify/dist/es/PNotifyConfirm */ "./node_modules/pnotify/dist/es/PNotifyConfirm.js");
-/* harmony import */ var pnotify_dist_es_PNotifyCallbacks__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! pnotify/dist/es/PNotifyCallbacks */ "./node_modules/pnotify/dist/es/PNotifyCallbacks.js");
-/* harmony import */ var _hoc_Aux__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../../hoc/_Aux */ "./resources/js/hoc/_Aux/index.js");
-/* harmony import */ var react_signature_canvas__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! react-signature-canvas */ "./node_modules/react-signature-canvas/build/index.js");
-/* harmony import */ var react_signature_canvas__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(react_signature_canvas__WEBPACK_IMPORTED_MODULE_12__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/index.js");
+/* harmony import */ var react_datetime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-datetime */ "./node_modules/react-datetime/DateTime.js");
+/* harmony import */ var react_datetime__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_datetime__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-bootstrap4-form-validation */ "./node_modules/react-bootstrap4-form-validation/lib/index.js");
+/* harmony import */ var react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var react_loki__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-loki */ "./node_modules/react-loki/es/index.js");
+/* harmony import */ var react_loadable__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-loadable */ "./node_modules/react-loadable/lib/index.js");
+/* harmony import */ var react_loadable__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react_loadable__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _hoc_Aux__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../hoc/_Aux */ "./resources/js/hoc/_Aux/index.js");
+/* harmony import */ var _store_constant__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../store/constant */ "./resources/js/store/constant.js");
+/* harmony import */ var react_text_mask__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-text-mask */ "./node_modules/react-text-mask/dist/reactTextMask.js");
+/* harmony import */ var react_text_mask__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(react_text_mask__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var validator__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! validator */ "./node_modules/validator/index.js");
+/* harmony import */ var validator__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(validator__WEBPACK_IMPORTED_MODULE_10__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_11__);
+/* harmony import */ var pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! pnotify/dist/es/PNotify */ "./node_modules/pnotify/dist/es/PNotify.js");
+/* harmony import */ var pnotify_dist_es_PNotifyButtons__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! pnotify/dist/es/PNotifyButtons */ "./node_modules/pnotify/dist/es/PNotifyButtons.js");
+/* harmony import */ var pnotify_dist_es_PNotifyConfirm__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! pnotify/dist/es/PNotifyConfirm */ "./node_modules/pnotify/dist/es/PNotifyConfirm.js");
+/* harmony import */ var pnotify_dist_es_PNotifyCallbacks__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! pnotify/dist/es/PNotifyCallbacks */ "./node_modules/pnotify/dist/es/PNotifyCallbacks.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_16___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_16__);
+/* harmony import */ var sweetalert2_react_content__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! sweetalert2-react-content */ "./node_modules/sweetalert2-react-content/dist/sweetalert2-react-content.umd.js");
+/* harmony import */ var sweetalert2_react_content__WEBPACK_IMPORTED_MODULE_17___default = /*#__PURE__*/__webpack_require__.n(sweetalert2_react_content__WEBPACK_IMPORTED_MODULE_17__);
+/* harmony import */ var react_signature_canvas__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! react-signature-canvas */ "./node_modules/react-signature-canvas/build/index.js");
+/* harmony import */ var react_signature_canvas__WEBPACK_IMPORTED_MODULE_18___default = /*#__PURE__*/__webpack_require__.n(react_signature_canvas__WEBPACK_IMPORTED_MODULE_18__);
+/* harmony import */ var react_super_responsive_table__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! react-super-responsive-table */ "./node_modules/react-super-responsive-table/dist/index.js");
+/* harmony import */ var react_super_responsive_table__WEBPACK_IMPORTED_MODULE_19___default = /*#__PURE__*/__webpack_require__.n(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_19__);
+/* harmony import */ var react_super_responsive_table_dist_SuperResponsiveTableStyle_css__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! react-super-responsive-table/dist/SuperResponsiveTableStyle.css */ "./node_modules/react-super-responsive-table/dist/SuperResponsiveTableStyle.css");
+/* harmony import */ var react_super_responsive_table_dist_SuperResponsiveTableStyle_css__WEBPACK_IMPORTED_MODULE_20___default = /*#__PURE__*/__webpack_require__.n(react_super_responsive_table_dist_SuperResponsiveTableStyle_css__WEBPACK_IMPORTED_MODULE_20__);
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -368,17 +393,25 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
+
+
+
+
+
+
+
+
 var baseurl = window.location.origin;
 var ajaxabort;
 
 function successDesktopPNotify(id) {
-  var message = "Consent Statement added successfully";
+  var message = "Appication Form Send successfully";
 
   if (id != '') {
-    message = "Consent Statement updated successfully";
+    message = "Application Form updated successfully";
   }
 
-  pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_7__["default"].success({
+  pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_12__["default"].success({
     title: 'Success',
     text: message,
     modules: {
@@ -389,15 +422,15 @@ function successDesktopPNotify(id) {
   }).on('click', function (e) {});
 }
 
-var ConsentStatement = /*#__PURE__*/function (_React$Component) {
-  _inherits(ConsentStatement, _React$Component);
+var ApplicationForm = /*#__PURE__*/function (_Component) {
+  _inherits(ApplicationForm, _Component);
 
-  var _super = _createSuper(ConsentStatement);
+  var _super = _createSuper(ApplicationForm);
 
-  function ConsentStatement() {
+  function ApplicationForm() {
     var _this;
 
-    _classCallCheck(this, ConsentStatement);
+    _classCallCheck(this, ApplicationForm);
 
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
@@ -408,23 +441,55 @@ var ConsentStatement = /*#__PURE__*/function (_React$Component) {
     _defineProperty(_assertThisInitialized(_this), "state", {
       _method: '',
       id: "",
-      recruitment_employee_name: '',
-      recruitment_employee_signature: null,
-      recruitment_employee_signature_show: null,
-      recruitment_Date: new Date(),
-      screening_employee_name: '',
-      screening_employee_signature: null,
-      screening_employee_signature_show: null,
-      screening_Date: new Date(),
+      position_applied_for: "",
+      title: "",
+      fore_name: "",
+      surname: "",
+      email: "",
+      telephone_number: '',
+      getaddress_id: '',
+      address: '',
+      postcode: '',
+      selected_interview: '',
+      disability: '',
+      medical_condition: '',
+      medical_condition_reasonable: '',
+      any_convictions: '',
+      any_convictions_yes: '',
+      work_permit_uk: '',
+      qualifications: '',
+      employment_history: [{
+        name: '',
+        position: '',
+        reason_for_leaving: ''
+      }],
+      employment_references: [{
+        company_name: '',
+        name: '',
+        position: '',
+        telephone_no: '',
+        email: ''
+      }, {
+        company_name: '',
+        name: '',
+        position: '',
+        telephone_no: '',
+        email: ''
+      }],
+      unavailable_for_interview: '',
       confirm_employee_name: '',
       confirm_employee_signature: null,
       confirm_employee_signature_show: null,
       confirm_Date: new Date(),
+      information_provided_name: '',
+      information_provided_signature: null,
+      information_provided_signature_show: null,
+      information_provided_Date: new Date(),
+      chkBasic: false,
+      chkCustom: false,
+      checkMeSwitch: false,
       showModal: false,
       visible: true,
-      i_confirm: false,
-      is_produce_my_certificate: false,
-      is_drug_and_alcohol: false,
       formSubmitting: false,
       buttonName: 'Save'
     });
@@ -435,6 +500,24 @@ var ConsentStatement = /*#__PURE__*/function (_React$Component) {
 
     _defineProperty(_assertThisInitialized(_this), "handleChange", function (e) {
       _this.setState(_defineProperty({}, e.target.name, e.target.value));
+
+      if (e.target.name == 'selected_interview') {
+        e.target.value == 'NO' ? _this.setState({
+          disability: ''
+        }) : '';
+      }
+
+      if (e.target.name == 'medical_condition') {
+        e.target.value == 'NO' ? _this.setState({
+          medical_condition_reasonable: ''
+        }) : '';
+      }
+
+      if (e.target.name == 'any_convictions') {
+        e.target.value == 'NO' ? _this.setState({
+          any_convictions_yes: ''
+        }) : '';
+      }
     });
 
     _defineProperty(_assertThisInitialized(_this), "handleSubmit", function (e, formData, inputs) {
@@ -464,7 +547,7 @@ var ConsentStatement = /*#__PURE__*/function (_React$Component) {
         urlid = '/' + _this.state.id;
       }
 
-      axios__WEBPACK_IMPORTED_MODULE_6___default.a.post(baseurl + '/api/consent_statement' + urlid, _this.state, {
+      axios__WEBPACK_IMPORTED_MODULE_11___default.a.post(baseurl + '/api/application_form' + urlid, _this.state, {
         headers: {
           'Accept': 'application/json',
           'Authorization': 'Bearer ' + auth_token
@@ -481,8 +564,11 @@ var ConsentStatement = /*#__PURE__*/function (_React$Component) {
           });
 
           successDesktopPNotify(_this.state.id);
+          var userData = JSON.parse(localStorage.getItem('userData'));
+          userData.application_forms_id = 1;
+          localStorage.setItem('userData', JSON.stringify(userData));
 
-          _this.props.history.push('/services-starter/Employee-Details');
+          _this.props.history.push('/dashboard');
         } else {
           var errorMassage = '';
 
@@ -492,7 +578,7 @@ var ConsentStatement = /*#__PURE__*/function (_React$Component) {
             errorMassage = res.data.email;
           }
 
-          pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_7__["default"].error({
+          pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_12__["default"].error({
             title: "System Error",
             text: errorMassage
           });
@@ -506,7 +592,7 @@ var ConsentStatement = /*#__PURE__*/function (_React$Component) {
           });
         }
       })["catch"](function (err) {
-        pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_7__["default"].error({
+        pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_12__["default"].error({
           title: "System Error",
           text: err
         });
@@ -528,176 +614,201 @@ var ConsentStatement = /*#__PURE__*/function (_React$Component) {
     _defineProperty(_assertThisInitialized(_this), "handleErrorSubmit", function (e, formData, errorInputs) {//console.log(errorInputs);
     });
 
-    _defineProperty(_assertThisInitialized(_this), "matchPassword", function (value) {
-      return value && value === _this.state.password;
+    _defineProperty(_assertThisInitialized(_this), "locationChange", function (e) {
+      var currentCar = parseInt(e.target.value.length) + 1;
+
+      if (currentCar > 2) {
+        $('#addressList').html('<li class="list-group-item">Loading...</li>');
+        var currentVal = e.target.value;
+
+        if (ajaxabort && ajaxabort.readyState != 4) {
+          ajaxabort.abort();
+        }
+
+        var self = _assertThisInitialized(_this);
+
+        ajaxabort = $.ajax({
+          dataType: 'json',
+          method: 'get',
+          url: "https://api.getaddress.io/autocomplete/" + currentVal + "?api-key=XrOjpdAkTEiMj4o5WV_uSQ26499&all=true",
+          beforeSend: function beforeSend() {
+            // setting a timeout
+            $('#addressList').html('<li class="list-group-item">Loading...</li>');
+          },
+          success: function success(data) {
+            var listData = '';
+
+            if (data.suggestions.length > 0) {
+              $.each(data.suggestions, function (key, val) {
+                listData += '<li class="list-group-item getArress" data-id="' + val.id + '">' + val.address + '</li>';
+              });
+              $('#addressList').html(listData).show();
+              $('.getArress').click(function () {
+                var id = $(this).attr('data-id');
+                self.getAddress(id);
+              });
+            } else {
+              listData += '<li class="list-group-item">Address not found</li>';
+              $('#addressList').html(listData);
+            }
+          }
+        });
+      }
     });
 
-    _defineProperty(_assertThisInitialized(_this), "alreadyAdded", function () {
-      _this.setState({
-        formSubmitting: true
-      });
+    _defineProperty(_assertThisInitialized(_this), "getAddress", function (id) {
+      var self = _assertThisInitialized(_this);
 
-      _this.setState({
-        buttonName: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-          className: "spinner-grow spinner-grow-sm mr-1",
-          role: "status"
-        }), "Loading")
-      });
+      $.ajax({
+        dataType: 'json',
+        method: 'get',
+        url: "https://api.getAddress.io/get/" + id + "?api-key=XrOjpdAkTEiMj4o5WV_uSQ26499",
+        success: function success(data) {
+          var fullAddress = '';
 
-      var _ref2 = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
-          id = _ref2.id,
-          auth_token = _ref2.auth_token; //const data = new FormData()
-      //data.append('name', this.state.name);
-
-
-      axios__WEBPACK_IMPORTED_MODULE_6___default.a.get(baseurl + '/api/consent_statement/' + id, {
-        headers: {
-          'Accept': 'application/json',
-          'Authorization': 'Bearer ' + auth_token
-        }
-      }).then(function (res) {
-        if (res.data.success) {
-          _this.setState(res.data.Consent_statements);
-
-          _this.setState({
-            recruitment_employee_signature_show: _this.state.recruitment_employee_signature
-          });
-
-          _this.setState({
-            recruitment_employee_signature: null
-          });
-
-          _this.setState({
-            screening_employee_signature_show: _this.state.screening_employee_signature
-          });
-
-          _this.setState({
-            screening_employee_signature: null
-          });
-
-          _this.setState({
-            confirm_employee_signature_show: _this.state.confirm_employee_signature
-          });
-
-          _this.setState({
-            confirm_employee_signature: null
-          });
-
-          _this.setState({
-            formSubmitting: false
-          });
-
-          _this.setState({
-            buttonName: 'Save'
-          });
-        } else {
-          var errorMassage = '';
-
-          if (res.data.errors) {
-            errorMassage = res.data.errors.name;
-          } else {
-            errorMassage = res.data.email;
+          if (data.formatted_address) {
+            $.each(data.formatted_address, function (k, vl) {
+              if (vl != '') {
+                fullAddress += vl + ', ';
+              }
+            });
           }
 
-          _this.setState({
-            formSubmitting: false
+          var houseno = data.building_number + ' ' + data.building_name;
+          self.setState({
+            house_no: houseno
           });
+          var street_line = '';
 
-          _this.setState({
-            buttonName: 'Save'
+          if (data.line_1 != '') {
+            street_line = data.line_1;
+          }
+
+          if (data.line_2 != '') {//  street_line +=' ,'+data.line_2;
+          }
+
+          if (data.line_3 != '') {
+            street_line += ' ,' + data.line_3;
+          }
+
+          if (data.line_4 != '') {
+            street_line += ' ,' + data.line_4;
+          }
+
+          self.setState({
+            street: street_line
           });
+          self.setState({
+            city: data.town_or_city
+          });
+          self.setState({
+            county: data.county
+          });
+          self.setState({
+            postcode: data.postcode
+          });
+          self.setState({
+            getaddress_id: id
+          });
+          self.setState({
+            address: fullAddress + ' ' + data.postcode
+          }); // data.latitude data.longitude
+
+          $("#location").val('');
+          $('#addressList').html('').hide();
         }
-      })["catch"](function (err) {
-        pnotify_dist_es_PNotify__WEBPACK_IMPORTED_MODULE_7__["default"].error({
-          title: "System Error",
-          text: err
-        });
-
-        _this.setState({
-          formSubmitting: false
-        });
-
-        _this.setState({
-          buttonName: 'Add'
-        });
-
-        _this.setState({
-          selectedFile: null
-        });
       });
     });
 
-    _defineProperty(_assertThisInitialized(_this), "recruitment_employee", {});
-
-    _defineProperty(_assertThisInitialized(_this), "recruitment_employee_trim", function () {
-      _this.setState({
-        recruitment_employee_signature: _this.recruitment_employee.getTrimmedCanvas().toDataURL('image/png')
-      });
-
-      _this.setState({
-        recruitment_employee_signature_show: _this.state.recruitment_employee_signature
-      });
+    _defineProperty(_assertThisInitialized(_this), "handleClickOutside", function (e) {
+      $('#addressList').html('').hide(); //$('#location').val('');
     });
 
-    _defineProperty(_assertThisInitialized(_this), "recruitment_employee_clear", function () {
-      _this.recruitment_employee.clear();
-    });
+    _defineProperty(_assertThisInitialized(_this), "employment_historyChange", function (element) {
+      var index = element.target.id;
 
-    _defineProperty(_assertThisInitialized(_this), "recruitmentChange", function (e) {
-      var today = new Date(e);
-      var dd = today.getDate();
-      var mm = today.getMonth() + 1;
-      var yyyy = today.getFullYear();
-
-      if (dd < 10) {
-        dd = '0' + dd;
+      if (element.target.name == 'name') {
+        _this.state.employment_history[index].name = element.target.value;
       }
 
-      if (mm < 10) {
-        mm = '0' + mm;
+      if (element.target.name == 'position') {
+        _this.state.employment_history[index].position = element.target.value;
       }
 
-      var today = dd + '/' + mm + '/' + yyyy;
+      if (element.target.name == 'reason_for_leaving') {
+        _this.state.employment_history[index].reason_for_leaving = element.target.value;
+      }
 
       _this.setState({
-        recruitment_Date: today
+        employment_history: _this.state.employment_history
       });
     });
 
-    _defineProperty(_assertThisInitialized(_this), "screening_employee", {});
+    _defineProperty(_assertThisInitialized(_this), "employment_historyDelete", function (element) {
+      var index = element.target.id;
 
-    _defineProperty(_assertThisInitialized(_this), "screening_employee_trim", function () {
-      _this.setState({
-        screening_employee_signature: _this.screening_employee.getTrimmedCanvas().toDataURL('image/png')
-      });
+      if (index !== -1) {
+        var MySwal = sweetalert2_react_content__WEBPACK_IMPORTED_MODULE_17___default()(sweetalert2__WEBPACK_IMPORTED_MODULE_16___default.a);
+        MySwal.fire({
+          title: 'Are you sure?',
+          text: 'test',
+          type: 'warning',
+          showCloseButton: true,
+          showCancelButton: true
+        }).then(function (willDelete) {
+          if (willDelete.value) {
+            var employment_history = _this.state.employment_history;
+            employment_history.splice(index, 1);
 
-      _this.setState({
-        screening_employee_signature_show: _this.state.screening_employee_signature
-      });
+            _this.setState({
+              employment_history: employment_history
+            });
+          } else {}
+        });
+      }
     });
 
-    _defineProperty(_assertThisInitialized(_this), "screening_employee_clear", function () {
-      _this.screening_employee.clear();
+    _defineProperty(_assertThisInitialized(_this), "addEmployment", function () {
+      var employment_history = {
+        name: '',
+        position: '',
+        reason_for_leaving: ''
+      };
+
+      if (_this.state.employment_history.length < 5) {
+        _this.setState(function (previousState) {
+          return {
+            employment_history: [].concat(_toConsumableArray(previousState.employment_history), [employment_history])
+          };
+        });
+      }
     });
 
-    _defineProperty(_assertThisInitialized(_this), "screeningChange", function (e) {
-      var today = new Date(e);
-      var dd = today.getDate();
-      var mm = today.getMonth() + 1;
-      var yyyy = today.getFullYear();
+    _defineProperty(_assertThisInitialized(_this), "employment_referencesChange", function (element) {
+      var index = element.target.id;
 
-      if (dd < 10) {
-        dd = '0' + dd;
+      if (element.target.name == 'company_name') {
+        _this.state.employment_references[index].company_name = element.target.value;
       }
 
-      if (mm < 10) {
-        mm = '0' + mm;
+      if (element.target.name == 'name') {
+        _this.state.employment_references[index].name = element.target.value;
       }
 
-      var today = dd + '/' + mm + '/' + yyyy;
+      if (element.target.name == 'position') {
+        _this.state.employment_references[index].position = element.target.value;
+      }
+
+      if (element.target.name == 'telephone_no') {
+        _this.state.employment_references[index].telephone_no = element.target.value;
+      }
+
+      if (element.target.name == 'email') {
+        _this.state.employment_references[index].email = element.target.value;
+      }
 
       _this.setState({
-        screening_Date: today
+        employment_references: _this.state.employment_references
       });
     });
 
@@ -718,43 +829,51 @@ var ConsentStatement = /*#__PURE__*/function (_React$Component) {
     });
 
     _defineProperty(_assertThisInitialized(_this), "confirmChange", function (e) {
-      var today = new Date(e);
-      var dd = today.getDate();
-      var mm = today.getMonth() + 1;
-      var yyyy = today.getFullYear();
+      _this.setState({
+        confirm_Date: e
+      });
+    });
 
-      if (dd < 10) {
-        dd = '0' + dd;
-      }
+    _defineProperty(_assertThisInitialized(_this), "information_provided", {});
 
-      if (mm < 10) {
-        mm = '0' + mm;
-      }
-
-      var today = dd + '/' + mm + '/' + yyyy;
+    _defineProperty(_assertThisInitialized(_this), "information_provided_trim", function () {
+      _this.setState({
+        information_provided_signature: _this.information_provided.getTrimmedCanvas().toDataURL('image/png')
+      });
 
       _this.setState({
-        confirm_Date: today
+        information_provided_signature_show: _this.state.information_provided_signature
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "information_provided_clear", function () {
+      _this.information_provided.clear();
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "information_providedChange", function (e) {
+      _this.setState({
+        information_provided_Date: e
       });
     });
 
     return _this;
   }
 
-  _createClass(ConsentStatement, [{
+  _createClass(ApplicationForm, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      this.alreadyAdded();
-
-      var _ref3 = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
-          name = _ref3.name,
-          email = _ref3.email;
+      var _ref2 = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')).user : 'Null',
+          name = _ref2.name,
+          email = _ref2.email;
 
       var emailaddress = email;
       this.setState({
-        recruitment_employee_name: name,
-        screening_employee_name: name,
-        confirm_employee_name: name
+        first_name: name,
+        confirm_employee_name: name,
+        information_provided_name: name
+      });
+      this.setState({
+        email: emailaddress
       });
     }
   }, {
@@ -762,198 +881,469 @@ var ConsentStatement = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var _this2 = this;
 
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_hoc_Aux__WEBPACK_IMPORTED_MODULE_11__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Card"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["ValidationForm"], {
+      var employmenthistoryList = this.state.employment_history.map(function (item, index) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_19__["Tr"], {
+          key: index
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_19__["Td"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_4__["TextInput"], {
+          name: "name",
+          value: item.name,
+          id: index,
+          onChange: function onChange(e) {
+            return _this2.employment_historyChange(e);
+          },
+          placeholder: "Company Name",
+          required: index != 0 ? true : false,
+          autoComplete: "off"
+        })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_19__["Td"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_4__["TextInput"], {
+          name: "position",
+          value: item.position,
+          id: index,
+          onChange: function onChange(e) {
+            return _this2.employment_historyChange(e);
+          },
+          placeholder: "Position",
+          required: index != 0 ? true : false,
+          autoComplete: "off"
+        })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_19__["Td"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_4__["TextInput"], {
+          name: "reason_for_leaving",
+          value: item.reason_for_leaving,
+          id: index,
+          onChange: function onChange(e) {
+            return _this2.employment_historyChange(e);
+          },
+          placeholder: "Reason for leaving",
+          required: index != 0 ? true : false,
+          autoComplete: "off"
+        })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_19__["Td"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Button"], {
+          variant: "outline-danger",
+          style: {
+            display: index == 0 ? 'none' : ''
+          },
+          id: index,
+          onClick: function onClick(e) {
+            return _this2.employment_historyDelete(e);
+          },
+          size: "sm"
+        }, "X"), index == 0 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Button"], {
+          variant: "secondary",
+          onClick: _this2.addEmployment,
+          size: "sm"
+        }, "+Add") : ''));
+      });
+      var referencesList = this.state.employment_references.map(function (item, index) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+          key: index
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_4__["TextInput"], {
+          name: "company_name",
+          value: item.company_name,
+          id: index,
+          onChange: function onChange(e) {
+            return _this2.employment_referencesChange(e);
+          },
+          placeholder: "Company Name",
+          required: index != 1 ? true : false,
+          autoComplete: "off"
+        })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_4__["TextInput"], {
+          name: "name",
+          value: item.name,
+          id: index,
+          onChange: function onChange(e) {
+            return _this2.employment_referencesChange(e);
+          },
+          placeholder: "Name",
+          required: index != 1 ? true : false,
+          autoComplete: "off"
+        })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_4__["TextInput"], {
+          name: "position",
+          value: item.position,
+          id: index,
+          onChange: function onChange(e) {
+            return _this2.employment_referencesChange(e);
+          },
+          placeholder: "Position",
+          required: index != 1 ? true : false,
+          autoComplete: "off"
+        })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_4__["TextInput"], {
+          name: "telephone_no",
+          value: item.telephone_no,
+          id: index,
+          onChange: function onChange(e) {
+            return _this2.employment_referencesChange(e);
+          },
+          placeholder: "Telephone No",
+          required: index != 1 ? true : false,
+          autoComplete: "off"
+        })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_4__["TextInput"], {
+          name: "email",
+          value: item.email,
+          id: index,
+          onChange: function onChange(e) {
+            return _this2.employment_referencesChange(e);
+          },
+          placeholder: "Email",
+          required: index != 1 ? true : false,
+          autoComplete: "off"
+        })));
+      });
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_hoc_Aux__WEBPACK_IMPORTED_MODULE_7__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"].Header, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"].Title, {
+        as: "h5"
+      }, "Application Form")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Card"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_4__["ValidationForm"], {
         autoComplete: "off",
         id: "formid",
         onSubmit: this.handleSubmit,
         onErrorSubmit: this.handleErrorSubmit
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Row, {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Row, {
         style: style.rowline
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "12"
-      }, "Should your role require a DBS check the Company will apply through a third-party intermediary for a basic disclosure. If you have any unspent convictions they should have been disclosed on the application form you completed. Company policy requires any unspent convictions to be reviewed and a risk assessment to be complete. A basic disclosure will contain information about any unspent convictions in your name. By ticking the below boxes and signing this statement you are consenting to some or all the statements."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "12"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "I understand and give my consent to Bespoke Metering Solutions Limited:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Submitting an online application to Staffvetting.com for me to complete;"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Reviewing the application process;"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Being advised by email from Staffvetting.com should my disclosure certificate contain information regarding unspent convictions;")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Row, {
-        style: style.rowline
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "12"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "checkbox"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["Checkbox"], {
-        name: "is_produce_my_certificate",
-        label: "I also hereby agree to produce my certificate if requested to do so during the recruitment process.",
-        id: "is_produce_my_certificate",
-        value: this.state.is_produce_my_certificate,
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
+        md: "6"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Label, {
+        htmlFor: "position_applied_for"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "POSITION APPLIED FOR")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_4__["TextInput"], {
+        name: "position_applied_for",
+        id: "position_applied_for",
+        placeholder: "Position applied for",
         required: true,
-        onChange: this.handleCheckboxChange
-      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "3"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
-        htmlFor: "recruitment_employee_name"
-      }, "Employee Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["TextInput"], {
-        name: "recruitment_employee_name",
-        id: "recruitment_employee_name",
-        placeholder: "Employee Name",
-        required: true,
-        value: this.state.recruitment_employee_name,
+        value: this.state.position_applied_for,
         onChange: this.handleChange,
         autoComplete: "off"
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "4"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_signature_canvas__WEBPACK_IMPORTED_MODULE_12___default.a, {
-        penColor: "black",
-        dotSize: function dotSize() {
-          return (_this2.minWidth + _this2.maxWidth) / 5;
-        },
-        canvasProps: {
-          width: 300,
-          height: 100,
-          className: 'sigCanvas'
-        },
-        ref: function ref(_ref4) {
-          _this2.recruitment_employee = _ref4;
-        },
-        onEnd: this.recruitment_employee_trim
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        type: "button",
-        style: {
-          position: 'absolute',
-          bottom: '6px'
-        },
-        onClick: this.recruitment_employee_clear
-      }, "Clear")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "2"
-      }, this.state.recruitment_employee_signature_show ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: this.state.recruitment_employee_signature_show
-      }) : null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "2"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
-        htmlFor: "region"
-      }, "Signature Date"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_datetime__WEBPACK_IMPORTED_MODULE_2___default.a, {
-        closeOnSelect: true,
-        onChange: this.recruitmentChange,
-        value: this.state.recruitment_Date,
-        dateFormat: "D/M/Y",
-        timeFormat: false,
-        maxDate: new Date(),
-        inputProps: {
-          required: 'required',
-          name: "recruitment_Date",
-          placeholder: 'Select Date',
-          autoComplete: 'off'
-        }
-      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Row, {
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Row, {
         style: style.rowline
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
         md: "12"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "checkbox"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["Checkbox"], {
-        name: "is_drug_and_alcohol",
-        label: "Should your role require drug and alcohol screening tests you understand and consent to such screening tests for the detection of drugs and alcohol from a sample of saliva.",
-        id: "is_drug_and_alcohol",
-        value: this.state.is_drug_and_alcohol,
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "PERSONAL DETAILS")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
+        md: "2"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Label, {
+        htmlFor: "first_name"
+      }, "Title"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_4__["TextInput"], {
+        name: "title",
+        id: "title",
+        placeholder: "Title",
         required: true,
-        onChange: this.handleCheckboxChange
-      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "3"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
-        htmlFor: "screening_employee_name"
-      }, "Employee Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["TextInput"], {
-        name: "screening_employee_name",
-        id: "screening_employee_name",
-        placeholder: "Employee Name",
-        required: true,
-        value: this.state.screening_employee_name,
+        value: this.state.title,
         onChange: this.handleChange,
         autoComplete: "off"
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "4"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_signature_canvas__WEBPACK_IMPORTED_MODULE_12___default.a, {
-        penColor: "black",
-        dotSize: function dotSize() {
-          return (_this2.minWidth + _this2.maxWidth) / 5;
-        },
-        canvasProps: {
-          width: 300,
-          height: 100,
-          className: 'sigCanvas'
-        },
-        ref: function ref(_ref5) {
-          _this2.screening_employee = _ref5;
-        },
-        onEnd: this.screening_employee_trim
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        type: "button",
-        style: {
-          position: 'absolute',
-          bottom: '6px'
-        },
-        onClick: this.screening_employee_clear
-      }, "Clear")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
         md: "2"
-      }, this.state.screening_employee_signature_show ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: this.state.screening_employee_signature_show
-      }) : null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Label, {
+        htmlFor: "asm_name"
+      }, "Fore Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_4__["TextInput"], {
+        name: "fore_name",
+        id: "fore_name",
+        type: "text",
+        placeholder: "Fore Name",
+        value: this.state.fore_name,
+        onChange: this.handleChange,
+        autoComplete: "off"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
         md: "2"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
-        htmlFor: "region"
-      }, "Signature Date"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_datetime__WEBPACK_IMPORTED_MODULE_2___default.a, {
-        closeOnSelect: true,
-        onChange: this.screeningChange,
-        value: this.state.screening_Date,
-        dateFormat: "D/M/Y",
-        timeFormat: false,
-        maxDate: new Date(),
-        inputProps: {
-          required: 'required',
-          name: "screening_Date",
-          placeholder: 'Select Date',
-          autoComplete: 'off'
-        }
-      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Row, {
-        style: style.rowline
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
-        md: "12"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "checkbox"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["Checkbox"], {
-        name: "i_confirm",
-        label: "I confirm that the information given in this form is true, complete and accurate.",
-        id: "i_confirm",
-        value: this.state.i_confirm,
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Label, {
+        htmlFor: "surname"
+      }, "Surname"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_4__["TextInput"], {
+        name: "surname",
+        id: "surname",
+        placeholder: "Surname",
+        value: this.state.surname,
+        onChange: this.handleChange,
+        autoComplete: "off"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
+        md: "2"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Label, {
+        htmlFor: "email"
+      }, "Email"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_4__["TextInput"], {
+        name: "email",
+        id: "email",
+        type: "text",
+        placeholder: "Email",
+        onChange: this.handleChange,
         required: true,
-        onChange: this.handleCheckboxChange
-      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
+        value: this.state.email,
+        autoComplete: "off"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
+        md: "2"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Label, {
+        htmlFor: "telephone_number"
+      }, "Telephone Number"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_4__["TextInput"], {
+        name: "telephone_number",
+        id: "telephone_number",
+        type: "text",
+        placeholder: "Telephone Number",
+        onChange: this.handleChange,
+        required: true,
+        value: this.state.telephone_number,
+        autoComplete: "off"
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Row, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
+        md: "2"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Label, {
+        htmlFor: "mobile_number"
+      }, "\xA0"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_4__["TextInput"], {
+        name: "location",
+        id: "location",
+        type: "text",
+        placeholder: "Search Address",
+        onChange: this.locationChange,
+        autoComplete: "off"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        className: "list-group",
+        id: "addressList",
+        style: {
+          display: 'none',
+          position: 'absolute',
+          zIndex: '100',
+          height: '600%',
+          overflowY: 'overlay'
+        }
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
+        md: "4"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Label, {
+        htmlFor: "mobile_number"
+      }, "Address"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_4__["TextInput"], {
+        name: "address",
+        id: "address",
+        type: "text",
+        placeholder: "Address",
+        onChange: this.handleChange,
+        required: true,
+        value: this.state.address,
+        autoComplete: "off"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
+        md: "2"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Label, {
+        htmlFor: "mobile_number"
+      }, "Postcode"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_4__["TextInput"], {
+        name: "postcode",
+        id: "postcode",
+        type: "text",
+        placeholder: "Postcode",
+        onChange: this.handleChange,
+        required: true,
+        value: this.state.postcode,
+        autoComplete: "off"
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Row, {
+        style: style.rowline
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
+        md: "12"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Label, {
+        htmlFor: "selected_interview"
+      }, "If selected for interview, do you require any reasonable adjustments to be made on account of a disability? (delete as appropriate)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "custom-controls-stacked radio"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_4__["Radio"].RadioGroup, {
+        name: "selected_interview",
+        required: true,
+        valueSelected: this.state.selected_interview,
+        inline: true,
+        onChange: this.handleChange
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_4__["Radio"].RadioItem, {
+        id: "selected_interview4",
+        label: "YES",
+        value: "YES"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_4__["Radio"].RadioItem, {
+        id: "selected_interview5",
+        label: "NO",
+        value: "NO"
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Label, {
+        htmlFor: "selected_interview"
+      }, "Please tell us if there are any \u2018reasonable adjustments\u2019 we can make to assist you in your application or with our recruitment process\u2026\u2026"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_4__["TextInput"], {
+        name: "disability",
+        id: "disability",
+        type: "text",
+        placeholder: "",
+        onChange: this.handleChange,
+        readOnly: this.state.selected_interview == "YES" ? false : true,
+        value: this.state.disability,
+        autoComplete: "off"
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Row, {
+        style: style.rowline
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
+        md: "12"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Label, {
+        htmlFor: "selected_interview"
+      }, "If selected for interview, do you require any reasonable adjustments to be made on account of a medical condition? (delete as appropriate)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "custom-controls-stacked radio"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_4__["Radio"].RadioGroup, {
+        name: "medical_condition",
+        required: true,
+        valueSelected: this.state.medical_condition,
+        inline: true,
+        onChange: this.handleChange
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_4__["Radio"].RadioItem, {
+        id: "medical_condition4",
+        label: "YES",
+        value: "YES"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_4__["Radio"].RadioItem, {
+        id: "medical_condition5",
+        label: "NO",
+        value: "NO"
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Label, {
+        htmlFor: "selected_interview"
+      }, "Please tell us if there are any \u2018reasonable adjustments\u2019 we can make to assist you in your application or with our recruitment process\u2026\u2026"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_4__["TextInput"], {
+        name: "medical_condition_reasonable",
+        id: "medical_condition_reasonable",
+        type: "text",
+        placeholder: "",
+        onChange: this.handleChange,
+        readOnly: this.state.medical_condition == "YES" ? false : true,
+        value: this.state.medical_condition_reasonable,
+        autoComplete: "off"
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Row, {
+        style: style.rowline
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
+        md: "12"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Label, {
+        htmlFor: "selected_interview"
+      }, "Have you any convictions that are not spent under the rehabilitation of offenders act? (delete as appropriate)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "custom-controls-stacked radio"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_4__["Radio"].RadioGroup, {
+        name: "any_convictions",
+        required: true,
+        valueSelected: this.state.any_convictions,
+        inline: true,
+        onChange: this.handleChange
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_4__["Radio"].RadioItem, {
+        id: "any_convictions4",
+        label: "YES",
+        value: "YES"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_4__["Radio"].RadioItem, {
+        id: "any_convictions5",
+        label: "NO",
+        value: "NO"
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Label, {
+        htmlFor: "any_convictions"
+      }, "If Yes, please provide further details:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_4__["TextInput"], {
+        name: "any_convictions_yes",
+        id: "any_convictions_yes",
+        type: "text",
+        placeholder: "",
+        onChange: this.handleChange,
+        readOnly: this.state.any_convictions == "YES" ? false : true,
+        value: this.state.any_convictions_yes,
+        autoComplete: "off"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
+        md: "12"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Label, {
+        htmlFor: "selected_interview"
+      }, "Do you need a work permit to be employed in the UK? (delete as appropriate)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "custom-controls-stacked radio"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_4__["Radio"].RadioGroup, {
+        name: "work_permit_uk",
+        required: true,
+        valueSelected: this.state.work_permit_uk,
+        inline: true,
+        onChange: this.handleChange
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_4__["Radio"].RadioItem, {
+        id: "work_permit_uk4",
+        label: "YES",
+        value: "YES"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_4__["Radio"].RadioItem, {
+        id: "work_permit_uk5",
+        label: "NO",
+        value: "NO"
+      }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Row, {
+        style: style.rowline
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
+        md: "12"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "QUALIFICATIONS")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
+        md: "12"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Label, {
+        htmlFor: "first_name"
+      }, "I confirm that I have the minimum required qualifications for the role I am applying for, please specify below:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_4__["TextInput"], {
+        name: "qualifications",
+        id: "qualifications",
+        placeholder: "",
+        multiline: true,
+        required: true,
+        value: this.state.qualifications,
+        onChange: this.handleChange,
+        rows: "3",
+        autoComplete: "off"
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Row, {
+        style: style.rowline
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
+        md: "12"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "EMPLOYMENT HISTORY (5YEARS)")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
+        md: "12"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_19__["Table"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_19__["Thead"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_19__["Tr"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_19__["Th"], {
+        width: "20%"
+      }, "Company Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_19__["Th"], {
+        width: "30%"
+      }, "Position"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_19__["Th"], {
+        width: "40%"
+      }, "Reason for leaving"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_19__["Th"], {
+        width: "10%"
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_19__["Tbody"], null, employmenthistoryList)))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Row, {
+        style: style.rowline
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
+        md: "12"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "REFERENCES"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Please provide details of two referees, one should be your most recent employer. By providing their details, you consent to us contacting them.")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
+        md: "12"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_super_responsive_table__WEBPACK_IMPORTED_MODULE_19__["Table"], {
+        responsive: true
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        width: "20%"
+      }, "Company Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        width: "20%"
+      }, "Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        width: "20%"
+      }, "Position"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        width: "20%"
+      }, "Telephone No."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        width: "20%"
+      }, "Email"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, referencesList))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
+        md: "12"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Label, {
+        htmlFor: "first_name"
+      }, "Please tell us if there are any dates that you would be unavailable for interview\u2026\u2026"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_4__["TextInput"], {
+        name: "unavailable_for_interview",
+        id: "unavailable_for_interview",
+        placeholder: "",
+        multiline: true,
+        required: true,
+        value: this.state.unavailable_for_interview,
+        onChange: this.handleChange,
+        rows: "3",
+        autoComplete: "off"
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Row, {
+        style: style.rowline
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
+        md: "12"
+      }, "I confirm that the information I have provided on this form is correct and I accept that providing deliberately false information could result in my dismissal."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
         md: "3"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Label, {
         htmlFor: "confirm_employee_name"
-      }, "Employee Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_3__["TextInput"], {
+      }, "Employee Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_4__["TextInput"], {
         name: "confirm_employee_name",
         id: "confirm_employee_name",
         placeholder: "Employee Name",
         required: true,
-        value: this.state.confirm_employee_name,
+        value: this.state.fore_name + " " + this.state.surname,
         onChange: this.handleChange,
         autoComplete: "off"
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
         md: "4"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_signature_canvas__WEBPACK_IMPORTED_MODULE_12___default.a, {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_signature_canvas__WEBPACK_IMPORTED_MODULE_18___default.a, {
         penColor: "black",
         dotSize: function dotSize() {
           return (_this2.minWidth + _this2.maxWidth) / 5;
@@ -963,8 +1353,8 @@ var ConsentStatement = /*#__PURE__*/function (_React$Component) {
           height: 100,
           className: 'sigCanvas'
         },
-        ref: function ref(_ref6) {
-          _this2.confirm_employee = _ref6;
+        ref: function ref(_ref3) {
+          _this2.confirm_employee = _ref3;
         },
         onEnd: this.confirm_employee_trim
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
@@ -974,17 +1364,17 @@ var ConsentStatement = /*#__PURE__*/function (_React$Component) {
           bottom: '6px'
         },
         onClick: this.confirm_employee_clear
-      }, "Clear")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
+      }, "Clear")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
         md: "2"
       }, this.state.confirm_employee_signature_show ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: this.state.confirm_employee_signature_show
-      }) : null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
+      }) : null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
         md: "2"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Label, {
         htmlFor: "region"
-      }, "Signature Date"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_datetime__WEBPACK_IMPORTED_MODULE_2___default.a, {
+      }, "Signature Date"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_datetime__WEBPACK_IMPORTED_MODULE_3___default.a, {
         closeOnSelect: true,
         onChange: this.confirmChange,
         value: this.state.confirm_Date,
@@ -997,22 +1387,84 @@ var ConsentStatement = /*#__PURE__*/function (_React$Component) {
           placeholder: 'Select Date',
           autoComplete: 'off'
         }
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Row, {
+        style: style.rowline
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
         md: "12"
-      }, "All information provided on these forms will be handled with the utmost sensitivity and confidentiality")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Row, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"],
+      }, "I hereby give my consent for the contact information provided on this form to be held on computer or other relevant filing systems and to be shared with other accredited organisations or agencies for recruitment opportunities."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Label, {
+        htmlFor: "information provided_name"
+      }, "Employee Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap4_form_validation__WEBPACK_IMPORTED_MODULE_4__["TextInput"], {
+        name: "information_provided_name",
+        id: "information_provided_name",
+        placeholder: "Employee Name",
+        required: true,
+        value: this.state.fore_name + " " + this.state.surname,
+        onChange: this.handleChange,
+        autoComplete: "off"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
+        md: "4"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_signature_canvas__WEBPACK_IMPORTED_MODULE_18___default.a, {
+        penColor: "black",
+        dotSize: function dotSize() {
+          return (_this2.minWidth + _this2.maxWidth) / 5;
+        },
+        canvasProps: {
+          width: 300,
+          height: 100,
+          className: 'sigCanvas'
+        },
+        ref: function ref(_ref4) {
+          _this2.information_provided = _ref4;
+        },
+        onEnd: this.information_provided_trim
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "button",
+        style: {
+          position: 'absolute',
+          bottom: '6px'
+        },
+        onClick: this.information_provided_clear
+      }, "Clear")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
+        md: "2"
+      }, this.state.information_provided_signature_show ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: this.state.information_provided_signature_show
+      }) : null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
+        md: "2"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Label, {
+        htmlFor: "region"
+      }, "Signature Date"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_datetime__WEBPACK_IMPORTED_MODULE_3___default.a, {
+        closeOnSelect: true,
+        onChange: this.information_providedChange,
+        value: this.state.information_provided_Date,
+        dateFormat: "D/M/Y",
+        timeFormat: false,
+        maxDate: new Date(),
+        inputProps: {
+          required: 'required',
+          name: "confirm_Date",
+          placeholder: 'Select Date',
+          autoComplete: 'off'
+        }
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Row, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Form"].Group, {
+        as: react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"],
         sm: 12,
         className: "mt-3"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Button"], {
         disabled: this.state.formSubmitting,
         type: "submit"
       }, " ", this.state.buttonName)))))))));
     }
   }]);
 
-  return ConsentStatement;
-}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+  return ApplicationForm;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
 var style = {
   rowline: {
@@ -1020,7 +1472,7 @@ var style = {
     marginBottom: '15px'
   }
 };
-/* harmony default export */ __webpack_exports__["default"] = (ConsentStatement);
+/* harmony default export */ __webpack_exports__["default"] = (ApplicationForm);
 
 /***/ })
 

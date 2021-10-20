@@ -56,14 +56,21 @@ class Employee_detailsController extends Controller
                 });
                 $jobs =$jobsrow->orderBy('users.id', 'DESC')->paginate($page_length)->toArray();
 
-                
+                $previous_link = $request['page']-1;
+                $next_link = $request['page']+1;
+                if($next_link > $jobs['last_page']){
+                    $next_link =0;
+                }
                 $response = array(
                 "success"=>true,    
                 "aaData" => $jobs['data'],
                 "iTotalDisplayRecords" => $jobs['total'],
                 "iTotalRecords" => $jobs['total'],
                 "cuttentPage"=>$request['page'],
-                "totalPage" => $jobs['last_page']
+                "totalPage" => $jobs['last_page'],
+                "previous_link" => $previous_link,
+                "next_link" => $next_link
+
             );
                
                 return response()->json($response, 201);

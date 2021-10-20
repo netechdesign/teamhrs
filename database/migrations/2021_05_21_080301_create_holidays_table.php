@@ -21,6 +21,10 @@ class CreateHolidaysTable extends Migration
             $table->longText('notes')->nullable();
             $table->integer('user_id');
             $table->string('email')->nullable();
+            $table->string('day_off_start')->nullable();
+            $table->string('day_off_end')->nullable();
+            $table->string('is_approved')->nullable();
+            $table->text('no_approved_notes')->nullable();
             $table->string('send_to')->nullable();
             $table->softDeletes();
             $table->timestamps();

@@ -1,608 +1,639 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[9],{
 
-/***/ "./node_modules/react-super-responsive-table/dist/components/Table.js":
-/*!****************************************************************************!*\
-  !*** ./node_modules/react-super-responsive-table/dist/components/Table.js ***!
-  \****************************************************************************/
+/***/ "./node_modules/react-signature-canvas/build/index.js":
+/*!************************************************************!*\
+  !*** ./node_modules/react-signature-canvas/build/index.js ***!
+  \************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
+!function(e,t){ true?module.exports=t(__webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js"),__webpack_require__(/*! react */ "./node_modules/react/index.js"),__webpack_require__(/*! signature_pad */ "./node_modules/signature_pad/dist/signature_pad.mjs"),__webpack_require__(/*! trim-canvas */ "./node_modules/trim-canvas/build/index.js")):undefined}(this,function(e,t,n,r){return function(e){function t(r){if(n[r])return n[r].exports;var a=n[r]={exports:{},id:r,loaded:!1};return e[r].call(a.exports,a,a.exports,t),a.loaded=!0,a.exports}var n={};return t.m=e,t.c=n,t.p="",t(0)}([function(e,t,n){"use strict";function r(e){return e&&e.__esModule?e:{default:e}}function a(e,t){var n={};for(var r in e)t.indexOf(r)>=0||Object.prototype.hasOwnProperty.call(e,r)&&(n[r]=e[r]);return n}function o(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function i(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}function u(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}Object.defineProperty(t,"__esModule",{value:!0});var s=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var n=arguments[t];for(var r in n)Object.prototype.hasOwnProperty.call(n,r)&&(e[r]=n[r])}return e},c=function(){function e(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),f=n(1),p=r(f),l=n(2),d=r(l),v=n(3),h=r(v),_=n(4),g=r(_),m=function(e){function t(){var e,n,r,u;o(this,t);for(var s=arguments.length,c=Array(s),f=0;f<s;f++)c[f]=arguments[f];return n=r=i(this,(e=t.__proto__||Object.getPrototypeOf(t)).call.apply(e,[this].concat(c))),r._sigPad=null,r._excludeOurProps=function(){var e=r.props,t=(e.canvasProps,e.clearOnResize,a(e,["canvasProps","clearOnResize"]));return t},r.getCanvas=function(){return r._canvas},r.getTrimmedCanvas=function(){var e=document.createElement("canvas");return e.width=r._canvas.width,e.height=r._canvas.height,e.getContext("2d").drawImage(r._canvas,0,0),(0,g.default)(e)},r.getSignaturePad=function(){return r._sigPad},r._checkClearOnResize=function(){r.props.clearOnResize&&r._resizeCanvas()},r._resizeCanvas=function(){var e=r.props.canvasProps||{},t=e.width,n=e.height;if(!t||!n){var a=r._canvas,o=Math.max(window.devicePixelRatio||1,1);t||(a.width=a.offsetWidth*o),n||(a.height=a.offsetHeight*o),a.getContext("2d").scale(o,o),r.clear()}},r.on=function(){return window.addEventListener("resize",r._checkClearOnResize),r._sigPad.on()},r.off=function(){return window.removeEventListener("resize",r._checkClearOnResize),r._sigPad.off()},r.clear=function(){return r._sigPad.clear()},r.isEmpty=function(){return r._sigPad.isEmpty()},r.fromDataURL=function(e,t){return r._sigPad.fromDataURL(e,t)},r.toDataURL=function(e,t){return r._sigPad.toDataURL(e,t)},r.fromData=function(e){return r._sigPad.fromData(e)},r.toData=function(){return r._sigPad.toData()},u=n,i(r,u)}return u(t,e),c(t,[{key:"componentDidMount",value:function(){this._sigPad=new h.default(this._canvas,this._excludeOurProps()),this._resizeCanvas(),this.on()}},{key:"componentWillUnmount",value:function(){this.off()}},{key:"componentDidUpdate",value:function(){Object.assign(this._sigPad,this._excludeOurProps())}},{key:"render",value:function(){var e=this,t=this.props.canvasProps;return d.default.createElement("canvas",s({ref:function(t){e._canvas=t}},t))}}]),t}(l.Component);m.propTypes={velocityFilterWeight:p.default.number,minWidth:p.default.number,maxWidth:p.default.number,minDistance:p.default.number,dotSize:p.default.oneOfType([p.default.number,p.default.func]),penColor:p.default.string,throttle:p.default.number,onEnd:p.default.func,onBegin:p.default.func,canvasProps:p.default.object,clearOnResize:p.default.bool},m.defaultProps={clearOnResize:!0},t.default=m},function(t,n){t.exports=e},function(e,n){e.exports=t},function(e,t){e.exports=n},function(e,t){e.exports=r}])});
+
+/***/ }),
+
+/***/ "./node_modules/signature_pad/dist/signature_pad.mjs":
+/*!***********************************************************!*\
+  !*** ./node_modules/signature_pad/dist/signature_pad.mjs ***!
+  \***********************************************************/
+/*! exports provided: default */
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
+
 "use strict";
-/* WEBPACK VAR INJECTION */(function(global) {
+__webpack_require__.r(__webpack_exports__);
+/*!
+ * Signature Pad v2.3.2
+ * https://github.com/szimek/signature_pad
+ *
+ * Copyright 2017 Szymon Nowak
+ * Released under the MIT license
+ *
+ * The main idea and some parts of the code (e.g. drawing variable width Bézier curve) are taken from:
+ * http://corner.squareup.com/2012/07/smoother-signatures.html
+ *
+ * Implementation of interpolation using cubic Bézier curves is taken from:
+ * http://benknowscode.wordpress.com/2012/09/14/path-interpolation-using-cubic-bezier-and-control-point-estimation-in-javascript
+ *
+ * Algorithm for approximated length of a Bézier curve is taken from:
+ * http://www.lemoda.net/maths/bezier-length/index.html
+ *
+ */
 
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+function Point(x, y, time) {
+  this.x = x;
+  this.y = y;
+  this.time = time || new Date().getTime();
+}
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports["default"] = void 0;
+Point.prototype.velocityFrom = function (start) {
+  return this.time !== start.time ? this.distanceTo(start) / (this.time - start.time) : 1;
+};
 
-var _react = _interopRequireDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+Point.prototype.distanceTo = function (start) {
+  return Math.sqrt(Math.pow(this.x - start.x, 2) + Math.pow(this.y - start.y, 2));
+};
 
-var _propTypes = _interopRequireDefault(__webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js"));
+Point.prototype.equals = function (other) {
+  return this.x === other.x && this.y === other.y && this.time === other.time;
+};
 
-var _tableContext = __webpack_require__(/*! ../utils/tableContext */ "./node_modules/react-super-responsive-table/dist/utils/tableContext.js");
+function Bezier(startPoint, control1, control2, endPoint) {
+  this.startPoint = startPoint;
+  this.control1 = control1;
+  this.control2 = control2;
+  this.endPoint = endPoint;
+}
 
-var _allowed = _interopRequireDefault(__webpack_require__(/*! ../utils/allowed */ "./node_modules/react-super-responsive-table/dist/utils/allowed.js"));
+// Returns approximated length.
+Bezier.prototype.length = function () {
+  var steps = 10;
+  var length = 0;
+  var px = void 0;
+  var py = void 0;
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-
-function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-var Table = /*#__PURE__*/function (_React$Component) {
-  _inherits(Table, _React$Component);
-
-  var _super = _createSuper(Table);
-
-  function Table(props) {
-    var _this;
-
-    _classCallCheck(this, Table);
-
-    _this = _super.call(this, props);
-    _this.state = {
-      headers: {}
-    };
-    return _this;
-  }
-
-  _createClass(Table, [{
-    key: "render",
-    value: function render() {
-      var headers = this.state.headers;
-      var _this$props = this.props,
-          className = _this$props.className,
-          forwardedRef = _this$props.forwardedRef;
-      var classes = "".concat(className || '', " responsiveTable");
-      return /*#__PURE__*/_react["default"].createElement(_tableContext.Provider, {
-        value: headers
-      }, /*#__PURE__*/_react["default"].createElement("table", _extends({
-        "data-testid": "table"
-      }, (0, _allowed["default"])(this.props), {
-        className: classes,
-        ref: forwardedRef
-      })));
+  for (var i = 0; i <= steps; i += 1) {
+    var t = i / steps;
+    var cx = this._point(t, this.startPoint.x, this.control1.x, this.control2.x, this.endPoint.x);
+    var cy = this._point(t, this.startPoint.y, this.control1.y, this.control2.y, this.endPoint.y);
+    if (i > 0) {
+      var xdiff = cx - px;
+      var ydiff = cy - py;
+      length += Math.sqrt(xdiff * xdiff + ydiff * ydiff);
     }
-  }]);
-
-  return Table;
-}(_react["default"].Component);
-
-Table.propTypes = {
-  className: _propTypes["default"].string,
-  forwardedRef: _propTypes["default"].oneOfType([_propTypes["default"].func, _propTypes["default"].shape({
-    current: _propTypes["default"].instanceOf(global.Element)
-  })])
-};
-Table.defaultProps = {
-  className: undefined,
-  forwardedRef: undefined
-};
-
-var TableForwardRef = /*#__PURE__*/_react["default"].forwardRef(function (props, ref) {
-  return /*#__PURE__*/_react["default"].createElement(Table, _extends({}, props, {
-    forwardedRef: ref
-  }));
-});
-
-TableForwardRef.displayName = Table.name;
-var _default = TableForwardRef;
-exports["default"] = _default;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js")))
-
-/***/ }),
-
-/***/ "./node_modules/react-super-responsive-table/dist/components/Tbody.js":
-/*!****************************************************************************!*\
-  !*** ./node_modules/react-super-responsive-table/dist/components/Tbody.js ***!
-  \****************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports["default"] = void 0;
-
-var _react = _interopRequireDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
-
-var _allowed = _interopRequireDefault(__webpack_require__(/*! ../utils/allowed */ "./node_modules/react-super-responsive-table/dist/utils/allowed.js"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-
-function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
-var Tbody = function Tbody(props) {
-  return /*#__PURE__*/_react["default"].createElement("tbody", _extends({
-    "data-testid": "tbody"
-  }, (0, _allowed["default"])(props)));
-};
-
-var _default = Tbody;
-exports["default"] = _default;
-
-/***/ }),
-
-/***/ "./node_modules/react-super-responsive-table/dist/components/Td.js":
-/*!*************************************************************************!*\
-  !*** ./node_modules/react-super-responsive-table/dist/components/Td.js ***!
-  \*************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports["default"] = void 0;
-
-var _react = _interopRequireDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
-
-var _tableContext = __webpack_require__(/*! ../utils/tableContext */ "./node_modules/react-super-responsive-table/dist/utils/tableContext.js");
-
-var _TdInner = _interopRequireDefault(__webpack_require__(/*! ./TdInner */ "./node_modules/react-super-responsive-table/dist/components/TdInner.js"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-
-function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
-var Td = function Td(props) {
-  return /*#__PURE__*/_react["default"].createElement(_tableContext.Consumer, null, function (headers) {
-    return /*#__PURE__*/_react["default"].createElement(_TdInner["default"], _extends({}, props, {
-      headers: headers
-    }));
-  });
-};
-
-var _default = Td;
-exports["default"] = _default;
-
-/***/ }),
-
-/***/ "./node_modules/react-super-responsive-table/dist/components/TdInner.js":
-/*!******************************************************************************!*\
-  !*** ./node_modules/react-super-responsive-table/dist/components/TdInner.js ***!
-  \******************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports["default"] = void 0;
-
-var _react = _interopRequireDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
-
-var _propTypes = _interopRequireDefault(__webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js"));
-
-var _allowed = _interopRequireDefault(__webpack_require__(/*! ../utils/allowed */ "./node_modules/react-super-responsive-table/dist/utils/allowed.js"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-
-function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
-var TdInner = function TdInner(props) {
-  var headers = props.headers,
-      children = props.children,
-      columnKey = props.columnKey,
-      className = props.className,
-      colSpan = props.colSpan;
-  var classes = "".concat(className || '', " pivoted");
-
-  if (colSpan) {
-    return /*#__PURE__*/_react["default"].createElement("td", _extends({
-      "data-testid": "td"
-    }, (0, _allowed["default"])(props)));
+    px = cx;
+    py = cy;
   }
 
-  return /*#__PURE__*/_react["default"].createElement("td", _extends({
-    "data-testid": "td"
-  }, (0, _allowed["default"])(props), {
-    className: classes
-  }), /*#__PURE__*/_react["default"].createElement("div", {
-    "data-testid": "td-before",
-    className: "tdBefore"
-  }, headers[columnKey]), children !== null && children !== void 0 ? children : /*#__PURE__*/_react["default"].createElement("div", null, "\xA0"));
+  return length;
 };
 
-TdInner.propTypes = {
-  children: _propTypes["default"].node,
-  headers: _propTypes["default"].shape({}),
-  columnKey: _propTypes["default"].number,
-  className: _propTypes["default"].string,
-  colSpan: _propTypes["default"].oneOfType([_propTypes["default"].number, _propTypes["default"].string])
-};
-TdInner.defaultProps = {
-  children: undefined,
-  headers: undefined,
-  columnKey: undefined,
-  className: undefined,
-  colSpan: undefined
-};
-var _default = TdInner;
-exports["default"] = _default;
-
-/***/ }),
-
-/***/ "./node_modules/react-super-responsive-table/dist/components/Th.js":
-/*!*************************************************************************!*\
-  !*** ./node_modules/react-super-responsive-table/dist/components/Th.js ***!
-  \*************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports["default"] = void 0;
-
-var _react = _interopRequireDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
-
-var _allowed = _interopRequireDefault(__webpack_require__(/*! ../utils/allowed */ "./node_modules/react-super-responsive-table/dist/utils/allowed.js"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-
-function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
-var Th = function Th(props) {
-  return /*#__PURE__*/_react["default"].createElement("th", _extends({
-    "data-testid": "th"
-  }, (0, _allowed["default"])(props)));
+/* eslint-disable no-multi-spaces, space-in-parens */
+Bezier.prototype._point = function (t, start, c1, c2, end) {
+  return start * (1.0 - t) * (1.0 - t) * (1.0 - t) + 3.0 * c1 * (1.0 - t) * (1.0 - t) * t + 3.0 * c2 * (1.0 - t) * t * t + end * t * t * t;
 };
 
-var _default = Th;
-exports["default"] = _default;
+/* eslint-disable */
 
-/***/ }),
+// http://stackoverflow.com/a/27078401/815507
+function throttle(func, wait, options) {
+  var context, args, result;
+  var timeout = null;
+  var previous = 0;
+  if (!options) options = {};
+  var later = function later() {
+    previous = options.leading === false ? 0 : Date.now();
+    timeout = null;
+    result = func.apply(context, args);
+    if (!timeout) context = args = null;
+  };
+  return function () {
+    var now = Date.now();
+    if (!previous && options.leading === false) previous = now;
+    var remaining = wait - (now - previous);
+    context = this;
+    args = arguments;
+    if (remaining <= 0 || remaining > wait) {
+      if (timeout) {
+        clearTimeout(timeout);
+        timeout = null;
+      }
+      previous = now;
+      result = func.apply(context, args);
+      if (!timeout) context = args = null;
+    } else if (!timeout && options.trailing !== false) {
+      timeout = setTimeout(later, remaining);
+    }
+    return result;
+  };
+}
 
-/***/ "./node_modules/react-super-responsive-table/dist/components/Thead.js":
-/*!****************************************************************************!*\
-  !*** ./node_modules/react-super-responsive-table/dist/components/Thead.js ***!
-  \****************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+function SignaturePad(canvas, options) {
+  var self = this;
+  var opts = options || {};
 
-"use strict";
+  this.velocityFilterWeight = opts.velocityFilterWeight || 0.7;
+  this.minWidth = opts.minWidth || 0.5;
+  this.maxWidth = opts.maxWidth || 2.5;
+  this.throttle = 'throttle' in opts ? opts.throttle : 16; // in miliseconds
+  this.minDistance = 'minDistance' in opts ? opts.minDistance : 5;
 
+  if (this.throttle) {
+    this._strokeMoveUpdate = throttle(SignaturePad.prototype._strokeUpdate, this.throttle);
+  } else {
+    this._strokeMoveUpdate = SignaturePad.prototype._strokeUpdate;
+  }
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports["default"] = void 0;
+  this.dotSize = opts.dotSize || function () {
+    return (this.minWidth + this.maxWidth) / 2;
+  };
+  this.penColor = opts.penColor || 'black';
+  this.backgroundColor = opts.backgroundColor || 'rgba(0,0,0,0)';
+  this.onBegin = opts.onBegin;
+  this.onEnd = opts.onEnd;
 
-var _react = _interopRequireDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+  this._canvas = canvas;
+  this._ctx = canvas.getContext('2d');
+  this.clear();
 
-var _propTypes = _interopRequireDefault(__webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js"));
+  // We need add these inline so they are available to unbind while still having
+  // access to 'self' we could use _.bind but it's not worth adding a dependency.
+  this._handleMouseDown = function (event) {
+    if (event.which === 1) {
+      self._mouseButtonDown = true;
+      self._strokeBegin(event);
+    }
+  };
 
-var _allowed = _interopRequireDefault(__webpack_require__(/*! ../utils/allowed */ "./node_modules/react-super-responsive-table/dist/utils/allowed.js"));
+  this._handleMouseMove = function (event) {
+    if (self._mouseButtonDown) {
+      self._strokeMoveUpdate(event);
+    }
+  };
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+  this._handleMouseUp = function (event) {
+    if (event.which === 1 && self._mouseButtonDown) {
+      self._mouseButtonDown = false;
+      self._strokeEnd(event);
+    }
+  };
 
-function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+  this._handleTouchStart = function (event) {
+    if (event.targetTouches.length === 1) {
+      var touch = event.changedTouches[0];
+      self._strokeBegin(touch);
+    }
+  };
 
-var Thead = function Thead(props) {
-  var children = props.children;
-  return /*#__PURE__*/_react["default"].createElement("thead", _extends({
-    "data-testid": "thead"
-  }, (0, _allowed["default"])(props)), /*#__PURE__*/_react["default"].cloneElement(children, {
-    inHeader: true
-  }));
+  this._handleTouchMove = function (event) {
+    // Prevent scrolling.
+    event.preventDefault();
+
+    var touch = event.targetTouches[0];
+    self._strokeMoveUpdate(touch);
+  };
+
+  this._handleTouchEnd = function (event) {
+    var wasCanvasTouched = event.target === self._canvas;
+    if (wasCanvasTouched) {
+      event.preventDefault();
+      self._strokeEnd(event);
+    }
+  };
+
+  // Enable mouse and touch event handlers
+  this.on();
+}
+
+// Public methods
+SignaturePad.prototype.clear = function () {
+  var ctx = this._ctx;
+  var canvas = this._canvas;
+
+  ctx.fillStyle = this.backgroundColor;
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  this._data = [];
+  this._reset();
+  this._isEmpty = true;
 };
 
-Thead.propTypes = {
-  children: _propTypes["default"].node
-};
-Thead.defaultProps = {
-  children: undefined
-};
-var _default = Thead;
-exports["default"] = _default;
+SignaturePad.prototype.fromDataURL = function (dataUrl) {
+  var _this = this;
 
-/***/ }),
+  var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
 
-/***/ "./node_modules/react-super-responsive-table/dist/components/Tr.js":
-/*!*************************************************************************!*\
-  !*** ./node_modules/react-super-responsive-table/dist/components/Tr.js ***!
-  \*************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+  var image = new Image();
+  var ratio = options.ratio || window.devicePixelRatio || 1;
+  var width = options.width || this._canvas.width / ratio;
+  var height = options.height || this._canvas.height / ratio;
 
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports["default"] = void 0;
-
-var _react = _interopRequireDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
-
-var _tableContext = __webpack_require__(/*! ../utils/tableContext */ "./node_modules/react-super-responsive-table/dist/utils/tableContext.js");
-
-var _TrInner = _interopRequireDefault(__webpack_require__(/*! ./TrInner */ "./node_modules/react-super-responsive-table/dist/components/TrInner.js"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-
-function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
-var Tr = function Tr(props) {
-  return /*#__PURE__*/_react["default"].createElement(_tableContext.Consumer, null, function (headers) {
-    return /*#__PURE__*/_react["default"].createElement(_TrInner["default"], _extends({}, props, {
-      headers: headers
-    }));
-  });
+  this._reset();
+  image.src = dataUrl;
+  image.onload = function () {
+    _this._ctx.drawImage(image, 0, 0, width, height);
+  };
+  this._isEmpty = false;
 };
 
-var _default = Tr;
-exports["default"] = _default;
+SignaturePad.prototype.toDataURL = function (type) {
+  var _canvas;
 
-/***/ }),
+  switch (type) {
+    case 'image/svg+xml':
+      return this._toSVG();
+    default:
+      for (var _len = arguments.length, options = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+        options[_key - 1] = arguments[_key];
+      }
 
-/***/ "./node_modules/react-super-responsive-table/dist/components/TrInner.js":
-/*!******************************************************************************!*\
-  !*** ./node_modules/react-super-responsive-table/dist/components/TrInner.js ***!
-  \******************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+      return (_canvas = this._canvas).toDataURL.apply(_canvas, [type].concat(options));
+  }
+};
 
-"use strict";
+SignaturePad.prototype.on = function () {
+  this._handleMouseEvents();
+  this._handleTouchEvents();
+};
 
+SignaturePad.prototype.off = function () {
+  this._canvas.removeEventListener('mousedown', this._handleMouseDown);
+  this._canvas.removeEventListener('mousemove', this._handleMouseMove);
+  document.removeEventListener('mouseup', this._handleMouseUp);
 
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+  this._canvas.removeEventListener('touchstart', this._handleTouchStart);
+  this._canvas.removeEventListener('touchmove', this._handleTouchMove);
+  this._canvas.removeEventListener('touchend', this._handleTouchEnd);
+};
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports["default"] = void 0;
+SignaturePad.prototype.isEmpty = function () {
+  return this._isEmpty;
+};
 
-var _react = _interopRequireDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+// Private methods
+SignaturePad.prototype._strokeBegin = function (event) {
+  this._data.push([]);
+  this._reset();
+  this._strokeUpdate(event);
 
-var _propTypes = _interopRequireDefault(__webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js"));
+  if (typeof this.onBegin === 'function') {
+    this.onBegin(event);
+  }
+};
 
-var _allowed = _interopRequireDefault(__webpack_require__(/*! ../utils/allowed */ "./node_modules/react-super-responsive-table/dist/utils/allowed.js"));
+SignaturePad.prototype._strokeUpdate = function (event) {
+  var x = event.clientX;
+  var y = event.clientY;
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+  var point = this._createPoint(x, y);
+  var lastPointGroup = this._data[this._data.length - 1];
+  var lastPoint = lastPointGroup && lastPointGroup[lastPointGroup.length - 1];
+  var isLastPointTooClose = lastPoint && point.distanceTo(lastPoint) < this.minDistance;
 
-function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+  // Skip this point if it's too close to the previous one
+  if (!(lastPoint && isLastPointTooClose)) {
+    var _addPoint = this._addPoint(point),
+        curve = _addPoint.curve,
+        widths = _addPoint.widths;
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+    if (curve && widths) {
+      this._drawCurve(curve, widths.start, widths.end);
+    }
 
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+    this._data[this._data.length - 1].push({
+      x: point.x,
+      y: point.y,
+      time: point.time,
+      color: this.penColor
+    });
+  }
+};
 
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+SignaturePad.prototype._strokeEnd = function (event) {
+  var canDrawCurve = this.points.length > 2;
+  var point = this.points[0]; // Point instance
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+  if (!canDrawCurve && point) {
+    this._drawDot(point);
+  }
 
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+  if (point) {
+    var lastPointGroup = this._data[this._data.length - 1];
+    var lastPoint = lastPointGroup[lastPointGroup.length - 1]; // plain object
 
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-var TrInner = /*#__PURE__*/function (_React$Component) {
-  _inherits(TrInner, _React$Component);
-
-  var _super = _createSuper(TrInner);
-
-  function TrInner(props) {
-    var _this;
-
-    _classCallCheck(this, TrInner);
-
-    _this = _super.call(this, props);
-    var headers = props.headers;
-
-    if (headers && props.inHeader) {
-      _react["default"].Children.map(props.children, function (child, i) {
-        if (child) {
-          headers[i] = child.props.children;
-        }
+    // When drawing a dot, there's only one point in a group, so without this check
+    // such group would end up with exactly the same 2 points.
+    if (!point.equals(lastPoint)) {
+      lastPointGroup.push({
+        x: point.x,
+        y: point.y,
+        time: point.time,
+        color: this.penColor
       });
     }
-
-    return _this;
   }
 
-  _createClass(TrInner, [{
-    key: "render",
-    value: function render() {
-      var children = this.props.children;
-      return /*#__PURE__*/_react["default"].createElement("tr", _extends({
-        "data-testid": "tr"
-      }, (0, _allowed["default"])(this.props)), children && _react["default"].Children.map(children, function (child, i) {
-        return child && /*#__PURE__*/_react["default"].cloneElement(child, {
-          // eslint-disable-next-line react/no-array-index-key
-          key: i,
-          columnKey: i
-        });
-      }));
+  if (typeof this.onEnd === 'function') {
+    this.onEnd(event);
+  }
+};
+
+SignaturePad.prototype._handleMouseEvents = function () {
+  this._mouseButtonDown = false;
+
+  this._canvas.addEventListener('mousedown', this._handleMouseDown);
+  this._canvas.addEventListener('mousemove', this._handleMouseMove);
+  document.addEventListener('mouseup', this._handleMouseUp);
+};
+
+SignaturePad.prototype._handleTouchEvents = function () {
+  // Pass touch events to canvas element on mobile IE11 and Edge.
+  this._canvas.style.msTouchAction = 'none';
+  this._canvas.style.touchAction = 'none';
+
+  this._canvas.addEventListener('touchstart', this._handleTouchStart);
+  this._canvas.addEventListener('touchmove', this._handleTouchMove);
+  this._canvas.addEventListener('touchend', this._handleTouchEnd);
+};
+
+SignaturePad.prototype._reset = function () {
+  this.points = [];
+  this._lastVelocity = 0;
+  this._lastWidth = (this.minWidth + this.maxWidth) / 2;
+  this._ctx.fillStyle = this.penColor;
+};
+
+SignaturePad.prototype._createPoint = function (x, y, time) {
+  var rect = this._canvas.getBoundingClientRect();
+
+  return new Point(x - rect.left, y - rect.top, time || new Date().getTime());
+};
+
+SignaturePad.prototype._addPoint = function (point) {
+  var points = this.points;
+  var tmp = void 0;
+
+  points.push(point);
+
+  if (points.length > 2) {
+    // To reduce the initial lag make it work with 3 points
+    // by copying the first point to the beginning.
+    if (points.length === 3) points.unshift(points[0]);
+
+    tmp = this._calculateCurveControlPoints(points[0], points[1], points[2]);
+    var c2 = tmp.c2;
+    tmp = this._calculateCurveControlPoints(points[1], points[2], points[3]);
+    var c3 = tmp.c1;
+    var curve = new Bezier(points[1], c2, c3, points[2]);
+    var widths = this._calculateCurveWidths(curve);
+
+    // Remove the first element from the list,
+    // so that we always have no more than 4 points in points array.
+    points.shift();
+
+    return { curve: curve, widths: widths };
+  }
+
+  return {};
+};
+
+SignaturePad.prototype._calculateCurveControlPoints = function (s1, s2, s3) {
+  var dx1 = s1.x - s2.x;
+  var dy1 = s1.y - s2.y;
+  var dx2 = s2.x - s3.x;
+  var dy2 = s2.y - s3.y;
+
+  var m1 = { x: (s1.x + s2.x) / 2.0, y: (s1.y + s2.y) / 2.0 };
+  var m2 = { x: (s2.x + s3.x) / 2.0, y: (s2.y + s3.y) / 2.0 };
+
+  var l1 = Math.sqrt(dx1 * dx1 + dy1 * dy1);
+  var l2 = Math.sqrt(dx2 * dx2 + dy2 * dy2);
+
+  var dxm = m1.x - m2.x;
+  var dym = m1.y - m2.y;
+
+  var k = l2 / (l1 + l2);
+  var cm = { x: m2.x + dxm * k, y: m2.y + dym * k };
+
+  var tx = s2.x - cm.x;
+  var ty = s2.y - cm.y;
+
+  return {
+    c1: new Point(m1.x + tx, m1.y + ty),
+    c2: new Point(m2.x + tx, m2.y + ty)
+  };
+};
+
+SignaturePad.prototype._calculateCurveWidths = function (curve) {
+  var startPoint = curve.startPoint;
+  var endPoint = curve.endPoint;
+  var widths = { start: null, end: null };
+
+  var velocity = this.velocityFilterWeight * endPoint.velocityFrom(startPoint) + (1 - this.velocityFilterWeight) * this._lastVelocity;
+
+  var newWidth = this._strokeWidth(velocity);
+
+  widths.start = this._lastWidth;
+  widths.end = newWidth;
+
+  this._lastVelocity = velocity;
+  this._lastWidth = newWidth;
+
+  return widths;
+};
+
+SignaturePad.prototype._strokeWidth = function (velocity) {
+  return Math.max(this.maxWidth / (velocity + 1), this.minWidth);
+};
+
+SignaturePad.prototype._drawPoint = function (x, y, size) {
+  var ctx = this._ctx;
+
+  ctx.moveTo(x, y);
+  ctx.arc(x, y, size, 0, 2 * Math.PI, false);
+  this._isEmpty = false;
+};
+
+SignaturePad.prototype._drawCurve = function (curve, startWidth, endWidth) {
+  var ctx = this._ctx;
+  var widthDelta = endWidth - startWidth;
+  var drawSteps = Math.floor(curve.length());
+
+  ctx.beginPath();
+
+  for (var i = 0; i < drawSteps; i += 1) {
+    // Calculate the Bezier (x, y) coordinate for this step.
+    var t = i / drawSteps;
+    var tt = t * t;
+    var ttt = tt * t;
+    var u = 1 - t;
+    var uu = u * u;
+    var uuu = uu * u;
+
+    var x = uuu * curve.startPoint.x;
+    x += 3 * uu * t * curve.control1.x;
+    x += 3 * u * tt * curve.control2.x;
+    x += ttt * curve.endPoint.x;
+
+    var y = uuu * curve.startPoint.y;
+    y += 3 * uu * t * curve.control1.y;
+    y += 3 * u * tt * curve.control2.y;
+    y += ttt * curve.endPoint.y;
+
+    var width = startWidth + ttt * widthDelta;
+    this._drawPoint(x, y, width);
+  }
+
+  ctx.closePath();
+  ctx.fill();
+};
+
+SignaturePad.prototype._drawDot = function (point) {
+  var ctx = this._ctx;
+  var width = typeof this.dotSize === 'function' ? this.dotSize() : this.dotSize;
+
+  ctx.beginPath();
+  this._drawPoint(point.x, point.y, width);
+  ctx.closePath();
+  ctx.fill();
+};
+
+SignaturePad.prototype._fromData = function (pointGroups, drawCurve, drawDot) {
+  for (var i = 0; i < pointGroups.length; i += 1) {
+    var group = pointGroups[i];
+
+    if (group.length > 1) {
+      for (var j = 0; j < group.length; j += 1) {
+        var rawPoint = group[j];
+        var point = new Point(rawPoint.x, rawPoint.y, rawPoint.time);
+        var color = rawPoint.color;
+
+        if (j === 0) {
+          // First point in a group. Nothing to draw yet.
+
+          // All points in the group have the same color, so it's enough to set
+          // penColor just at the beginning.
+          this.penColor = color;
+          this._reset();
+
+          this._addPoint(point);
+        } else if (j !== group.length - 1) {
+          // Middle point in a group.
+          var _addPoint2 = this._addPoint(point),
+              curve = _addPoint2.curve,
+              widths = _addPoint2.widths;
+
+          if (curve && widths) {
+            drawCurve(curve, widths, color);
+          }
+        } else {
+          // Last point in a group. Do nothing.
+        }
+      }
+    } else {
+      this._reset();
+      var _rawPoint = group[0];
+      drawDot(_rawPoint);
     }
-  }]);
-
-  return TrInner;
-}(_react["default"].Component);
-
-TrInner.propTypes = {
-  children: _propTypes["default"].node,
-  headers: _propTypes["default"].shape({}),
-  inHeader: _propTypes["default"].bool
+  }
 };
-TrInner.defaultProps = {
-  children: undefined,
-  headers: undefined,
-  inHeader: undefined
+
+SignaturePad.prototype._toSVG = function () {
+  var _this2 = this;
+
+  var pointGroups = this._data;
+  var canvas = this._canvas;
+  var ratio = Math.max(window.devicePixelRatio || 1, 1);
+  var minX = 0;
+  var minY = 0;
+  var maxX = canvas.width / ratio;
+  var maxY = canvas.height / ratio;
+  var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+
+  svg.setAttributeNS(null, 'width', canvas.width);
+  svg.setAttributeNS(null, 'height', canvas.height);
+
+  this._fromData(pointGroups, function (curve, widths, color) {
+    var path = document.createElement('path');
+
+    // Need to check curve for NaN values, these pop up when drawing
+    // lines on the canvas that are not continuous. E.g. Sharp corners
+    // or stopping mid-stroke and than continuing without lifting mouse.
+    if (!isNaN(curve.control1.x) && !isNaN(curve.control1.y) && !isNaN(curve.control2.x) && !isNaN(curve.control2.y)) {
+      var attr = 'M ' + curve.startPoint.x.toFixed(3) + ',' + curve.startPoint.y.toFixed(3) + ' ' + ('C ' + curve.control1.x.toFixed(3) + ',' + curve.control1.y.toFixed(3) + ' ') + (curve.control2.x.toFixed(3) + ',' + curve.control2.y.toFixed(3) + ' ') + (curve.endPoint.x.toFixed(3) + ',' + curve.endPoint.y.toFixed(3));
+
+      path.setAttribute('d', attr);
+      path.setAttribute('stroke-width', (widths.end * 2.25).toFixed(3));
+      path.setAttribute('stroke', color);
+      path.setAttribute('fill', 'none');
+      path.setAttribute('stroke-linecap', 'round');
+
+      svg.appendChild(path);
+    }
+  }, function (rawPoint) {
+    var circle = document.createElement('circle');
+    var dotSize = typeof _this2.dotSize === 'function' ? _this2.dotSize() : _this2.dotSize;
+    circle.setAttribute('r', dotSize);
+    circle.setAttribute('cx', rawPoint.x);
+    circle.setAttribute('cy', rawPoint.y);
+    circle.setAttribute('fill', rawPoint.color);
+
+    svg.appendChild(circle);
+  });
+
+  var prefix = 'data:image/svg+xml;base64,';
+  var header = '<svg' + ' xmlns="http://www.w3.org/2000/svg"' + ' xmlns:xlink="http://www.w3.org/1999/xlink"' + (' viewBox="' + minX + ' ' + minY + ' ' + maxX + ' ' + maxY + '"') + (' width="' + maxX + '"') + (' height="' + maxY + '"') + '>';
+  var body = svg.innerHTML;
+
+  // IE hack for missing innerHTML property on SVGElement
+  if (body === undefined) {
+    var dummy = document.createElement('dummy');
+    var nodes = svg.childNodes;
+    dummy.innerHTML = '';
+
+    for (var i = 0; i < nodes.length; i += 1) {
+      dummy.appendChild(nodes[i].cloneNode(true));
+    }
+
+    body = dummy.innerHTML;
+  }
+
+  var footer = '</svg>';
+  var data = header + body + footer;
+
+  return prefix + btoa(data);
 };
-var _default = TrInner;
-exports["default"] = _default;
+
+SignaturePad.prototype.fromData = function (pointGroups) {
+  var _this3 = this;
+
+  this.clear();
+
+  this._fromData(pointGroups, function (curve, widths) {
+    return _this3._drawCurve(curve, widths.start, widths.end);
+  }, function (rawPoint) {
+    return _this3._drawDot(rawPoint);
+  });
+
+  this._data = pointGroups;
+};
+
+SignaturePad.prototype.toData = function () {
+  return this._data;
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (SignaturePad);
+
 
 /***/ }),
 
-/***/ "./node_modules/react-super-responsive-table/dist/index.js":
-/*!*****************************************************************!*\
-  !*** ./node_modules/react-super-responsive-table/dist/index.js ***!
-  \*****************************************************************/
+/***/ "./node_modules/trim-canvas/build/index.js":
+/*!*************************************************!*\
+  !*** ./node_modules/trim-canvas/build/index.js ***!
+  \*************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-Object.defineProperty(exports, "Table", {
-  enumerable: true,
-  get: function get() {
-    return _Table["default"];
-  }
-});
-Object.defineProperty(exports, "Tbody", {
-  enumerable: true,
-  get: function get() {
-    return _Tbody["default"];
-  }
-});
-Object.defineProperty(exports, "Td", {
-  enumerable: true,
-  get: function get() {
-    return _Td["default"];
-  }
-});
-Object.defineProperty(exports, "Th", {
-  enumerable: true,
-  get: function get() {
-    return _Th["default"];
-  }
-});
-Object.defineProperty(exports, "Thead", {
-  enumerable: true,
-  get: function get() {
-    return _Thead["default"];
-  }
-});
-Object.defineProperty(exports, "Tr", {
-  enumerable: true,
-  get: function get() {
-    return _Tr["default"];
-  }
-});
-
-var _Table = _interopRequireDefault(__webpack_require__(/*! ./components/Table */ "./node_modules/react-super-responsive-table/dist/components/Table.js"));
-
-var _Tbody = _interopRequireDefault(__webpack_require__(/*! ./components/Tbody */ "./node_modules/react-super-responsive-table/dist/components/Tbody.js"));
-
-var _Td = _interopRequireDefault(__webpack_require__(/*! ./components/Td */ "./node_modules/react-super-responsive-table/dist/components/Td.js"));
-
-var _Th = _interopRequireDefault(__webpack_require__(/*! ./components/Th */ "./node_modules/react-super-responsive-table/dist/components/Th.js"));
-
-var _Thead = _interopRequireDefault(__webpack_require__(/*! ./components/Thead */ "./node_modules/react-super-responsive-table/dist/components/Thead.js"));
-
-var _Tr = _interopRequireDefault(__webpack_require__(/*! ./components/Tr */ "./node_modules/react-super-responsive-table/dist/components/Tr.js"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-
-/***/ }),
-
-/***/ "./node_modules/react-super-responsive-table/dist/utils/allowed.js":
-/*!*************************************************************************!*\
-  !*** ./node_modules/react-super-responsive-table/dist/utils/allowed.js ***!
-  \*************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports["default"] = void 0;
-
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-var omit = function omit(obj, omitProps) {
-  return Object.keys(obj).filter(function (key) {
-    return omitProps.indexOf(key) === -1;
-  }).reduce(function (returnObj, key) {
-    return _objectSpread(_objectSpread({}, returnObj), {}, _defineProperty({}, key, obj[key]));
-  }, {});
-};
-
-var allowed = function allowed(props) {
-  return omit(props, ['inHeader', 'columnKey', 'headers', 'forwardedRef']);
-};
-
-var _default = allowed;
-exports["default"] = _default;
-
-/***/ }),
-
-/***/ "./node_modules/react-super-responsive-table/dist/utils/tableContext.js":
-/*!******************************************************************************!*\
-  !*** ./node_modules/react-super-responsive-table/dist/utils/tableContext.js ***!
-  \******************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Consumer = exports.Provider = void 0;
-
-var _react = _interopRequireDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-
-var _React$createContext = /*#__PURE__*/_react["default"].createContext({}),
-    Provider = _React$createContext.Provider,
-    Consumer = _React$createContext.Consumer;
-
-exports.Consumer = Consumer;
-exports.Provider = Provider;
+!function(e,t){ true?module.exports=t():undefined}(this,function(){return function(e){function t(n){if(r[n])return r[n].exports;var o=r[n]={exports:{},id:n,loaded:!1};return e[n].call(o.exports,o,o.exports,t),o.loaded=!0,o.exports}var r={};return t.m=e,t.c=r,t.p="",t(0)}([function(e,t){"use strict";function r(e){var t=e.getContext("2d"),r=e.width,n=e.height,o=t.getImageData(0,0,r,n).data,f=a(!0,r,n,o),i=a(!1,r,n,o),c=u(!0,r,n,o),d=u(!1,r,n,o),p=d-c+1,l=i-f+1,s=t.getImageData(c,f,p,l);return e.width=p,e.height=l,t.clearRect(0,0,p,l),t.putImageData(s,0,0),e}function n(e,t,r,n){return{red:n[4*(r*t+e)],green:n[4*(r*t+e)+1],blue:n[4*(r*t+e)+2],alpha:n[4*(r*t+e)+3]}}function o(e,t,r,o){return n(e,t,r,o).alpha}function a(e,t,r,n){for(var a=e?1:-1,u=e?0:r-1,f=u;e?f<r:f>-1;f+=a)for(var i=0;i<t;i++)if(o(i,f,t,n))return f;return null}function u(e,t,r,n){for(var a=e?1:-1,u=e?0:t-1,f=u;e?f<t:f>-1;f+=a)for(var i=0;i<r;i++)if(o(f,i,t,n))return f;return null}Object.defineProperty(t,"__esModule",{value:!0}),t.default=r}])});
 
 /***/ })
 
